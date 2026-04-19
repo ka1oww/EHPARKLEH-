@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
-export default function Map({ center, carparks, selected, onSelect, userLocation }) {
+export default function Map({ center, carparks, selected, onSelect, userLocation, visible }) {
   const mapRef = useRef(null)
   const instanceRef = useRef(null)
   const markersRef = useRef([])
@@ -71,6 +71,12 @@ export default function Map({ center, carparks, selected, onSelect, userLocation
       if (cp) map.setView([cp.lat, cp.lon], Math.max(map.getZoom(), 16))
     }
   }, [carparks, selected])
+
+  useEffect(() => {
+    const map = instanceRef.current
+    if (!map || !visible) return
+    setTimeout(() => map.invalidateSize(), 50)
+  }, [visible])
 
   useEffect(() => {
     const map = instanceRef.current

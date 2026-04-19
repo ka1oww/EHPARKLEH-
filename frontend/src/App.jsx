@@ -194,7 +194,7 @@ export default function App() {
             </div>
           )}
           {center ? (
-            <Map center={center} carparks={filtered} selected={selected} onSelect={setSelected} userLocation={userLocation} />
+            <Map center={center} carparks={filtered} selected={selected} onSelect={setSelected} userLocation={userLocation} visible={mobileTab === 'map'} />
           ) : (
             <div className="map-placeholder">
               <span className="icon">🗺️</span>
