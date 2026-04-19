@@ -52,7 +52,7 @@ export default function App() {
     setError('')
     try {
       const res = await fetch(
-        `http://localhost:8000/api/carparks?lat=${lat}&lon=${lon}&radius=${radius}`
+        `https://ehparkleh-backend.onrender.com/api/carparks?lat=${lat}&lon=${lon}&radius=${radius}`
       )
       const data = await res.json()
       setCarparks(data)
@@ -71,7 +71,7 @@ export default function App() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch(`http://localhost:8000/api/geocode?q=${encodeURIComponent(query)}`)
+      const res = await fetch(`https://ehparkleh-backend.onrender.com/api/geocode?q=${encodeURIComponent(query)}`)
       if (!res.ok) { setError('Location not found.'); setLoading(false); return }
       const { lat, lon } = await res.json()
       await search(lat, lon)
