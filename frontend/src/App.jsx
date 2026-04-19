@@ -3,11 +3,6 @@ import Map from './Map'
 import './App.css'
 
 const RADIUS_OPTIONS = [250, 500, 1000, 2000]
-const COST_OPTIONS = [
-  { label: 'All', max: Infinity },
-  { label: '< $1/hr', max: 2 },
-  { label: '< $2/hr', max: 4 },
-]
 
 function AvailBar({ available, total }) {
   if (available === null || total === null || total === 0) {
@@ -33,7 +28,6 @@ export default function App() {
   const [mobileTab, setMobileTab] = useState('list')
   const [query, setQuery] = useState('')
   const [radius, setRadius] = useState(500)
-  const [costFilter, setCostFilter] = useState(Infinity)
   const [carparks, setCarparks] = useState([])
   const [center, setCenter] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -90,10 +84,7 @@ export default function App() {
     )
   }
 
-  const filtered = carparks.filter(cp => {
-    if (costFilter === Infinity) return true
-    return cp.cost_per_30min * 2 < costFilter
-  })
+  const filtered = carparks
 
   return (
     <div className="app">
@@ -123,18 +114,6 @@ export default function App() {
               onClick={() => setRadius(r)}
             >
               {r >= 1000 ? `${r / 1000}km` : `${r}m`}
-            </button>
-          ))}
-        </div>
-        <div className="filter-group">
-          <span className="filter-label">Cost</span>
-          {COST_OPTIONS.map(opt => (
-            <button
-              key={opt.label}
-              className={costFilter === opt.max ? 'active' : ''}
-              onClick={() => setCostFilter(opt.max)}
-            >
-              {opt.label}
             </button>
           ))}
         </div>
