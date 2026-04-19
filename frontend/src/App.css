@@ -237,8 +237,9 @@ header .logo { font-size: 1.4rem; }
 
   .hidden-mobile { display: none !important; }
 
-  .search-bar { flex-wrap: wrap; }
-  .search-bar form { min-width: 0; }
+  .search-bar { flex-wrap: wrap; gap: 6px; padding: 10px 12px; }
+  .search-bar form { width: 100%; }
+  .btn-nearme { width: 100%; }
 
   .filters { gap: 8px; padding: 8px 12px; }
   .filter-group { flex-wrap: wrap; }
