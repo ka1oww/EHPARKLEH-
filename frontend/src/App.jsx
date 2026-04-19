@@ -30,6 +30,7 @@ function AvailBar({ available, total }) {
 
 export default function App() {
   const [userLocation, setUserLocation] = useState(null)
+  const [mobileTab, setMobileTab] = useState('list')
   const [query, setQuery] = useState('')
   const [radius, setRadius] = useState(500)
   const [costFilter, setCostFilter] = useState(Infinity)
@@ -141,8 +142,13 @@ export default function App() {
 
       {error && <div className="error">{error}</div>}
 
+      <div className="mobile-tabs">
+        <button className={mobileTab === 'list' ? 'active' : ''} onClick={() => setMobileTab('list')}>List</button>
+        <button className={mobileTab === 'map' ? 'active' : ''} onClick={() => setMobileTab('map')}>Map</button>
+      </div>
+
       <div className="main-content">
-        <div className="list">
+        <div className={`list ${mobileTab === 'map' ? 'hidden-mobile' : ''}`}>
           {loading && <div className="status">Searching...</div>}
           {!loading && filtered.length === 0 && carparks.length > 0 && (
             <div className="status">No carparks match the current filters.</div>
@@ -178,7 +184,7 @@ export default function App() {
           ))}
         </div>
 
-        <div className="map-container">
+        <div className={`map-container ${mobileTab === 'list' ? 'hidden-mobile' : ''}`}>
           {center && (
             <div className="map-legend">
               <span><span className="dot dot-blue" /> You</span>

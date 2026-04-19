@@ -199,6 +199,53 @@ header .logo { font-size: 1.4rem; }
 
 .card-meta { font-size: 11.5px; color: #a0aab4; margin-top: 5px; }
 
+/* ── Mobile tabs ── */
+.mobile-tabs { display: none; }
+
+@media (max-width: 640px) {
+  .mobile-tabs {
+    display: flex;
+    background: #1b2a4a;
+    border-bottom: 1px solid #2d3f63;
+  }
+  .mobile-tabs button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: none;
+    color: #8a9bc4;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+  }
+  .mobile-tabs button.active {
+    color: white;
+    border-bottom-color: #f59e0b;
+  }
+
+  .main-content { flex-direction: column; }
+
+  .list {
+    width: 100%;
+    min-width: unset;
+    border-right: none;
+    flex: 1;
+  }
+
+  .map-container { flex: 1; min-height: 0; }
+
+  .hidden-mobile { display: none !important; }
+
+  .search-bar { flex-wrap: wrap; }
+  .search-bar form { min-width: 0; }
+
+  .filters { gap: 8px; padding: 8px 12px; }
+  .filter-group { flex-wrap: wrap; }
+
+  .map-legend { font-size: 11px; padding: 5px 10px; gap: 8px; }
+}
+
 /* ── Map ── */
 .map-container { flex: 1; position: relative; }
 
