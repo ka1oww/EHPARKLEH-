@@ -160,7 +160,10 @@ export default function App() {
             <div
               key={cp.id}
               className={`card ${selected === cp.id ? 'selected' : ''}`}
-              onClick={() => setSelected(cp.id === selected ? null : cp.id)}
+              onClick={() => {
+              setSelected(cp.id === selected ? null : cp.id)
+              setMobileTab('map')
+            }}
             >
               <div className="card-header">
                 <span className="rank">{i + 1}</span>
