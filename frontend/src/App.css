@@ -11,8 +11,25 @@ header {
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   z-index: 10;
 }
-header h1 { font-size: 1.2rem; font-weight: 600; letter-spacing: 0.3px; }
+header h1 { font-size: 1.2rem; font-weight: 600; letter-spacing: 0.3px; flex: 1; }
 header .logo { font-size: 1.4rem; }
+
+.bmc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: #FFDD00;
+  color: #000;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: filter 0.15s, transform 0.1s;
+}
+.bmc-btn:hover { filter: brightness(1.08); }
+.bmc-btn:active { transform: scale(0.97); }
 
 /* ── Search bar ── */
 .search-bar {

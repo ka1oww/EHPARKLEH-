@@ -8,7 +8,7 @@ from pathlib import Path
 
 app = FastAPI()
 
-app.add_middleware(
+app.add_middleware( #this is to allow any website or domain to make request to the backend the * helps to not restit who can call your api.
     CORSMiddleware,
     allow_origins=["*"],
     allow_methods=["*"],
@@ -21,13 +21,13 @@ CENTRAL_BOUNDS = {
 }
 
 # Carpark locations are static — loaded once at startup, never re-fetched
-_carpark_cache: list = []
+_carpark_cache: list = [] #will be filled at startup line 81-105
 
 def is_central(lat, lon):
     return (CENTRAL_BOUNDS["min_lat"] <= lat <= CENTRAL_BOUNDS["max_lat"] and
             CENTRAL_BOUNDS["min_lon"] <= lon <= CENTRAL_BOUNDS["max_lon"])
 
-def svy21_to_wgs84(easting, northing):
+def svy21_to_wgs84(easting, northing): #this simply converts the data gov.sg gives us to what the map needs
     a = 6378137.0
     f = 1.0 / 298.257223563
     e2 = 2 * f - f * f
@@ -69,7 +69,7 @@ def svy21_to_wgs84(easting, northing):
 
     return math.degrees(lat), math.degrees(lon)
 
-def haversine(lat1, lon1, lat2, lon2):
+def haversine(lat1, lon1, lat2, lon2): #this is to take into account the curvature of the earth
     R = 6371000
     p1, p2 = math.radians(lat1), math.radians(lat2)
     dp = math.radians(lat2 - lat1)
@@ -78,14 +78,14 @@ def haversine(lat1, lon1, lat2, lon2):
     return 2 * R * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
-@app.on_event("startup")
-async def load_carparks():
-    global _carpark_cache
-    data_file = Path(__file__).parent / "carparks.json"
-    with open(data_file) as f:
-        records = json.load(f)["result"]["records"]
+@app.on_event("startup") #loads the carparks
+async def load_carparks(): #async allows python3 to do other processes while waiting for this to load
+    global _carpark_cache #the list that we are going to fill with the carpark information
+    data_file = Path(__file__).parent / "carparks.json" #our hardcoded carpark data gets loaded on
+    with open(data_file) as f: #with closes the file data_file after opening it , as f means the file is assigned to the variable f 
+        records = json.load(f)["result"]["records"] #.load f reads the json fle and covers it into a python3 dictionary
 
-    for cp in records:
+    for cp in records: #this is adding the carparks into the cache
         try:
             x, y = float(cp["x_coord"]), float(cp["y_coord"])
         except (ValueError, KeyError):
@@ -105,7 +105,7 @@ async def load_carparks():
     print(f"Loaded {len(_carpark_cache)} carparks into cache.")
 
 
-@app.get("/api/geocode")
+@app.get("/api/geocode") #this calls the onemap api
 async def geocode(q: str = Query(...)):
     async with httpx.AsyncClient() as client:
         resp = await client.get(
@@ -125,10 +125,10 @@ async def get_carparks(
     lon: float = Query(...),
     radius: int = Query(500),
 ):
-    if not _carpark_cache:
+    if not _carpark_cache: #if carpark cache is empty, we need this to check because we do async so it can still be loading
         raise HTTPException(status_code=503, detail="Carpark data not loaded yet. Try again in a moment.")
 
-    async with httpx.AsyncClient(timeout=15) as client:
+    async with httpx.AsyncClient(timeout=15) as client: #this is to get the availability of the carparks
         avail_resp = await client.get("https://api.data.gov.sg/v1/transport/carpark-availability")
 
     avail_dict = {}
@@ -140,13 +140,13 @@ async def get_carparks(
                         "lots_available": int(lot["lots_available"]),
                         "total_lots": int(lot["total_lots"]),
                     }
-    except Exception:
+    except Exception: #if the code throws an error , we can ignore it cause perhaps the data isnt given for this carpark
         pass  # availability is optional — show carparks without it
 
     results = []
     for cp in _carpark_cache:
         dist = haversine(lat, lon, cp["lat"], cp["lon"])
-        if dist > radius:
+        if dist > radius: #this skips any carpark that is out of the distance
             continue
 
         avail = avail_dict.get(cp["id"], {"lots_available": None, "total_lots": None})
@@ -164,5 +164,5 @@ async def get_carparks(
             "free_parking_info": cp["free_parking_info"],
         })
 
-    results.sort(key=lambda c: c["distance_m"])
+    results.sort(key=lambda c: c["distance_m"]) #sorts the carparks in increasing distance
     return results

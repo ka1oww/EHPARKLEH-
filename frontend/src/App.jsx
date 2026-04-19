@@ -90,6 +90,14 @@ export default function App() {
     <div className="app">
       <header>
         <h1>EhParkLeh</h1>
+        <a
+          href="https://buymeacoffee.com/zhehang"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bmc-btn"
+        >
+          ☕ Buy me a coffee
+        </a>
       </header>
 
       <div className="search-bar">
