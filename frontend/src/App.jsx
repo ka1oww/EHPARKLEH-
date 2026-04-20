@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Map from './Map'
 import './App.css'
 
@@ -27,6 +27,10 @@ export default function App() {
   const [userLocation, setUserLocation] = useState(null)
   const [mobileTab, setMobileTab] = useState('list')
   const [query, setQuery] = useState('')
+  const [suggestions, setSuggestions] = useState([])
+  const [showSuggestions, setShowSuggestions] = useState(false)
+  const debounceRef = useRef(null)
+  const searchBoxRef = useRef(null)
   const [radius, setRadius] = useState(500)
   const [carparks, setCarparks] = useState([])
   const [center, setCenter] = useState(null)
@@ -41,6 +45,38 @@ export default function App() {
       () => {}
     )
   }, [])
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) {
+        setShowSuggestions(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  function handleQueryChange(e) {
+    const val = e.target.value
+    setQuery(val)
+    clearTimeout(debounceRef.current)
+    if (val.trim().length < 2) { setSuggestions([]); setShowSuggestions(false); return }
+    debounceRef.current = setTimeout(async () => {
+      try {
+        const res = await fetch(`https://ehparkleh-backend.onrender.com/api/suggestions?q=${encodeURIComponent(val)}`)
+        const data = await res.json()
+        setSuggestions(data)
+        setShowSuggestions(data.length > 0)
+      } catch { setSuggestions([]) }
+    }, 300)
+  }
+
+  async function handleSuggestionClick(s) {
+    setQuery(s.address)
+    setSuggestions([])
+    setShowSuggestions(false)
+    await search(s.lat, s.lon)
+  }
 
   async function search(lat, lon) {
     setLoading(true)
@@ -63,6 +99,8 @@ export default function App() {
   async function handleSearch(e) {
     e.preventDefault()
     if (!query.trim()) return
+    setSuggestions([])
+    setShowSuggestions(false)
     setLoading(true)
     setError('')
     try {
@@ -101,12 +139,23 @@ export default function App() {
       </header>
 
       <div className="search-bar">
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSearch} ref={searchBoxRef} style={{ position: 'relative' }}>
           <input
             value={query}
-            onChange={e => setQuery(e.target.value)}
+            onChange={handleQueryChange}
+            onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
             placeholder="Search an address, e.g. Toa Payoh Hub"
+            autoComplete="off"
           />
+          {showSuggestions && (
+            <ul className="suggestions-dropdown">
+              {suggestions.map((s, i) => (
+                <li key={i} onMouseDown={() => handleSuggestionClick(s)}>
+                  {s.address}
+                </li>
+              ))}
+            </ul>
+          )}
           <button type="submit" className="btn btn-primary">Search</button>
         </form>
         <button onClick={handleNearMe} className="btn btn-nearme">Near Me</button>

@@ -70,6 +70,33 @@ header .logo { font-size: 1.4rem; }
 .btn-amber   { background: #f59e0b; color: #1b2a4a; }
 .btn-nearme  { background: #6366f1; color: white; }
 
+/* ── Suggestions dropdown ── */
+.suggestions-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1.5px solid #d0d5de;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.suggestions-dropdown li {
+  padding: 10px 14px;
+  font-size: 13.5px;
+  color: #1b2a4a;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f2f7;
+}
+.suggestions-dropdown li:last-child { border-bottom: none; }
+.suggestions-dropdown li:hover { background: #eef3fc; }
+
 /* ── Filters ── */
 .filters {
   display: flex;
