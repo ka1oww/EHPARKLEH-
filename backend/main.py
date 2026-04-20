@@ -105,6 +105,22 @@ async def load_carparks(): #async allows python3 to do other processes while wai
     print(f"Loaded {len(_carpark_cache)} carparks into cache.")
 
 
+@app.get("/api/suggestions")
+async def suggestions(q: str = Query(...)):
+    if len(q.strip()) < 2:
+        return []
+    async with httpx.AsyncClient() as client:
+        resp = await client.get(
+            "https://www.onemap.gov.sg/api/common/elastic/search",
+            params={"searchVal": q, "returnGeom": "Y", "getAddrDetails": "Y", "pageNum": 1}
+        )
+    data = resp.json()
+    return [
+        {"address": r["ADDRESS"], "lat": float(r["LATITUDE"]), "lon": float(r["LONGITUDE"])}
+        for r in data.get("results", [])[:6]
+    ]
+
+
 @app.get("/api/geocode") #this calls the onemap api
 async def geocode(q: str = Query(...)):
     async with httpx.AsyncClient() as client:
