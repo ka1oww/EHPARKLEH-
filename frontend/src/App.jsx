@@ -218,7 +218,18 @@ export default function App() {
               </div>
 
               <AvailBar available={cp.lots_available} total={cp.total_lots} />
-              <div className="card-meta">{cp.type}</div>
+              <div className="card-footer">
+                <span className="card-meta">{cp.type}</span>
+                <a
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${cp.lat},${cp.lon}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gmaps-btn"
+                  onClick={e => e.stopPropagation()}
+                >
+                  Google Maps ↗
+                </a>
+              </div>
             </div>
           ))}
         </div>
