@@ -105,6 +105,11 @@ async def load_carparks(): #async allows python3 to do other processes while wai
     print(f"Loaded {len(_carpark_cache)} carparks into cache.")
 
 
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
+
 @app.get("/api/suggestions")
 async def suggestions(q: str = Query(...)):
     if len(q.strip()) < 2:
