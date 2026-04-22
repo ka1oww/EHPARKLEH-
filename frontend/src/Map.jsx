@@ -2,10 +2,18 @@ import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
-export default function Map({ center, carparks, selected, onSelect, userLocation, visible }) {
+const pIcon = L.divIcon({
+  className: '',
+  html: '<div class="p-marker">P</div>',
+  iconSize: [22, 22],
+  iconAnchor: [11, 11],
+})
+
+export default function Map({ center, carparks, osmParking = [], selected, onSelect, userLocation, visible }) {
   const mapRef = useRef(null)
   const instanceRef = useRef(null)
   const markersRef = useRef([])
+  const osmMarkersRef = useRef([])
   const centerMarkerRef = useRef(null)
   const userMarkerRef = useRef(null)
 
@@ -71,6 +79,20 @@ export default function Map({ center, carparks, selected, onSelect, userLocation
       if (cp) map.setView([cp.lat, cp.lon], Math.max(map.getZoom(), 16))
     }
   }, [carparks, selected])
+
+  useEffect(() => {
+    const map = instanceRef.current
+    if (!map) return
+    osmMarkersRef.current.forEach(m => m.remove())
+    osmMarkersRef.current = []
+    osmParking.forEach(cp => {
+      const marker = L.marker([cp.lat, cp.lon], { icon: pIcon })
+        .addTo(map)
+        .bindPopup(`<b>${cp.name}</b><br/>${cp.distance_m}m away<br/><i>No pricing data</i>`)
+        .on('click', () => onSelect(cp.id === selected ? null : cp.id))
+      osmMarkersRef.current.push(marker)
+    })
+  }, [osmParking])
 
   useEffect(() => {
     const map = instanceRef.current

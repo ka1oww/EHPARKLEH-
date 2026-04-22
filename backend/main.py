@@ -110,6 +110,56 @@ async def health():
     return {"status": "ok"}
 
 
+@app.get("/api/parking/osm")
+async def parking_osm(
+    lat: float = Query(...),
+    lon: float = Query(...),
+    radius: int = Query(500),
+):
+    query = f"""
+[out:json][timeout:12];
+(
+  node["amenity"="parking"](around:{radius},{lat},{lon});
+  way["amenity"="parking"](around:{radius},{lat},{lon});
+  relation["amenity"="parking"](around:{radius},{lat},{lon});
+);
+out center;
+"""
+    try:
+        async with httpx.AsyncClient(timeout=15) as client:
+            resp = await client.post("https://overpass-api.de/api/interpreter", data={"data": query})
+        elements = resp.json().get("elements", [])
+    except Exception:
+        return []
+
+    results = []
+    for el in elements:
+        if el["type"] == "node":
+            el_lat, el_lon = el["lat"], el["lon"]
+        else:
+            center = el.get("center")
+            if not center:
+                continue
+            el_lat, el_lon = center["lat"], center["lon"]
+
+        tags = el.get("tags", {})
+        name = tags.get("name") or tags.get("addr:street") or "Parking"
+        results.append({
+            "id": f"osm_{el['id']}",
+            "name": name,
+            "lat": el_lat,
+            "lon": el_lon,
+            "distance_m": round(haversine(lat, lon, el_lat, el_lon)),
+            "source": "osm",
+            "fee": tags.get("fee"),
+            "parking_type": tags.get("parking") or tags.get("car_park_type"),
+            "capacity": tags.get("capacity"),
+        })
+
+    results.sort(key=lambda x: x["distance_m"])
+    return results
+
+
 @app.get("/api/suggestions")
 async def suggestions(q: str = Query(...)):
     if len(q.strip()) < 2:
