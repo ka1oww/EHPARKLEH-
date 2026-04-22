@@ -43,13 +43,13 @@ import re
 def clean_address(address):
     """
     Turn HDB carpark addresses into something OneMap can match.
-    'BLK 638-643 CHOA CHU KANG STREET 64' -> '638 CHOA CHU KANG STREET 64'
-    'BLK 302/348 ANG MO KIO STREET 31'    -> '302 ANG MO KIO STREET 31'
+    'BLK 638-643 CHOA CHU KANG STREET 64'    -> '638 CHOA CHU KANG STREET 64'
+    'BLK 659A/660A/661A CHOA CHU KANG CRES'  -> '659A CHOA CHU KANG CRESCENT'
+    'BLK 302/348 ANG MO KIO STREET 31'       -> '302 ANG MO KIO STREET 31'
     """
-    # Remove leading BLK / BLOCK
     addr = re.sub(r'^BLK\s+|^BLOCK\s+', '', address.strip())
-    # If number has a range (638-643) or slash (302/348), keep only the first
-    addr = re.sub(r'^(\d+)[-/]\d+', r'\1', addr)
+    # Handle ranges/slashes for both numeric (638-643) and alphanumeric (659A/660A/661A)
+    addr = re.sub(r'^(\w+)[-/]\w+(?:[-/]\w+)*(?=\s)', r'\1', addr)
     return addr
 
 
