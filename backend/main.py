@@ -79,28 +79,21 @@ def haversine(lat1, lon1, lat2, lon2): #this is to take into account the curvatu
 
 
 @app.on_event("startup") #loads the carparks
-async def load_carparks(): #async allows python3 to do other processes while waiting for this to load
-    global _carpark_cache #the list that we are going to fill with the carpark information
-    data_file = Path(__file__).parent / "carparks.json" #our hardcoded carpark data gets loaded on
-    with open(data_file) as f: #with closes the file data_file after opening it , as f means the file is assigned to the variable f 
-        records = json.load(f)["result"]["records"] #.load f reads the json fle and covers it into a python3 dictionary
+async def load_carparks():
+    global _carpark_cache
+    data_file = Path(__file__).parent / "carparks_geocoded.json"
+    with open(data_file) as f:
+        records = json.load(f)
 
-    for cp in records: #this is adding the carparks into the cache
-        try:
-            x, y = float(cp["x_coord"]), float(cp["y_coord"])
-        except (ValueError, KeyError):
-            continue
-        if x == 0 or y == 0:
-            continue
-        cp_lat, cp_lon = svy21_to_wgs84(x, y)
+    for cp in records:
         _carpark_cache.append({
-            "id": cp["car_park_no"],
+            "id": cp["id"],
             "address": cp["address"],
-            "lat": cp_lat,
-            "lon": cp_lon,
+            "lat": cp["lat"],
+            "lon": cp["lon"],
             "free_parking_info": cp.get("free_parking", "NO"),
-            "type": cp["car_park_type"],
-            "central": is_central(cp_lat, cp_lon),
+            "type": cp["type"],
+            "central": is_central(cp["lat"], cp["lon"]),
         })
     print(f"Loaded {len(_carpark_cache)} carparks into cache.")
 
