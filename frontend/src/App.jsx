@@ -33,6 +33,7 @@ export default function App() {
   const searchBoxRef = useRef(null)
   const [radius, setRadius] = useState(500)
   const [carparks, setCarparks] = useState([])
+  const [osmParking, setOsmParking] = useState([])
   const [center, setCenter] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -82,14 +83,18 @@ export default function App() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch(
-        `https://ehparkleh-backend.onrender.com/api/carparks?lat=${lat}&lon=${lon}&radius=${radius}`
-      )
-      const data = await res.json()
-      setCarparks(data)
+      const base = `https://ehparkleh-backend.onrender.com`
+      const [hdbRes, osmRes] = await Promise.all([
+        fetch(`${base}/api/carparks?lat=${lat}&lon=${lon}&radius=${radius}`),
+        fetch(`${base}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${radius}`),
+      ])
+      const hdbData = await hdbRes.json()
+      const osmData = osmRes.ok ? await osmRes.json() : []
+      setCarparks(hdbData)
+      setOsmParking(osmData)
       setCenter({ lat, lon })
       setSelected(null)
-      if (data.length === 0) setError('No HDB carparks found in this area. Try a larger radius.')
+      if (hdbData.length === 0 && osmData.length === 0) setError('No carparks found in this area. Try a larger radius.')
     } catch {
       setError('Failed to fetch carparks. Is the backend running?')
     }
@@ -123,6 +128,10 @@ export default function App() {
   }
 
   const filtered = carparks
+  const allParking = [
+    ...carparks.map(cp => ({ ...cp, source: 'hdb' })),
+    ...osmParking,
+  ].sort((a, b) => a.distance_m - b.distance_m)
 
   return (
     <div className="app">
@@ -186,51 +195,65 @@ export default function App() {
       <div className="main-content">
         <div className={`list ${mobileTab === 'map' ? 'hidden-mobile' : ''}`}>
           {loading && <div className="status">Searching...</div>}
-          {!loading && filtered.length === 0 && carparks.length > 0 && (
-            <div className="status">No carparks match the current filters.</div>
-          )}
-          {!loading && filtered.length > 0 && (
-            <div className="status">{filtered.length} HDB carpark{filtered.length !== 1 ? 's' : ''} found · HDB only, not all parking shown</div>
-          )}
-          {filtered.map((cp, i) => (
-            <div
-              key={cp.id}
-              className={`card ${selected === cp.id ? 'selected' : ''}`}
-              onClick={() => {
-              setSelected(cp.id === selected ? null : cp.id)
-              setMobileTab('map')
-            }}
-            >
-              <div className="card-header">
-                <span className="rank">{i + 1}</span>
-                <span className="card-address">{cp.address}</span>
-              </div>
-
-              <div className="card-pills">
-                <span className="pill pill-blue">📏 {cp.distance_m}m</span>
-                <span className="pill">
-                  💰 ${cp.cost_per_30min.toFixed(2)}/30min
-                </span>
-                {cp.free_parking_info !== 'NO' && (
-                  <span className="pill pill-green">Free: {cp.free_parking_info}</span>
-                )}
-                <span className="pill">{cp.zone}</span>
-              </div>
-
-              <AvailBar available={cp.lots_available} total={cp.total_lots} />
-              <div className="card-footer">
-                <span className="card-meta">{cp.type}</span>
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${cp.lat},${cp.lon}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="gmaps-btn"
-                  onClick={e => e.stopPropagation()}
-                >
-                  Google Maps ↗
-                </a>
-              </div>
+          {!loading && allParking.length > 0 && (
+            <div className="status">
+              {filtered.length} HDB · {osmParking.length} other parking nearby
             </div>
+          )}
+          {allParking.map((cp) => (
+            cp.source === 'osm' ? (
+              <div
+                key={cp.id}
+                className={`card card-osm ${selected === cp.id ? 'selected' : ''}`}
+                onClick={() => { setSelected(cp.id === selected ? null : cp.id); setMobileTab('map') }}
+              >
+                <div className="card-header">
+                  <span className="rank rank-osm">P</span>
+                  <span className="card-address">{cp.name}</span>
+                </div>
+                <div className="card-pills">
+                  <span className="pill pill-blue">📏 {cp.distance_m}m</span>
+                  {cp.fee === 'no' && <span className="pill pill-green">Free</span>}
+                  {cp.parking_type && <span className="pill">{cp.parking_type}</span>}
+                </div>
+                <div className="card-footer">
+                  <span className="card-meta osm-note">No pricing or availability data</span>
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${cp.lat},${cp.lon}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="gmaps-btn" onClick={e => e.stopPropagation()}
+                  >Google Maps ↗</a>
+                </div>
+              </div>
+            ) : (
+              <div
+                key={cp.id}
+                className={`card ${selected === cp.id ? 'selected' : ''}`}
+                onClick={() => { setSelected(cp.id === selected ? null : cp.id); setMobileTab('map') }}
+              >
+                <div className="card-header">
+                  <span className="rank">{carparks.indexOf(cp) + 1}</span>
+                  <span className="card-address">{cp.address}</span>
+                </div>
+                <div className="card-pills">
+                  <span className="pill pill-blue">📏 {cp.distance_m}m</span>
+                  <span className="pill">💰 ${cp.cost_per_30min.toFixed(2)}/30min</span>
+                  {cp.free_parking_info !== 'NO' && (
+                    <span className="pill pill-green">Free: {cp.free_parking_info}</span>
+                  )}
+                  <span className="pill">{cp.zone}</span>
+                </div>
+                <AvailBar available={cp.lots_available} total={cp.total_lots} />
+                <div className="card-footer">
+                  <span className="card-meta">{cp.type}</span>
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${cp.lat},${cp.lon}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="gmaps-btn" onClick={e => e.stopPropagation()}
+                  >Google Maps ↗</a>
+                </div>
+              </div>
+            )
           ))}
         </div>
 
@@ -239,17 +262,17 @@ export default function App() {
             <div className="map-legend">
               <span><span className="dot dot-blue" /> You</span>
               <span><span className="dot dot-red" /> Destination</span>
-              <span><span className="dot dot-green" /> Carpark</span>
+              <span><span className="dot dot-green" /> HDB</span>
               <span><span className="dot dot-amber" /> Selected</span>
+              <span><span className="dot dot-grey" /> Other</span>
             </div>
           )}
           {center ? (
-            <Map center={center} carparks={filtered} selected={selected} onSelect={setSelected} userLocation={userLocation} visible={mobileTab === 'map'} />
+            <Map center={center} carparks={filtered} osmParking={osmParking} selected={selected} onSelect={setSelected} userLocation={userLocation} visible={mobileTab === 'map'} />
           ) : (
             <div className="map-placeholder">
               <span className="icon">🗺️</span>
-              <p>Search a location to see nearby HDB carparks</p>
-              <p style={{fontSize:'12px', color:'#bbb', marginTop:'4px'}}>Note: only HDB carparks are shown, not private or commercial parking</p>
+              <p>Search a location to see nearby carparks</p>
             </div>
           )}
         </div>
