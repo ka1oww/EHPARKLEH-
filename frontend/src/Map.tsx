@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import type { Carpark, OsmParking, LatLon } from './types'
 
 const pIcon = L.divIcon({
   className: '',
@@ -9,16 +10,34 @@ const pIcon = L.divIcon({
   iconAnchor: [11, 11],
 })
 
-export default function Map({ center, carparks, osmParking = [], selected, onSelect, userLocation, visible }) {
-  const mapRef = useRef(null)
-  const instanceRef = useRef(null)
-  const markersRef = useRef([])
-  const osmMarkersRef = useRef([])
-  const centerMarkerRef = useRef(null)
-  const userMarkerRef = useRef(null)
+interface MapProps {
+  center: LatLon
+  carparks: Carpark[]
+  osmParking?: OsmParking[]
+  selected: string | null
+  onSelect: (id: string | null) => void
+  userLocation: LatLon | null
+  visible: boolean
+}
+
+export default function Map({
+  center,
+  carparks,
+  osmParking = [],
+  selected,
+  onSelect,
+  userLocation,
+  visible,
+}: MapProps) {
+  const mapRef = useRef<HTMLDivElement>(null)
+  const instanceRef = useRef<L.Map | null>(null)
+  const markersRef = useRef<L.CircleMarker[]>([])
+  const osmMarkersRef = useRef<L.Marker[]>([])
+  const centerMarkerRef = useRef<L.CircleMarker | null>(null)
+  const userMarkerRef = useRef<L.CircleMarker | null>(null)
 
   useEffect(() => {
-    if (!instanceRef.current) {
+    if (!instanceRef.current && mapRef.current) {
       instanceRef.current = L.map(mapRef.current).setView([center.lat, center.lon], 15)
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors',
@@ -59,7 +78,7 @@ export default function Map({ center, carparks, osmParking = [], selected, onSel
         .bindPopup(`
           <b>${i + 1}. ${cp.address}</b><br/>
           ${cp.distance_m}m away<br/>
-          ${cp.free_parking ? 'Free' : `$${cp.cost_per_30min.toFixed(2)}/30min`}<br/>
+          ${cp.free_parking ? 'Free' : `$${cp.cost_per_30min?.toFixed(2)}/30min`}<br/>
           ${cp.lots_available !== null ? `${cp.lots_available}/${cp.total_lots} lots` : 'Availability N/A'}
         `)
         .on('click', () => onSelect(cp.id === selected ? null : cp.id))
@@ -69,9 +88,9 @@ export default function Map({ center, carparks, osmParking = [], selected, onSel
     })
 
     if (!selected) {
-      const allPoints = [
+      const allPoints: L.LatLngTuple[] = [
         [center.lat, center.lon],
-        ...carparks.map(cp => [cp.lat, cp.lon]),
+        ...carparks.map(cp => [cp.lat, cp.lon] as L.LatLngTuple),
       ]
       map.fitBounds(L.latLngBounds(allPoints), { padding: [40, 40] })
     } else {

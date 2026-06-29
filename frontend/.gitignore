@@ -11,6 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
+
+# vite-plugin-pwa dev artifacts
+dev-dist
 
 # Editor directories and files
 .vscode/*

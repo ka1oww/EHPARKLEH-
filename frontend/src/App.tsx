@@ -1,6 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
 import Map from './Map'
 import './App.css'
+import type {
+  Carpark,
+  OsmParking,
+  Suggestion,
+  GeocodeResult,
+  LatLon,
+  ParkingEntry,
+} from './types'
 
 const RADIUS_OPTIONS = [250, 500, 1000, 2000]
 
@@ -8,7 +16,7 @@ const RADIUS_OPTIONS = [250, 500, 1000, 2000]
 // the deployed Render backend so existing builds keep working unchanged.
 const API_BASE = import.meta.env.VITE_API_BASE || 'https://ehparkleh-backend.onrender.com'
 
-function AvailBar({ available, total }) {
+function AvailBar({ available, total }: { available: number | null; total: number | null }) {
   if (available === null || total === null || total === 0) {
     return <div className="avail-label" style={{ color: '#bbb' }}>No data</div>
   }
@@ -28,20 +36,20 @@ function AvailBar({ available, total }) {
 }
 
 export default function App() {
-  const [userLocation, setUserLocation] = useState(null)
-  const [mobileTab, setMobileTab] = useState('list')
+  const [userLocation, setUserLocation] = useState<LatLon | null>(null)
+  const [mobileTab, setMobileTab] = useState<'list' | 'map'>('list')
   const [query, setQuery] = useState('')
-  const [suggestions, setSuggestions] = useState([])
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
-  const debounceRef = useRef(null)
-  const searchBoxRef = useRef(null)
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const searchBoxRef = useRef<HTMLFormElement>(null)
   const [radius, setRadius] = useState(500)
-  const [carparks, setCarparks] = useState([])
-  const [osmParking, setOsmParking] = useState([])
-  const [center, setCenter] = useState(null)
+  const [carparks, setCarparks] = useState<Carpark[]>([])
+  const [osmParking, setOsmParking] = useState<OsmParking[]>([])
+  const [center, setCenter] = useState<LatLon | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState<string | null>(null)
 
   useEffect(() => {
     if (!navigator.geolocation) return
@@ -52,8 +60,8 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    function handleClickOutside(e) {
-      if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) {
+    function handleClickOutside(e: MouseEvent) {
+      if (searchBoxRef.current && !searchBoxRef.current.contains(e.target as Node)) {
         setShowSuggestions(false)
       }
     }
@@ -61,7 +69,7 @@ export default function App() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  function handleQueryChange(e) {
+  function handleQueryChange(e: React.ChangeEvent<HTMLInputElement>) {
     const val = e.target.value
     setQuery(val)
     clearTimeout(debounceRef.current)
@@ -69,21 +77,21 @@ export default function App() {
     debounceRef.current = setTimeout(async () => {
       try {
         const res = await fetch(`${API_BASE}/api/suggestions?q=${encodeURIComponent(val)}`)
-        const data = await res.json()
+        const data: Suggestion[] = await res.json()
         setSuggestions(data)
         setShowSuggestions(data.length > 0)
       } catch { setSuggestions([]) }
     }, 300)
   }
 
-  async function handleSuggestionClick(s) {
+  async function handleSuggestionClick(s: Suggestion) {
     setQuery(s.address)
     setSuggestions([])
     setShowSuggestions(false)
     await search(s.lat, s.lon)
   }
 
-  async function search(lat, lon) {
+  async function search(lat: number, lon: number) {
     setLoading(true)
     setError('')
     try {
@@ -92,8 +100,8 @@ export default function App() {
         fetch(`${base}/api/carparks?lat=${lat}&lon=${lon}&radius=${radius}`),
         fetch(`${base}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${radius}`),
       ])
-      const hdbData = await hdbRes.json()
-      const osmData = osmRes.ok ? await osmRes.json() : []
+      const hdbData: Carpark[] = await hdbRes.json()
+      const osmData: OsmParking[] = osmRes.ok ? await osmRes.json() : []
       setCarparks(hdbData)
       setOsmParking(osmData)
       setCenter({ lat, lon })
@@ -105,7 +113,7 @@ export default function App() {
     setLoading(false)
   }
 
-  async function handleSearch(e) {
+  async function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!query.trim()) return
     setSuggestions([])
@@ -115,7 +123,7 @@ export default function App() {
     try {
       const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(query)}`)
       if (!res.ok) { setError('Location not found.'); setLoading(false); return }
-      const { lat, lon } = await res.json()
+      const { lat, lon }: GeocodeResult = await res.json()
       await search(lat, lon)
     } catch {
       setError('Failed to geocode. Is the backend running?')
@@ -132,9 +140,9 @@ export default function App() {
   }
 
   const filtered = carparks
-  const allParking = [
-    ...carparks.map(cp => ({ ...cp, source: 'hdb' })),
-    ...osmParking,
+  const allParking: ParkingEntry[] = [
+    ...carparks.map((cp): ParkingEntry => ({ ...cp, source: 'hdb' })),
+    ...osmParking.map((cp): ParkingEntry => ({ ...cp, source: 'osm' })),
   ].sort((a, b) => a.distance_m - b.distance_m)
 
   return (
@@ -241,7 +249,7 @@ export default function App() {
                 </div>
                 <div className="card-pills">
                   <span className="pill pill-blue">📏 {cp.distance_m}m</span>
-                  <span className="pill">💰 ${cp.cost_per_30min.toFixed(2)}/30min</span>
+                  <span className="pill">💰 ${cp.cost_per_30min?.toFixed(2)}/30min</span>
                   {cp.free_parking_info !== 'NO' && (
                     <span className="pill pill-green">Free: {cp.free_parking_info}</span>
                   )}
