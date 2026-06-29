@@ -1,0 +1,10538 @@
+[
+ {
+  "id": "ura_A0004",
+  "source": "ura",
+  "pp_code": "A0004",
+  "name": "Aliwal Street",
+  "lot_counts": {
+   "Car Lots": 69,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 73,
+  "lat": 1.3025952,
+  "lon": 103.8608674,
+  "car_lots": 69
+ },
+ {
+  "id": "ura_A0005",
+  "source": "ura",
+  "pp_code": "A0005",
+  "name": "Allenby Road",
+  "lot_counts": {
+   "Motorcycle Lots": 13,
+   "Car Lots": 16
+  },
+  "total_lots": 29,
+  "lat": 1.310627,
+  "lon": 103.8591199,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_A0006",
+  "source": "ura",
+  "pp_code": "A0006",
+  "name": "Amoy Street",
+  "lot_counts": {
+   "Car Lots": 81,
+   "Motorcycle Lots": 10,
+   "Lorry Lots": 1
+  },
+  "total_lots": 92,
+  "lat": 1.2809374,
+  "lon": 103.8471298,
+  "car_lots": 81
+ },
+ {
+  "id": "ura_A0007",
+  "source": "ura",
+  "pp_code": "A0007",
+  "name": "Angullia Park Off Street",
+  "lot_counts": {
+   "Car Lots": 268,
+   "Motorcycle Lots": 96
+  },
+  "total_lots": 364,
+  "lat": 1.3050955,
+  "lon": 103.8296734,
+  "car_lots": 268
+ },
+ {
+  "id": "ura_A0008",
+  "source": "ura",
+  "pp_code": "A0008",
+  "name": "Ann Siang Road",
+  "lot_counts": {
+   "Car Lots": 26
+  },
+  "total_lots": 26,
+  "lat": 1.2810098,
+  "lon": 103.8457728,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_A0010",
+  "source": "ura",
+  "pp_code": "A0010",
+  "name": "Arab Street",
+  "lot_counts": {
+   "Lorry Lots": 1,
+   "Car Lots": 69,
+   "Motorcycle Lots": 13
+  },
+  "total_lots": 83,
+  "lat": 1.3018842,
+  "lon": 103.8585075,
+  "car_lots": 69
+ },
+ {
+  "id": "ura_A0011",
+  "source": "ura",
+  "pp_code": "A0011",
+  "name": "Armenian Street Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 7,
+   "Car Lots": 45
+  },
+  "total_lots": 52,
+  "lat": 1.2939395,
+  "lon": 103.8488953,
+  "car_lots": 45
+ },
+ {
+  "id": "ura_A0017",
+  "source": "ura",
+  "pp_code": "A0017",
+  "name": "Arab Street / Queen Street Off Street",
+  "lot_counts": {
+   "Car Lots": 148,
+   "Motorcycle Lots": 19
+  },
+  "total_lots": 167,
+  "lat": 1.3029529,
+  "lon": 103.8569938,
+  "car_lots": 148
+ },
+ {
+  "id": "ura_A0021",
+  "source": "ura",
+  "pp_code": "A0021",
+  "name": "Amoy Street Off Street",
+  "lot_counts": {
+   "Car Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.2808142,
+  "lon": 103.8471939,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_A0024",
+  "source": "ura",
+  "pp_code": "A0024",
+  "name": "Adam Road Food Centre Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 12,
+   "Car Lots": 64
+  },
+  "total_lots": 76,
+  "lat": 1.3240192,
+  "lon": 103.8140909,
+  "car_lots": 64
+ },
+ {
+  "id": "ura_A0025",
+  "source": "ura",
+  "pp_code": "A0025",
+  "name": "Adam Road / Dunearn Close Off Street",
+  "lot_counts": {
+   "Car Lots": 12,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 20,
+  "lat": 1.3244561,
+  "lon": 103.8141501,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_A0028",
+  "source": "ura",
+  "pp_code": "A0028",
+  "name": "Aljunied Road (minor)",
+  "lot_counts": {
+   "Car Lots": 19
+  },
+  "total_lots": 19,
+  "lat": 1.3254855,
+  "lon": 103.879578,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_A0034",
+  "source": "ura",
+  "pp_code": "A0034",
+  "name": "Anamalai Avenue",
+  "lot_counts": {
+   "Car Lots": 12,
+   "Motorcycle Lots": 15
+  },
+  "total_lots": 27,
+  "lat": 1.3307105,
+  "lon": 103.7947007,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_A0035",
+  "source": "ura",
+  "pp_code": "A0035",
+  "name": "Anthony Road Off Street",
+  "lot_counts": {
+   "Car Lots": 50,
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 62,
+  "lat": 1.3102811,
+  "lon": 103.8368605,
+  "car_lots": 50
+ },
+ {
+  "id": "ura_A0036",
+  "source": "ura",
+  "pp_code": "A0036",
+  "name": "Ang Mo Kio Street 62",
+  "lot_counts": {
+   "Car Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.3868817,
+  "lon": 103.8452194,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_A0037",
+  "source": "ura",
+  "pp_code": "A0037",
+  "name": "Ang Mo Kio Street 64",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3877317,
+  "lon": 103.8492143,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_A0043",
+  "source": "ura",
+  "pp_code": "A0043",
+  "name": "Ayer Rajah Crescent",
+  "lot_counts": {
+   "Car Lots": 17
+  },
+  "total_lots": 17,
+  "lat": 1.2931031,
+  "lon": 103.7885431,
+  "car_lots": 17
+ },
+ {
+  "id": "ura_A0045",
+  "source": "ura",
+  "pp_code": "A0045",
+  "name": "Attap Valley Road",
+  "lot_counts": {
+   "Trailer Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.4571654,
+  "lon": 103.7955694,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_A0046",
+  "source": "ura",
+  "pp_code": "A0046",
+  "name": "Aljunied Road Off Street",
+  "lot_counts": {
+   "Car Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.3139019,
+  "lon": 103.8817708,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_A0048",
+  "source": "ura",
+  "pp_code": "A0048",
+  "name": "Ang Mo Kio Street 63",
+  "lot_counts": {
+   "Car Lots": 43,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 53,
+  "lat": 1.3855177,
+  "lon": 103.8481518,
+  "car_lots": 43
+ },
+ {
+  "id": "ura_A0049",
+  "source": "ura",
+  "pp_code": "A0049",
+  "name": "Ang Mo Kio Avenue 1 Heavy Vehicle Park",
+  "lot_counts": {
+   "Lorry Lots": 62,
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 74,
+  "lat": 1.359234,
+  "lon": 103.8529243,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_A0054",
+  "source": "ura",
+  "pp_code": "A0054",
+  "name": "Anchorvale Street",
+  "lot_counts": {
+   "Car Lots": 62
+  },
+  "total_lots": 62,
+  "lat": 1.3975993,
+  "lon": 103.8858826,
+  "car_lots": 62
+ },
+ {
+  "id": "ura_A0057",
+  "source": "ura",
+  "pp_code": "A0057",
+  "name": "Aroozoo Avenue",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.3550285,
+  "lon": 103.8845263,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_B0001",
+  "source": "ura",
+  "pp_code": "B0001",
+  "name": "Bukit Timah Road",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 10
+  },
+  "total_lots": 20,
+  "lat": 1.3140193,
+  "lon": 103.8197845,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_B0002",
+  "source": "ura",
+  "pp_code": "B0002",
+  "name": "Baghdad Street",
+  "lot_counts": {
+   "Car Lots": 19
+  },
+  "total_lots": 19,
+  "lat": 1.301443,
+  "lon": 103.860142,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_B0004",
+  "source": "ura",
+  "pp_code": "B0004",
+  "name": "Bulim Avenue Heavy Vehicle Park",
+  "lot_counts": {
+   "Lorry Lots": 439,
+   "Motorcycle Lots": 88
+  },
+  "total_lots": 527,
+  "lat": 1.3567605,
+  "lon": 103.7096509,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_B0005",
+  "source": "ura",
+  "pp_code": "B0005",
+  "name": "Banda Street / Sago Lane Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 18,
+   "Car Lots": 29,
+   "Coach Lots": 20
+  },
+  "total_lots": 67,
+  "lat": 1.2810463,
+  "lon": 103.8437886,
+  "car_lots": 29
+ },
+ {
+  "id": "ura_B0008",
+  "source": "ura",
+  "pp_code": "B0008",
+  "name": "Beatty Road",
+  "lot_counts": {
+   "Car Lots": 32
+  },
+  "total_lots": 32,
+  "lat": 1.3140397,
+  "lon": 103.8585912,
+  "car_lots": 32
+ },
+ {
+  "id": "ura_B0011",
+  "source": "ura",
+  "pp_code": "B0011",
+  "name": "Birch Road",
+  "lot_counts": {
+   "Car Lots": 14,
+   "Lorry Lots": 1
+  },
+  "total_lots": 15,
+  "lat": 1.3109413,
+  "lon": 103.8539226,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_B0018",
+  "source": "ura",
+  "pp_code": "B0018",
+  "name": "Bukit Pasoh Road",
+  "lot_counts": {
+   "Car Lots": 36,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 41,
+  "lat": 1.2789377,
+  "lon": 103.8407707,
+  "car_lots": 36
+ },
+ {
+  "id": "ura_B0020",
+  "source": "ura",
+  "pp_code": "B0020",
+  "name": "Bussorah Street",
+  "lot_counts": {
+   "Car Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.3009291,
+  "lon": 103.8600383,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_B0022",
+  "source": "ura",
+  "pp_code": "B0022",
+  "name": "Beatty Lane",
+  "lot_counts": {
+   "Car Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.3121088,
+  "lon": 103.8602357,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_B0023",
+  "source": "ura",
+  "pp_code": "B0023",
+  "name": "Beng Wan Road Off Street",
+  "lot_counts": {
+   "Car Lots": 41
+  },
+  "total_lots": 41,
+  "lat": 1.3236096,
+  "lon": 103.8655659,
+  "car_lots": 41
+ },
+ {
+  "id": "ura_B0025",
+  "source": "ura",
+  "pp_code": "B0025",
+  "name": "Bali Lane",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3011595,
+  "lon": 103.8583868,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_B0028",
+  "source": "ura",
+  "pp_code": "B0028",
+  "name": "Balestier Road",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3216576,
+  "lon": 103.853187,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_B0029",
+  "source": "ura",
+  "pp_code": "B0029",
+  "name": "Bhamo Road",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.3246925,
+  "lon": 103.8496226,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_B0031",
+  "source": "ura",
+  "pp_code": "B0031",
+  "name": "Beatty Road Off Street",
+  "lot_counts": {
+   "Car Lots": 17,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 21,
+  "lat": 1.3140837,
+  "lon": 103.8596322,
+  "car_lots": 17
+ },
+ {
+  "id": "ura_B0033",
+  "source": "ura",
+  "pp_code": "B0033",
+  "name": "Boon Teck Road",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3271354,
+  "lon": 103.8499244,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_B0035",
+  "source": "ura",
+  "pp_code": "B0035",
+  "name": "Belilios Lane Off Street",
+  "lot_counts": {
+   "Car Lots": 32
+  },
+  "total_lots": 32,
+  "lat": 1.3074942,
+  "lon": 103.8517624,
+  "car_lots": 32
+ },
+ {
+  "id": "ura_B0042",
+  "source": "ura",
+  "pp_code": "B0042",
+  "name": "Benoi Sector",
+  "lot_counts": {
+   "Car Lots": 14,
+   "Trailer Lots": 35
+  },
+  "total_lots": 49,
+  "lat": 1.3194523,
+  "lon": 103.684655,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_B0043",
+  "source": "ura",
+  "pp_code": "B0043",
+  "name": "Benoi Crescent",
+  "lot_counts": {
+   "Trailer Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3201298,
+  "lon": 103.6898449,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_B0045",
+  "source": "ura",
+  "pp_code": "B0045",
+  "name": "Blair Road",
+  "lot_counts": {
+   "Car Lots": 43
+  },
+  "total_lots": 43,
+  "lat": 1.2761509,
+  "lon": 103.8362081,
+  "car_lots": 43
+ },
+ {
+  "id": "ura_B0052",
+  "source": "ura",
+  "pp_code": "B0052",
+  "name": "Banda Street",
+  "lot_counts": {
+   "Car Lots": 24
+  },
+  "total_lots": 24,
+  "lat": 1.2811004,
+  "lon": 103.8435367,
+  "car_lots": 24
+ },
+ {
+  "id": "ura_B0063",
+  "source": "ura",
+  "pp_code": "B0063",
+  "name": "Bukit Batok Nature Park Off Street",
+  "lot_counts": {
+   "Car Lots": 106,
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 112,
+  "lat": 1.3474078,
+  "lon": 103.7615882,
+  "car_lots": 106
+ },
+ {
+  "id": "ura_B0067",
+  "source": "ura",
+  "pp_code": "B0067",
+  "name": "Burn Road",
+  "lot_counts": {
+   "Car Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.3353187,
+  "lon": 103.8855499,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_B0069",
+  "source": "ura",
+  "pp_code": "B0069",
+  "name": "Bedok South Road",
+  "lot_counts": {
+   "Lorry Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3204989,
+  "lon": 103.9402635,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_B0073",
+  "source": "ura",
+  "pp_code": "B0073",
+  "name": "Boon Tat Street",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 17
+  },
+  "total_lots": 27,
+  "lat": 1.2813166,
+  "lon": 103.8482387,
+  "car_lots": 17
+ },
+ {
+  "id": "ura_B0082",
+  "source": "ura",
+  "pp_code": "B0082",
+  "name": "Braddell Road Heavy Vehicle Park",
+  "lot_counts": {
+   "Lorry Lots": 81,
+   "Motorcycle Lots": 29
+  },
+  "total_lots": 110,
+  "lat": 1.3446444,
+  "lon": 103.8577078,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_B0084",
+  "source": "ura",
+  "pp_code": "B0084",
+  "name": "Beach Road",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3005633,
+  "lon": 103.8602265,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_B0086",
+  "source": "ura",
+  "pp_code": "B0086",
+  "name": "Bukit Batok East Avenue 2 Heavy Vehicle Park",
+  "lot_counts": {
+   "Lorry Lots": 212,
+   "Motorcycle Lots": 45
+  },
+  "total_lots": 257,
+  "lat": 1.3500797,
+  "lon": 103.7615003,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_B0087",
+  "source": "ura",
+  "pp_code": "B0087",
+  "name": "Baghdad Street Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 8,
+   "Car Lots": 25
+  },
+  "total_lots": 33,
+  "lat": 1.3013616,
+  "lon": 103.8604238,
+  "car_lots": 25
+ },
+ {
+  "id": "ura_B0088",
+  "source": "ura",
+  "pp_code": "B0088",
+  "name": "Bedok Road Food Centre Off Street",
+  "lot_counts": {
+   "Car Lots": 100,
+   "Motorcycle Lots": 19
+  },
+  "total_lots": 119,
+  "lat": 1.3207263,
+  "lon": 103.9551994,
+  "car_lots": 100
+ },
+ {
+  "id": "ura_B0090",
+  "source": "ura",
+  "pp_code": "B0090",
+  "name": "Benoi Road",
+  "lot_counts": {
+   "Car Lots": 54
+  },
+  "total_lots": 54,
+  "lat": 1.3030208,
+  "lon": 103.6784724,
+  "car_lots": 54
+ },
+ {
+  "id": "ura_B0092",
+  "source": "ura",
+  "pp_code": "B0092",
+  "name": "Baboo Lane",
+  "lot_counts": {
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3086967,
+  "lon": 103.8542086,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_B0098",
+  "source": "ura",
+  "pp_code": "B0098",
+  "name": "Bayfront Avenue Off Street",
+  "lot_counts": {
+   "Car Lots": 251,
+   "Motorcycle Lots": 176,
+   "Lorry Lots": 10
+  },
+  "total_lots": 437,
+  "lat": 1.2797282,
+  "lon": 103.8568915,
+  "car_lots": 251
+ },
+ {
+  "id": "ura_B0099",
+  "source": "ura",
+  "pp_code": "B0099",
+  "name": "Bendemeer Road Heavy Vehicle Park",
+  "lot_counts": {
+   "Motorcycle Lots": 39,
+   "Lorry Lots": 83,
+   "Car Lots": 9,
+   "Coach Lots": 33
+  },
+  "total_lots": 164,
+  "lat": 1.3141128,
+  "lon": 103.8609756,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_B0100",
+  "source": "ura",
+  "pp_code": "B0100",
+  "name": "Brighton Crescent",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 11
+  },
+  "total_lots": 21,
+  "lat": 1.3628914,
+  "lon": 103.8711174,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_B0101",
+  "source": "ura",
+  "pp_code": "B0101",
+  "name": "Boon Lay Way Hvp",
+  "lot_counts": {
+   "Lorry Lots": 341,
+   "Motorcycle Lots": 89
+  },
+  "total_lots": 430,
+  "lat": 1.327047,
+  "lon": 103.7509406,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL008",
+  "source": "ura",
+  "pp_code": "BL008",
+  "name": "Backlane Bet North Canal Road / Circular Road",
+  "lot_counts": {
+   "Motorcycle Lots": 24
+  },
+  "total_lots": 24,
+  "lat": 1.2870018,
+  "lon": 103.8484419,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL009",
+  "source": "ura",
+  "pp_code": "BL009",
+  "name": "Backlane Bet Hongkong Street / Carpenter Street",
+  "lot_counts": {
+   "Motorcycle Lots": 7
+  },
+  "total_lots": 7,
+  "lat": 1.2877221,
+  "lon": 103.8480748,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL010",
+  "source": "ura",
+  "pp_code": "BL010",
+  "name": "Backlane Bet Lorong Telok / Circular Road",
+  "lot_counts": {
+   "Motorcycle Lots": 20
+  },
+  "total_lots": 20,
+  "lat": 1.2862332,
+  "lon": 103.8489759,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL011",
+  "source": "ura",
+  "pp_code": "BL011",
+  "name": "Backlane Off Synagogue Street",
+  "lot_counts": {
+   "Motorcycle Lots": 43
+  },
+  "total_lots": 43,
+  "lat": 1.2856139,
+  "lon": 103.8483991,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL014",
+  "source": "ura",
+  "pp_code": "BL014",
+  "name": "Backlane Bet Boon Tat Street / Amoy Street",
+  "lot_counts": {
+   "Motorcycle Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.2819269,
+  "lon": 103.847864,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL015",
+  "source": "ura",
+  "pp_code": "BL015",
+  "name": "Backlane Off Amoy Street",
+  "lot_counts": {
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.2809518,
+  "lon": 103.8472919,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL016",
+  "source": "ura",
+  "pp_code": "BL016",
+  "name": "Backlane Off Gemill Lane",
+  "lot_counts": {
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.282525,
+  "lon": 103.8472132,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL019",
+  "source": "ura",
+  "pp_code": "BL019",
+  "name": "Backlane Bet Upper Cross Street / Mosque Street",
+  "lot_counts": {
+   "Motorcycle Lots": 20
+  },
+  "total_lots": 20,
+  "lat": 1.2841384,
+  "lon": 103.8446898,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL021",
+  "source": "ura",
+  "pp_code": "BL021",
+  "name": "Backlane Off Cook Street",
+  "lot_counts": {
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.2790584,
+  "lon": 103.8442326,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL022",
+  "source": "ura",
+  "pp_code": "BL022",
+  "name": "Backlane Bet Tras Street / Cook Street",
+  "lot_counts": {
+   "Motorcycle Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.2785631,
+  "lon": 103.8441741,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL023",
+  "source": "ura",
+  "pp_code": "BL023",
+  "name": "Backlane Bet Peck Seah Street / Tras Street",
+  "lot_counts": {
+   "Motorcycle Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.2774058,
+  "lon": 103.8445587,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL031",
+  "source": "ura",
+  "pp_code": "BL031",
+  "name": "Backlane Off Bukit Pasoh Road",
+  "lot_counts": {
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.2785566,
+  "lon": 103.8408257,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL032",
+  "source": "ura",
+  "pp_code": "BL032",
+  "name": "Backlane Off Keong Saik Road",
+  "lot_counts": {
+   "Motorcycle Lots": 7
+  },
+  "total_lots": 7,
+  "lat": 1.2792258,
+  "lon": 103.8413562,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL033",
+  "source": "ura",
+  "pp_code": "BL033",
+  "name": "Backlane Off Teck Lim Road",
+  "lot_counts": {
+   "Motorcycle Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.2796249,
+  "lon": 103.8419662,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL034",
+  "source": "ura",
+  "pp_code": "BL034",
+  "name": "Backlane Bet Keong Siak Road / Neil Road",
+  "lot_counts": {
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.2806692,
+  "lon": 103.8419739,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL041",
+  "source": "ura",
+  "pp_code": "BL041",
+  "name": "Backlane Bet Carpenter / Upper Circular Road",
+  "lot_counts": {
+   "Motorcycle Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.2886228,
+  "lon": 103.8478903,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL046",
+  "source": "ura",
+  "pp_code": "BL046",
+  "name": "Backlane Bet Synagogue Street / Church Street",
+  "lot_counts": {
+   "Motorcycle Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.2846017,
+  "lon": 103.8491382,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL053",
+  "source": "ura",
+  "pp_code": "BL053",
+  "name": "Backlane Bet Boon Tat Street / Mccuallum Street",
+  "lot_counts": {
+   "Motorcycle Lots": 60
+  },
+  "total_lots": 60,
+  "lat": 1.2801586,
+  "lon": 103.8491659,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL054",
+  "source": "ura",
+  "pp_code": "BL054",
+  "name": "Backlane Off Boon Tat Street",
+  "lot_counts": {
+   "Motorcycle Lots": 26
+  },
+  "total_lots": 26,
+  "lat": 1.2814738,
+  "lon": 103.8487191,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL055",
+  "source": "ura",
+  "pp_code": "BL055",
+  "name": "Backlane Off Mccallum Street",
+  "lot_counts": {
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.27974,
+  "lon": 103.8474687,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL060",
+  "source": "ura",
+  "pp_code": "BL060",
+  "name": "Backlane Off Smith Street",
+  "lot_counts": {
+   "Motorcycle Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.2833043,
+  "lon": 103.8431389,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL061",
+  "source": "ura",
+  "pp_code": "BL061",
+  "name": "Backlane Bet Temple Street / Pagoda Street",
+  "lot_counts": {
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.2833088,
+  "lon": 103.8436654,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL062",
+  "source": "ura",
+  "pp_code": "BL062",
+  "name": "Backlane Bet Temple Street /  Smith Street",
+  "lot_counts": {
+   "Motorcycle Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.2822051,
+  "lon": 103.8448862,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL067",
+  "source": "ura",
+  "pp_code": "BL067",
+  "name": "Backlane Bet Ann  Siang Road / Erskine Road",
+  "lot_counts": {
+   "Motorcycle Lots": 21
+  },
+  "total_lots": 21,
+  "lat": 1.2812324,
+  "lon": 103.8453556,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL076",
+  "source": "ura",
+  "pp_code": "BL076",
+  "name": "Backlane Bet Craig Road / Duxton Road",
+  "lot_counts": {
+   "Motorcycle Lots": 20
+  },
+  "total_lots": 20,
+  "lat": 1.2777307,
+  "lon": 103.8432255,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL077",
+  "source": "ura",
+  "pp_code": "BL077",
+  "name": "Backlane Bet Jiak Chuan Road / Teck Lim Road",
+  "lot_counts": {
+   "Motorcycle Lots": 7
+  },
+  "total_lots": 7,
+  "lat": 1.2801084,
+  "lon": 103.8418226,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL092",
+  "source": "ura",
+  "pp_code": "BL092",
+  "name": "Backlane Off Seah Street",
+  "lot_counts": {
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.2964301,
+  "lon": 103.8545476,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL093",
+  "source": "ura",
+  "pp_code": "BL093",
+  "name": "Backlane Off Purvis Street",
+  "lot_counts": {
+   "Motorcycle Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.2964399,
+  "lon": 103.8557097,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL109",
+  "source": "ura",
+  "pp_code": "BL109",
+  "name": "Backlane Bet Perak Road / Madras Street",
+  "lot_counts": {
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3050499,
+  "lon": 103.8531189,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL111",
+  "source": "ura",
+  "pp_code": "BL111",
+  "name": "Backlane Bet  Mayo Street / Dunlop Street",
+  "lot_counts": {
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3041266,
+  "lon": 103.8541048,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL112",
+  "source": "ura",
+  "pp_code": "BL112",
+  "name": "Backlane Bet Dickson Road / Dunlop Street",
+  "lot_counts": {
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3044326,
+  "lon": 103.8544469,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL116",
+  "source": "ura",
+  "pp_code": "BL116",
+  "name": "Backlane Bet Kampong Kapor / Upper Dickson Road",
+  "lot_counts": {
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3066684,
+  "lon": 103.8525557,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL118",
+  "source": "ura",
+  "pp_code": "BL118",
+  "name": "Backlane Bet Dickson Road / Upper Weld Road",
+  "lot_counts": {
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.305626,
+  "lon": 103.854232,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL120",
+  "source": "ura",
+  "pp_code": "BL120",
+  "name": "Backlane Bet Cuff Road / Veerasamy Road",
+  "lot_counts": {
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3071874,
+  "lon": 103.8538371,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL124",
+  "source": "ura",
+  "pp_code": "BL124",
+  "name": "Backlane Bet Hindoo Road / Rowell Road",
+  "lot_counts": {
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3091031,
+  "lon": 103.8538034,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL128",
+  "source": "ura",
+  "pp_code": "BL128",
+  "name": "Backlane Off Rowell Road",
+  "lot_counts": {
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.307496,
+  "lon": 103.856273,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL132",
+  "source": "ura",
+  "pp_code": "BL132",
+  "name": "Backlane Off Desker Road",
+  "lot_counts": {
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3094292,
+  "lon": 103.8551687,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL137",
+  "source": "ura",
+  "pp_code": "BL137",
+  "name": "Backlane Off Sam Leong Road",
+  "lot_counts": {
+   "Motorcycle Lots": 14
+  },
+  "total_lots": 14,
+  "lat": 1.3096484,
+  "lon": 103.8569111,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL138",
+  "source": "ura",
+  "pp_code": "BL138",
+  "name": "Backlane Bet Kelantan Lane / Road",
+  "lot_counts": {
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3061671,
+  "lon": 103.85612,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL141",
+  "source": "ura",
+  "pp_code": "BL141",
+  "name": "Backlane Bet Townshend Road / Jalan Besar",
+  "lot_counts": {
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3081326,
+  "lon": 103.8578796,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL144",
+  "source": "ura",
+  "pp_code": "BL144",
+  "name": "Backlane Bet Kitchener Road / Plumer Road",
+  "lot_counts": {
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3095335,
+  "lon": 103.8583584,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL172",
+  "source": "ura",
+  "pp_code": "BL172",
+  "name": "Backlane Bet Arab Street / Jalan Pinang",
+  "lot_counts": {
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3024601,
+  "lon": 103.8584199,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL177",
+  "source": "ura",
+  "pp_code": "BL177",
+  "name": "Backlane Off Baghdad Street",
+  "lot_counts": {
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3012581,
+  "lon": 103.8602833,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL180",
+  "source": "ura",
+  "pp_code": "BL180",
+  "name": "Backlane Bet Jalan Sultan / Aliwal Street",
+  "lot_counts": {
+   "Motorcycle Lots": 19
+  },
+  "total_lots": 19,
+  "lat": 1.3024724,
+  "lon": 103.8613662,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL192",
+  "source": "ura",
+  "pp_code": "BL192",
+  "name": "Backlane Off Farleigh Avenue",
+  "lot_counts": {
+   "Motorcycle Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.3642297,
+  "lon": 103.8653581,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL193",
+  "source": "ura",
+  "pp_code": "BL193",
+  "name": "Backlane Off Serangoon Garden Way",
+  "lot_counts": {
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3636695,
+  "lon": 103.8653305,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL196",
+  "source": "ura",
+  "pp_code": "BL196",
+  "name": "Backlane Off Blair Road / Spottiswoode Park Road",
+  "lot_counts": {
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.2769252,
+  "lon": 103.8367336,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL201",
+  "source": "ura",
+  "pp_code": "BL201",
+  "name": "Backlane Off Jalan Berseh",
+  "lot_counts": {
+   "Motorcycle Lots": 19
+  },
+  "total_lots": 19,
+  "lat": 1.3072798,
+  "lon": 103.8569909,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL204",
+  "source": "ura",
+  "pp_code": "BL204",
+  "name": "Backlane Bet Clive Street / Madras St",
+  "lot_counts": {
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3051085,
+  "lon": 103.8523843,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL208",
+  "source": "ura",
+  "pp_code": "BL208",
+  "name": "Backlane Bet Baghdad Street / Muscat Street",
+  "lot_counts": {
+   "Motorcycle Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.3016254,
+  "lon": 103.8595707,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL209",
+  "source": "ura",
+  "pp_code": "BL209",
+  "name": "Backlane Off Mohd Ali Lane / Ann Siang Hill",
+  "lot_counts": {
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.2821383,
+  "lon": 103.845624,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL210",
+  "source": "ura",
+  "pp_code": "BL210",
+  "name": "Backlane Off North Bridge Road",
+  "lot_counts": {
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.303282,
+  "lon": 103.8596299,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_BL212",
+  "source": "ura",
+  "pp_code": "BL212",
+  "name": "Backlane Bet Onan Road / Joo Chiat Road",
+  "lot_counts": {
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3099437,
+  "lon": 103.9016268,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_C0004",
+  "source": "ura",
+  "pp_code": "C0004",
+  "name": "Carpenter Street",
+  "lot_counts": {
+   "Car Lots": 32
+  },
+  "total_lots": 32,
+  "lat": 1.2881042,
+  "lon": 103.8478243,
+  "car_lots": 32
+ },
+ {
+  "id": "ura_C0009",
+  "source": "ura",
+  "pp_code": "C0009",
+  "name": "Chander Road",
+  "lot_counts": {
+   "Car Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.3080291,
+  "lon": 103.8512296,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_C0011",
+  "source": "ura",
+  "pp_code": "C0011",
+  "name": "Cheong Chin Nam Road",
+  "lot_counts": {
+   "Car Lots": 62,
+   "Motorcycle Lots": 26
+  },
+  "total_lots": 88,
+  "lat": 1.3434004,
+  "lon": 103.7750788,
+  "car_lots": 62
+ },
+ {
+  "id": "ura_C0018",
+  "source": "ura",
+  "pp_code": "C0018",
+  "name": "Circular Road",
+  "lot_counts": {
+   "Car Lots": 34
+  },
+  "total_lots": 34,
+  "lat": 1.2865064,
+  "lon": 103.8491094,
+  "car_lots": 34
+ },
+ {
+  "id": "ura_C0022",
+  "source": "ura",
+  "pp_code": "C0022",
+  "name": "Club Street",
+  "lot_counts": {
+   "Motorcycle Lots": 7,
+   "Car Lots": 27
+  },
+  "total_lots": 34,
+  "lat": 1.281961,
+  "lon": 103.8459424,
+  "car_lots": 27
+ },
+ {
+  "id": "ura_C0028",
+  "source": "ura",
+  "pp_code": "C0028",
+  "name": "Cuff Road",
+  "lot_counts": {
+   "Car Lots": 40
+  },
+  "total_lots": 40,
+  "lat": 1.3069671,
+  "lon": 103.853031,
+  "car_lots": 40
+ },
+ {
+  "id": "ura_C0036",
+  "source": "ura",
+  "pp_code": "C0036",
+  "name": "Claymore Road",
+  "lot_counts": {
+   "Motorcycle Lots": 43,
+   "Lorry Lots": 2,
+   "Car Lots": 4
+  },
+  "total_lots": 49,
+  "lat": 1.3074553,
+  "lon": 103.8307726,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_C0038",
+  "source": "ura",
+  "pp_code": "C0038",
+  "name": "Claymore Hill",
+  "lot_counts": {
+   "Car Lots": 10,
+   "Motorcycle Lots": 25,
+   "Lorry Lots": 2
+  },
+  "total_lots": 37,
+  "lat": 1.3076963,
+  "lon": 103.8314818,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_C0039",
+  "source": "ura",
+  "pp_code": "C0039",
+  "name": "Coronation Walk",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3234369,
+  "lon": 103.8091634,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_C0041",
+  "source": "ura",
+  "pp_code": "C0041",
+  "name": "Chin Bee Road",
+  "lot_counts": {
+   "Car Lots": 52
+  },
+  "total_lots": 52,
+  "lat": 1.3297998,
+  "lon": 103.7126719,
+  "car_lots": 52
+ },
+ {
+  "id": "ura_C0045",
+  "source": "ura",
+  "pp_code": "C0045",
+  "name": "Chin Bee Drive",
+  "lot_counts": {
+   "Car Lots": 29
+  },
+  "total_lots": 29,
+  "lat": 1.3361446,
+  "lon": 103.7140109,
+  "car_lots": 29
+ },
+ {
+  "id": "ura_C0053",
+  "source": "ura",
+  "pp_code": "C0053",
+  "name": "Cairnhill Road Service Road",
+  "lot_counts": {
+   "Car Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3080814,
+  "lon": 103.8371318,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_C0055",
+  "source": "ura",
+  "pp_code": "C0055",
+  "name": "Choa Chu Kang Way",
+  "lot_counts": {
+   "Lorry Lots": 42
+  },
+  "total_lots": 42,
+  "lat": 1.3948141,
+  "lon": 103.7416466,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_C0057",
+  "source": "ura",
+  "pp_code": "C0057",
+  "name": "Casuarina Road",
+  "lot_counts": {
+   "Motorcycle Lots": 8,
+   "Car Lots": 10
+  },
+  "total_lots": 18,
+  "lat": 1.3770208,
+  "lon": 103.8279944,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_C0058",
+  "source": "ura",
+  "pp_code": "C0058",
+  "name": "Clemenceau Avenue",
+  "lot_counts": {
+   "Car Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.2977281,
+  "lon": 103.8438793,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_C0063",
+  "source": "ura",
+  "pp_code": "C0063",
+  "name": "Cheng Yan Place",
+  "lot_counts": {
+   "Motorcycle Lots": 15,
+   "Car Lots": 4,
+   "Lorry Lots": 3
+  },
+  "total_lots": 22,
+  "lat": 1.300121,
+  "lon": 103.854425,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_C0097",
+  "source": "ura",
+  "pp_code": "C0097",
+  "name": "Campbell Lane",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.305231,
+  "lon": 103.8526234,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_C0098",
+  "source": "ura",
+  "pp_code": "C0098",
+  "name": "Clive Street",
+  "lot_counts": {
+   "Coach Lots": 2,
+   "Car Lots": 11
+  },
+  "total_lots": 13,
+  "lat": 1.30615,
+  "lon": 103.8528414,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_C0104",
+  "source": "ura",
+  "pp_code": "C0104",
+  "name": "Cavan Road",
+  "lot_counts": {
+   "Coach Lots": 1,
+   "Car Lots": 7
+  },
+  "total_lots": 8,
+  "lat": 1.3109089,
+  "lon": 103.8614936,
+  "car_lots": 7
+ },
+ {
+  "id": "ura_C0110",
+  "source": "ura",
+  "pp_code": "C0110",
+  "name": "Cook Street",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.2788104,
+  "lon": 103.8443142,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_C0113",
+  "source": "ura",
+  "pp_code": "C0113",
+  "name": "Changi Road (bet Jalan Kembangan / Still Road)",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 63
+  },
+  "total_lots": 73,
+  "lat": 1.3186169,
+  "lon": 103.9099019,
+  "car_lots": 63
+ },
+ {
+  "id": "ura_C0114",
+  "source": "ura",
+  "pp_code": "C0114",
+  "name": "Changi Road Service Road",
+  "lot_counts": {
+   "Car Lots": 38,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 41,
+  "lat": 1.3179171,
+  "lon": 103.9073205,
+  "car_lots": 38
+ },
+ {
+  "id": "ura_C0118",
+  "source": "ura",
+  "pp_code": "C0118",
+  "name": "Ceylon Road",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3078316,
+  "lon": 103.9011592,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_C0119",
+  "source": "ura",
+  "pp_code": "C0119",
+  "name": "Ceylon Road Off Street",
+  "lot_counts": {
+   "Car Lots": 24
+  },
+  "total_lots": 24,
+  "lat": 1.3098691,
+  "lon": 103.8994369,
+  "car_lots": 24
+ },
+ {
+  "id": "ura_C0120",
+  "source": "ura",
+  "pp_code": "C0120",
+  "name": "Chia Ping Road",
+  "lot_counts": {
+   "Car Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3291263,
+  "lon": 103.718716,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_C0121",
+  "source": "ura",
+  "pp_code": "C0121",
+  "name": "Clementi Loop",
+  "lot_counts": {
+   "Trailer Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.3271027,
+  "lon": 103.7627057,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_C0122",
+  "source": "ura",
+  "pp_code": "C0122",
+  "name": "Changi Village Road",
+  "lot_counts": {
+   "Motorcycle Lots": 25,
+   "Lorry Lots": 2,
+   "Car Lots": 23
+  },
+  "total_lots": 50,
+  "lat": 1.3885527,
+  "lon": 103.987209,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_C0126",
+  "source": "ura",
+  "pp_code": "C0126",
+  "name": "Changi South Avenue 2",
+  "lot_counts": {
+   "Motorcycle Lots": 4,
+   "Car Lots": 10,
+   "Trailer Lots": 10
+  },
+  "total_lots": 24,
+  "lat": 1.3330627,
+  "lon": 103.9705489,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_C0128",
+  "source": "ura",
+  "pp_code": "C0128",
+  "name": "Changi South Avenue 4",
+  "lot_counts": {
+   "Car Lots": 26,
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 38,
+  "lat": 1.3350806,
+  "lon": 103.9707396,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_C0129",
+  "source": "ura",
+  "pp_code": "C0129",
+  "name": "Changi South Street 1",
+  "lot_counts": {
+   "Car Lots": 59,
+   "Trailer Lots": 9,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 72,
+  "lat": 1.3348562,
+  "lon": 103.9694259,
+  "car_lots": 59
+ },
+ {
+  "id": "ura_C0130",
+  "source": "ura",
+  "pp_code": "C0130",
+  "name": "Changi South Street 2",
+  "lot_counts": {
+   "Car Lots": 77,
+   "Motorcycle Lots": 20
+  },
+  "total_lots": 97,
+  "lat": 1.3313724,
+  "lon": 103.9626676,
+  "car_lots": 77
+ },
+ {
+  "id": "ura_C0132",
+  "source": "ura",
+  "pp_code": "C0132",
+  "name": "Changi Road (bet Joo Chiat Road / Still Road)",
+  "lot_counts": {
+   "Car Lots": 61,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 71,
+  "lat": 1.3171748,
+  "lon": 103.9025924,
+  "car_lots": 61
+ },
+ {
+  "id": "ura_C0133",
+  "source": "ura",
+  "pp_code": "C0133",
+  "name": "Carpenter Street Off Street",
+  "lot_counts": {
+   "Car Lots": 69,
+   "Motorcycle Lots": 9
+  },
+  "total_lots": 78,
+  "lat": 1.2882518,
+  "lon": 103.8482106,
+  "car_lots": 69
+ },
+ {
+  "id": "ura_C0134",
+  "source": "ura",
+  "pp_code": "C0134",
+  "name": "Circuit Road",
+  "lot_counts": {
+   "Car Lots": 66,
+   "Motorcycle Lots": 24
+  },
+  "total_lots": 90,
+  "lat": 1.3244487,
+  "lon": 103.8849988,
+  "car_lots": 66
+ },
+ {
+  "id": "ura_C0135",
+  "source": "ura",
+  "pp_code": "C0135",
+  "name": "Crane Road",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3129098,
+  "lon": 103.8995161,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_C0136",
+  "source": "ura",
+  "pp_code": "C0136",
+  "name": "Ceylon Lane",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3112394,
+  "lon": 103.9006648,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_C0142",
+  "source": "ura",
+  "pp_code": "C0142",
+  "name": "Chang Charn Road",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.2891762,
+  "lon": 103.8115974,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_C0147",
+  "source": "ura",
+  "pp_code": "C0147",
+  "name": "Changi Road / Jalan Wakaff Off Street",
+  "lot_counts": {
+   "Car Lots": 15,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 18,
+  "lat": 1.3186279,
+  "lon": 103.9108668,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_C0148",
+  "source": "ura",
+  "pp_code": "C0148",
+  "name": "Clemenceau Avenue North (newton Fc)",
+  "lot_counts": {
+   "Car Lots": 239,
+   "Motorcycle Lots": 23,
+   "Coach Lots": 8
+  },
+  "total_lots": 270,
+  "lat": 1.3110881,
+  "lon": 103.8396731,
+  "car_lots": 239
+ },
+ {
+  "id": "ura_C0151",
+  "source": "ura",
+  "pp_code": "C0151",
+  "name": "Changi Beach Car Park 1",
+  "lot_counts": {
+   "Car Lots": 62,
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 73,
+  "lat": 1.391555,
+  "lon": 103.9895108,
+  "car_lots": 62
+ },
+ {
+  "id": "ura_C0152",
+  "source": "ura",
+  "pp_code": "C0152",
+  "name": "Changi Beach Car Park 2",
+  "lot_counts": {
+   "Car Lots": 21
+  },
+  "total_lots": 21,
+  "lat": 1.3911176,
+  "lon": 103.9914263,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_C0153",
+  "source": "ura",
+  "pp_code": "C0153",
+  "name": "Changi Beach Car Park 3",
+  "lot_counts": {
+   "Motorcycle Lots": 13,
+   "Car Lots": 37
+  },
+  "total_lots": 50,
+  "lat": 1.3906293,
+  "lon": 103.9924052,
+  "car_lots": 37
+ },
+ {
+  "id": "ura_C0154",
+  "source": "ura",
+  "pp_code": "C0154",
+  "name": "Changi Beach Car Park 4",
+  "lot_counts": {
+   "Motorcycle Lots": 28,
+   "Car Lots": 80,
+   "Lorry Lots": 2
+  },
+  "total_lots": 110,
+  "lat": 1.390124,
+  "lon": 103.9942484,
+  "car_lots": 80
+ },
+ {
+  "id": "ura_C0155",
+  "source": "ura",
+  "pp_code": "C0155",
+  "name": "Changi Beach Car Park 5",
+  "lot_counts": {
+   "Car Lots": 39,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 49,
+  "lat": 1.389905,
+  "lon": 103.9958152,
+  "car_lots": 39
+ },
+ {
+  "id": "ura_C0156",
+  "source": "ura",
+  "pp_code": "C0156",
+  "name": "Changi Beach Car Park 6",
+  "lot_counts": {
+   "Car Lots": 33,
+   "Motorcycle Lots": 1
+  },
+  "total_lots": 34,
+  "lat": 1.384278,
+  "lon": 104.0010442,
+  "car_lots": 33
+ },
+ {
+  "id": "ura_C0157",
+  "source": "ura",
+  "pp_code": "C0157",
+  "name": "Changi North Crescent",
+  "lot_counts": {
+   "Car Lots": 16,
+   "Trailer Lots": 9
+  },
+  "total_lots": 25,
+  "lat": 1.3484817,
+  "lon": 103.9671898,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_C0158",
+  "source": "ura",
+  "pp_code": "C0158",
+  "name": "Changi North Rise",
+  "lot_counts": {
+   "Car Lots": 13,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 18,
+  "lat": 1.3482696,
+  "lon": 103.9698962,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_C0159",
+  "source": "ura",
+  "pp_code": "C0159",
+  "name": "Changi North Street 1",
+  "lot_counts": {
+   "Car Lots": 14
+  },
+  "total_lots": 14,
+  "lat": 1.34965,
+  "lon": 103.9700871,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_C0160",
+  "source": "ura",
+  "pp_code": "C0160",
+  "name": "Changi North Street 2",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.3511646,
+  "lon": 103.9665417,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_C0161",
+  "source": "ura",
+  "pp_code": "C0161",
+  "name": "Changi South Lane",
+  "lot_counts": {
+   "Car Lots": 9,
+   "Trailer Lots": 3
+  },
+  "total_lots": 12,
+  "lat": 1.3321672,
+  "lon": 103.9525088,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_C0162",
+  "source": "ura",
+  "pp_code": "C0162",
+  "name": "Clemenceau Avenue Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 31
+  },
+  "total_lots": 36,
+  "lat": 1.2939507,
+  "lon": 103.8445419,
+  "car_lots": 31
+ },
+ {
+  "id": "ura_D0001",
+  "source": "ura",
+  "pp_code": "D0001",
+  "name": "Devonshire Road",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.2984438,
+  "lon": 103.8377923,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_D0002",
+  "source": "ura",
+  "pp_code": "D0002",
+  "name": "Dublin Road",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.2983516,
+  "lon": 103.8398131,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_D0004",
+  "source": "ura",
+  "pp_code": "D0004",
+  "name": "Dickson Road",
+  "lot_counts": {
+   "Car Lots": 48,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 53,
+  "lat": 1.3054536,
+  "lon": 103.8538831,
+  "car_lots": 48
+ },
+ {
+  "id": "ura_D0005",
+  "source": "ura",
+  "pp_code": "D0005",
+  "name": "Dunlop Street",
+  "lot_counts": {
+   "Car Lots": 55,
+   "Motorcycle Lots": 15
+  },
+  "total_lots": 70,
+  "lat": 1.3048834,
+  "lon": 103.8536654,
+  "car_lots": 55
+ },
+ {
+  "id": "ura_D0006",
+  "source": "ura",
+  "pp_code": "D0006",
+  "name": "Duxton Hill Off Street",
+  "lot_counts": {
+   "Car Lots": 58
+  },
+  "total_lots": 58,
+  "lat": 1.2790798,
+  "lon": 103.8430823,
+  "car_lots": 58
+ },
+ {
+  "id": "ura_D0009",
+  "source": "ura",
+  "pp_code": "D0009",
+  "name": "Desker Road",
+  "lot_counts": {
+   "Car Lots": 85,
+   "Motorcycle Lots": 18
+  },
+  "total_lots": 103,
+  "lat": 1.3087695,
+  "lon": 103.8555815,
+  "car_lots": 85
+ },
+ {
+  "id": "ura_D0010",
+  "source": "ura",
+  "pp_code": "D0010",
+  "name": "Duxton Road",
+  "lot_counts": {
+   "Car Lots": 42,
+   "Motorcycle Lots": 8,
+   "Coach Lots": 2
+  },
+  "total_lots": 52,
+  "lat": 1.2786586,
+  "lon": 103.8432702,
+  "car_lots": 42
+ },
+ {
+  "id": "ura_D0012",
+  "source": "ura",
+  "pp_code": "D0012",
+  "name": "Dalhousie Lane",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3049205,
+  "lon": 103.8522474,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_D0017",
+  "source": "ura",
+  "pp_code": "D0017",
+  "name": "Dunearn Close",
+  "lot_counts": {
+   "Car Lots": 24
+  },
+  "total_lots": 24,
+  "lat": 1.3249543,
+  "lon": 103.8148943,
+  "car_lots": 24
+ },
+ {
+  "id": "ura_D0026",
+  "source": "ura",
+  "pp_code": "D0026",
+  "name": "Dickson Road Off Street",
+  "lot_counts": {
+   "Car Lots": 43,
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 49,
+  "lat": 1.3058702,
+  "lon": 103.8535966,
+  "car_lots": 43
+ },
+ {
+  "id": "ura_D0027",
+  "source": "ura",
+  "pp_code": "D0027",
+  "name": "Dunman Rd Food Centre Off Street",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3095778,
+  "lon": 103.9017299,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_D0028",
+  "source": "ura",
+  "pp_code": "D0028",
+  "name": "Delta Circus Fringe Carpark",
+  "lot_counts": {
+   "Lorry Lots": 157,
+   "Motorcycle Lots": 40,
+   "Car Lots": 74
+  },
+  "total_lots": 271,
+  "lat": 1.2895541,
+  "lon": 103.8246661,
+  "car_lots": 74
+ },
+ {
+  "id": "ura_D0029",
+  "source": "ura",
+  "pp_code": "D0029",
+  "name": "Dairy Farm Road /  Petir Road Heavy Vehcle Park",
+  "lot_counts": {
+   "Lorry Lots": 255,
+   "Motorcycle Lots": 29
+  },
+  "total_lots": 284,
+  "lat": 1.3657098,
+  "lon": 103.7762325,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_E0009",
+  "source": "ura",
+  "pp_code": "E0009",
+  "name": "Emerald Hill Road",
+  "lot_counts": {
+   "Car Lots": 35
+  },
+  "total_lots": 35,
+  "lat": 1.3034969,
+  "lon": 103.8392883,
+  "car_lots": 35
+ },
+ {
+  "id": "ura_E0010",
+  "source": "ura",
+  "pp_code": "E0010",
+  "name": "Eunos Road 7 / Eunos Avenue 6  Hvp",
+  "lot_counts": {
+   "Motorcycle Lots": 63,
+   "Lorry Lots": 145
+  },
+  "total_lots": 208,
+  "lat": 1.3226162,
+  "lon": 103.8930571,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_E0011",
+  "source": "ura",
+  "pp_code": "E0011",
+  "name": "Emerald Link",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3021366,
+  "lon": 103.83884,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_E0017",
+  "source": "ura",
+  "pp_code": "E0017",
+  "name": "East Coast Road (haig Road / Telok Kurau Road)",
+  "lot_counts": {
+   "Car Lots": 63,
+   "Motorcycle Lots": 26
+  },
+  "total_lots": 89,
+  "lat": 1.3069009,
+  "lon": 103.9073223,
+  "car_lots": 63
+ },
+ {
+  "id": "ura_E0022",
+  "source": "ura",
+  "pp_code": "E0022",
+  "name": "Everton Road",
+  "lot_counts": {
+   "Car Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.2766043,
+  "lon": 103.8376665,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_E0023",
+  "source": "ura",
+  "pp_code": "E0023",
+  "name": "East Coast Park E3 Off Street",
+  "lot_counts": {
+   "Car Lots": 42,
+   "Motorcycle Lots": 2
+  },
+  "total_lots": 44,
+  "lat": 1.308693,
+  "lon": 103.9362633,
+  "car_lots": 42
+ },
+ {
+  "id": "ura_E0024",
+  "source": "ura",
+  "pp_code": "E0024",
+  "name": "East Coast Park E2 Off Street",
+  "lot_counts": {
+   "Car Lots": 353,
+   "Motorcycle Lots": 38
+  },
+  "total_lots": 391,
+  "lat": 1.307404,
+  "lon": 103.9358486,
+  "car_lots": 353
+ },
+ {
+  "id": "ura_E0025",
+  "source": "ura",
+  "pp_code": "E0025",
+  "name": "East Coast Park Service Road",
+  "lot_counts": {
+   "Lorry Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3072408,
+  "lon": 103.9295911,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_E0027",
+  "source": "ura",
+  "pp_code": "E0027",
+  "name": "East Coast Park E1 Off Street",
+  "lot_counts": {
+   "Car Lots": 549,
+   "Motorcycle Lots": 23
+  },
+  "total_lots": 572,
+  "lat": 1.306814,
+  "lon": 103.9299335,
+  "car_lots": 549
+ },
+ {
+  "id": "ura_E0031",
+  "source": "ura",
+  "pp_code": "E0031",
+  "name": "Ean Kiam Place",
+  "lot_counts": {
+   "Car Lots": 26
+  },
+  "total_lots": 26,
+  "lat": 1.3048686,
+  "lon": 103.9020184,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_E0033",
+  "source": "ura",
+  "pp_code": "E0033",
+  "name": "East Coast Road (frankel Avenue / Siglap Road)",
+  "lot_counts": {
+   "Car Lots": 6,
+   "Motorcycle Lots": 12,
+   "Lorry Lots": 1
+  },
+  "total_lots": 19,
+  "lat": 1.3120263,
+  "lon": 103.9226586,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_E0034",
+  "source": "ura",
+  "pp_code": "E0034",
+  "name": "Everitt Road North",
+  "lot_counts": {
+   "Car Lots": 9,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 14,
+  "lat": 1.3164153,
+  "lon": 103.9014481,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_E0035",
+  "source": "ura",
+  "pp_code": "E0035",
+  "name": "Everitt Road",
+  "lot_counts": {
+   "Car Lots": 19,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 23,
+  "lat": 1.3131531,
+  "lon": 103.9023927,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_E0037",
+  "source": "ura",
+  "pp_code": "E0037",
+  "name": "East Coast Road (bet Siglap Road / Jalan Jamal)",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3122452,
+  "lon": 103.9246137,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_F0001",
+  "source": "ura",
+  "pp_code": "F0001",
+  "name": "Fort Canning Park A Off Street",
+  "lot_counts": {
+   "Car Lots": 46,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 50,
+  "lat": 1.2964388,
+  "lon": 103.8474455,
+  "car_lots": 46
+ },
+ {
+  "id": "ura_F0002",
+  "source": "ura",
+  "pp_code": "F0002",
+  "name": "Foch Road",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 31
+  },
+  "total_lots": 41,
+  "lat": 1.3123906,
+  "lon": 103.8600727,
+  "car_lots": 31
+ },
+ {
+  "id": "ura_F0006",
+  "source": "ura",
+  "pp_code": "F0006",
+  "name": "Flanders Square",
+  "lot_counts": {
+   "Car Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3121146,
+  "lon": 103.8574179,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_F0011",
+  "source": "ura",
+  "pp_code": "F0011",
+  "name": "Foresthill Hvp",
+  "lot_counts": {
+   "Lorry Lots": 158,
+   "Motorcycle Lots": 20
+  },
+  "total_lots": 178,
+  "lat": 1.3749602,
+  "lon": 103.7330227,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_F0013",
+  "source": "ura",
+  "pp_code": "F0013",
+  "name": "Fourth Chin Bee Road",
+  "lot_counts": {
+   "Lorry Lots": 21,
+   "Car Lots": 4
+  },
+  "total_lots": 25,
+  "lat": 1.3333071,
+  "lon": 103.7180842,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_F0021",
+  "source": "ura",
+  "pp_code": "F0021",
+  "name": "First Lok Yang Road",
+  "lot_counts": {
+   "Car Lots": 31
+  },
+  "total_lots": 31,
+  "lat": 1.3259198,
+  "lon": 103.6934497,
+  "car_lots": 31
+ },
+ {
+  "id": "ura_F0022",
+  "source": "ura",
+  "pp_code": "F0022",
+  "name": "Fort Canning Park B Off Street",
+  "lot_counts": {
+   "Car Lots": 36,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 44,
+  "lat": 1.2963425,
+  "lon": 103.8465554,
+  "car_lots": 36
+ },
+ {
+  "id": "ura_F0025",
+  "source": "ura",
+  "pp_code": "F0025",
+  "name": "Forth Lok Yang Road",
+  "lot_counts": {
+   "Car Lots": 23
+  },
+  "total_lots": 23,
+  "lat": 1.3260759,
+  "lon": 103.6879419,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_F0026",
+  "source": "ura",
+  "pp_code": "F0026",
+  "name": "Fifth Lok Yang Road",
+  "lot_counts": {
+   "Car Lots": 14
+  },
+  "total_lots": 14,
+  "lat": 1.325899,
+  "lon": 103.6860822,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_F0027",
+  "source": "ura",
+  "pp_code": "F0027",
+  "name": "Fort Canning Park C Off Street",
+  "lot_counts": {
+   "Car Lots": 50,
+   "Coach Lots": 5
+  },
+  "total_lots": 55,
+  "lat": 1.2965934,
+  "lon": 103.8449262,
+  "car_lots": 50
+ },
+ {
+  "id": "ura_F0029",
+  "source": "ura",
+  "pp_code": "F0029",
+  "name": "Fort Road / East Coast Park Heavy Vehicle Park",
+  "lot_counts": {
+   "Motorcycle Lots": 28,
+   "Car Lots": 20,
+   "Lorry Lots": 85
+  },
+  "total_lots": 133,
+  "lat": 1.2951328,
+  "lon": 103.8841075,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_F0030",
+  "source": "ura",
+  "pp_code": "F0030",
+  "name": "Farleigh Avenue",
+  "lot_counts": {
+   "Car Lots": 23,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 26,
+  "lat": 1.3647113,
+  "lon": 103.8653914,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_F0031",
+  "source": "ura",
+  "pp_code": "F0031",
+  "name": "Farleigh Avenue Off Street",
+  "lot_counts": {
+   "Car Lots": 44
+  },
+  "total_lots": 44,
+  "lat": 1.3641624,
+  "lon": 103.8656859,
+  "car_lots": 44
+ },
+ {
+  "id": "ura_F0032",
+  "source": "ura",
+  "pp_code": "F0032",
+  "name": "Fourth Chin Bee Road Heavy Vehicle Park",
+  "lot_counts": {
+   "Lorry Lots": 240,
+   "Motorcycle Lots": 42
+  },
+  "total_lots": 282,
+  "lat": 1.333089,
+  "lon": 103.7187651,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_G0002",
+  "source": "ura",
+  "pp_code": "G0002",
+  "name": "Geylang Road",
+  "lot_counts": {
+   "Car Lots": 169,
+   "Motorcycle Lots": 62
+  },
+  "total_lots": 231,
+  "lat": 1.3132287,
+  "lon": 103.882677,
+  "car_lots": 169
+ },
+ {
+  "id": "ura_G0004",
+  "source": "ura",
+  "pp_code": "G0004",
+  "name": "Gali Batu Close Hvp",
+  "lot_counts": {
+   "Motorcycle Lots": 150,
+   "Lorry Lots": 216
+  },
+  "total_lots": 366,
+  "lat": 1.4045273,
+  "lon": 103.7593706,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_G0018",
+  "source": "ura",
+  "pp_code": "G0018",
+  "name": "Genting Lane",
+  "lot_counts": {
+   "Car Lots": 43,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 48,
+  "lat": 1.3253152,
+  "lon": 103.8773726,
+  "car_lots": 43
+ },
+ {
+  "id": "ura_G0021",
+  "source": "ura",
+  "pp_code": "G0021",
+  "name": "Genting Road",
+  "lot_counts": {
+   "Car Lots": 21
+  },
+  "total_lots": 21,
+  "lat": 1.3277078,
+  "lon": 103.8758915,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_G0022",
+  "source": "ura",
+  "pp_code": "G0022",
+  "name": "Genting Link",
+  "lot_counts": {
+   "Car Lots": 2
+  },
+  "total_lots": 2,
+  "lat": 1.3286331,
+  "lon": 103.8742799,
+  "car_lots": 2
+ },
+ {
+  "id": "ura_G0026",
+  "source": "ura",
+  "pp_code": "G0026",
+  "name": "Gul Circle",
+  "lot_counts": {
+   "Trailer Lots": 98,
+   "Car Lots": 39
+  },
+  "total_lots": 137,
+  "lat": 1.3152829,
+  "lon": 103.6699904,
+  "car_lots": 39
+ },
+ {
+  "id": "ura_G0027",
+  "source": "ura",
+  "pp_code": "G0027",
+  "name": "Gul Avenue",
+  "lot_counts": {
+   "Car Lots": 45,
+   "Trailer Lots": 20,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 68,
+  "lat": 1.3148229,
+  "lon": 103.6694869,
+  "car_lots": 45
+ },
+ {
+  "id": "ura_G0028",
+  "source": "ura",
+  "pp_code": "G0028",
+  "name": "Gul Drive",
+  "lot_counts": {
+   "Car Lots": 38,
+   "Trailer Lots": 24
+  },
+  "total_lots": 62,
+  "lat": 1.3169781,
+  "lon": 103.6685688,
+  "car_lots": 38
+ },
+ {
+  "id": "ura_G0029",
+  "source": "ura",
+  "pp_code": "G0029",
+  "name": "Gul Lane",
+  "lot_counts": {
+   "Car Lots": 21,
+   "Trailer Lots": 9
+  },
+  "total_lots": 30,
+  "lat": 1.3127176,
+  "lon": 103.6626271,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_G0030",
+  "source": "ura",
+  "pp_code": "G0030",
+  "name": "Gul Crescent",
+  "lot_counts": {
+   "Trailer Lots": 15,
+   "Car Lots": 8
+  },
+  "total_lots": 23,
+  "lat": 1.3123002,
+  "lon": 103.6611503,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_G0032",
+  "source": "ura",
+  "pp_code": "G0032",
+  "name": "Gul Street 1",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3175919,
+  "lon": 103.6688073,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_G0033",
+  "source": "ura",
+  "pp_code": "G0033",
+  "name": "Gul Street 2",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3184122,
+  "lon": 103.6682658,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_G0034",
+  "source": "ura",
+  "pp_code": "G0034",
+  "name": "Gul Street 3",
+  "lot_counts": {
+   "Car Lots": 17
+  },
+  "total_lots": 17,
+  "lat": 1.3181991,
+  "lon": 103.6668797,
+  "car_lots": 17
+ },
+ {
+  "id": "ura_G0035",
+  "source": "ura",
+  "pp_code": "G0035",
+  "name": "Gul Street 4",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3182447,
+  "lon": 103.6652644,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_G0036",
+  "source": "ura",
+  "pp_code": "G0036",
+  "name": "Gul Street 5",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3168939,
+  "lon": 103.6636382,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_G0037",
+  "source": "ura",
+  "pp_code": "G0037",
+  "name": "Genting Lane Off Street",
+  "lot_counts": {
+   "Car Lots": 38,
+   "Motorcycle Lots": 15
+  },
+  "total_lots": 53,
+  "lat": 1.3251222,
+  "lon": 103.8779427,
+  "car_lots": 38
+ },
+ {
+  "id": "ura_G0038",
+  "source": "ura",
+  "pp_code": "G0038",
+  "name": "Gul Road",
+  "lot_counts": {
+   "Motorcycle Lots": 165,
+   "Car Lots": 80
+  },
+  "total_lots": 245,
+  "lat": 1.2941413,
+  "lon": 103.671926,
+  "car_lots": 80
+ },
+ {
+  "id": "ura_G0039",
+  "source": "ura",
+  "pp_code": "G0039",
+  "name": "Guillemard Road",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3142332,
+  "lon": 103.8935033,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_G0040",
+  "source": "ura",
+  "pp_code": "G0040",
+  "name": "Gemmill Lane",
+  "lot_counts": {
+   "Car Lots": 7
+  },
+  "total_lots": 7,
+  "lat": 1.2824286,
+  "lon": 103.8471036,
+  "car_lots": 7
+ },
+ {
+  "id": "ura_G0044",
+  "source": "ura",
+  "pp_code": "G0044",
+  "name": "Ganges Avenue Off Street Carpark",
+  "lot_counts": {
+   "Car Lots": 39,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 49,
+  "lat": 1.2916897,
+  "lon": 103.8317445,
+  "car_lots": 39
+ },
+ {
+  "id": "ura_H0003",
+  "source": "ura",
+  "pp_code": "H0003",
+  "name": "Hamilton Road Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 4,
+   "Car Lots": 22
+  },
+  "total_lots": 26,
+  "lat": 1.3116365,
+  "lon": 103.8617883,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_H0006",
+  "source": "ura",
+  "pp_code": "H0006",
+  "name": "Hindoo Road",
+  "lot_counts": {
+   "Car Lots": 33,
+   "Motorcycle Lots": 7
+  },
+  "total_lots": 40,
+  "lat": 1.3084137,
+  "lon": 103.8540591,
+  "car_lots": 33
+ },
+ {
+  "id": "ura_H0007",
+  "source": "ura",
+  "pp_code": "H0007",
+  "name": "Hullet Road",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.3034778,
+  "lon": 103.8380914,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_H0008",
+  "source": "ura",
+  "pp_code": "H0008",
+  "name": "Harbour Drive",
+  "lot_counts": {
+   "Lorry Lots": 47
+  },
+  "total_lots": 47,
+  "lat": 1.2887706,
+  "lon": 103.7702259,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_H0012",
+  "source": "ura",
+  "pp_code": "H0012",
+  "name": "Hong Kong Street",
+  "lot_counts": {
+   "Car Lots": 30,
+   "Motorcycle Lots": 3,
+   "Lorry Lots": 5
+  },
+  "total_lots": 38,
+  "lat": 1.2874386,
+  "lon": 103.8473824,
+  "car_lots": 30
+ },
+ {
+  "id": "ura_H0015",
+  "source": "ura",
+  "pp_code": "H0015",
+  "name": "Hindoo Road Off Street",
+  "lot_counts": {
+   "Car Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3085945,
+  "lon": 103.8540874,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_H0021",
+  "source": "ura",
+  "pp_code": "H0021",
+  "name": "Hillview Terrace",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3527312,
+  "lon": 103.7571665,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_H0022",
+  "source": "ura",
+  "pp_code": "H0022",
+  "name": "Hullet Road Off Street",
+  "lot_counts": {
+   "Car Lots": 24
+  },
+  "total_lots": 24,
+  "lat": 1.3032188,
+  "lon": 103.8390879,
+  "car_lots": 24
+ },
+ {
+  "id": "ura_H0024",
+  "source": "ura",
+  "pp_code": "H0024",
+  "name": "Hong Lim Park Off Street",
+  "lot_counts": {
+   "Car Lots": 21
+  },
+  "total_lots": 21,
+  "lat": 1.2863763,
+  "lon": 103.8473661,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_H0028",
+  "source": "ura",
+  "pp_code": "H0028",
+  "name": "Hamilton Road",
+  "lot_counts": {
+   "Car Lots": 53
+  },
+  "total_lots": 53,
+  "lat": 1.3114268,
+  "lon": 103.8610269,
+  "car_lots": 53
+ },
+ {
+  "id": "ura_H0037",
+  "source": "ura",
+  "pp_code": "H0037",
+  "name": "Horne Road",
+  "lot_counts": {
+   "Car Lots": 33,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 41,
+  "lat": 1.3093904,
+  "lon": 103.8617076,
+  "car_lots": 33
+ },
+ {
+  "id": "ura_H0049",
+  "source": "ura",
+  "pp_code": "H0049",
+  "name": "Harvey Road",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3333081,
+  "lon": 103.8845055,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_H0050",
+  "source": "ura",
+  "pp_code": "H0050",
+  "name": "Howard Road",
+  "lot_counts": {
+   "Car Lots": 7
+  },
+  "total_lots": 7,
+  "lat": 1.3340746,
+  "lon": 103.8855703,
+  "car_lots": 7
+ },
+ {
+  "id": "ura_H0052",
+  "source": "ura",
+  "pp_code": "H0052",
+  "name": "Harrison Road",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.335664,
+  "lon": 103.8849174,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_H0055",
+  "source": "ura",
+  "pp_code": "H0055",
+  "name": "Havelock Road",
+  "lot_counts": {
+   "Car Lots": 28,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 33,
+  "lat": 1.2894178,
+  "lon": 103.8319884,
+  "car_lots": 28
+ },
+ {
+  "id": "ura_H0057",
+  "source": "ura",
+  "pp_code": "H0057",
+  "name": "Hindoo Road / Kampong Kapor Road Off Street",
+  "lot_counts": {
+   "Car Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.3079387,
+  "lon": 103.8544803,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_H0061",
+  "source": "ura",
+  "pp_code": "H0061",
+  "name": "Happy Avenue North",
+  "lot_counts": {
+   "Car Lots": 7
+  },
+  "total_lots": 7,
+  "lat": 1.3310175,
+  "lon": 103.880883,
+  "car_lots": 7
+ },
+ {
+  "id": "ura_H0064",
+  "source": "ura",
+  "pp_code": "H0064",
+  "name": "Holland Road / Peirce Road Coach Park",
+  "lot_counts": {
+   "Lorry Lots": 80,
+   "Motorcycle Lots": 20
+  },
+  "total_lots": 100,
+  "lat": 1.3072251,
+  "lon": 103.809688,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_I0005",
+  "source": "ura",
+  "pp_code": "I0005",
+  "name": "Irving Road",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3355449,
+  "lon": 103.8873567,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_I0006",
+  "source": "ura",
+  "pp_code": "I0006",
+  "name": "Irving Place",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 11
+  },
+  "total_lots": 21,
+  "lat": 1.3360629,
+  "lon": 103.886754,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_J0001",
+  "source": "ura",
+  "pp_code": "J0001",
+  "name": "Jalan Berseh",
+  "lot_counts": {
+   "Car Lots": 34
+  },
+  "total_lots": 34,
+  "lat": 1.3073601,
+  "lon": 103.8573436,
+  "car_lots": 34
+ },
+ {
+  "id": "ura_J0003",
+  "source": "ura",
+  "pp_code": "J0003",
+  "name": "Jalan Besar",
+  "lot_counts": {
+   "Motorcycle Lots": 14,
+   "Car Lots": 35
+  },
+  "total_lots": 49,
+  "lat": 1.3121648,
+  "lon": 103.8593687,
+  "car_lots": 35
+ },
+ {
+  "id": "ura_J0005",
+  "source": "ura",
+  "pp_code": "J0005",
+  "name": "Jalan Mata Ayer",
+  "lot_counts": {
+   "Car Lots": 14,
+   "Motorcycle Lots": 7
+  },
+  "total_lots": 21,
+  "lat": 1.4258359,
+  "lon": 103.8253218,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_J0006",
+  "source": "ura",
+  "pp_code": "J0006",
+  "name": "Jalan Klapa",
+  "lot_counts": {
+   "Car Lots": 16,
+   "Motorcycle Lots": 2
+  },
+  "total_lots": 18,
+  "lat": 1.3041523,
+  "lon": 103.859917,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_J0008",
+  "source": "ura",
+  "pp_code": "J0008",
+  "name": "Jalan Kledek",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3034093,
+  "lon": 103.859008,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_J0009",
+  "source": "ura",
+  "pp_code": "J0009",
+  "name": "Jalan Kubor (north Bridge Road / Victoria Street)",
+  "lot_counts": {
+   "Motorcycle Lots": 4,
+   "Car Lots": 15
+  },
+  "total_lots": 19,
+  "lat": 1.3037801,
+  "lon": 103.8594241,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_J0010",
+  "source": "ura",
+  "pp_code": "J0010",
+  "name": "Jalan Lana",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3236461,
+  "lon": 103.9188521,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_J0012",
+  "source": "ura",
+  "pp_code": "J0012",
+  "name": "Jalan Pisang",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3031856,
+  "lon": 103.8586533,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_J0015",
+  "source": "ura",
+  "pp_code": "J0015",
+  "name": "Jalan Binchang",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3520937,
+  "lon": 103.8460974,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_J0017",
+  "source": "ura",
+  "pp_code": "J0017",
+  "name": "Joo Chiat Road Off Street",
+  "lot_counts": {
+   "Car Lots": 99,
+   "Motorcycle Lots": 36
+  },
+  "total_lots": 135,
+  "lat": 1.3089267,
+  "lon": 103.9034291,
+  "car_lots": 99
+ },
+ {
+  "id": "ura_J0018",
+  "source": "ura",
+  "pp_code": "J0018",
+  "name": "Jiak Chuan Road",
+  "lot_counts": {
+   "Car Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.2798202,
+  "lon": 103.8417982,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_J0020",
+  "source": "ura",
+  "pp_code": "J0020",
+  "name": "Joo Koon Road",
+  "lot_counts": {
+   "Car Lots": 15,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 25,
+  "lat": 1.3255803,
+  "lon": 103.6689875,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_J0021",
+  "source": "ura",
+  "pp_code": "J0021",
+  "name": "Joo Koon Way",
+  "lot_counts": {
+   "Car Lots": 22,
+   "Trailer Lots": 7
+  },
+  "total_lots": 29,
+  "lat": 1.3249514,
+  "lon": 103.6698728,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_J0022",
+  "source": "ura",
+  "pp_code": "J0022",
+  "name": "Jalan Pinang",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3027404,
+  "lon": 103.8584344,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_J0027",
+  "source": "ura",
+  "pp_code": "J0027",
+  "name": "Joo Koon Circle",
+  "lot_counts": {
+   "Trailer Lots": 57,
+   "Car Lots": 33
+  },
+  "total_lots": 90,
+  "lat": 1.3247855,
+  "lon": 103.6721802,
+  "car_lots": 33
+ },
+ {
+  "id": "ura_J0029",
+  "source": "ura",
+  "pp_code": "J0029",
+  "name": "Jalan Sultan",
+  "lot_counts": {
+   "Car Lots": 23
+  },
+  "total_lots": 23,
+  "lat": 1.3024784,
+  "lon": 103.8615972,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_J0030",
+  "source": "ura",
+  "pp_code": "J0030",
+  "name": "Jalan Semerbak",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3253043,
+  "lon": 103.8630651,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_J0033",
+  "source": "ura",
+  "pp_code": "J0033",
+  "name": "Jalan Tukang",
+  "lot_counts": {
+   "Car Lots": 37
+  },
+  "total_lots": 37,
+  "lat": 1.3265944,
+  "lon": 103.7143478,
+  "car_lots": 37
+ },
+ {
+  "id": "ura_J0034",
+  "source": "ura",
+  "pp_code": "J0034",
+  "name": "Jalan Legundi",
+  "lot_counts": {
+   "Car Lots": 20
+  },
+  "total_lots": 20,
+  "lat": 1.4412725,
+  "lon": 103.8231526,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_J0035",
+  "source": "ura",
+  "pp_code": "J0035",
+  "name": "Jalan Tampang",
+  "lot_counts": {
+   "Car Lots": 19,
+   "Motorcycle Lots": 17
+  },
+  "total_lots": 36,
+  "lat": 1.4418761,
+  "lon": 103.8235979,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_J0036",
+  "source": "ura",
+  "pp_code": "J0036",
+  "name": "Jalan Derum",
+  "lot_counts": {
+   "Car Lots": 2
+  },
+  "total_lots": 2,
+  "lat": 1.441554,
+  "lon": 103.8230882,
+  "car_lots": 2
+ },
+ {
+  "id": "ura_J0037",
+  "source": "ura",
+  "pp_code": "J0037",
+  "name": "Joo Yee Road",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3289564,
+  "lon": 103.7156729,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_J0038",
+  "source": "ura",
+  "pp_code": "J0038",
+  "name": "Jalan Merah Saga",
+  "lot_counts": {
+   "Car Lots": 31
+  },
+  "total_lots": 31,
+  "lat": 1.3120312,
+  "lon": 103.7976927,
+  "car_lots": 31
+ },
+ {
+  "id": "ura_J0039",
+  "source": "ura",
+  "pp_code": "J0039",
+  "name": "Jalan Rumia",
+  "lot_counts": {
+   "Car Lots": 28
+  },
+  "total_lots": 28,
+  "lat": 1.3113091,
+  "lon": 103.7975697,
+  "car_lots": 28
+ },
+ {
+  "id": "ura_J0040",
+  "source": "ura",
+  "pp_code": "J0040",
+  "name": "Jalan Kelabu Asap",
+  "lot_counts": {
+   "Car Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.3108657,
+  "lon": 103.7978901,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_J0041",
+  "source": "ura",
+  "pp_code": "J0041",
+  "name": "Jalan Hitam Manis",
+  "lot_counts": {
+   "Car Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.3092692,
+  "lon": 103.79833,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_J0042",
+  "source": "ura",
+  "pp_code": "J0042",
+  "name": "Jalan Kuning",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3096811,
+  "lon": 103.7986833,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_J0043",
+  "source": "ura",
+  "pp_code": "J0043",
+  "name": "Jalan Puteh Jerneh",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3093429,
+  "lon": 103.7982272,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_J0047",
+  "source": "ura",
+  "pp_code": "J0047",
+  "name": "Jalan Lembah Kallang",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3151932,
+  "lon": 103.8626329,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_J0049",
+  "source": "ura",
+  "pp_code": "J0049",
+  "name": "Jellicoe Road",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.3075058,
+  "lon": 103.8617112,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_J0050",
+  "source": "ura",
+  "pp_code": "J0050",
+  "name": "Jalan Mas Kuning",
+  "lot_counts": {
+   "Car Lots": 22
+  },
+  "total_lots": 22,
+  "lat": 1.3080187,
+  "lon": 103.7638022,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_J0051",
+  "source": "ura",
+  "pp_code": "J0051",
+  "name": "Jalan Mas Puteh",
+  "lot_counts": {
+   "Car Lots": 20,
+   "Motorcycle Lots": 15
+  },
+  "total_lots": 35,
+  "lat": 1.3082897,
+  "lon": 103.7620074,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_J0054",
+  "source": "ura",
+  "pp_code": "J0054",
+  "name": "Jalan Besar / Beatty Road Off Street",
+  "lot_counts": {
+   "Car Lots": 37,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 47,
+  "lat": 1.3134643,
+  "lon": 103.8593112,
+  "car_lots": 37
+ },
+ {
+  "id": "ura_J0055",
+  "source": "ura",
+  "pp_code": "J0055",
+  "name": "Jalan Seh Chuan Off Street",
+  "lot_counts": {
+   "Car Lots": 179,
+   "Motorcycle Lots": 28
+  },
+  "total_lots": 207,
+  "lat": 1.3415073,
+  "lon": 103.7751419,
+  "car_lots": 179
+ },
+ {
+  "id": "ura_J0056",
+  "source": "ura",
+  "pp_code": "J0056",
+  "name": "Jalan Seh Chuan / Lorong Kilat Off Street",
+  "lot_counts": {
+   "Car Lots": 7,
+   "Lorry Lots": 9
+  },
+  "total_lots": 16,
+  "lat": 1.3408313,
+  "lon": 103.7747512,
+  "car_lots": 7
+ },
+ {
+  "id": "ura_J0057",
+  "source": "ura",
+  "pp_code": "J0057",
+  "name": "Jalan Dusun",
+  "lot_counts": {
+   "Car Lots": 24
+  },
+  "total_lots": 24,
+  "lat": 1.3279104,
+  "lon": 103.8438725,
+  "car_lots": 24
+ },
+ {
+  "id": "ura_J0058",
+  "source": "ura",
+  "pp_code": "J0058",
+  "name": "Jalan Kemaman",
+  "lot_counts": {
+   "Car Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.3268602,
+  "lon": 103.8507387,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_J0059",
+  "source": "ura",
+  "pp_code": "J0059",
+  "name": "Jalan Raja Udang",
+  "lot_counts": {
+   "Car Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.3276291,
+  "lon": 103.8427213,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_J0060",
+  "source": "ura",
+  "pp_code": "J0060",
+  "name": "Jalan Rama-rama",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3270781,
+  "lon": 103.8489994,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_J0062",
+  "source": "ura",
+  "pp_code": "J0062",
+  "name": "Jalan Ampas",
+  "lot_counts": {
+   "Car Lots": 19
+  },
+  "total_lots": 19,
+  "lat": 1.3259475,
+  "lon": 103.8511837,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_J0069",
+  "source": "ura",
+  "pp_code": "J0069",
+  "name": "Joo Avenue",
+  "lot_counts": {
+   "Car Lots": 32
+  },
+  "total_lots": 32,
+  "lat": 1.3154299,
+  "lon": 103.8549813,
+  "car_lots": 32
+ },
+ {
+  "id": "ura_J0070",
+  "source": "ura",
+  "pp_code": "J0070",
+  "name": "Jalan Anggerek",
+  "lot_counts": {
+   "Car Lots": 21
+  },
+  "total_lots": 21,
+  "lat": 1.329658,
+  "lon": 103.8818436,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_J0075",
+  "source": "ura",
+  "pp_code": "J0075",
+  "name": "Jago Close",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3069677,
+  "lon": 103.9080292,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_J0080",
+  "source": "ura",
+  "pp_code": "J0080",
+  "name": "Jalan Masjid",
+  "lot_counts": {
+   "Car Lots": 20,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 25,
+  "lat": 1.3197668,
+  "lon": 103.9124271,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_J0088",
+  "source": "ura",
+  "pp_code": "J0088",
+  "name": "Joo Seng Road",
+  "lot_counts": {
+   "Car Lots": 20
+  },
+  "total_lots": 20,
+  "lat": 1.3380089,
+  "lon": 103.8836703,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_J0092",
+  "source": "ura",
+  "pp_code": "J0092",
+  "name": "Jalan Kuras Off Street",
+  "lot_counts": {
+   "Car Lots": 52,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 60,
+  "lat": 1.3733188,
+  "lon": 103.8290516,
+  "car_lots": 52
+ },
+ {
+  "id": "ura_J0093",
+  "source": "ura",
+  "pp_code": "J0093",
+  "name": "Joo Koon Crescent",
+  "lot_counts": {
+   "Car Lots": 24,
+   "Trailer Lots": 1
+  },
+  "total_lots": 25,
+  "lat": 1.3291057,
+  "lon": 103.6730558,
+  "car_lots": 24
+ },
+ {
+  "id": "ura_J0094",
+  "source": "ura",
+  "pp_code": "J0094",
+  "name": "Jalan Kuras",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3728164,
+  "lon": 103.8295255,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_J0095",
+  "source": "ura",
+  "pp_code": "J0095",
+  "name": "Jalan Leban Service Road",
+  "lot_counts": {
+   "Car Lots": 25,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 30,
+  "lat": 1.3716295,
+  "lon": 103.8290664,
+  "car_lots": 25
+ },
+ {
+  "id": "ura_J0097",
+  "source": "ura",
+  "pp_code": "J0097",
+  "name": "Jalan Kubor (victoria Street / Rochor Canal Road)",
+  "lot_counts": {
+   "Car Lots": 29,
+   "Lorry Lots": 1,
+   "Coach Lots": 3
+  },
+  "total_lots": 33,
+  "lat": 1.3048886,
+  "lon": 103.8587641,
+  "car_lots": 29
+ },
+ {
+  "id": "ura_J0098",
+  "source": "ura",
+  "pp_code": "J0098",
+  "name": "Jalan Mesin",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3331642,
+  "lon": 103.8833282,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_J0099",
+  "source": "ura",
+  "pp_code": "J0099",
+  "name": "Jalan Bahar Heavy Vehicle Park",
+  "lot_counts": {
+   "Motorcycle Lots": 40,
+   "Lorry Lots": 360
+  },
+  "total_lots": 400,
+  "lat": 1.3479515,
+  "lon": 103.7025307,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_J0100",
+  "source": "ura",
+  "pp_code": "J0100",
+  "name": "Jalan Pelepah Off Street",
+  "lot_counts": {
+   "Car Lots": 54,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 62,
+  "lat": 1.274035,
+  "lon": 103.7955118,
+  "car_lots": 54
+ },
+ {
+  "id": "ura_J0102",
+  "source": "ura",
+  "pp_code": "J0102",
+  "name": "Joo Chiat Road (changi Road / East Coast Road)",
+  "lot_counts": {
+   "Car Lots": 107,
+   "Motorcycle Lots": 13
+  },
+  "total_lots": 120,
+  "lat": 1.3117108,
+  "lon": 103.9007126,
+  "car_lots": 107
+ },
+ {
+  "id": "ura_J0104",
+  "source": "ura",
+  "pp_code": "J0104",
+  "name": "Joo Chiat Place",
+  "lot_counts": {
+   "Car Lots": 49,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 52,
+  "lat": 1.3136726,
+  "lon": 103.9027458,
+  "car_lots": 49
+ },
+ {
+  "id": "ura_J0106",
+  "source": "ura",
+  "pp_code": "J0106",
+  "name": "Joo Chiat Lane",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3124143,
+  "lon": 103.9024292,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_J0109",
+  "source": "ura",
+  "pp_code": "J0109",
+  "name": "Jalan Ubi",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3179253,
+  "lon": 103.9003504,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_J0111",
+  "source": "ura",
+  "pp_code": "J0111",
+  "name": "Jalan Lapang",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3225061,
+  "lon": 103.9140274,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_J0112",
+  "source": "ura",
+  "pp_code": "J0112",
+  "name": "Jalan Gelenggang",
+  "lot_counts": {
+   "Car Lots": 9,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 13,
+  "lat": 1.3732531,
+  "lon": 103.8300078,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_J0117",
+  "source": "ura",
+  "pp_code": "J0117",
+  "name": "Jalan Busut",
+  "lot_counts": {
+   "Car Lots": 12,
+   "Trailer Lots": 6
+  },
+  "total_lots": 18,
+  "lat": 1.3171312,
+  "lon": 103.7259459,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_J0122",
+  "source": "ura",
+  "pp_code": "J0122",
+  "name": "Jalan Kayu Off Street",
+  "lot_counts": {
+   "Car Lots": 207,
+   "Motorcycle Lots": 30
+  },
+  "total_lots": 237,
+  "lat": 1.3989882,
+  "lon": 103.8730152,
+  "car_lots": 207
+ },
+ {
+  "id": "ura_J0128",
+  "source": "ura",
+  "pp_code": "J0128",
+  "name": "Jalan Kledek Off Street",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3035818,
+  "lon": 103.8589866,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_J0130",
+  "source": "ura",
+  "pp_code": "J0130",
+  "name": "Joo Chiat Terrace (joo Chiat Rd / Tembeling Rd)",
+  "lot_counts": {
+   "Car Lots": 14
+  },
+  "total_lots": 14,
+  "lat": 1.3142637,
+  "lon": 103.8995631,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_J0132",
+  "source": "ura",
+  "pp_code": "J0132",
+  "name": "Jalan Penjara Off Street",
+  "lot_counts": {
+   "Car Lots": 43,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 48,
+  "lat": 1.2985422,
+  "lon": 103.8070303,
+  "car_lots": 43
+ },
+ {
+  "id": "ura_K0004",
+  "source": "ura",
+  "pp_code": "K0004",
+  "name": "Kaki Bukit Road 4",
+  "lot_counts": {
+   "Trailer Lots": 1
+  },
+  "total_lots": 1,
+  "lat": 1.3424353,
+  "lon": 103.9121056,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_K0005",
+  "source": "ura",
+  "pp_code": "K0005",
+  "name": "Kandahar Street",
+  "lot_counts": {
+   "Car Lots": 46,
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 57,
+  "lat": 1.3021233,
+  "lon": 103.8598643,
+  "car_lots": 46
+ },
+ {
+  "id": "ura_K0006",
+  "source": "ura",
+  "pp_code": "K0006",
+  "name": "Kaki Bukit Road 1",
+  "lot_counts": {
+   "Car Lots": 15,
+   "Lorry Lots": 11,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 36,
+  "lat": 1.334475,
+  "lon": 103.9020718,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_K0008",
+  "source": "ura",
+  "pp_code": "K0008",
+  "name": "Keong Saik Road",
+  "lot_counts": {
+   "Car Lots": 68,
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 79,
+  "lat": 1.2803353,
+  "lon": 103.8416922,
+  "car_lots": 68
+ },
+ {
+  "id": "ura_K0009",
+  "source": "ura",
+  "pp_code": "K0009",
+  "name": "Kerbau Road",
+  "lot_counts": {
+   "Car Lots": 11,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 14,
+  "lat": 1.3071645,
+  "lon": 103.8510422,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_K0010",
+  "source": "ura",
+  "pp_code": "K0010",
+  "name": "Killiney Road",
+  "lot_counts": {
+   "Car Lots": 23
+  },
+  "total_lots": 23,
+  "lat": 1.2984756,
+  "lon": 103.8390007,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_K0011",
+  "source": "ura",
+  "pp_code": "K0011",
+  "name": "Kinta Road",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3104785,
+  "lon": 103.8530864,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_K0013",
+  "source": "ura",
+  "pp_code": "K0013",
+  "name": "Kitchener Road",
+  "lot_counts": {
+   "Car Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3081781,
+  "lon": 103.8591221,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_K0016",
+  "source": "ura",
+  "pp_code": "K0016",
+  "name": "Kaki Bukit Road 6",
+  "lot_counts": {
+   "Trailer Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.3395927,
+  "lon": 103.910209,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_K0022",
+  "source": "ura",
+  "pp_code": "K0022",
+  "name": "Kaki Bukit Avenue 4",
+  "lot_counts": {
+   "Car Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.3390137,
+  "lon": 103.9062805,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_K0027",
+  "source": "ura",
+  "pp_code": "K0027",
+  "name": "Kampong Kapor Road",
+  "lot_counts": {
+   "Car Lots": 34,
+   "Motorcycle Lots": 16
+  },
+  "total_lots": 50,
+  "lat": 1.3080598,
+  "lon": 103.8547787,
+  "car_lots": 34
+ },
+ {
+  "id": "ura_K0032",
+  "source": "ura",
+  "pp_code": "K0032",
+  "name": "Kensington Park Road Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 25,
+   "Car Lots": 30
+  },
+  "total_lots": 55,
+  "lat": 1.3659353,
+  "lon": 103.8664889,
+  "car_lots": 30
+ },
+ {
+  "id": "ura_K0034",
+  "source": "ura",
+  "pp_code": "K0034",
+  "name": "Kung Chong Road",
+  "lot_counts": {
+   "Car Lots": 26,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 36,
+  "lat": 1.290262,
+  "lon": 103.8111457,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_K0037",
+  "source": "ura",
+  "pp_code": "K0037",
+  "name": "King George's Ave Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 4,
+   "Car Lots": 22
+  },
+  "total_lots": 26,
+  "lat": 1.3102536,
+  "lon": 103.8615676,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_K0039",
+  "source": "ura",
+  "pp_code": "K0039",
+  "name": "King George's Avenue / Horne Road Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 12,
+   "Car Lots": 61
+  },
+  "total_lots": 73,
+  "lat": 1.3099478,
+  "lon": 103.8619811,
+  "car_lots": 61
+ },
+ {
+  "id": "ura_K0046",
+  "source": "ura",
+  "pp_code": "K0046",
+  "name": "Kian Teck Avenue",
+  "lot_counts": {
+   "Trailer Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3305942,
+  "lon": 103.6935132,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_K0049",
+  "source": "ura",
+  "pp_code": "K0049",
+  "name": "Kelantan Road",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3057777,
+  "lon": 103.8563407,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_K0051",
+  "source": "ura",
+  "pp_code": "K0051",
+  "name": "Kensington Park Road Service Raod",
+  "lot_counts": {
+   "Car Lots": 30,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 35,
+  "lat": 1.3648589,
+  "lon": 103.8661826,
+  "car_lots": 30
+ },
+ {
+  "id": "ura_K0052",
+  "source": "ura",
+  "pp_code": "K0052",
+  "name": "Kallang Sector",
+  "lot_counts": {
+   "Car Lots": 48
+  },
+  "total_lots": 48,
+  "lat": 1.3251349,
+  "lon": 103.8733572,
+  "car_lots": 48
+ },
+ {
+  "id": "ura_K0054",
+  "source": "ura",
+  "pp_code": "K0054",
+  "name": "Kallang Way",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3257371,
+  "lon": 103.8744481,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_K0057",
+  "source": "ura",
+  "pp_code": "K0057",
+  "name": "Kallang Avenue",
+  "lot_counts": {
+   "Car Lots": 80
+  },
+  "total_lots": 80,
+  "lat": 1.3113403,
+  "lon": 103.8665934,
+  "car_lots": 80
+ },
+ {
+  "id": "ura_K0061",
+  "source": "ura",
+  "pp_code": "K0061",
+  "name": "Kallang Bahru",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3186894,
+  "lon": 103.8661038,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_K0064",
+  "source": "ura",
+  "pp_code": "K0064",
+  "name": "Kovan Road",
+  "lot_counts": {
+   "Car Lots": 50
+  },
+  "total_lots": 50,
+  "lat": 1.3590578,
+  "lon": 103.8819663,
+  "car_lots": 50
+ },
+ {
+  "id": "ura_K0069",
+  "source": "ura",
+  "pp_code": "K0069",
+  "name": "Kelantan Lane",
+  "lot_counts": {
+   "Motorcycle Lots": 34,
+   "Car Lots": 23
+  },
+  "total_lots": 57,
+  "lat": 1.3064006,
+  "lon": 103.8566441,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_K0081",
+  "source": "ura",
+  "pp_code": "K0081",
+  "name": "Kim Chuan Road",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 25
+  },
+  "total_lots": 30,
+  "lat": 1.3409647,
+  "lon": 103.888628,
+  "car_lots": 25
+ },
+ {
+  "id": "ura_K0082",
+  "source": "ura",
+  "pp_code": "K0082",
+  "name": "Kampong Bugis Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 29
+  },
+  "total_lots": 39,
+  "lat": 1.3061159,
+  "lon": 103.8673693,
+  "car_lots": 29
+ },
+ {
+  "id": "ura_K0087",
+  "source": "ura",
+  "pp_code": "K0087",
+  "name": "Kim Keat Close",
+  "lot_counts": {
+   "Car Lots": 22
+  },
+  "total_lots": 22,
+  "lat": 1.3236804,
+  "lon": 103.8532147,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_K0091",
+  "source": "ura",
+  "pp_code": "K0091",
+  "name": "Kaki Bukit Road 2",
+  "lot_counts": {
+   "Car Lots": 38
+  },
+  "total_lots": 38,
+  "lat": 1.3378018,
+  "lon": 103.8991488,
+  "car_lots": 38
+ },
+ {
+  "id": "ura_K0093",
+  "source": "ura",
+  "pp_code": "K0093",
+  "name": "Kampong Java Road",
+  "lot_counts": {
+   "Motorcycle Lots": 3,
+   "Car Lots": 31
+  },
+  "total_lots": 34,
+  "lat": 1.3132248,
+  "lon": 103.8416623,
+  "car_lots": 31
+ },
+ {
+  "id": "ura_K0094",
+  "source": "ura",
+  "pp_code": "K0094",
+  "name": "Kellock Road",
+  "lot_counts": {
+   "Car Lots": 28
+  },
+  "total_lots": 28,
+  "lat": 1.2943624,
+  "lon": 103.8297465,
+  "car_lots": 28
+ },
+ {
+  "id": "ura_K0097",
+  "source": "ura",
+  "pp_code": "K0097",
+  "name": "Kampong Ampat",
+  "lot_counts": {
+   "Car Lots": 14
+  },
+  "total_lots": 14,
+  "lat": 1.3345945,
+  "lon": 103.8831319,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_K0099",
+  "source": "ura",
+  "pp_code": "K0099",
+  "name": "Kampong Eunos",
+  "lot_counts": {
+   "Car Lots": 4,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 9,
+  "lat": 1.3181793,
+  "lon": 103.9065871,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_K0108",
+  "source": "ura",
+  "pp_code": "K0108",
+  "name": "Keppel Road Off Street",
+  "lot_counts": {
+   "Car Lots": 99,
+   "Motorcycle Lots": 28
+  },
+  "total_lots": 127,
+  "lat": 1.2730817,
+  "lon": 103.8395319,
+  "car_lots": 99
+ },
+ {
+  "id": "ura_K0110",
+  "source": "ura",
+  "pp_code": "K0110",
+  "name": "Kallang Way 2a",
+  "lot_counts": {
+   "Car Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.3236554,
+  "lon": 103.8774134,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_K0111",
+  "source": "ura",
+  "pp_code": "K0111",
+  "name": "Kinta Road Off Street",
+  "lot_counts": {
+   "Car Lots": 122,
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 133,
+  "lat": 1.3097357,
+  "lon": 103.8533519,
+  "car_lots": 122
+ },
+ {
+  "id": "ura_K0113",
+  "source": "ura",
+  "pp_code": "K0113",
+  "name": "Kim Yam Road",
+  "lot_counts": {
+   "Car Lots": 28
+  },
+  "total_lots": 28,
+  "lat": 1.2928811,
+  "lon": 103.8400566,
+  "car_lots": 28
+ },
+ {
+  "id": "ura_K0114",
+  "source": "ura",
+  "pp_code": "K0114",
+  "name": "Kampong Bugis",
+  "lot_counts": {
+   "Lorry Lots": 3,
+   "Car Lots": 16,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 24,
+  "lat": 1.3078804,
+  "lon": 103.8659733,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_K0115",
+  "source": "ura",
+  "pp_code": "K0115",
+  "name": "Kaki Bukit Place",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 14
+  },
+  "total_lots": 24,
+  "lat": 1.3349,
+  "lon": 103.9041206,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_K0120",
+  "source": "ura",
+  "pp_code": "K0120",
+  "name": "Kempas Road",
+  "lot_counts": {
+   "Motorcycle Lots": 17,
+   "Car Lots": 23
+  },
+  "total_lots": 40,
+  "lat": 1.3151367,
+  "lon": 103.8599852,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_K0121",
+  "source": "ura",
+  "pp_code": "K0121",
+  "name": "Kampong Kapor Road Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 12,
+   "Car Lots": 57
+  },
+  "total_lots": 69,
+  "lat": 1.3065591,
+  "lon": 103.8540507,
+  "car_lots": 57
+ },
+ {
+  "id": "ura_L0002",
+  "source": "ura",
+  "pp_code": "L0002",
+  "name": "Lembu Road",
+  "lot_counts": {
+   "Car Lots": 19,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 22,
+  "lat": 1.3098841,
+  "lon": 103.8546444,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_L0003",
+  "source": "ura",
+  "pp_code": "L0003",
+  "name": "Liang Seah Street",
+  "lot_counts": {
+   "Motorcycle Lots": 15,
+   "Car Lots": 45
+  },
+  "total_lots": 60,
+  "lat": 1.2980681,
+  "lon": 103.8563637,
+  "car_lots": 45
+ },
+ {
+  "id": "ura_L0004",
+  "source": "ura",
+  "pp_code": "L0004",
+  "name": "Lorong 4 Geylang",
+  "lot_counts": {
+   "Motorcycle Lots": 7,
+   "Car Lots": 12
+  },
+  "total_lots": 19,
+  "lat": 1.3103971,
+  "lon": 103.8760145,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_L0005",
+  "source": "ura",
+  "pp_code": "L0005",
+  "name": "Lloyd Road",
+  "lot_counts": {
+   "Car Lots": 14
+  },
+  "total_lots": 14,
+  "lat": 1.2970842,
+  "lon": 103.8399956,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_L0008",
+  "source": "ura",
+  "pp_code": "L0008",
+  "name": "Lorong Kilat",
+  "lot_counts": {
+   "Car Lots": 28
+  },
+  "total_lots": 28,
+  "lat": 1.34108,
+  "lon": 103.7734948,
+  "car_lots": 28
+ },
+ {
+  "id": "ura_L0009",
+  "source": "ura",
+  "pp_code": "L0009",
+  "name": "Lorong Telok",
+  "lot_counts": {
+   "Motorcycle Lots": 12,
+   "Car Lots": 21
+  },
+  "total_lots": 33,
+  "lat": 1.286689,
+  "lon": 103.8486252,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_L0011",
+  "source": "ura",
+  "pp_code": "L0011",
+  "name": "Link Road",
+  "lot_counts": {
+   "Car Lots": 22
+  },
+  "total_lots": 22,
+  "lat": 1.3278995,
+  "lon": 103.711937,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_L0013",
+  "source": "ura",
+  "pp_code": "L0013",
+  "name": "Lorong 6 Geylang",
+  "lot_counts": {
+   "Car Lots": 26,
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 32,
+  "lat": 1.3101628,
+  "lon": 103.8766235,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_L0014",
+  "source": "ura",
+  "pp_code": "L0014",
+  "name": "Lorong 7 Geylang",
+  "lot_counts": {
+   "Car Lots": 12,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 15,
+  "lat": 1.312387,
+  "lon": 103.8758778,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_L0015",
+  "source": "ura",
+  "pp_code": "L0015",
+  "name": "Lorong 8 Geylang",
+  "lot_counts": {
+   "Car Lots": 31,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 35,
+  "lat": 1.3107509,
+  "lon": 103.8771359,
+  "car_lots": 31
+ },
+ {
+  "id": "ura_L0016",
+  "source": "ura",
+  "pp_code": "L0016",
+  "name": "Lorong 9 Geylang",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.3129373,
+  "lon": 103.8763882,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_L0018",
+  "source": "ura",
+  "pp_code": "L0018",
+  "name": "Lorong 11 Geylang",
+  "lot_counts": {
+   "Car Lots": 22
+  },
+  "total_lots": 22,
+  "lat": 1.3129941,
+  "lon": 103.8770072,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_L0019",
+  "source": "ura",
+  "pp_code": "L0019",
+  "name": "Lorong 12 Geylang",
+  "lot_counts": {
+   "Motorcycle Lots": 7,
+   "Car Lots": 19
+  },
+  "total_lots": 26,
+  "lat": 1.3107477,
+  "lon": 103.8784143,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_L0020",
+  "source": "ura",
+  "pp_code": "L0020",
+  "name": "Lorong 13 Geylang",
+  "lot_counts": {
+   "Motorcycle Lots": 1,
+   "Car Lots": 20
+  },
+  "total_lots": 21,
+  "lat": 1.3131023,
+  "lon": 103.8775299,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_L0021",
+  "source": "ura",
+  "pp_code": "L0021",
+  "name": "Lorong 14 Geylang",
+  "lot_counts": {
+   "Motorcycle Lots": 8,
+   "Car Lots": 44
+  },
+  "total_lots": 52,
+  "lat": 1.3111194,
+  "lon": 103.8791831,
+  "car_lots": 44
+ },
+ {
+  "id": "ura_L0022",
+  "source": "ura",
+  "pp_code": "L0022",
+  "name": "Lorong 15 Geylang",
+  "lot_counts": {
+   "Motorcycle Lots": 4,
+   "Car Lots": 21
+  },
+  "total_lots": 25,
+  "lat": 1.313302,
+  "lon": 103.8782497,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_L0023",
+  "source": "ura",
+  "pp_code": "L0023",
+  "name": "Lorong 16 Geylang",
+  "lot_counts": {
+   "Car Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3112449,
+  "lon": 103.8799407,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_L0024",
+  "source": "ura",
+  "pp_code": "L0024",
+  "name": "Lorong 17 Geylang",
+  "lot_counts": {
+   "Car Lots": 27
+  },
+  "total_lots": 27,
+  "lat": 1.3134824,
+  "lon": 103.8787071,
+  "car_lots": 27
+ },
+ {
+  "id": "ura_L0025",
+  "source": "ura",
+  "pp_code": "L0025",
+  "name": "Lorong 18 Geylang",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3115884,
+  "lon": 103.8807154,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_L0026",
+  "source": "ura",
+  "pp_code": "L0026",
+  "name": "Lorong 19 Geylang",
+  "lot_counts": {
+   "Car Lots": 38
+  },
+  "total_lots": 38,
+  "lat": 1.3136839,
+  "lon": 103.8791738,
+  "car_lots": 38
+ },
+ {
+  "id": "ura_L0027",
+  "source": "ura",
+  "pp_code": "L0027",
+  "name": "Lorong 20 Geylang",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3116543,
+  "lon": 103.8812966,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_L0028",
+  "source": "ura",
+  "pp_code": "L0028",
+  "name": "Lorong 21 Geylang",
+  "lot_counts": {
+   "Car Lots": 24,
+   "Motorcycle Lots": 7
+  },
+  "total_lots": 31,
+  "lat": 1.3140902,
+  "lon": 103.8799848,
+  "car_lots": 24
+ },
+ {
+  "id": "ura_L0029",
+  "source": "ura",
+  "pp_code": "L0029",
+  "name": "Lok Yang Way",
+  "lot_counts": {
+   "Motorcycle Lots": 50,
+   "Car Lots": 122
+  },
+  "total_lots": 172,
+  "lat": 1.3246101,
+  "lon": 103.6908391,
+  "car_lots": 122
+ },
+ {
+  "id": "ura_L0030",
+  "source": "ura",
+  "pp_code": "L0030",
+  "name": "Lorong Bachok",
+  "lot_counts": {
+   "Car Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.3139563,
+  "lon": 103.8795939,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_L0031",
+  "source": "ura",
+  "pp_code": "L0031",
+  "name": "Lorong Tahar",
+  "lot_counts": {
+   "Car Lots": 2
+  },
+  "total_lots": 2,
+  "lat": 1.3125003,
+  "lon": 103.8755891,
+  "car_lots": 2
+ },
+ {
+  "id": "ura_L0032",
+  "source": "ura",
+  "pp_code": "L0032",
+  "name": "Lorong 23 Geylang",
+  "lot_counts": {
+   "Car Lots": 53,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 61,
+  "lat": 1.3139138,
+  "lon": 103.8813976,
+  "car_lots": 53
+ },
+ {
+  "id": "ura_L0033",
+  "source": "ura",
+  "pp_code": "L0033",
+  "name": "Lorong 24 Geylang",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 19
+  },
+  "total_lots": 24,
+  "lat": 1.3120052,
+  "lon": 103.8833191,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_L0034",
+  "source": "ura",
+  "pp_code": "L0034",
+  "name": "Lorong 24a Geylang",
+  "lot_counts": {
+   "Car Lots": 53,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 57,
+  "lat": 1.3124316,
+  "lon": 103.8839944,
+  "car_lots": 53
+ },
+ {
+  "id": "ura_L0035",
+  "source": "ura",
+  "pp_code": "L0035",
+  "name": "Lorong 25 Geylang",
+  "lot_counts": {
+   "Car Lots": 36,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 40,
+  "lat": 1.3144847,
+  "lon": 103.8830473,
+  "car_lots": 36
+ },
+ {
+  "id": "ura_L0036",
+  "source": "ura",
+  "pp_code": "L0036",
+  "name": "Lorong 25a Geylang",
+  "lot_counts": {
+   "Motorcycle Lots": 9,
+   "Car Lots": 29
+  },
+  "total_lots": 38,
+  "lat": 1.3146551,
+  "lon": 103.8830945,
+  "car_lots": 29
+ },
+ {
+  "id": "ura_L0037",
+  "source": "ura",
+  "pp_code": "L0037",
+  "name": "Lorong 26 Geylang",
+  "lot_counts": {
+   "Car Lots": 12,
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 18,
+  "lat": 1.3121852,
+  "lon": 103.8848491,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_L0038",
+  "source": "ura",
+  "pp_code": "L0038",
+  "name": "Lorong 27 Geylang",
+  "lot_counts": {
+   "Car Lots": 26,
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 32,
+  "lat": 1.3149419,
+  "lon": 103.8838041,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_L0039",
+  "source": "ura",
+  "pp_code": "L0039",
+  "name": "Lorong 27a  Geylang",
+  "lot_counts": {
+   "Car Lots": 18,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 22,
+  "lat": 1.3144794,
+  "lon": 103.8847402,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_L0040",
+  "source": "ura",
+  "pp_code": "L0040",
+  "name": "Lorong 28 Geylang",
+  "lot_counts": {
+   "Car Lots": 36,
+   "Motorcycle Lots": 2
+  },
+  "total_lots": 38,
+  "lat": 1.3127034,
+  "lon": 103.8855476,
+  "car_lots": 36
+ },
+ {
+  "id": "ura_L0041",
+  "source": "ura",
+  "pp_code": "L0041",
+  "name": "Lorong 29 Geylang",
+  "lot_counts": {
+   "Car Lots": 22,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 27,
+  "lat": 1.3146231,
+  "lon": 103.8857979,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_L0042",
+  "source": "ura",
+  "pp_code": "L0042",
+  "name": "Lorong 30 Geylang",
+  "lot_counts": {
+   "Motorcycle Lots": 7,
+   "Car Lots": 17
+  },
+  "total_lots": 24,
+  "lat": 1.3128985,
+  "lon": 103.8862902,
+  "car_lots": 17
+ },
+ {
+  "id": "ura_L0043",
+  "source": "ura",
+  "pp_code": "L0043",
+  "name": "Lorong 31 Geylang",
+  "lot_counts": {
+   "Car Lots": 15,
+   "Motorcycle Lots": 2
+  },
+  "total_lots": 17,
+  "lat": 1.3146419,
+  "lon": 103.8869516,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_L0044",
+  "source": "ura",
+  "pp_code": "L0044",
+  "name": "Lorong 32 Geylang",
+  "lot_counts": {
+   "Car Lots": 20,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 23,
+  "lat": 1.3126106,
+  "lon": 103.886943,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_L0045",
+  "source": "ura",
+  "pp_code": "L0045",
+  "name": "Lorong 33 Geylang",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3150099,
+  "lon": 103.8878397,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_L0046",
+  "source": "ura",
+  "pp_code": "L0046",
+  "name": "Lorong 34 Geylang",
+  "lot_counts": {
+   "Car Lots": 22,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 27,
+  "lat": 1.31296,
+  "lon": 103.8878436,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_L0047",
+  "source": "ura",
+  "pp_code": "L0047",
+  "name": "Lorong 35 Geylang",
+  "lot_counts": {
+   "Motorcycle Lots": 3,
+   "Car Lots": 13
+  },
+  "total_lots": 16,
+  "lat": 1.3152642,
+  "lon": 103.8885677,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_L0048",
+  "source": "ura",
+  "pp_code": "L0048",
+  "name": "Lorong 36 Geylang",
+  "lot_counts": {
+   "Car Lots": 14
+  },
+  "total_lots": 14,
+  "lat": 1.3126157,
+  "lon": 103.8885646,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_L0049",
+  "source": "ura",
+  "pp_code": "L0049",
+  "name": "Lorong 37 Geylang",
+  "lot_counts": {
+   "Motorcycle Lots": 3,
+   "Car Lots": 14
+  },
+  "total_lots": 17,
+  "lat": 1.3154988,
+  "lon": 103.8897143,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_L0050",
+  "source": "ura",
+  "pp_code": "L0050",
+  "name": "Lorong 38 Geylang",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3135879,
+  "lon": 103.8889638,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_L0051",
+  "source": "ura",
+  "pp_code": "L0051",
+  "name": "Lorong 39 Geylang",
+  "lot_counts": {
+   "Car Lots": 19
+  },
+  "total_lots": 19,
+  "lat": 1.3155622,
+  "lon": 103.8907606,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_L0052",
+  "source": "ura",
+  "pp_code": "L0052",
+  "name": "Lorong 40 Geylang",
+  "lot_counts": {
+   "Car Lots": 21
+  },
+  "total_lots": 21,
+  "lat": 1.3139481,
+  "lon": 103.8895302,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_L0053",
+  "source": "ura",
+  "pp_code": "L0053",
+  "name": "Lorong 41 Geylang",
+  "lot_counts": {
+   "Car Lots": 45,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 49,
+  "lat": 1.3158471,
+  "lon": 103.8913177,
+  "car_lots": 45
+ },
+ {
+  "id": "ura_L0056",
+  "source": "ura",
+  "pp_code": "L0056",
+  "name": "Lorong 28 Service Road Geylang",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3114376,
+  "lon": 103.8860531,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_L0057",
+  "source": "ura",
+  "pp_code": "L0057",
+  "name": "Lorong 39 Service Road Geylang",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3158955,
+  "lon": 103.8903951,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_L0058",
+  "source": "ura",
+  "pp_code": "L0058",
+  "name": "Lim Tua Tow Road Off Street",
+  "lot_counts": {
+   "Car Lots": 39,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 44,
+  "lat": 1.3538321,
+  "lon": 103.877219,
+  "car_lots": 39
+ },
+ {
+  "id": "ura_L0060",
+  "source": "ura",
+  "pp_code": "L0060",
+  "name": "Lorong Bakar Batu",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 50
+  },
+  "total_lots": 55,
+  "lat": 1.3267966,
+  "lon": 103.8738985,
+  "car_lots": 50
+ },
+ {
+  "id": "ura_L0061",
+  "source": "ura",
+  "pp_code": "L0061",
+  "name": "Lim Tua Tow Road",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3543357,
+  "lon": 103.8764849,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_L0064",
+  "source": "ura",
+  "pp_code": "L0064",
+  "name": "Lorong 21 Geylang Off Street",
+  "lot_counts": {
+   "Car Lots": 35,
+   "Motorcycle Lots": 14
+  },
+  "total_lots": 49,
+  "lat": 1.3137823,
+  "lon": 103.8798255,
+  "car_lots": 35
+ },
+ {
+  "id": "ura_L0065",
+  "source": "ura",
+  "pp_code": "L0065",
+  "name": "Lorong Pendek",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3293353,
+  "lon": 103.8747574,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_L0074",
+  "source": "ura",
+  "pp_code": "L0074",
+  "name": "Lorong 21a Geylang",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3150311,
+  "lon": 103.8805583,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_L0076",
+  "source": "ura",
+  "pp_code": "L0076",
+  "name": "Lorong Melayu",
+  "lot_counts": {
+   "Car Lots": 7
+  },
+  "total_lots": 7,
+  "lat": 1.3194174,
+  "lon": 103.9106339,
+  "car_lots": 7
+ },
+ {
+  "id": "ura_L0077",
+  "source": "ura",
+  "pp_code": "L0077",
+  "name": "Leng Kee Road",
+  "lot_counts": {
+   "Car Lots": 25
+  },
+  "total_lots": 25,
+  "lat": 1.290781,
+  "lon": 103.8117157,
+  "car_lots": 25
+ },
+ {
+  "id": "ura_L0078",
+  "source": "ura",
+  "pp_code": "L0078",
+  "name": "Lorong Mydin Off Street",
+  "lot_counts": {
+   "Car Lots": 23,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 33,
+  "lat": 1.3191404,
+  "lon": 103.9119029,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_L0079",
+  "source": "ura",
+  "pp_code": "L0079",
+  "name": "Lorong Marzuki",
+  "lot_counts": {
+   "Car Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.3189949,
+  "lon": 103.9095653,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_L0081",
+  "source": "ura",
+  "pp_code": "L0081",
+  "name": "Lorong Ampas",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3261699,
+  "lon": 103.8529844,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_L0082",
+  "source": "ura",
+  "pp_code": "L0082",
+  "name": "Lorong Sarina",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3188463,
+  "lon": 103.9078211,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_L0083",
+  "source": "ura",
+  "pp_code": "L0083",
+  "name": "Lorong Marican",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3191341,
+  "lon": 103.9089703,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_L0085",
+  "source": "ura",
+  "pp_code": "L0085",
+  "name": "Loyang Way",
+  "lot_counts": {
+   "Car Lots": 37,
+   "Trailer Lots": 9,
+   "Motorcycle Lots": 17
+  },
+  "total_lots": 63,
+  "lat": 1.3825511,
+  "lon": 103.9745656,
+  "car_lots": 37
+ },
+ {
+  "id": "ura_L0086",
+  "source": "ura",
+  "pp_code": "L0086",
+  "name": "Loyang Close Hvp",
+  "lot_counts": {
+   "Lorry Lots": 61,
+   "Motorcycle Lots": 46
+  },
+  "total_lots": 107,
+  "lat": 1.3693354,
+  "lon": 103.965966,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_L0087",
+  "source": "ura",
+  "pp_code": "L0087",
+  "name": "Loyang Crescent",
+  "lot_counts": {
+   "Car Lots": 34
+  },
+  "total_lots": 34,
+  "lat": 1.3828887,
+  "lon": 103.971932,
+  "car_lots": 34
+ },
+ {
+  "id": "ura_L0088",
+  "source": "ura",
+  "pp_code": "L0088",
+  "name": "Loyang Drive",
+  "lot_counts": {
+   "Motorcycle Lots": 31,
+   "Car Lots": 26,
+   "Lorry Lots": 7
+  },
+  "total_lots": 64,
+  "lat": 1.3719951,
+  "lon": 103.9683705,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_L0089",
+  "source": "ura",
+  "pp_code": "L0089",
+  "name": "Loyang Lane",
+  "lot_counts": {
+   "Car Lots": 12,
+   "Trailer Lots": 1
+  },
+  "total_lots": 13,
+  "lat": 1.3740936,
+  "lon": 103.9673104,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_L0092",
+  "source": "ura",
+  "pp_code": "L0092",
+  "name": "Little Road",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3382328,
+  "lon": 103.8850955,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_L0096",
+  "source": "ura",
+  "pp_code": "L0096",
+  "name": "Lorong 101 Changi",
+  "lot_counts": {
+   "Motorcycle Lots": 2,
+   "Car Lots": 17
+  },
+  "total_lots": 19,
+  "lat": 1.3152965,
+  "lon": 103.8998052,
+  "car_lots": 17
+ },
+ {
+  "id": "ura_L0097",
+  "source": "ura",
+  "pp_code": "L0097",
+  "name": "Lorong 102 Changi",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.3158089,
+  "lon": 103.9008921,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_L0098",
+  "source": "ura",
+  "pp_code": "L0098",
+  "name": "Lorong 104 Changi",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3165256,
+  "lon": 103.9020436,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_L0099",
+  "source": "ura",
+  "pp_code": "L0099",
+  "name": "Lorong 105 Changi",
+  "lot_counts": {
+   "Car Lots": 2
+  },
+  "total_lots": 2,
+  "lat": 1.3157505,
+  "lon": 103.9028004,
+  "car_lots": 2
+ },
+ {
+  "id": "ura_L0100",
+  "source": "ura",
+  "pp_code": "L0100",
+  "name": "Lorong 106 Changi",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3160401,
+  "lon": 103.9034141,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_L0101",
+  "source": "ura",
+  "pp_code": "L0101",
+  "name": "Lorong 107 Changi",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3165541,
+  "lon": 103.9039335,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_L0102",
+  "source": "ura",
+  "pp_code": "L0102",
+  "name": "Lorong 108 Changi",
+  "lot_counts": {
+   "Car Lots": 9,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 13,
+  "lat": 1.3167031,
+  "lon": 103.9045703,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_L0103",
+  "source": "ura",
+  "pp_code": "L0103",
+  "name": "Langsat Road",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3149799,
+  "lon": 103.9007719,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_L0104",
+  "source": "ura",
+  "pp_code": "L0104",
+  "name": "Lorong Bekukong Off Street",
+  "lot_counts": {
+   "Car Lots": 167,
+   "Motorcycle Lots": 28
+  },
+  "total_lots": 195,
+  "lat": 1.3901977,
+  "lon": 103.9872884,
+  "car_lots": 167
+ },
+ {
+  "id": "ura_L0107",
+  "source": "ura",
+  "pp_code": "L0107",
+  "name": "Lorong Bachok Off Street",
+  "lot_counts": {
+   "Car Lots": 25,
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 31,
+  "lat": 1.313648,
+  "lon": 103.8794573,
+  "car_lots": 25
+ },
+ {
+  "id": "ura_L0109",
+  "source": "ura",
+  "pp_code": "L0109",
+  "name": "Loyang Way 1",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3750168,
+  "lon": 103.9720051,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_L0110",
+  "source": "ura",
+  "pp_code": "L0110",
+  "name": "Loyang Street",
+  "lot_counts": {
+   "Car Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.3744069,
+  "lon": 103.9689307,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_L0113",
+  "source": "ura",
+  "pp_code": "L0113",
+  "name": "Lorong 3 Geylang",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3116617,
+  "lon": 103.8744537,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_L0115",
+  "source": "ura",
+  "pp_code": "L0115",
+  "name": "Lorong 1 Geylang Road Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 6,
+   "Car Lots": 66
+  },
+  "total_lots": 72,
+  "lat": 1.3105731,
+  "lon": 103.8719968,
+  "car_lots": 66
+ },
+ {
+  "id": "ura_L0116",
+  "source": "ura",
+  "pp_code": "L0116",
+  "name": "Lorong 21 Geylang / Geylang Road Off Street",
+  "lot_counts": {
+   "Car Lots": 29
+  },
+  "total_lots": 29,
+  "lat": 1.3129736,
+  "lon": 103.8806235,
+  "car_lots": 29
+ },
+ {
+  "id": "ura_L0117",
+  "source": "ura",
+  "pp_code": "L0117",
+  "name": "Lorong 25 / 25a Geylang Off Street (eps)",
+  "lot_counts": {
+   "Car Lots": 105,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 115,
+  "lat": 1.3154721,
+  "lon": 103.8827985,
+  "car_lots": 105
+ },
+ {
+  "id": "ura_L0118",
+  "source": "ura",
+  "pp_code": "L0118",
+  "name": "Lorong 36 Geylang Off Street (l0118)",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3132379,
+  "lon": 103.8885524,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_L0120",
+  "source": "ura",
+  "pp_code": "L0120",
+  "name": "Lorong Mydin",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.3196612,
+  "lon": 103.9115763,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_L0123",
+  "source": "ura",
+  "pp_code": "L0123",
+  "name": "Lorong 9-11 Geylang (eps)",
+  "lot_counts": {
+   "Car Lots": 56,
+   "Motorcycle Lots": 9
+  },
+  "total_lots": 65,
+  "lat": 1.3132751,
+  "lon": 103.8764806,
+  "car_lots": 56
+ },
+ {
+  "id": "ura_L0124",
+  "source": "ura",
+  "pp_code": "L0124",
+  "name": "Lorong 37 Geyalng Off Street (eps)",
+  "lot_counts": {
+   "Car Lots": 28,
+   "Motorcycle Lots": 17
+  },
+  "total_lots": 45,
+  "lat": 1.3150608,
+  "lon": 103.8894332,
+  "car_lots": 28
+ },
+ {
+  "id": "ura_L0125",
+  "source": "ura",
+  "pp_code": "L0125",
+  "name": "Lorng 31 Geylang Off Street (eps)",
+  "lot_counts": {
+   "Car Lots": 51,
+   "Motorcycle Lots": 21
+  },
+  "total_lots": 72,
+  "lat": 1.3150801,
+  "lon": 103.8872229,
+  "car_lots": 51
+ },
+ {
+  "id": "ura_M0001",
+  "source": "ura",
+  "pp_code": "M0001",
+  "name": "Mackenzie Road",
+  "lot_counts": {
+   "Car Lots": 6,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 9,
+  "lat": 1.306358,
+  "lon": 103.8473874,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_M0003",
+  "source": "ura",
+  "pp_code": "M0003",
+  "name": "Marne  Road",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.3127927,
+  "lon": 103.8570654,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_M0005",
+  "source": "ura",
+  "pp_code": "M0005",
+  "name": "Mayo Street",
+  "lot_counts": {
+   "Motorcycle Lots": 4,
+   "Car Lots": 35
+  },
+  "total_lots": 39,
+  "lat": 1.3041286,
+  "lon": 103.8537174,
+  "car_lots": 35
+ },
+ {
+  "id": "ura_M0006",
+  "source": "ura",
+  "pp_code": "M0006",
+  "name": "Mccallum Street",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.2796285,
+  "lon": 103.8473907,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_M0009",
+  "source": "ura",
+  "pp_code": "M0009",
+  "name": "Mistri Road",
+  "lot_counts": {
+   "Motorcycle Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.2738326,
+  "lon": 103.8460069,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_M0011",
+  "source": "ura",
+  "pp_code": "M0011",
+  "name": "Mosque Street",
+  "lot_counts": {
+   "Car Lots": 61,
+   "Lorry Lots": 5,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 70,
+  "lat": 1.2837698,
+  "lon": 103.8448387,
+  "car_lots": 61
+ },
+ {
+  "id": "ura_M0015",
+  "source": "ura",
+  "pp_code": "M0015",
+  "name": "Mohd Sultan Road",
+  "lot_counts": {
+   "Car Lots": 72,
+   "Motorcycle Lots": 29,
+   "Lorry Lots": 1
+  },
+  "total_lots": 102,
+  "lat": 1.2925958,
+  "lon": 103.840886,
+  "car_lots": 72
+ },
+ {
+  "id": "ura_M0017",
+  "source": "ura",
+  "pp_code": "M0017",
+  "name": "Middle Road Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 2,
+   "Car Lots": 13
+  },
+  "total_lots": 15,
+  "lat": 1.3016665,
+  "lon": 103.8506496,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_M0020",
+  "source": "ura",
+  "pp_code": "M0020",
+  "name": "Maude Road",
+  "lot_counts": {
+   "Car Lots": 31
+  },
+  "total_lots": 31,
+  "lat": 1.3080641,
+  "lon": 103.8582734,
+  "car_lots": 31
+ },
+ {
+  "id": "ura_M0026",
+  "source": "ura",
+  "pp_code": "M0026",
+  "name": "Manila Street",
+  "lot_counts": {
+   "Motorcycle Lots": 11,
+   "Car Lots": 6
+  },
+  "total_lots": 17,
+  "lat": 1.2990495,
+  "lon": 103.8540002,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_M0032",
+  "source": "ura",
+  "pp_code": "M0032",
+  "name": "Marsiling Crescent",
+  "lot_counts": {
+   "Motorcycle Lots": 14,
+   "Lorry Lots": 29
+  },
+  "total_lots": 43,
+  "lat": 1.4482097,
+  "lon": 103.7751081,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_M0038",
+  "source": "ura",
+  "pp_code": "M0038",
+  "name": "Maju Avenue",
+  "lot_counts": {
+   "Car Lots": 43
+  },
+  "total_lots": 43,
+  "lat": 1.3650147,
+  "lon": 103.8656431,
+  "car_lots": 43
+ },
+ {
+  "id": "ura_M0039",
+  "source": "ura",
+  "pp_code": "M0039",
+  "name": "Maju Avenue Service Road",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.3652905,
+  "lon": 103.865557,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_M0040",
+  "source": "ura",
+  "pp_code": "M0040",
+  "name": "Mackenzie Road A Off Street",
+  "lot_counts": {
+   "Car Lots": 109,
+   "Motorcycle Lots": 7
+  },
+  "total_lots": 116,
+  "lat": 1.3051322,
+  "lon": 103.8495599,
+  "car_lots": 109
+ },
+ {
+  "id": "ura_M0043",
+  "source": "ura",
+  "pp_code": "M0043",
+  "name": "Mount Emily Road",
+  "lot_counts": {
+   "Motorcycle Lots": 3,
+   "Car Lots": 2
+  },
+  "total_lots": 5,
+  "lat": 1.3041702,
+  "lon": 103.8494242,
+  "car_lots": 2
+ },
+ {
+  "id": "ura_M0048",
+  "source": "ura",
+  "pp_code": "M0048",
+  "name": "Martaban Road",
+  "lot_counts": {
+   "Car Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.3237405,
+  "lon": 103.8510807,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_M0049",
+  "source": "ura",
+  "pp_code": "M0049",
+  "name": "Minbu Road",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.3235396,
+  "lon": 103.8498936,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_M0050",
+  "source": "ura",
+  "pp_code": "M0050",
+  "name": "Mnd Complex (surface)",
+  "lot_counts": {
+   "Motorcycle Lots": 77,
+   "Car Lots": 104
+  },
+  "total_lots": 181,
+  "lat": 1.2797462,
+  "lon": 103.8460985,
+  "car_lots": 104
+ },
+ {
+  "id": "ura_M0055",
+  "source": "ura",
+  "pp_code": "M0055",
+  "name": "Moonstone Lane",
+  "lot_counts": {
+   "Car Lots": 29
+  },
+  "total_lots": 29,
+  "lat": 1.327045,
+  "lon": 103.8664193,
+  "car_lots": 29
+ },
+ {
+  "id": "ura_M0058",
+  "source": "ura",
+  "pp_code": "M0058",
+  "name": "Macpherson Road",
+  "lot_counts": {
+   "Car Lots": 28,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 36,
+  "lat": 1.3323219,
+  "lon": 103.8838476,
+  "car_lots": 28
+ },
+ {
+  "id": "ura_M0059",
+  "source": "ura",
+  "pp_code": "M0059",
+  "name": "Mackenzie Road B Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 33,
+   "Lorry Lots": 76,
+   "Car Lots": 82
+  },
+  "total_lots": 191,
+  "lat": 1.3059893,
+  "lon": 103.8473351,
+  "car_lots": 82
+ },
+ {
+  "id": "ura_M0063",
+  "source": "ura",
+  "pp_code": "M0063",
+  "name": "Mayne Road",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.3059037,
+  "lon": 103.8488617,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_M0066",
+  "source": "ura",
+  "pp_code": "M0066",
+  "name": "Mactaggart Road",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3345567,
+  "lon": 103.884762,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_M0072",
+  "source": "ura",
+  "pp_code": "M0072",
+  "name": "Mandalay Road",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3227279,
+  "lon": 103.8498991,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_M0076",
+  "source": "ura",
+  "pp_code": "M0076",
+  "name": "Minbu Road Off Street",
+  "lot_counts": {
+   "Car Lots": 111,
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 123,
+  "lat": 1.3252199,
+  "lon": 103.8487885,
+  "car_lots": 111
+ },
+ {
+  "id": "ura_M0077",
+  "source": "ura",
+  "pp_code": "M0077",
+  "name": "Mohamed Sultan / River Valley Road",
+  "lot_counts": {
+   "Car Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.2942018,
+  "lon": 103.8415753,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_M0078",
+  "source": "ura",
+  "pp_code": "M0078",
+  "name": "Maritime Square D Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 396,
+   "Car Lots": 258
+  },
+  "total_lots": 654,
+  "lat": 1.2664817,
+  "lon": 103.8205142,
+  "car_lots": 258
+ },
+ {
+  "id": "ura_M0079",
+  "source": "ura",
+  "pp_code": "M0079",
+  "name": "Marsiling Crescent  Heavy Vehicle Park",
+  "lot_counts": {
+   "Motorcycle Lots": 170,
+   "Lorry Lots": 593
+  },
+  "total_lots": 763,
+  "lat": 1.4475027,
+  "lon": 103.7766549,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_M0080",
+  "source": "ura",
+  "pp_code": "M0080",
+  "name": "Marshall Road",
+  "lot_counts": {
+   "Car Lots": 37,
+   "Motorcycle Lots": 7
+  },
+  "total_lots": 44,
+  "lat": 1.3052236,
+  "lon": 103.9022576,
+  "car_lots": 37
+ },
+ {
+  "id": "ura_M0084",
+  "source": "ura",
+  "pp_code": "M0084",
+  "name": "Marina View Off Street",
+  "lot_counts": {
+   "Car Lots": 44,
+   "Motorcycle Lots": 16
+  },
+  "total_lots": 60,
+  "lat": 1.274578,
+  "lon": 103.8494398,
+  "car_lots": 44
+ },
+ {
+  "id": "ura_M0085",
+  "source": "ura",
+  "pp_code": "M0085",
+  "name": "Martin Place / Muthuraman Chetty Road",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 19
+  },
+  "total_lots": 24,
+  "lat": 1.2929421,
+  "lon": 103.8382127,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_M0088",
+  "source": "ura",
+  "pp_code": "M0088",
+  "name": "Margaret Drive Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 13,
+   "Car Lots": 28
+  },
+  "total_lots": 41,
+  "lat": 1.3004157,
+  "lon": 103.8029149,
+  "car_lots": 28
+ },
+ {
+  "id": "ura_N0003",
+  "source": "ura",
+  "pp_code": "N0003",
+  "name": "North Bridge Road (arab Street / Jalan Sultan)",
+  "lot_counts": {
+   "Car Lots": 32,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 36,
+  "lat": 1.3034009,
+  "lon": 103.8595208,
+  "car_lots": 32
+ },
+ {
+  "id": "ura_N0005",
+  "source": "ura",
+  "pp_code": "N0005",
+  "name": "New Industrial Road",
+  "lot_counts": {
+   "Car Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3434144,
+  "lon": 103.8857743,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_N0006",
+  "source": "ura",
+  "pp_code": "N0006",
+  "name": "Neil Road Off Street",
+  "lot_counts": {
+   "Car Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.2792974,
+  "lon": 103.8419055,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_N0010",
+  "source": "ura",
+  "pp_code": "N0010",
+  "name": "Niven Road",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 15
+  },
+  "total_lots": 20,
+  "lat": 1.3035637,
+  "lon": 103.8495782,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_N0011",
+  "source": "ura",
+  "pp_code": "N0011",
+  "name": "Norris Road",
+  "lot_counts": {
+   "Car Lots": 17,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 20,
+  "lat": 1.3080346,
+  "lon": 103.8537293,
+  "car_lots": 17
+ },
+ {
+  "id": "ura_N0012",
+  "source": "ura",
+  "pp_code": "N0012",
+  "name": "North Bridge Road Market Off Street",
+  "lot_counts": {
+   "Car Lots": 83,
+   "Motorcycle Lots": 50,
+   "Lorry Lots": 1
+  },
+  "total_lots": 134,
+  "lat": 1.305957,
+  "lon": 103.8636464,
+  "car_lots": 83
+ },
+ {
+  "id": "ura_N0013",
+  "source": "ura",
+  "pp_code": "N0013",
+  "name": "North Bridge Road Off Street",
+  "lot_counts": {
+   "Car Lots": 92,
+   "Motorcycle Lots": 20
+  },
+  "total_lots": 112,
+  "lat": 1.3003606,
+  "lon": 103.856596,
+  "car_lots": 92
+ },
+ {
+  "id": "ura_N0014",
+  "source": "ura",
+  "pp_code": "N0014",
+  "name": "North Canal Road",
+  "lot_counts": {
+   "Car Lots": 21
+  },
+  "total_lots": 21,
+  "lat": 1.2863981,
+  "lon": 103.8481633,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_N0016",
+  "source": "ura",
+  "pp_code": "N0016",
+  "name": "Neythal Road",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 53,
+   "Trailer Lots": 9
+  },
+  "total_lots": 67,
+  "lat": 1.3255756,
+  "lon": 103.7008785,
+  "car_lots": 53
+ },
+ {
+  "id": "ura_N0020",
+  "source": "ura",
+  "pp_code": "N0020",
+  "name": "New Market Road",
+  "lot_counts": {
+   "Motorcycle Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.2871718,
+  "lon": 103.8447679,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_N0023",
+  "source": "ura",
+  "pp_code": "N0023",
+  "name": "Netheravon Road",
+  "lot_counts": {
+   "Car Lots": 16,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 21,
+  "lat": 1.3912394,
+  "lon": 103.9852685,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_N0047",
+  "source": "ura",
+  "pp_code": "N0047",
+  "name": "Neil Road",
+  "lot_counts": {
+   "Car Lots": 7
+  },
+  "total_lots": 7,
+  "lat": 1.2792802,
+  "lon": 103.8421429,
+  "car_lots": 7
+ },
+ {
+  "id": "ura_N0048",
+  "source": "ura",
+  "pp_code": "N0048",
+  "name": "Neo Pee Teck Lane",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.2930511,
+  "lon": 103.769431,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_N0053",
+  "source": "ura",
+  "pp_code": "N0053",
+  "name": "North Coast Drive",
+  "lot_counts": {
+   "Trailer Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.4567153,
+  "lon": 103.7936574,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_O0004",
+  "source": "ura",
+  "pp_code": "O0004",
+  "name": "Old Upper Thomson Road",
+  "lot_counts": {
+   "Car Lots": 53
+  },
+  "total_lots": 53,
+  "lat": 1.3772428,
+  "lon": 103.8273392,
+  "car_lots": 53
+ },
+ {
+  "id": "ura_O0005",
+  "source": "ura",
+  "pp_code": "O0005",
+  "name": "Old Upper Thomson Road Off Street",
+  "lot_counts": {
+   "Car Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.3774987,
+  "lon": 103.8280338,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_O0007",
+  "source": "ura",
+  "pp_code": "O0007",
+  "name": "Owen Road / Dorest Road/ Cambridge Road",
+  "lot_counts": {
+   "Car Lots": 11,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 21,
+  "lat": 1.3161002,
+  "lon": 103.8507528,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_O0008",
+  "source": "ura",
+  "pp_code": "O0008",
+  "name": "Old Airport Road",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3069839,
+  "lon": 103.8838647,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_O0010",
+  "source": "ura",
+  "pp_code": "O0010",
+  "name": "Outram Road",
+  "lot_counts": {
+   "Car Lots": 27,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 32,
+  "lat": 1.2854454,
+  "lon": 103.8347494,
+  "car_lots": 27
+ },
+ {
+  "id": "ura_O0013",
+  "source": "ura",
+  "pp_code": "O0013",
+  "name": "Outram Hill",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 11
+  },
+  "total_lots": 21,
+  "lat": 1.2848083,
+  "lon": 103.8360967,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_O0026",
+  "source": "ura",
+  "pp_code": "O0026",
+  "name": "Opal Crescent",
+  "lot_counts": {
+   "Car Lots": 48
+  },
+  "total_lots": 48,
+  "lat": 1.3277899,
+  "lon": 103.8668756,
+  "car_lots": 48
+ },
+ {
+  "id": "ura_O0027",
+  "source": "ura",
+  "pp_code": "O0027",
+  "name": "Onan Road",
+  "lot_counts": {
+   "Car Lots": 52,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 57,
+  "lat": 1.3129346,
+  "lon": 103.8990914,
+  "car_lots": 52
+ },
+ {
+  "id": "ura_O0029",
+  "source": "ura",
+  "pp_code": "O0029",
+  "name": "Onan Road Off Street",
+  "lot_counts": {
+   "Car Lots": 13,
+   "Motorcycle Lots": 2
+  },
+  "total_lots": 15,
+  "lat": 1.3098088,
+  "lon": 103.9015097,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_O0031",
+  "source": "ura",
+  "pp_code": "O0031",
+  "name": "Onan Road / Joo Chiat Road Off Street",
+  "lot_counts": {
+   "Car Lots": 20
+  },
+  "total_lots": 20,
+  "lat": 1.3142109,
+  "lon": 103.8985591,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_P0002",
+  "source": "ura",
+  "pp_code": "P0002",
+  "name": "Pahang Street",
+  "lot_counts": {
+   "Motorcycle Lots": 3,
+   "Car Lots": 24
+  },
+  "total_lots": 27,
+  "lat": 1.3020156,
+  "lon": 103.8610642,
+  "car_lots": 24
+ },
+ {
+  "id": "ura_P0006",
+  "source": "ura",
+  "pp_code": "P0006",
+  "name": "Peck Seah Street",
+  "lot_counts": {
+   "Motorcycle Lots": 11,
+   "Lorry Lots": 3,
+   "Car Lots": 4
+  },
+  "total_lots": 18,
+  "lat": 1.2779579,
+  "lon": 103.8449766,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_P0009",
+  "source": "ura",
+  "pp_code": "P0009",
+  "name": "Penang Lane",
+  "lot_counts": {
+   "Motorcycle Lots": 28,
+   "Car Lots": 13
+  },
+  "total_lots": 41,
+  "lat": 1.2974132,
+  "lon": 103.8444025,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_P0011",
+  "source": "ura",
+  "pp_code": "P0011",
+  "name": "Petain Road (serangoon Road / Jalan Besar)",
+  "lot_counts": {
+   "Car Lots": 62
+  },
+  "total_lots": 62,
+  "lat": 1.3122739,
+  "lon": 103.8581567,
+  "car_lots": 62
+ },
+ {
+  "id": "ura_P0013",
+  "source": "ura",
+  "pp_code": "P0013",
+  "name": "Prince Edward Road / Shenton Way Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 66,
+   "Car Lots": 84
+  },
+  "total_lots": 150,
+  "lat": 1.2751055,
+  "lon": 103.8480132,
+  "car_lots": 84
+ },
+ {
+  "id": "ura_P0015",
+  "source": "ura",
+  "pp_code": "P0015",
+  "name": "Prinsep Street",
+  "lot_counts": {
+   "Motorcycle Lots": 26,
+   "Car Lots": 50,
+   "Coach Lots": 1,
+   "Lorry Lots": 2
+  },
+  "total_lots": 79,
+  "lat": 1.3015015,
+  "lon": 103.8511654,
+  "car_lots": 50
+ },
+ {
+  "id": "ura_P0018",
+  "source": "ura",
+  "pp_code": "P0018",
+  "name": "Purvis Street",
+  "lot_counts": {
+   "Motorcycle Lots": 6,
+   "Car Lots": 43
+  },
+  "total_lots": 49,
+  "lat": 1.2964986,
+  "lon": 103.8551764,
+  "car_lots": 43
+ },
+ {
+  "id": "ura_P0023",
+  "source": "ura",
+  "pp_code": "P0023",
+  "name": "Plumer Road",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3096794,
+  "lon": 103.858505,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_P0024",
+  "source": "ura",
+  "pp_code": "P0024",
+  "name": "Prince Of Wales Road",
+  "lot_counts": {
+   "Car Lots": 23
+  },
+  "total_lots": 23,
+  "lat": 1.3233969,
+  "lon": 103.8086812,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_P0025",
+  "source": "ura",
+  "pp_code": "P0025",
+  "name": "Princess Of Wales Road",
+  "lot_counts": {
+   "Car Lots": 2
+  },
+  "total_lots": 2,
+  "lat": 1.3238322,
+  "lon": 103.8084635,
+  "car_lots": 2
+ },
+ {
+  "id": "ura_P0028",
+  "source": "ura",
+  "pp_code": "P0028",
+  "name": "Prome Road",
+  "lot_counts": {
+   "Car Lots": 2
+  },
+  "total_lots": 2,
+  "lat": 1.3253971,
+  "lon": 103.8495777,
+  "car_lots": 2
+ },
+ {
+  "id": "ura_P0031",
+  "source": "ura",
+  "pp_code": "P0031",
+  "name": "Pepys Road Off Street",
+  "lot_counts": {
+   "Car Lots": 30,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 35,
+  "lat": 1.2763623,
+  "lon": 103.7937123,
+  "car_lots": 30
+ },
+ {
+  "id": "ura_P0035",
+  "source": "ura",
+  "pp_code": "P0035",
+  "name": "Pheng Geck Avenue",
+  "lot_counts": {
+   "Car Lots": 58
+  },
+  "total_lots": 58,
+  "lat": 1.3318877,
+  "lon": 103.8699051,
+  "car_lots": 58
+ },
+ {
+  "id": "ura_P0036",
+  "source": "ura",
+  "pp_code": "P0036",
+  "name": "Puay Hee Avenue",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3300826,
+  "lon": 103.870305,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_P0038",
+  "source": "ura",
+  "pp_code": "P0038",
+  "name": "Perak Road",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3053492,
+  "lon": 103.8538286,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_P0048",
+  "source": "ura",
+  "pp_code": "P0048",
+  "name": "Pearl Bank Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 12,
+   "Car Lots": 19
+  },
+  "total_lots": 31,
+  "lat": 1.2833779,
+  "lon": 103.8405502,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_P0049",
+  "source": "ura",
+  "pp_code": "P0049",
+  "name": "Penshurt Place",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3637847,
+  "lon": 103.8646639,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_P0051",
+  "source": "ura",
+  "pp_code": "P0051",
+  "name": "Penhas Road",
+  "lot_counts": {
+   "Car Lots": 23
+  },
+  "total_lots": 23,
+  "lat": 1.3093865,
+  "lon": 103.8627792,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_P0054",
+  "source": "ura",
+  "pp_code": "P0054",
+  "name": "Pasir Panjang Rd Food Centre",
+  "lot_counts": {
+   "Motorcycle Lots": 32,
+   "Car Lots": 58
+  },
+  "total_lots": 90,
+  "lat": 1.2761462,
+  "lon": 103.7912,
+  "car_lots": 58
+ },
+ {
+  "id": "ura_P0055",
+  "source": "ura",
+  "pp_code": "P0055",
+  "name": "Petain Road (jalan Besar / Tyrwhitt Road)",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.3110044,
+  "lon": 103.859545,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_P0072",
+  "source": "ura",
+  "pp_code": "P0072",
+  "name": "Pennefather Road",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3093495,
+  "lon": 103.9010349,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_P0075",
+  "source": "ura",
+  "pp_code": "P0075",
+  "name": "Penhas Road / Lavender Street Off Street",
+  "lot_counts": {
+   "Car Lots": 29
+  },
+  "total_lots": 29,
+  "lat": 1.3100566,
+  "lon": 103.8627802,
+  "car_lots": 29
+ },
+ {
+  "id": "ura_P0076",
+  "source": "ura",
+  "pp_code": "P0076",
+  "name": "Pandan Road",
+  "lot_counts": {
+   "Car Lots": 90,
+   "Trailer Lots": 15,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 115,
+  "lat": 1.2997094,
+  "lon": 103.7517099,
+  "car_lots": 90
+ },
+ {
+  "id": "ura_P0077",
+  "source": "ura",
+  "pp_code": "P0077",
+  "name": "Pandan Avenue",
+  "lot_counts": {
+   "Car Lots": 15,
+   "Trailer Lots": 5
+  },
+  "total_lots": 20,
+  "lat": 1.302352,
+  "lon": 103.7495791,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_P0078",
+  "source": "ura",
+  "pp_code": "P0078",
+  "name": "Pandan Crescent",
+  "lot_counts": {
+   "Trailer Lots": 8,
+   "Car Lots": 2
+  },
+  "total_lots": 10,
+  "lat": 1.3046532,
+  "lon": 103.7582412,
+  "car_lots": 2
+ },
+ {
+  "id": "ura_P0081",
+  "source": "ura",
+  "pp_code": "P0081",
+  "name": "Pioneer Sector 1",
+  "lot_counts": {
+   "Car Lots": 107,
+   "Motorcycle Lots": 65
+  },
+  "total_lots": 172,
+  "lat": 1.3036816,
+  "lon": 103.6563619,
+  "car_lots": 107
+ },
+ {
+  "id": "ura_P0082",
+  "source": "ura",
+  "pp_code": "P0082",
+  "name": "Pioneer Sector 2",
+  "lot_counts": {
+   "Car Lots": 63,
+   "Lorry Lots": 6,
+   "Motorcycle Lots": 106,
+   "Trailer Lots": 12
+  },
+  "total_lots": 187,
+  "lat": 1.29744,
+  "lon": 103.6651075,
+  "car_lots": 63
+ },
+ {
+  "id": "ura_P0083",
+  "source": "ura",
+  "pp_code": "P0083",
+  "name": "Pioneer Sector 3",
+  "lot_counts": {
+   "Trailer Lots": 8,
+   "Car Lots": 18,
+   "Motorcycle Lots": 15
+  },
+  "total_lots": 41,
+  "lat": 1.3068796,
+  "lon": 103.6620507,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_P0084",
+  "source": "ura",
+  "pp_code": "P0084",
+  "name": "Pioneer Sector Lane",
+  "lot_counts": {
+   "Trailer Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.2978964,
+  "lon": 103.6668484,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_P0086",
+  "source": "ura",
+  "pp_code": "P0086",
+  "name": "Pandan Loop",
+  "lot_counts": {
+   "Car Lots": 57
+  },
+  "total_lots": 57,
+  "lat": 1.3127999,
+  "lon": 103.751217,
+  "car_lots": 57
+ },
+ {
+  "id": "ura_P0093",
+  "source": "ura",
+  "pp_code": "P0093",
+  "name": "Pasir Panjang Road Off Street",
+  "lot_counts": {
+   "Car Lots": 19,
+   "Motorcycle Lots": 9
+  },
+  "total_lots": 28,
+  "lat": 1.2767173,
+  "lon": 103.7956426,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_P0094",
+  "source": "ura",
+  "pp_code": "P0094",
+  "name": "Pasir Panjang Road / South Buona Vista Road",
+  "lot_counts": {
+   "Car Lots": 26,
+   "Motorcycle Lots": 13
+  },
+  "total_lots": 39,
+  "lat": 1.2788743,
+  "lon": 103.7856273,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_P0095",
+  "source": "ura",
+  "pp_code": "P0095",
+  "name": "Penjuru Close",
+  "lot_counts": {
+   "Car Lots": 11,
+   "Trailer Lots": 10
+  },
+  "total_lots": 21,
+  "lat": 1.3127884,
+  "lon": 103.731687,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_P0096",
+  "source": "ura",
+  "pp_code": "P0096",
+  "name": "Penang Road Off Street",
+  "lot_counts": {
+   "Car Lots": 19
+  },
+  "total_lots": 19,
+  "lat": 1.2998529,
+  "lon": 103.8421207,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_P0099",
+  "source": "ura",
+  "pp_code": "P0099",
+  "name": "Pioneer Sector Walk",
+  "lot_counts": {
+   "Car Lots": 25
+  },
+  "total_lots": 25,
+  "lat": 1.2958212,
+  "lon": 103.6673606,
+  "car_lots": 25
+ },
+ {
+  "id": "ura_P0102",
+  "source": "ura",
+  "pp_code": "P0102",
+  "name": "Pandan Gardens",
+  "lot_counts": {
+   "Lorry Lots": 20
+  },
+  "total_lots": 20,
+  "lat": 1.3213794,
+  "lon": 103.7481702,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_P0103",
+  "source": "ura",
+  "pp_code": "P0103",
+  "name": "Pioneer Road Heavy Vehicle Park",
+  "lot_counts": {
+   "Trailer Lots": 573
+  },
+  "total_lots": 573,
+  "lat": 1.313234,
+  "lon": 103.683561,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_P0106",
+  "source": "ura",
+  "pp_code": "P0106",
+  "name": "Pasir Panjang Road / Clementi Road Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 3,
+   "Car Lots": 47
+  },
+  "total_lots": 50,
+  "lat": 1.2916216,
+  "lon": 103.7680996,
+  "car_lots": 47
+ },
+ {
+  "id": "ura_P0109",
+  "source": "ura",
+  "pp_code": "P0109",
+  "name": "Pasir Ris Park Car Park E Off Street",
+  "lot_counts": {
+   "Car Lots": 26,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 36,
+  "lat": 1.3846325,
+  "lon": 103.9437575,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_P0111",
+  "source": "ura",
+  "pp_code": "P0111",
+  "name": "Pahang Street Off Street (eps)",
+  "lot_counts": {
+   "Car Lots": 32
+  },
+  "total_lots": 32,
+  "lat": 1.3018162,
+  "lon": 103.8610235,
+  "car_lots": 32
+ },
+ {
+  "id": "ura_P0113",
+  "source": "ura",
+  "pp_code": "P0113",
+  "name": "Pasir Panjang Food Centre (temp) Off Street Car Park",
+  "lot_counts": {
+   "Car Lots": 76,
+   "Motorcycle Lots": 16
+  },
+  "total_lots": 92,
+  "lat": 1.2753948,
+  "lon": 103.7923927,
+  "car_lots": 76
+ },
+ {
+  "id": "ura_P0114",
+  "source": "ura",
+  "pp_code": "P0114",
+  "name": "Pasir Laba Road Trailer Park",
+  "lot_counts": {
+   "Motorcycle Lots": 65,
+   "Trailer Lots": 442
+  },
+  "total_lots": 507,
+  "lat": 1.3290532,
+  "lon": 103.6682753,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_P0117",
+  "source": "ura",
+  "pp_code": "P0117",
+  "name": "Peck Seah Street Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 65,
+   "Car Lots": 150
+  },
+  "total_lots": 215,
+  "lat": 1.2777617,
+  "lon": 103.8453696,
+  "car_lots": 150
+ },
+ {
+  "id": "ura_Q0001",
+  "source": "ura",
+  "pp_code": "Q0001",
+  "name": "Queen Street",
+  "lot_counts": {
+   "Motorcycle Lots": 32,
+   "Car Lots": 6
+  },
+  "total_lots": 38,
+  "lat": 1.2995668,
+  "lon": 103.8534937,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_Q0002",
+  "source": "ura",
+  "pp_code": "Q0002",
+  "name": "Queen Street (arab Street / Rochor Road)",
+  "lot_counts": {
+   "Car Lots": 7
+  },
+  "total_lots": 7,
+  "lat": 1.3029831,
+  "lon": 103.8563116,
+  "car_lots": 7
+ },
+ {
+  "id": "ura_Q0004",
+  "source": "ura",
+  "pp_code": "Q0004",
+  "name": "Quality Road",
+  "lot_counts": {
+   "Car Lots": 30
+  },
+  "total_lots": 30,
+  "lat": 1.3325558,
+  "lon": 103.7104918,
+  "car_lots": 30
+ },
+ {
+  "id": "ura_Q0006",
+  "source": "ura",
+  "pp_code": "Q0006",
+  "name": "Queen Street Off Street",
+  "lot_counts": {
+   "Car Lots": 91,
+   "Motorcycle Lots": 19
+  },
+  "total_lots": 110,
+  "lat": 1.2999484,
+  "lon": 103.8533357,
+  "car_lots": 91
+ },
+ {
+  "id": "ura_Q0008",
+  "source": "ura",
+  "pp_code": "Q0008",
+  "name": "Queensway Off Street (ridout Tea Garden)",
+  "lot_counts": {
+   "Car Lots": 66,
+   "Motorcycle Lots": 17
+  },
+  "total_lots": 83,
+  "lat": 1.3046931,
+  "lon": 103.8021156,
+  "car_lots": 66
+ },
+ {
+  "id": "ura_R0001",
+  "source": "ura",
+  "pp_code": "R0001",
+  "name": "Race Course Lane",
+  "lot_counts": {
+   "Car Lots": 6,
+   "Lorry Lots": 4
+  },
+  "total_lots": 10,
+  "lat": 1.3096659,
+  "lon": 103.8530258,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_R0002",
+  "source": "ura",
+  "pp_code": "R0002",
+  "name": "Race Course Road",
+  "lot_counts": {
+   "Car Lots": 55,
+   "Motorcycle Lots": 16
+  },
+  "total_lots": 71,
+  "lat": 1.3145473,
+  "lon": 103.8564305,
+  "car_lots": 55
+ },
+ {
+  "id": "ura_R0003",
+  "source": "ura",
+  "pp_code": "R0003",
+  "name": "Rangoon Road",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 80
+  },
+  "total_lots": 85,
+  "lat": 1.3160819,
+  "lon": 103.8532704,
+  "car_lots": 80
+ },
+ {
+  "id": "ura_R0006",
+  "source": "ura",
+  "pp_code": "R0006",
+  "name": "Riverside Road",
+  "lot_counts": {
+   "Lorry Lots": 70
+  },
+  "total_lots": 70,
+  "lat": 1.44457,
+  "lon": 103.7803041,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_R0010",
+  "source": "ura",
+  "pp_code": "R0010",
+  "name": "River Valley Road (bet. Tank Rd / Zion Rd)",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.2942557,
+  "lon": 103.8419594,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_R0011",
+  "source": "ura",
+  "pp_code": "R0011",
+  "name": "Roberts Lane",
+  "lot_counts": {
+   "Car Lots": 39,
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 45,
+  "lat": 1.3106246,
+  "lon": 103.8535921,
+  "car_lots": 39
+ },
+ {
+  "id": "ura_R0015",
+  "source": "ura",
+  "pp_code": "R0015",
+  "name": "Rowell Road",
+  "lot_counts": {
+   "Car Lots": 88
+  },
+  "total_lots": 88,
+  "lat": 1.3084115,
+  "lon": 103.8551499,
+  "car_lots": 88
+ },
+ {
+  "id": "ura_R0028",
+  "source": "ura",
+  "pp_code": "R0028",
+  "name": "Ruby Lane",
+  "lot_counts": {
+   "Car Lots": 19
+  },
+  "total_lots": 19,
+  "lat": 1.3274704,
+  "lon": 103.8669701,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_R0036",
+  "source": "ura",
+  "pp_code": "R0036",
+  "name": "Race Course Road (bet Bukit Timah Road / Rangoon Road)",
+  "lot_counts": {
+   "Car Lots": 33,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 41,
+  "lat": 1.3088631,
+  "lon": 103.8512781,
+  "car_lots": 33
+ },
+ {
+  "id": "ura_R0037",
+  "source": "ura",
+  "pp_code": "R0037",
+  "name": "Rangoon Lane Off Street",
+  "lot_counts": {
+   "Car Lots": 21,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 29,
+  "lat": 1.316531,
+  "lon": 103.8542174,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_R0039",
+  "source": "ura",
+  "pp_code": "R0039",
+  "name": "Rangoon Lane",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.3165847,
+  "lon": 103.8539152,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_R0040",
+  "source": "ura",
+  "pp_code": "R0040",
+  "name": "Raffles Boulevard Coach Park",
+  "lot_counts": {
+   "Lorry Lots": 51,
+   "Motorcycle Lots": 30
+  },
+  "total_lots": 81,
+  "lat": 1.2917908,
+  "lon": 103.8620474,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_S0001",
+  "source": "ura",
+  "pp_code": "S0001",
+  "name": "Sam Leong Road",
+  "lot_counts": {
+   "Car Lots": 48,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 56,
+  "lat": 1.3094616,
+  "lon": 103.8567708,
+  "car_lots": 48
+ },
+ {
+  "id": "ura_S0002",
+  "source": "ura",
+  "pp_code": "S0002",
+  "name": "Seah Street",
+  "lot_counts": {
+   "Motorcycle Lots": 4,
+   "Car Lots": 8
+  },
+  "total_lots": 12,
+  "lat": 1.2959839,
+  "lon": 103.8548228,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_S0005",
+  "source": "ura",
+  "pp_code": "S0005",
+  "name": "Serangoon Road (kitchener Road / Lavender Street)",
+  "lot_counts": {
+   "Car Lots": 42
+  },
+  "total_lots": 42,
+  "lat": 1.3141524,
+  "lon": 103.8573598,
+  "car_lots": 42
+ },
+ {
+  "id": "ura_S0007",
+  "source": "ura",
+  "pp_code": "S0007",
+  "name": "Starlight Road / Terrace",
+  "lot_counts": {
+   "Car Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.3137674,
+  "lon": 103.8538138,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_S0009",
+  "source": "ura",
+  "pp_code": "S0009",
+  "name": "Short Street",
+  "lot_counts": {
+   "Car Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.3028316,
+  "lon": 103.8509796,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_S0011",
+  "source": "ura",
+  "pp_code": "S0011",
+  "name": "Sophia Road",
+  "lot_counts": {
+   "Motorcycle Lots": 9,
+   "Car Lots": 3
+  },
+  "total_lots": 12,
+  "lat": 1.3017451,
+  "lon": 103.8486672,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_S0015",
+  "source": "ura",
+  "pp_code": "S0015",
+  "name": "Stanley Street",
+  "lot_counts": {
+   "Car Lots": 20,
+   "Motorcycle Lots": 5,
+   "Lorry Lots": 2
+  },
+  "total_lots": 27,
+  "lat": 1.2803641,
+  "lon": 103.8480866,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_S0018",
+  "source": "ura",
+  "pp_code": "S0018",
+  "name": "Sultan Gate",
+  "lot_counts": {
+   "Car Lots": 21
+  },
+  "total_lots": 21,
+  "lat": 1.3019027,
+  "lon": 103.860502,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_S0020",
+  "source": "ura",
+  "pp_code": "S0020",
+  "name": "Sembawang Hills Food Centre Off Street",
+  "lot_counts": {
+   "Car Lots": 18,
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 30,
+  "lat": 1.3723368,
+  "lon": 103.8288303,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_S0021",
+  "source": "ura",
+  "pp_code": "S0021",
+  "name": "Syed Alwi Road (jalan Besar / Serangoon Road)",
+  "lot_counts": {
+   "Car Lots": 42,
+   "Motorcycle Lots": 17
+  },
+  "total_lots": 59,
+  "lat": 1.3093038,
+  "lon": 103.8559652,
+  "car_lots": 42
+ },
+ {
+  "id": "ura_S0022",
+  "source": "ura",
+  "pp_code": "S0022",
+  "name": "Syed Alwi Road (jalan Besar / Rochor Canal Road)",
+  "lot_counts": {
+   "Car Lots": 43
+  },
+  "total_lots": 43,
+  "lat": 1.3075597,
+  "lon": 103.8578878,
+  "car_lots": 43
+ },
+ {
+  "id": "ura_S0023",
+  "source": "ura",
+  "pp_code": "S0023",
+  "name": "Sturdee Road",
+  "lot_counts": {
+   "Car Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.3126037,
+  "lon": 103.8588751,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_S0026",
+  "source": "ura",
+  "pp_code": "S0026",
+  "name": "Service Road Off Bukit Timah Road / Sixth Ave",
+  "lot_counts": {
+   "Car Lots": 10,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 15,
+  "lat": 1.331145,
+  "lon": 103.7962899,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_S0027",
+  "source": "ura",
+  "pp_code": "S0027",
+  "name": "Siak Kew Avenue",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3298872,
+  "lon": 103.8706338,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_S0032",
+  "source": "ura",
+  "pp_code": "S0032",
+  "name": "Saunders Road",
+  "lot_counts": {
+   "Car Lots": 32
+  },
+  "total_lots": 32,
+  "lat": 1.3042245,
+  "lon": 103.8388468,
+  "car_lots": 32
+ },
+ {
+  "id": "ura_S0033",
+  "source": "ura",
+  "pp_code": "S0033",
+  "name": "Service Road Off Choa Chu Kang Avenue 1",
+  "lot_counts": {
+   "Car Lots": 42,
+   "Motorcycle Lots": 22
+  },
+  "total_lots": 64,
+  "lat": 1.3768453,
+  "lon": 103.7455474,
+  "car_lots": 42
+ },
+ {
+  "id": "ura_S0035",
+  "source": "ura",
+  "pp_code": "S0035",
+  "name": "Service Road Off Queen Street (bet. Queen St / Waterloo St)",
+  "lot_counts": {
+   "Car Lots": 3,
+   "Coach Lots": 3
+  },
+  "total_lots": 6,
+  "lat": 1.2990436,
+  "lon": 103.8525268,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_S0039",
+  "source": "ura",
+  "pp_code": "S0039",
+  "name": "Sims Avenue Service Road",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3143358,
+  "lon": 103.8773996,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_S0040",
+  "source": "ura",
+  "pp_code": "S0040",
+  "name": "Second Chin Bee Road",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3331483,
+  "lon": 103.714098,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_S0043",
+  "source": "ura",
+  "pp_code": "S0043",
+  "name": "Sixth Avenue",
+  "lot_counts": {
+   "Car Lots": 21
+  },
+  "total_lots": 21,
+  "lat": 1.3310332,
+  "lon": 103.7948734,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_S0044",
+  "source": "ura",
+  "pp_code": "S0044",
+  "name": "Seletar North Link",
+  "lot_counts": {
+   "Lorry Lots": 20,
+   "Motorcycle Lots": 9
+  },
+  "total_lots": 29,
+  "lat": 1.4214494,
+  "lon": 103.8898683,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_S0045",
+  "source": "ura",
+  "pp_code": "S0045",
+  "name": "Sing Avenue",
+  "lot_counts": {
+   "Car Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.3154609,
+  "lon": 103.8540859,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_S0046",
+  "source": "ura",
+  "pp_code": "S0046",
+  "name": "Sing Joo Walk",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.314899,
+  "lon": 103.855021,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_S0047",
+  "source": "ura",
+  "pp_code": "S0047",
+  "name": "Shan Road",
+  "lot_counts": {
+   "Car Lots": 11,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 21,
+  "lat": 1.3249594,
+  "lon": 103.8467613,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_S0048",
+  "source": "ura",
+  "pp_code": "S0048",
+  "name": "Shaw Road",
+  "lot_counts": {
+   "Car Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.3366728,
+  "lon": 103.8846011,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_S0049",
+  "source": "ura",
+  "pp_code": "S0049",
+  "name": "Serangoon Rd / Lavender Street Off Street",
+  "lot_counts": {
+   "Car Lots": 112,
+   "Motorcycle Lots": 27
+  },
+  "total_lots": 139,
+  "lat": 1.3148797,
+  "lon": 103.8585923,
+  "car_lots": 112
+ },
+ {
+  "id": "ura_S0050",
+  "source": "ura",
+  "pp_code": "S0050",
+  "name": "Siang Kuang Avenue",
+  "lot_counts": {
+   "Car Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3295859,
+  "lon": 103.8717475,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_S0055",
+  "source": "ura",
+  "pp_code": "S0055",
+  "name": "Serangoon Garden Market Off Street",
+  "lot_counts": {
+   "Car Lots": 105,
+   "Motorcycle Lots": 39
+  },
+  "total_lots": 144,
+  "lat": 1.3629616,
+  "lon": 103.8665822,
+  "car_lots": 105
+ },
+ {
+  "id": "ura_S0061",
+  "source": "ura",
+  "pp_code": "S0061",
+  "name": "Sembong Road",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.4414473,
+  "lon": 103.8225324,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_S0063",
+  "source": "ura",
+  "pp_code": "S0063",
+  "name": "Serangoon Garden Way",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.364451,
+  "lon": 103.8644158,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_S0064",
+  "source": "ura",
+  "pp_code": "S0064",
+  "name": "Serangoon Garden Way Service Road",
+  "lot_counts": {
+   "Car Lots": 84
+  },
+  "total_lots": 84,
+  "lat": 1.3637301,
+  "lon": 103.8654786,
+  "car_lots": 84
+ },
+ {
+  "id": "ura_S0065",
+  "source": "ura",
+  "pp_code": "S0065",
+  "name": "Sandown Place",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.365282,
+  "lon": 103.8648423,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_S0066",
+  "source": "ura",
+  "pp_code": "S0066",
+  "name": "Somme Road",
+  "lot_counts": {
+   "Car Lots": 13,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 17,
+  "lat": 1.3113108,
+  "lon": 103.8584323,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_S0070",
+  "source": "ura",
+  "pp_code": "S0070",
+  "name": "Simon Road Service Road",
+  "lot_counts": {
+   "Motorcycle Lots": 18,
+   "Car Lots": 10
+  },
+  "total_lots": 28,
+  "lat": 1.3617634,
+  "lon": 103.8857795,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_S0074",
+  "source": "ura",
+  "pp_code": "S0074",
+  "name": "Sin Ming Drive",
+  "lot_counts": {
+   "Car Lots": 22
+  },
+  "total_lots": 22,
+  "lat": 1.3585326,
+  "lon": 103.8372395,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_S0075",
+  "source": "ura",
+  "pp_code": "S0075",
+  "name": "Science Centre Road",
+  "lot_counts": {
+   "Car Lots": 34,
+   "Motorcycle Lots": 15,
+   "Lorry Lots": 24
+  },
+  "total_lots": 73,
+  "lat": 1.3306636,
+  "lon": 103.7379067,
+  "car_lots": 34
+ },
+ {
+  "id": "ura_S0076",
+  "source": "ura",
+  "pp_code": "S0076",
+  "name": "Second Lok Yang Road",
+  "lot_counts": {
+   "Car Lots": 22
+  },
+  "total_lots": 22,
+  "lat": 1.3261039,
+  "lon": 103.6915921,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_S0078",
+  "source": "ura",
+  "pp_code": "S0078",
+  "name": "Soon Wing Road",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.326929,
+  "lon": 103.8793868,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_S0079",
+  "source": "ura",
+  "pp_code": "S0079",
+  "name": "Service Road Off King George's Avenue",
+  "lot_counts": {
+   "Car Lots": 12,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 17,
+  "lat": 1.3105451,
+  "lon": 103.8618235,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_S0082",
+  "source": "ura",
+  "pp_code": "S0082",
+  "name": "Sixth Lok Yang Road",
+  "lot_counts": {
+   "Car Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.3256762,
+  "lon": 103.6841149,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_S0083",
+  "source": "ura",
+  "pp_code": "S0083",
+  "name": "Sungei Kadut Avenue",
+  "lot_counts": {
+   "Car Lots": 7
+  },
+  "total_lots": 7,
+  "lat": 1.4084088,
+  "lon": 103.7511056,
+  "car_lots": 7
+ },
+ {
+  "id": "ura_S0084",
+  "source": "ura",
+  "pp_code": "S0084",
+  "name": "Sungei Kadut Drive",
+  "lot_counts": {
+   "Car Lots": 38,
+   "Trailer Lots": 74
+  },
+  "total_lots": 112,
+  "lat": 1.4198149,
+  "lon": 103.744323,
+  "car_lots": 38
+ },
+ {
+  "id": "ura_S0085",
+  "source": "ura",
+  "pp_code": "S0085",
+  "name": "Sungei Kadut Loop",
+  "lot_counts": {
+   "Car Lots": 15,
+   "Trailer Lots": 6
+  },
+  "total_lots": 21,
+  "lat": 1.4127006,
+  "lon": 103.7430365,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_S0086",
+  "source": "ura",
+  "pp_code": "S0086",
+  "name": "Sungei Kadut Street 1",
+  "lot_counts": {
+   "Car Lots": 59,
+   "Lorry Lots": 9
+  },
+  "total_lots": 68,
+  "lat": 1.4237874,
+  "lon": 103.7496393,
+  "car_lots": 59
+ },
+ {
+  "id": "ura_S0087",
+  "source": "ura",
+  "pp_code": "S0087",
+  "name": "Sungei Kadut Central",
+  "lot_counts": {
+   "Trailer Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.415587,
+  "lon": 103.748246,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_S0088",
+  "source": "ura",
+  "pp_code": "S0088",
+  "name": "Sungei Kadut Street 3",
+  "lot_counts": {
+   "Car Lots": 20,
+   "Trailer Lots": 27
+  },
+  "total_lots": 47,
+  "lat": 1.4167862,
+  "lon": 103.7478159,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_S0090",
+  "source": "ura",
+  "pp_code": "S0090",
+  "name": "Sungei Kadut Street 5",
+  "lot_counts": {
+   "Trailer Lots": 23
+  },
+  "total_lots": 23,
+  "lat": 1.4235484,
+  "lon": 103.7474372,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_S0091",
+  "source": "ura",
+  "pp_code": "S0091",
+  "name": "Senoko Road",
+  "lot_counts": {
+   "Car Lots": 24,
+   "Lorry Lots": 8,
+   "Trailer Lots": 6
+  },
+  "total_lots": 38,
+  "lat": 1.4646721,
+  "lon": 103.8028141,
+  "car_lots": 24
+ },
+ {
+  "id": "ura_S0092",
+  "source": "ura",
+  "pp_code": "S0092",
+  "name": "Senoko South Road",
+  "lot_counts": {
+   "Trailer Lots": 14,
+   "Motorcycle Lots": 6,
+   "Car Lots": 26
+  },
+  "total_lots": 46,
+  "lat": 1.4562105,
+  "lon": 103.8030622,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_S0094",
+  "source": "ura",
+  "pp_code": "S0094",
+  "name": "Senoko Way",
+  "lot_counts": {
+   "Car Lots": 31,
+   "Trailer Lots": 5
+  },
+  "total_lots": 36,
+  "lat": 1.468366,
+  "lon": 103.8122997,
+  "car_lots": 31
+ },
+ {
+  "id": "ura_S0096",
+  "source": "ura",
+  "pp_code": "S0096",
+  "name": "Senoko Drive",
+  "lot_counts": {
+   "Car Lots": 39,
+   "Trailer Lots": 7
+  },
+  "total_lots": 46,
+  "lat": 1.4636866,
+  "lon": 103.8048218,
+  "car_lots": 39
+ },
+ {
+  "id": "ura_S0097",
+  "source": "ura",
+  "pp_code": "S0097",
+  "name": "Senoko Avenue",
+  "lot_counts": {
+   "Car Lots": 24,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 28,
+  "lat": 1.4682036,
+  "lon": 103.808925,
+  "car_lots": 24
+ },
+ {
+  "id": "ura_S0098",
+  "source": "ura",
+  "pp_code": "S0098",
+  "name": "Sims Avenue (bet Lor 3 Geylang/paya Lebar Rd)",
+  "lot_counts": {
+   "Car Lots": 123,
+   "Motorcycle Lots": 16
+  },
+  "total_lots": 139,
+  "lat": 1.3150734,
+  "lon": 103.8831412,
+  "car_lots": 123
+ },
+ {
+  "id": "ura_S0102",
+  "source": "ura",
+  "pp_code": "S0102",
+  "name": "Spottiswoode Park Road",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.2768841,
+  "lon": 103.8370506,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_S0103",
+  "source": "ura",
+  "pp_code": "S0103",
+  "name": "Stevens Road",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.3161972,
+  "lon": 103.8265971,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_S0105",
+  "source": "ura",
+  "pp_code": "S0105",
+  "name": "Sungei Kadut Way",
+  "lot_counts": {
+   "Trailer Lots": 7,
+   "Car Lots": 56
+  },
+  "total_lots": 63,
+  "lat": 1.4070078,
+  "lon": 103.7500538,
+  "car_lots": 56
+ },
+ {
+  "id": "ura_S0106",
+  "source": "ura",
+  "pp_code": "S0106",
+  "name": "Sin Ming Drive Off Street",
+  "lot_counts": {
+   "Car Lots": 34,
+   "Motorcycle Lots": 20
+  },
+  "total_lots": 54,
+  "lat": 1.356617,
+  "lon": 103.8360772,
+  "car_lots": 34
+ },
+ {
+  "id": "ura_S0108",
+  "source": "ura",
+  "pp_code": "S0108",
+  "name": "Shrewsbury Road Off Street",
+  "lot_counts": {
+   "Car Lots": 29,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 34,
+  "lat": 1.3185605,
+  "lon": 103.8505584,
+  "car_lots": 29
+ },
+ {
+  "id": "ura_S0109",
+  "source": "ura",
+  "pp_code": "S0109",
+  "name": "Sin Ming Road Heavy Vehicle Park",
+  "lot_counts": {
+   "Lorry Lots": 82,
+   "Car Lots": 69,
+   "Motorcycle Lots": 17
+  },
+  "total_lots": 168,
+  "lat": 1.3571985,
+  "lon": 103.8381228,
+  "car_lots": 69
+ },
+ {
+  "id": "ura_S0110",
+  "source": "ura",
+  "pp_code": "S0110",
+  "name": "Service Road Off Onan Road",
+  "lot_counts": {
+   "Car Lots": 2,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 12,
+  "lat": 1.3144929,
+  "lon": 103.8984929,
+  "car_lots": 2
+ },
+ {
+  "id": "ura_S0111",
+  "source": "ura",
+  "pp_code": "S0111",
+  "name": "Stagmont Ring Heavy Vehicle Park",
+  "lot_counts": {
+   "Motorcycle Lots": 37,
+   "Lorry Lots": 188
+  },
+  "total_lots": 225,
+  "lat": 1.3926969,
+  "lon": 103.7536345,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_S0112",
+  "source": "ura",
+  "pp_code": "S0112",
+  "name": "Seah Im Road Off Street",
+  "lot_counts": {
+   "Car Lots": 434,
+   "Motorcycle Lots": 366,
+   "Lorry Lots": 21
+  },
+  "total_lots": 821,
+  "lat": 1.2678829,
+  "lon": 103.8179945,
+  "car_lots": 434
+ },
+ {
+  "id": "ura_S0115",
+  "source": "ura",
+  "pp_code": "S0115",
+  "name": "Service Road  Off Hamilton Road / Cavan Road",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3115797,
+  "lon": 103.8616864,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_S0118",
+  "source": "ura",
+  "pp_code": "S0118",
+  "name": "Service Road Off Penhas Road",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3093998,
+  "lon": 103.8624332,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_S0119",
+  "source": "ura",
+  "pp_code": "S0119",
+  "name": "Shrewsbury Road",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3182762,
+  "lon": 103.848874,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_S0120",
+  "source": "ura",
+  "pp_code": "S0120",
+  "name": "Service Road Bet Petain Road / Allenby Road",
+  "lot_counts": {
+   "Car Lots": 3
+  },
+  "total_lots": 3,
+  "lat": 1.3108632,
+  "lon": 103.859292,
+  "car_lots": 3
+ },
+ {
+  "id": "ura_S0127",
+  "source": "ura",
+  "pp_code": "S0127",
+  "name": "Service Road Off Joo Chiat Road",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3066212,
+  "lon": 103.9046042,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_S0128",
+  "source": "ura",
+  "pp_code": "S0128",
+  "name": "Service Road Off Chai Chee Drive",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3237067,
+  "lon": 103.9192708,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_S0130",
+  "source": "ura",
+  "pp_code": "S0130",
+  "name": "",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3233638,
+  "lon": 103.8777449,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_S0132",
+  "source": "ura",
+  "pp_code": "S0132",
+  "name": "Service Road Off Aliwal Street",
+  "lot_counts": {
+   "Car Lots": 5,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 9,
+  "lat": 1.3033484,
+  "lon": 103.8608182,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_S0133",
+  "source": "ura",
+  "pp_code": "S0133",
+  "name": "Service Road Off Everton Road",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.2763262,
+  "lon": 103.8380025,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_S0134",
+  "source": "ura",
+  "pp_code": "S0134",
+  "name": "Sommerville Walk",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3440023,
+  "lon": 103.8701313,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_S0135",
+  "source": "ura",
+  "pp_code": "S0135",
+  "name": "Sims Avenue (paya Lebar Road / Eunos Road)",
+  "lot_counts": {
+   "Car Lots": 20
+  },
+  "total_lots": 20,
+  "lat": 1.3179877,
+  "lon": 103.8991573,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_S0136",
+  "source": "ura",
+  "pp_code": "S0136",
+  "name": "Service Road Off Zion Road",
+  "lot_counts": {
+   "Car Lots": 21,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 31,
+  "lat": 1.2936143,
+  "lon": 103.8307963,
+  "car_lots": 21
+ },
+ {
+  "id": "ura_S0139",
+  "source": "ura",
+  "pp_code": "S0139",
+  "name": "Service Road Off Upper Bukit Timah Road",
+  "lot_counts": {
+   "Motorcycle Lots": 13,
+   "Car Lots": 27,
+   "Lorry Lots": 3
+  },
+  "total_lots": 43,
+  "lat": 1.343647,
+  "lon": 103.7755911,
+  "car_lots": 27
+ },
+ {
+  "id": "ura_S0141",
+  "source": "ura",
+  "pp_code": "S0141",
+  "name": "Service Road Off Upper East Coast Road",
+  "lot_counts": {
+   "Motorcycle Lots": 12,
+   "Car Lots": 14
+  },
+  "total_lots": 26,
+  "lat": 1.3130125,
+  "lon": 103.9264705,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_S0143",
+  "source": "ura",
+  "pp_code": "S0143",
+  "name": "Service Road Off Lorong 44 Geylang",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3144493,
+  "lon": 103.8907296,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_S0146",
+  "source": "ura",
+  "pp_code": "S0146",
+  "name": "Service Road Off Quality Road",
+  "lot_counts": {
+   "Car Lots": 36,
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 47,
+  "lat": 1.3339286,
+  "lon": 103.7108726,
+  "car_lots": 36
+ },
+ {
+  "id": "ura_S0148",
+  "source": "ura",
+  "pp_code": "S0148",
+  "name": "Sungei Kadut Crescent",
+  "lot_counts": {
+   "Trailer Lots": 5,
+   "Car Lots": 9
+  },
+  "total_lots": 14,
+  "lat": 1.4100507,
+  "lon": 103.7449964,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_S0149",
+  "source": "ura",
+  "pp_code": "S0149",
+  "name": "Service Road Off Sin Ming Road",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.3523239,
+  "lon": 103.8355957,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_S0150",
+  "source": "ura",
+  "pp_code": "S0150",
+  "name": "Sultan Gate / Aliwal Street Off Street  (eps)",
+  "lot_counts": {
+   "Car Lots": 52,
+   "Motorcycle Lots": 4
+  },
+  "total_lots": 56,
+  "lat": 1.30244,
+  "lon": 103.8606564,
+  "car_lots": 52
+ },
+ {
+  "id": "ura_S0151",
+  "source": "ura",
+  "pp_code": "S0151",
+  "name": "Sembawang Drive Heavy Vehicle Park",
+  "lot_counts": {
+   "Motorcycle Lots": 49,
+   "Lorry Lots": 127
+  },
+  "total_lots": 176,
+  "lat": 1.4609809,
+  "lon": 103.8149631,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_S0152",
+  "source": "ura",
+  "pp_code": "S0152",
+  "name": "Sunshine Terrace",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3458729,
+  "lon": 103.8724375,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_S0156",
+  "source": "ura",
+  "pp_code": "S0156",
+  "name": "Sims Place",
+  "lot_counts": {
+   "Car Lots": 35
+  },
+  "total_lots": 35,
+  "lat": 1.316203,
+  "lon": 103.8793542,
+  "car_lots": 35
+ },
+ {
+  "id": "ura_S0157",
+  "source": "ura",
+  "pp_code": "S0157",
+  "name": "Service Road Off Jalan Masjid",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.3196865,
+  "lon": 103.9119543,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_S0158",
+  "source": "ura",
+  "pp_code": "S0158",
+  "name": "Service Road Off Macpherson Road",
+  "lot_counts": {
+   "Motorcycle Lots": 22,
+   "Car Lots": 23
+  },
+  "total_lots": 45,
+  "lat": 1.3296033,
+  "lon": 103.8733767,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_S0159",
+  "source": "ura",
+  "pp_code": "S0159",
+  "name": "Service Road Off Balestier Road",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.327018,
+  "lon": 103.8429488,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_S0160",
+  "source": "ura",
+  "pp_code": "S0160",
+  "name": "Sin Ming Walk",
+  "lot_counts": {
+   "Car Lots": 17
+  },
+  "total_lots": 17,
+  "lat": 1.3652598,
+  "lon": 103.8312469,
+  "car_lots": 17
+ },
+ {
+  "id": "ura_S0162",
+  "source": "ura",
+  "pp_code": "S0162",
+  "name": "Service Road Off Tebing Lane",
+  "lot_counts": {
+   "Car Lots": 22
+  },
+  "total_lots": 22,
+  "lat": 1.3931978,
+  "lon": 103.9165767,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_S0164",
+  "source": "ura",
+  "pp_code": "S0164",
+  "name": "Seletar Aerospace View",
+  "lot_counts": {
+   "Car Lots": 31,
+   "Motorcycle Lots": 13
+  },
+  "total_lots": 44,
+  "lat": 1.4119106,
+  "lon": 103.8698445,
+  "car_lots": 31
+ },
+ {
+  "id": "ura_S0166",
+  "source": "ura",
+  "pp_code": "S0166",
+  "name": "Sembawang Road / Admiralty Road East Off Street",
+  "lot_counts": {
+   "Car Lots": 63,
+   "Motorcycle Lots": 14
+  },
+  "total_lots": 77,
+  "lat": 1.4536471,
+  "lon": 103.8331782,
+  "car_lots": 63
+ },
+ {
+  "id": "ura_S0167",
+  "source": "ura",
+  "pp_code": "S0167",
+  "name": "Service Road Off Jalan Selaseh",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 29
+  },
+  "total_lots": 34,
+  "lat": 1.3856743,
+  "lon": 103.8731082,
+  "car_lots": 29
+ },
+ {
+  "id": "ura_S0168",
+  "source": "ura",
+  "pp_code": "S0168",
+  "name": "Service Road Off Jalan Kelulut",
+  "lot_counts": {
+   "Car Lots": 27,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 32,
+  "lat": 1.3832563,
+  "lon": 103.8758114,
+  "car_lots": 27
+ },
+ {
+  "id": "ura_S0170",
+  "source": "ura",
+  "pp_code": "S0170",
+  "name": "Service Road Off Sembawang Road",
+  "lot_counts": {
+   "Motorcycle Lots": 13,
+   "Car Lots": 5
+  },
+  "total_lots": 18,
+  "lat": 1.4535151,
+  "lon": 103.8324998,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_S0171",
+  "source": "ura",
+  "pp_code": "S0171",
+  "name": "Spooner Road Off Street",
+  "lot_counts": {
+   "Car Lots": 62,
+   "Motorcycle Lots": 19
+  },
+  "total_lots": 81,
+  "lat": 1.2756983,
+  "lon": 103.8350802,
+  "car_lots": 62
+ },
+ {
+  "id": "ura_S0172",
+  "source": "ura",
+  "pp_code": "S0172",
+  "name": "Springleaf Road",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3969174,
+  "lon": 103.8197854,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_T0001",
+  "source": "ura",
+  "pp_code": "T0001",
+  "name": "Tuas Crescent Trailer Park",
+  "lot_counts": {
+   "Trailer Lots": 120
+  },
+  "total_lots": 120,
+  "lat": 1.3168123,
+  "lon": 103.6478993,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0002",
+  "source": "ura",
+  "pp_code": "T0002",
+  "name": "Tanjong Pagar Road",
+  "lot_counts": {
+   "Car Lots": 25
+  },
+  "total_lots": 25,
+  "lat": 1.2782721,
+  "lon": 103.843759,
+  "car_lots": 25
+ },
+ {
+  "id": "ura_T0003",
+  "source": "ura",
+  "pp_code": "T0003",
+  "name": "Tank Road",
+  "lot_counts": {
+   "Car Lots": 18,
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 30,
+  "lat": 1.2945117,
+  "lon": 103.8435437,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_T0006",
+  "source": "ura",
+  "pp_code": "T0006",
+  "name": "Teck Lim Road",
+  "lot_counts": {
+   "Car Lots": 14,
+   "Motorcycle Lots": 2
+  },
+  "total_lots": 16,
+  "lat": 1.280304,
+  "lon": 103.8418786,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_T0008",
+  "source": "ura",
+  "pp_code": "T0008",
+  "name": "Telok Ayer Street",
+  "lot_counts": {
+   "Car Lots": 49,
+   "Motorcycle Lots": 58,
+   "Lorry Lots": 3
+  },
+  "total_lots": 110,
+  "lat": 1.2802913,
+  "lon": 103.8474506,
+  "car_lots": 49
+ },
+ {
+  "id": "ura_T0009",
+  "source": "ura",
+  "pp_code": "T0009",
+  "name": "Temple Street",
+  "lot_counts": {
+   "Car Lots": 61
+  },
+  "total_lots": 61,
+  "lat": 1.2828953,
+  "lon": 103.8441091,
+  "car_lots": 61
+ },
+ {
+  "id": "ura_T0010",
+  "source": "ura",
+  "pp_code": "T0010",
+  "name": "Teo Hong Road",
+  "lot_counts": {
+   "Car Lots": 14,
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 26,
+  "lat": 1.2800818,
+  "lon": 103.8407269,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_T0014",
+  "source": "ura",
+  "pp_code": "T0014",
+  "name": "Tras Street",
+  "lot_counts": {
+   "Car Lots": 71,
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 82,
+  "lat": 1.278876,
+  "lon": 103.847627,
+  "car_lots": 71
+ },
+ {
+  "id": "ura_T0017",
+  "source": "ura",
+  "pp_code": "T0017",
+  "name": "Tiong Bahru Park Off Street",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 20
+  },
+  "total_lots": 25,
+  "lat": 1.2869447,
+  "lon": 103.8247125,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_T0019",
+  "source": "ura",
+  "pp_code": "T0019",
+  "name": "Tanjong Penjuru Crescent",
+  "lot_counts": {
+   "Trailer Lots": 34,
+   "Car Lots": 12
+  },
+  "total_lots": 46,
+  "lat": 1.3025364,
+  "lon": 103.7402628,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_T0020",
+  "source": "ura",
+  "pp_code": "T0020",
+  "name": "Tanjong  Penjuru",
+  "lot_counts": {
+   "Trailer Lots": 23
+  },
+  "total_lots": 23,
+  "lat": 1.3041654,
+  "lon": 103.7367672,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0021",
+  "source": "ura",
+  "pp_code": "T0021",
+  "name": "Tyrwhitt Road",
+  "lot_counts": {
+   "Car Lots": 35,
+   "Motorcycle Lots": 7
+  },
+  "total_lots": 42,
+  "lat": 1.3110688,
+  "lon": 103.8598924,
+  "car_lots": 35
+ },
+ {
+  "id": "ura_T0022",
+  "source": "ura",
+  "pp_code": "T0022",
+  "name": "Townshend Road",
+  "lot_counts": {
+   "Car Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.3077603,
+  "lon": 103.8583767,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_T0025",
+  "source": "ura",
+  "pp_code": "T0025",
+  "name": "Tai Thong Crescent",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 12
+  },
+  "total_lots": 22,
+  "lat": 1.3289038,
+  "lon": 103.8696783,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_T0031",
+  "source": "ura",
+  "pp_code": "T0031",
+  "name": "Talma Road",
+  "lot_counts": {
+   "Car Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.3110626,
+  "lon": 103.8780435,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_T0036",
+  "source": "ura",
+  "pp_code": "T0036",
+  "name": "Tampines Place",
+  "lot_counts": {
+   "Car Lots": 17
+  },
+  "total_lots": 17,
+  "lat": 1.3673259,
+  "lon": 103.9291312,
+  "car_lots": 17
+ },
+ {
+  "id": "ura_T0039",
+  "source": "ura",
+  "pp_code": "T0039",
+  "name": "Tannery Lane",
+  "lot_counts": {
+   "Motorcycle Lots": 5,
+   "Car Lots": 36
+  },
+  "total_lots": 41,
+  "lat": 1.3274255,
+  "lon": 103.8777495,
+  "car_lots": 36
+ },
+ {
+  "id": "ura_T0040",
+  "source": "ura",
+  "pp_code": "T0040",
+  "name": "Third Chin Bee Road",
+  "lot_counts": {
+   "Car Lots": 41
+  },
+  "total_lots": 41,
+  "lat": 1.3340816,
+  "lon": 103.7155874,
+  "car_lots": 41
+ },
+ {
+  "id": "ura_T0043",
+  "source": "ura",
+  "pp_code": "T0043",
+  "name": "Taman Mas Merah",
+  "lot_counts": {
+   "Car Lots": 13
+  },
+  "total_lots": 13,
+  "lat": 1.3087165,
+  "lon": 103.7640749,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_T0057",
+  "source": "ura",
+  "pp_code": "T0057",
+  "name": "Tessensohn Road",
+  "lot_counts": {
+   "Car Lots": 43,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 53,
+  "lat": 1.3146308,
+  "lon": 103.8554858,
+  "car_lots": 43
+ },
+ {
+  "id": "ura_T0060",
+  "source": "ura",
+  "pp_code": "T0060",
+  "name": "Toh Guan Road",
+  "lot_counts": {
+   "Car Lots": 5
+  },
+  "total_lots": 5,
+  "lat": 1.3337874,
+  "lon": 103.7488666,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_T0061",
+  "source": "ura",
+  "pp_code": "T0061",
+  "name": "Third Lok Yang Road",
+  "lot_counts": {
+   "Car Lots": 30
+  },
+  "total_lots": 30,
+  "lat": 1.3260035,
+  "lon": 103.6897678,
+  "car_lots": 30
+ },
+ {
+  "id": "ura_T0062",
+  "source": "ura",
+  "pp_code": "T0062",
+  "name": "Tai Seng Drive",
+  "lot_counts": {
+   "Car Lots": 8,
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 14,
+  "lat": 1.3378831,
+  "lon": 103.8936923,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_T0065",
+  "source": "ura",
+  "pp_code": "T0065",
+  "name": "Tagore Road",
+  "lot_counts": {
+   "Car Lots": 44,
+   "Motorcycle Lots": 16,
+   "Lorry Lots": 16,
+   "Trailer Lots": 26
+  },
+  "total_lots": 102,
+  "lat": 1.3837297,
+  "lon": 103.8287439,
+  "car_lots": 44
+ },
+ {
+  "id": "ura_T0066",
+  "source": "ura",
+  "pp_code": "T0066",
+  "name": "Tagore Industrial Avenue",
+  "lot_counts": {
+   "Car Lots": 75,
+   "Motorcycle Lots": 9
+  },
+  "total_lots": 84,
+  "lat": 1.3855717,
+  "lon": 103.8279856,
+  "car_lots": 75
+ },
+ {
+  "id": "ura_T0067",
+  "source": "ura",
+  "pp_code": "T0067",
+  "name": "Tagore Lane",
+  "lot_counts": {
+   "Trailer Lots": 4,
+   "Car Lots": 126,
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 142,
+  "lat": 1.3857744,
+  "lon": 103.8285889,
+  "car_lots": 126
+ },
+ {
+  "id": "ura_T0068",
+  "source": "ura",
+  "pp_code": "T0068",
+  "name": "Tagore Drive",
+  "lot_counts": {
+   "Trailer Lots": 12,
+   "Lorry Lots": 8,
+   "Car Lots": 32
+  },
+  "total_lots": 52,
+  "lat": 1.3876308,
+  "lon": 103.8268289,
+  "car_lots": 32
+ },
+ {
+  "id": "ura_T0070",
+  "source": "ura",
+  "pp_code": "T0070",
+  "name": "Tanglin Halt Close",
+  "lot_counts": {
+   "Car Lots": 37
+  },
+  "total_lots": 37,
+  "lat": 1.304029,
+  "lon": 103.7954607,
+  "car_lots": 37
+ },
+ {
+  "id": "ura_T0074",
+  "source": "ura",
+  "pp_code": "T0074",
+  "name": "Tampines Industrial Avenue 3",
+  "lot_counts": {
+   "Motorcycle Lots": 24,
+   "Car Lots": 16,
+   "Trailer Lots": 8
+  },
+  "total_lots": 48,
+  "lat": 1.3588369,
+  "lon": 103.9284731,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_T0076",
+  "source": "ura",
+  "pp_code": "T0076",
+  "name": "Tuas Avenue 1",
+  "lot_counts": {
+   "Car Lots": 10,
+   "Trailer Lots": 14
+  },
+  "total_lots": 24,
+  "lat": 1.3269805,
+  "lon": 103.6548975,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_T0077",
+  "source": "ura",
+  "pp_code": "T0077",
+  "name": "Tuas Avenue 3",
+  "lot_counts": {
+   "Car Lots": 38
+  },
+  "total_lots": 38,
+  "lat": 1.3228487,
+  "lon": 103.654988,
+  "car_lots": 38
+ },
+ {
+  "id": "ura_T0078",
+  "source": "ura",
+  "pp_code": "T0078",
+  "name": "Tuas Avenue 4",
+  "lot_counts": {
+   "Trailer Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3252992,
+  "lon": 103.6515052,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0079",
+  "source": "ura",
+  "pp_code": "T0079",
+  "name": "Tuas Avenue 5",
+  "lot_counts": {
+   "Car Lots": 10,
+   "Trailer Lots": 6
+  },
+  "total_lots": 16,
+  "lat": 1.3202748,
+  "lon": 103.6537265,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_T0080",
+  "source": "ura",
+  "pp_code": "T0080",
+  "name": "Tuas Avenue 7",
+  "lot_counts": {
+   "Trailer Lots": 10,
+   "Car Lots": 32
+  },
+  "total_lots": 42,
+  "lat": 1.3324977,
+  "lon": 103.644857,
+  "car_lots": 32
+ },
+ {
+  "id": "ura_T0081",
+  "source": "ura",
+  "pp_code": "T0081",
+  "name": "Tuas Avenue 9",
+  "lot_counts": {
+   "Car Lots": 19,
+   "Trailer Lots": 9
+  },
+  "total_lots": 28,
+  "lat": 1.3284213,
+  "lon": 103.6444089,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_T0082",
+  "source": "ura",
+  "pp_code": "T0082",
+  "name": "Tuas Avenue 11",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3210524,
+  "lon": 103.6460386,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_T0083",
+  "source": "ura",
+  "pp_code": "T0083",
+  "name": "Tuas Avenue 12",
+  "lot_counts": {
+   "Car Lots": 19,
+   "Trailer Lots": 2
+  },
+  "total_lots": 21,
+  "lat": 1.3330131,
+  "lon": 103.6439465,
+  "car_lots": 19
+ },
+ {
+  "id": "ura_T0084",
+  "source": "ura",
+  "pp_code": "T0084",
+  "name": "Tuas Avenue 13",
+  "lot_counts": {
+   "Car Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.322088,
+  "lon": 103.6407316,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_T0088",
+  "source": "ura",
+  "pp_code": "T0088",
+  "name": "Tuas Avenue 18a",
+  "lot_counts": {
+   "Car Lots": 32
+  },
+  "total_lots": 32,
+  "lat": 1.3225624,
+  "lon": 103.6370804,
+  "car_lots": 32
+ },
+ {
+  "id": "ura_T0090",
+  "source": "ura",
+  "pp_code": "T0090",
+  "name": "Tuas Drive 1",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3222825,
+  "lon": 103.6578622,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_T0091",
+  "source": "ura",
+  "pp_code": "T0091",
+  "name": "Tuas Drive 2",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3237126,
+  "lon": 103.6561552,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_T0092",
+  "source": "ura",
+  "pp_code": "T0092",
+  "name": "Tuas Street",
+  "lot_counts": {
+   "Trailer Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3196013,
+  "lon": 103.6521488,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0094",
+  "source": "ura",
+  "pp_code": "T0094",
+  "name": "Tuas Lane",
+  "lot_counts": {
+   "Car Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.3290563,
+  "lon": 103.6422926,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_T0095",
+  "source": "ura",
+  "pp_code": "T0095",
+  "name": "Tuas Link 1",
+  "lot_counts": {
+   "Trailer Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3346005,
+  "lon": 103.6373211,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0096",
+  "source": "ura",
+  "pp_code": "T0096",
+  "name": "Tuas West Avenue",
+  "lot_counts": {
+   "Trailer Lots": 30,
+   "Car Lots": 43
+  },
+  "total_lots": 73,
+  "lat": 1.3327039,
+  "lon": 103.6382313,
+  "car_lots": 43
+ },
+ {
+  "id": "ura_T0100",
+  "source": "ura",
+  "pp_code": "T0100",
+  "name": "Telok Blangah Street 31",
+  "lot_counts": {
+   "Lorry Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.2727588,
+  "lon": 103.805733,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0102",
+  "source": "ura",
+  "pp_code": "T0102",
+  "name": "Tuas Road",
+  "lot_counts": {
+   "Car Lots": 25,
+   "Trailer Lots": 24,
+   "Motorcycle Lots": 32
+  },
+  "total_lots": 81,
+  "lat": 1.3086467,
+  "lon": 103.6504879,
+  "car_lots": 25
+ },
+ {
+  "id": "ura_T0103",
+  "source": "ura",
+  "pp_code": "T0103",
+  "name": "Tembeling Road Off Street",
+  "lot_counts": {
+   "Car Lots": 200,
+   "Motorcycle Lots": 23
+  },
+  "total_lots": 223,
+  "lat": 1.3129053,
+  "lon": 103.9005905,
+  "car_lots": 200
+ },
+ {
+  "id": "ura_T0104",
+  "source": "ura",
+  "pp_code": "T0104",
+  "name": "Tai Seng Avenue",
+  "lot_counts": {
+   "Car Lots": 75,
+   "Lorry Lots": 14,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 99,
+  "lat": 1.3383458,
+  "lon": 103.8897621,
+  "car_lots": 75
+ },
+ {
+  "id": "ura_T0107",
+  "source": "ura",
+  "pp_code": "T0107",
+  "name": "Tampines Road / Hougang Avenue 7 (a) Heavy Vehcile Park",
+  "lot_counts": {
+   "Lorry Lots": 163,
+   "Motorcycle Lots": 49
+  },
+  "total_lots": 212,
+  "lat": 1.3628881,
+  "lon": 103.8967499,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0109",
+  "source": "ura",
+  "pp_code": "T0109",
+  "name": "Telok Blangah Drive Heavy Vehicle Park",
+  "lot_counts": {
+   "Lorry Lots": 55,
+   "Motorcycle Lots": 18
+  },
+  "total_lots": 73,
+  "lat": 1.2740635,
+  "lon": 103.805177,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0111",
+  "source": "ura",
+  "pp_code": "T0111",
+  "name": "Tuas Link 2",
+  "lot_counts": {
+   "Car Lots": 11,
+   "Trailer Lots": 4
+  },
+  "total_lots": 15,
+  "lat": 1.3364924,
+  "lon": 103.6385879,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_T0113",
+  "source": "ura",
+  "pp_code": "T0113",
+  "name": "Tuas Link 4",
+  "lot_counts": {
+   "Car Lots": 9,
+   "Trailer Lots": 10
+  },
+  "total_lots": 19,
+  "lat": 1.3367435,
+  "lon": 103.6403937,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_T0114",
+  "source": "ura",
+  "pp_code": "T0114",
+  "name": "Tembeling Road",
+  "lot_counts": {
+   "Car Lots": 56
+  },
+  "total_lots": 56,
+  "lat": 1.3104179,
+  "lon": 103.9029177,
+  "car_lots": 56
+ },
+ {
+  "id": "ura_T0115",
+  "source": "ura",
+  "pp_code": "T0115",
+  "name": "Telok Kurau Road",
+  "lot_counts": {
+   "Car Lots": 22,
+   "Motorcycle Lots": 3
+  },
+  "total_lots": 25,
+  "lat": 1.3092906,
+  "lon": 103.9120613,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_T0116",
+  "source": "ura",
+  "pp_code": "T0116",
+  "name": "Teban Gardens Crescent",
+  "lot_counts": {
+   "Car Lots": 104,
+   "Lorry Lots": 52
+  },
+  "total_lots": 156,
+  "lat": 1.3245195,
+  "lon": 103.7400175,
+  "car_lots": 104
+ },
+ {
+  "id": "ura_T0117",
+  "source": "ura",
+  "pp_code": "T0117",
+  "name": "Tuas South Avenue 1",
+  "lot_counts": {
+   "Car Lots": 63,
+   "Motorcycle Lots": 10,
+   "Trailer Lots": 11
+  },
+  "total_lots": 84,
+  "lat": 1.3170392,
+  "lon": 103.6280705,
+  "car_lots": 63
+ },
+ {
+  "id": "ura_T0120",
+  "source": "ura",
+  "pp_code": "T0120",
+  "name": "Tuas South Avenue 6",
+  "lot_counts": {
+   "Trailer Lots": 20
+  },
+  "total_lots": 20,
+  "lat": 1.3023996,
+  "lon": 103.6277007,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0123",
+  "source": "ura",
+  "pp_code": "T0123",
+  "name": "Tuas South Street 2",
+  "lot_counts": {
+   "Car Lots": 25,
+   "Trailer Lots": 8
+  },
+  "total_lots": 33,
+  "lat": 1.307762,
+  "lon": 103.6307215,
+  "car_lots": 25
+ },
+ {
+  "id": "ura_T0129",
+  "source": "ura",
+  "pp_code": "T0129",
+  "name": "Tanjong Katong Complex",
+  "lot_counts": {
+   "Car Lots": 356,
+   "Lorry Lots": 7,
+   "Motorcycle Lots": 72
+  },
+  "total_lots": 435,
+  "lat": 1.3165961,
+  "lon": 103.8953662,
+  "car_lots": 356
+ },
+ {
+  "id": "ura_T0130",
+  "source": "ura",
+  "pp_code": "T0130",
+  "name": "Toa Payoh West",
+  "lot_counts": {
+   "Car Lots": 51,
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 57,
+  "lat": 1.3352237,
+  "lon": 103.8423107,
+  "car_lots": 51
+ },
+ {
+  "id": "ura_T0131",
+  "source": "ura",
+  "pp_code": "T0131",
+  "name": "Tampines Avenue 9 / Avenue 10 Heavy Vehicle Park",
+  "lot_counts": {
+   "Motorcycle Lots": 131,
+   "Lorry Lots": 528
+  },
+  "total_lots": 659,
+  "lat": 1.3622352,
+  "lon": 103.9323034,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0140",
+  "source": "ura",
+  "pp_code": "T0140",
+  "name": "Tanjong Katong Road Off Street",
+  "lot_counts": {
+   "Car Lots": 123,
+   "Motorcycle Lots": 21
+  },
+  "total_lots": 144,
+  "lat": 1.3066141,
+  "lon": 103.8963923,
+  "car_lots": 123
+ },
+ {
+  "id": "ura_T0142",
+  "source": "ura",
+  "pp_code": "T0142",
+  "name": "Tuas Basin Close",
+  "lot_counts": {
+   "Car Lots": 5,
+   "Trailer Lots": 2
+  },
+  "total_lots": 7,
+  "lat": 1.3131533,
+  "lon": 103.6529975,
+  "car_lots": 5
+ },
+ {
+  "id": "ura_T0143",
+  "source": "ura",
+  "pp_code": "T0143",
+  "name": "Tuas Basin Lane",
+  "lot_counts": {
+   "Trailer Lots": 2
+  },
+  "total_lots": 2,
+  "lat": 1.3089962,
+  "lon": 103.6487729,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0144",
+  "source": "ura",
+  "pp_code": "T0144",
+  "name": "Teo Hong Rd / New Bridge Road Off Street",
+  "lot_counts": {
+   "Car Lots": 31
+  },
+  "total_lots": 31,
+  "lat": 1.2806493,
+  "lon": 103.8408362,
+  "car_lots": 31
+ },
+ {
+  "id": "ura_T0145",
+  "source": "ura",
+  "pp_code": "T0145",
+  "name": "Tebing Lane",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3925092,
+  "lon": 103.9156868,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_T0146",
+  "source": "ura",
+  "pp_code": "T0146",
+  "name": "Tai Seng  Street",
+  "lot_counts": {
+   "Car Lots": 8,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 18,
+  "lat": 1.3364602,
+  "lon": 103.8893282,
+  "car_lots": 8
+ },
+ {
+  "id": "ura_T0147",
+  "source": "ura",
+  "pp_code": "T0147",
+  "name": "Tampines Industrial Avenue 2",
+  "lot_counts": {
+   "Trailer Lots": 55
+  },
+  "total_lots": 55,
+  "lat": 1.3621219,
+  "lon": 103.9259882,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0148",
+  "source": "ura",
+  "pp_code": "T0148",
+  "name": "Tuas South Avenue 1 Trailer Park",
+  "lot_counts": {
+   "Trailer Lots": 321
+  },
+  "total_lots": 321,
+  "lat": 1.3208723,
+  "lon": 103.630315,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0149",
+  "source": "ura",
+  "pp_code": "T0149",
+  "name": "Tampines Industrial Avenue 1",
+  "lot_counts": {
+   "Trailer Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3540677,
+  "lon": 103.9255439,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0150",
+  "source": "ura",
+  "pp_code": "T0150",
+  "name": "Tuas View Crescent",
+  "lot_counts": {
+   "Trailer Lots": 24
+  },
+  "total_lots": 24,
+  "lat": 1.2924057,
+  "lon": 103.6288826,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0151",
+  "source": "ura",
+  "pp_code": "T0151",
+  "name": "Tampines Road H V Park",
+  "lot_counts": {
+   "Lorry Lots": 338,
+   "Motorcycle Lots": 105
+  },
+  "total_lots": 443,
+  "lat": 1.3637617,
+  "lon": 103.9034487,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_T0153",
+  "source": "ura",
+  "pp_code": "T0153",
+  "name": "Tampines North Drive 3 Hvp",
+  "lot_counts": {
+   "Lorry Lots": 367,
+   "Motorcycle Lots": 45
+  },
+  "total_lots": 412,
+  "lat": 1.3725826,
+  "lon": 103.9362627,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_U0002",
+  "source": "ura",
+  "pp_code": "U0002",
+  "name": "Upper Circular Road",
+  "lot_counts": {
+   "Car Lots": 22
+  },
+  "total_lots": 22,
+  "lat": 1.2887703,
+  "lon": 103.8481195,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_U0003",
+  "source": "ura",
+  "pp_code": "U0003",
+  "name": "Ubi Avenue  3",
+  "lot_counts": {
+   "Car Lots": 67
+  },
+  "total_lots": 67,
+  "lat": 1.3319455,
+  "lon": 103.8943954,
+  "car_lots": 67
+ },
+ {
+  "id": "ura_U0007",
+  "source": "ura",
+  "pp_code": "U0007",
+  "name": "Upper Dickson Road",
+  "lot_counts": {
+   "Car Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.306358,
+  "lon": 103.8524881,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_U0008",
+  "source": "ura",
+  "pp_code": "U0008",
+  "name": "Upper Weld Road",
+  "lot_counts": {
+   "Car Lots": 59
+  },
+  "total_lots": 59,
+  "lat": 1.3060157,
+  "lon": 103.8541974,
+  "car_lots": 59
+ },
+ {
+  "id": "ura_U0012",
+  "source": "ura",
+  "pp_code": "U0012",
+  "name": "Upper Paya Lebar Road Service Road",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.3467756,
+  "lon": 103.8803949,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_U0013",
+  "source": "ura",
+  "pp_code": "U0013",
+  "name": "Ubi Road 1",
+  "lot_counts": {
+   "Car Lots": 26
+  },
+  "total_lots": 26,
+  "lat": 1.3292591,
+  "lon": 103.8922918,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_U0014",
+  "source": "ura",
+  "pp_code": "U0014",
+  "name": "Ubi Road 2",
+  "lot_counts": {
+   "Car Lots": 35,
+   "Motorcycle Lots": 20
+  },
+  "total_lots": 55,
+  "lat": 1.3334097,
+  "lon": 103.8950412,
+  "car_lots": 35
+ },
+ {
+  "id": "ura_U0016",
+  "source": "ura",
+  "pp_code": "U0016",
+  "name": "Ubi Road 3",
+  "lot_counts": {
+   "Car Lots": 16
+  },
+  "total_lots": 16,
+  "lat": 1.3329089,
+  "lon": 103.89766,
+  "car_lots": 16
+ },
+ {
+  "id": "ura_U0017",
+  "source": "ura",
+  "pp_code": "U0017",
+  "name": "Upper Hokkien Street",
+  "lot_counts": {
+   "Motorcycle Lots": 10,
+   "Car Lots": 28
+  },
+  "total_lots": 38,
+  "lat": 1.2854465,
+  "lon": 103.8461258,
+  "car_lots": 28
+ },
+ {
+  "id": "ura_U0021",
+  "source": "ura",
+  "pp_code": "U0021",
+  "name": "Ubi Avenue 4",
+  "lot_counts": {
+   "Car Lots": 11,
+   "Motorcycle Lots": 25
+  },
+  "total_lots": 36,
+  "lat": 1.3346481,
+  "lon": 103.8955223,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_U0023",
+  "source": "ura",
+  "pp_code": "U0023",
+  "name": "Unity Street",
+  "lot_counts": {
+   "Car Lots": 10,
+   "Lorry Lots": 1
+  },
+  "total_lots": 11,
+  "lat": 1.2923044,
+  "lon": 103.8417159,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_U0030",
+  "source": "ura",
+  "pp_code": "U0030",
+  "name": "Ubi Avenue 1",
+  "lot_counts": {
+   "Car Lots": 4
+  },
+  "total_lots": 4,
+  "lat": 1.3250215,
+  "lon": 103.8931175,
+  "car_lots": 4
+ },
+ {
+  "id": "ura_U0031",
+  "source": "ura",
+  "pp_code": "U0031",
+  "name": "Upper Serangoon Road",
+  "lot_counts": {
+   "Car Lots": 13,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 18,
+  "lat": 1.3628227,
+  "lon": 103.8881505,
+  "car_lots": 13
+ },
+ {
+  "id": "ura_U0035",
+  "source": "ura",
+  "pp_code": "U0035",
+  "name": "Upper Serangoon Road (bartley Road Juntion)",
+  "lot_counts": {
+   "Motorcycle Lots": 8,
+   "Car Lots": 23
+  },
+  "total_lots": 31,
+  "lat": 1.3448634,
+  "lon": 103.8711202,
+  "car_lots": 23
+ },
+ {
+  "id": "ura_U0036",
+  "source": "ura",
+  "pp_code": "U0036",
+  "name": "Upper East Coast Road Off Street",
+  "lot_counts": {
+   "Car Lots": 128,
+   "Motorcycle Lots": 11
+  },
+  "total_lots": 139,
+  "lat": 1.3122206,
+  "lon": 103.9260609,
+  "car_lots": 128
+ },
+ {
+  "id": "ura_U0037",
+  "source": "ura",
+  "pp_code": "U0037",
+  "name": "Ubi Road 4",
+  "lot_counts": {
+   "Car Lots": 12
+  },
+  "total_lots": 12,
+  "lat": 1.3327939,
+  "lon": 103.8997155,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_U0038",
+  "source": "ura",
+  "pp_code": "U0038",
+  "name": "Upper Thomson Road (lakeview Estate)",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.349949,
+  "lon": 103.8351213,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_U0039",
+  "source": "ura",
+  "pp_code": "U0039",
+  "name": "Ubi Crescent",
+  "lot_counts": {
+   "Car Lots": 17
+  },
+  "total_lots": 17,
+  "lat": 1.3271293,
+  "lon": 103.895595,
+  "car_lots": 17
+ },
+ {
+  "id": "ura_U0040",
+  "source": "ura",
+  "pp_code": "U0040",
+  "name": "Upper Aljunied Link Off Street",
+  "lot_counts": {
+   "Car Lots": 15
+  },
+  "total_lots": 15,
+  "lat": 1.3344845,
+  "lon": 103.8824103,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_U0042",
+  "source": "ura",
+  "pp_code": "U0042",
+  "name": "Upper Changi Road / Bedok Road Off Street",
+  "lot_counts": {
+   "Car Lots": 48,
+   "Motorcycle Lots": 10
+  },
+  "total_lots": 58,
+  "lat": 1.3320927,
+  "lon": 103.9465498,
+  "car_lots": 48
+ },
+ {
+  "id": "ura_U0043",
+  "source": "ura",
+  "pp_code": "U0043",
+  "name": "Upper Thomson Road Off Street",
+  "lot_counts": {
+   "Car Lots": 38
+  },
+  "total_lots": 38,
+  "lat": 1.3500278,
+  "lon": 103.8359844,
+  "car_lots": 38
+ },
+ {
+  "id": "ura_U0044",
+  "source": "ura",
+  "pp_code": "U0044",
+  "name": "Ubi View",
+  "lot_counts": {
+   "Car Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.3320382,
+  "lon": 103.896798,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_U0045",
+  "source": "ura",
+  "pp_code": "U0045",
+  "name": "Ubi Link",
+  "lot_counts": {
+   "Car Lots": 18
+  },
+  "total_lots": 18,
+  "lat": 1.3326295,
+  "lon": 103.8932837,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_V0001",
+  "source": "ura",
+  "pp_code": "V0001",
+  "name": "Veerasamy Road",
+  "lot_counts": {
+   "Car Lots": 28,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 33,
+  "lat": 1.3071903,
+  "lon": 103.8544626,
+  "car_lots": 28
+ },
+ {
+  "id": "ura_V0005",
+  "source": "ura",
+  "pp_code": "V0005",
+  "name": "Verdun Road",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3097931,
+  "lon": 103.8559169,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_V0007",
+  "source": "ura",
+  "pp_code": "V0007",
+  "name": "Verdun Road Off Street",
+  "lot_counts": {
+   "Car Lots": 18,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 23,
+  "lat": 1.3102933,
+  "lon": 103.8561453,
+  "car_lots": 18
+ },
+ {
+  "id": "ura_W0001",
+  "source": "ura",
+  "pp_code": "W0001",
+  "name": "Wallich Street",
+  "lot_counts": {
+   "Car Lots": 9
+  },
+  "total_lots": 9,
+  "lat": 1.2768946,
+  "lon": 103.844414,
+  "car_lots": 9
+ },
+ {
+  "id": "ura_W0002",
+  "source": "ura",
+  "pp_code": "W0002",
+  "name": "Waterloo Street",
+  "lot_counts": {
+   "Car Lots": 14,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 19,
+  "lat": 1.2987932,
+  "lon": 103.8516202,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_W0004",
+  "source": "ura",
+  "pp_code": "W0004",
+  "name": "Wilkie Road",
+  "lot_counts": {
+   "Car Lots": 15,
+   "Motorcycle Lots": 12
+  },
+  "total_lots": 27,
+  "lat": 1.3027293,
+  "lon": 103.8477842,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_W0005",
+  "source": "ura",
+  "pp_code": "W0005",
+  "name": "Wilkinson Road",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.3022851,
+  "lon": 103.8862067,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_W0010",
+  "source": "ura",
+  "pp_code": "W0010",
+  "name": "Westerhout Road",
+  "lot_counts": {
+   "Car Lots": 6
+  },
+  "total_lots": 6,
+  "lat": 1.3111282,
+  "lon": 103.8810524,
+  "car_lots": 6
+ },
+ {
+  "id": "ura_W0021",
+  "source": "ura",
+  "pp_code": "W0021",
+  "name": "Wishart Road",
+  "lot_counts": {
+   "Car Lots": 37
+  },
+  "total_lots": 37,
+  "lat": 1.2702822,
+  "lon": 103.8137683,
+  "car_lots": 37
+ },
+ {
+  "id": "ura_W0029",
+  "source": "ura",
+  "pp_code": "W0029",
+  "name": "West Coast Park 1 Off Street",
+  "lot_counts": {
+   "Car Lots": 58,
+   "Motorcycle Lots": 10,
+   "Lorry Lots": 11
+  },
+  "total_lots": 79,
+  "lat": 1.2895278,
+  "lon": 103.7714515,
+  "car_lots": 58
+ },
+ {
+  "id": "ura_W0034",
+  "source": "ura",
+  "pp_code": "W0034",
+  "name": "Woodlands Sector 1",
+  "lot_counts": {
+   "Car Lots": 27,
+   "Motorcycle Lots": 20
+  },
+  "total_lots": 47,
+  "lat": 1.4543406,
+  "lon": 103.8050909,
+  "car_lots": 27
+ },
+ {
+  "id": "ura_W0035",
+  "source": "ura",
+  "pp_code": "W0035",
+  "name": "Woodlands Walk",
+  "lot_counts": {
+   "Car Lots": 22
+  },
+  "total_lots": 22,
+  "lat": 1.4523733,
+  "lon": 103.8035697,
+  "car_lots": 22
+ },
+ {
+  "id": "ura_W0036",
+  "source": "ura",
+  "pp_code": "W0036",
+  "name": "Woodlands Link",
+  "lot_counts": {
+   "Car Lots": 35,
+   "Lorry Lots": 15
+  },
+  "total_lots": 50,
+  "lat": 1.4503942,
+  "lon": 103.8083442,
+  "car_lots": 35
+ },
+ {
+  "id": "ura_W0037",
+  "source": "ura",
+  "pp_code": "W0037",
+  "name": "Woodlands Loop",
+  "lot_counts": {
+   "Car Lots": 30,
+   "Trailer Lots": 12
+  },
+  "total_lots": 42,
+  "lat": 1.4484194,
+  "lon": 103.8081412,
+  "car_lots": 30
+ },
+ {
+  "id": "ura_W0038",
+  "source": "ura",
+  "pp_code": "W0038",
+  "name": "Woodlands Terrace",
+  "lot_counts": {
+   "Car Lots": 44
+  },
+  "total_lots": 44,
+  "lat": 1.4519357,
+  "lon": 103.8077342,
+  "car_lots": 44
+ },
+ {
+  "id": "ura_W0040",
+  "source": "ura",
+  "pp_code": "W0040",
+  "name": "Woodlands Avenue 9 (woodlands Avenue 8 / Link)",
+  "lot_counts": {
+   "Lorry Lots": 60,
+   "Motorcycle Lots": 19
+  },
+  "total_lots": 79,
+  "lat": 1.4529976,
+  "lon": 103.8075564,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_W0045",
+  "source": "ura",
+  "pp_code": "W0045",
+  "name": "Warna Road",
+  "lot_counts": {
+   "Motorcycle Lots": 7,
+   "Car Lots": 14
+  },
+  "total_lots": 21,
+  "lat": 1.3118778,
+  "lon": 103.796694,
+  "car_lots": 14
+ },
+ {
+  "id": "ura_W0046",
+  "source": "ura",
+  "pp_code": "W0046",
+  "name": "Woodlands Industrial Park E1",
+  "lot_counts": {
+   "Motorcycle Lots": 19,
+   "Car Lots": 20
+  },
+  "total_lots": 39,
+  "lat": 1.4544636,
+  "lon": 103.7973286,
+  "car_lots": 20
+ },
+ {
+  "id": "ura_W0047",
+  "source": "ura",
+  "pp_code": "W0047",
+  "name": "Woodlands Industrial Park E3",
+  "lot_counts": {
+   "Car Lots": 71,
+   "Trailer Lots": 5
+  },
+  "total_lots": 76,
+  "lat": 1.4534587,
+  "lon": 103.7964899,
+  "car_lots": 71
+ },
+ {
+  "id": "ura_W0048",
+  "source": "ura",
+  "pp_code": "W0048",
+  "name": "Woodlands Industrial Park E8",
+  "lot_counts": {
+   "Car Lots": 45
+  },
+  "total_lots": 45,
+  "lat": 1.4527215,
+  "lon": 103.8001608,
+  "car_lots": 45
+ },
+ {
+  "id": "ura_W0049",
+  "source": "ura",
+  "pp_code": "W0049",
+  "name": "Woodlands Industrial Park E9",
+  "lot_counts": {
+   "Car Lots": 33,
+   "Motorcycle Lots": 6
+  },
+  "total_lots": 39,
+  "lat": 1.4497843,
+  "lon": 103.7983941,
+  "car_lots": 33
+ },
+ {
+  "id": "ura_W0051",
+  "source": "ura",
+  "pp_code": "W0051",
+  "name": "Woodlands Industrial Park E6",
+  "lot_counts": {
+   "Car Lots": 10
+  },
+  "total_lots": 10,
+  "lat": 1.4494384,
+  "lon": 103.7994242,
+  "car_lots": 10
+ },
+ {
+  "id": "ura_W0055",
+  "source": "ura",
+  "pp_code": "W0055",
+  "name": "Warna Road Off Street",
+  "lot_counts": {
+   "Car Lots": 42,
+   "Motorcycle Lots": 7
+  },
+  "total_lots": 49,
+  "lat": 1.3110921,
+  "lon": 103.7962143,
+  "car_lots": 42
+ },
+ {
+  "id": "ura_W0058",
+  "source": "ura",
+  "pp_code": "W0058",
+  "name": "Woodlands Industrial Park E5",
+  "lot_counts": {
+   "Car Lots": 44,
+   "Motorcycle Lots": 14
+  },
+  "total_lots": 58,
+  "lat": 1.4507695,
+  "lon": 103.7934571,
+  "car_lots": 44
+ },
+ {
+  "id": "ura_Y0002",
+  "source": "ura",
+  "pp_code": "Y0002",
+  "name": "Yan Kit Road",
+  "lot_counts": {
+   "Car Lots": 11
+  },
+  "total_lots": 11,
+  "lat": 1.2757881,
+  "lon": 103.8419239,
+  "car_lots": 11
+ },
+ {
+  "id": "ura_Y0013",
+  "source": "ura",
+  "pp_code": "Y0013",
+  "name": "Yishun Industrial Park A",
+  "lot_counts": {
+   "Car Lots": 70,
+   "Lorry Lots": 58,
+   "Motorcycle Lots": 14
+  },
+  "total_lots": 142,
+  "lat": 1.4432549,
+  "lon": 103.8334984,
+  "car_lots": 70
+ },
+ {
+  "id": "ura_Y0017",
+  "source": "ura",
+  "pp_code": "Y0017",
+  "name": "Yishun Avenue 7 Heavy Vehicle Park",
+  "lot_counts": {
+   "Lorry Lots": 661,
+   "Motorcycle Lots": 120,
+   "Trailer Lots": 25
+  },
+  "total_lots": 806,
+  "lat": 1.4443689,
+  "lon": 103.8407287,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_Y0019",
+  "source": "ura",
+  "pp_code": "Y0019",
+  "name": "Yan Kit Road / Cantonment Road Off Street",
+  "lot_counts": {
+   "Car Lots": 15,
+   "Motorcycle Lots": 8
+  },
+  "total_lots": 23,
+  "lat": 1.2744976,
+  "lon": 103.8414327,
+  "car_lots": 15
+ },
+ {
+  "id": "ura_Y0020",
+  "source": "ura",
+  "pp_code": "Y0020",
+  "name": "Yio Chu Kang Road Hvp",
+  "lot_counts": {
+   "Lorry Lots": 433,
+   "Motorcycle Lots": 138
+  },
+  "total_lots": 571,
+  "lat": 1.3910257,
+  "lon": 103.8629719,
+  "car_lots": 0
+ },
+ {
+  "id": "ura_Z0001",
+  "source": "ura",
+  "pp_code": "Z0001",
+  "name": "Zion Road Off Street",
+  "lot_counts": {
+   "Car Lots": 12,
+   "Motorcycle Lots": 5
+  },
+  "total_lots": 17,
+  "lat": 1.2924047,
+  "lon": 103.8307292,
+  "car_lots": 12
+ },
+ {
+  "id": "ura_Z0003",
+  "source": "ura",
+  "pp_code": "Z0003",
+  "name": "Zion Road",
+  "lot_counts": {
+   "Car Lots": 26
+  },
+  "total_lots": 26,
+  "lat": 1.2925691,
+  "lon": 103.8305261,
+  "car_lots": 26
+ },
+ {
+  "id": "ura_Z0004",
+  "source": "ura",
+  "pp_code": "Z0004",
+  "name": "Zion Close",
+  "lot_counts": {
+   "Car Lots": 8
+  },
+  "total_lots": 8,
+  "lat": 1.2930836,
+  "lon": 103.8303897,
+  "car_lots": 8
+ }
+]
