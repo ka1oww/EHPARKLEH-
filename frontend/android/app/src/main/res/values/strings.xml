@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">EhParkLeh</string>
+    <string name="title_activity_main">EhParkLeh</string>
+    <string name="package_name">sg.ehparkleh.app</string>
+    <string name="custom_url_scheme">sg.ehparkleh.app</string>
+</resources>

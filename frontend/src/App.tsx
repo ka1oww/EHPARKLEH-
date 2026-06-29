@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import Map from './Map'
 import './App.css'
 import { parseFreeParking } from './rules'
+import { getCurrentPosition } from './geo'
 import type {
   Carpark,
   OsmParking,
@@ -66,11 +67,10 @@ export default function App() {
   const [selected, setSelected] = useState<string | null>(null)
 
   useEffect(() => {
-    if (!navigator.geolocation) return
-    navigator.geolocation.getCurrentPosition(
-      pos => setUserLocation({ lat: pos.coords.latitude, lon: pos.coords.longitude }),
-      () => {}
-    )
+    // Native (Capacitor) or web geolocation; silently ignore failures here.
+    getCurrentPosition()
+      .then(loc => setUserLocation(loc))
+      .catch(() => {})
   }, [])
 
   useEffect(() => {
@@ -162,11 +162,9 @@ export default function App() {
   }
 
   function handleNearMe() {
-    if (!navigator.geolocation) { setError('Your browser cannot do location leh.'); return }
-    navigator.geolocation.getCurrentPosition(
-      pos => search(pos.coords.latitude, pos.coords.longitude),
-      () => setError('Cannot get your location. Allow location access?')
-    )
+    getCurrentPosition()
+      .then(loc => search(loc.lat, loc.lon))
+      .catch(() => setError('Cannot get your location. Allow location access?'))
   }
 
   const filtered = carparks
