@@ -4,7 +4,17 @@ import httpx
 import math
 import asyncio
 import json
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load backend/.env at startup so config + secrets live outside the code.
+# .env is git-ignored; never commit it.
+load_dotenv(Path(__file__).parent / ".env")
+
+# Google Places API config (used by the Phase 1 enrichment crawler).
+GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY", "")
+GOOGLE_PLACES_MAX_CALLS = int(os.getenv("GOOGLE_PLACES_MAX_CALLS", "4000"))
 
 app = FastAPI()
 

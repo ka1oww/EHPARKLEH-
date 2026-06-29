@@ -4,6 +4,10 @@ import './App.css'
 
 const RADIUS_OPTIONS = [250, 500, 1000, 2000]
 
+// Backend base URL. Override via VITE_API_BASE in frontend/.env; falls back to
+// the deployed Render backend so existing builds keep working unchanged.
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://ehparkleh-backend.onrender.com'
+
 function AvailBar({ available, total }) {
   if (available === null || total === null || total === 0) {
     return <div className="avail-label" style={{ color: '#bbb' }}>No data</div>
@@ -64,7 +68,7 @@ export default function App() {
     if (val.trim().length < 2) { setSuggestions([]); setShowSuggestions(false); return }
     debounceRef.current = setTimeout(async () => {
       try {
-        const res = await fetch(`https://ehparkleh-backend.onrender.com/api/suggestions?q=${encodeURIComponent(val)}`)
+        const res = await fetch(`${API_BASE}/api/suggestions?q=${encodeURIComponent(val)}`)
         const data = await res.json()
         setSuggestions(data)
         setShowSuggestions(data.length > 0)
@@ -83,7 +87,7 @@ export default function App() {
     setLoading(true)
     setError('')
     try {
-      const base = `https://ehparkleh-backend.onrender.com`
+      const base = API_BASE
       const [hdbRes, osmRes] = await Promise.all([
         fetch(`${base}/api/carparks?lat=${lat}&lon=${lon}&radius=${radius}`),
         fetch(`${base}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${radius}`),
@@ -109,7 +113,7 @@ export default function App() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch(`https://ehparkleh-backend.onrender.com/api/geocode?q=${encodeURIComponent(query)}`)
+      const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(query)}`)
       if (!res.ok) { setError('Location not found.'); setLoading(false); return }
       const { lat, lon } = await res.json()
       await search(lat, lon)
