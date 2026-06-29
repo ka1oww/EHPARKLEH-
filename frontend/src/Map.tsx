@@ -52,7 +52,7 @@ export default function Map({
 
     if (centerMarkerRef.current) centerMarkerRef.current.remove()
     centerMarkerRef.current = L.circleMarker([center.lat, center.lon], {
-      radius: 8, color: '#e74c3c', fillColor: '#e74c3c', fillOpacity: 1, weight: 2,
+      radius: 8, color: '#FF6B5A', fillColor: '#FF6B5A', fillOpacity: 1, weight: 2,
     }).addTo(map).bindPopup('Destination')
   }, [center])
 
@@ -69,8 +69,8 @@ export default function Map({
       const isSelected = cp.id === selected
       const marker = L.circleMarker([cp.lat, cp.lon], {
         radius: isSelected ? 12 : 8,
-        color: isSelected ? '#f59e0b' : '#38a169',
-        fillColor: isSelected ? '#f59e0b' : '#38a169',
+        color: isSelected ? '#FFB020' : '#2FBF71',
+        fillColor: isSelected ? '#FFB020' : '#2FBF71',
         fillOpacity: 0.9,
         weight: 2,
       })
@@ -78,8 +78,8 @@ export default function Map({
         .bindPopup(`
           <b>${i + 1}. ${cp.address}</b><br/>
           ${cp.distance_m}m away<br/>
-          ${cp.free_parking ? 'Free' : `$${cp.cost_per_30min?.toFixed(2)}/30min`}<br/>
-          ${cp.lots_available !== null ? `${cp.lots_available}/${cp.total_lots} lots` : 'Availability N/A'}
+          ${cp.rate.known ? cp.rate.summary : 'Rate unknown'}<br/>
+          ${cp.lots_available !== null ? `${cp.lots_available}/${cp.total_lots} lots` : 'No live lots'}
         `)
         .on('click', () => onSelect(cp.id === selected ? null : cp.id))
 
@@ -125,7 +125,7 @@ export default function Map({
     if (userMarkerRef.current) userMarkerRef.current.remove()
     userMarkerRef.current = L.circleMarker([userLocation.lat, userLocation.lon], {
       radius: 8, color: '#3d6bce', fillColor: '#3d6bce', fillOpacity: 1, weight: 3,
-    }).addTo(map).bindPopup('You are here')
+    }).addTo(map).bindPopup('You are here lah')
   }, [userLocation])
 
   return <div ref={mapRef} style={{ height: '100%', width: '100%' }} />

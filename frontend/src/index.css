@@ -1,10 +1,13 @@
+@import './tokens.css';
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background: #f0f2f5;
-  color: #222;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 #root {

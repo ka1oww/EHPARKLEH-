@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Map from './Map'
 import './App.css'
+import { parseFreeParking } from './rules'
 import type {
   Carpark,
   OsmParking,
@@ -12,25 +13,35 @@ import type {
 
 const RADIUS_OPTIONS = [250, 500, 1000, 2000]
 
+// Category filter chips, mapped to the backend `category` query param.
+// null = "All" (no category filter).
+const CATEGORY_CHIPS: { label: string; value: string | null }[] = [
+  { label: 'All', value: null },
+  { label: 'HDB', value: 'HDB' },
+  { label: 'Malls', value: 'Mall' },
+  { label: 'Street', value: 'Street' },
+  { label: 'Private', value: 'Private' },
+]
+
 // Backend base URL. Override via VITE_API_BASE in frontend/.env; falls back to
 // the deployed Render backend so existing builds keep working unchanged.
 const API_BASE = import.meta.env.VITE_API_BASE || 'https://ehparkleh-backend.onrender.com'
 
-function AvailBar({ available, total }: { available: number | null; total: number | null }) {
+/** Availability badge using --free / --some / --full tokens. */
+function AvailBadge({ available, total }: { available: number | null; total: number | null }) {
   if (available === null || total === null || total === 0) {
-    return <div className="avail-label" style={{ color: '#bbb' }}>No data</div>
+    return (
+      <div className="avail-badge nodata">
+        <span className="dot-pulse" /> No live data
+      </div>
+    )
   }
   const pct = available / total
-  const colorClass = pct > 0.5 ? 'green' : pct > 0.2 ? 'orange' : 'red'
+  const cls = pct > 0.4 ? 'free' : pct > 0.1 ? 'some' : 'full'
+  const word = pct > 0.4 ? 'Plenty' : pct > 0.1 ? 'Filling up' : available > 0 ? 'Almost full' : 'No lots'
   return (
-    <div className="avail-bar-wrap">
-      <div className="avail-bar-bg">
-        <div
-          className={`avail-bar-fill ${colorClass}`}
-          style={{ width: `${Math.round(pct * 100)}%` }}
-        />
-      </div>
-      <div className="avail-label">{available} / {total} lots</div>
+    <div className={`avail-badge ${cls}`}>
+      <span className="dot-pulse" /> {word} · {available}/{total} lots
     </div>
   )
 }
@@ -44,6 +55,9 @@ export default function App() {
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const searchBoxRef = useRef<HTMLFormElement>(null)
   const [radius, setRadius] = useState(500)
+  const [category, setCategory] = useState<string | null>(null)
+  const [freeNow, setFreeNow] = useState(false)
+  const [hasLots, setHasLots] = useState(false)
   const [carparks, setCarparks] = useState<Carpark[]>([])
   const [osmParking, setOsmParking] = useState<OsmParking[]>([])
   const [center, setCenter] = useState<LatLon | null>(null)
@@ -68,6 +82,12 @@ export default function App() {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  // Re-run the last search whenever a filter changes, so list + map stay in sync.
+  useEffect(() => {
+    if (center) search(center.lat, center.lon)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [radius, category, freeNow, hasLots])
 
   function handleQueryChange(e: React.ChangeEvent<HTMLInputElement>) {
     const val = e.target.value
@@ -95,10 +115,18 @@ export default function App() {
     setLoading(true)
     setError('')
     try {
-      const base = API_BASE
+      const params = new URLSearchParams({
+        lat: String(lat),
+        lon: String(lon),
+        radius: String(radius),
+      })
+      if (category) params.set('category', category)
+      if (freeNow) params.set('free_now', 'true')
+      if (hasLots) params.set('has_lots', 'true')
+
       const [hdbRes, osmRes] = await Promise.all([
-        fetch(`${base}/api/carparks?lat=${lat}&lon=${lon}&radius=${radius}`),
-        fetch(`${base}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${radius}`),
+        fetch(`${API_BASE}/api/carparks?${params.toString()}`),
+        fetch(`${API_BASE}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${radius}`),
       ])
       const hdbData: Carpark[] = await hdbRes.json()
       const osmData: OsmParking[] = osmRes.ok ? await osmRes.json() : []
@@ -106,9 +134,11 @@ export default function App() {
       setOsmParking(osmData)
       setCenter({ lat, lon })
       setSelected(null)
-      if (hdbData.length === 0 && osmData.length === 0) setError('No carparks found in this area. Try a larger radius.')
+      if (hdbData.length === 0 && osmData.length === 0) {
+        setError('Aiyah, no lots leh. Try a bigger radius or fewer filters?')
+      }
     } catch {
-      setError('Failed to fetch carparks. Is the backend running?')
+      setError('Cannot reach the backend leh. Try again in a bit?')
     }
     setLoading(false)
   }
@@ -122,20 +152,20 @@ export default function App() {
     setError('')
     try {
       const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(query)}`)
-      if (!res.ok) { setError('Location not found.'); setLoading(false); return }
+      if (!res.ok) { setError('Cannot find that place. Try another search?'); setLoading(false); return }
       const { lat, lon }: GeocodeResult = await res.json()
       await search(lat, lon)
     } catch {
-      setError('Failed to geocode. Is the backend running?')
+      setError('Cannot reach the backend leh. Try again in a bit?')
       setLoading(false)
     }
   }
 
   function handleNearMe() {
-    if (!navigator.geolocation) { setError('Geolocation not supported.'); return }
+    if (!navigator.geolocation) { setError('Your browser cannot do location leh.'); return }
     navigator.geolocation.getCurrentPosition(
       pos => search(pos.coords.latitude, pos.coords.longitude),
-      () => setError('Could not get your location.')
+      () => setError('Cannot get your location. Allow location access?')
     )
   }
 
@@ -145,17 +175,25 @@ export default function App() {
     ...osmParking.map((cp): ParkingEntry => ({ ...cp, source: 'osm' })),
   ].sort((a, b) => a.distance_m - b.distance_m)
 
+  const totalNearby = allParking.length
+
   return (
     <div className="app">
       <header>
-        <h1>EhParkLeh</h1>
+        <div className="brand">
+          <img src="/brand-car.svg" className="brand-mark" alt="" />
+          <div className="brand-text">
+            <h1>EhParkLeh</h1>
+            <span className="brand-tagline">Eh, park here lah</span>
+          </div>
+        </div>
         <a
           href="https://buymeacoffee.com/zhehang"
           target="_blank"
           rel="noopener noreferrer"
           className="bmc-btn"
         >
-          ☕ Buy me a coffee
+          ☕ Buy me kopi
         </a>
       </header>
 
@@ -165,7 +203,7 @@ export default function App() {
             value={query}
             onChange={handleQueryChange}
             onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
-            placeholder="Search an address, e.g. Toa Payoh Hub"
+            placeholder="Park where? e.g. Toa Payoh Hub"
             autoComplete="off"
           />
           {showSuggestions && (
@@ -183,18 +221,38 @@ export default function App() {
       </div>
 
       <div className="filters">
-        <div className="filter-group">
-          <span className="filter-label">Radius</span>
-          {RADIUS_OPTIONS.map(r => (
-            <button
-              key={r}
-              className={radius === r ? 'active' : ''}
-              onClick={() => setRadius(r)}
-            >
-              {r >= 1000 ? `${r / 1000}km` : `${r}m`}
-            </button>
-          ))}
-        </div>
+        {CATEGORY_CHIPS.map(c => (
+          <button
+            key={c.label}
+            className={`chip ${category === c.value ? 'active' : ''}`}
+            onClick={() => setCategory(c.value)}
+          >
+            {c.label}
+          </button>
+        ))}
+        <span className="chip-divider" />
+        <button
+          className={`chip chip-toggle ${freeNow ? 'active' : ''}`}
+          onClick={() => setFreeNow(v => !v)}
+        >
+          🆓 Free now
+        </button>
+        <button
+          className={`chip chip-toggle ${hasLots ? 'active' : ''}`}
+          onClick={() => setHasLots(v => !v)}
+        >
+          ✅ Has lots
+        </button>
+        <span className="chip-divider" />
+        {RADIUS_OPTIONS.map(r => (
+          <button
+            key={r}
+            className={`chip ${radius === r ? 'active' : ''}`}
+            onClick={() => setRadius(r)}
+          >
+            {r >= 1000 ? `${r / 1000}km` : `${r}m`}
+          </button>
+        ))}
       </div>
 
       {error && <div className="error">{error}</div>}
@@ -206,65 +264,70 @@ export default function App() {
 
       <div className="main-content">
         <div className={`list ${mobileTab === 'map' ? 'hidden-mobile' : ''}`}>
-          {loading && <div className="status">Searching...</div>}
-          {!loading && allParking.length > 0 && (
+          {loading && <div className="status">Finding spots for you…</div>}
+          {!loading && totalNearby > 0 && (
             <div className="status">
-              {filtered.length} HDB · {osmParking.length} other parking nearby
+              Steady, {totalNearby} spot{totalNearby === 1 ? '' : 's'} near you
             </div>
           )}
           {allParking.map((cp) => (
             cp.source === 'osm' ? (
               <div
                 key={cp.id}
-                className={`card card-osm ${selected === cp.id ? 'selected' : ''}`}
-                onClick={() => { setSelected(cp.id === selected ? null : cp.id); setMobileTab('map') }}
-              >
-                <div className="card-header">
-                  <span className="rank rank-osm">P</span>
-                  <span className="card-address">{cp.name}</span>
-                </div>
-                <div className="card-pills">
-                  <span className="pill pill-blue">📏 {cp.distance_m}m</span>
-                  {cp.fee === 'no' && <span className="pill pill-green">Free</span>}
-                  {cp.parking_type && <span className="pill">{cp.parking_type}</span>}
-                </div>
-                <div className="card-footer">
-                  <span className="card-meta osm-note">No pricing or availability data</span>
-                  <a
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${cp.lat},${cp.lon}`}
-                    target="_blank" rel="noopener noreferrer"
-                    className="gmaps-btn" onClick={e => e.stopPropagation()}
-                  >Google Maps ↗</a>
-                </div>
-              </div>
-            ) : (
-              <div
-                key={cp.id}
                 className={`card ${selected === cp.id ? 'selected' : ''}`}
                 onClick={() => { setSelected(cp.id === selected ? null : cp.id); setMobileTab('map') }}
               >
                 <div className="card-header">
-                  <span className="rank">{carparks.indexOf(cp) + 1}</span>
-                  <span className="card-address">{cp.address}</span>
+                  <span className="rank-osm">P</span>
+                  <span className="card-address">{cp.name}</span>
                 </div>
                 <div className="card-pills">
-                  <span className="pill pill-blue">📏 {cp.distance_m}m</span>
-                  <span className="pill">💰 ${cp.cost_per_30min?.toFixed(2)}/30min</span>
-                  {cp.free_parking_info !== 'NO' && (
-                    <span className="pill pill-green">Free: {cp.free_parking_info}</span>
-                  )}
-                  <span className="pill">{cp.zone}</span>
+                  <span className="pill pill-teal">📏 {cp.distance_m}m</span>
+                  {cp.fee === 'no' && <span className="pill pill-free">Free</span>}
+                  {cp.parking_type && <span className="pill">{cp.parking_type}</span>}
                 </div>
-                <AvailBar available={cp.lots_available} total={cp.total_lots} />
                 <div className="card-footer">
-                  <span className="card-meta">{cp.type}</span>
+                  <span className="card-meta osm-note">No live lots or rates here</span>
                   <a
                     href={`https://www.google.com/maps/dir/?api=1&destination=${cp.lat},${cp.lon}`}
                     target="_blank" rel="noopener noreferrer"
                     className="gmaps-btn" onClick={e => e.stopPropagation()}
-                  >Google Maps ↗</a>
+                  >Directions ↗</a>
                 </div>
               </div>
+            ) : (
+              (() => {
+                const freeText = parseFreeParking(cp.free_parking_info)
+                return (
+                  <div
+                    key={cp.id}
+                    className={`card ${selected === cp.id ? 'selected' : ''}`}
+                    onClick={() => { setSelected(cp.id === selected ? null : cp.id); setMobileTab('map') }}
+                  >
+                    <div className="card-header">
+                      <span className="rank">{carparks.indexOf(cp) + 1}</span>
+                      <span className="card-address">{cp.address}</span>
+                    </div>
+                    <AvailBadge available={cp.lots_available} total={cp.total_lots} />
+                    <div className="card-pills">
+                      <span className="pill pill-teal">📏 {cp.distance_m}m</span>
+                      {cp.rate.known
+                        ? <span className="pill pill-coral">💰 {cp.rate.summary}</span>
+                        : <span className="pill">💰 Rate unknown</span>}
+                      {cp.category && <span className="pill">{cp.category}</span>}
+                    </div>
+                    {freeText && <div className="card-pills"><span className="pill pill-free">🆓 {freeText}</span></div>}
+                    <div className="card-footer">
+                      <span className="card-meta">{cp.type || 'Carpark'}</span>
+                      <a
+                        href={`https://www.google.com/maps/dir/?api=1&destination=${cp.lat},${cp.lon}`}
+                        target="_blank" rel="noopener noreferrer"
+                        className="gmaps-btn" onClick={e => e.stopPropagation()}
+                      >Directions ↗</a>
+                    </div>
+                  </div>
+                )
+              })()
             )
           ))}
         </div>
@@ -274,7 +337,7 @@ export default function App() {
             <div className="map-legend">
               <span><span className="dot dot-blue" /> You</span>
               <span><span className="dot dot-red" /> Destination</span>
-              <span><span className="dot dot-green" /> HDB</span>
+              <span><span className="dot dot-green" /> Carpark</span>
               <span><span className="dot dot-amber" /> Selected</span>
               <span><span className="dot dot-grey" /> Other</span>
             </div>
@@ -283,8 +346,8 @@ export default function App() {
             <Map center={center} carparks={filtered} osmParking={osmParking} selected={selected} onSelect={setSelected} userLocation={userLocation} visible={mobileTab === 'map'} />
           ) : (
             <div className="map-placeholder">
-              <span className="icon">🗺️</span>
-              <p>Search a location to see nearby carparks</p>
+              <img src="/brand-car.svg" alt="" />
+              <p>Eh, where you parking today?<br />Search a place to start.</p>
             </div>
           )}
         </div>

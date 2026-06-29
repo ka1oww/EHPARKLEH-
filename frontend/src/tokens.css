@@ -1,0 +1,36 @@
+/* EhParkLeh design tokens — "Playful local identity".
+ * Warm, characterful, Singaporean. Single source of truth for colour, radius,
+ * shadow and type so the whole app stays cohesive. */
+:root {
+  /* Brand */
+  --coral: #FF6B5A;
+  --coral-dark: #E8503F;
+  --teal: #0FB3A6;
+  --teal-deep: #0E7C7B;
+
+  /* Surfaces + text */
+  --cream: #FFF8F3;
+  --surface: #FFFFFF;
+  --ink: #2B2B2B;
+  --muted: #6B6B6B;
+  --hairline: #F0E5DB;
+
+  /* Availability */
+  --free: #2FBF71;
+  --some: #FFB020;
+  --full: #FF4D4D;
+
+  /* Shape */
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --radius-input: 16px;
+
+  /* Soft, warm shadows */
+  --shadow-sm: 0 2px 8px rgba(43, 43, 43, 0.06);
+  --shadow-md: 0 6px 20px rgba(43, 43, 43, 0.09);
+  --shadow-lg: 0 12px 32px rgba(232, 80, 63, 0.18);
+
+  /* Type */
+  --font-display: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Nunito Sans', system-ui, sans-serif;
+}

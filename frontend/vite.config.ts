@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icons.svg', 'icons/apple-touch-icon.png'],
+      includeAssets: ['favicon.svg', 'brand-car.svg', 'icons/apple-touch-icon.png'],
       manifest: {
         name: 'EhParkLeh',
         short_name: 'EhParkLeh',
@@ -24,11 +24,13 @@ export default defineConfig({
             src: 'icons/pwa-192.png',
             sizes: '192x192',
             type: 'image/png',
+            purpose: 'any',
           },
           {
             src: 'icons/pwa-512.png',
             sizes: '512x512',
             type: 'image/png',
+            purpose: 'any',
           },
           {
             src: 'icons/pwa-512-maskable.png',
