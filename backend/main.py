@@ -1,10 +1,14 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import Optional, Literal
 import httpx
 import math
-import asyncio
 import json
 import os
+import time
+import logging
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -12,108 +16,407 @@ from dotenv import load_dotenv
 # .env is git-ignored; never commit it.
 load_dotenv(Path(__file__).parent / ".env")
 
+# Structured logging instead of silent except/pass + bare print().
+logging.basicConfig(
+    level=os.getenv("LOG_LEVEL", "INFO"),
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+)
+logger = logging.getLogger("ehparkleh")
+
 # Google Places API config (used by the Phase 1 enrichment crawler).
 GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY", "")
 GOOGLE_PLACES_MAX_CALLS = int(os.getenv("GOOGLE_PLACES_MAX_CALLS", "4000"))
 
-app = FastAPI()
+# data.gov.sg live availability feed (keyless).
+AVAILABILITY_URL = "https://api.data.gov.sg/v1/transport/carpark-availability"
+# How long a fetched availability snapshot is reused before re-fetching.
+# The feed refreshes about once a minute, so ~60s avoids hammering it while
+# staying fresh enough.
+AVAILABILITY_TTL_SECONDS = int(os.getenv("AVAILABILITY_TTL_SECONDS", "60"))
 
-app.add_middleware( #this is to allow any website or domain to make request to the backend the * helps to not restit who can call your api.
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    # Load the static carpark dataset once at startup.
+    global _carpark_cache
+    _carpark_cache = load_carpark_records()
+    logger.info("Loaded %d carparks from %s", len(_carpark_cache), _data_file().name)
+    yield
+
+
+app = FastAPI(title="EhParkLeh API", version="2", lifespan=lifespan)
+
+app.add_middleware(
+    # Allow any origin so the PWA (and Capacitor wrapper) can call the API.
     CORSMiddleware,
     allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-CENTRAL_BOUNDS = {
-    "min_lat": 1.270, "max_lat": 1.320,
-    "min_lon": 103.815, "max_lon": 103.880,
+# ---------------------------------------------------------------------------
+# Category mapping
+# ---------------------------------------------------------------------------
+# The enriched dataset stores fine-grained categories; the UI filters by a
+# small, stable set. This maps the dataset category -> the public filter value.
+CategoryFilter = Literal["HDB", "Mall", "Street", "Private"]
+
+_CATEGORY_MAP = {
+    "HDB Estate": "HDB",
+    "Mall": "Mall",
+    "Street (URA)": "Street",
+    "Commercial/Private": "Private",
 }
 
-# Carpark locations are static — loaded once at startup, never re-fetched
-_carpark_cache: list = [] #will be filled at startup line 81-105
 
-def is_central(lat, lon):
-    return (CENTRAL_BOUNDS["min_lat"] <= lat <= CENTRAL_BOUNDS["max_lat"] and
-            CENTRAL_BOUNDS["min_lon"] <= lon <= CENTRAL_BOUNDS["max_lon"])
+def to_filter_category(dataset_category: Optional[str]) -> Optional[str]:
+    """Collapse a dataset category into the public filter category."""
+    if dataset_category is None:
+        return None
+    return _CATEGORY_MAP.get(dataset_category, dataset_category)
 
-def svy21_to_wgs84(easting, northing): #this simply converts the data gov.sg gives us to what the map needs
-    a = 6378137.0
-    f = 1.0 / 298.257223563
-    e2 = 2 * f - f * f
 
-    N0, E0, k0 = 38744.572, 28001.642, 1.0
-    lat0 = math.radians(1.3674765)
-    lon0 = math.radians(103.8255487)
+# ---------------------------------------------------------------------------
+# Pydantic response models
+# ---------------------------------------------------------------------------
+class Suggestion(BaseModel):
+    address: str
+    lat: float
+    lon: float
 
-    M0 = a * ((1 - e2/4 - 3*e2**2/64 - 5*e2**3/256) * lat0
-              - (3*e2/8 + 3*e2**2/32 + 45*e2**3/1024) * math.sin(2*lat0)
-              + (15*e2**2/256 + 45*e2**3/1024) * math.sin(4*lat0)
-              - (35*e2**3/3072) * math.sin(6*lat0))
 
-    M = M0 + (northing - N0) / k0
-    mu = M / (a * (1 - e2/4 - 3*e2**2/64 - 5*e2**3/256))
+class GeocodeResult(BaseModel):
+    lat: float
+    lon: float
+    address: str
 
-    e1 = (1 - math.sqrt(1 - e2)) / (1 + math.sqrt(1 - e2))
-    lat1 = (mu
-            + (3*e1/2 - 27*e1**3/32) * math.sin(2*mu)
-            + (21*e1**2/16 - 55*e1**4/32) * math.sin(4*mu)
-            + (151*e1**3/96) * math.sin(6*mu)
-            + (1097*e1**4/512) * math.sin(8*mu))
 
-    N1 = a / math.sqrt(1 - e2 * math.sin(lat1)**2)
-    T1 = math.tan(lat1)**2
-    C1 = (e2 / (1 - e2)) * math.cos(lat1)**2
-    R1 = a * (1 - e2) / (1 - e2 * math.sin(lat1)**2)**1.5
-    D = (easting - E0) / (N1 * k0)
+class ResolvedRate(BaseModel):
+    # The resolved, plain-English-ish price summary for a carpark.
+    # Anything we cannot parse stays null / "unknown" rather than a faked value.
+    known: bool = False
+    summary: str = "unknown"
+    first_hour: Optional[float] = None
+    subsequent_half_hour: Optional[float] = None
+    weekday_raw: Optional[str] = None
+    saturday_raw: Optional[str] = None
+    sunday_ph_raw: Optional[str] = None
 
-    lat = lat1 - (N1 * math.tan(lat1) / R1) * (
-        D**2/2
-        - (5 + 3*T1 + 10*C1 - 4*C1**2 - 9*e2/(1-e2)) * D**4/24
-        + (61 + 90*T1 + 298*C1 + 45*T1**2 - 252*e2/(1-e2) - 3*C1**2) * D**6/720
-    )
-    lon = lon0 + (
-        D - (1 + 2*T1 + C1) * D**3/6
-        + (5 - 2*C1 + 28*T1 - 3*C1**2 + 8*e2/(1-e2) + 24*T1**2) * D**5/120
-    ) / math.cos(lat1)
 
-    return math.degrees(lat), math.degrees(lon)
+class Carpark(BaseModel):
+    id: str
+    name: Optional[str] = None
+    address: str
+    lat: float
+    lon: float
+    distance_m: int
+    lots_available: Optional[int] = None
+    total_lots: Optional[int] = None
+    type: Optional[str] = None
+    category: Optional[str] = None
+    rate: ResolvedRate
+    free_parking_info: Optional[str] = None
+    sources: list[str] = []
 
-def haversine(lat1, lon1, lat2, lon2): #this is to take into account the curvature of the earth
+
+class OsmParking(BaseModel):
+    id: str
+    name: str
+    lat: float
+    lon: float
+    distance_m: int
+    source: str = "osm"
+    fee: Optional[str] = None
+    parking_type: Optional[str] = None
+    capacity: Optional[str] = None
+
+
+# Carpark locations are static — loaded once at startup, never re-fetched.
+_carpark_cache: list[dict] = []
+
+
+# ---------------------------------------------------------------------------
+# Geometry helpers
+# ---------------------------------------------------------------------------
+def haversine(lat1, lon1, lat2, lon2):
+    """Great-circle distance in metres (accounts for Earth's curvature)."""
     R = 6371000
     p1, p2 = math.radians(lat1), math.radians(lat2)
     dp = math.radians(lat2 - lat1)
     dl = math.radians(lon2 - lon1)
-    a = math.sin(dp/2)**2 + math.cos(p1) * math.cos(p2) * math.sin(dl/2)**2
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
     return 2 * R * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
-@app.on_event("startup") #loads the carparks
-async def load_carparks():
-    global _carpark_cache
-    data_file = Path(__file__).parent / "carparks_geocoded.json"
+# ---------------------------------------------------------------------------
+# Rates resolution (replaces the lat/lon bounding-box pricing hack)
+# ---------------------------------------------------------------------------
+def resolve_rate(rates: Optional[dict]) -> ResolvedRate:
+    """Turn a parsed LTA-style rates blob into a ResolvedRate.
+
+    Returns an "unknown" rate (known=False) when there is nothing usable,
+    so callers never see a fabricated price.
+    """
+    if not rates or not isinstance(rates, dict):
+        return ResolvedRate(known=False, summary="unknown")
+
+    inner = rates.get("rates") if isinstance(rates.get("rates"), dict) else rates
+
+    weekday = inner.get("weekday_1") if isinstance(inner.get("weekday_1"), dict) else {}
+    saturday = inner.get("saturday") if isinstance(inner.get("saturday"), dict) else {}
+    sunday = (
+        inner.get("sunday_publicholiday")
+        if isinstance(inner.get("sunday_publicholiday"), dict)
+        else {}
+    )
+
+    first_hour = weekday.get("first_hour")
+    sub_half = weekday.get("subsequent_half_hour")
+    weekday_raw = weekday.get("raw")
+
+    summary = "unknown"
+    if isinstance(first_hour, (int, float)) and isinstance(sub_half, (int, float)):
+        summary = (
+            f"${first_hour:.2f} first hour, "
+            f"then ${sub_half:.2f} per 1/2 hour (weekday)"
+        )
+    elif weekday_raw:
+        summary = weekday_raw
+
+    known = bool(weekday_raw or first_hour is not None or sub_half is not None)
+
+    return ResolvedRate(
+        known=known,
+        summary=summary if known else "unknown",
+        first_hour=first_hour if isinstance(first_hour, (int, float)) else None,
+        subsequent_half_hour=sub_half if isinstance(sub_half, (int, float)) else None,
+        weekday_raw=weekday_raw,
+        saturday_raw=saturday.get("raw"),
+        sunday_ph_raw=sunday.get("raw"),
+    )
+
+
+# ---------------------------------------------------------------------------
+# Data loading
+# ---------------------------------------------------------------------------
+def _data_file() -> Path:
+    """Prefer the enriched dataset; fall back to the geocoded snapshot."""
+    base = Path(__file__).parent
+    enriched = base / "carparks_enriched.json"
+    if enriched.exists():
+        return enriched
+    return base / "carparks_geocoded.json"
+
+
+def load_carpark_records() -> list[dict]:
+    """Load and normalise carpark records from disk into the cache shape."""
+    data_file = _data_file()
     with open(data_file) as f:
         records = json.load(f)
 
+    out: list[dict] = []
     for cp in records:
-        _carpark_cache.append({
-            "id": cp["id"],
-            "address": cp["address"],
-            "lat": cp["lat"],
-            "lon": cp["lon"],
-            "free_parking_info": cp.get("free_parking", "NO"),
-            "type": cp["type"],
-            "central": is_central(cp["lat"], cp["lon"]),
-        })
-    print(f"Loaded {len(_carpark_cache)} carparks into cache.")
+        # Enriched records carry richer fields; geocoded fallback records do
+        # not. Use .get() throughout so both shapes load cleanly.
+        out.append(
+            {
+                "id": cp["id"],
+                "name": cp.get("name") or cp.get("address"),
+                "address": cp.get("address", cp.get("name", cp["id"])),
+                "lat": cp["lat"],
+                "lon": cp["lon"],
+                "type": cp.get("type"),
+                "category": to_filter_category(cp.get("category")),
+                "rates": cp.get("rates"),
+                "free_parking_info": cp.get("free_parking", cp.get("free_parking_info")),
+                # Key used against the live availability feed.
+                "availability_key": cp.get("availability_key", cp["id"]),
+                "sources": cp.get("sources", []),
+            }
+        )
+    return out
 
 
+# ---------------------------------------------------------------------------
+# Availability fetch with an in-memory TTL cache
+# ---------------------------------------------------------------------------
+# _avail_cache holds the most recent parsed snapshot and the time it was taken.
+_avail_cache: dict = {"data": None, "fetched_at": 0.0}
+
+
+def _parse_availability(payload: dict) -> dict:
+    """Flatten the data.gov.sg payload into {carpark_number: {...}} for car lots."""
+    avail: dict = {}
+    for item in payload["items"][0]["carpark_data"]:
+        for lot in item["carpark_info"]:
+            if lot["lot_type"] == "C":  # car lots only
+                avail[item["carpark_number"]] = {
+                    "lots_available": int(lot["lots_available"]),
+                    "total_lots": int(lot["total_lots"]),
+                }
+    return avail
+
+
+async def get_availability(client: Optional[httpx.AsyncClient] = None) -> dict:
+    """Return the availability map, using a ~60s TTL cache.
+
+    Each search reuses the cached snapshot instead of re-fetching all
+    carparks. On a fetch error we log it and serve the last good snapshot
+    (or an empty map) rather than failing the whole request.
+    """
+    now = time.monotonic()
+    if (
+        _avail_cache["data"] is not None
+        and (now - _avail_cache["fetched_at"]) < AVAILABILITY_TTL_SECONDS
+    ):
+        return _avail_cache["data"]
+
+    own_client = client is None
+    if own_client:
+        client = httpx.AsyncClient(timeout=15)
+    try:
+        resp = await client.get(AVAILABILITY_URL)
+        resp.raise_for_status()
+        avail = _parse_availability(resp.json())
+        _avail_cache["data"] = avail
+        _avail_cache["fetched_at"] = now
+        logger.info("Refreshed availability: %d carparks", len(avail))
+        return avail
+    except Exception:
+        logger.exception("Failed to fetch/parse availability feed")
+        # Serve stale data if we have it, else an empty map.
+        return _avail_cache["data"] or {}
+    finally:
+        if own_client:
+            await client.aclose()
+
+
+# ---------------------------------------------------------------------------
+# Endpoints
+# ---------------------------------------------------------------------------
 @app.get("/health")
 async def health():
-    return {"status": "ok"}
+    return {"status": "ok", "carparks_loaded": len(_carpark_cache)}
 
 
-@app.get("/api/parking/osm")
+@app.get("/api/suggestions", response_model=list[Suggestion])
+async def suggestions(q: str = Query(...)):
+    if len(q.strip()) < 2:
+        return []
+    try:
+        async with httpx.AsyncClient() as client:
+            resp = await client.get(
+                "https://www.onemap.gov.sg/api/common/elastic/search",
+                params={"searchVal": q, "returnGeom": "Y", "getAddrDetails": "Y", "pageNum": 1},
+            )
+        data = resp.json()
+    except Exception:
+        logger.exception("OneMap suggestions request failed")
+        return []
+    return [
+        Suggestion(address=r["ADDRESS"], lat=float(r["LATITUDE"]), lon=float(r["LONGITUDE"]))
+        for r in data.get("results", [])[:6]
+    ]
+
+
+@app.get("/api/geocode", response_model=GeocodeResult)
+async def geocode(q: str = Query(...)):
+    try:
+        async with httpx.AsyncClient() as client:
+            resp = await client.get(
+                "https://www.onemap.gov.sg/api/common/elastic/search",
+                params={"searchVal": q, "returnGeom": "Y", "getAddrDetails": "Y", "pageNum": 1},
+            )
+        data = resp.json()
+    except Exception:
+        logger.exception("OneMap geocode request failed")
+        raise HTTPException(status_code=502, detail="Geocoding service unavailable")
+    if not data.get("results"):
+        raise HTTPException(status_code=404, detail="Location not found")
+    r = data["results"][0]
+    return GeocodeResult(lat=float(r["LATITUDE"]), lon=float(r["LONGITUDE"]), address=r["ADDRESS"])
+
+
+def filter_carparks(
+    lat: float,
+    lon: float,
+    radius: int,
+    availability: dict,
+    category: Optional[str] = None,
+    free_now: bool = False,
+    has_lots: bool = False,
+) -> list[Carpark]:
+    """Server-side spatial + category + flag filtering. Pure, so it is testable."""
+    results: list[Carpark] = []
+    for cp in _carpark_cache:
+        dist = haversine(lat, lon, cp["lat"], cp["lon"])
+        if dist > radius:
+            continue
+
+        if category and cp.get("category") != category:
+            continue
+
+        avail = availability.get(cp["availability_key"], {})
+        lots_available = avail.get("lots_available")
+        total_lots = avail.get("total_lots")
+
+        if has_lots and not (isinstance(lots_available, int) and lots_available > 0):
+            continue
+
+        free_info = cp.get("free_parking_info")
+        is_free = bool(free_info) and str(free_info).upper() != "NO"
+        if free_now and not is_free:
+            continue
+
+        results.append(
+            Carpark(
+                id=cp["id"],
+                name=cp.get("name"),
+                address=cp["address"],
+                lat=cp["lat"],
+                lon=cp["lon"],
+                distance_m=round(dist),
+                lots_available=lots_available,
+                total_lots=total_lots,
+                type=cp.get("type"),
+                category=cp.get("category"),
+                rate=resolve_rate(cp.get("rates")),
+                free_parking_info=free_info,
+                sources=cp.get("sources", []),
+            )
+        )
+
+    results.sort(key=lambda c: c.distance_m)
+    return results
+
+
+@app.get("/api/carparks", response_model=list[Carpark])
+async def get_carparks(
+    lat: float = Query(...),
+    lon: float = Query(...),
+    radius: int = Query(500),
+    category: Optional[CategoryFilter] = Query(None, description="HDB | Mall | Street | Private"),
+    free_now: bool = Query(False, description="Only carparks with free parking now"),
+    has_lots: bool = Query(False, description="Only carparks with live lots available"),
+):
+    if not _carpark_cache:
+        # Startup loads the cache asynchronously; guard against an empty cache.
+        raise HTTPException(
+            status_code=503, detail="Carpark data not loaded yet. Try again in a moment."
+        )
+
+    availability = await get_availability()
+    return filter_carparks(
+        lat=lat,
+        lon=lon,
+        radius=radius,
+        availability=availability,
+        category=category,
+        free_now=free_now,
+        has_lots=has_lots,
+    )
+
+
+@app.get("/api/parking/osm", response_model=list[OsmParking])
 async def parking_osm(
     lat: float = Query(...),
     lon: float = Query(...),
@@ -130,12 +433,15 @@ out center;
 """
     try:
         async with httpx.AsyncClient(timeout=15) as client:
-            resp = await client.post("https://overpass-api.de/api/interpreter", data={"data": query})
+            resp = await client.post(
+                "https://overpass-api.de/api/interpreter", data={"data": query}
+            )
         elements = resp.json().get("elements", [])
     except Exception:
+        logger.exception("Overpass/OSM request failed")
         return []
 
-    results = []
+    results: list[OsmParking] = []
     for el in elements:
         if el["type"] == "node":
             el_lat, el_lon = el["lat"], el["lon"]
@@ -147,96 +453,18 @@ out center;
 
         tags = el.get("tags", {})
         name = tags.get("name") or tags.get("addr:street") or "Parking"
-        results.append({
-            "id": f"osm_{el['id']}",
-            "name": name,
-            "lat": el_lat,
-            "lon": el_lon,
-            "distance_m": round(haversine(lat, lon, el_lat, el_lon)),
-            "source": "osm",
-            "fee": tags.get("fee"),
-            "parking_type": tags.get("parking") or tags.get("car_park_type"),
-            "capacity": tags.get("capacity"),
-        })
-
-    results.sort(key=lambda x: x["distance_m"])
-    return results
-
-
-@app.get("/api/suggestions")
-async def suggestions(q: str = Query(...)):
-    if len(q.strip()) < 2:
-        return []
-    async with httpx.AsyncClient() as client:
-        resp = await client.get(
-            "https://www.onemap.gov.sg/api/common/elastic/search",
-            params={"searchVal": q, "returnGeom": "Y", "getAddrDetails": "Y", "pageNum": 1}
+        results.append(
+            OsmParking(
+                id=f"osm_{el['id']}",
+                name=name,
+                lat=el_lat,
+                lon=el_lon,
+                distance_m=round(haversine(lat, lon, el_lat, el_lon)),
+                fee=tags.get("fee"),
+                parking_type=tags.get("parking") or tags.get("car_park_type"),
+                capacity=tags.get("capacity"),
+            )
         )
-    data = resp.json()
-    return [
-        {"address": r["ADDRESS"], "lat": float(r["LATITUDE"]), "lon": float(r["LONGITUDE"])}
-        for r in data.get("results", [])[:6]
-    ]
 
-
-@app.get("/api/geocode") #this calls the onemap api
-async def geocode(q: str = Query(...)):
-    async with httpx.AsyncClient() as client:
-        resp = await client.get(
-            "https://www.onemap.gov.sg/api/common/elastic/search",
-            params={"searchVal": q, "returnGeom": "Y", "getAddrDetails": "Y", "pageNum": 1}
-        )
-    data = resp.json()
-    if not data.get("results"):
-        raise HTTPException(status_code=404, detail="Location not found")
-    r = data["results"][0]
-    return {"lat": float(r["LATITUDE"]), "lon": float(r["LONGITUDE"]), "address": r["ADDRESS"]}
-
-
-@app.get("/api/carparks")
-async def get_carparks(
-    lat: float = Query(...),
-    lon: float = Query(...),
-    radius: int = Query(500),
-):
-    if not _carpark_cache: #if carpark cache is empty, we need this to check because we do async so it can still be loading
-        raise HTTPException(status_code=503, detail="Carpark data not loaded yet. Try again in a moment.")
-
-    async with httpx.AsyncClient(timeout=15) as client: #this is to get the availability of the carparks
-        avail_resp = await client.get("https://api.data.gov.sg/v1/transport/carpark-availability")
-
-    avail_dict = {}
-    try:
-        for item in avail_resp.json()["items"][0]["carpark_data"]:
-            for lot in item["carpark_info"]:
-                if lot["lot_type"] == "C":
-                    avail_dict[item["carpark_number"]] = {
-                        "lots_available": int(lot["lots_available"]),
-                        "total_lots": int(lot["total_lots"]),
-                    }
-    except Exception: #if the code throws an error , we can ignore it cause perhaps the data isnt given for this carpark
-        pass  # availability is optional — show carparks without it
-
-    results = []
-    for cp in _carpark_cache:
-        dist = haversine(lat, lon, cp["lat"], cp["lon"])
-        if dist > radius: #this skips any carpark that is out of the distance
-            continue
-
-        avail = avail_dict.get(cp["id"], {"lots_available": None, "total_lots": None})
-        results.append({
-            "id": cp["id"],
-            "address": cp["address"],
-            "lat": cp["lat"],
-            "lon": cp["lon"],
-            "distance_m": round(dist),
-            "lots_available": avail["lots_available"],
-            "total_lots": avail["total_lots"],
-            "type": cp["type"],
-            "cost_per_30min": 1.20 if cp["central"] else 0.60,
-            "zone": "central" if cp["central"] else "non-central",
-            "free_parking_info": cp["free_parking_info"],
-        })
-
-    results.sort(key=lambda c: c["distance_m"]) #sorts the carparks in increasing distance
+    results.sort(key=lambda x: x.distance_m)
     return results
