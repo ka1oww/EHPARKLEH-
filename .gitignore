@@ -3,3 +3,10 @@ backend/__pycache__/
 .claude/
 frontend/node_modules/
 frontend/dist/
+
+# Secrets / local env (never commit)
+.env
+.env.*
+!.env.example
+backend/.env
+frontend/.env
