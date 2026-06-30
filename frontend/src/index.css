@@ -248,6 +248,35 @@
   letter-spacing: 0.04em;
 }
 
+/* Carpark dot pins (clustered). The colour is set inline by availability. */
+.cp-dot {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(30, 27, 75, 0.35);
+}
+.cp-dot--selected {
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.45), 0 1px 5px rgba(30, 27, 75, 0.4);
+}
+
+/* Themed marker-cluster bubble (indigo fill, cyan ring, mono count). */
+.ehp-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(67, 56, 202, 0.92);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  border: 2px solid #22d3ee;
+  box-shadow: 0 2px 8px rgba(30, 27, 75, 0.4);
+}
+
 /* Subtle LED scan animation on availability chips. */
 @keyframes led-flicker {
   0%, 100% { opacity: 1; }

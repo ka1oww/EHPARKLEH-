@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import 'leaflet.markercluster'
+import 'leaflet.markercluster/dist/MarkerCluster.css'
 import { getAvailability, availColor, type AvailState } from './availability'
 import type { Carpark, OsmParking, LatLon } from './types'
 
@@ -12,8 +14,30 @@ const pIcon = L.divIcon({
 })
 
 const INDIGO = '#4338CA'
-const SIGNAL = '#22D3EE'
 const USER_BLUE = '#2563EB'
+
+// Carpark pin as a coloured dot (a divIcon, not a vector circleMarker, so it can
+// live inside a marker cluster — markercluster cannot cluster circleMarkers).
+function carparkIcon(state: AvailState, selected: boolean): L.DivIcon {
+  const size = selected ? 26 : 18
+  return L.divIcon({
+    className: '',
+    html: `<div class="cp-dot${selected ? ' cp-dot--selected' : ''}" style="background:${availColor(state)}"></div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+  })
+}
+
+// Cluster bubble themed to the app (indigo fill, cyan ring, mono count).
+function clusterIcon(cluster: L.MarkerCluster): L.DivIcon {
+  const n = cluster.getChildCount()
+  const size = n < 10 ? 34 : n < 100 ? 40 : 46
+  return L.divIcon({
+    className: '',
+    html: `<div class="ehp-cluster" style="width:${size}px;height:${size}px">${n}</div>`,
+    iconSize: [size, size],
+  })
+}
 
 // LED-style availability chip rendered inside Leaflet popups.
 function ledChipHtml(state: AvailState, available: number | null, total: number | null): string {
@@ -40,6 +64,16 @@ function popupHtml(title: string, distance: number, rate: string, ledHtml: strin
   )
 }
 
+function osmPopupHtml(name: string, distance: number): string {
+  return (
+    `<div style="font-family:Inter,system-ui,sans-serif;min-width:150px">` +
+    `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:4px">${name}</div>` +
+    `<div style="font-size:12px;color:#475569"><span style="font-family:'Space Mono',monospace;font-weight:700">${distance}m</span> away</div>` +
+    `<div style="font-size:12px;color:#94a3b8;font-style:italic;margin-top:2px">No live lots or rates</div>` +
+    `</div>`
+  )
+}
+
 interface MapProps {
   center: LatLon
   carparks: Carpark[]
@@ -61,28 +95,36 @@ export default function Map({
 }: MapProps) {
   const mapRef = useRef<HTMLDivElement>(null)
   const instanceRef = useRef<L.Map | null>(null)
-  const markersRef = useRef<L.CircleMarker[]>([])
-  const osmMarkersRef = useRef<L.Marker[]>([])
+  const clusterRef = useRef<L.MarkerClusterGroup | null>(null)
   const centerMarkerRef = useRef<L.CircleMarker | null>(null)
   const userMarkerRef = useRef<L.CircleMarker | null>(null)
 
   useEffect(() => {
     if (!instanceRef.current && mapRef.current) {
-      instanceRef.current = L.map(mapRef.current, { zoomControl: true }).setView(
+      const map = L.map(mapRef.current, { zoomControl: true }).setView(
         [center.lat, center.lon],
         15,
       )
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors',
         maxZoom: 19,
-      }).addTo(instanceRef.current)
+      }).addTo(map)
+      // One cluster group holds all parking pins: it clusters dense areas and
+      // only renders markers in/near the viewport (viewport culling).
+      clusterRef.current = L.markerClusterGroup({
+        chunkedLoading: true,
+        showCoverageOnHover: false,
+        maxClusterRadius: 50,
+        spiderfyOnMaxZoom: true,
+        iconCreateFunction: clusterIcon,
+      }).addTo(map)
+      instanceRef.current = map
     }
   }, [])
 
   useEffect(() => {
     const map = instanceRef.current
     if (!map) return
-
     if (centerMarkerRef.current) centerMarkerRef.current.remove()
     centerMarkerRef.current = L.circleMarker([center.lat, center.lon], {
       radius: 8,
@@ -95,27 +137,23 @@ export default function Map({
       .bindPopup('Destination')
   }, [center])
 
+  // Rebuild the clustered parking pins (carparks + de-duped OSM) on any change.
   useEffect(() => {
     const map = instanceRef.current
-    if (!map) return
+    const cluster = clusterRef.current
+    if (!map || !cluster) return
+    cluster.clearLayers()
 
-    markersRef.current.forEach((m) => m.remove())
-    markersRef.current = []
-
-    if (carparks.length === 0) return
+    const markers: L.Marker[] = []
+    // Plain record, not a Map: this component is itself named `Map`, which would
+    // shadow the built-in `Map` constructor here.
+    const byId: Record<string, L.Marker> = {}
 
     carparks.forEach((cp, i) => {
-      const isSelected = cp.id === selected
       const a = getAvailability(cp.lots_available, cp.total_lots)
-      const fill = availColor(a.state)
-      const marker = L.circleMarker([cp.lat, cp.lon], {
-        radius: isSelected ? 12 : 8,
-        color: isSelected ? SIGNAL : '#fff',
-        fillColor: fill,
-        fillOpacity: 0.95,
-        weight: isSelected ? 3 : 2,
+      const m = L.marker([cp.lat, cp.lon], {
+        icon: carparkIcon(a.state, cp.id === selected),
       })
-        .addTo(map)
         .bindPopup(
           popupHtml(
             `${i + 1}. ${cp.address}`,
@@ -125,42 +163,33 @@ export default function Map({
           ),
         )
         .on('click', () => onSelect(cp.id === selected ? null : cp.id))
-
-      if (isSelected) marker.openPopup()
-      markersRef.current.push(marker)
+      markers.push(m)
+      byId[cp.id] = m
     })
 
-    if (!selected) {
-      const allPoints: L.LatLngTuple[] = [
+    osmParking.forEach((cp) => {
+      const m = L.marker([cp.lat, cp.lon], { icon: pIcon })
+        .bindPopup(osmPopupHtml(cp.name, cp.distance_m))
+        .on('click', () => onSelect(cp.id === selected ? null : cp.id))
+      markers.push(m)
+      byId[cp.id] = m
+    })
+
+    cluster.addLayers(markers)
+
+    const selMarker = selected ? byId[selected] : undefined
+    if (selMarker) {
+      // Expand any cluster hiding the selected pin, then open its popup.
+      cluster.zoomToShowLayer(selMarker, () => selMarker.openPopup())
+    } else if (markers.length > 0) {
+      const pts: L.LatLngTuple[] = [
         [center.lat, center.lon],
         ...carparks.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
+        ...osmParking.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
       ]
-      map.fitBounds(L.latLngBounds(allPoints), { padding: [40, 40] })
-    } else {
-      const cp = carparks.find((c) => c.id === selected)
-      if (cp) map.setView([cp.lat, cp.lon], Math.max(map.getZoom(), 16))
+      map.fitBounds(L.latLngBounds(pts), { padding: [40, 40] })
     }
-  }, [carparks, selected])
-
-  useEffect(() => {
-    const map = instanceRef.current
-    if (!map) return
-    osmMarkersRef.current.forEach((m) => m.remove())
-    osmMarkersRef.current = []
-    osmParking.forEach((cp) => {
-      const marker = L.marker([cp.lat, cp.lon], { icon: pIcon })
-        .addTo(map)
-        .bindPopup(
-          `<div style="font-family:Inter,system-ui,sans-serif;min-width:150px">` +
-            `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:4px">${cp.name}</div>` +
-            `<div style="font-size:12px;color:#475569"><span style="font-family:'Space Mono',monospace;font-weight:700">${cp.distance_m}m</span> away</div>` +
-            `<div style="font-size:12px;color:#94a3b8;font-style:italic;margin-top:2px">No live lots or rates</div>` +
-            `</div>`,
-        )
-        .on('click', () => onSelect(cp.id === selected ? null : cp.id))
-      osmMarkersRef.current.push(marker)
-    })
-  }, [osmParking])
+  }, [carparks, osmParking, selected])
 
   useEffect(() => {
     const map = instanceRef.current
