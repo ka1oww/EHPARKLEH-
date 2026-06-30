@@ -1,4 +1,5 @@
-import { ArrowUpRight, Navigation, Wallet, Tag, Info } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowUpRight, Navigation, Wallet, Tag, Info, Star, Share2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { AvailabilityChip } from '@/components/AvailabilityChip'
@@ -10,6 +11,8 @@ interface Props {
   rank: number
   selected: boolean
   onSelect: () => void
+  isFavourite: boolean
+  onToggleFavourite: () => void
 }
 
 function gmapsHref(lat: number, lon: number): string {
@@ -32,6 +35,66 @@ function DirectionsLink({ lat, lon }: { lat: number; lon: number }) {
   )
 }
 
+function ShareButton({ name, lat, lon }: { name: string; lat: number; lon: number }) {
+  const [copied, setCopied] = useState(false)
+  async function share(e: React.MouseEvent) {
+    e.stopPropagation()
+    const url = `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: name, text: `Park at ${name}`, url })
+        return
+      }
+      await navigator.clipboard.writeText(`${name} — ${url}`)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    } catch {
+      /* user cancelled the share sheet, or APIs unavailable */
+    }
+  }
+  return (
+    <button
+      type="button"
+      onClick={share}
+      aria-label={`Share ${name}`}
+      className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+    >
+      <Share2 className="size-3.5" aria-hidden="true" />
+      {copied ? 'Copied' : 'Share'}
+    </button>
+  )
+}
+
+function StarButton({ active, onClick }: { active: boolean; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={(e) => {
+        e.stopPropagation()
+        onClick()
+      }}
+      aria-pressed={active}
+      aria-label={active ? 'Remove from saved' : 'Save carpark'}
+      className={cn(
+        'inline-flex size-7 shrink-0 items-center justify-center rounded-md transition-colors',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+        active ? 'text-amber-400' : 'text-muted-foreground/40 hover:text-amber-400',
+      )}
+    >
+      <Star className={cn('size-4', active && 'fill-current')} aria-hidden="true" />
+    </button>
+  )
+}
+
+function LiveBadge() {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-full bg-avail-free/12 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-avail-free uppercase">
+      <span className="led-dot-live size-1.5 rounded-full bg-avail-free" aria-hidden="true" />
+      Live
+    </span>
+  )
+}
+
 function Distance({ m }: { m: number }) {
   return (
     <span className="font-data shrink-0 text-xs font-bold tabular-nums text-muted-foreground">
@@ -40,7 +103,16 @@ function Distance({ m }: { m: number }) {
   )
 }
 
-export function CarparkCard({ entry, rank, selected, onSelect }: Props) {
+export function CarparkCard({
+  entry,
+  rank,
+  selected,
+  onSelect,
+  isFavourite,
+  onToggleFavourite,
+}: Props) {
+  // Root is a div with role="button" (not a <button>) so the inner star / share
+  // / directions controls are valid, focusable interactive elements.
   const base = cn(
     'group w-full cursor-pointer rounded-xl border bg-card p-3.5 text-left shadow-sm transition-all',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
@@ -48,10 +120,23 @@ export function CarparkCard({ entry, rank, selected, onSelect }: Props) {
       ? 'border-signal ring-1 ring-signal shadow-md'
       : 'border-hairline hover:border-slate-300 hover:shadow-md',
   )
+  const rootProps = {
+    role: 'button',
+    tabIndex: 0,
+    'aria-pressed': selected,
+    onClick: onSelect,
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        onSelect()
+      }
+    },
+    className: base,
+  }
 
   if (entry.source === 'osm') {
     return (
-      <button type="button" onClick={onSelect} aria-pressed={selected} className={base}>
+      <div {...rootProps}>
         <div className="flex items-start gap-3">
           <span
             className="font-data mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-secondary text-sm font-bold text-secondary-foreground"
@@ -60,11 +145,14 @@ export function CarparkCard({ entry, rank, selected, onSelect }: Props) {
             P
           </span>
           <div className="min-w-0 flex-1">
-            <div className="flex items-start justify-between gap-2">
+            <div className="flex items-start justify-between gap-1.5">
               <span className="font-display text-sm font-semibold leading-snug text-ink">
                 {entry.name}
               </span>
-              <Distance m={entry.distance_m} />
+              <div className="flex shrink-0 items-center gap-1">
+                <Distance m={entry.distance_m} />
+                <StarButton active={isFavourite} onClick={onToggleFavourite} />
+              </div>
             </div>
             <div className="mt-2 flex flex-wrap items-center gap-1.5">
               {entry.fee === 'no' && (
@@ -85,16 +173,20 @@ export function CarparkCard({ entry, rank, selected, onSelect }: Props) {
             <Info className="size-3.5" aria-hidden="true" />
             No live lots or rates here
           </span>
-          <DirectionsLink lat={entry.lat} lon={entry.lon} />
+          <div className="flex items-center gap-0.5">
+            <ShareButton name={entry.name} lat={entry.lat} lon={entry.lon} />
+            <DirectionsLink lat={entry.lat} lon={entry.lon} />
+          </div>
         </div>
-      </button>
+      </div>
     )
   }
 
   const freeText = parseFreeParking(entry.free_parking_info)
+  const isLive = entry.lots_available !== null
 
   return (
-    <button type="button" onClick={onSelect} aria-pressed={selected} className={base}>
+    <div {...rootProps}>
       <div className="flex items-start gap-3">
         <span
           className="font-data mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground tabular-nums"
@@ -103,18 +195,20 @@ export function CarparkCard({ entry, rank, selected, onSelect }: Props) {
           {rank}
         </span>
         <div className="min-w-0 flex-1">
-          <div className="flex items-start justify-between gap-2">
+          <div className="flex items-start justify-between gap-1.5">
             <span className="font-display text-sm font-semibold leading-snug text-ink">
               {entry.address}
             </span>
-            <Distance m={entry.distance_m} />
+            <div className="flex shrink-0 items-center gap-1">
+              <Distance m={entry.distance_m} />
+              <StarButton active={isFavourite} onClick={onToggleFavourite} />
+            </div>
           </div>
 
-          <AvailabilityChip
-            available={entry.lots_available}
-            total={entry.total_lots}
-            className="mt-2.5"
-          />
+          <div className="mt-2.5 flex flex-wrap items-center gap-2">
+            <AvailabilityChip available={entry.lots_available} total={entry.total_lots} />
+            {isLive && <LiveBadge />}
+          </div>
 
           <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
             {entry.rate.known ? (
@@ -147,8 +241,11 @@ export function CarparkCard({ entry, rank, selected, onSelect }: Props) {
 
       <div className="mt-3 flex items-center justify-between border-t border-hairline pt-2.5">
         <span className="text-xs text-muted-foreground">{entry.type || 'Carpark'}</span>
-        <DirectionsLink lat={entry.lat} lon={entry.lon} />
+        <div className="flex items-center gap-0.5">
+          <ShareButton name={entry.address} lat={entry.lat} lon={entry.lon} />
+          <DirectionsLink lat={entry.lat} lon={entry.lon} />
+        </div>
       </div>
-    </button>
+    </div>
   )
 }

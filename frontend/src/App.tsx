@@ -7,6 +7,7 @@ import { SearchBar } from '@/components/SearchBar'
 import { FilterBar } from '@/components/FilterBar'
 import { CarparkCard } from '@/components/CarparkCard'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useFavourites } from './useFavourites'
 import type {
   Carpark,
   OsmParking,
@@ -33,6 +34,20 @@ function metresBetween(aLat: number, aLon: number, bLat: number, bLon: number): 
   const dl = ((bLon - aLon) * Math.PI) / 180
   const x = Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2
   return 2 * R * Math.asin(Math.sqrt(x))
+}
+
+type SortKey = 'distance' | 'availability' | 'price'
+
+// More live lots first; entries without live data (OSM / unknown) sink.
+function availValue(e: ParkingEntry): number {
+  return e.source === 'hdb' && e.lots_available != null ? e.lots_available : -1
+}
+// Cheaper first; unknown rate / OSM sink to the bottom.
+function priceValue(e: ParkingEntry): number {
+  if (e.source === 'hdb' && e.rate.known) {
+    return e.rate.first_hour ?? e.rate.subsequent_half_hour ?? Number.POSITIVE_INFINITY
+  }
+  return Number.POSITIVE_INFINITY
 }
 
 function MapLegend() {
@@ -71,6 +86,8 @@ export default function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [selected, setSelected] = useState<string | null>(null)
+  const [sort, setSort] = useState<SortKey>('distance')
+  const { isFavourite, toggle: toggleFavourite } = useFavourites()
 
   useEffect(() => {
     // Native (Capacitor) or web geolocation; silently ignore failures here.
@@ -164,7 +181,13 @@ export default function App() {
   const allParking: ParkingEntry[] = [
     ...carparks.map((cp): ParkingEntry => ({ ...cp, source: 'hdb' })),
     ...dedupedOsm.map((cp): ParkingEntry => ({ ...cp, source: 'osm' })),
-  ].sort((a, b) => a.distance_m - b.distance_m)
+  ]
+
+  const sortedParking = [...allParking].sort((a, b) => {
+    if (sort === 'availability') return availValue(b) - availValue(a)
+    if (sort === 'price') return priceValue(a) - priceValue(b)
+    return a.distance_m - b.distance_m
+  })
 
   const totalNearby = allParking.length
 
@@ -282,10 +305,24 @@ export default function App() {
             )}
 
             {!loading && totalNearby > 0 && (
-              <p className="px-0.5 text-sm font-medium text-slate-body">
-                <span className="font-data font-bold text-ink tabular-nums">{totalNearby}</span>{' '}
-                spot{totalNearby === 1 ? '' : 's'} nearby
-              </p>
+              <div className="flex items-center justify-between gap-2 px-0.5">
+                <p className="text-sm font-medium text-slate-body">
+                  <span className="font-data font-bold text-ink tabular-nums">{totalNearby}</span>{' '}
+                  spot{totalNearby === 1 ? '' : 's'} nearby
+                </p>
+                <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                  Sort
+                  <select
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value as SortKey)}
+                    className="rounded-md border border-hairline bg-white px-2 py-1 text-xs font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <option value="distance">Distance</option>
+                    <option value="availability">Availability</option>
+                    <option value="price">Price</option>
+                  </select>
+                </label>
+              </div>
             )}
 
             {!loading && totalNearby === 0 && !error && (
@@ -303,13 +340,15 @@ export default function App() {
             )}
 
             {!loading &&
-              allParking.map((entry) => (
+              sortedParking.map((entry, i) => (
                 <CarparkCard
                   key={entry.id}
                   entry={entry}
-                  rank={entry.source === 'hdb' ? carparks.indexOf(entry) + 1 : 0}
+                  rank={i + 1}
                   selected={selected === entry.id}
                   onSelect={() => handleSelectEntry(entry.id)}
+                  isFavourite={isFavourite(entry.id)}
+                  onToggleFavourite={() => toggleFavourite(entry.id)}
                 />
               ))}
           </div>
