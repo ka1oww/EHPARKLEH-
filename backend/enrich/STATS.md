@@ -1,31 +1,32 @@
 # Enriched Carpark Dataset — Stats
 
-Generated: 2026-06-30 01:43:21
+Generated: 2026-06-30 08:46:15
 
-**Total carparks:** 5131
+**Total carparks:** 6794
 
 ## By category
 
-- HDB Estate: 2282
-- Commercial/Private: 2031
+- Commercial/Private: 3558
+- HDB Estate: 2283
 - Street (URA): 777
-- Mall: 41
+- Mall: 176
 
 ## By source (carparks tagged with each source)
 
-- osm: 3179
+- osm: 3176
+- google: 2719
 - hdb: 2265
 - ura: 777
-- lta: 149
+- lta: 285
 
 ## Pipeline
 
 - Spine (existing geocoded ids preserved): 2266
 - URA street parking added: 777
-- Google-discovered carparks (input): 0 -> new ids added: 0
-- OSM carparks (input): 3465 -> new ids added: 2088
-- Dedupe merges (Google/OSM folded into existing): 1377
-- LTA rates attached: 148 (of 357 rate rows)
+- Google-discovered carparks (input): 2764 -> new ids added: 2065
+- OSM carparks (input): 3465 -> new ids added: 1686
+- Dedupe merges (Google/OSM folded into existing): 2478
+- LTA rates attached: 284 (of 357 rate rows)
 
 ## Geocoding
 
