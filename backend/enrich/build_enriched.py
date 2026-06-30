@@ -41,8 +41,17 @@ OUT = os.path.join(BACKEND, "carparks_enriched.json")
 STATS = os.path.join(HERE, "STATS.md")
 ONEMAP_CACHE = os.path.join(HERE, "onemap_regeocode_cache.json")
 
-DEDUPE_M = 60.0  # spatial proximity threshold (metres)
-NAME_SIM = 0.6   # name similarity threshold
+# Source-precedence dedupe. The same physical carpark is often pinned >60m apart
+# across sources (gov uses the official centroid, Google the entrance), and their
+# names rarely match textually, so a name-gated 60m merge left visible duplicates.
+# Policy: gov (spine) is authoritative; Google then OSM fold into it. A candidate
+# folds into an existing higher-or-equal-precedence record if it is within
+# DEDUPE_HARD_M on PROXIMITY ALONE (catches same registered carpark, mismatched
+# names), or within the looser DEDUPE_NAME_M when the names are also similar.
+DEDUPE_HARD_M = 90.0   # merge on proximity alone (lower tier folds into higher tier)
+DEDUPE_NAME_M = 150.0  # merge further out only when names are similar
+NAME_SIM = 0.6         # name similarity threshold
+GRID_DEG = 0.0014      # ~155m spatial-hash cells (covers DEDUPE_NAME_M with +/-1 neighbours)
 
 
 def load(p):
@@ -217,24 +226,26 @@ PRIVATE_KW = ["tower", "building", "office", "hotel", "residenc", "condo",
 
 def classify(cp):
     sources = cp.get("sources", [])
-    name = (cp.get("name") or cp.get("address") or "").lower()
+    # Use both the record name and Google's folded-in facility name, since the
+    # canonical name on a merged record is often the gov block address while the
+    # mall/facility signal lives in the Google alias.
+    names = ((cp.get("name") or cp.get("address") or "")
+             + " " + (cp.get("google_name") or "")).lower()
     gtype = (cp.get("google_primary_type") or "").lower()
 
     if "ura" in sources:
         return "Street (URA)"
-    if any(k in name for k in MALL_KW):
+    # Registered HDB carparks are authoritative: classify by source BEFORE name,
+    # so an HDB block whose address contains "... Centre" is not mislabelled Mall.
+    if "hdb" in sources:
+        return "HDB Estate"
+    if any(k in names for k in MALL_KW):
         return "Mall"
-    if "hdb" in sources or cp.get("id", "")[:1].isalpha() and "lta" in sources:
-        # HDB/LTA gov spine entries
-        if "hdb" in sources:
-            return "HDB Estate"
+    if any(k in names for k in PRIVATE_KW):
+        return "Commercial/Private"
     if gtype in ("parking_garage", "parking_lot"):
-        if any(k in name for k in PRIVATE_KW):
-            return "Commercial/Private"
         return "Commercial/Private"
-    if any(k in name for k in PRIVATE_KW):
-        return "Commercial/Private"
-    if "hdb" in sources or "lta" in sources:
+    if "lta" in sources:
         return "HDB Estate"
     if "osm" in sources or "google" in sources:
         return "Commercial/Private"
@@ -309,27 +320,36 @@ def main():
 
     merged = spine
 
-    # spatial grid for dedupe lookups (~0.0006 deg ~ 66m cells)
+    # spatial grid for dedupe lookups
     def grid_key(lat, lon):
-        return (round(lat / 0.0006), round(lon / 0.0006))
+        return (round(lat / GRID_DEG), round(lon / GRID_DEG))
 
     grid = defaultdict(list)
     for e in merged:
         grid[grid_key(e["lat"], e["lon"])].append(e)
 
     def find_dup(lat, lon, name):
+        """Find the existing carpark this candidate duplicates, or None.
+
+        The gov spine is added first, then Google, then OSM, so any match is an
+        authoritative-or-earlier source the candidate should fold INTO (its coords
+        and id win). Merge on proximity alone within DEDUPE_HARD_M (handles the same
+        registered carpark pinned at slightly different coords with mismatched
+        names); extend to DEDUPE_NAME_M only when the names are also similar.
+        """
         gk = grid_key(lat, lon)
         best = None
-        best_d = DEDUPE_M
+        best_d = DEDUPE_NAME_M
         for dx in (-1, 0, 1):
             for dy in (-1, 0, 1):
                 for e in grid.get((gk[0] + dx, gk[1] + dy), []):
                     d = haversine(lat, lon, e["lat"], e["lon"])
-                    if d <= DEDUPE_M:
-                        s = name_sim(name, e.get("name") or e.get("address"))
-                        # accept on proximity AND (name similar OR no name to compare)
-                        if (s >= NAME_SIM or not norm_name(name)) and d < best_d:
-                            best_d, best = d, e
+                    if d > DEDUPE_NAME_M:
+                        continue
+                    s = name_sim(name, e.get("name") or e.get("address"))
+                    same = d <= DEDUPE_HARD_M or (s >= NAME_SIM and d <= DEDUPE_NAME_M)
+                    if same and d < best_d:
+                        best_d, best = d, e
         return best
 
     merges = 0
@@ -354,6 +374,8 @@ def main():
                 dup["google_primary_type"] = ptype
             if g.get("id"):
                 dup["google_place_id"] = g["id"]
+            if nm and not dup.get("google_name"):
+                dup["google_name"] = nm  # keep Google's facility name as an alias
             merges += 1
         else:
             gid += 1
@@ -435,6 +457,7 @@ def main():
     lines.append(f"- Google-discovered carparks (input): {len(google)} -> new ids added: {new_google}")
     lines.append(f"- OSM carparks (input): {len(osm)} -> new ids added: {new_osm}")
     lines.append(f"- Dedupe merges (Google/OSM folded into existing): {merges}")
+    lines.append(f"- Dedupe policy: gov authoritative; fold within {DEDUPE_HARD_M:.0f}m proximity, or {DEDUPE_NAME_M:.0f}m when names match")
     lines.append(f"- LTA rates attached: {rates_attached} (of {len(rates)} rate rows)")
     lines.append(f"\n## Geocoding\n")
     lines.append(f"- SVY21 fallback before: 467")
