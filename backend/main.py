@@ -45,11 +45,21 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(title="EhParkLeh API", version="2", lifespan=lifespan)
 
+# CORS: local dev + native (Capacitor) origins are always allowed; add your
+# deployed web origin(s) via the ALLOWED_ORIGINS env var (comma-separated).
+# No wildcard in production.
+_BASE_ORIGINS = [
+    "http://localhost:5173", "http://localhost:4173",   # vite dev / preview
+    "capacitor://localhost", "ionic://localhost",        # iOS Capacitor
+    "http://localhost",                                  # Android Capacitor
+]
+_EXTRA_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+ALLOWED_ORIGINS = _BASE_ORIGINS + _EXTRA_ORIGINS
+
 app.add_middleware(
-    # Allow any origin so the PWA (and Capacitor wrapper) can call the API.
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
+    allow_origins=ALLOWED_ORIGINS,
+    allow_methods=["GET"],   # read-only API
     allow_headers=["*"],
 )
 
@@ -308,14 +318,20 @@ async def suggestions(q: str = Query(...)):
                 "https://www.onemap.gov.sg/api/common/elastic/search",
                 params={"searchVal": q, "returnGeom": "Y", "getAddrDetails": "Y", "pageNum": 1},
             )
+        resp.raise_for_status()
         data = resp.json()
     except Exception:
         logger.exception("OneMap suggestions request failed")
         return []
-    return [
-        Suggestion(address=r["ADDRESS"], lat=float(r["LATITUDE"]), lon=float(r["LONGITUDE"]))
-        for r in data.get("results", [])[:6]
-    ]
+    # Build defensively: skip any result missing the fields we need rather than
+    # 500-ing the whole endpoint if OneMap's schema shifts.
+    out: list[Suggestion] = []
+    for r in data.get("results", [])[:6]:
+        try:
+            out.append(Suggestion(address=r["ADDRESS"], lat=float(r["LATITUDE"]), lon=float(r["LONGITUDE"])))
+        except (KeyError, ValueError, TypeError):
+            logger.warning("Skipping malformed OneMap suggestion: %r", r)
+    return out
 
 
 @app.get("/api/geocode", response_model=GeocodeResult)
@@ -326,14 +342,20 @@ async def geocode(q: str = Query(...)):
                 "https://www.onemap.gov.sg/api/common/elastic/search",
                 params={"searchVal": q, "returnGeom": "Y", "getAddrDetails": "Y", "pageNum": 1},
             )
+        resp.raise_for_status()
         data = resp.json()
     except Exception:
+        # Upstream unreachable / non-200 / unparseable: a service problem (502),
+        # distinct from a valid search that simply found nothing (404 below).
         logger.exception("OneMap geocode request failed")
         raise HTTPException(status_code=502, detail="Geocoding service unavailable")
-    if not data.get("results"):
-        raise HTTPException(status_code=404, detail="Location not found")
-    r = data["results"][0]
-    return GeocodeResult(lat=float(r["LATITUDE"]), lon=float(r["LONGITUDE"]), address=r["ADDRESS"])
+    # Return the first well-formed result; skip malformed ones; 404 if none.
+    for r in (data.get("results") or []):
+        try:
+            return GeocodeResult(lat=float(r["LATITUDE"]), lon=float(r["LONGITUDE"]), address=r["ADDRESS"])
+        except (KeyError, ValueError, TypeError):
+            continue
+    raise HTTPException(status_code=404, detail="Location not found")
 
 
 def filter_carparks(

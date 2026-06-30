@@ -59,6 +59,20 @@ def load(p):
         return json.load(f)
 
 
+def load_opt(p, default):
+    """Load a JSON file, or return `default` if it is missing.
+
+    The Google / OSM / gov layers may be absent on a fresh deploy (git-ignored
+    or not yet crawled); a missing layer degrades coverage but must not break
+    the build. The geocoded spine is the only hard requirement.
+    """
+    try:
+        return load(p)
+    except FileNotFoundError:
+        print(f"  (missing {os.path.basename(p)}, skipping that layer)", file=sys.stderr)
+        return default
+
+
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371000.0
     p1, p2 = math.radians(lat1), math.radians(lat2)
@@ -255,12 +269,12 @@ def classify(cp):
 # ---- main ------------------------------------------------------------------
 
 def main():
-    geocoded = load(GEOCODED)
-    google = load(GOOGLE)
-    osm = load(OSM)
-    hdb = {x["id"]: x for x in load(GOV_HDB)}
-    ura = load(GOV_URA)
-    rates = load(GOV_RATES)
+    geocoded = load(GEOCODED)  # required: the live-availability spine
+    google = load_opt(GOOGLE, [])
+    osm = load_opt(OSM, [])
+    hdb = {x["id"]: x for x in load_opt(GOV_HDB, [])}
+    ura = load_opt(GOV_URA, [])
+    rates = load_opt(GOV_RATES, [])
 
     rate_idx = build_rate_index(rates)
 

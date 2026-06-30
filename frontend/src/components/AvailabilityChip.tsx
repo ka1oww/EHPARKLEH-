@@ -12,10 +12,12 @@ const STATE_DOT: Record<AvailState, string> = {
   nodata: 'bg-slate-400',
 }
 
+// Lighter shades than the marker dots: this text sits on the dark LED chip, so
+// it must clear WCAG AA contrast (the saturated -600 shades do not on near-black).
 const STATE_TEXT: Record<AvailState, string> = {
-  free: 'text-avail-free',
-  some: 'text-avail-some',
-  full: 'text-avail-full',
+  free: 'text-emerald-400',
+  some: 'text-amber-300',
+  full: 'text-red-400',
   nodata: 'text-slate-300',
 }
 
@@ -49,10 +51,10 @@ export function AvailabilityChip({ available, total, showLabel = true, className
           )}
           aria-hidden="true"
         />
-        <span className="font-data text-[11px] font-bold tracking-[0.12em] text-white/55">
+        <span className="font-data text-[11px] font-bold tracking-[0.12em] text-white/85">
           P
         </span>
-        <span className="text-white/25" aria-hidden="true">
+        <span className="text-white/40" aria-hidden="true">
           ·
         </span>
         <span className={cn('font-data text-[13px] font-bold tabular-nums', STATE_TEXT[a.state])}>

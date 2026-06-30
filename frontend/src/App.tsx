@@ -20,6 +20,21 @@ import type {
 // the deployed Render backend so existing builds keep working unchanged.
 const API_BASE = import.meta.env.VITE_API_BASE || 'https://ehparkleh-backend.onrender.com'
 
+// Distance (m) below which a live-OSM pin is treated as the same carpark as an
+// already-deduped enriched entry, and dropped.
+const OSM_DEDUP_M = 60
+
+// Rough great-circle distance in metres.
+function metresBetween(aLat: number, aLon: number, bLat: number, bLon: number): number {
+  const R = 6371000
+  const p1 = (aLat * Math.PI) / 180
+  const p2 = (bLat * Math.PI) / 180
+  const dp = ((bLat - aLat) * Math.PI) / 180
+  const dl = ((bLon - aLon) * Math.PI) / 180
+  const x = Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2
+  return 2 * R * Math.asin(Math.sqrt(x))
+}
+
 function MapLegend() {
   const items = [
     { color: '#4338CA', label: 'Destination' },
@@ -87,6 +102,10 @@ export default function App() {
         fetch(`${API_BASE}/api/carparks?${params.toString()}`),
         fetch(`${API_BASE}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${radius}`),
       ])
+      // A non-OK carparks response is a server error, not an empty result: let
+      // it fall to the catch so the user sees "can't reach the server" rather
+      // than a misleading "no spots found".
+      if (!hdbRes.ok) throw new Error(`carparks ${hdbRes.status}`)
       const hdbData: Carpark[] = await hdbRes.json()
       const osmData: OsmParking[] = osmRes.ok ? await osmRes.json() : []
       setCarparks(hdbData)
@@ -135,9 +154,16 @@ export default function App() {
     setMobileTab('map')
   }
 
+  // The enriched dataset is already deduped, but the live OSM layer is not, so
+  // drop OSM pins that sit on top of an enriched carpark (otherwise dense areas
+  // render two markers for one physical carpark).
+  const dedupedOsm = osmParking.filter(
+    (o) => !carparks.some((c) => metresBetween(o.lat, o.lon, c.lat, c.lon) < OSM_DEDUP_M),
+  )
+
   const allParking: ParkingEntry[] = [
     ...carparks.map((cp): ParkingEntry => ({ ...cp, source: 'hdb' })),
-    ...osmParking.map((cp): ParkingEntry => ({ ...cp, source: 'osm' })),
+    ...dedupedOsm.map((cp): ParkingEntry => ({ ...cp, source: 'osm' })),
   ].sort((a, b) => a.distance_m - b.distance_m)
 
   const totalNearby = allParking.length
@@ -302,7 +328,7 @@ export default function App() {
               <Map
                 center={center}
                 carparks={carparks}
-                osmParking={osmParking}
+                osmParking={dedupedOsm}
                 selected={selected}
                 onSelect={setSelected}
                 userLocation={userLocation}
@@ -314,7 +340,7 @@ export default function App() {
               <img src="/brand-car.svg" className="size-16 opacity-90" alt="" />
               <div>
                 <p className="font-display text-lg font-semibold text-ink">
-                  Eh, where are you parking?
+                  Eh, park already?
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Search a place to start.
