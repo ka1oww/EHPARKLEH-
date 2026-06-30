@@ -268,13 +268,20 @@ def main():
     spine = []
     for cp in geocoded:
         gh = hdb.get(cp["id"])
+        # Prefer HDB's official per-carpark coordinates over the address-geocoded
+        # ones. OneMap collapsed many distinct carparks on the same street onto a
+        # single shared point (stacked map markers); the HDB dataset gives each
+        # carpark its true distinct location, and also fixes the SVY21 fallbacks.
+        lat, lon, gsrc = cp["lat"], cp["lon"], cp.get("source")
+        if gh and isinstance(gh.get("lat"), (int, float)) and isinstance(gh.get("lon"), (int, float)):
+            lat, lon, gsrc = gh["lat"], gh["lon"], "hdb_official"
         entry = {
             "id": cp["id"],
             "name": cp.get("address"),
             "address": cp.get("address"),
-            "lat": cp["lat"],
-            "lon": cp["lon"],
-            "geocode_source": cp.get("source"),
+            "lat": lat,
+            "lon": lon,
+            "geocode_source": gsrc,
             "availability_key": cp["id"],  # links to live availability feed
             "sources": ["hdb"] if gh else ["lta"],
             "type": cp.get("type"),
