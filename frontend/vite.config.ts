@@ -1,11 +1,19 @@
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': path.resolve(import.meta.dirname, './src'),
+    },
+  },
   plugins: [
     react(),
+    tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'brand-car.svg', 'icons/apple-touch-icon.png'],
@@ -13,8 +21,8 @@ export default defineConfig({
         name: 'EhParkLeh',
         short_name: 'EhParkLeh',
         description: 'Find parking near you in Singapore, right now.',
-        theme_color: '#FF6B5A',
-        background_color: '#FFF8F3',
+        theme_color: '#1E1B4B',
+        background_color: '#F5F6FB',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '/',

@@ -1,8 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
+import { List, Map as MapIcon, Coffee, AlertCircle, Compass } from 'lucide-react'
 import Map from './Map'
-import './App.css'
-import { parseFreeParking } from './rules'
 import { getCurrentPosition } from './geo'
+import { cn } from '@/lib/utils'
+import { SearchBar } from '@/components/SearchBar'
+import { FilterBar } from '@/components/FilterBar'
+import { CarparkCard } from '@/components/CarparkCard'
+import { Skeleton } from '@/components/ui/skeleton'
 import type {
   Carpark,
   OsmParking,
@@ -12,37 +16,29 @@ import type {
   ParkingEntry,
 } from './types'
 
-const RADIUS_OPTIONS = [250, 500, 1000, 2000]
-
-// Category filter chips, mapped to the backend `category` query param.
-// null = "All" (no category filter).
-const CATEGORY_CHIPS: { label: string; value: string | null }[] = [
-  { label: 'All', value: null },
-  { label: 'HDB', value: 'HDB' },
-  { label: 'Malls', value: 'Mall' },
-  { label: 'Street', value: 'Street' },
-  { label: 'Private', value: 'Private' },
-]
-
 // Backend base URL. Override via VITE_API_BASE in frontend/.env; falls back to
 // the deployed Render backend so existing builds keep working unchanged.
 const API_BASE = import.meta.env.VITE_API_BASE || 'https://ehparkleh-backend.onrender.com'
 
-/** Availability badge using --free / --some / --full tokens. */
-function AvailBadge({ available, total }: { available: number | null; total: number | null }) {
-  if (available === null || total === null || total === 0) {
-    return (
-      <div className="avail-badge nodata">
-        <span className="dot-pulse" /> No live data
-      </div>
-    )
-  }
-  const pct = available / total
-  const cls = pct > 0.4 ? 'free' : pct > 0.1 ? 'some' : 'full'
-  const word = pct > 0.4 ? 'Plenty' : pct > 0.1 ? 'Filling up' : available > 0 ? 'Almost full' : 'No lots'
+function MapLegend() {
+  const items = [
+    { color: '#4338CA', label: 'Destination' },
+    { color: '#16a34a', label: 'Free' },
+    { color: '#f59e0b', label: 'Filling' },
+    { color: '#ef4444', label: 'Full' },
+    { color: '#2563EB', label: 'You' },
+  ]
   return (
-    <div className={`avail-badge ${cls}`}>
-      <span className="dot-pulse" /> {word} · {available}/{total} lots
+    <div className="pointer-events-none absolute top-3 left-3 z-[400] flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border border-hairline bg-white/90 px-3 py-2 text-[11px] font-medium text-slate-body shadow-sm backdrop-blur">
+      {items.map((it) => (
+        <span key={it.label} className="inline-flex items-center gap-1.5">
+          <span
+            className="size-2.5 rounded-full ring-1 ring-white"
+            style={{ backgroundColor: it.color }}
+          />
+          {it.label}
+        </span>
+      ))}
     </div>
   )
 }
@@ -50,11 +46,6 @@ function AvailBadge({ available, total }: { available: number | null; total: num
 export default function App() {
   const [userLocation, setUserLocation] = useState<LatLon | null>(null)
   const [mobileTab, setMobileTab] = useState<'list' | 'map'>('list')
-  const [query, setQuery] = useState('')
-  const [suggestions, setSuggestions] = useState<Suggestion[]>([])
-  const [showSuggestions, setShowSuggestions] = useState(false)
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
-  const searchBoxRef = useRef<HTMLFormElement>(null)
   const [radius, setRadius] = useState(500)
   const [category, setCategory] = useState<string | null>(null)
   const [freeNow, setFreeNow] = useState(false)
@@ -69,18 +60,8 @@ export default function App() {
   useEffect(() => {
     // Native (Capacitor) or web geolocation; silently ignore failures here.
     getCurrentPosition()
-      .then(loc => setUserLocation(loc))
+      .then((loc) => setUserLocation(loc))
       .catch(() => {})
-  }, [])
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (searchBoxRef.current && !searchBoxRef.current.contains(e.target as Node)) {
-        setShowSuggestions(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
   // Re-run the last search whenever a filter changes, so list + map stay in sync.
@@ -88,28 +69,6 @@ export default function App() {
     if (center) search(center.lat, center.lon)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [radius, category, freeNow, hasLots])
-
-  function handleQueryChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const val = e.target.value
-    setQuery(val)
-    clearTimeout(debounceRef.current)
-    if (val.trim().length < 2) { setSuggestions([]); setShowSuggestions(false); return }
-    debounceRef.current = setTimeout(async () => {
-      try {
-        const res = await fetch(`${API_BASE}/api/suggestions?q=${encodeURIComponent(val)}`)
-        const data: Suggestion[] = await res.json()
-        setSuggestions(data)
-        setShowSuggestions(data.length > 0)
-      } catch { setSuggestions([]) }
-    }, 300)
-  }
-
-  async function handleSuggestionClick(s: Suggestion) {
-    setQuery(s.address)
-    setSuggestions([])
-    setShowSuggestions(false)
-    await search(s.lat, s.lon)
-  }
 
   async function search(lat: number, lon: number) {
     setLoading(true)
@@ -135,39 +94,47 @@ export default function App() {
       setCenter({ lat, lon })
       setSelected(null)
       if (hdbData.length === 0 && osmData.length === 0) {
-        setError('Aiyah, no lots leh. Try a bigger radius or fewer filters?')
+        setError('No spots found here. Try a larger radius or fewer filters.')
       }
     } catch {
-      setError('Cannot reach the backend leh. Try again in a bit?')
+      setError("Can't reach the server right now. Please try again shortly.")
     }
     setLoading(false)
   }
 
-  async function handleSearch(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    if (!query.trim()) return
-    setSuggestions([])
-    setShowSuggestions(false)
+  async function handleSubmit(query: string) {
     setLoading(true)
     setError('')
     try {
       const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(query)}`)
-      if (!res.ok) { setError('Cannot find that place. Try another search?'); setLoading(false); return }
+      if (!res.ok) {
+        setError("Couldn't find that place. Try another search.")
+        setLoading(false)
+        return
+      }
       const { lat, lon }: GeocodeResult = await res.json()
       await search(lat, lon)
     } catch {
-      setError('Cannot reach the backend leh. Try again in a bit?')
+      setError("Can't reach the server right now. Please try again shortly.")
       setLoading(false)
     }
   }
 
-  function handleNearMe() {
-    getCurrentPosition()
-      .then(loc => search(loc.lat, loc.lon))
-      .catch(() => setError('Cannot get your location. Allow location access?'))
+  function handlePickSuggestion(s: Suggestion) {
+    search(s.lat, s.lon)
   }
 
-  const filtered = carparks
+  function handleNearMe() {
+    getCurrentPosition()
+      .then((loc) => search(loc.lat, loc.lon))
+      .catch(() => setError('Could not get your location. Please allow location access.'))
+  }
+
+  function handleSelectEntry(id: string) {
+    setSelected(id === selected ? null : id)
+    setMobileTab('map')
+  }
+
   const allParking: ParkingEntry[] = [
     ...carparks.map((cp): ParkingEntry => ({ ...cp, source: 'hdb' })),
     ...osmParking.map((cp): ParkingEntry => ({ ...cp, source: 'osm' })),
@@ -176,180 +143,187 @@ export default function App() {
   const totalNearby = allParking.length
 
   return (
-    <div className="app">
-      <header>
-        <div className="brand">
-          <img src="/brand-car.svg" className="brand-mark" alt="" />
-          <div className="brand-text">
-            <h1>EhParkLeh</h1>
-            <span className="brand-tagline">Eh, park here lah</span>
+    <div className="flex h-full flex-col bg-background">
+      {/* Indigo command bar */}
+      <header className="z-20 shrink-0 bg-ink text-white shadow-md">
+        <div className="mx-auto w-full max-w-screen-2xl px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3">
+          <div className="flex items-center justify-between gap-3 pb-3">
+            <div className="flex items-center gap-2.5">
+              <img src="/brand-car.svg" className="size-8" alt="" />
+              <div className="leading-none">
+                <h1 className="font-display text-lg font-bold tracking-tight">
+                  EhParkLeh
+                </h1>
+                <span className="text-[11px] font-medium text-signal">
+                  Find parking near you
+                </span>
+              </div>
+            </div>
+            <a
+              href="https://buymeacoffee.com/zhehang"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
+            >
+              <Coffee className="size-3.5" aria-hidden="true" />
+              <span className="hidden sm:inline">Buy me a coffee</span>
+              <span className="sm:hidden">Coffee</span>
+            </a>
           </div>
+
+          <SearchBar
+            apiBase={API_BASE}
+            loading={loading}
+            onSubmit={handleSubmit}
+            onPickSuggestion={handlePickSuggestion}
+            onNearMe={handleNearMe}
+          />
         </div>
-        <a
-          href="https://buymeacoffee.com/zhehang"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bmc-btn"
-        >
-          ☕ Buy me kopi
-        </a>
       </header>
 
-      <div className="search-bar">
-        <form onSubmit={handleSearch} ref={searchBoxRef} style={{ position: 'relative' }}>
-          <input
-            value={query}
-            onChange={handleQueryChange}
-            onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
-            placeholder="Park where? e.g. Toa Payoh Hub"
-            autoComplete="off"
+      {/* Filter chip row */}
+      <div className="z-10 shrink-0 border-b border-hairline bg-surface shadow-sm">
+        <div className="mx-auto w-full max-w-screen-2xl px-4">
+          <FilterBar
+            category={category}
+            onCategory={setCategory}
+            freeNow={freeNow}
+            onFreeNow={setFreeNow}
+            hasLots={hasLots}
+            onHasLots={setHasLots}
+            radius={radius}
+            onRadius={setRadius}
           />
-          {showSuggestions && (
-            <ul className="suggestions-dropdown">
-              {suggestions.map((s, i) => (
-                <li key={i} onMouseDown={() => handleSuggestionClick(s)}>
-                  {s.address}
-                </li>
-              ))}
-            </ul>
-          )}
-          <button type="submit" className="btn btn-primary">Search</button>
-        </form>
-        <button onClick={handleNearMe} className="btn btn-nearme">Near Me</button>
+        </div>
       </div>
 
-      <div className="filters">
-        {CATEGORY_CHIPS.map(c => (
-          <button
-            key={c.label}
-            className={`chip ${category === c.value ? 'active' : ''}`}
-            onClick={() => setCategory(c.value)}
-          >
-            {c.label}
-          </button>
-        ))}
-        <span className="chip-divider" />
-        <button
-          className={`chip chip-toggle ${freeNow ? 'active' : ''}`}
-          onClick={() => setFreeNow(v => !v)}
-        >
-          🆓 Free now
-        </button>
-        <button
-          className={`chip chip-toggle ${hasLots ? 'active' : ''}`}
-          onClick={() => setHasLots(v => !v)}
-        >
-          ✅ Has lots
-        </button>
-        <span className="chip-divider" />
-        {RADIUS_OPTIONS.map(r => (
-          <button
-            key={r}
-            className={`chip ${radius === r ? 'active' : ''}`}
-            onClick={() => setRadius(r)}
-          >
-            {r >= 1000 ? `${r / 1000}km` : `${r}m`}
-          </button>
-        ))}
-      </div>
+      {error && (
+        <div className="shrink-0 bg-destructive/10 px-4 py-2">
+          <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-medium text-destructive">
+            <AlertCircle className="size-4 shrink-0" aria-hidden="true" />
+            {error}
+          </div>
+        </div>
+      )}
 
-      {error && <div className="error">{error}</div>}
-
-      <div className="mobile-tabs">
-        <button className={mobileTab === 'list' ? 'active' : ''} onClick={() => setMobileTab('list')}>List</button>
-        <button className={mobileTab === 'map' ? 'active' : ''} onClick={() => setMobileTab('map')}>Map</button>
-      </div>
-
-      <div className="main-content">
-        <div className={`list ${mobileTab === 'map' ? 'hidden-mobile' : ''}`}>
-          {loading && <div className="status">Finding spots for you…</div>}
-          {!loading && totalNearby > 0 && (
-            <div className="status">
-              Steady, {totalNearby} spot{totalNearby === 1 ? '' : 's'} near you
-            </div>
-          )}
-          {allParking.map((cp) => (
-            cp.source === 'osm' ? (
-              <div
-                key={cp.id}
-                className={`card ${selected === cp.id ? 'selected' : ''}`}
-                onClick={() => { setSelected(cp.id === selected ? null : cp.id); setMobileTab('map') }}
-              >
-                <div className="card-header">
-                  <span className="rank-osm">P</span>
-                  <span className="card-address">{cp.name}</span>
-                </div>
-                <div className="card-pills">
-                  <span className="pill pill-teal">📏 {cp.distance_m}m</span>
-                  {cp.fee === 'no' && <span className="pill pill-free">Free</span>}
-                  {cp.parking_type && <span className="pill">{cp.parking_type}</span>}
-                </div>
-                <div className="card-footer">
-                  <span className="card-meta osm-note">No live lots or rates here</span>
-                  <a
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${cp.lat},${cp.lon}`}
-                    target="_blank" rel="noopener noreferrer"
-                    className="gmaps-btn" onClick={e => e.stopPropagation()}
-                  >Directions ↗</a>
-                </div>
-              </div>
-            ) : (
-              (() => {
-                const freeText = parseFreeParking(cp.free_parking_info)
-                return (
-                  <div
-                    key={cp.id}
-                    className={`card ${selected === cp.id ? 'selected' : ''}`}
-                    onClick={() => { setSelected(cp.id === selected ? null : cp.id); setMobileTab('map') }}
-                  >
-                    <div className="card-header">
-                      <span className="rank">{carparks.indexOf(cp) + 1}</span>
-                      <span className="card-address">{cp.address}</span>
-                    </div>
-                    <AvailBadge available={cp.lots_available} total={cp.total_lots} />
-                    <div className="card-pills">
-                      <span className="pill pill-teal">📏 {cp.distance_m}m</span>
-                      {cp.rate.known
-                        ? <span className="pill pill-coral">💰 {cp.rate.summary}</span>
-                        : <span className="pill">💰 Rate unknown</span>}
-                      {cp.category && <span className="pill">{cp.category}</span>}
-                    </div>
-                    {freeText && <div className="card-pills"><span className="pill pill-free">🆓 {freeText}</span></div>}
-                    <div className="card-footer">
-                      <span className="card-meta">{cp.type || 'Carpark'}</span>
-                      <a
-                        href={`https://www.google.com/maps/dir/?api=1&destination=${cp.lat},${cp.lon}`}
-                        target="_blank" rel="noopener noreferrer"
-                        className="gmaps-btn" onClick={e => e.stopPropagation()}
-                      >Directions ↗</a>
-                    </div>
-                  </div>
-                )
-              })()
-            )
+      {/* Mobile list/map toggle */}
+      <div className="shrink-0 border-b border-hairline bg-surface px-4 py-2 md:hidden">
+        <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-2 gap-1 rounded-lg bg-secondary p-1">
+          {(['list', 'map'] as const).map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              onClick={() => setMobileTab(tab)}
+              aria-pressed={mobileTab === tab}
+              className={cn(
+                'inline-flex items-center justify-center gap-1.5 rounded-md py-1.5 text-sm font-semibold capitalize transition-colors',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                mobileTab === tab
+                  ? 'bg-white text-ink shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground',
+              )}
+            >
+              {tab === 'list' ? (
+                <List className="size-4" aria-hidden="true" />
+              ) : (
+                <MapIcon className="size-4" aria-hidden="true" />
+              )}
+              {tab}
+            </button>
           ))}
         </div>
-
-        <div className={`map-container ${mobileTab === 'list' ? 'hidden-mobile' : ''}`}>
-          {center && (
-            <div className="map-legend">
-              <span><span className="dot dot-blue" /> You</span>
-              <span><span className="dot dot-red" /> Destination</span>
-              <span><span className="dot dot-green" /> Carpark</span>
-              <span><span className="dot dot-amber" /> Selected</span>
-              <span><span className="dot dot-grey" /> Other</span>
-            </div>
-          )}
-          {center ? (
-            <Map center={center} carparks={filtered} osmParking={osmParking} selected={selected} onSelect={setSelected} userLocation={userLocation} visible={mobileTab === 'map'} />
-          ) : (
-            <div className="map-placeholder">
-              <img src="/brand-car.svg" alt="" />
-              <p>Eh, where you parking today?<br />Search a place to start.</p>
-            </div>
-          )}
-        </div>
       </div>
+
+      {/* Main content: list + map */}
+      <main className="mx-auto flex w-full max-w-screen-2xl min-h-0 flex-1 overflow-hidden">
+        {/* List */}
+        <section
+          className={cn(
+            'min-h-0 w-full flex-col overflow-y-auto md:flex md:w-[42%] md:max-w-md md:border-r md:border-hairline',
+            mobileTab === 'map' ? 'hidden' : 'flex',
+          )}
+        >
+          <div className="flex flex-col gap-2.5 p-4">
+            {loading && (
+              <>
+                <p className="font-data text-xs font-bold tracking-wide text-muted-foreground uppercase">
+                  Finding spots…
+                </p>
+                {[0, 1, 2].map((i) => (
+                  <Skeleton key={i} className="h-28 w-full rounded-xl" />
+                ))}
+              </>
+            )}
+
+            {!loading && totalNearby > 0 && (
+              <p className="px-0.5 text-sm font-medium text-slate-body">
+                <span className="font-data font-bold text-ink tabular-nums">{totalNearby}</span>{' '}
+                spot{totalNearby === 1 ? '' : 's'} nearby
+              </p>
+            )}
+
+            {!loading && totalNearby === 0 && !error && (
+              <div className="flex flex-col items-center gap-3 px-6 py-16 text-center">
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-secondary">
+                  <Compass className="size-7 text-primary" aria-hidden="true" />
+                </div>
+                <p className="font-display text-base font-semibold text-ink">
+                  Where are you parking today?
+                </p>
+                <p className="max-w-xs text-sm text-muted-foreground">
+                  Search a place or tap Near me to see live carpark availability around you.
+                </p>
+              </div>
+            )}
+
+            {!loading &&
+              allParking.map((entry) => (
+                <CarparkCard
+                  key={entry.id}
+                  entry={entry}
+                  rank={entry.source === 'hdb' ? carparks.indexOf(entry) + 1 : 0}
+                  selected={selected === entry.id}
+                  onSelect={() => handleSelectEntry(entry.id)}
+                />
+              ))}
+          </div>
+        </section>
+
+        {/* Map */}
+        <section
+          className={cn(
+            'relative min-h-0 flex-1',
+            mobileTab === 'list' ? 'hidden md:block' : 'block',
+          )}
+        >
+          {center ? (
+            <>
+              <MapLegend />
+              <Map
+                center={center}
+                carparks={carparks}
+                osmParking={osmParking}
+                selected={selected}
+                onSelect={setSelected}
+                userLocation={userLocation}
+                visible={mobileTab === 'map'}
+              />
+            </>
+          ) : (
+            <div className="flex h-full flex-col items-center justify-center gap-4 bg-secondary/40 px-6 text-center">
+              <img src="/brand-car.svg" className="size-16 opacity-90" alt="" />
+              <div>
+                <p className="font-display text-lg font-semibold text-ink">
+                  Eh, where are you parking?
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Search a place to start.
+                </p>
+              </div>
+            </div>
+          )}
+        </section>
+      </main>
     </div>
   )
 }

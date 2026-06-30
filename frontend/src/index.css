@@ -1,17 +1,282 @@
-@import './tokens.css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@custom-variant dark (&:is(.dark *));
 
-body {
-  font-family: var(--font-body);
-  background: var(--cream);
-  color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+/* ------------------------------------------------------------------ *
+ * EhParkLeh — parking-wayfinding design system
+ * Indigo ink + cyan signal accent, garage-LED availability counters.
+ * ------------------------------------------------------------------ */
+
+:root {
+  --radius: 0.75rem;
+
+  /* Surfaces */
+  --background: #f5f6fb;        /* cool off-white app bg */
+  --foreground: #1e1b4b;        /* indigo ink text */
+  --card: #ffffff;
+  --card-foreground: #1e1b4b;
+  --popover: #ffffff;
+  --popover-foreground: #1e1b4b;
+
+  /* Brand / interactive */
+  --primary: #4338ca;           /* indigo primary */
+  --primary-foreground: #ffffff;
+  --secondary: #eef0fb;         /* tinted indigo surface */
+  --secondary-foreground: #312e81;
+  --muted: #eef0f7;
+  --muted-foreground: #475569;  /* slate body text */
+  --accent: #22d3ee;            /* cyan signal accent */
+  --accent-foreground: #083344;
+  --destructive: #ef4444;
+
+  /* Lines + focus */
+  --border: #e6e8f0;            /* hairline */
+  --input: #e6e8f0;
+  --ring: #22d3ee;              /* cyan focus ring */
+
+  /* Brand tokens */
+  --ink: #1e1b4b;
+  --indigo: #4338ca;
+  --indigo-bright: #4f46e5;
+  --signal: #22d3ee;
+  --surface: #ffffff;
+  --slate: #475569;
+  --hairline: #e6e8f0;
+
+  /* Availability semantics */
+  --avail-free: #16a34a;
+  --avail-some: #f59e0b;
+  --avail-full: #ef4444;
+
+  /* LED counter chip surface */
+  --led-bg: #131334;
+  --led-bg-soft: #1e1b4b;
+
+  /* Charts (unused but kept for shadcn completeness) */
+  --chart-1: #4338ca;
+  --chart-2: #22d3ee;
+  --chart-3: #16a34a;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+
+  --sidebar: #1e1b4b;
+  --sidebar-foreground: #e6e8f0;
+  --sidebar-primary: #4f46e5;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #22d3ee;
+  --sidebar-accent-foreground: #083344;
+  --sidebar-border: #312e81;
+  --sidebar-ring: #22d3ee;
+
+  /* Fonts */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
 }
 
-#root {
-  height: 100vh;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ink: var(--ink);
+  --color-indigo-ink: var(--ink);
+  --color-indigo-brand: var(--indigo);
+  --color-indigo-bright: var(--indigo-bright);
+  --color-signal: var(--signal);
+  --color-surface: var(--surface);
+  --color-slate-body: var(--slate);
+  --color-hairline: var(--hairline);
+
+  --color-avail-free: var(--avail-free);
+  --color-avail-some: var(--avail-some);
+  --color-avail-full: var(--avail-full);
+
+  --color-led: var(--led-bg);
+  --color-led-soft: var(--led-bg-soft);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Tabular mono for all numeric data (lot counts, distances, radii). */
+  .font-data {
+    font-family: var(--font-mono);
+    font-feature-settings: "tnum" 1;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Leaflet — Tailwind preflight resets can break tiles / controls.
+ * Keep the map container sized and restore Leaflet's own box model.
+ * ------------------------------------------------------------------ */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  background: #dfe3ee;
+  font-family: var(--font-body);
+  z-index: 0;
+}
+
+.leaflet-container img {
+  max-width: none !important;
+}
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(30, 27, 75, 0.18);
+}
+
+.leaflet-popup-content {
+  margin: 0.75rem 0.9rem;
+  font-family: var(--font-body);
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* Map "P" divIcon for OSM parking markers. */
+.p-marker {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--slate);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(30, 27, 75, 0.3);
+}
+
+/* LED chip inside Leaflet popups. */
+.led-popup-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: 7px;
+  background: var(--led-bg);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Subtle LED scan animation on availability chips. */
+@keyframes led-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+.led-dot-live {
+  animation: led-flicker 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .led-dot-live {
+    animation: none;
+  }
+}
+
+/* Hide scrollbar on the horizontal filter row but keep scrollability. */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
