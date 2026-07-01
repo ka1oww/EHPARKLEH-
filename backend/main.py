@@ -45,16 +45,19 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(title="EhParkLeh API", version="2", lifespan=lifespan)
 
-# CORS: local dev + native (Capacitor) origins are always allowed; add your
-# deployed web origin(s) via the ALLOWED_ORIGINS env var (comma-separated).
-# No wildcard in production.
+# CORS: the production frontend + local dev + native (Capacitor) origins are
+# always allowed; add any extra web origin(s) via the ALLOWED_ORIGINS env var
+# (comma-separated). No wildcard in production.
+_PROD_ORIGINS = [
+    "https://ehparkleh.vercel.app",                     # production frontend (Vercel)
+]
 _BASE_ORIGINS = [
     "http://localhost:5173", "http://localhost:4173",   # vite dev / preview
     "capacitor://localhost", "ionic://localhost",        # iOS Capacitor
     "http://localhost",                                  # Android Capacitor
 ]
 _EXTRA_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()]
-ALLOWED_ORIGINS = _BASE_ORIGINS + _EXTRA_ORIGINS
+ALLOWED_ORIGINS = _PROD_ORIGINS + _BASE_ORIGINS + _EXTRA_ORIGINS
 
 app.add_middleware(
     CORSMiddleware,

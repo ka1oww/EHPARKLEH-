@@ -140,6 +140,14 @@ npx cap open android          # opens Android Studio; Build > Build APK for a de
 npx cap open ios              # opens Xcode; requires an Apple Developer account to sign and run on a device
 ```
 
+## Deployment
+
+The frontend deploys to Vercel and the backend to Render, both from `main`.
+
+**Frontend (Vercel).** Root directory `frontend/`, framework preset Vite (build `npm run build`, output `dist`). `VITE_API_BASE` can point at the backend; it falls back to the Render URL when unset, so no env var is strictly required.
+
+**Backend (Render).** Root directory `backend/`, start command `uvicorn main:app --host 0.0.0.0 --port $PORT`. The served `carparks_enriched.json` is committed, so the default `pip install -r requirements.txt` build is enough. To regenerate the dataset from its source layers on each deploy instead, set the build command to `./build.sh`. CORS allows the production frontend origin (`https://ehparkleh.vercel.app`) plus anything listed in the `ALLOWED_ORIGINS` env var.
+
 ## Project layout
 
 ```
