@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { MapPin, Search, LocateFixed, Loader2 } from 'lucide-react'
+import { MapPin, Search, LocateFixed, Loader2, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import type { Suggestion } from '@/types'
+import type { RecentSearch } from '@/useRecentSearches'
 
 interface Props {
   apiBase: string
@@ -12,12 +13,25 @@ interface Props {
   /** Resolve a picked suggestion straight to coordinates. */
   onPickSuggestion: (s: Suggestion) => void
   onNearMe: () => void
+  /** Recent destination searches, shown when the input is empty + focused. */
+  recents: RecentSearch[]
+  onPickRecent: (r: RecentSearch) => void
+  onClearRecents: () => void
 }
 
 // Indigo command-bar search with debounced server-side autocomplete.
 // Behaviour preserved: debounce 300ms, >=2 chars to query, Enter geocodes,
 // picking a suggestion searches its coords directly, click-outside closes.
-export function SearchBar({ apiBase, loading, onSubmit, onPickSuggestion, onNearMe }: Props) {
+export function SearchBar({
+  apiBase,
+  loading,
+  onSubmit,
+  onPickSuggestion,
+  onNearMe,
+  recents,
+  onPickRecent,
+  onClearRecents,
+}: Props) {
   const [query, setQuery] = useState('')
   const [suggestions, setSuggestions] = useState<Suggestion[]>([])
   const [open, setOpen] = useState(false)
@@ -42,7 +56,8 @@ export function SearchBar({ apiBase, loading, onSubmit, onPickSuggestion, onNear
     clearTimeout(debounceRef.current)
     if (val.trim().length < 2) {
       setSuggestions([])
-      setOpen(false)
+      // Empty field: fall back to showing recents; 1 char: close.
+      setOpen(!val.trim() && recents.length > 0)
       return
     }
     debounceRef.current = setTimeout(async () => {
@@ -64,6 +79,16 @@ export function SearchBar({ apiBase, loading, onSubmit, onPickSuggestion, onNear
     setActiveIdx(-1)
     onPickSuggestion(s)
   }
+
+  function pickRecent(r: RecentSearch) {
+    setQuery(r.query)
+    setSuggestions([])
+    setOpen(false)
+    setActiveIdx(-1)
+    onPickRecent(r)
+  }
+
+  const showRecents = open && !query.trim() && suggestions.length === 0 && recents.length > 0
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -103,7 +128,9 @@ export function SearchBar({ apiBase, loading, onSubmit, onPickSuggestion, onNear
               value={query}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
-              onFocus={() => suggestions.length > 0 && setOpen(true)}
+              onFocus={() => {
+                if (suggestions.length > 0 || (!query.trim() && recents.length > 0)) setOpen(true)
+              }}
               placeholder="Park where? e.g. Toa Payoh Hub"
               autoComplete="off"
               aria-label="Search a destination"
@@ -122,6 +149,36 @@ export function SearchBar({ apiBase, loading, onSubmit, onPickSuggestion, onNear
             {loading ? <Loader2 className="size-4 animate-spin" /> : 'Search'}
           </Button>
         </form>
+
+        {showRecents && (
+          <ul
+            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 overflow-hidden rounded-xl border border-hairline bg-popover py-1 shadow-lg"
+            role="listbox"
+          >
+            <li className="flex items-center justify-between px-3.5 py-1.5 text-[11px] font-semibold tracking-wide text-muted-foreground uppercase">
+              Recent
+              <button
+                type="button"
+                onMouseDown={onClearRecents}
+                className="text-xs font-medium tracking-normal text-muted-foreground normal-case hover:text-foreground"
+              >
+                Clear
+              </button>
+            </li>
+            {recents.map((r) => (
+              <li key={r.query} role="option">
+                <button
+                  type="button"
+                  onMouseDown={() => pickRecent(r)}
+                  className="flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body hover:bg-secondary/60"
+                >
+                  <Clock className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+                  <span className="truncate">{r.query}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
 
         {open && suggestions.length > 0 && (
           <ul

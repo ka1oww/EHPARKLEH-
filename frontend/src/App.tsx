@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { List, Map as MapIcon, Coffee, AlertCircle, Compass } from 'lucide-react'
+import { List, Map as MapIcon, Coffee, AlertCircle, Compass, WifiOff } from 'lucide-react'
 import Map from './Map'
 import { getCurrentPosition } from './geo'
 import { cn } from '@/lib/utils'
@@ -8,6 +8,7 @@ import { FilterBar } from '@/components/FilterBar'
 import { CarparkCard } from '@/components/CarparkCard'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useFavourites } from './useFavourites'
+import { useRecentSearches } from './useRecentSearches'
 import type {
   Carpark,
   OsmParking,
@@ -88,12 +89,43 @@ export default function App() {
   const [selected, setSelected] = useState<string | null>(null)
   const [sort, setSort] = useState<SortKey>('distance')
   const { isFavourite, toggle: toggleFavourite } = useFavourites()
+  const { recents, add: addRecent, clear: clearRecents } = useRecentSearches()
+  const [online, setOnline] = useState(() => navigator.onLine)
 
   useEffect(() => {
     // Native (Capacitor) or web geolocation; silently ignore failures here.
     getCurrentPosition()
       .then((loc) => setUserLocation(loc))
       .catch(() => {})
+  }, [])
+
+  // Track connectivity for the offline banner.
+  useEffect(() => {
+    const on = () => setOnline(true)
+    const off = () => setOnline(false)
+    window.addEventListener('online', on)
+    window.addEventListener('offline', off)
+    return () => {
+      window.removeEventListener('online', on)
+      window.removeEventListener('offline', off)
+    }
+  }, [])
+
+  // Restore the last search on cold open so there's something to see (esp.
+  // offline); refresh it in the background when online.
+  useEffect(() => {
+    try {
+      const snap = JSON.parse(localStorage.getItem('ehparkleh:last') || 'null')
+      if (snap?.center) {
+        setCarparks(snap.carparks || [])
+        setOsmParking(snap.osmParking || [])
+        setCenter(snap.center)
+        if (navigator.onLine) search(snap.center.lat, snap.center.lon)
+      }
+    } catch {
+      /* ignore malformed snapshot */
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Re-run the last search whenever a filter changes, so list + map stay in sync.
@@ -129,6 +161,14 @@ export default function App() {
       setOsmParking(osmData)
       setCenter({ lat, lon })
       setSelected(null)
+      try {
+        localStorage.setItem(
+          'ehparkleh:last',
+          JSON.stringify({ carparks: hdbData, osmParking: osmData, center: { lat, lon }, ts: Date.now() }),
+        )
+      } catch {
+        /* storage unavailable */
+      }
       if (hdbData.length === 0 && osmData.length === 0) {
         setError('No spots found here. Try a larger radius or fewer filters.')
       }
@@ -150,6 +190,7 @@ export default function App() {
       }
       const { lat, lon }: GeocodeResult = await res.json()
       await search(lat, lon)
+      addRecent(query, lat, lon)
     } catch {
       setError("Can't reach the server right now. Please try again shortly.")
       setLoading(false)
@@ -158,6 +199,7 @@ export default function App() {
 
   function handlePickSuggestion(s: Suggestion) {
     search(s.lat, s.lon)
+    addRecent(s.address, s.lat, s.lon)
   }
 
   function handleNearMe() {
@@ -226,6 +268,12 @@ export default function App() {
             onSubmit={handleSubmit}
             onPickSuggestion={handlePickSuggestion}
             onNearMe={handleNearMe}
+            recents={recents}
+            onPickRecent={(r) => {
+              search(r.lat, r.lon)
+              addRecent(r.query, r.lat, r.lon)
+            }}
+            onClearRecents={clearRecents}
           />
         </div>
       </header>
@@ -246,6 +294,14 @@ export default function App() {
         </div>
       </div>
 
+      {!online && (
+        <div className="shrink-0 bg-amber-500/15 px-4 py-2">
+          <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-medium text-amber-700">
+            <WifiOff className="size-4 shrink-0" aria-hidden="true" />
+            You're offline: showing your last results.
+          </div>
+        </div>
+      )}
       {error && (
         <div className="shrink-0 bg-destructive/10 px-4 py-2">
           <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-medium text-destructive">
