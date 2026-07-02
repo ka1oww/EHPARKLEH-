@@ -53,23 +53,48 @@ function ledChipHtml(state: AvailState, available: number | null, total: number 
   )
 }
 
-function popupHtml(title: string, distance: number, rate: string, ledHtml: string): string {
+// Google Maps directions deep link (opens the Maps app if installed, else web).
+function gmapsDir(lat: number, lon: number): string {
+  return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`
+}
+
+// "Open in Google Maps" action rendered inside a Leaflet popup. Its click stays
+// inside the popup (target=_blank), so it never toggles the marker selection.
+function gmapsLinkHtml(href: string): string {
+  return (
+    `<a href="${href}" target="_blank" rel="noopener noreferrer" ` +
+    `style="display:inline-flex;align-items:center;gap:4px;margin-top:9px;` +
+    `font-size:12px;font-weight:700;color:#4338CA;text-decoration:none">` +
+    `Open in Google Maps ↗</a>`
+  )
+}
+
+function popupHtml(
+  title: string,
+  distance: number,
+  rate: string,
+  ledHtml: string,
+  mapsHref: string,
+): string {
   return (
     `<div style="font-family:Inter,system-ui,sans-serif;min-width:170px">` +
     `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:6px">${title}</div>` +
     `${ledHtml}` +
     `<div style="margin-top:7px;font-size:12px;color:#475569">` +
     `<span style="font-family:'Space Mono',monospace;font-weight:700">${distance}m</span> away · ${rate}` +
-    `</div></div>`
+    `</div>` +
+    gmapsLinkHtml(mapsHref) +
+    `</div>`
   )
 }
 
-function osmPopupHtml(name: string, distance: number): string {
+function osmPopupHtml(name: string, distance: number, mapsHref: string): string {
   return (
     `<div style="font-family:Inter,system-ui,sans-serif;min-width:150px">` +
     `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:4px">${name}</div>` +
     `<div style="font-size:12px;color:#475569"><span style="font-family:'Space Mono',monospace;font-weight:700">${distance}m</span> away</div>` +
     `<div style="font-size:12px;color:#94a3b8;font-style:italic;margin-top:2px">No live lots or rates</div>` +
+    gmapsLinkHtml(mapsHref) +
     `</div>`
   )
 }
@@ -160,6 +185,7 @@ export default function Map({
             cp.distance_m,
             cp.rate.known ? cp.rate.summary : 'Rate unknown',
             ledChipHtml(a.state, a.available, a.total),
+            gmapsDir(cp.lat, cp.lon),
           ),
         )
         .on('click', () => onSelect(cp.id === selected ? null : cp.id))
@@ -169,7 +195,7 @@ export default function Map({
 
     osmParking.forEach((cp) => {
       const m = L.marker([cp.lat, cp.lon], { icon: pIcon })
-        .bindPopup(osmPopupHtml(cp.name, cp.distance_m))
+        .bindPopup(osmPopupHtml(cp.name, cp.distance_m, gmapsDir(cp.lat, cp.lon)))
         .on('click', () => onSelect(cp.id === selected ? null : cp.id))
       markers.push(m)
       byId[cp.id] = m
