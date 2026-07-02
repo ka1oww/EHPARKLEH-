@@ -47,6 +47,13 @@ LTA_DATAMALL_KEY = os.getenv("LTA_DATAMALL_KEY", "")
 EVC_BATCH_URL = "https://datamall2.mytransport.sg/ltaodataservice/EVCBatch"
 EV_AVAILABILITY_TTL_SECONDS = int(os.getenv("EV_AVAILABILITY_TTL_SECONDS", "60"))
 
+# Input bounds. Rejecting coordinates outside Singapore (and capping radius) also
+# keeps inf/nan out of the distance math and the Overpass query, and stops an
+# oversized radius from turning into an expensive/abusive upstream request.
+SG_LAT_MIN, SG_LAT_MAX = 1.13, 1.50
+SG_LON_MIN, SG_LON_MAX = 103.55, 104.15
+MIN_RADIUS_M, MAX_RADIUS_M = 50, 2000
+
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     # Load the static carpark dataset once at startup.
@@ -530,9 +537,9 @@ def filter_carparks(
 
 @app.get("/api/carparks", response_model=list[Carpark])
 async def get_carparks(
-    lat: float = Query(...),
-    lon: float = Query(...),
-    radius: int = Query(500),
+    lat: float = Query(..., ge=SG_LAT_MIN, le=SG_LAT_MAX),
+    lon: float = Query(..., ge=SG_LON_MIN, le=SG_LON_MAX),
+    radius: int = Query(500, ge=MIN_RADIUS_M, le=MAX_RADIUS_M),
     category: Optional[CategoryFilter] = Query(None, description="HDB | Mall | Street | Private"),
     free_now: bool = Query(False, description="Only carparks with free parking now"),
     has_lots: bool = Query(False, description="Only carparks with live lots available"),
@@ -562,12 +569,27 @@ async def get_carparks(
     )
 
 
+# Short TTL cache for the live OSM/Overpass layer, keyed by rounded coords +
+# radius (~110m granularity). Overpass enforces strict fair-use and blocks
+# abusive IPs; this endpoint is otherwise uncached and hit on every search, so
+# caching spares Overpass, lets us serve a stale snapshot on error, and (with the
+# radius clamp) blunts hammering / use as a free proxy.
+OSM_TTL_SECONDS = int(os.getenv("OSM_TTL_SECONDS", "120"))
+OSM_CACHE_MAX = 256
+_osm_cache: dict = {}  # {(rlat, rlon, radius): (fetched_at, list[OsmParking])}
+
+
 @app.get("/api/parking/osm", response_model=list[OsmParking])
 async def parking_osm(
-    lat: float = Query(...),
-    lon: float = Query(...),
-    radius: int = Query(500),
+    lat: float = Query(..., ge=SG_LAT_MIN, le=SG_LAT_MAX),
+    lon: float = Query(..., ge=SG_LON_MIN, le=SG_LON_MAX),
+    radius: int = Query(500, ge=MIN_RADIUS_M, le=MAX_RADIUS_M),
 ):
+    key = (round(lat, 3), round(lon, 3), radius)
+    cached = _osm_cache.get(key)
+    if cached and (time.monotonic() - cached[0]) < OSM_TTL_SECONDS:
+        return cached[1]
+
     query = f"""
 [out:json][timeout:12];
 (
@@ -585,7 +607,8 @@ out center;
         elements = resp.json().get("elements", [])
     except Exception:
         logger.exception("Overpass/OSM request failed")
-        return []
+        # Serve a recent snapshot for this area if we have one, else empty.
+        return cached[1] if cached else []
 
     results: list[OsmParking] = []
     for el in elements:
@@ -613,4 +636,10 @@ out center;
         )
 
     results.sort(key=lambda x: x.distance_m)
+
+    # Cache the snapshot (evict the oldest entry when full).
+    if len(_osm_cache) >= OSM_CACHE_MAX:
+        oldest = min(_osm_cache, key=lambda k: _osm_cache[k][0])
+        _osm_cache.pop(oldest, None)
+    _osm_cache[key] = (time.monotonic(), results)
     return results

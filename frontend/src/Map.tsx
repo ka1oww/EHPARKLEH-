@@ -53,6 +53,20 @@ function ledChipHtml(state: AvailState, available: number | null, total: number 
   )
 }
 
+// Escape user-influenced text before it goes into a popup's innerHTML. OSM
+// parking names (served live from Overpass) are editable by anyone on
+// openstreetmap.org, so they are an untrusted, stored-XSS vector without this.
+const ESC: Record<string, string> = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+}
+function esc(s: string): string {
+  return String(s).replace(/[&<>"']/g, (c) => ESC[c])
+}
+
 // Google Maps directions deep link (opens the Maps app if installed, else web).
 function gmapsDir(lat: number, lon: number): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`
@@ -78,10 +92,10 @@ function popupHtml(
 ): string {
   return (
     `<div style="font-family:Inter,system-ui,sans-serif;min-width:170px">` +
-    `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:6px">${title}</div>` +
+    `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:6px">${esc(title)}</div>` +
     `${ledHtml}` +
     `<div style="margin-top:7px;font-size:12px;color:#475569">` +
-    `<span style="font-family:'Space Mono',monospace;font-weight:700">${distance}m</span> away · ${rate}` +
+    `<span style="font-family:'Space Mono',monospace;font-weight:700">${distance}m</span> away · ${esc(rate)}` +
     `</div>` +
     gmapsLinkHtml(mapsHref) +
     `</div>`
@@ -91,7 +105,7 @@ function popupHtml(
 function osmPopupHtml(name: string, distance: number, mapsHref: string): string {
   return (
     `<div style="font-family:Inter,system-ui,sans-serif;min-width:150px">` +
-    `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:4px">${name}</div>` +
+    `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:4px">${esc(name)}</div>` +
     `<div style="font-size:12px;color:#475569"><span style="font-family:'Space Mono',monospace;font-weight:700">${distance}m</span> away</div>` +
     `<div style="font-size:12px;color:#94a3b8;font-style:italic;margin-top:2px">No live lots or rates</div>` +
     gmapsLinkHtml(mapsHref) +
