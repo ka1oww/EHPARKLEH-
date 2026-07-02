@@ -239,7 +239,7 @@ def load_carpark_records() -> list[dict]:
             {
                 "id": cp["id"],
                 "name": cp.get("name") or cp.get("address"),
-                "address": cp.get("address", cp.get("name", cp["id"])),
+                "address": cp.get("address") or cp.get("name") or "Unnamed carpark",
                 "lat": cp["lat"],
                 "lon": cp["lon"],
                 "type": cp.get("type"),
@@ -397,23 +397,28 @@ def filter_carparks(
         if free_now and not is_free:
             continue
 
-        results.append(
-            Carpark(
-                id=cp["id"],
-                name=cp.get("name"),
-                address=cp["address"],
-                lat=cp["lat"],
-                lon=cp["lon"],
-                distance_m=round(dist),
-                lots_available=lots_available,
-                total_lots=total_lots,
-                type=cp.get("type"),
-                category=cp.get("category"),
-                rate=resolve_rate(cp.get("rates")),
-                free_parking_info=free_info,
-                sources=cp.get("sources", []),
+        try:
+            results.append(
+                Carpark(
+                    id=cp["id"],
+                    name=cp.get("name"),
+                    address=cp["address"],
+                    lat=cp["lat"],
+                    lon=cp["lon"],
+                    distance_m=round(dist),
+                    lots_available=lots_available,
+                    total_lots=total_lots,
+                    type=cp.get("type"),
+                    category=cp.get("category"),
+                    rate=resolve_rate(cp.get("rates")),
+                    free_parking_info=free_info,
+                    sources=cp.get("sources", []),
+                )
             )
-        )
+        except Exception:
+            # One malformed record must never 500 the whole search.
+            logger.warning("Skipping malformed carpark record %s", cp.get("id"))
+            continue
 
     results.sort(key=lambda c: c.distance_m)
     return results

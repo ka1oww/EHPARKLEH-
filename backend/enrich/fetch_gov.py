@@ -120,8 +120,11 @@ def svy21_to_wgs84(easting: float, northing: float) -> tuple[float, float]:
     e2 = 2 * f - f * f
 
     N0, E0, k0 = 38744.572, 28001.642, 1.0
-    lat0 = math.radians(1.3674765)
-    lon0 = math.radians(103.8255487)
+    # SVY21 (EPSG:3414) natural origin: 1 deg 22' N, 103 deg 50' E.
+    # (The previous 1.3674765 / 103.8255487 were wrong and shifted every HDB
+    # carpark ~870 m west.)
+    lat0 = math.radians(1.366666666667)
+    lon0 = math.radians(103.833333333333)
 
     M0 = a * ((1 - e2 / 4 - 3 * e2 ** 2 / 64 - 5 * e2 ** 3 / 256) * lat0
               - (3 * e2 / 8 + 3 * e2 ** 2 / 32 + 45 * e2 ** 3 / 1024) * math.sin(2 * lat0)
