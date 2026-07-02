@@ -10,11 +10,16 @@ import os
 import time
 import logging
 from pathlib import Path
-from dotenv import load_dotenv
 
-# Load backend/.env at startup so config + secrets live outside the code.
-# .env is git-ignored; never commit it.
-load_dotenv(Path(__file__).parent / ".env")
+# Load backend/.env for local dev if python-dotenv is installed. In production
+# (e.g. Render) config comes from real environment variables and python-dotenv
+# may be absent, so this is best-effort and must never crash startup.
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(Path(__file__).parent / ".env")
+except ModuleNotFoundError:
+    pass
 
 # Structured logging instead of silent except/pass + bare print().
 logging.basicConfig(
