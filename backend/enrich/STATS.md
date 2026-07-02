@@ -1,23 +1,23 @@
 # Enriched Carpark Dataset — Stats
 
-Generated: 2026-07-02 09:39:57
+Generated: 2026-07-02 11:25:58
 
-**Total carparks:** 4753
+**Total carparks:** 3725
 
 ## By category
 
-- HDB Estate: 2274
-- Commercial/Private: 1582
-- Street (URA): 776
-- Mall: 121
+- HDB Estate: 2265
+- Street (URA): 775
+- Commercial/Private: 587
+- Mall: 98
 
 ## By source (carparks tagged with each source)
 
-- osm: 2884
 - hdb: 2264
-- google: 2256
-- ura: 776
-- lta: 220
+- google: 2206
+- osm: 1895
+- ura: 775
+- lta: 205
 
 ## Pipeline
 
@@ -28,7 +28,9 @@ Generated: 2026-07-02 09:39:57
 - Dedupe merges (Google/OSM folded into existing): 4465
 - Dedupe policy: gov authoritative; fold within 90m proximity, or 150m when names match
 - Voided inside military areas (199 camps/bases): 54
-- LTA rates attached: 218 (of 357 rate rows)
+- Dropped standalone OSM carparks: 977
+- Voided from manual_voids.json (Google junk/condos + flagged): 51
+- LTA rates attached: 203 (of 357 rate rows)
 
 ## Geocoding
 

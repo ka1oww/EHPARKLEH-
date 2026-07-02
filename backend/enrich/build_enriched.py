@@ -37,6 +37,7 @@ GOV_HDB = os.path.join(HERE, "gov_hdb.json")
 GOV_URA = os.path.join(HERE, "gov_ura.json")
 GOV_RATES = os.path.join(HERE, "gov_rates.json")
 MILITARY = os.path.join(HERE, "military_areas.json")
+MANUAL_VOIDS = os.path.join(HERE, "manual_voids.json")
 
 OUT = os.path.join(BACKEND, "carparks_enriched.json")
 STATS = os.path.join(HERE, "STATS.md")
@@ -477,6 +478,26 @@ def main():
     voided_military = before_void - len(merged)
     print(f"voided {voided_military} carparks inside {len(mil_areas)} military areas", file=sys.stderr)
 
+    # 3c) drop the OSM coverage layer + apply the manual removal list.
+    # OSM-only pins were the main source of construction-site / private / unnamed
+    # junk, so we stop emitting them (OSM is still used above to corroborate/fold
+    # during dedup). Then remove the satellite-verified Google junk, Google
+    # condos, and the user-flagged entry listed in manual_voids.json.
+    before_osm = len(merged)
+    merged = [e for e in merged if not e["id"].startswith("OSM_")]
+    dropped_osm = before_osm - len(merged)
+    print(f"dropped {dropped_osm} standalone OSM carparks", file=sys.stderr)
+
+    voids = set(load_opt(MANUAL_VOIDS, []))
+    missing = voids - {e["id"] for e in merged}
+    if missing:
+        print(f"  WARNING: {len(missing)} manual_void ids matched nothing: {sorted(missing)}",
+              file=sys.stderr)
+    before_manual = len(merged)
+    merged = [e for e in merged if e["id"] not in voids]
+    voided_manual = before_manual - len(merged)
+    print(f"voided {voided_manual} carparks from manual_voids.json", file=sys.stderr)
+
     # 4) attach rates + 5) classify
     rates_attached = 0
     for e in merged:
@@ -517,6 +538,8 @@ def main():
     lines.append(f"- Dedupe merges (Google/OSM folded into existing): {merges}")
     lines.append(f"- Dedupe policy: gov authoritative; fold within {DEDUPE_HARD_M:.0f}m proximity, or {DEDUPE_NAME_M:.0f}m when names match")
     lines.append(f"- Voided inside military areas ({len(mil_areas)} camps/bases): {voided_military}")
+    lines.append(f"- Dropped standalone OSM carparks: {dropped_osm}")
+    lines.append(f"- Voided from manual_voids.json (Google junk/condos + flagged): {voided_manual}")
     lines.append(f"- LTA rates attached: {rates_attached} (of {len(rates)} rate rows)")
     lines.append(f"\n## Geocoding\n")
     lines.append(f"- SVY21 fallback before: 467")
