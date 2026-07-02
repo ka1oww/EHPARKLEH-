@@ -9,6 +9,7 @@ import { CarparkCard } from '@/components/CarparkCard'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useFavourites } from './useFavourites'
 import { useRecentSearches } from './useRecentSearches'
+import { InstallPrompt } from '@/components/InstallPrompt'
 import type {
   Carpark,
   OsmParking,
@@ -86,6 +87,9 @@ export default function App() {
   const [osmParking, setOsmParking] = useState<OsmParking[]>([])
   const [center, setCenter] = useState<LatLon | null>(null)
   const [loading, setLoading] = useState(false)
+  // After a few seconds of loading, assume Render's free tier is cold-starting
+  // and soften the copy so a ~50s first request doesn't read as "broken".
+  const [slowLoad, setSlowLoad] = useState(false)
   const [error, setError] = useState('')
   const [selected, setSelected] = useState<string | null>(null)
   const [sort, setSort] = useState<SortKey>('distance')
@@ -111,6 +115,16 @@ export default function App() {
       window.removeEventListener('offline', off)
     }
   }, [])
+
+  // Flip to the "waking the server" message if a request runs long.
+  useEffect(() => {
+    if (!loading) {
+      setSlowLoad(false)
+      return
+    }
+    const t = setTimeout(() => setSlowLoad(true), 4000)
+    return () => clearTimeout(t)
+  }, [loading])
 
   // Restore the last search on cold open so there's something to see (esp.
   // offline); refresh it in the background when online.
@@ -315,6 +329,8 @@ export default function App() {
         </div>
       )}
 
+      <InstallPrompt />
+
       {/* Mobile list/map toggle */}
       <div className="shrink-0 border-b border-hairline bg-surface px-4 py-2 md:hidden">
         <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-2 gap-1 rounded-lg bg-secondary p-1">
@@ -356,7 +372,7 @@ export default function App() {
             {loading && (
               <>
                 <p className="font-data text-xs font-bold tracking-wide text-muted-foreground uppercase">
-                  Finding spots…
+                  {slowLoad ? 'Waking the server, hang tight…' : 'Finding spots…'}
                 </p>
                 {[0, 1, 2].map((i) => (
                   <Skeleton key={i} className="h-28 w-full rounded-xl" />
