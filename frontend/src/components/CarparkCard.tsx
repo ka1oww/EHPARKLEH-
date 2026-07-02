@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowUpRight, Navigation, Wallet, Tag, Info, Star, Share2 } from 'lucide-react'
+import { ArrowUpRight, Navigation, Wallet, Tag, Info, Star, Share2, Zap } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { AvailabilityChip } from '@/components/AvailabilityChip'
@@ -91,6 +91,40 @@ function LiveBadge() {
     <span className="inline-flex items-center gap-1 rounded-full bg-avail-free/12 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-avail-free uppercase">
       <span className="led-dot-live size-1.5 rounded-full bg-avail-free" aria-hidden="true" />
       Live
+    </span>
+  )
+}
+
+// EV charging badge. Shows the live "N/M free" count when the availability feed
+// is up (green when >0 free), else a static "EV charging" pill. A ⚡ + "fast"
+// hint marks DC fast chargers (>=43 kW).
+function EvBadge({
+  available,
+  total,
+  maxPowerKw,
+}: {
+  available: number | null
+  total: number | null
+  maxPowerKw: number | null
+}) {
+  const hasLive = available !== null && total !== null
+  const free = hasLive && available > 0
+  const fast = typeof maxPowerKw === 'number' && maxPowerKw >= 43
+  const label = hasLive
+    ? `${available}/${total} chargers free`
+    : total
+      ? `EV · ${total} chargers`
+      : 'EV charging'
+  return (
+    <span
+      className={cn(
+        'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold',
+        free ? 'bg-avail-free/12 text-avail-free' : 'bg-amber-500/15 text-amber-600',
+      )}
+    >
+      <Zap className="size-3" aria-hidden="true" />
+      {label}
+      {fast && ' · fast'}
     </span>
   )
 }
@@ -208,6 +242,13 @@ export function CarparkCard({
           <div className="mt-2.5 flex flex-wrap items-center gap-2">
             <AvailabilityChip available={entry.lots_available} total={entry.total_lots} />
             {isLive && <LiveBadge />}
+            {entry.ev && (
+              <EvBadge
+                available={entry.ev_available}
+                total={entry.ev_total}
+                maxPowerKw={entry.ev_max_power_kw}
+              />
+            )}
           </div>
 
           <div className="mt-2.5 flex flex-wrap items-center gap-1.5">

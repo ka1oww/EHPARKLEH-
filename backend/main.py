@@ -39,6 +39,14 @@ AVAILABILITY_URL = "https://api.data.gov.sg/v1/transport/carpark-availability"
 # staying fresh enough.
 AVAILABILITY_TTL_SECONDS = int(os.getenv("AVAILABILITY_TTL_SECONDS", "60"))
 
+# LTA DataMall EV Charging Points (Batch) for live per-connector availability.
+# EVCBatch returns a short-lived link to a JSON of every charger + its status.
+# Needs a free DataMall AccountKey; without it, EV *filtering* still works from
+# the static flag and only the live "N/M free" count is omitted.
+LTA_DATAMALL_KEY = os.getenv("LTA_DATAMALL_KEY", "")
+EVC_BATCH_URL = "https://datamall2.mytransport.sg/ltaodataservice/EVCBatch"
+EV_AVAILABILITY_TTL_SECONDS = int(os.getenv("EV_AVAILABILITY_TTL_SECONDS", "60"))
+
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     # Load the static carpark dataset once at startup.
@@ -134,6 +142,13 @@ class Carpark(BaseModel):
     rate: ResolvedRate
     free_parking_info: Optional[str] = None
     sources: list[str] = []
+    # EV charging (LTA DataMall). ev_available is live (null when the feed is
+    # unavailable or no key is configured); the rest is static from the dataset.
+    ev: bool = False
+    ev_total: Optional[int] = None
+    ev_available: Optional[int] = None
+    ev_operators: list[str] = []
+    ev_max_power_kw: Optional[float] = None
 
 
 class OsmParking(BaseModel):
@@ -249,6 +264,12 @@ def load_carpark_records() -> list[dict]:
                 # Key used against the live availability feed.
                 "availability_key": cp.get("availability_key", cp["id"]),
                 "sources": cp.get("sources", []),
+                # EV charging (static layer; ev_cp_ids join the live feed).
+                "ev": bool(cp.get("ev")),
+                "ev_cp_ids": cp.get("ev_cp_ids", []),
+                "ev_total": cp.get("ev_total"),
+                "ev_operators": cp.get("ev_operators", []),
+                "ev_max_power_kw": cp.get("ev_max_power_kw"),
             }
         )
     return out
@@ -303,6 +324,70 @@ async def get_availability(client: Optional[httpx.AsyncClient] = None) -> dict:
         logger.exception("Failed to fetch/parse availability feed")
         # Serve stale data if we have it, else an empty map.
         return _avail_cache["data"] or {}
+    finally:
+        if own_client:
+            await client.aclose()
+
+
+# EV charger availability: {evCpId: status}, "0" occupied / "1" available /
+# "" | "100" not available. TTL-cached like the carpark feed.
+_ev_avail_cache: dict = {"data": None, "fetched_at": 0.0}
+
+
+def _parse_ev_availability(payload: dict) -> dict:
+    """Flatten the EVC batch file into {evCpId: status}."""
+    status: dict = {}
+    for loc in payload.get("evLocationsData") or []:
+        for cp in loc.get("chargingPoints") or []:
+            for pt in cp.get("plugTypes") or []:
+                for ev in pt.get("evIds") or []:
+                    cpid = ev.get("evCpId")
+                    if cpid:
+                        status[cpid] = ev.get("status")
+    return status
+
+
+async def get_ev_availability(client: Optional[httpx.AsyncClient] = None) -> dict:
+    """Return {evCpId: status} from LTA DataMall's EVC batch feed, ~60s cached.
+
+    Requires LTA_DATAMALL_KEY. Without it (or on error) we return the last good
+    snapshot or an empty map, so EV filtering keeps working and only the live
+    per-connector count degrades to unknown.
+    """
+    if not LTA_DATAMALL_KEY:
+        return {}
+
+    now = time.monotonic()
+    if (
+        _ev_avail_cache["data"] is not None
+        and (now - _ev_avail_cache["fetched_at"]) < EV_AVAILABILITY_TTL_SECONDS
+    ):
+        return _ev_avail_cache["data"]
+
+    own_client = client is None
+    if own_client:
+        client = httpx.AsyncClient(timeout=20)
+    try:
+        meta = await client.get(
+            EVC_BATCH_URL,
+            headers={"AccountKey": LTA_DATAMALL_KEY, "accept": "application/json"},
+        )
+        meta.raise_for_status()
+        value = meta.json().get("value") or []
+        link = value[0]["Link"] if value and value[0].get("Link") else None
+        if not link:
+            raise RuntimeError("EVCBatch returned no download link")
+        # The link is a short-lived (5 min) pre-signed S3 URL; download at once.
+        file_resp = await client.get(link)
+        file_resp.raise_for_status()
+        status_map = _parse_ev_availability(file_resp.json())
+        _ev_avail_cache["data"] = status_map
+        _ev_avail_cache["fetched_at"] = now
+        logger.info("Refreshed EV availability: %d connectors", len(status_map))
+        return status_map
+    except Exception:
+        logger.exception("Failed to fetch/parse EV availability feed")
+        return _ev_avail_cache["data"] or {}
     finally:
         if own_client:
             await client.aclose()
@@ -374,8 +459,11 @@ def filter_carparks(
     category: Optional[str] = None,
     free_now: bool = False,
     has_lots: bool = False,
+    has_ev: bool = False,
+    ev_availability: Optional[dict] = None,
 ) -> list[Carpark]:
     """Server-side spatial + category + flag filtering. Pure, so it is testable."""
+    ev_availability = ev_availability or {}
     results: list[Carpark] = []
     for cp in _carpark_cache:
         dist = haversine(lat, lon, cp["lat"], cp["lon"])
@@ -383,6 +471,9 @@ def filter_carparks(
             continue
 
         if category and cp.get("category") != category:
+            continue
+
+        if has_ev and not cp.get("ev"):
             continue
 
         avail = availability.get(cp["availability_key"], {})
@@ -396,6 +487,14 @@ def filter_carparks(
         is_free = bool(free_info) and str(free_info).upper() != "NO"
         if free_now and not is_free:
             continue
+
+        # Live EV count: how many of this carpark's connectors report available.
+        # Only meaningful when we actually have a feed snapshot; else leave null.
+        ev_available = None
+        if cp.get("ev") and ev_availability:
+            ev_available = sum(
+                1 for cid in cp.get("ev_cp_ids", []) if ev_availability.get(cid) == "1"
+            )
 
         try:
             results.append(
@@ -413,6 +512,11 @@ def filter_carparks(
                     rate=resolve_rate(cp.get("rates")),
                     free_parking_info=free_info,
                     sources=cp.get("sources", []),
+                    ev=bool(cp.get("ev")),
+                    ev_total=cp.get("ev_total"),
+                    ev_available=ev_available,
+                    ev_operators=cp.get("ev_operators", []),
+                    ev_max_power_kw=cp.get("ev_max_power_kw"),
                 )
             )
         except Exception:
@@ -432,6 +536,7 @@ async def get_carparks(
     category: Optional[CategoryFilter] = Query(None, description="HDB | Mall | Street | Private"),
     free_now: bool = Query(False, description="Only carparks with free parking now"),
     has_lots: bool = Query(False, description="Only carparks with live lots available"),
+    has_ev: bool = Query(False, description="Only carparks with EV charging"),
 ):
     if not _carpark_cache:
         # Startup loads the cache asynchronously; guard against an empty cache.
@@ -440,6 +545,10 @@ async def get_carparks(
         )
 
     availability = await get_availability()
+    # EV feed is ~60s-cached (at most one upstream call per minute across all
+    # traffic) and returns instantly with no key configured, so fetch it every
+    # time for consistent live counts on any EV carpark, filtered or not.
+    ev_availability = await get_ev_availability()
     return filter_carparks(
         lat=lat,
         lon=lon,
@@ -448,6 +557,8 @@ async def get_carparks(
         category=category,
         free_now=free_now,
         has_lots=has_lots,
+        has_ev=has_ev,
+        ev_availability=ev_availability,
     )
 
 

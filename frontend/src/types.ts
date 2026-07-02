@@ -50,6 +50,13 @@ export interface Carpark {
   rate: ResolvedRate
   free_parking_info: string | null
   sources: string[]
+  // EV charging (LTA DataMall). ev_available is live (null when the feed is
+  // down / no key); the rest is static from the enriched dataset.
+  ev: boolean
+  ev_total: number | null
+  ev_available: number | null
+  ev_operators: string[]
+  ev_max_power_kw: number | null
   // Legacy display fields read by the existing UI. Kept optional so behaviour
   // is preserved verbatim during the migration.
   cost_per_30min?: number

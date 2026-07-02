@@ -39,6 +39,10 @@ GOV_RATES = os.path.join(HERE, "gov_rates.json")
 MILITARY = os.path.join(HERE, "military_areas.json")
 MANUAL_VOIDS = os.path.join(HERE, "manual_voids.json")
 CENTRAL_AREA = os.path.join(HERE, "central_area.json")
+EV = os.path.join(HERE, "ev_points.json")
+
+# Flag a carpark as EV-capable if an LTA charging site sits within this radius.
+EV_MATCH_M = 75.0
 
 OUT = os.path.join(BACKEND, "carparks_enriched.json")
 STATS = os.path.join(HERE, "STATS.md")
@@ -499,6 +503,41 @@ def main():
     voided_manual = before_manual - len(merged)
     print(f"voided {voided_manual} carparks from manual_voids.json", file=sys.stderr)
 
+    # 3e) flag carparks that have EV charging nearby (LTA DataMall EVC batch).
+    # Static location layer only: which carparks HAVE chargers, how many
+    # connectors, and which operators. Live per-connector availability is
+    # fetched at request time in main.py using the evCpIds recorded here.
+    ev_points = load_opt(EV, [])
+    ev_grid = defaultdict(list)
+    for p in ev_points:
+        ev_grid[grid_key(p["lat"], p["lon"])].append(p)
+
+    ev_flagged = 0
+    for e in merged:
+        gk = grid_key(e["lat"], e["lon"])
+        cp_ids, operators, powers = [], set(), []
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for p in ev_grid.get((gk[0] + dx, gk[1] + dy), []):
+                    if haversine(e["lat"], e["lon"], p["lat"], p["lon"]) <= EV_MATCH_M:
+                        for c in p["connectors"]:
+                            cp_ids.append(c["evCpId"])
+                            if c.get("operator"):
+                                operators.add(c["operator"])
+                            try:
+                                powers.append(float(c.get("powerRating")))
+                            except (TypeError, ValueError):
+                                pass
+        if cp_ids:
+            e["ev"] = True
+            e["ev_cp_ids"] = sorted(set(cp_ids))
+            e["ev_total"] = len(e["ev_cp_ids"])
+            e["ev_operators"] = sorted(operators)
+            e["ev_max_power_kw"] = max(powers) if powers else None
+            ev_flagged += 1
+    print(f"flagged {ev_flagged} carparks with EV charging "
+          f"(within {EV_MATCH_M:.0f}m of {len(ev_points)} EV sites)", file=sys.stderr)
+
     # Central Area geofence (URA planning areas) for the HDB/URA standard rate:
     # $1.20/30min inside the Central Area, $0.60/30min elsewhere.
     central_boxes = []
@@ -579,6 +618,7 @@ def main():
     lines.append(f"- Voided from manual_voids.json (Google junk/condos + flagged): {voided_manual}")
     lines.append(f"- LTA rates attached: {rates_attached} (of {len(rates)} rate rows)")
     lines.append(f"- HDB/URA standard rates applied: {standard_attached}")
+    lines.append(f"- Carparks flagged with EV charging: {ev_flagged} (of {len(ev_points)} EV sites)")
     lines.append(f"\n## Geocoding\n")
     lines.append(f"- SVY21 fallback before: 467")
     lines.append(f"- OneMap re-geocode attempts: {svy21_attempted} (rest cached)")

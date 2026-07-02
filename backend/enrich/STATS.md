@@ -1,6 +1,6 @@
 # Enriched Carpark Dataset — Stats
 
-Generated: 2026-07-02 11:47:58
+Generated: 2026-07-02 12:49:10
 
 **Total carparks:** 3725
 
@@ -32,6 +32,7 @@ Generated: 2026-07-02 11:47:58
 - Voided from manual_voids.json (Google junk/condos + flagged): 51
 - LTA rates attached: 203 (of 357 rate rows)
 - HDB/URA standard rates applied: 2783
+- Carparks flagged with EV charging: 2133 (of 2706 EV sites)
 
 ## Geocoding
 
