@@ -76591,29 +76591,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_C0055",
-  "name": "Choa Chu Kang Way",
-  "address": "Choa Chu Kang Way",
-  "lat": 1.3948141,
-  "lon": 103.7416466,
-  "geocode_source": "ura",
-  "availability_key": "C0055",
-  "sources": [
-   "ura"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 42
-   },
-   "total_lots": 42
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_C0057",
   "name": "Casuarina Road",
   "address": "Casuarina Road",
@@ -101036,78 +101013,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00286",
-  "name": "SAFTI MI Carpark D",
-  "address": "SAFTI MI Carpark D",
-  "lat": 1.336149,
-  "lon": 103.67925319999999,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00287",
-  "name": "SAFTI MI Carpark I",
-  "address": "SAFTI MI Carpark I",
-  "lat": 1.3349829,
-  "lon": 103.6841573,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00288",
-  "name": "OCS Carpark C",
-  "address": "OCS Carpark C",
-  "lat": 1.3358607999999998,
-  "lon": 103.6826174,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00289",
-  "name": "SAFTI service road carpark",
-  "address": "SAFTI service road carpark",
-  "lat": 1.3306817,
-  "lon": 103.6851499,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00290",
   "name": "MWC VEHICLES PARKING",
   "address": "MWC VEHICLES PARKING",
@@ -104783,24 +104688,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00457",
-  "name": "CDA Carpark A",
-  "address": "CDA Carpark A",
-  "lat": 1.3652066999999999,
-  "lon": 103.6912886,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00458",
   "name": "Carpark (Nanyang Crescent) (Zone 3 Open)",
   "address": "Carpark (Nanyang Crescent) (Zone 3 Open)",
@@ -104967,24 +104854,6 @@
   "address": "U22",
   "lat": 1.3607570999999998,
   "lon": 103.74739129999999,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00466",
-  "name": "CMPB Carpark Entrance",
-  "address": "CMPB Carpark Entrance",
-  "lat": 1.3665643,
-  "lon": 103.7643623,
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
@@ -107035,24 +106904,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00559",
-  "name": "CAB (West) ICT Carpark",
-  "address": "CAB (West) ICT Carpark",
-  "lat": 1.3819276999999999,
-  "lon": 103.9813693,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00560",
   "name": "Rhythm and Ride @ Changi",
   "address": "Rhythm and Ride @ Changi",
@@ -107529,24 +107380,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00580",
-  "name": "Carpark",
-  "address": "Carpark",
-  "lat": 1.4049896,
-  "lon": 103.8137515,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00581",
   "name": "Lower Seletar Reservoir Carpark",
   "address": "Lower Seletar Reservoir Carpark",
@@ -107620,24 +107453,6 @@
    "fee": null,
    "parking_type": null
   },
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00584",
-  "name": "Seletar bus stop",
-  "address": "Seletar bus stop",
-  "lat": 1.4112806,
-  "lon": 103.87417680000001,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
   "category": "Commercial/Private"
  },
  {
@@ -108983,24 +108798,6 @@
    "parking_type": "multi-storey"
   },
   "category": "Mall"
- },
- {
-  "id": "GOOG_00648",
-  "name": "Bicycle Parking @ Sembawang Hot Spring Park",
-  "address": "Bicycle Parking @ Sembawang Hot Spring Park",
-  "lat": 1.4346173,
-  "lon": 103.8235024,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking",
-  "google_place_id": null,
-  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00649",
@@ -113377,29 +113174,6 @@
   "category": "Mall"
  },
  {
-  "id": "OSM_00100",
-  "name": "RSAF Museum Carpark",
-  "address": "RSAF Museum Carpark",
-  "lat": 1.3467468,
-  "lon": 103.8989033,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "node/2918101008",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00101",
   "name": null,
   "address": null,
@@ -114201,29 +113975,6 @@
    "access": null,
    "fee": null,
    "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00136",
-  "name": null,
-  "address": null,
-  "lat": 1.3718926,
-  "lon": 103.7583549,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "MULTI-STOREY",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "node/5184291798",
-   "access": null,
-   "fee": null,
-   "parking_type": "multi-storey"
   },
   "category": "Commercial/Private"
  },
@@ -115194,29 +114945,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00179",
-  "name": null,
-  "address": null,
-  "lat": 1.3849007,
-  "lon": 103.7523464,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "SURFACE",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "node/7078960351",
-   "access": "yes",
-   "fee": "no",
-   "parking_type": "surface"
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00180",
   "name": null,
   "address": null,
@@ -115700,29 +115428,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00201",
-  "name": null,
-  "address": null,
-  "lat": 1.2899238,
-  "lon": 103.7874944,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "MULTI-STOREY",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "node/10229733224",
-   "access": null,
-   "fee": null,
-   "parking_type": "multi-storey"
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00202",
   "name": null,
   "address": null,
@@ -115785,29 +115490,6 @@
   "google_primary_type": null,
   "osm_info": {
    "osm_id": "node/10586717422",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00205",
-  "name": null,
-  "address": null,
-  "lat": 1.3482723,
-  "lon": 103.8991382,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "node/10656571422",
    "access": null,
    "fee": null,
    "parking_type": null
@@ -116015,29 +115697,6 @@
   "google_primary_type": null,
   "osm_info": {
    "osm_id": "node/10677661570",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00215",
-  "name": null,
-  "address": null,
-  "lat": 1.3199989,
-  "lon": 103.772698,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "node/10677677168",
    "access": null,
    "fee": null,
    "parking_type": null
@@ -116595,29 +116254,6 @@
    "parking_type": "multi-storey"
   },
   "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00240",
-  "name": "PLAB Drop-Off Point",
-  "address": "PLAB Drop-Off Point",
-  "lat": 1.3436678,
-  "lon": 103.8994946,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "SURFACE",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "node/12078736229",
-   "access": null,
-   "fee": "no",
-   "parking_type": "surface"
-  },
-  "category": "Mall"
  },
  {
   "id": "OSM_00241",
@@ -117425,29 +117061,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00276",
-  "name": null,
-  "address": null,
-  "lat": 1.4086327,
-  "lon": 103.8166739,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "MULTI-STOREY",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/109740751",
-   "access": null,
-   "fee": null,
-   "parking_type": "multi-storey"
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00277",
   "name": null,
   "address": null,
@@ -117639,29 +117252,6 @@
    "access": null,
    "fee": null,
    "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00285",
-  "name": null,
-  "address": null,
-  "lat": 1.3288472,
-  "lon": 103.7731658,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "MULTI-STOREY",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/120718076",
-   "access": null,
-   "fee": null,
-   "parking_type": "multi-storey"
   },
   "category": "Commercial/Private"
  },
@@ -119303,29 +118893,6 @@
   "category": "Mall"
  },
  {
-  "id": "OSM_00354",
-  "name": null,
-  "address": null,
-  "lat": 1.3935828,
-  "lon": 103.9352607,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "SURFACE",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/188189191",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00355",
   "name": null,
   "address": null,
@@ -120010,29 +119577,6 @@
   "osm_info": {
    "osm_id": "way/256312029",
    "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00385",
-  "name": null,
-  "address": null,
-  "lat": 1.387459,
-  "lon": 103.8524587,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "SURFACE",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/256786948",
-   "access": "permissive",
    "fee": null,
    "parking_type": "surface"
   },
@@ -121741,29 +121285,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00460",
-  "name": null,
-  "address": null,
-  "lat": 1.4070207,
-  "lon": 103.8135518,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/467745690",
-   "access": "private",
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00461",
   "name": "Johor Bahru Sentral",
   "address": "Johor Bahru Sentral",
@@ -122431,29 +121952,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00490",
-  "name": null,
-  "address": null,
-  "lat": 1.4178986,
-  "lon": 103.6936917,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/540841480",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00491",
   "name": null,
   "address": null,
@@ -122542,52 +122040,6 @@
    "access": null,
    "fee": null,
    "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00495",
-  "name": null,
-  "address": null,
-  "lat": 1.3686326,
-  "lon": 103.9725086,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "MULTI-STOREY",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/544862590",
-   "access": null,
-   "fee": null,
-   "parking_type": "multi-storey"
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00496",
-  "name": null,
-  "address": null,
-  "lat": 1.3668342,
-  "lon": 103.9723994,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "MULTI-STOREY",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/544862592",
-   "access": null,
-   "fee": null,
-   "parking_type": "multi-storey"
   },
   "category": "Commercial/Private"
  },
@@ -122701,144 +122153,6 @@
   "osm_info": {
    "osm_id": "way/550374150",
    "access": "private",
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00502",
-  "name": null,
-  "address": null,
-  "lat": 1.3863345,
-  "lon": 103.851839,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/551275165",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00503",
-  "name": null,
-  "address": null,
-  "lat": 1.3857617,
-  "lon": 103.8556801,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/551275175",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00504",
-  "name": null,
-  "address": null,
-  "lat": 1.3842736,
-  "lon": 103.8573034,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/551289400",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00505",
-  "name": null,
-  "address": null,
-  "lat": 1.3809811,
-  "lon": 103.8571206,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/551302540",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00506",
-  "name": null,
-  "address": null,
-  "lat": 1.386957,
-  "lon": 103.8506427,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/551492436",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00507",
-  "name": null,
-  "address": null,
-  "lat": 1.3870123,
-  "lon": 103.8541113,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/551495101",
-   "access": null,
    "fee": null,
    "parking_type": null
   },
@@ -123098,29 +122412,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00519",
-  "name": null,
-  "address": null,
-  "lat": 1.4238045,
-  "lon": 103.8263774,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/585774110",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00520",
   "name": null,
   "address": null,
@@ -123345,29 +122636,6 @@
   "osm_info": {
    "osm_id": "way/594311495",
    "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00529",
-  "name": null,
-  "address": null,
-  "lat": 1.3230132,
-  "lon": 103.8445433,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "SURFACE",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/594695881",
-   "access": "private",
    "fee": null,
    "parking_type": "surface"
   },
@@ -125210,29 +124478,6 @@
    "access": null,
    "fee": null,
    "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00610",
-  "name": null,
-  "address": null,
-  "lat": 1.468663,
-  "lon": 103.8189353,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "SURFACE",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/770368038",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
   },
   "category": "Commercial/Private"
  },
@@ -127123,29 +126368,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00693",
-  "name": null,
-  "address": null,
-  "lat": 1.3745932,
-  "lon": 103.6962051,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "SURFACE",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1094076486",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00694",
   "name": null,
   "address": null,
@@ -127560,29 +126782,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00712",
-  "name": null,
-  "address": null,
-  "lat": 1.289024,
-  "lon": 103.7856045,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1144244127",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00713",
   "name": null,
   "address": null,
@@ -127646,29 +126845,6 @@
   "osm_info": {
    "osm_id": "way/1144796269",
    "access": "private",
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00716",
-  "name": null,
-  "address": null,
-  "lat": 1.3414827,
-  "lon": 103.9055948,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1144990033",
-   "access": null,
    "fee": null,
    "parking_type": null
   },
@@ -127760,52 +126936,6 @@
   "google_primary_type": null,
   "osm_info": {
    "osm_id": "way/1149024051",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00721",
-  "name": null,
-  "address": null,
-  "lat": 1.3693126,
-  "lon": 103.978091,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1149027449",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00722",
-  "name": null,
-  "address": null,
-  "lat": 1.3687149,
-  "lon": 103.9773677,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1149027454",
    "access": null,
    "fee": null,
    "parking_type": null
@@ -128135,29 +127265,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00737",
-  "name": null,
-  "address": null,
-  "lat": 1.3177289,
-  "lon": 104.0170529,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1157622617",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00738",
   "name": null,
   "address": null,
@@ -128338,98 +127445,6 @@
    "access": "yes",
    "fee": "yes",
    "parking_type": "multi-storey"
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00746",
-  "name": null,
-  "address": null,
-  "lat": 1.4206974,
-  "lon": 103.8231408,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1164981219",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00747",
-  "name": null,
-  "address": null,
-  "lat": 1.4204673,
-  "lon": 103.8240878,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1164981220",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00748",
-  "name": null,
-  "address": null,
-  "lat": 1.4233796,
-  "lon": 103.8230107,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1164981223",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00749",
-  "name": null,
-  "address": null,
-  "lat": 1.4297355,
-  "lon": 103.8258703,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1164981235",
-   "access": null,
-   "fee": null,
-   "parking_type": null
   },
   "category": "Commercial/Private"
  },
@@ -129489,29 +128504,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00795",
-  "name": null,
-  "address": null,
-  "lat": 1.3428256,
-  "lon": 103.6763377,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1237477495",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00796",
   "name": null,
   "address": null,
@@ -130061,75 +129053,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00819",
-  "name": null,
-  "address": null,
-  "lat": 1.3447876,
-  "lon": 103.899667,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1304295759",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00820",
-  "name": null,
-  "address": null,
-  "lat": 1.3440626,
-  "lon": 103.9006218,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1304296314",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00821",
-  "name": null,
-  "address": null,
-  "lat": 1.3539459,
-  "lon": 103.9007787,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1304296584",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00822",
   "name": null,
   "address": null,
@@ -130146,29 +129069,6 @@
   "google_primary_type": null,
   "osm_info": {
    "osm_id": "way/1305678242",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00823",
-  "name": null,
-  "address": null,
-  "lat": 1.3462073,
-  "lon": 103.90003,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1309352611",
    "access": null,
    "fee": null,
    "parking_type": null
@@ -133715,29 +132615,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "OSM_00977",
-  "name": null,
-  "address": null,
-  "lat": 1.386622,
-  "lon": 103.9797775,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "way/1526029514",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "OSM_00978",
   "name": null,
   "address": null,
@@ -134010,52 +132887,6 @@
    "access": null,
    "fee": null,
    "parking_type": null
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00990",
-  "name": null,
-  "address": null,
-  "lat": 1.4116287,
-  "lon": 103.7374505,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "MULTI-STOREY",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "relation/7774001",
-   "access": "private",
-   "fee": null,
-   "parking_type": "multi-storey"
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_00991",
-  "name": null,
-  "address": null,
-  "lat": 1.367658,
-  "lon": 103.9727616,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": "MULTI-STOREY",
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "relation/7791030",
-   "access": null,
-   "fee": null,
-   "parking_type": "multi-storey"
   },
   "category": "Commercial/Private"
  },
@@ -134447,29 +133278,6 @@
    "access": null,
    "fee": null,
    "parking_type": "multi-storey"
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "OSM_01009",
-  "name": null,
-  "address": null,
-  "lat": 1.342618,
-  "lon": 104.0115709,
-  "geocode_source": "osm",
-  "availability_key": null,
-  "sources": [
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": null,
-  "osm_info": {
-   "osm_id": "relation/14945152",
-   "access": "private",
-   "fee": null,
-   "parking_type": null
   },
   "category": "Commercial/Private"
  },

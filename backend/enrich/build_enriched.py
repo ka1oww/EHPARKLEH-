@@ -36,6 +36,7 @@ OSM = os.path.join(HERE, "osm_parking.json")
 GOV_HDB = os.path.join(HERE, "gov_hdb.json")
 GOV_URA = os.path.join(HERE, "gov_ura.json")
 GOV_RATES = os.path.join(HERE, "gov_rates.json")
+MILITARY = os.path.join(HERE, "military_areas.json")
 
 OUT = os.path.join(BACKEND, "carparks_enriched.json")
 STATS = os.path.join(HERE, "STATS.md")
@@ -80,6 +81,22 @@ def haversine(lat1, lon1, lat2, lon2):
     dl = math.radians(lon2 - lon1)
     a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
     return 2 * R * math.asin(math.sqrt(a))
+
+
+def point_in_ring(plat, plon, ring):
+    """Ray-casting point-in-polygon. `ring` is a list of [lat, lon] points."""
+    inside = False
+    n = len(ring)
+    j = n - 1
+    for i in range(n):
+        ilat, ilon = ring[i]
+        jlat, jlon = ring[j]
+        if ((ilat > plat) != (jlat > plat)) and (
+            plon < (jlon - ilon) * (plat - ilat) / (jlat - ilat) + ilon
+        ):
+            inside = not inside
+        j = i
+    return inside
 
 
 def norm_name(s):
@@ -440,6 +457,26 @@ def main():
             grid[grid_key(lat, lon)].append(e)
             new_osm += 1
 
+    # 3b) void parking inside military areas (camps / air / naval bases): not
+    # publicly usable, so it must not appear as a parking option.
+    mil = load_opt(MILITARY, [])
+    mil_areas = []
+    for ring in mil:
+        lats = [p[0] for p in ring]
+        lons = [p[1] for p in ring]
+        mil_areas.append((min(lats), max(lats), min(lons), max(lons), ring))
+
+    def in_military(lat, lon):
+        for mnlat, mxlat, mnlon, mxlon, ring in mil_areas:
+            if mnlat <= lat <= mxlat and mnlon <= lon <= mxlon and point_in_ring(lat, lon, ring):
+                return True
+        return False
+
+    before_void = len(merged)
+    merged = [e for e in merged if not in_military(e["lat"], e["lon"])]
+    voided_military = before_void - len(merged)
+    print(f"voided {voided_military} carparks inside {len(mil_areas)} military areas", file=sys.stderr)
+
     # 4) attach rates + 5) classify
     rates_attached = 0
     for e in merged:
@@ -479,6 +516,7 @@ def main():
     lines.append(f"- OSM carparks (input): {len(osm)} -> new ids added: {new_osm}")
     lines.append(f"- Dedupe merges (Google/OSM folded into existing): {merges}")
     lines.append(f"- Dedupe policy: gov authoritative; fold within {DEDUPE_HARD_M:.0f}m proximity, or {DEDUPE_NAME_M:.0f}m when names match")
+    lines.append(f"- Voided inside military areas ({len(mil_areas)} camps/bases): {voided_military}")
     lines.append(f"- LTA rates attached: {rates_attached} (of {len(rates)} rate rows)")
     lines.append(f"\n## Geocoding\n")
     lines.append(f"- SVY21 fallback before: 467")
