@@ -1,6 +1,6 @@
 # Enriched Carpark Dataset — Stats
 
-Generated: 2026-07-02 11:25:58
+Generated: 2026-07-02 11:47:58
 
 **Total carparks:** 3725
 
@@ -31,6 +31,7 @@ Generated: 2026-07-02 11:25:58
 - Dropped standalone OSM carparks: 977
 - Voided from manual_voids.json (Google junk/condos + flagged): 51
 - LTA rates attached: 203 (of 357 rate rows)
+- HDB/URA standard rates applied: 2783
 
 ## Geocoding
 

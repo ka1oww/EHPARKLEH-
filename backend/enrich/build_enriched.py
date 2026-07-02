@@ -38,6 +38,7 @@ GOV_URA = os.path.join(HERE, "gov_ura.json")
 GOV_RATES = os.path.join(HERE, "gov_rates.json")
 MILITARY = os.path.join(HERE, "military_areas.json")
 MANUAL_VOIDS = os.path.join(HERE, "manual_voids.json")
+CENTRAL_AREA = os.path.join(HERE, "central_area.json")
 
 OUT = os.path.join(BACKEND, "carparks_enriched.json")
 STATS = os.path.join(HERE, "STATS.md")
@@ -498,8 +499,35 @@ def main():
     voided_manual = before_manual - len(merged)
     print(f"voided {voided_manual} carparks from manual_voids.json", file=sys.stderr)
 
+    # Central Area geofence (URA planning areas) for the HDB/URA standard rate:
+    # $1.20/30min inside the Central Area, $0.60/30min elsewhere.
+    central_boxes = []
+    for ring in load_opt(CENTRAL_AREA, []):
+        lats = [p[0] for p in ring]
+        lons = [p[1] for p in ring]
+        central_boxes.append((min(lats), max(lats), min(lons), max(lons), ring))
+
+    def in_central(lat, lon):
+        for mnlat, mxlat, mnlon, mxlon, ring in central_boxes:
+            if mnlat <= lat <= mxlat and mnlon <= lon <= mxlon and point_in_ring(lat, lon, ring):
+                return True
+        return False
+
+    def standard_rate(central):
+        per, cap = (1.20, 20) if central else (0.60, 12)
+        zone = "Central Area" if central else "non-Central"
+        return {
+            "category": f"HDB/URA standard ({zone})",
+            "rates": {"weekday_1": {
+                "raw": f"${per:.2f} / 30 min (max ${cap}/day)",
+                "subsequent_half_hour": per,
+                "per_half_hour": per,
+            }},
+        }
+
     # 4) attach rates + 5) classify
     rates_attached = 0
+    standard_attached = 0
     for e in merged:
         r = match_rate(e.get("name") or e.get("address"), rate_idx)
         if r:
@@ -507,6 +535,15 @@ def main():
             if "lta" not in e["sources"]:
                 e["sources"].append("lta")
             rates_attached += 1
+        else:
+            # No exact dataset rate: apply the published HDB/URA standard schedule
+            # to gov carparks that actually offer short-term parking.
+            src = set(e.get("sources", []))
+            st = (e.get("hdb_info") or {}).get("short_term_parking")
+            offers = ("hdb" in src and (not st or str(st).upper() != "NO")) or ("ura" in src)
+            if offers:
+                e["rates"] = standard_rate(in_central(e["lat"], e["lon"]))
+                standard_attached += 1
         e["category"] = classify(e)
 
     with open(OUT, "w") as f:
@@ -541,6 +578,7 @@ def main():
     lines.append(f"- Dropped standalone OSM carparks: {dropped_osm}")
     lines.append(f"- Voided from manual_voids.json (Google junk/condos + flagged): {voided_manual}")
     lines.append(f"- LTA rates attached: {rates_attached} (of {len(rates)} rate rows)")
+    lines.append(f"- HDB/URA standard rates applied: {standard_attached}")
     lines.append(f"\n## Geocoding\n")
     lines.append(f"- SVY21 fallback before: 467")
     lines.append(f"- OneMap re-geocode attempts: {svy21_attempted} (rest cached)")
