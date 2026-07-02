@@ -126,10 +126,18 @@ export default function App() {
     return () => clearTimeout(t)
   }, [loading])
 
-  // Restore the last search on cold open so there's something to see (esp.
-  // offline); refresh it in the background when online.
+  // Initial location on cold open: a shared URL (?lat=&lon=) wins so links are
+  // reproducible; otherwise restore the last snapshot (esp. useful offline),
+  // refreshing it in the background when online.
   useEffect(() => {
     try {
+      const sp = new URLSearchParams(window.location.search)
+      const qlat = parseFloat(sp.get('lat') ?? '')
+      const qlon = parseFloat(sp.get('lon') ?? '')
+      if (Number.isFinite(qlat) && Number.isFinite(qlon)) {
+        search(qlat, qlon)
+        return
+      }
       const snap = JSON.parse(localStorage.getItem('ehparkleh:last') || 'null')
       if (snap?.center) {
         setCarparks(snap.carparks || [])
@@ -138,7 +146,7 @@ export default function App() {
         if (navigator.onLine) search(snap.center.lat, snap.center.lon)
       }
     } catch {
-      /* ignore malformed snapshot */
+      /* ignore malformed snapshot / URL */
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -184,6 +192,15 @@ export default function App() {
         )
       } catch {
         /* storage unavailable */
+      }
+      // Reflect the search in the URL so results are shareable + survive refresh.
+      try {
+        const sp = new URLSearchParams(window.location.search)
+        sp.set('lat', lat.toFixed(5))
+        sp.set('lon', lon.toFixed(5))
+        window.history.replaceState(null, '', `${window.location.pathname}?${sp.toString()}`)
+      } catch {
+        /* history unavailable */
       }
       if (hdbData.length === 0 && osmData.length === 0) {
         setError('No spots found here. Try a larger radius or fewer filters.')
