@@ -12,3 +12,9 @@ frontend/dist/
 !.env.example
 backend/.env
 frontend/.env
+
+# Cloud-sync conflict duplicates (e.g. "SearchBar 2.tsx", "README 3.md")
+* 2.*
+* 3.*
+*\ 2
+*\ 3
