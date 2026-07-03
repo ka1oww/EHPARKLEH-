@@ -35886,11 +35886,25 @@
   "sources": [
    "hdb",
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.30 1st hr, $0.70/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "7.00am-11.59pm: $3.00 per entry; 12.00am-6.59am the following day: $5.00 per entry."
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "hdb_info": {
    "car_park_type": "SURFACE CAR PARK",
@@ -37844,11 +37858,25 @@
   "sources": [
    "lta",
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.35 1st hr, $0.95/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "6am-6pm: $1.50 for 1st hr; $1.15 sub.30min or part thereof; 6pm-6am: $2.25 per entry"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_name": "Hougang Mall",
   "osm_info": {
@@ -46602,11 +46630,25 @@
   "geocode_source": "hdb_official",
   "availability_key": "J57L",
   "sources": [
-   "hdb"
+   "hdb",
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.80 1st hr, $1.50/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "7.00am-1.00pm: $2.80 for 1st hr; $1.50 for sub. 30 min. 1.00pm-7.00am the following day: $3.05 per entry."
+    },
+    "sunday_publicholiday": {
+     "raw": "7.00am-7.00am the following day: $3.05 per entry."
+    }
+   }
+  },
   "google_primary_type": null,
   "hdb_info": {
    "car_park_type": "SURFACE CAR PARK",
@@ -144448,11 +144490,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "osm_info": {
@@ -144497,11 +144553,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -144516,11 +144586,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "osm_info": {
@@ -144540,11 +144624,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -144584,11 +144682,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "osm_info": {
@@ -144658,11 +144770,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -144676,11 +144802,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -144746,11 +144886,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.20 1st hr, $1.10/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "7.00am-1.00pm: $1.60 for 1st hr; $0.80 for sub. 30min; 1.00pm-7.00am: $2.50 per entry"
+    },
+    "sunday_publicholiday": {
+     "raw": "7.00am-7.00am: $2.50 per entry"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "google_name": "LHN Parking - 34 Boon Leat Terrace",
@@ -145260,11 +145414,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.80 for 1st hr or part thereof; $0.80 for sub. 1 per 2 h\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "7.00am-7.00am (next day): $3.50 per entry."
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -145995,11 +146163,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.45 per 30 min block (LTA guide)"
+    },
+    "saturday": {
+     "raw": "$3.82 per entry"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same s Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "ev": true,
@@ -146337,11 +146519,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "6.00am-5.59am the next day: $3.56 per entry"
+    }
+   }
+  },
   "google_primary_type": "parking",
   "google_place_id": null,
   "google_name": "IOI Central Boulevard Towers Carpark",
@@ -146356,11 +146552,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$3.00 per 30 min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "6.00pm-5.590am (next day): $3.50 per entry."
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_garage",
   "google_place_id": null,
   "ev": true,
@@ -146421,11 +146631,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$0.025 per min for the 1st 5hr, $0.05 per min for next sub\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "osm_info": {
@@ -146554,11 +146778,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.10 per hr (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -147241,11 +147479,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.40 per 30min. (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -147384,11 +147636,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.07 per 10min block or part thereof. (LTA guide)"
+    },
+    "saturday": {
+     "raw": "7.00am-2.59pm: $1.07/10min block. 3.00pm-11.59am next day: $3.75 per entry"
+    },
+    "sunday_publicholiday": {
+     "raw": "$3.75 per entry"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "google_name": "OUE Bayfront",
@@ -147544,11 +147810,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$3.27 per \u00bd hr (LTA guide)"
+    },
+    "saturday": {
+     "raw": "7.00am-6.59am next day: $3.82 per entry"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "ev": true,
@@ -148123,11 +148403,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.00 per 30min or part thereof (per min. charging) (LTA guide)"
+    },
+    "saturday": {
+     "raw": "7.00am to 7.00am: $1.00 per entry"
+    },
+    "sunday_publicholiday": {
+     "raw": "7.00am to 7.00am: $1.00 per entry"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "osm_info": {
@@ -148341,11 +148635,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$0.60 per 30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Fri/Sat/Sun/PH: 10.00pm-6.00pm: $0.60 per 30min; 6.00pm-10.00pm: $4.00 per entry"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "google_name": "LHN Parking - Mediapolis",
@@ -148794,11 +149102,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$4.00 1st hr, $2.00/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "3.00am-3.00am the following day: $6.00 per 1st 2hr, $2.00 per 30min."
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "osm_info": {
@@ -148951,11 +149273,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.70 1st hr, $1.35/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "7.00am-11.59pm: $3.24 per entry; 12.00am-6.59am the following day: $3.24 per entry"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "ev": true,
@@ -149223,11 +149559,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$3.20 per \u00bd hr. (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Mall"
@@ -149417,11 +149767,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.10 per every 30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "12.00am-12.00am the following day: $3.00 per 4 hr block."
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "ev": true,
@@ -149639,11 +150003,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$3.21 for 1st hr; $1.605 for sub. 30min. (LTA guide)"
+    },
+    "saturday": {
+     "raw": "7.00am-12.00pm: $3.20 for 1st hr; $1.50 for sub. 30min. 12.00pm-7.00am: $4.28 per entry."
+    },
+    "sunday_publicholiday": {
+     "raw": "$4.00 per entry after 5.00pm"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "google_name": "The Concourse",
@@ -150063,11 +150441,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$0.76 per 30min. (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -150099,11 +150491,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.70 for 1st hr or part thereof; $0.85 for sub. \u00bd hr (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Mall"
@@ -150226,11 +150632,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.70 1st hr, $0.85/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Mall"
@@ -150245,11 +150665,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.18 for the first 1 hour; $0.55 for sub. 15min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "6.00pm-7.00am: $3.43 per entry; 7.00am-6.00pm: $2.29 for the first 1 hour; $0.57 for sub. 15min"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_garage",
   "google_place_id": null,
   "osm_info": {
@@ -150978,11 +151412,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$0.50 1st hr, $0.20/15min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "6.01am-10.00am: $0.60 for 1st hr; $0.40 for sub. 15min; 10.01am-9.00pm: $2.00 for 1st hr; $0.50 for sub. 15min; 9.01pm-6.00am: $2.50 per entry."
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Mall"
@@ -151404,11 +151852,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.18 per hour (Capped at $10.68), (LTA guide)"
+    },
+    "saturday": {
+     "raw": "7.00am-7.00am: $2.18 per hour"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "osm_info": {
@@ -151619,11 +152081,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.50 1st hr, $1.20/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "6am to 6am the following day :$3.00/entry"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -152484,11 +152960,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$0.45 per 15min. No parking after 12 midnight. (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -152647,11 +153137,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$3.00 per hr or part thereof. (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Fri-Sun: $4.00 per hr."
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -155111,11 +155615,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$2.51 1st hr, $2.18/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "7.00am-7.00am: $3 per entry"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "ev": true,
@@ -156275,11 +156793,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.53 1st hr, $0.38/15min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "osm_info": {
@@ -156375,11 +156907,25 @@
   "availability_key": null,
   "sources": [
    "google",
-   "osm"
+   "osm",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.53 1st hr, $0.92/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "osm_info": {
@@ -156798,11 +157344,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "First 90 min; S$0.65/15 min block Subsequent 30 min or par\u2026 (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_garage",
   "google_place_id": null,
   "ev": true,
@@ -157673,11 +158233,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.35 1st hr, $0.45/15min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "3.00am-5.59pm: $2.65 for 1st 2-hrs; $0.45 for sub. 15 min; 6.00pm-11.59pm: $2.65 per entry; 12.00am-2.59am: Sub. 15min or part thereof at $0.45"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_garage",
   "google_place_id": null,
   "ev": true,
@@ -157960,11 +158534,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.53 1st hr, $0.38/15min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -158904,11 +159492,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.50 for 1st hr; $0.80 for sub. \u00bd hr or part thereof. (LTA guide)"
+    },
+    "saturday": {
+     "raw": "6.00am-5.59am: $1.60 for 1st hr; $0.80 for sub. \u00bd hr or part thereof."
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Mall"
@@ -159597,11 +160199,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.40 1st hr, $0.80/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "6am-5.59am: $1.50 for 1st hr; $0.80 for sub. 30min."
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Mall"
@@ -159797,11 +160413,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": ". $0.60 per \u00bd hr. (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "7am-7am:$0.60 per \u00bd hr."
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
@@ -159815,11 +160445,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$0.60 per \u00bd hr. (LTA guide)"
+    },
+    "saturday": {
+     "raw": "Same as weekdays"
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as weekdays"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "ev": true,
@@ -160229,11 +160873,25 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "onemotoring"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (LTA guide)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.40 1st hr, $0.80/30min (LTA guide)"
+    },
+    "saturday": {
+     "raw": "6am-5.59am: $1.50 for 1st hr; $0.80 for sub. 30min."
+    },
+    "sunday_publicholiday": {
+     "raw": "Same as Saturday"
+    }
+   }
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "ev": true,

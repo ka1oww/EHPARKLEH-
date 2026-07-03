@@ -40,6 +40,7 @@ MILITARY = os.path.join(HERE, "military_areas.json")
 MANUAL_VOIDS = os.path.join(HERE, "manual_voids.json")
 CENTRAL_AREA = os.path.join(HERE, "central_area.json")
 EV = os.path.join(HERE, "ev_points.json")
+ONEMOTORING = os.path.join(HERE, "onemotoring_rates.json")
 
 # Flag a carpark as EV-capable if an LTA charging site sits within this radius.
 EV_MATCH_M = 75.0
@@ -250,6 +251,95 @@ def match_rate(name, rate_idx):
         if s > best_s:
             best_s, best = s, r
     return best if best_s >= 0.82 else None
+
+
+# ---- OneMotoring indicative rates (private/mall carparks) ------------------
+# LTA's OneMotoring publishes a rate GUIDE for commercial carparks absent from
+# the HDB/URA/LTA datasets. It carries no coordinates, so we join by name at high
+# precision (exact, or distinctive-token containment) against the record name and
+# its Google alias. A generic-token-only overlap (e.g. "shopping centre") is
+# rejected, since a wrong rate is worse than none. Rates are indicative, so we
+# keep the raw strings and label them a guide.
+_OM_STOP = {"car", "park", "carpark", "parking", "entrance", "entry", "the",
+            "lobby", "basement", "cp", "at", "to", "block", "blk"}
+_OM_GENERIC = {"mall", "centre", "center", "plaza", "point", "hub", "square",
+               "city", "shopping", "building", "tower", "complex", "park", "the",
+               "carpark"}
+
+
+def _om_norm(s):
+    s = (s or "").lower()
+    s = re.sub(r"\([^)]*\)", " ", s)          # drop parentheticals, e.g. "(North Wing)"
+    s = re.sub(r"[^a-z0-9 ]", " ", s)
+    return " ".join(t for t in s.split() if t not in _OM_STOP)
+
+
+def _om_distinctive(n):
+    return any(t not in _OM_GENERIC for t in n.split())
+
+
+def _om_summary(s):
+    """Compact one-line summary of a OneMotoring weekday rate string."""
+    if not s:
+        return None
+    t = re.sub(r"\s+", " ", s).strip()
+    if t in ("-", ""):
+        return None
+    low = t.lower()
+    fh = re.search(r"\$?\s*(\d+\.\d{2})\s*(?:for\s*)?(?:the\s*)?1st\s*hr", low)
+    sub = re.search(r"\$?\s*(\d+\.\d{2})\s*(?:for\s*)?(?:the\s*)?"
+                    r"(?:sub\.?|subsequent|per|every|next|/)\D{0,6}?(\d{1,3})\s*min", low)
+    if fh and sub:
+        return f"${fh.group(1)} 1st hr, ${sub.group(1)}/{sub.group(2)}min"
+    ent = re.search(r"\$?\s*(\d+\.\d{2})\s*per\s*entry", low)
+    if ent:
+        return f"${ent.group(1)} per entry"
+    core = t.split(":", 1)[-1].strip() if ":" in t else t
+    return core[:58] + ("…" if len(core) > 58 else "")
+
+
+def _om_rates_blob(row):
+    wk = _om_summary(row.get("weekday_before")) or _om_summary(row.get("weekday_after"))
+    raw = f"{wk} (LTA guide)" if wk else "See LTA guide"
+    return {
+        "category": "Indicative (LTA guide)",
+        "rates": {
+            "weekday_1": {"raw": raw},
+            "saturday": {"raw": row.get("saturday") or None},
+            "sunday_publicholiday": {"raw": row.get("sunday_ph") or None},
+        },
+    }
+
+
+def attach_onemotoring(records, om_rows):
+    idx = [(_om_norm(r.get("name")), r) for r in om_rows if r.get("name")]
+    idx = [(n, r) for n, r in idx if n]
+
+    def find(*names):
+        for name in names:
+            n = _om_norm(name)
+            if not n or not _om_distinctive(n):
+                continue
+            for on, r in idx:                        # exact normalised name
+                if n == on:
+                    return r
+            for on, r in idx:                        # distinctive-token containment
+                short = n if len(n) < len(on) else on
+                if (n in on or on in n) and min(len(n), len(on)) >= 7 and _om_distinctive(short):
+                    return r
+        return None
+
+    count = 0
+    for e in records:
+        if e.get("rates"):
+            continue
+        hit = find(e.get("name"), e.get("google_name"))
+        if hit:
+            e["rates"] = _om_rates_blob(hit)
+            if "onemotoring" not in e.get("sources", []):
+                e.setdefault("sources", []).append("onemotoring")
+            count += 1
+    return count
 
 
 # ---- classification --------------------------------------------------------
@@ -585,6 +675,12 @@ def main():
                 standard_attached += 1
         e["category"] = classify(e)
 
+    # 6) OneMotoring indicative rates for private/mall carparks still unrated.
+    om_rows = load_opt(ONEMOTORING, [])
+    om_attached = attach_onemotoring(merged, om_rows)
+    print(f"attached OneMotoring indicative rates to {om_attached} carparks "
+          f"(of {len(om_rows)} guide rows)", file=sys.stderr)
+
     with open(OUT, "w") as f:
         json.dump(merged, f, indent=1)
 
@@ -619,6 +715,7 @@ def main():
     lines.append(f"- LTA rates attached: {rates_attached} (of {len(rates)} rate rows)")
     lines.append(f"- HDB/URA standard rates applied: {standard_attached}")
     lines.append(f"- Carparks flagged with EV charging: {ev_flagged} (of {len(ev_points)} EV sites)")
+    lines.append(f"- OneMotoring indicative rates attached: {om_attached}")
     lines.append(f"\n## Geocoding\n")
     lines.append(f"- SVY21 fallback before: 467")
     lines.append(f"- OneMap re-geocode attempts: {svy21_attempted} (rest cached)")

@@ -1,0 +1,2550 @@
+[
+ {
+  "name": "22 Bideford Road",
+  "weekday_before": "3.00am-4.59pm: $4.00 for 1st hr; $2.00 for sub. 30min",
+  "weekday_after": "5.00pm-2.59am: $4.50 per entry.",
+  "saturday": "3.00am-3.00am the following day: $6.00 per 1st 2hr, $2.00 per 30min.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "313@Somerset",
+  "weekday_before": "Monday to Thursday 7.00am-7.00am: $3.05 for 1st hr; $1.31 for sub. 30min",
+  "weekday_after": "-",
+  "saturday": "Friday to Sunday and Public Holiday 7.00am-7.00am: $3.27.00 for 1st hr; $1.64 for sub. 30min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "51 Cuppage Road (Formerly Starhub Centre)",
+  "weekday_before": "7.00am-7.00am: $2.80 for 1st hr; $1.20 for sub. 30min or part thereof",
+  "weekday_after": "7.00am-7.00am: $2.80 for 1st hr; $1.20 for sub. 30min or part thereof",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Angullia Park Off-Street",
+  "weekday_before": "7.00am-11.00am: $1.30 per 30min (Per min Charging); 11.00am-5.00pm: $1.50 per 30min (Per min Charging)",
+  "weekday_after": "5.00pm-10.30pm: $0.80 per 30min (Per min Charging); 10.30pm-7.00am the following day: capped at $5.60",
+  "saturday": "Same as Weekdays",
+  "sunday_ph": "7.00am to 11.00am : $0.70 per 30min; 11.00am to 10.30pm: $0.80 per 30min (Per min Charging); 10.30pm-7.00am the following day: capped at $5.60"
+ },
+ {
+  "name": "Cathay Cineleisure Orchard",
+  "weekday_before": "7.00am-4.59pm: $2.40 for 1st hr; $1.40 for sub. 30min",
+  "weekday_after": "5.00pm-6.59am: $0.04/min",
+  "saturday": "7.00am-10.59am: $4.80 per entry; 11.00am-7.00.59pm: $2.50 per hr; 8pm-6.59am: $0.05/min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Claymore Connect",
+  "weekday_before": "7.00am-6.00pm: $3.50 for 1st hr or part thereof; $1.50 for sub. 30min",
+  "weekday_after": "Aft 6.00pm: $5.50 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "$5.50 per entry"
+ },
+ {
+  "name": "Concorde Hotel",
+  "weekday_before": "7.00am-6.00pm: $2.14 for 1st hr; $1.39 for sub. 30min",
+  "weekday_after": "After 6.00pm: $3.75 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "$3.75 per entry"
+ },
+ {
+  "name": "Delfi Orchard",
+  "weekday_before": "8.00am-6.00pm: $3.64 for 1st hr; $2.35 for next sub. 30min",
+  "weekday_after": "6.00pm-11.00pm: $5.35 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "$5.35 every 4 hrs"
+ },
+ {
+  "name": "Elizabeth Hotel",
+  "weekday_before": "7.00am-6.00pm: $4.00 for 1st hr; $2.00 for sub. 30min",
+  "weekday_after": "After 6.00pm: $5.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "$5.00 per entry"
+ },
+ {
+  "name": "Far East Plaza",
+  "weekday_before": "8.00am-5.00pm: $1.80 for 1st hr; $1.50 for sub. 30min",
+  "weekday_after": "Aft 5.00pm: $3.50 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Far East Shopping Centre",
+  "weekday_before": "$3.00 for 1st hr; $1.50 for sub. 30min or part thereof.",
+  "weekday_after": "6.00pm-12.00am: $3.50 per entry; 12.00am-8.00am: $5.00 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Forum The Shopping Mall",
+  "weekday_before": "6.00am-5.00pm: $2.60 for 1st hr; $1.30 for sub. 30min or part thereof.",
+  "weekday_after": "Aft 5.00pm: $3.50 per entry",
+  "saturday": "6.00am-5.00pm: $2.80 for 1st hr; $1.50 for sub. 30min or part thereof; Aft 5.00pm: $3.50 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Four Seasons Hotel",
+  "weekday_before": "6.00am-6.00pm: $6.00 for 1st hr; $3.00 for sub. 30min",
+  "weekday_after": "After 6.00pm: $6.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Goodwood Park Hotel",
+  "weekday_before": "8.00am-6.59pm: $5.05 for 1st hr; $2.53 for sub. 30min",
+  "weekday_after": "6.00pm-8.00am: $6.06 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8.00am-7.59am: $6.06 per entry"
+ },
+ {
+  "name": "Grand Hyatt Singapore",
+  "weekday_before": "4.00am-5.59pm: $4.00 for 1st hr; $2.00 for next sub. 30min",
+  "weekday_after": "6.00pm-3.59am: $6.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Hilton Singapore Orchard",
+  "weekday_before": "6.01am-5.59pm: $3.80 for 1st hr; $2.50 for sub. 30 min",
+  "weekday_after": "6.00pm-6.00am next day: $7.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Holiday Inn Express Singapore",
+  "weekday_before": "7.00am-7.00am: $3.00 per 30min",
+  "weekday_after": "7.00am-7.00am: $3.00 per 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Holiday Inn Singapore Orchard City Centre",
+  "weekday_before": "12.00am-2.59pm: $4.00 per hr; 3.00pm-11.59pm: $1.80 per hr. Capped at $13.90/day",
+  "weekday_after": "3.00pm-11.59pm: $1.80 per hr. Capped at $13.90/day",
+  "saturday": "12.00am-2.59pm: $4.00 per hr; 3.00pm-11.59pm: $1.80 per hr. Capped at $4.90/day",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "International Building",
+  "weekday_before": "7.00am-6.00pm: $3.00 for 1st hr; $1.50 for sub. 30min or part thereof",
+  "weekday_after": "6.00pm-7.00am: $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "ION Orchard",
+  "weekday_before": "Monday to Thursday 8.00am-4.59pm: $2.73 for 1st hr; $1.31 for sub. 30min or part thereof",
+  "weekday_after": "Monday to Thursday 5.00pm-11.59pm: $3.05 per entry; 12.00am-7.59am $1.09 per hr or part thereof",
+  "saturday": "Friday to Sunday and Public Holiday 8.00am-5.59pm: $2.62 for 1st hr; $1.91 for sub. 30min or part thereof; 6pm-11.59pm: $3.82 per entry; 12.00am-7.59am $1.09 per hour or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Liat Towers",
+  "weekday_before": "6.00am-10.00pm: $3.00 for 1st hr; $1.50 sub. 30min",
+  "weekday_after": "10.00pm-6.00am(next morning): $4.00 per entry",
+  "saturday": "6.00am-10.00pm: $2.80 for 1st hr; $1.40 sub. 30min; 10.00pm-6.00am(next morning): $4.00 per entry",
+  "sunday_ph": "6.00am-10.00pm: $2.20 for 1st hr; $1.10 sub. 30min; 10.00pm-6.00am(next morning): $4.00 per entry"
+ },
+ {
+  "name": "Lucky Plaza",
+  "weekday_before": "7.00am-4.59pm: $2.20 for 1st hr; $1.74 sub. 30min",
+  "weekday_after": "Aft 5.00pm: $3.94/entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Sunday 7.00am-9.59pm: $2.20 for 1st hr; $1.74 sub. 30min; 10.00pm-6.59am: $3.94/entry. PH: $4.44/entry (Does not apply if PH falls on Sunday)"
+ },
+ {
+  "name": "Mandarin Gallery",
+  "weekday_before": "6.00am-6.00pm: $3.80 for 1st hr; $2.50 for sub. 30min",
+  "weekday_after": "$7.00/entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Mount Elizabeth Hospital",
+  "weekday_before": "6.30am-6.30pm: $3.20 per ½ hr.",
+  "weekday_after": "6.30pm-6.30am (next morning): $6.00 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Ngee Ann City",
+  "weekday_before": "12.01am-12.00pm & 2.01pm-5.00pm: $1.20 every 30min or part thereof; 12.01pm-2.00pm: $1.70 every 30min or part thereof",
+  "weekday_after": "5.01pm-7.00pm: $1.70 every 30min or part thereof; Aft 7.00pm: $4.00/entry",
+  "saturday": "12.01am-12.00pm & 2.01pm-5.00pm: $2.40 for 1st hr; $1.50 every sub. 30min or part thereof; 12.01pm-2.00pm & 5.01pm-7.00pm: $3.40 for 1st hr; $2 every sub. 30min or part thereof; Aft 7pm: $4 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Orchard Building",
+  "weekday_before": "6.30am-10.00pm: $2.80 per 1st hr; $1.40 for sub. 30min",
+  "weekday_after": "10.00pm to 6.00am the following day: $3.60 per entry",
+  "saturday": "6.30am-10.00pm: $2.40 per 1st hr; $1.20 for sub. 30min; 10.00pm to 6.00am the following day: $3.60 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Orchard Central",
+  "weekday_before": "12.00am-5.59pm: $2.73 for 1st hr; $0.68 for sub. 15 minutes",
+  "weekday_after": "6pm-11.59pm: $4.09/entry",
+  "saturday": "12.00am-5.59pm: $2.94 for 1st hr; $0.74 for sub. 15 minutes; 6pm-11.59pm: $4.41/entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Orchard Grand Court",
+  "weekday_before": "7.00am-5.59pm:$3.00 for 1st hr; $1.50 for next sub. 30min",
+  "weekday_after": "6.00pm-6.59am: $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-7.00am the following day: $4.00 per entry"
+ },
+ {
+  "name": "Orchard Hotel Singapore",
+  "weekday_before": "7.00am-6.00pm: $3.50 for 1st hr; $1.50 for sub. 30min",
+  "weekday_after": "After 6.00pm: $5.50 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "$5.50 per entry"
+ },
+ {
+  "name": "Orchard Plaza",
+  "weekday_before": "Daily: $1.67 per 30min",
+  "weekday_after": "Daily: $1.67 per 30min",
+  "saturday": "Daily: $1.67 per 30min",
+  "sunday_ph": "Daily: $1.67 per 30min"
+ },
+ {
+  "name": "Orchard Rendezvous Hotel (Formerly known as Orchard Parade Hotel)",
+  "weekday_before": "7.00am-6.00pm: $5.00 for 1st hr; $1.50 for sub. 30min",
+  "weekday_after": "6.00pm to 7.00am the following day: $5.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Orchard Towers",
+  "weekday_before": "$4.00 for 1st hr; $2.00 for sub. 30min (Max Cap $16.00)",
+  "weekday_after": "-",
+  "saturday": "Same as weekday.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "orchardgateway",
+  "weekday_before": "12.00am-5.59pm: $2.40 for 1st 1hr or part thereof; $1.53 for sub. 30min or part thereof",
+  "weekday_after": "6.00pm-11.59pm: $2.51 for 1st 1hr or part thereof; $1.64 for sub. 30min or part thereof",
+  "saturday": "$2.51 for 1st 1hr or part thereof; $1.64 for sub. 30min or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Pacific Plaza",
+  "weekday_before": "12.00am-5.59pm: $3.05 for 1st hr; $0.76 for sub. 15 minutes",
+  "weekday_after": "6.00pm-11.59pm: $4.58/entry",
+  "saturday": "12.00am-5.59pm: $3.05 for 1st hr; $0.76 for sub. 15 minutes; 6.00pm-11.59pm: $4.58/entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Palais Renaissance",
+  "weekday_before": "7.00am-5.00pm: $3.85 for 1st hr or part thereof; $1.95 for sub. 30min or part thereof",
+  "weekday_after": "5.00pm-1am: $4.60/entry; 1.00am - 7.00am: $1.80/hr or part thereof",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7am-1am: $4.60/4hr; 1am-7am: $1.80/hr or part thereof"
+ },
+ {
+  "name": "Pan Pacific Orchard",
+  "weekday_before": "$6.00 for 1st hr; $3.00 for sub. 30min",
+  "weekday_after": "$6.00 for 1st hr; $3.00 for sub. 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Pan Pacific Serviced Suites Orchard",
+  "weekday_before": "8.00am-8.00am: $4.28 per hr; $2.14 per sub. 30min",
+  "weekday_after": "-",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Paragon Shopping Centre",
+  "weekday_before": "3.00am-4.59pm: $3.00 for 1st hr; $1.60 for sub. 30min; Peak Hr Surcharge of $2.10 from 11am-3pm.",
+  "weekday_after": "5.00pm-2.59am: $4.60 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "3am-4.59pm: $3.00 for 1st hr; $1.60 for sub. 30min. 5.00pm-2.59am: $4.60 per entry"
+ },
+ {
+  "name": "Penang Road Off-Street",
+  "weekday_before": "7.00am-5.00pm $1.20 per 30min (Per min Charging)",
+  "weekday_after": "5.00pm-7.00am $0.70 per 30min (Per min Charging); Parking charges capped at $5.60 from 10.30pm-7.00am the following day",
+  "saturday": "Same as Weekdays",
+  "sunday_ph": "7.00am-7.00am: $0.70 per 30min (Per min Charging; Parking charges capped at $5.60 from 10.30pm to 7.00am the following day"
+ },
+ {
+  "name": "Plaza Singapura",
+  "weekday_before": "12.00am-5.59pm: $1.95 for 1st hr; $0.55 for sub. 15min",
+  "weekday_after": "6.00pm–11.59pm: $3.25 per entry",
+  "saturday": "12.00am-2.59am: $0.55/15 min; 3am-5.59pm: $3.25 for 1st 2hr; $0.55 for every sub. 15min. 6.00pm–11.59pm: $3.25 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Pullman Singapore Orchard",
+  "weekday_before": "6.00am-5.59pm: $2.50 for 1st hr; $1.60 per 30min.",
+  "weekday_after": "Effective from 1 Jan 2026: 6.00pm-10.59pm:$2.90 for 1st hr; $1.90 per 30min; 11.00pm-5.59am: $5.00 per entry.",
+  "saturday": "Effective from 1 Jan 2026: 6.00am-10.59pm:$2.90 for 1st hr; $1.90 per 30min; 11.00pm-5.59am: $5.00 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Regent Hotel",
+  "weekday_before": "Basement Parking: 7.00am-6.00pm: $5.00 for 1st hr; $2.50 for sub. 30min Cuscaden Parking: 7.00am-6.00pm: $7.00 for 1st hr; $3.50 for sub. 30min",
+  "weekday_after": "Basement Parking: 6.00pm to 6.59am: $6.00 per entry Cuscaden Parking: 6.00pm to 6.59am:$7.00 for 1st hr; $3.50 for sub. 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "RELC International Hotel",
+  "weekday_before": "7.00am-4.59pm: $4.08 for 1st hr; $3.06 sub. hr.",
+  "weekday_after": "5.00pm-6.59am: $4.59 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-6.59am next day: $4.59 per entry"
+ },
+ {
+  "name": "Royal Plaza On Scotts",
+  "weekday_before": "8.00am-6.00pm: $4.80 for 1st hr; $1.80 for sub. 30min",
+  "weekday_after": "Aft 6.00pm: $5.80/entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "$5.80/entry"
+ },
+ {
+  "name": "Scape",
+  "weekday_before": "6.00am-6.00am: $2.40 for 1st hr; $1.40 for sub. 30min",
+  "weekday_after": "-",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Scotts Square",
+  "weekday_before": "8.00am-5.29pm : $3.27 for 1st hr; $1.64 for sub. ½ hr or part thereof.",
+  "weekday_after": "5.30pm-7.59am: $4.91 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Shangri-la Hotel",
+  "weekday_before": "7.00am-6.00pm: $6.00 for 1st hr; $2.00 for sub. 30min",
+  "weekday_after": "6.00pm-7.00am next day: $8.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Shaw Centre",
+  "weekday_before": "3.01am-6.00pm: $2.00 for 1st hr; $1.50 for sub. 30min",
+  "weekday_after": "6.01pm-3.01am: $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Shaw House",
+  "weekday_before": "3.01am-6.00pm: $2.00 for 1st hr; $1.50 for sub. 30min",
+  "weekday_after": "6.01pm-3.01am: $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Sheraton Towers Singapore",
+  "weekday_before": "7.00am-6.00pm: $4.00 for 1st hr; $2.00 for next sub. 30min",
+  "weekday_after": "After 6.00pm: $6.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "$6.00 per entry"
+ },
+ {
+  "name": "Singapore Marriott Tang Plaza Hotel",
+  "weekday_before": "6.00am-6.00pm: $3.00 for 1st hr; $0.05 per min",
+  "weekday_after": "6.00pm-6.00am the following day: $3.00 for 1st hr; $0.05 per min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Singapore Shopping Centre",
+  "weekday_before": "8.00am-8.00pm: $2.80 for 1st hr; $1.40 for sub. 30min",
+  "weekday_after": "After 8.00pm: $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Tang Plaza",
+  "weekday_before": "6am-6.00pm: $3.00 for 1st hr; $0.05/min up to a maximum charge of $18.00",
+  "weekday_after": "Aft 6.00pm: $6 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Tanglin Mall",
+  "weekday_before": "6.01am-5.00pm: $2.24 for 1st hr; $1.12 for sub. 30min",
+  "weekday_after": "Aft 5.01pm: $3.27 per entry",
+  "saturday": "Charges same as weekdays; but $3.27 per entry after 1pm",
+  "sunday_ph": "$3.27 per entry"
+ },
+ {
+  "name": "Tanglin Shopping Centre",
+  "weekday_before": "8.00am-5.59pm: $3.50 for 1st hr; $1.75 for next sub.sequent 30min",
+  "weekday_after": "After 6.00pm: $3.60 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "$3.60 per entry"
+ },
+ {
+  "name": "The Atrium @ Orchard",
+  "weekday_before": "12.00am-5.59pm: $1.95 for 1st hr; $0.55 for sub. 15min",
+  "weekday_after": "6.00pm-11.59pm: $3.25 per entry",
+  "saturday": "12.00am-2.59am: $0.55 per 15min; 3.00am-5.59pm: $3.25 for 1st 2hrs; $0.55 for sub. 15min; 6.00pm-11.59pm: $3.25 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "The Cathay",
+  "weekday_before": "8.00am-5:59am: $1.80 every 60 min or part thereof.",
+  "weekday_after": "6.00pm-7.59am: $2.95 per entry",
+  "saturday": "8.00am-5.59pm: $1.60 every 60 min or part thereof ; 6pm-7.59am: $3.10 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "The Centrepoint",
+  "weekday_before": "6.00am-5.59am: $2.80 for 1st hr; $1.20 for sub. 30min or part thereof.",
+  "weekday_after": "-",
+  "saturday": "6.00am-5.59apm: $3 for 1st hr or part thereof; $1.20 for sub. 30min or part thereof.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "The Heeren",
+  "weekday_before": "3.00am-4.59pm: $4.00 for 1st hour and $2.00 for sub. 30 min or part thereof",
+  "weekday_after": "3.00am-4.59pm: $4.50 per entry",
+  "saturday": "$6.00 for 1st two hours and $2.00 for sub. 30min or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "TripleOne Somerset",
+  "weekday_before": "12.00am-6.59am: $0.55 per 15min; 7.00am-5.59am: $1.64 per 30min",
+  "weekday_after": "6.00pm-11.59am: $2.51 per entry",
+  "saturday": "7.00am-5.59pm: $2.18 for 1st hr; $0.55 sub. 15 min. 6.00pm-11.59am: $2.51 per entry; 12.00am-6.59am:$0.55 sub. 15 min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Visioncrest Commercial",
+  "weekday_before": "12.00am-6.59am: $3.24 per entry; 7.00am-5.59pm: $2.70 for 1st hr, $1.35 for sub. 30min",
+  "weekday_after": "6.00pm-11.59pm: $3.24 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-11.59pm: $3.24 per entry; 12.00am-6.59am the following day: $3.24 per entry"
+ },
+ {
+  "name": "Wheelock Place",
+  "weekday_before": "6.00am-5.30pm: $3.27 for 1st hr; $1.64 for sub. 30min.",
+  "weekday_after": "5.30pm-6.00am: $4.91 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Winsland House",
+  "weekday_before": "7.00am-7pm: $2.50 for 1st hr; $1.20 for sub. 30min",
+  "weekday_after": "7pm-11pm: $3.50 per entry; 11pm-7.00am: $3.50 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7am-11pm: $4.50 per entry; 11pm-7am: $3.50 per entry"
+ },
+ {
+  "name": "Wisma Atria",
+  "weekday_before": "12.00am-5.00pm: $2.60 for 1st hr; $1.70 for sub. 30min (Lunch hr surcharge of additional $1.10 between 12pm-2pm daily)",
+  "weekday_after": "After 5.00pm: $5.00 per entry",
+  "saturday": "12am-5.00pm: $2.70 for 1st hr; $1.70 for sub. 30min (Lunch hr surcharge of additional $1.10 between 12pm-2pm daily); After 5.00pm: $5.00 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "York Hotel",
+  "weekday_before": "8.00am-7.59pm: $3.37 for 1st hr; $1.70 for sub. 30min",
+  "weekday_after": "8.00pm-7.59am (next day): $4.49 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8.00am-7.59am (next day): $4.49 per entry"
+ },
+ {
+  "name": "Yotel Singapore (shared carpark with International Building)",
+  "weekday_before": "7.00am-6.00pm: $3.00 for 1st hr or part thereof.; $1.50 for sub. 30min or part thereof.",
+  "weekday_after": "6.00pm-7.00am: $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "745 Lor. 5 Toa Payoh",
+  "weekday_before": "7.30am-7.30am the following day: $1.42 for 1st hr, $0.71 sub 30 min",
+  "weekday_after": "7.30am-7.30am the following day: $1.42 for 1st hr, $0.71 sub 30 min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Ang Mo Kio Hub",
+  "weekday_before": "$1.70 for 1st hr or part thereof. $0.85 for sub ½ hr or part thereof.",
+  "weekday_after": "$1.70 for 1st hr or part thereof. $0.85 for sub ½ hr or part thereof.",
+  "saturday": "$1.80 for 1st hr or part thereof. $0.95 for sub ½ hr or part thereof.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Balestier Plaza",
+  "weekday_before": "7.00am-7.00am the following day: $1.64 per hr",
+  "weekday_after": "7.00am-7.00am the following day: $1.64 per hr",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Balestier Point",
+  "weekday_before": "6.00am-9.00pm:$0.70 per 30min or part thereof.",
+  "weekday_after": "9.00pm-6.00am: $7.00 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Bras Basah Complex",
+  "weekday_before": "7.00am-10.00am: $1.20 per ½ hr. 10.00am-10.30pm: $1.40 per ½ hr.",
+  "weekday_after": "10.00am-10.30pm: $1.40 per ½ hr. 10.30pm-7.00am: $0.60 per ½ hr.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Burghley Lifestyle Hub",
+  "weekday_before": "7.00am-7.00am the following day: $0.02 per min",
+  "weekday_after": "7.00am-7.00am the following day: $0.02 per min capped at $2.14",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Causeway Point",
+  "weekday_before": "6.00am-5.59am: $1.40 for 1st hr; $0.80 for sub. 30min or part thereof.",
+  "weekday_after": "6.00am-5.59am: $1.40 for 1st hr; $0.80 for sub. 30min or part thereof.",
+  "saturday": "6am-5.59am: $1.50 for 1st hr; $0.80 for sub. 30min or part thereof.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "City Square Mall",
+  "weekday_before": "6.00am-5.59pm: $2.18 for 1st hr or part thereof, $1.09 for every sub 30min or part thereof.",
+  "weekday_after": "6pm-5.59am: $3.27 per entry.",
+  "saturday": "6am-5.59pm: $2.18 for 1st hr or part thereof, $1.09 for every sub 30min. 6pm-5.59am: $3.82 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Compass One",
+  "weekday_before": "7.00am-11.00pm: $1.50 for 1st hr; $0.80 for sub 30min period.",
+  "weekday_after": "7.00am-11.00pm: $1.50 for 1st hr; $0.80 for sub 30min period.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Connexion",
+  "weekday_before": "7.00am-5.59pm: $3.30 for 1st hr, $1.65 for sub 30 min.",
+  "weekday_after": "6.00pm-6.59am: $4.40 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Goldhill Plaza (1 Goldhill Plaza & 51 Goldhill Plaza)",
+  "weekday_before": "7.00am-5.30pm: $2.00 for 1st hr; $0.60 per sub. 15min",
+  "weekday_after": "5.30pm-12.00am: $4.00 per entry (Additional $4.00 after midnight). 12.00am-7.00am: $4.00 per entry",
+  "saturday": "7.00am-5.30pm: $3.00 for 1st hr; $0.60 per sub. 15min. 5.30pm-12.00am: $4.00 per entry (Additional $4.00 after midnight); 12.00am-7.00am: $4.00 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Greenwich V",
+  "weekday_before": "6.00am-5.59pm: $1.53 for 1st hr; $0.38 for sub. 15 min.",
+  "weekday_after": "6.00pm-12.00am: $2.29 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Heartland Mall",
+  "weekday_before": "7.00am-10.30pm: $1.00 per hr",
+  "weekday_after": "After 10.30pm: $2.00 per hr",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Hougang Green Shopping Mall",
+  "weekday_before": "7.00am-4.59pm: $1.30 for 1st hr; $0.70 for next sub. 30min.",
+  "weekday_after": "5.00pm-11.59pm: $3.00 per entry; 12.00am-6.59am the following day: $5.00 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-11.59pm: $3.00 per entry; 12.00am-6.59am the following day: $5.00 per entry."
+ },
+ {
+  "name": "Hougang Mall",
+  "weekday_before": "6.00am-6.00pm: $1.35 for 1st hr; $0.95 sub.30min or part thereof",
+  "weekday_after": "6.00pm-6.00am: $2.25 per entry",
+  "saturday": "6am-6pm: $1.50 for 1st hr; $1.15 sub.30min or part thereof; 6pm-6am: $2.25 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Hougang1",
+  "weekday_before": "6.00am-5.59pm: $1.64 for 1st hr; $0.41 for sub. 15 min.",
+  "weekday_after": "6.00pm-12am: $2.45 per entry.",
+  "saturday": "6am-5.59pm: $1.74 for 1st hr; $0.44 for sub. 15 min. 6pm-12am: $2.62 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Junction 8",
+  "weekday_before": "12.00am-5.59pm - $1.35 for 1st hr; $0.45 for sub. 15 min",
+  "weekday_after": "6.00pm-11.59pm: $2.65 per entry",
+  "saturday": "12.00am-5.59pm - $2.65 for 1st 2hr; $0.45 for sub. 15 min. 6.00pm-11.59pm: $2.65 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Kranji Green",
+  "weekday_before": "7.00am-7.00am: $0.60 per ½ hr.",
+  "weekday_after": "7.00am-7.00am:. $0.60 per ½ hr.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Mapex Building",
+  "weekday_before": "7.00am-7.00pm: $1.53 per hr",
+  "weekday_after": "7.00pm-7.00am: $4.58 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Mustafa Centre",
+  "weekday_before": "7.00am-1.30am the followng day: $1.00 per 30min",
+  "weekday_after": "7.00am-1.30am the followng day: $1.00 per 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "NAFA",
+  "weekday_before": "7.00am-4.59pm: $0.046 per min.",
+  "weekday_after": "5.00pm-9.59pm: $0.044 per min. 10pm-6.59am: $2.62 per entry​.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Nex Mall",
+  "weekday_before": "$1.50 for 1st hr or part thereof; $0.75 for sub. ½ hr or part thereof.",
+  "weekday_after": "$1.50 for 1st hr or part thereof; $0.75 for sub. ½ hr or part thereof.",
+  "saturday": "$1.60 for 1st hr or part thereof;; $0.80 for sub. ½ hr or part thereof.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Northpoint City",
+  "weekday_before": "6.00am-5.59am: $1.40 for 1st hr; $0.80 for sub. 30min.",
+  "weekday_after": "6.00am-5.59am: $1.50 for 1st hr; $0.80 for sub. 30min.",
+  "saturday": "6am-5.59am: $1.50 for 1st hr; $0.80 for sub. 30min.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Oasia Hotel Novena",
+  "weekday_before": "6.00am-6.00pm: $2.50 for 1st hr, $1.20 for sub 30min or part thereof.",
+  "weekday_after": "6.00pm-6.00am the following day: $2.50 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "6am to 6am the following day :$3.00/entry"
+ },
+ {
+  "name": "PARKROYAL On Kitchener Road",
+  "weekday_before": "6.00am-5.59pm: $2.00 for 1st hr; $0.80 for sub 30min and part thereof.",
+  "weekday_after": "6.00pm-5.59am: $3.00 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "6.00am-5.59pm (next day): $3.50 per entry"
+ },
+ {
+  "name": "Parliament House",
+  "weekday_before": "8.00am-6.00pm: $1.42 per 30 min",
+  "weekday_after": "6.01pm-7.59am the following day: $3.60 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8.00am-7.59am the following day:: $3.60 per entry"
+ },
+ {
+  "name": "Prosper Industrial Building",
+  "weekday_before": "8.00am-8.00am (next day): $0.87 per 30 min",
+  "weekday_after": "8.00am-8.00am (next day): $0.87 per 30 min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Ramada by Wyndham Singapore",
+  "weekday_before": "6.00am-5.59pm: $2.20 for 1st hr; $1.10 for sub 30min. (Zhongshan Mall)",
+  "weekday_after": "6.00pm-5.59am: $3.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Rivervale Mall",
+  "weekday_before": "12.00am-11.59pm: $1.28 for 1st hr, $0.64 for sub. 30 min or part thereof.",
+  "weekday_after": "12.00am-11.59pm: $1.28 for 1st hr, $0.64 for sub. 30 min or part thereof.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Sembawang Shopping Centre",
+  "weekday_before": "12.00am-11.59pm: $1.53 for 1st hr; $0.87 for sub. 30 min",
+  "weekday_after": "12.00am-11.59pm: $1.53 for 1st hr; $0.87 for sub. 30 min",
+  "saturday": "12.00am-11.59pm: $1.64 for 1st hr; $0.87 for sub. 30 min.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Shaw Plaza",
+  "weekday_before": "6.00am-5.59pm: $1.80 per hr",
+  "weekday_after": "6.00pm-5.59am the following day: $3.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Singapore Turf Club",
+  "weekday_before": "9.00am-11.00pm: $3.00 per entry",
+  "weekday_after": "9.00am-11.00pm: $3.00 per entry",
+  "saturday": "9.00am-11.00pm: $6.00 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Square 2",
+  "weekday_before": "7.00am-6.00pm: $2.40 for 1st hr; $1.20 for sub. ½ hr or part thereof",
+  "weekday_after": "6.00pm-7.00am: $2.73 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-6.00pm: $2.40 for 1st 4hrs; $1.20 for sub. ½ hr; 6.00pm-7.00am: $2.73 per entry"
+ },
+ {
+  "name": "Sun Plaza",
+  "weekday_before": "7.00am-4.59pm: $1.50 for 1st hr or part thereof; $0.80 for sub. ½ hr or part thereof",
+  "weekday_after": "5.00pm-10.59pm: $2.70 per entry; 11.00pm-6.59am: $4 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Tekka Place",
+  "weekday_before": "7.00am-6.00pm: $1.80 for 1st hr, sub 30min at $1.20.",
+  "weekday_after": "6.00pm-7.00am: $3.00 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Thomson Plaza",
+  "weekday_before": "7.00am-11.59pm: $1.40 for 1st hr, $0.70 for sub ½ hr.",
+  "weekday_after": "12.00am-6.59am: $5 per entry.",
+  "saturday": "7.00am-11.59pm: $1.50 for 1st hr, $0.75 for sub ½ hr; 12.00am-6.59am: $5 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "TimMac @ Kranji",
+  "weekday_before": "7.00am-7pm:. $0.60 per ½ hr.",
+  "weekday_after": "7pm-7.00am:.Free parking.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7am-7am:$0.60 per ½ hr."
+ },
+ {
+  "name": "Toa Payoh HDB Hub",
+  "weekday_before": "7.00am-6.00pm: $0.60 per 30min",
+  "weekday_after": "6.00pm-10.30pm:$1.50 per entry, 10.30pm-7.00am the following day: $5.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-10.30pm:$1.50 per entry, 10.30pm-7.00am the following day:$5.00 per entry"
+ },
+ {
+  "name": "United Square Shopping Mall",
+  "weekday_before": "6.00am-6.00pm: $2.40 for 1st hr; $0.60 for sub. 15 min",
+  "weekday_after": "Aft 6.00pm: $2.60 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Uptown@Farrer",
+  "weekday_before": "7.00am-7.00pm: $1.97 per hr or part thereof.",
+  "weekday_after": "7.00pm-7.00am (next day): $3.27 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Velocity @ Novena Square",
+  "weekday_before": "6.00am-6.00pm: $2.40 for 1st hr or part thereof; $0.60 for sub. 15 min.",
+  "weekday_after": "After 6.00pm: $2.60 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Waterway Point",
+  "weekday_before": "6.00am-5.59am: $1.50 for 1st hr; $0.80 for sub. ½ hr or part thereof.",
+  "weekday_after": "6.00am-5.59am: $1.50 for 1st hr; $0.80 for sub. ½ hr or part thereof.",
+  "saturday": "6.00am-5.59am: $1.60 for 1st hr; $0.80 for sub. ½ hr or part thereof.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "YewTee Point",
+  "weekday_before": "$1.53 for 1st hr; $0.98 for sub. ½ hr or part thereof.",
+  "weekday_after": "$1.53 for 1st hr; $0.98 for sub. ½ hr or part thereof.",
+  "saturday": "$1.61 for 1st hr; $0.98 for sub. ½ hr or part thereof.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Aperia",
+  "weekday_before": "12.00am-6.29pm: $1.64 for 1st hr or part thereof; $1.09 for every sub. 15min or part thereof",
+  "weekday_after": "6.30pm-9.59pm: Free Parking; 10pm-11.59pm: $2.55 per entry",
+  "saturday": "12.00am to 11.59pm: Free first 1 hour*; Per entry charge is $2.55 for subsequent hours; Whole day max cap: $20",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Bedok Mall",
+  "weekday_before": "12.00am-5.59pm: $1.55 for 1st hr, $0.40 for sub. 15min",
+  "weekday_after": "6pm-11.59pm: $2.60 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Century Square",
+  "weekday_before": "6.00am-5.59pm: $1.35 for 1st hr; $0.70 every 30min or part thereof.",
+  "weekday_after": "6.01pm-5.59am: $2.60 per entry",
+  "saturday": "6.00am-5.59pm: $1.60 for 1st hr; $0.70 every 30min or part thereof.; 6.01pm-5.59am: $2.60 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Changi Airport Hub & Spoke Car Park (Open-air car park between T2 and JetQuay)",
+  "weekday_before": "S$0.60/15 min block (Limited parking spaces and on a first-come, first-served basis)",
+  "weekday_after": "S$0.60/15 min block (Limited parking spaces and on a first-come, first-served basis)",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Changi Airport T1/Jewel Car Park",
+  "weekday_before": "Short-term Parking (B2M and B2): First 90 min; S$0.65/15 min block Subsequent 30 min or part thereof S$5/30 min General Parking (B3 to B5): S$0.65/15 min block",
+  "weekday_after": "Short-term Parking (B2M and B2): First 90 min; S$0.65/15 min block Subsequent 30 min or part thereof S$5/30 min General Parking (B3 to B5): S$0.65/15 min block",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Changi Airport T2, T3, T4 Car Parks A & B",
+  "weekday_before": "S$0.65/15 min block",
+  "weekday_after": "S$0.65/15 min block",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Changi City Point",
+  "weekday_before": "6.01am-6.00pm: $2.00 for 1st hr; $1.15 for sub. 30min",
+  "weekday_after": "6.01pm-6.00am: $2.72 per entry",
+  "saturday": "6.01am-6.00pm: $2.70 for 1st 2hr; $1.30 for sub. 30min; 6.01pm-6.00am: $2.70 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Changi Village Hotel",
+  "weekday_before": "6.00am-5.00pm: $4.00 for 1st hr; $3.00 for sub. hr",
+  "weekday_after": "Monday - Thursday 6.00pm-5.00am: $6.50 per entry Friday 5.00pm-12.00am: $4.00 for 1st hr, $3.00 for sub. hr; 12.00am-5.00am: $6.50 per entry",
+  "saturday": "6.00am-6.00am next day: $4.00 for 1st hr, $3.00 for sub. hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "City Plaza",
+  "weekday_before": "8.00am-5.00pm: $1.20 for 1st hr; $0.70 for next sub. 30min",
+  "weekday_after": "5.00pm-8.00am the following day: $1.50 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8am-8am the following day: $1.50 per entry"
+ },
+ {
+  "name": "D'Resort",
+  "weekday_before": "Mon-Thu (excluding PH, Eve of PH & Sch Holiday) $0.026/min; Max/day: $17; Fri-Sun (Including PH, Eve of PH & Sch Holiday) $0.035/min; Max/day: $21.",
+  "weekday_after": "Mon-Thu (excluding PH, Eve of PH & Sch Holiday) $0.026/min; Max/day: $17; Fri-Sun (Including PH, Eve of PH & Sch Holiday) $0.035/min; Max/day: $21.",
+  "saturday": "Fri-Sun (Including PH, Eve of PH & Sch Holiday) $0.035/min; Max/day: $21.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Downtown East",
+  "weekday_before": "Mon-Thu (excluding PH, Eve of PH & Sch Hol) $0.026/min; Max/day: $15 Free weekday 12.00pm-2.00pm parking; Fri-Sat (Including PH, Eve of PH & Sch Hol) $0.028 per min; 5.00pm-12.00am: $3.40 per entry.",
+  "weekday_after": "Mon-Thu (excluding PH, Eve.00 of PH & School Holiday) 5.00pm-12.00am: $2.40 per entry. Max/day:$15; Fri: $3.40 per entry.",
+  "saturday": "Fri-Sat (Including PH, Eve of PH & School Holiday) $0.028 per min; 5.00pm-12.00am: $3.40 per entry. Max/day: $19.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "East Coast Park E1/E2/E3 Off-Street",
+  "weekday_before": "7.00am-10.30pm: 60¢ per 30min (capped at $5.00 for 10.30pm-7.00am)",
+  "weekday_after": "7.00am-10.30pm: 60¢ per 30min (capped at $5.00 for 10.30pm-7.00am)",
+  "saturday": "7.00am-10.30pm: 60¢ per 30min (capped at $5.00 for 10.30pm-7.00am)",
+  "sunday_ph": "7.00am-10.30pm: 60¢ per 30min (capped at $5.00 for 10.30pm-7.00am)"
+ },
+ {
+  "name": "Eastpoint Mall",
+  "weekday_before": "Daily: $1.30 for 1st hr or part thereof, $0.65 for sub. 30min or part thereof.",
+  "weekday_after": "Daily: $1.30 for 1st hr or part thereof, $0.65 for sub. 30min or part thereof.",
+  "saturday": "Daily: $1.30 for 1st hr or part thereof, $0.65 for sub. 30min or part thereof.",
+  "sunday_ph": "Daily: $1.30 for 1st hr or part thereof, $0.65 for sub. 30min or part thereof."
+ },
+ {
+  "name": "Grand Mercure Roxy Hotel",
+  "weekday_before": "Daily: $1.60 per hr",
+  "weekday_after": "Daily: $1.60 per hr",
+  "saturday": "Daily: $1.60 per hr",
+  "sunday_ph": "Daily: $1.60 per hr"
+ },
+ {
+  "name": "Holiday Inn Express Singapore Katong",
+  "weekday_before": "6.01am-10.00am: $0.50 for 1st hr, $0.20 per 15min; 10.01am-6.00pm: $1.00 for 1st hr; $0.30 for sub. 15min; Free parking from 12.00pm to 2.00pm except on PH",
+  "weekday_after": "6.01pm-10.00pm: $2.00 for 1st hr, $0.50 per 15min; 10.01pm-6.00am: $2.50 per entry",
+  "saturday": "6.01am-10.00am: $0.60 for 1st hr, $0.40 per 15min; 10.01am-9.00pm: $2.00 for 1st hr, $0.50 per 15min. 9.01pm-6.00am: $2.50 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Hotel Indigo Singapore Katong",
+  "weekday_before": "6.01am-10.00am: $0.48 for 1st hr, $0.12 per 15min; 10.01am-6.00pm: $0.96 for 1st hr; $0.24 for sub. 15min; Free parking from 12.00pm to 2.00pm except on PH",
+  "weekday_after": "6.01pm-10.00pm: $1.00 for 1st hr, $0.25 per 15min; 10.01pm-6.00am: $0.32 for 1st hr, $0.08 per 15min",
+  "saturday": "6.01am-10.00am: $0.54 for 1st hr; $0.16 per 15min; 10.01am-9.00pm: $1.28 for 1st hr; $0.65 per 15min. 9.01pm-6.00am: $0.54 for 1st hr, $0.16 per 15min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "i12 Katong",
+  "weekday_before": "6.00am-9:59am: $0.61 for 1st hr; $0.25 for sub. 15min; 10am-5:59pm: $1.09 for 1st hr, $0.32 for sub. 15min",
+  "weekday_after": "6pm-5:59am: $3.08 per entry",
+  "saturday": "6.00am- 9:59am: $0.71 for 1st hr, $0.45 for sub 15 min; 10am- 5:59pm: $1.50 for 1st 30min; $0.66 for sub. 15min; 6pm-5:59am: $3.20 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "IKEA (Tampines)",
+  "weekday_before": "Daily 7.00am-11.00pm: free",
+  "weekday_after": "-",
+  "saturday": "-",
+  "sunday_ph": "-"
+ },
+ {
+  "name": "Katong Shopping Centre",
+  "weekday_before": "7.00am-5.59pm: $1.20/30min",
+  "weekday_after": "Aft 6.00pm: $2.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "$2 per entry"
+ },
+ {
+  "name": "Katong Square",
+  "weekday_before": "6.01am-10.00am: $0.50 for 1st hr, $0.20 for sub. 15min; 10.01am-6.00pm: $1.00 for 1st hr; $0.30 for sub. 15min.",
+  "weekday_after": "6.01pm-10.00pm: $2.00 for 1st hr; $0.50 for sub. 15 min; 10.01pm-6.00am: $2.50 per entry",
+  "saturday": "6.01am-10.00am: $0.60 for 1st hr; $0.40 for sub. 15min; 10.01am-9.00pm: $2.00 for 1st hr; $0.50 for sub. 15min; 9.01pm-6.00am: $2.50 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Katong V",
+  "weekday_before": "$1.64 for the first 1 hour; $0.41 for sub. 15min",
+  "weekday_after": "Per Entry: $2.45 (6.00pm to midnight)",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "KINEX Mall",
+  "weekday_before": "2.00am-6.00pm:$1.80 for the first hour; $0.50 for sub. 15min",
+  "weekday_after": "6.00pm-2.00am: $2.40 per entry (Grace Period: 10 min)",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Lifelong Learning Institute",
+  "weekday_before": "6.00am-6.00pm: $1.15 per 30min; 12.00am-6.00am next day: $12 per entry",
+  "weekday_after": "6.00pm-12.00am: $2.00 per entry",
+  "saturday": "6.00am-1.00pm: $1.15 per 30 min block; 1.00pm-12.00am: $3 per entry; 12.00am-6.00am next day: $12 per entry",
+  "sunday_ph": "6am-12am: $3 per entry; 12am-6am next day: $12 per entry"
+ },
+ {
+  "name": "NTUC Income Tampines Junction",
+  "weekday_before": "6.00am-6.00pm: $1.00 per 30min",
+  "weekday_after": "6.00pm-6.00am next day: $2.50 per entry",
+  "saturday": "6.00am-6.00am next day: $3.00 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Parkway Parade",
+  "weekday_before": "2.00am-5.59pm: $1.75 first hour; $0.44 for sub. 15min (or part thereof)",
+  "weekday_after": "6.00pm-1.59am: $3.49/entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Paya Lebar Green",
+  "weekday_before": "6.00am-6.00pm: $2.30 per hr.",
+  "weekday_after": "6.00pm-6.00am next day: $3.00 per entry",
+  "saturday": "6.00am-1.00pm: $2.30 per hr. 1.00pm-6.00am next day: $3.00 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Roxy Square",
+  "weekday_before": "7.00am-6.00pm: $0.67 for 1st 30min",
+  "weekday_after": "6.00pm-12.00am: $2.80 per entry. 12.00am-7.00am the following day: $0.79 for sub. 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Siglap Centre",
+  "weekday_before": "12.00am-6.00pm: $1.68 for the first 1 hour; $0.42 for sub. 15min",
+  "weekday_after": "Per Entry: $2.45 (6.00pm to midnight)",
+  "saturday": "12.00am-6.00pm: $1.85 for the first 1 hour; $0.46 for sub. 15min; 6.00pm-12.00am: $2.78 Per Entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Singapore Expo",
+  "weekday_before": "Daily: $1.80 for 1st hr, $1.80 for 2nd hr; $1.50 for sub. 30 min or part thereof",
+  "weekday_after": "Daily: $1.80 for 1st hr, $1.80 for 2nd hr; $1.50 for sub. 30 min or part thereof",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Singapore University of Technology and Design",
+  "weekday_before": "Daily: $0.02 per min",
+  "weekday_after": "Daily: $0.02 per min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "SingPost Centre",
+  "weekday_before": "6.00am to 5.59pm: $1.90 for 1st hr, $1.00 for sub ½ hr or part thereof",
+  "weekday_after": "6.00pm to 5.59am (the next day): $3.00 per entry",
+  "saturday": "6.00am to 12.59pm: $1.90 for 1st hr; 1.00pm to 5.59am (the next day): $3.00 per entry",
+  "sunday_ph": "$3.00 per entry"
+ },
+ {
+  "name": "Tampines 1",
+  "weekday_before": "6.00am-5.59pm: $1.40 for 1st hr; $0.95/30min",
+  "weekday_after": "6.00pm-5.59am: $2.70 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Tampines Mall",
+  "weekday_before": "12.00am-5.59pm: $1.35 for 1st hr; $0.45 for sub. 15min or part thereof",
+  "weekday_after": "6.00pm-11.59pm: $2.65 per entry",
+  "saturday": "3.00am-5.59pm: $2.65 for 1st 2hrs; $0.45 for sub. 15min or part thereof; 6.00pm-11.59pm: $2.65 per entry.12.00am-2.59am: $0.45 for sub. 15min or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Tampines Plaza 1 & 2",
+  "weekday_before": "8.00am-5.00pm: $1.05 per 30min",
+  "weekday_after": "5.00pm to 1.00am: $2.60 per entry; 1.00am to 8.00am: $2.10 for 1st 120 min; $1.05 sub. 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8.00am-1.00am: $2.60 per entry; 1.00am to 8.00am: $2.10 for 1st 120 min; $1.05 sub. 30min"
+ },
+ {
+  "name": "Tanjong Katong Complex",
+  "weekday_before": "7.00am-10.30pm: 60¢ per 30min (capped at $5.00 for 10.30pm-7.00am)",
+  "weekday_after": "7.00am-10.30pm: 60¢ per 30min (capped at $5.00 for 10.30pm-7.00am)",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Telepark",
+  "weekday_before": "Daily: 7.00am-10.00pm: $1.00 per 30min",
+  "weekday_after": "10.00pm-6.59am next day: $1.00 per 30min (additional carpark exit surcharge of $22.00)",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Union Food Industrial Centre",
+  "weekday_before": "8.00am-6.00pm: $0.49 per 10 min",
+  "weekday_after": "6.00pm-11.00pm: $3.05 per entry. 11.00pm-8.00am next day: $4.36 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Village Hotel Katong (Ex Paramount Hotel)",
+  "weekday_before": "8.00am-5.59pm: $1.64 for 1st hr; $0.41 for sub. 15min",
+  "weekday_after": "6.00pm-12.00am: $2.45 per entry",
+  "saturday": "8.00am-5.59pm: $1.64 for 1st hr; $0.41 for sub. 15min. 6.00pm-12.00am: $2.45 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "White Sands Shopping Centre",
+  "weekday_before": "6.00am-5.59pm: $1.35 for 1st hr; $0.90/30min",
+  "weekday_after": "6.00pm-5.59am: $2.45 per entry",
+  "saturday": "12.00am-5.59pm: $1.50 for 1st hr or part thereof; $1.10 every 30min or part thereof; 6.00pm-11.59pm: $2.45 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "10 Raeburn Park",
+  "weekday_before": "7.00am-4.59pm : $2.57 for 1st hr or part thereof, $1.26 sub. 30 min or part thereof.",
+  "weekday_after": "5.00pm-6.59am next day: $2.57 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7am-6.59am next day: $2.57 per entry"
+ },
+ {
+  "name": "1557 Keppel Road",
+  "weekday_before": "7.00am-6.00pm: $5.45 for 1st 2 hrs, $1.26 every sub 30min.",
+  "weekday_after": "6.00pm-7.00am (next day): $2.67 per entry.",
+  "saturday": "7.00am-6.00pm: $2.57 for 1st hr, $1.26 every sub. 30 min. 6.00pm-7.00am next day: $2.67 per entry",
+  "sunday_ph": "7am-7am next day: $2.67 per entry"
+ },
+ {
+  "name": "18 Robinson",
+  "weekday_before": "12.00am-5.59pm: $3.03 half hourly",
+  "weekday_after": "6.00pm-11.59pm: $3.24 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "12.00am to 11.59pm: $3.24 per entry"
+ },
+ {
+  "name": "50 Armenian St",
+  "weekday_before": "7.00am-11.00am: $1.31 per 30 min. 11.00am-5.00pm: $1.53 per 30 min.",
+  "weekday_after": "5.00pm-7.00am:$0.65 per 30 min.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-2.00pm: $0.65 per 30 min. 2.00pm-5.00pm: $0.82 per 30 min. 5.00pm-7.00am:$0.65 per 30 min."
+ },
+ {
+  "name": "61 Robinson",
+  "weekday_before": "8.00am-5.00pm: $2.40 per 30min",
+  "weekday_after": "5.00pm-12.00am: $3.00 per entry. $20.00 per entry after 12midnight",
+  "saturday": "Charges same as weekdays, but $2.50 per entry after 1.00pm",
+  "sunday_ph": "7.00am-12.00am: $3.00 per entry"
+ },
+ {
+  "name": "Amara Hotel",
+  "weekday_before": "8.00am-4.59pm: $2.20 per 30 min",
+  "weekday_after": "5.00pm-7.59am (next day) : $3.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8.00am-7.59am the following day: $3.00 per entry"
+ },
+ {
+  "name": "Asia Square",
+  "weekday_before": "7.00am-5.59pm: $1.10 per 10 min or part thereof.",
+  "weekday_after": "6.00pm-6.59am: $5.50 per entry.",
+  "saturday": "7.00am-6.59am next day: $5.50 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Bangkok Bank Building",
+  "weekday_before": "7.00am-5.00pm: $2.50 per 30min or part thereof.",
+  "weekday_after": "5.00pm-11.00pm: $3.20 per 30min (Last entry 7.00pm)",
+  "saturday": "7.00am-3.00pm: $2.50 per 30min. 3.00pm-11.00pm: $3.20 per 30min (Last Entry 3.00pm)",
+  "sunday_ph": "Closed"
+ },
+ {
+  "name": "Beach Centre",
+  "weekday_before": "7.00am-6.00pm: $2.16 for 1st 30min; $1.62 per sub.30min",
+  "weekday_after": "6.00pm-7.00am the following day: $4.32 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-7.00am the following day: $4.32 per entry"
+ },
+ {
+  "name": "Berjaya Hotel",
+  "weekday_before": "8.30am-5.00pm: $1.00 per 30min",
+  "weekday_after": "5.00pm-10.00pm: $1.00 per hr; After 10.00pm: Free",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8.30am-10.00pm: $1.00 per hr; 10.00pm-8.30pm: Free"
+ },
+ {
+  "name": "Bugis Junction",
+  "weekday_before": "12.00am-5.59pm: $2.60 for 1st hr; $0.65 for sub. 15min or part thereof",
+  "weekday_after": "6.00pm-11.59pm:Mon-Thu: $3.30 per entry. Fri: $3.30 for 1st 2 hrs; $0.65 for sub. 15 min or part thereof",
+  "saturday": "$3.30 for 1st 2 hrs; $0.65 for sub. 15 min or part thereof.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Bugis+",
+  "weekday_before": "12.00am-5.59pm: $2.20 for 1st hr; $0.55 for sub. 15 min",
+  "weekday_after": "6.00pm-11.59pm: Mon-Thu: $3.30 per entry; Fri: $3.30 for 1st 2hrs; $0.55 for sub. 15 min.",
+  "saturday": "$3.30 for 1st 2hrs; $0.55 for sub. 15 min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Burlington Square",
+  "weekday_before": "7.00am-4.59pm: $0.04 per min.",
+  "weekday_after": "5.00pm-6.59am: $2.20 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "CapitaGreen",
+  "weekday_before": "7.00am-5.59pm: $3.20 every 30 min",
+  "weekday_after": "6.00pm-6.59am (next day): $3.80 per entry",
+  "saturday": "7.00am-12.59pm: $3.20 every 30 min; 1pm-6.59am (next day): $3.80 per entry",
+  "sunday_ph": "$3.80 per entry"
+ },
+ {
+  "name": "Capital Square",
+  "weekday_before": "8.00am-6.00pm: $2.40 per 30min",
+  "weekday_after": "6.00pm-8.00am: $3.20 per entry",
+  "saturday": "8.00am to 8.00am next day: $3.20 per entry",
+  "sunday_ph": "8.00am to 8.00am next day: $3.20 per entry"
+ },
+ {
+  "name": "Capital Tower",
+  "weekday_before": "7.00am-5.59pm: $2.90 every 30 min",
+  "weekday_after": "6.00pm-6.59am next day: $3.80 per entry",
+  "saturday": "7.00am-12.59pm: $2.90 every 30 min; 1.00pm-6.59am next day: $3.80 per entry",
+  "sunday_ph": "7.00am-6.59am next day: $3.80 per entry"
+ },
+ {
+  "name": "CapitaLand Integrated Commercial Trust (CICT)",
+  "weekday_before": "8.00am-5.00pm: $2.05 per 30min",
+  "weekday_after": "After 5.00pm: $3.10 per entry",
+  "saturday": "Charges same as wkdays; $3.10 per entry after 1.00pm",
+  "sunday_ph": "$3.10 per entry"
+ },
+ {
+  "name": "Capitol Piazza",
+  "weekday_before": "11.00am-5.59pm: $2.45 for 1st hr, $0.55 for sub 15 min.",
+  "weekday_after": "6.00pm-10.59pm: $3.45 per entry.",
+  "saturday": "Sat-Mon 11.00am-10.59am: $2.20 for 1st 2 hr, $0.55 for sub 15 min.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Carlton Hotel",
+  "weekday_before": "7.00am-10.00pm: $3.50 for 1st hr; $1.50 for for sub. ½ hr or part thereof.",
+  "weekday_after": "10.01pm-6.59am: $6.50 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Centennial Tower",
+  "weekday_before": "7.00am-5.59pm: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "weekday_after": "6.00pm-7.00am: $3.00 per entry. Mon-Thurs (Overnight Parking): 12.00am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "saturday": "7.00am-1.59am: $2.80 for 1st 2hrs; $1.40 per sub.½ hr. Fri/Sat-Sun/PH (Overnight Parking): 2am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Central Mall",
+  "weekday_before": "7.01am-5.00pm: $2.40 for 1st hr; $1.20 for sub. 30min",
+  "weekday_after": "5.01pm-7.00am next day: $3.60 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.01am-7.00am next day: $3.60 per entry"
+ },
+ {
+  "name": "Central ©",
+  "weekday_before": "6.00am-5.00pm: $2.24 for 1st hr or part thereof; $1.12 for sub. ½ hr or part thereof",
+  "weekday_after": "5.00pm-6.00am next day: $3.56 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "6.00am-5.59am the next day: $3.56 per entry"
+ },
+ {
+  "name": "Chijmes",
+  "weekday_before": "8.00am-5.59pm: $0.65 per 15 min.",
+  "weekday_after": "6.00pm-10.59pm: Sun-Thurs: $0.71 per 15 min. Fri: $0.76 per 15 min. 11.00pm-7.59am: Sun-Thurs: $0.50 per 15 min. Fri: $0.55 per 15 min.",
+  "saturday": "8.00am-5.59pm: $0.71 per 15 min. Fri, Sat, PH Eve, PH: 6.00pm-10.59pm: $0.76 per 15 min. 11.00pm-7.59am: $0.55 per 15 min.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "China Square Central",
+  "weekday_before": "6.00am-5.59pm: $1.80 per ½ hr or part thereof.",
+  "weekday_after": "6.00pm-8.00am next day: $3.00 per entry. (12 midnight-6.00am: Closed)",
+  "saturday": "6.00am-8.00am next day: $3.00 per entry. (12 midnight-6.00am: Closed)",
+  "sunday_ph": "8.00am-6.00am next day: $3.00 per entry. (12 midnight-6am: Closed)"
+ },
+ {
+  "name": "Chinatown Point",
+  "weekday_before": "7.01am-5.00pm: $1.96 (with 9% GST) for every 30min or part thereof.",
+  "weekday_after": "5.01pm-7.00am: $5.45 (with 9% GST) per entry.",
+  "saturday": "7.01am-5.00pm: $1.96 (with 9% GST) for every 30min or part thereof. 5.01pm-7.00am: $6.45 (with 9% GST) per entry.",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "City Gate",
+  "weekday_before": "7.00am-4.59pm: $2.00 per hr.",
+  "weekday_after": "5.00pm-11.59pm: $3.00 per entry; 12.00am-6.59am the following day: $4.36 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-11.59pm: $3.00 per entry; 12.00am-6.59am the following day: $4.36 per entry."
+ },
+ {
+  "name": "Clarke Quay",
+  "weekday_before": "7.00am-6.59am (next morning): 1st hour @ $1.60, $0.55 for subsequent 15 min or part thereof",
+  "weekday_after": "7.00am-6.59am (next morning): 1st hour @ $1.60, $0.55 for subsequent 15 min or part thereof",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am to 6.59am (next morning): $3.00 per entry."
+ },
+ {
+  "name": "Clarke Quay Central",
+  "weekday_before": "6.00am-5.00pm: $2.24 for 1st hr or part thereof; $1.12 for sub 30min or part thereof.",
+  "weekday_after": "5.00pm-6.00am the followng day: $3.56 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "6.00am-5.59am the followng day: $3.56 per entry"
+ },
+ {
+  "name": "Conrad Centennial Hotel",
+  "weekday_before": "7.00am-5.59pm: $3.90 for 1st hr; $1.95 per sub.½ hr (Millenia Singapore - Basement Carpark)",
+  "weekday_after": "6.00pm-7.00am: $3 per entry. Mon-Thurs (Overnight Parking): 12.00am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "saturday": "7.00am-1.59am: $2.80 for 1st 2hrs; $1.40 per sub. hr. Fri/Sat-Sun/PH (Overnight Parking): 2am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Copthorne King's Hotel",
+  "weekday_before": "7.00am-12.00am: $4.00 for 1st hr; $1.50 for sub ½ hr",
+  "weekday_after": "12.00am-7.00am (next day): $4.00 for 1st hr; $2 for sub ½ hr",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "CPF Building Robinson Road",
+  "weekday_before": "6.00am-5.00pm:$1.50 per ½ hr; $2.00 for sub ½ hr",
+  "weekday_after": "After 5.00pm: $5.00 per entry",
+  "saturday": "Closed",
+  "sunday_ph": "Closed"
+ },
+ {
+  "name": "Far East Square",
+  "weekday_before": "6.00am-5.59pm: $4.36 for 1st hr; $1.09 sub 15 min",
+  "weekday_after": "6.00pm-12.00am: $3.27 per entry.",
+  "saturday": "$3.27 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Far Eastern Bank Building",
+  "weekday_before": "7.00am-6.00pm: $2.50 per 30min",
+  "weekday_after": "6.30pm-7.00am: $3.20 per entry",
+  "saturday": "7.00am-1.00pm: $2.50 per 30min; 1.00pm-7.00am: $3.20 per entry",
+  "sunday_ph": "Closed"
+ },
+ {
+  "name": "Fortune Centre",
+  "weekday_before": "7.00am-5.00pm: $3.25 per hr",
+  "weekday_after": "5.00pm-7.00am next day: $5.60 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Fraser Residence River Promenade",
+  "weekday_before": "7.01am-6.00pm: $4.00 for 1st hr; $2.50 for sub hr or part thereof.",
+  "weekday_after": "6.01pm-7.00am: $4.50 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.01am-6.00pm: $4.50 per entry. 6.01pm-7.00am: $4.50 per entry"
+ },
+ {
+  "name": "Fu Lu Shou Complex",
+  "weekday_before": "8.00am to 5.00pm: $1.20 per 30min",
+  "weekday_after": "5.00pm-11pm: $2.20 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Fullerton Hotel",
+  "weekday_before": "7.01am-6.00pm: $1.30 per 10 min",
+  "weekday_after": "6.01pm-8pm: $6.90 per entry. 8.01am-12.00am: $1.30 per 10 min. 12.01am-7.00am-$8 per entry",
+  "saturday": "7.01am-12.00am: $6.90 per entry; 12.01am-7.00am-$8 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Funan",
+  "weekday_before": "12.00am-5.59pm: $2.40 for 1st hr, $0.65 for sub 15min.",
+  "weekday_after": "6.00pm-11.59pm: $3.30 per entry.",
+  "saturday": "12.00am-2.59pm: Every 15min of part thereof at $0.65. 3am-5.59pm: $2.60 for 1st 2hr, $0.65 for sub 15min or part thereof . 6.00pm to 11.59pm: $3.30 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Furama City Centre Singapore",
+  "weekday_before": "5.59am-6.00pm: $1.70 per 30min",
+  "weekday_after": "6.00pm-5.59am the followng day: $3.21 per entry",
+  "saturday": "Same as wkdays",
+  "sunday_ph": "5.59am-6.00pm: $3.21 per entry"
+ },
+ {
+  "name": "Furama Riverfront Singapore",
+  "weekday_before": "7.00am-5.00pm: $1.07 per ½ hr",
+  "weekday_after": "5.00pm-7.00am the followng day: $6.42 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Genting Centre",
+  "weekday_before": "7.00am-7.00pm: $3.00 for 1st hr, $2.00 for sub 30min.",
+  "weekday_after": "7.00pm-7.00am the followng day: $3.00 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-7.00pm: $3.00 per entry. After 7.00pm: $3.00 per entry."
+ },
+ {
+  "name": "Golden Landmark Shopping Complex",
+  "weekday_before": "8.00am-5.00pm: $2.35 for 1st hr $1.07 for sub 30min or part thereof",
+  "weekday_after": "5.00pm-8.00am: $2.68 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8.00am-8.00am the following day: $2.68 per entry."
+ },
+ {
+  "name": "Golden Mile Tower",
+  "weekday_before": "7.00am-7.00pm: $2.82 per hr",
+  "weekday_after": "7.00pm-7.00am the following day: $2.31 per hr",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "GR.iD",
+  "weekday_before": "7.00am-5.59pm: $3.20 for 1st hr, $1.80 sub 30min",
+  "weekday_after": "6.00pm-10.59pm: $4.50 per entry. 11pm-6.59am: $5.50 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7am-11.59pm: $4.50 per entry. 12.00am-6.59am: $5.50 per entry."
+ },
+ {
+  "name": "Grand Copthorne Waterfront Hotel",
+  "weekday_before": "7.00am-5.00pm: $3.75 for 1st hr; $2.14 for sub. hr",
+  "weekday_after": "5.00pm-7.00am next day: $4.28 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7am to 7am next day: $5.00 per entry"
+ },
+ {
+  "name": "Grand Park City Hall Hotel",
+  "weekday_before": "8.00am-5.00pm: $3.28 for 1st hr; $1.55 for sub. 30 min",
+  "weekday_after": "5.00pm-8.00am next day: $5.35 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Great Eastern Centre",
+  "weekday_before": "8.00am-5.00pm: $1.80 per 30min (Car park at China square central; B2 closed from 12.00am-6.00am daily)",
+  "weekday_after": "5.00pm-8.00am the following day: $3.30 per entry",
+  "saturday": "8.00am-8.00am the following day: $3.30 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Great World City",
+  "weekday_before": "6.01am-5.00pm: $1.80 per hr + GST; $0.90 + GST every sub 30min",
+  "weekday_after": "5.01pm-6.00am: $3.50 per entry + GST",
+  "saturday": "6.01am to 6.00am next day: $1.80 per hr + GST; $0.90 + GST every sub 30min. (Max. of $6 per entry + GST)",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Guoco Midtown",
+  "weekday_before": "Car Park A: 7.00am-4.59pm: $2.80 for 1st hr; $1.40 for sub. 30 min. Car Park B: 7.00am-4.59pm: $2.40 for 1st hr; $1.20 for sub. 30 min.",
+  "weekday_after": "Car Park A: 5.00pm-6.59am: $3.20 per entry. Car Park B: 5.00pm-6.59am: $3.60 per entry.",
+  "saturday": "Car Park A & B: 7.00am-6.59am (next day): $1.20 per 30 min; capped at $3.20 per day.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Guoco Tower",
+  "weekday_before": "7.00am-4.59pm: $4.10 per 30 min for Carpark A. $2.50 per 30 min for Carpark B.",
+  "weekday_after": "5.00pm-6.59am: $3.50 per entry.",
+  "saturday": "7.00am-6.59am (the next day): $3.50 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Harbourfront Centre",
+  "weekday_before": "7.00am-6.00pm: $1.60 for 1st hr; $0.80 for sub. 30 min",
+  "weekday_after": "6.00pm-4.00am: $3.20 per entry; 4.00am-7.00am: $2.50 per hr",
+  "saturday": "7.00am-6.00pm: $1.80 for 1st hr; $0.90 for sub. 30 min. 6.00pm-4.00am: $3.50 per entry; 4.00am-7.00am: $2.50 per hr.",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Havelock 2",
+  "weekday_before": "7.00am-5.59pm: $1.60 per 30min",
+  "weekday_after": "6.00pm-6.59am: $3.20 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-6.59am next day: $3.20 per entry."
+ },
+ {
+  "name": "Holiday Inn Singapore Atrium",
+  "weekday_before": "7.00am-7.00pm: S$2.00 per hr",
+  "weekday_after": "7.00am-7.00pm: S$2.00 per hr",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Hong Leong Building",
+  "weekday_before": "7.00am-5.59pm: $3.00 per 30min",
+  "weekday_after": "6.00pm-6.59am next day: $2.00 per hr",
+  "saturday": "7.00am-12.59pm: $3.00 per 30min; 1.00pm-6.59am: $2.00 per hr",
+  "sunday_ph": "7.00am-6.59am next day: $2.00 per hr"
+ },
+ {
+  "name": "Hotel Grand Pacific",
+  "weekday_before": "7.00am-5.00pm: $1.50 per 30 min.",
+  "weekday_after": "5.00pm-7.00am next day: $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am to 7.00am next day: $4.00 per entry"
+ },
+ {
+  "name": "Hub Synergy Point",
+  "weekday_before": "7.00am-6.00pm: $2.60 per hr",
+  "weekday_after": "6.00pm-12.00am: $1.00 per hr",
+  "saturday": "7.00am-2.00pm: $1.00 per 30min; 2.00pm-12.00am: $1.00 per hr",
+  "sunday_ph": "7.00am-12.00am next day: $1.00 per hr"
+ },
+ {
+  "name": "Ibis Singapore On Bencoolen Hotel",
+  "weekday_before": "8.00am-5.00pm: $1.50 per 30min.",
+  "weekday_after": "5.00pm-8.00am: $1.50 per 30min.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Icon Village",
+  "weekday_before": "7.00am-5.00pm: $1.64 per ½ hr or part thereof.",
+  "weekday_after": "5.00pm-7.00am next day: $3.27 per entry",
+  "saturday": "7.00am-1.00pm:$1.64 per ½ hr or part thereof. 1.00pm-7.00am next day: $3.27 per entry",
+  "sunday_ph": "7.00am-7.00am next day: $3.27 per entry"
+ },
+ {
+  "name": "Income At Raffles",
+  "weekday_before": "2.00am-6.30pm: $3.20 per 30min",
+  "weekday_after": "6.30pm-2.00am the following day: $3.70 per entry",
+  "saturday": "2.00am-2.00pm: $3.20 per 30min; 2.00pm-2.00am the following day: $3.70 per entry.",
+  "sunday_ph": "2.00am-6.29am: $3.20 per 30min; 6.30am-2.00am the following day: $3.70 per entry."
+ },
+ {
+  "name": "Inter-continental Singapore Hotel",
+  "weekday_before": "12.00am-5.59pm: $2.60 for 1st hr; $0.43 for sub. 10min",
+  "weekday_after": "6.00pm-11.59pm:Mon-Thu: $3.30 per entry. Fri: $3.30 for 1st 2 hrs; $0.35 for sub. 10 min or part thereof",
+  "saturday": "$3.30 for 1st 2 hrs; $0.35 for sub. 10 min or part thereof.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "InterContinental Singapore Robertson Quay",
+  "weekday_before": "7.00am-6.00pm: $3.50 for 1st hr, $2.00 for next sub hr.",
+  "weekday_after": "6.00pm-10.00pm: $5.00 per entry. 10.00pm-7.00am the following day: $2.00 for next sub 30 min.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "International Plaza",
+  "weekday_before": "7.00am-5.00pm: $2.20 per 30 min",
+  "weekday_after": "5.00pm-7.00am the following day: $3 per entry",
+  "saturday": "7.00am-3pm: $2.20 per 30 min; 3pm-7.00am the following day: $3 per entry",
+  "sunday_ph": "7am-7am the following day: $3 per entry"
+ },
+ {
+  "name": "Keck Seng Tower",
+  "weekday_before": "8.00am-6.00pm: $2.50 per ½ hr",
+  "weekday_after": "6.00pm-10pm: $2.50 per entry",
+  "saturday": "8.00am-2pm: $2.50 per ½ hr; 2pm-10pm: $2.50 per entry",
+  "sunday_ph": "Closed"
+ },
+ {
+  "name": "Keppel Bay Tower / Harbourfront Tower One",
+  "weekday_before": "7.00am-7.00pm: $1.03 per ½ hr",
+  "weekday_after": "7.00pm-1am: $3.10 per entry; 1am-7.00am: $3.10 per hr",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "klapsons, The Boutique Hotel",
+  "weekday_before": "6.30am-6.30pm: $3 for 1st 3hr, $1.50 for next sub 30min",
+  "weekday_after": "6.30pm to 6.30am - $ 4.00",
+  "saturday": "After 2pm - $4.00",
+  "sunday_ph": "$4.00"
+ },
+ {
+  "name": "Landmark Village Hotel",
+  "weekday_before": "8.00am-5.00pm:$2.35 for 1st hr; $1.07 for sub 30min.",
+  "weekday_after": "5.00pm-8.00am the following day: $2.68 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8.00am to 8.00am next day: $2.68 per entry."
+ },
+ {
+  "name": "M Hotel",
+  "weekday_before": "7.00am-6.00pm: $2.80 per 30min",
+  "weekday_after": "6.00pm-7.00am next day: $5.80 per entry",
+  "saturday": "7.00am-1.00pm: $2.80 per 30min; after 1.00pm-7.00am next day: $5.80 per entry",
+  "sunday_ph": "7.00am to 7.00am next day: $5.80 per entry"
+ },
+ {
+  "name": "Mandarin Oriental Hotel",
+  "weekday_before": "Mon-Thu: 7.00am-5.00pm: $3.27 for 1st 2hrs; $1.64 per ½ hr for sub. ½ hr (Car Park at Marina Square)",
+  "weekday_after": "Mon-Thu: 5.00pm-11.00pm: $2.25 per entry; 11.00pm-7.00am: $1.12 per ½ hr",
+  "saturday": "Fri/Sat-Sun/PH: 7.00am-2.00am :$2.44 for 1st 2 hrs; $1.22 per hr for sub. 2hrs; $1.43 per ½ hr for sub. ½ hr after 4 hrs of parking. 2.00am-7.00am: $1.12 per ½ hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Manulife Tower",
+  "weekday_before": "6.00am-6.00pm: $2.60 per 30min",
+  "weekday_after": "6.00pm-6.00am next day: $3.20 per entry",
+  "saturday": "6.00am-8.00pm: $3.20 per entry car park closed at 8.00pm",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Marina Barrage",
+  "weekday_before": "5.00am-6.00pm: $0.025 per min for the 1st 5hr, $0.05 per min for next sub. hr",
+  "weekday_after": "6.01pm-12.00am: $0.02 per min; 12.01am-4.59am: $0.05 per min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Marina Bay Financial Centre Tower 1",
+  "weekday_before": "6.00am-6.00pm: $1.20 per 10 min block or part thereof",
+  "weekday_after": "6.00pm-6.00am the next day: $3.27 for 1st 4hrs; $0.31 for sub. 10 min block or part thereof.",
+  "saturday": "6.00am-6.00am the next day: $3.27 for 1st 4hrs; $0.31 for sub. 10 min block or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Marina Bay Financial Centre Tower 2",
+  "weekday_before": "6.00am-6.00pm: $1.20 per 10 min block or part thereof",
+  "weekday_after": "6.00pm-6.00am the next day: $3.27 for 1st 4hrs; $0.31 for sub. 10 min block or part thereof.",
+  "saturday": "6.00am-6.00am the next day: $3.27 for 1st 4hrs; $0.31 for sub. 10 min block or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Marina Bay Financial Centre Tower 3",
+  "weekday_before": "6.00am-6.00pm: $1.20 per 10 min block or part thereof",
+  "weekday_after": "6.00pm-6.00am the next day: $3.27 for 1st 4hrs; $0.31 for sub. 10 min block or part thereof.",
+  "saturday": "6.00am-6.00am the next day: $3.27 for 1st 4hrs; $0.31 for sub. 10 min block or part thereof",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Marina Bay Link Mall",
+  "weekday_before": "6.00am-6.00pm: $1.18 per 10 min block or part thereof",
+  "weekday_after": "6.00pm-6.00am the next day: $3.21 for 1st 4hrs; $0.30 for sub. 10 min block or part thereof.",
+  "saturday": "6.00pm-6.00am the next day: $3.21 for 1st 4hrs; $0.30 for sub. 10 min block or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Marina Bay Sands",
+  "weekday_before": "$14 for 1st hr, $1.50 for every sub ½ hr. Max charge: $32 per 24 hours",
+  "weekday_after": "$14 for 1st hr, $1.50 for every sub ½ hr. Max charge: $32 per 24 hours",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Marina Mandarin Hotel",
+  "weekday_before": "Mon-Thu: 7.00am-5.00pm: $3.27 for 1st 2hrs; $1.64 per ½ hr for sub. ½ hr (Car Park at Marina Square)",
+  "weekday_after": "Mon-Thu: 5.00pm-11.00pm: $2.25 per entry; 11.00pm-7.00am: $1.12 per ½ hr",
+  "saturday": "Fri/Sat-Sun/PH: 7.00am-2.00am :$2.44 for 1st 2 hrs; $1.22 per hr for sub. 2hrs; $1.43 per ½ hr for sub. ½ hr after 4 hrs of parking. 2.00am-7.00am: $1.12 per ½ hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Marina One",
+  "weekday_before": "6.00am-5.59pm: $3.00 per 30 min",
+  "weekday_after": "6.00pm-5.590am (next day): $3.50 per entry.",
+  "saturday": "6.00pm-5.590am (next day): $3.50 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Marina Square",
+  "weekday_before": "Mon-Thu: 7.00am-5.00pm: $3.27 for 1st 2hrs; $1.64 per ½ hr for sub. ½ hr",
+  "weekday_after": "Mon-Thu: 5.00pm-11.00pm: $2.25 per entry; 11.00pm-7.00am: $1.12 per ½ hr",
+  "saturday": "Fri/Sat-Sun/PH: 7.00am-2am :$2.44 for 1st 2 hrs; $1.22 per hr for sub. 2hrs; $1.43 per ½ hr for sub. ½ hr after 4 hrs of parking. 2am-7.00am: $1.12 per ½ hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Millenia Singapore (Basement Car Park)",
+  "weekday_before": "7.00am-5.59pm: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "weekday_after": "6.00pm-7.00am: $3 per entry. Mon-Thurs (Overnight Parking): 12.00am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "saturday": "7.00am-1.59am: $2.80 for 1st 2hrs; $1.40 per sub.½ hr. Fri/Sat-Sun/PH (Overnight Parking): 2am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Millenia Walk (Basement Car Park)",
+  "weekday_before": "7.00am-5.59pm: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "weekday_after": "6.00pm-7.00am: $3 per entry. Mon-Thurs (Overnight Parking): 12.00am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "saturday": "7.00am-1.59am: $2.80 for 1st 2hrs; $1.40 per sub.½ hr. Fri/Sat-Sun/PH (Overnight Parking): 2am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Millenia Walk (Surface parking @ L1)",
+  "weekday_before": "7.00am-5.59pm: $7.40 for 1st ½ hr; $2.80 every sub. ½ hr.",
+  "weekday_after": "6.00pm-6.59am: $7.40 for 1st 2hrs; $2.80 every sub. ½ hr.",
+  "saturday": "7.00am-7.00am (next day): $7.40 for 1st 2hrs; $2.80 every sub. ½ hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "National Gallery",
+  "weekday_before": "7.00am-6.00pm: $1.40 per 30min.",
+  "weekday_after": "6.00pm-1.00am: $3.30 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Neil Road Off-Street",
+  "weekday_before": "7.00am-5.00pm: $1.20 per 30 min",
+  "weekday_after": "5.00pm-7.00am the next day: $0.60 per 30 min. Charges capped at $5.60 for parking from 10.30pm-7.00am the next day",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-7.00am the next day: $0.60 per 30 min. Charges capped at $5.60 for parking from 10.30pm-7.00am the next day"
+ },
+ {
+  "name": "North Bridge Centre",
+  "weekday_before": "8.00am-4.59pm: $3.34 per hr",
+  "weekday_after": "5.00pm-7.59am the following day: $4.45 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8.00am-7.59am the following day: $4.45 per entry"
+ },
+ {
+  "name": "Novotel Clarke Quay",
+  "weekday_before": "7.00am-5.00pm: $1.07 per hr",
+  "weekday_after": "5.00pm-7.00am: $3.21 per entry",
+  "saturday": "7.00am-1pm: $1.07 per hr; 1pm-7.00am next day: $3.21 per entry",
+  "sunday_ph": "$3.21 per entry"
+ },
+ {
+  "name": "NTUC Income Centre",
+  "weekday_before": "6.30am-5.00pm: $1.10 per every 30min",
+  "weekday_after": "5.00pm-11.00pm: $3.00 per entry. After 11.00pm - closed",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "12.00am-12.00am the following day: $3.00 per 4 hr block."
+ },
+ {
+  "name": "NTUC Prinsep House",
+  "weekday_before": "7.00am-7.00pm: $1.25 per 30min",
+  "weekday_after": "7.01pm-6.59am: $3.50 per entry",
+  "saturday": "7.00am-5.00pm: $1.25 per 30min; 5.01pm-6.59am: $3.50 per entry",
+  "sunday_ph": "7.00am-6.59am: $3.50 per entry"
+ },
+ {
+  "name": "OCBC Centre",
+  "weekday_before": "6.00am-6.00pm: $2.60 per 30min",
+  "weekday_after": "6.00pm-12.00am: $3.30 per entry; 12.00am-6.00am the followng day: $3.30 per hr.",
+  "saturday": "6.00pm-12.00am: $3.30 per entry; 12.00am-6.00am: $3.30 per hr.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Odeon 331/333",
+  "weekday_before": "7.00am-6.00pm: $2.50 for 1st hr; $1.25 for every sub ½ hr",
+  "weekday_after": "6.00pm-7.00am: $5 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "One Fullerton",
+  "weekday_before": "7.01am-6.00pm: $1.30 per 10 min",
+  "weekday_after": "6.01pm-8.00pm: $6.90 per entry. 8.01pm-12.00am: $1.30 per 10min. 12.01am-7.00am: $8 per entry",
+  "saturday": "7.01am-12.00am: $6.90 per entry; 12.01am-7.00am-$8 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "One George Street",
+  "weekday_before": "7.00am-6.00pm: $2.50 per 30min",
+  "weekday_after": "6.00pm-7.00am: $3.60 per entry",
+  "saturday": "7.00am-1.00pm: $2.50 per 30min; 1.00pm-7.00am the following day: $3.60 per entry.",
+  "sunday_ph": "7.00am-7.00am the following day: $3.60 per entry."
+ },
+ {
+  "name": "One Raffles Place",
+  "weekday_before": "7.00am-5.00pm : $3.27 per ½ hr",
+  "weekday_after": "5.00pm-6.59am next day: $3.82 per entry",
+  "saturday": "7.00am-6.59am next day: $3.82 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "One Raffles Quay",
+  "weekday_before": "6.00am-6.00pm: $1.18 per 10min",
+  "weekday_after": "6.00pm-6.00am next day: $3.21 for 1st 4hrs; $0.30 for sub.10min",
+  "saturday": "6.00pm-6.00am next day: $3.21 for 1st 4hrs; $0.30 for sub.10min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "One Shenton",
+  "weekday_before": "7.00am-6.59pm: $5.00 for 1st hr; $0.10 for next sub. min.",
+  "weekday_after": "7.00pm-6.59am the following day: $3.50 per entry.",
+  "saturday": "7.00am-6.59am the following day: $3.50 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "OUE Bayfront",
+  "weekday_before": "7.00am-5.59pm: $1.07 per 10min block or part thereof.",
+  "weekday_after": "6.00pm-6.59am next day: $3.75 per entry",
+  "saturday": "7.00am-2.59pm: $1.07/10min block. 3.00pm-11.59am next day: $3.75 per entry",
+  "sunday_ph": "$3.75 per entry"
+ },
+ {
+  "name": "OUE Downtown 1",
+  "weekday_before": "7.00am-4.59pm: $2.70 per 30 min",
+  "weekday_after": "5.00pm-6.59am the following day: $2.70 per entry",
+  "saturday": "7.00am-6.59am the following day: $2.70 per entry",
+  "sunday_ph": "7.00am-6.59am the following day: $2.70 per entry"
+ },
+ {
+  "name": "OUE Downtown 2",
+  "weekday_before": "7.00am-4.59pm: $2.70 per 30 min",
+  "weekday_after": "5.00pm-6.59am the following day: $2.70 per entry",
+  "saturday": "7.00am-6.59am the following day: $2.70 per entry",
+  "sunday_ph": "7.00am-6.59am the following day: $2.70 per entry"
+ },
+ {
+  "name": "Pan Pacific Hotel",
+  "weekday_before": "Mon-Thu: 7.00am-5.00pm: $3.27 for 1st 2hrs; $1.64 per ½ hr for sub. ½ hr (Car Park at Marina Square)",
+  "weekday_after": "Mon-Thu: 5.00pm-11.00pm: $2.25 per entry; 11.00pm-7.00am: $1.12 per ½ hr",
+  "saturday": "Fri/Sat-Sun/PH: 7.00am-2.00am :$2.44 for 1st 2 hrs; $1.22 per hr for sub. 2hrs; $1.43 per ½ hr for sub. ½ hr after 4 hrs of parking. 2.00am-7.00am: $1.12 per ½ hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Parklane Shopping Mall",
+  "weekday_before": "7.00am-7.00pm: $3.30 for 1st hr; $1.80 for sub. 30min.",
+  "weekday_after": "7.00pm-7.00am the followng day: $3.30 for 1st hr; $1.80 for sub. 30min.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Carpark Closed"
+ },
+ {
+  "name": "PARKROYAL On Beach Road",
+  "weekday_before": "7.00am-4.59pm: Multi Storey Carpark - $2.50 for 1st hr; $1.50 for sub. 30min. Hotel Driveway - $6.00 for 1st hr; $2.00 for sub. 30min.",
+  "weekday_after": "5.00pm-6.59am the followng day: Multi Storey Carpark - $2.50 per entry. Hotel Driveway - $6.00 per entry.",
+  "saturday": "7am-12.59pm: Multi-Storey Carpark-$2.50 for 1st hr; $1.50 for sub. 30min. Hotel Driveway-$6 for 1st hr; $2 for sub. 30min. 1pm-7am: Multi-Storey Carpark-$2.50 per entry; Hotel Driveway-$6 per entry.",
+  "sunday_ph": "Multi-Storey Carpark - $2.50 per entry. Hotel Driveway - $6.00 per entry."
+ },
+ {
+  "name": "PARKROYAL On Pickering",
+  "weekday_before": "8.00am-5.00pm: $5.00 for 1st hr; $2.50 for sub. 30min.",
+  "weekday_after": "5.00pm-8.00am the following day: $5.00 for 1st hr; $2.50 for sub. 30min.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Peninsula Excelsior Hotel",
+  "weekday_before": "6.00am-5.59pm: $3.50 for 1st hr; $2.00 for sub 30min",
+  "weekday_after": "6.00pm-5.59am next day: $6.00 per entry",
+  "saturday": "6.00am-5.59pm: $4.00 for 1st hr; $2.50 for sub 30min. 6.00pm-5.59am next day: $6.00 per entry",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "People's Park Centre",
+  "weekday_before": "7.00am-7.00pm: $3.80 per hr",
+  "weekday_after": "7.00pm-7.00am next day: $5.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "People's Park Complex",
+  "weekday_before": "6.00am-5.59pm: $3.38 for 1st hr; $0.84 for sub. 15min.",
+  "weekday_after": "6.00pm-midnight: $5.07 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Raffles City Shopping Centre",
+  "weekday_before": "8.00am-5.59pm: $2.60 for 1st hr; $0.65 for sub. 15min",
+  "weekday_after": "6.00pm-7.59am next day: $3.25 per entry",
+  "saturday": "8.00am-7.59am (the next day): $2.60 for 1st 2 hr; $0.65 for sub. 15min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Raffles Hotel",
+  "weekday_before": "6.00am-10.59pm: $5 per 1st hr; $2 for sub. 30min",
+  "weekday_after": "11.00pm-5.59am: $4 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Rendezvous Hotel",
+  "weekday_before": "7.00am-7.00am the following day: $3.70 for 1st hr; $1.90 for sub.30min",
+  "weekday_after": "7.00am-7.00am the following day: $3.70 for 1st hr; $1.90 for sub.30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Republic Plaza",
+  "weekday_before": "7.00am-5.00pm: $3.33 per ½ hr or part thereof.",
+  "weekday_after": "Aft 5.00pm: $3.63 per entry",
+  "saturday": "7.00am-7.00am next day: $3.63 per entry",
+  "sunday_ph": "Same s Saturday"
+ },
+ {
+  "name": "Resorts World Sentosa (RWS)",
+  "weekday_before": "Mon-Thurs(excludes PH):12.00am-11:59pm: $6.50 for 1st hr; $1.10 for ½ hr or part thereof. Fri/Sat/Sun/PH: 12.00am-11.59pm: $9.70 for 1st hr; $1.10 for ½ hr or part thereof.",
+  "weekday_after": "Mon-Thurs(excludes PH):12.00am-11:59pm: $6.50 for 1st hr; $1.10 for ½ hr or part thereof. Fri/Sat/Sun/PH: 12.00am-11.59pm: $9.70 for 1st hr; $1.10 for ½ hr or part thereof.",
+  "saturday": "Fri/Sat/Sun/PH: 12.00am-11.59pm: $9.70 for 1st hr; $1.10 for ½ hr or part thereof.",
+  "sunday_ph": "Same s Saturday"
+ },
+ {
+  "name": "Riverside Point",
+  "weekday_before": "6.00am-5.59pm: $2.51 for 1st hr; $0.63 for sub. 15min.",
+  "weekday_after": "6.00pm-12.00am: $3.82 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Robertson Walk",
+  "weekday_before": "6.00am-6.00pm: $1.65 for 1st hr; $0.65 for sub. 30min.",
+  "weekday_after": "6.00pm-6.00am next day: $4.35 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Robinson 77",
+  "weekday_before": "7.00am-5.00pm: $2.50 per 30min",
+  "weekday_after": "5.00pm-11.00pm: $3.00 per entry",
+  "saturday": "7.00am-2.00pm: $2.50 per 30min; 2.00pm-11.00pm: $3.00 per entry",
+  "sunday_ph": "7.00am-7.00am next day: $3.00 per entry"
+ },
+ {
+  "name": "School of the Arts, Singapore (SOTA)",
+  "weekday_before": "6.00am-5.59pm: $0.04 per min.",
+  "weekday_after": "6.00pm-2.00am next day: $5.00 per entry. 2.01am-5.59am: $5 additional fee for overnight parking",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "SGX Centre",
+  "weekday_before": "7.00am-6.00pm: $3.05 per 30 min",
+  "weekday_after": "6.00pm-10.00pm: $3.76 per entry (Car Park closes at 10.00pm daily)",
+  "saturday": "7.00am-10.00pm: $3.76 per entry",
+  "sunday_ph": "Same s Saturday"
+ },
+ {
+  "name": "Shenton House",
+  "weekday_before": "8.00am-5.00pm: $3.21 per 30min",
+  "weekday_after": "5.00pm-8.00am: $3.21 per entry",
+  "saturday": "8.00am-2.00pm: $3.21 per 30min; 2.00pm-8.00am the following day: $3.00 per entry.",
+  "sunday_ph": "8.00am-8.00am the following day: $3.21 per entry"
+ },
+ {
+  "name": "Sim Lim Square",
+  "weekday_before": "8.00am-8.00am the following day: $1.80 per 30min for 1st hr; $0.06 per min.",
+  "weekday_after": "8.00am-8.00am the following day: $1.80 per 30min for 1st hr; $0.06 per min.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Sim Lim Tower",
+  "weekday_before": "$1.90 per 30 min all day",
+  "weekday_after": "$1.90 per 30 min all day",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Singapore Chinese Cultural Centre",
+  "weekday_before": "7.00am-5.00pm: $2.45 per 30 min block",
+  "weekday_after": "Aft 5.00pm: $3.82 per entry",
+  "saturday": "$3.82 per entry",
+  "sunday_ph": "Same s Saturday"
+ },
+ {
+  "name": "Singapore General Hospital (Carpark G)",
+  "weekday_before": "7.00am-5.59pm: No Entry (Staff Parking Only)",
+  "weekday_after": "5.30pm-9.59pm: $0.036 per min, $2.18 per hr. 10pm-6.59am: $2.16 per entry.",
+  "saturday": "7.00am-9.59pm: $0.036 per min, $2.18 per hr. 10.00pm-6.59am: $2.16 per entry.",
+  "sunday_ph": "7.00am-9.59pm: $0.018 per min, $1.09 per hr. 10.00pm-6.59am: $2.16 per entry."
+ },
+ {
+  "name": "Singapore General Hospital (Multi-Storey Carpark H)",
+  "weekday_before": "7.00am-9.59pm: $0.019 per min, $1.14 per hr",
+  "weekday_after": "10.00pm-6.59am: $2.16 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-6.59am: $2.16 per entry"
+ },
+ {
+  "name": "Singapore General Hospital (National Heart Centre Singapore)",
+  "weekday_before": "7.00am-9.59pm: $0.037 per min, $2.22 per hr",
+  "weekday_after": "10.00pm-6.59am: $2.16 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-9.59pm: $0.019 per min, $1.14 per hr; 10.00pm-6.59am: $2.16 per entry"
+ },
+ {
+  "name": "Singapore Land Tower",
+  "weekday_before": "7.00am-6.00pm: $3.20 per 30min",
+  "weekday_after": "6.01pm-6.59am the following day: $5.45 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-6.59am the following day: $5.45 per entry"
+ },
+ {
+  "name": "Six Battery Road",
+  "weekday_before": "7.00am-5.59pm: $3.20 per 30min",
+  "weekday_after": "6.00pm-6.59am the following day: $3.80 per entry",
+  "saturday": "7.00am-12.59pm: $3.20 per 30min; 1.00pm-7.00am the following day: $3.80 per entry",
+  "sunday_ph": "7.00am-7.00am the following day: $3.80 per entry"
+ },
+ {
+  "name": "South Bridge Tower",
+  "weekday_before": "7.00am-5.59pm: $1.25 per 30min.",
+  "weekday_after": "6.00pm-6.59am: $3.20 per entry.",
+  "saturday": "6.59am-6.59am the following day:$5.50 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "St Joseph's Church (Victoria Street)",
+  "weekday_before": "7.30am-7.30pm: $1.74 per hr. 7.30am-5.30pm: $6.95 (Capped)",
+  "weekday_after": "7.30pm-10.00pm: $2.73 per hr.",
+  "saturday": "7.30am-7.30pm: Strictly for church members only. 7.30pm-10pm: $2.73 per hr.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Stamford Court",
+  "weekday_before": "8.00am-6.00pm: $2.64 for 1st hr, $2.04 for sub. 30min",
+  "weekday_after": "6.00pm-8.00am: $2.52 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "8.00am-6.00pm: $1.32 per hr, 6.00pm-8,00am the following day: $2.52 per entry."
+ },
+ {
+  "name": "Sunshine Plaza",
+  "weekday_before": "(Mon to Thurs) 7.00am-9.59pm: $2.00 for 1st hr; $0.04 for next sub. min.",
+  "weekday_after": "(Mon to Thurs) 10.00pm-6.59am the following day: $5.00 per entry",
+  "saturday": "(Fri to Sat) 7.00am-9.59pm: $2.20 for 1st hr; $0.04 for next sub. min. 10.00pm-6.59am the following day: $5.40 per entry",
+  "sunday_ph": "7.00am-9.59pm: $2.20 for 1st hr; $0.04 for next sub. min. 10.00pm-6.59am the following day: $5.40 per entry"
+ },
+ {
+  "name": "Suntec City",
+  "weekday_before": "7.00am-5.00pm: $2.60 for 1st hr; $1.30 per 30 min or part thereof",
+  "weekday_after": "5.00pm-4.00am :$3.00 per entry; 4.00am-7.00am: $2.60 for 1st hr; $1.30 per 30 min or part thereof",
+  "saturday": "7.00am-4.00am: $2.60 for 1st hr; $1.30 for the next 3 hrs; $1.30 after the 4th hr (per 30 min or part thereof); 4.00am-7.00am: $2.60 for 1st hr; $1.30 per 30 min or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Swissotel Merchant Court Hotel",
+  "weekday_before": "8.00am-5.00pm: $4.50 for 1st hr; $1.50 for next sub 30min",
+  "weekday_after": "5.00pm-8.00am the following day: $4.50 for 1st hr; $1.50 for next sub 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Swissotel Stamford Hotel",
+  "weekday_before": "8.00am-6.00pm: $2.20 for 1st hr; $0.55 for sub. 15min",
+  "weekday_after": "6.00pm-8.00am next day: $3.00 per entry",
+  "saturday": "8.00am-8.00am next day: $2.20 for 1st 2hr, $0.40 for sub. 15min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "The Adelphi",
+  "weekday_before": "6.00am-5.00pm: $2.44 per hr; $1.22 per sub. ½ hr",
+  "weekday_after": "5.00pm-6.00am next day: $3.27 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "6.00am-6.00am next day: $3.27 per entry"
+ },
+ {
+  "name": "The Concourse",
+  "weekday_before": "7.00am-5.00pm: $3.21 for 1st hr; $1.605 for sub. 30min.",
+  "weekday_after": "5.00pm-7.00am the following day: $4.28 per entry",
+  "saturday": "7.00am-12.00pm: $3.20 for 1st hr; $1.50 for sub. 30min. 12.00pm-7.00am: $4.28 per entry.",
+  "sunday_ph": "$4.00 per entry after 5.00pm"
+ },
+ {
+  "name": "The Corporate Office",
+  "weekday_before": "7.01am-5.00pm: $4 per hr",
+  "weekday_after": "5.00pm-7.01am: $2.50 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Closed"
+ },
+ {
+  "name": "The Esplanade",
+  "weekday_before": "$2.30 per hour or part thereof.",
+  "weekday_after": "$2.30 per hour or part thereof.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "The Gateway",
+  "weekday_before": "7.00am-6.00pm: $2.80 for 1st hr; $1.50 for sub. 30 min.",
+  "weekday_after": "6.00pm-7.00am the following day:: $3.05 per entry.",
+  "saturday": "7.00am-1.00pm: $2.80 for 1st hr; $1.50 for sub. 30 min. 1.00pm-7.00am the following day: $3.05 per entry.",
+  "sunday_ph": "7.00am-7.00am the following day: $3.05 per entry."
+ },
+ {
+  "name": "The Ritz-Carlton Millenia Singapore",
+  "weekday_before": "7.00am-5.59pm: $3.90 for 1st hr; $1.95 per sub.½ hr (Millenia Singapore - Basement Carpark)",
+  "weekday_after": "6.00pm-7.00am: $3 per entry. Mon-Thurs (Overnight Parking): 12.00am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "saturday": "7.00am-1.59am: $2.80 for 1st 2hrs; $1.40 per sub.½ hr. Fri/Sat-Sun/PH (Overnight Parking): 2am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "The Sail@Marina Bay",
+  "weekday_before": "6.00am-5.59pm: $4.50 per hr",
+  "weekday_after": "6.00pm-5.59am the following day: $1.50 per hr",
+  "saturday": "6.00am-12.59pm: $4.50 per hr; 1.00pm onwards: $1.50 per hr",
+  "sunday_ph": "6.00am-5.59am the following day:$1.50 per hr"
+ },
+ {
+  "name": "Tong Eng Building",
+  "weekday_before": "7.00am-5.00pm: $2.60 per 30min.",
+  "weekday_after": "5.00pm-11.00pm: $3.00 per entry.",
+  "saturday": "7.00am-12.00pm: $2.60 per 30min. 12.00pm-11.00pm: $3.00 per entry.",
+  "sunday_ph": "10.00am-11.00pm: $3.00 per entry."
+ },
+ {
+  "name": "UE Square",
+  "weekday_before": "8.00am-5.00pm: $2.18 for 1st hr; $1.09 for sub. hr",
+  "weekday_after": "5.00pm-8.00am next day: $3.27 per entry",
+  "saturday": "8.00am-1pm: $2.18 for 1st hr; $1.09 for sub. hr; 1pm-8.00am: $3.27 per entry",
+  "sunday_ph": "$3.27 per entry"
+ },
+ {
+  "name": "UOB Plaza",
+  "weekday_before": "7.00am-6.00pm: $3.00 per 30min",
+  "weekday_after": "6.00pm-12.00am: $4.00 per entry. 12.00am-7.00am the following day: $4.00 per entry",
+  "saturday": "7.00am-12.00am: $4.00 per entry. 12.00am-7.00am the following day: $4.00 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "UP@Robertson Quay",
+  "weekday_before": "6.00am-6.00pm: $1.50 for 1st hr; $0.50 for sub. 30min",
+  "weekday_after": "6.00pm-6.00am: $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Vivocity",
+  "weekday_before": "4.00am-12.00am: $1.60 for 1st hr; $0.80 for sub. 30 min or part thereof.",
+  "weekday_after": "4.00am-12.00am: $1.60 for 1st hr; $0.80 for sub. 30 min or part thereof; 12.00am-4.00am: $3.20 per entry.",
+  "saturday": "4.00am-12.00am: $2.20 for 1st hr; $1.10 for sub. 30 min or part thereof; 12.00am-4.00am: $4.80 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "100 Pasir Panjang",
+  "weekday_before": "7.00am-7.00pm: $1.80 for 1st hr or part thereof; $0.80 for sub. 1 per 2 hr or part thereof",
+  "weekday_after": "7.00pm-7.00am (next day): $3.50 per entry.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-7.00am (next day): $3.50 per entry."
+ },
+ {
+  "name": "34 Boon Leat Terrace",
+  "weekday_before": "7.00am-6.00pm: $2.20 for 1st hr; $1.10 for sub. 30min",
+  "weekday_after": "6.00pm-7.00am: $2.50 per entry.",
+  "saturday": "7.00am-1.00pm: $1.60 for 1st hr; $0.80 for sub. 30min; 1.00pm-7.00am: $2.50 per entry",
+  "sunday_ph": "7.00am-7.00am: $2.50 per entry"
+ },
+ {
+  "name": "8 Duke's Road",
+  "weekday_before": "7.00am-7.00am: $2.18 per hour (Capped at $10.68),",
+  "weekday_after": "7.00am-7.00am: $2.18 per hour (Capped at $10.68),",
+  "saturday": "7.00am-7.00am: $2.18 per hour",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Alexandra Retail Centre",
+  "weekday_before": "7:00am-6:30pm: $2.50 per hr or part thereof",
+  "weekday_after": "6.30pm-10.00pm: Free; 10.00pm-7.00am: $2.70/hr or part thereof",
+  "saturday": "7.00am-10.00pm: Free; 10.00pm-7.00am: $2.70/hr or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Anchorpoint Shopping Centre",
+  "weekday_before": "7.00am-5.59pm: 1st hour: $1.98/hr or part thereof; 2nd hour: $1.40/hr or part thereof; After 3 hours: $1.00/hr or part thereof",
+  "weekday_after": "After 6.00pm: $2.98 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Ayer Rajah Industrial Estate",
+  "weekday_before": "7.00am to 6.00pm: $1.00 per 30min or part thereof (per min. charging)",
+  "weekday_after": "After 6.00pm: $1.00 per entry",
+  "saturday": "7.00am to 7.00am: $1.00 per entry",
+  "sunday_ph": "7.00am to 7.00am: $1.00 per entry"
+ },
+ {
+  "name": "Bijou",
+  "weekday_before": "7.00am-6.00pm: $1.28 for 1st hr; $0.32 for sub. 15min or part thereof",
+  "weekday_after": "6.01pm-6.59am next day: $2.14 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-6.59am next day: $2.14 per entry"
+ },
+ {
+  "name": "Biopolis 1",
+  "weekday_before": "7.00am-5.00pm: $1.20 per hr",
+  "weekday_after": "5.00pm-7.00am: Free parking",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Bukit Panjang Plaza",
+  "weekday_before": "12.00am-5.59pm: $1.40 for 1st hr; $0.45 for sub. 15 min or part thereof",
+  "weekday_after": "6.00pm-11.59pm: $2.75 per entry",
+  "saturday": "12.00am-5.59pm: $2.75 for 1st 2 hrs; $0.45 for sub. 15 min or part thereof; 6.00pm-11.59pm: $2.75 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Bukit Timah Plaza (Multi-Storey Car Park)",
+  "weekday_before": "7.30am-5.00pm: $1.65 per hr",
+  "weekday_after": "5.01pm-7.29.00am: $2.85 per entry",
+  "saturday": "7.30am-5.00pm: $1.80 per hr; 5.01pm-7.29.00am: $2.85 per entry",
+  "sunday_ph": "7.30am-5.00pm: $2.85 for first (3) hours or part thereof; $1.65 for each subsequent 1 hour or part thereof; 5.01pm-7.29.00am: $2.85 per entry"
+ },
+ {
+  "name": "Bukit Timah Shopping Centre",
+  "weekday_before": "7.00am-5.00pm: $1.93 per hr",
+  "weekday_after": "5.01pm-7.00am: $3.64 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Coliwoo Hotel Pasir Panjang",
+  "weekday_before": "7.00am-5.00pm: $1.10 per hr",
+  "weekday_after": "5.00pm-7.00am: $1.10 per hr (Capped at $3.03)",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Coronation Shopping Plaza",
+  "weekday_before": "Daily(7.00am-7.00am): $2.30 per hr",
+  "weekday_after": "Daily(7.00am-7.00am): $2.30 per hr",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Devan Nair Institute for Employment and Employability",
+  "weekday_before": "6.00am-12 midnight: $0.45 per 15min. No parking after 12 midnight.",
+  "weekday_after": "6.00am-12 midnight: $0.45 per 15min. No parking after 12 midnight.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Dunearn Village (Formerly Link@896)",
+  "weekday_before": "Daily: $3.05 for the 1st hour; $1.53 sub. 30min or part thereof",
+  "weekday_after": "Daily: $3.05 for the 1st hour; $1.53 sub. 30min or part thereof",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Fusionopolis 1 & 2",
+  "weekday_before": "7.00am-6.00pm: $1.00 per 30 min",
+  "weekday_after": "6.00pm-7.00am : $1.00 per entry",
+  "saturday": "7.00am-7.00am: $1.00 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Genting Hotel Jurong",
+  "weekday_before": "Mon-Thus: $3.00 per hr or part thereof.",
+  "weekday_after": "Mon-Thus: $3.00 per hr or part thereof.",
+  "saturday": "Fri-Sun: $4.00 per hr.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Gillman Barracks",
+  "weekday_before": "8.30am-5.00pm: $0.60 per 30min for 1st 2hr, $3.00 per hr from the 3rd hr",
+  "weekday_after": "5.00pm-8.30am: Free parking",
+  "saturday": "Free Parking",
+  "sunday_ph": "Free Parking"
+ },
+ {
+  "name": "hillV2",
+  "weekday_before": "Daily: $1.53 for 1st hr; $0.92 for every sub. 30min",
+  "weekday_after": "Daily: $1.53 for 1st hr; $0.92 for every sub. 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Holland Road Shopping Centre",
+  "weekday_before": "Mon-Thurs: 12.00am-9.00pm: $2.40 per 30min or part thereof",
+  "weekday_after": "Mon-Thurs: 9.00pm-12.00am: $5.00 per entry",
+  "saturday": "Friday/Saturday & eve of PH: 12.00am-9.00pm: $2.40 per 30min or part thereof; 9.00pm-12.00am: $6.00 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "IKEA (Alexandra)",
+  "weekday_before": "Daily: $0.06 per minute",
+  "weekday_after": "Daily: $0.06 per minute",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "IMM Building",
+  "weekday_before": "First hour - Free (first entry only, excluding public holidays) Second hour of first entry or first hour of subsequent same-day entry - $1.20 sub. 15min - $0.40",
+  "weekday_after": "First hour - Free (first entry only, excluding public holidays) Second hour of first entry or first hour of subsequent same-day entry - $1.20 sub. 15min - $0.41",
+  "saturday": "First 1 hour - $1.20 (first entry only) sub. 15min - $0.40",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Jem",
+  "weekday_before": "Mon-Thurs: 12.00am - 5.59pm: $2.18 1st hr; $0.55 sub. 15min",
+  "weekday_after": "Mon-Thurs: After 6.00pm: $3.27 per entry",
+  "saturday": "Friday/Saturday & eve of PH: 12.00am-5.59pm: $2.73 1st hr; $0.65 sub. 15min; After 6.00pm: $3.27 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Junction 10",
+  "weekday_before": "$1.31 for 1st hr or part thereof; $0.38 for every sub. 15min or part thereof",
+  "weekday_after": "$1.31 for 1st hr or part thereof; $0.38 for every sub. 15min or part thereof",
+  "saturday": "$2.83 for 1st 2 hr or part thereof; $0.38 for every sub. 15min or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Jurong Point Shopping Centre",
+  "weekday_before": "7.00am -10.00pm: 1st hr at $1.50; $0.75 every sub. 30min or part thereof",
+  "weekday_after": "10.00pm-7.00am: 1st hr at $1.20; $0.60 every sub. 30min or part thereof",
+  "saturday": "7.00am -10.00pm: 1st hr at $1.80; $0.90 every sub. 30min or part thereof; 10.00pm-7.00am: 1st hr at $1.20; $0.60 every sub. 30min or part thereof",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Liner @ Tuas",
+  "weekday_before": "7.00am -6.00pm: $0.76 per 30min.",
+  "weekday_after": "6.01pm-12.00am: $3.27 per parking session. 12.00am- 6.59am-:$5.45 per parking session.",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Lot One",
+  "weekday_before": "12.00am-5.59pm: $1.35 for 1st hr; $0.45 for sub. 15min",
+  "weekday_after": "6.00pm-11.59pm: $2.65 per entry;",
+  "saturday": "3.00am-5.59pm: $2.65 for 1st 2-hrs; $0.45 for sub. 15 min; 6.00pm-11.59pm: $2.65 per entry; 12.00am-2.59am: Sub. 15min or part thereof at $0.45",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Mediapolis",
+  "weekday_before": "Mon-Thurs: $0.60 per 30min",
+  "weekday_after": "Mon-Thurs: $0.60 per 30min",
+  "saturday": "Fri/Sat/Sun/PH: 10.00pm-6.00pm: $0.60 per 30min; 6.00pm-10.00pm: $4.00 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "NUH",
+  "weekday_before": "Daily: $0.0375 per min",
+  "weekday_after": "Daily: $0.0375 per min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "One Holland Village",
+  "weekday_before": "7.00am-6.00pm: $2.18 for the first 1 hour; $0.55 for sub. 15min",
+  "weekday_after": "6.00pm-7.00am: $3.27 per entry",
+  "saturday": "6.00pm-7.00am: $3.43 per entry; 7.00am-6.00pm: $2.29 for the first 1 hour; $0.57 for sub. 15min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Perennial Business City (formerly known as Big Box)",
+  "weekday_before": "12.01am-5.00pm: $1.63 1st hr; $0.82 sub. 30min",
+  "weekday_after": "5.01pm-12.00am: $2.73 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Queensway Shopping Centre",
+  "weekday_before": "8.00am-5.59pm: $1.92 for 1st hr; $1.71 for sub. 30min",
+  "weekday_after": "After 6.00pm: $3.53 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Raffles Holland V Mall",
+  "weekday_before": "9.00am-6.00pm: $$2.40 per 30min.",
+  "weekday_after": "Sun to Wed - 6.00pm-9.00am: $2.90 per entry. Thurs to Sat and Public Holiday - $4.50 per entry.",
+  "saturday": "9.00am-6.00pm: $$2.40 per 30min. Sun to Wed - 6.00pm-9.00am: $2.90 per entry. Thurs to Sat and Public Holiday - $4.50 per entry.",
+  "sunday_ph": "9.00am-6.00pm: $$2.40 per 30min. Sun to Wed - 6.00pm-9.00am: $2.90 per entry. Thurs to Sat and Public Holiday - $4.50 per entry."
+ },
+ {
+  "name": "Rochester Mall",
+  "weekday_before": "Daily: $1.70 for 1st hr; $0.85 sub. 30min",
+  "weekday_after": "Daily: $1.70 for 1st hr; $0.85 sub. 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Serene Centre",
+  "weekday_before": "Daily: $2.51 for 1st hr, $2.18 for next sub. 30min or part thereof",
+  "weekday_after": "Daily: $2.51 for 1st hr, $2.18 for next sub. 30min or part thereof",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "SJ Campus",
+  "weekday_before": "7.00am-8pm: $2.51 for 1st hr, $2.18 for sub. 30min",
+  "weekday_after": "8pm-7.00am: $3 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-7.00am: $3 per entry"
+ },
+ {
+  "name": "The Clementi Mall",
+  "weekday_before": "Daily: $1.70 for 1st hr or part thereof; $0.85 for sub. ½ hr",
+  "weekday_after": "Daily: $1.70 for 1st hr or part thereof; $0.85 for sub. ½ hr",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "The Metropolis",
+  "weekday_before": "12.00am-6.00am: $2.50 for 1st hr, $1.25 for next sub. 30min or part thereof.",
+  "weekday_after": "6.00pm-12.00am: $2.50 per entry",
+  "saturday": "6.00am-6.00pm: $1.00 per hr or part thereof; 6.00pm-12.00am: $2.50 per entry; 12.00am-6.00am: $2.50 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "The Mill",
+  "weekday_before": "7.00am-12.00am: $1.53 for 1st hr; $0.76 sub. 30min",
+  "weekday_after": "12.00am-7.00am next day: $3.82 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "The Star Vista",
+  "weekday_before": "12.00am-5.59am: $2 per entry; 6.00am-11.59pm: $1.90 for 1st hr; $0.95 per sub 30min",
+  "weekday_after": "12.00am-5.59am: $2 per entry; 6.00am-11.59pm: $1.90 for 1st hr; $0.95 per sub 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "12.00am-5.59am: $2 per entry; 6.00am-11.59pm: $2.30 for 1st hr; $1.15 per sub 30min"
+ },
+ {
+  "name": "Tiong Bahru Plaza",
+  "weekday_before": "6.00am-6.00pm: For 1st hr or part thereof $1.40; $1.00 sub. 30min or part thereof",
+  "weekday_after": "6.00pm-6.00am: Per entry $3.30",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Valley Point",
+  "weekday_before": "Daily: $1.57 for 1st hr; $0.82 for sub. ½ hr",
+  "weekday_after": "Daily: $1.57 for 1st hr; $0.82 for sub. ½ hr",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "West Coast Plaza",
+  "weekday_before": "7.00am-6.00pm: $1.53 for the first 1 hour; $0.38 for sub. 15min",
+  "weekday_after": "6.00pm-12.00am: $2.29 per entry",
+  "saturday": "6.00pm-7.00am: $2.45 per entry; 7.00am-6.00pm: $1.64 for the first 1 hour; $0.41 for sub. 15min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "West Mall",
+  "weekday_before": "6.00am-4.59pm: $2.20 for 1st 2hrs or part thereof; $0.70 for sub. ½ hr or part thereof",
+  "weekday_after": "5.00pm-6.00am: $2.95 per entry",
+  "saturday": "6.00am-4.59pm: $1.40 for 1st hr or part thereof; $0.70 for sub. ½ hr or part thereof; 5.00pm-6.00am: $2.95 per entry",
+  "sunday_ph": "6.00am-6.00am next day: $2.95 per entry"
+ },
+ {
+  "name": "Westgate",
+  "weekday_before": "12.00am-6.00pm: $1.60 for 1st hr; $0.55 for sub. 15min",
+  "weekday_after": "6.00pm-11.59pm: $3.25 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Woods Square",
+  "weekday_before": "Daily: 12.00am-11.59pm: $1.31 for 1st hr; $0.65 for sub. 30min",
+  "weekday_after": "Daily: 12.00am-11.59pm: $1.31 for 1st hr; $0.65 for sub. 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Orchard Grand Court Hotel",
+  "weekday_before": "7.00am-5.59pm:$3.00 for 1st hr; $1.50 for next sub. 30min",
+  "weekday_after": "6.00pm-6.59am: $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "7.00am-7.00am the following day: $4.00 per entry"
+ },
+ {
+  "name": "Orchard Rendezvous Hotel",
+  "weekday_before": "7.00am-6.00pm: $5.00 for 1st hr; $1.50 for sub. 30min",
+  "weekday_after": "6.00pm to 7.00am the following day: $5.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Sheraton Towers Hotel",
+  "weekday_before": "7.00am-6.00pm: $4.00 for 1st hr; $2.00 for next sub. 30min",
+  "weekday_after": "After 6.00pm: $6.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "$6.00 per entry"
+ },
+ {
+  "name": "Swissotel The Stamford Hotel",
+  "weekday_before": "8.00am-6.00pm: $2.20 for 1st hr; $0.55 for sub. 15min",
+  "weekday_after": "After 6.00pm-8.00am next day: $3.00 per entry",
+  "saturday": "8.00am-8.00am next day: $2.20 for 1st 2hr, $0.40 for sub. 15min",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Village Hotel Katong",
+  "weekday_before": "8.00am-5.59pm: $1.64 for 1st hr; $0.41 for sub. 15min",
+  "weekday_after": "6.00pm-12.00am: $2.45 per entry",
+  "saturday": "8.00am-5.59pm: $1.64 for 1st hr; $0.41 for sub. 15min. 6.00pm-12.00am: $2.45 per entry.",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Bird Paradise (Formerly Jurong Bird Park)",
+  "weekday_before": "7.00am-7.00pm: $3 for 1st hour; sub. $2/hour (capped at $10/entry)",
+  "weekday_after": "7.00am-7.00pm: $3 for 1st hour; sub. $2/hour (capped at $10/entry)",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Changi Chapel and Museum",
+  "weekday_before": "Daily (6.00am-5.59pm): $1.20 per hr (or part thereof, capped at $12 per day)",
+  "weekday_after": "6.00pm onwards: $3 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Children's Museum Singapore (formerly Singapore Philatelic Museum)",
+  "weekday_before": "Nearby Parking Spaces: Peranakan Museum, Grand Park City Hall, Capitol Piazza, Peninsula Excelsior Hotel, Funan.",
+  "weekday_after": "-",
+  "saturday": "-",
+  "sunday_ph": "-"
+ },
+ {
+  "name": "Chinatown Heritage Centre",
+  "weekday_before": "Street Parking is available along Mosque Street and Temple Street. Alternatively, you can park at Chinatown Point or Hong Lim Complex, both within walking distance of the Centre.",
+  "weekday_after": "-",
+  "saturday": "-",
+  "sunday_ph": "-"
+ },
+ {
+  "name": "Haw Par Villa",
+  "weekday_before": "Parking is available at ORTO (27 West Coast Highway, Singapore 117 867)",
+  "weekday_after": "Parking is available at ORTO (27 West Coast Highway, Singapore 117 867)",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Hay Dairies Goat Farm",
+  "weekday_before": "Daily free: 7.00am-7.00pm (Sungei Buloh Wetland Reserve Neo Tiew Crescent Entrance carpark)",
+  "weekday_after": "Daily free: 7.00am-7.00pm (Sungei Buloh Wetland Reserve Neo Tiew Crescent Entrance carpark)",
+  "saturday": "Same as weekdays",
+  "sunday_ph": ""
+ },
+ {
+  "name": "Labrador Secret Tunnel (Labrador Park)",
+  "weekday_before": "Free daily",
+  "weekday_after": "-",
+  "saturday": "-",
+  "sunday_ph": "-"
+ },
+ {
+  "name": "Memories at Old Ford Factory",
+  "weekday_before": "Free daily",
+  "weekday_after": "-",
+  "saturday": "-",
+  "sunday_ph": "-"
+ },
+ {
+  "name": "National Museum of Singapore",
+  "weekday_before": "Car park is currently closed - Alternate parking facilities are available at Singapore Management University, the Lazada One building, Fort Canning Park and YMCA.",
+  "weekday_after": "-",
+  "saturday": "-",
+  "sunday_ph": "-"
+ },
+ {
+  "name": "Reflections at Bukit Chandu",
+  "weekday_before": "Free parking is available at the nearest public carpark at Carpark ‘C’ of Kent Ridge Park",
+  "weekday_after": "-",
+  "saturday": "-",
+  "sunday_ph": "-"
+ },
+ {
+  "name": "Sentosa (Beach and Imbiah car park)",
+  "weekday_before": "7.00am - 5.00pm: $2.20 per hr based on per-15 minute charging or part thereof. *Fees will be capped at $10.00 per day",
+  "weekday_after": "5.01pm - 6.59am $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Sentosa (Tanjong & Palawan car park)",
+  "weekday_before": "7.00am - 5.00pm: $2.20 per hr based on per-15 minute charging or part thereof. *Fees will be capped at $10.00 per day",
+  "weekday_after": "5.01pm - 6.59am $4.00 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Singapore Art Museum",
+  "weekday_before": "Parking is available at: 39 Tanjong Pagar Distripark. 7:00am-04:59pm: $2 per hour or part thereof",
+  "weekday_after": "5:00pm-6:59pm: $2.50 per entry",
+  "saturday": "7:00am-12:59pm: $2 per hour or part thereof; 1:00pm-6:59am: $2.50 per entry",
+  "sunday_ph": "$2.50 per entry"
+ },
+ {
+  "name": "Singapore Botanic Gardens",
+  "weekday_before": "7.00am-10.30pm: $0.02 per min",
+  "weekday_after": "7.00pm-10.30pm: $2 maximum; No overnight parking is allowed",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Singapore City Gallery (URA Centre)",
+  "weekday_before": "6.00am-6.00pm: $1.40 per 30min; Public parking is also available at the Erskine Road Off-Street Carpark next to Maxwell Road Food Centre.",
+  "weekday_after": "6.00pm-6.00am: $0.70 per 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "6.00am-6.00am: $0.70 per 30min"
+ },
+ {
+  "name": "Singapore Flyer",
+  "weekday_before": "9.00am-10.59pm: $2.50 per hour or part thereof",
+  "weekday_after": "11pm - 8.59am: $2.50 per entry",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Singapore Mint Coin Gallery",
+  "weekday_before": "Parking is available at many shopping malls and buildings within a few min’ walk away: 9 Penang Road, Plaza Singapura, The Cathay, Singapore Shopping Centre, and Haw Par Centre.",
+  "weekday_after": "-",
+  "saturday": "-",
+  "sunday_ph": "-"
+ },
+ {
+  "name": "Singapore Science Centre/ Singapore Discovery Centre/ Snow City",
+  "weekday_before": "Daily: $0.72 per 30min",
+  "weekday_after": "Daily: $0.72 per 30min",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Singapore Turf Club (STC)",
+  "weekday_before": "9.00am-11.00pm: $3 per entry",
+  "weekday_after": "9.00am-11.00pm: $3 per entry",
+  "saturday": "9.00am-11.00pm: $6 per entry",
+  "sunday_ph": "Same as Saturday"
+ },
+ {
+  "name": "Singapore Zoo/Night Safari",
+  "weekday_before": "7.00am-7.00pm : $3 for 1st hour; sub. $2/hour (capped at $10/entry)",
+  "weekday_after": "7.00am-7.00pm : $3 for 1st hour; sub. $2/hour (capped at $10/entry)",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "Sungei Buloh Wetland Reserve",
+  "weekday_before": "Daily free: 7.00am-7.00pm",
+  "weekday_after": "Daily free: 7.00am-7.00pm",
+  "saturday": "Same as weekdays",
+  "sunday_ph": "Same as weekdays"
+ },
+ {
+  "name": "The Arts House (Park at New Parliament House)",
+  "weekday_before": "The Arts House does not offer public parking facilities, but paid parking is available at nearby carparks including: Parliament House, The Adelphi, National Gallery Singapore, The Fullerton Hotel",
+  "weekday_after": "-",
+  "saturday": "-",
+  "sunday_ph": "-"
+ },
+ {
+  "name": "The Battle Box (Park at Fort Canning)",
+  "weekday_before": "HDB / URA parking rates",
+  "weekday_after": "-",
+  "saturday": "-",
+  "sunday_ph": "-"
+ }
+]

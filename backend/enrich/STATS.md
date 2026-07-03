@@ -1,6 +1,6 @@
 # Enriched Carpark Dataset — Stats
 
-Generated: 2026-07-02 12:49:10
+Generated: 2026-07-03 11:38:38
 
 **Total carparks:** 3725
 
@@ -18,6 +18,7 @@ Generated: 2026-07-02 12:49:10
 - osm: 1895
 - ura: 775
 - lta: 205
+- onemotoring: 47
 
 ## Pipeline
 
@@ -33,6 +34,7 @@ Generated: 2026-07-02 12:49:10
 - LTA rates attached: 203 (of 357 rate rows)
 - HDB/URA standard rates applied: 2783
 - Carparks flagged with EV charging: 2133 (of 2706 EV sites)
+- OneMotoring indicative rates attached: 47
 
 ## Geocoding
 
