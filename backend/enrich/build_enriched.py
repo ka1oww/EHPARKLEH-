@@ -651,6 +651,26 @@ def main():
         voided_sg = 0
         print("  (no sg_boundary.json; skipping Singapore-boundary void)", file=sys.stderr)
 
+    # 3c3) void POIs that are not car parking. Google/OSM surface delivery and
+    # loading bays, bicycle/motorcycle parking, bus depots and drop-off points; a
+    # car driver can never use these, so they must not appear as options. Real
+    # parking "garages" and "heavy vehicle" parks contain none of these tokens, so
+    # they are deliberately NOT matched.
+    non_car_re = re.compile(
+        r"delivery waiting bay|waiting bay|loading[ /]|unloading|"
+        r"bicycle|bike park|bike rack|motorcycle parking|"
+        r"drop[- ]?off point|pick[- ]?up point|pickup/dropoff|gobike|"
+        r"bus depot|bus terminal|take bus",
+        re.I,
+    )
+    before_junk = len(merged)
+    merged = [
+        e for e in merged
+        if not non_car_re.search((e.get("name") or "") + " " + (e.get("google_name") or ""))
+    ]
+    voided_junk = before_junk - len(merged)
+    print(f"voided {voided_junk} non-car-parking POIs (delivery/bike/bus/etc.)", file=sys.stderr)
+
     voids = set(load_opt(MANUAL_VOIDS, []))
     missing = voids - {e["id"] for e in merged}
     if missing:
@@ -785,6 +805,7 @@ def main():
     lines.append(f"- Dedupe policy: gov authoritative; fold within {DEDUPE_HARD_M:.0f}m proximity, or {DEDUPE_NAME_M:.0f}m when names match")
     lines.append(f"- Voided inside military areas ({len(mil_areas)} camps/bases): {voided_military}")
     lines.append(f"- Voided outside Singapore (Johor etc.): {voided_sg}")
+    lines.append(f"- Voided non-car-parking POIs (delivery/bike/bus/etc.): {voided_junk}")
     lines.append(f"- Dropped standalone OSM carparks: {dropped_osm}")
     lines.append(f"- Voided from manual_voids.json (Google junk/condos + flagged): {voided_manual}")
     lines.append(f"- LTA rates attached: {rates_attached} (of {len(rates)} rate rows)")

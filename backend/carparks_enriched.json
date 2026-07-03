@@ -2300,58 +2300,6 @@
   "category": "HDB Estate"
  },
  {
-  "id": "A26",
-  "name": "BLK 113/114/118 ANG MO KIO AVENUE 4",
-  "address": "BLK 113/114/118 ANG MO KIO AVENUE 4",
-  "lat": 1.3727702,
-  "lon": 103.8354476,
-  "geocode_source": "hdb_official",
-  "availability_key": "A26",
-  "sources": [
-   "hdb",
-   "google"
-  ],
-  "type": "SURFACE CAR PARK",
-  "free_parking": "SUN & PH FR 7AM-10.30PM",
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking",
-  "hdb_info": {
-   "car_park_type": "SURFACE CAR PARK",
-   "short_term_parking": "WHOLE DAY",
-   "night_parking": "YES",
-   "free_parking": "SUN & PH FR 7AM-10.30PM",
-   "car_park_decks": "0",
-   "gantry_height": "4.5",
-   "car_park_basement": "N"
-  },
-  "google_name": "Motorcycle parking",
-  "ev": true,
-  "ev_cp_ids": [
-   "R101720G-001",
-   "R101720G-002",
-   "R101721R-001",
-   "R101721R-002",
-   "R121795F-001",
-   "R121796Z-001",
-   "R121797C-001"
-  ],
-  "ev_total": 7,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
-  "category": "HDB Estate"
- },
- {
   "id": "A27",
   "name": "BLK 108/109/110 ANG MO KIO STREET 11",
   "address": "BLK 108/109/110 ANG MO KIO STREET 11",
@@ -15432,43 +15380,6 @@
   "category": "HDB Estate"
  },
  {
-  "id": "BRBL",
-  "name": "BLK 665 BUFFALO ROAD LOADING/UNLOADING BAYS",
-  "address": "BLK 665 BUFFALO ROAD LOADING/UNLOADING BAYS",
-  "lat": 1.3065969,
-  "lon": 103.8507075,
-  "geocode_source": "hdb_official",
-  "availability_key": "BRBL",
-  "sources": [
-   "hdb"
-  ],
-  "type": "SURFACE CAR PARK",
-  "free_parking": "NO",
-  "rates": null,
-  "google_primary_type": null,
-  "hdb_info": {
-   "car_park_type": "SURFACE CAR PARK",
-   "short_term_parking": "NO",
-   "night_parking": "NO",
-   "free_parking": "NO",
-   "car_park_decks": "0",
-   "gantry_height": "0",
-   "car_park_basement": "N"
-  },
-  "ev": true,
-  "ev_cp_ids": [
-   "R117131Z-001",
-   "R117132C-001",
-   "R117133G-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
-  "category": "HDB Estate"
- },
- {
   "id": "BRB1",
   "name": "BLK 665 BUFFALO ROAD BASEMENT CAR PARK",
   "address": "BLK 665 BUFFALO ROAD BASEMENT CAR PARK",
@@ -16184,48 +16095,6 @@
    "STRIDES YTL PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
-  "category": "HDB Estate"
- },
- {
-  "id": "BR18",
-  "name": "BLK 111A SAINT MICHAEL BUS TERMINAL",
-  "address": "BLK 111A SAINT MICHAEL BUS TERMINAL",
-  "lat": 1.3262698,
-  "lon": 103.8557497,
-  "geocode_source": "hdb_official",
-  "availability_key": "BR18",
-  "sources": [
-   "hdb",
-   "osm"
-  ],
-  "type": "SURFACE CAR PARK",
-  "free_parking": "SUN & PH FR 7AM-10.30PM",
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": null,
-  "hdb_info": {
-   "car_park_type": "SURFACE CAR PARK",
-   "short_term_parking": "WHOLE DAY",
-   "night_parking": "YES",
-   "free_parking": "SUN & PH FR 7AM-10.30PM",
-   "car_park_decks": "0",
-   "gantry_height": "0",
-   "car_park_basement": "N"
-  },
-  "osm_info": {
-   "osm_id": "way/1467090240",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
   "category": "HDB Estate"
  },
  {
@@ -54062,68 +53931,6 @@
   "category": "HDB Estate"
  },
  {
-  "id": "MP17",
-  "name": "BLK 51 MARINE TERRACE",
-  "address": "BLK 51 MARINE TERRACE",
-  "lat": 1.3066404,
-  "lon": 103.9162677,
-  "geocode_source": "hdb_official",
-  "availability_key": "MP17",
-  "sources": [
-   "hdb",
-   "google",
-   "osm"
-  ],
-  "type": "SURFACE CAR PARK",
-  "free_parking": "SUN & PH FR 7AM-10.30PM",
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking",
-  "hdb_info": {
-   "car_park_type": "SURFACE CAR PARK",
-   "short_term_parking": "WHOLE DAY",
-   "night_parking": "YES",
-   "free_parking": "SUN & PH FR 7AM-10.30PM",
-   "car_park_decks": "0",
-   "gantry_height": "0",
-   "car_park_basement": "N"
-  },
-  "google_name": "Marine Terrace MRT Station Bicycle park",
-  "osm_info": {
-   "osm_id": "way/1294938316",
-   "access": "yes",
-   "fee": "yes",
-   "parking_type": "surface"
-  },
-  "ev": true,
-  "ev_cp_ids": [
-   "R114002E-001",
-   "R114003K-001",
-   "R114004B-001",
-   "R116066R-001",
-   "R116067D-001",
-   "R116068H-001",
-   "R116069A-001",
-   "R116071H-001",
-   "R116072A-001"
-  ],
-  "ev_total": 9,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
-  "category": "HDB Estate"
- },
- {
   "id": "MP19",
   "name": "BLK 89 MARINE PARADE CENTRAL",
   "address": "BLK 89 MARINE PARADE CENTRAL",
@@ -56917,53 +56724,6 @@
    "VOLT SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 120.0,
-  "category": "HDB Estate"
- },
- {
-  "id": "PDJ3",
-  "name": "BLK 399 YUNG SHENG ROAD",
-  "address": "BLK 399 YUNG SHENG ROAD",
-  "lat": 1.3347154,
-  "lon": 103.7204151,
-  "geocode_source": "hdb_official",
-  "availability_key": "PDJ3",
-  "sources": [
-   "hdb",
-   "google"
-  ],
-  "type": "BASEMENT CAR PARK",
-  "free_parking": "NO",
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "hdb_info": {
-   "car_park_type": "BASEMENT CAR PARK",
-   "short_term_parking": "WHOLE DAY",
-   "night_parking": "YES",
-   "free_parking": "NO",
-   "car_park_decks": "1",
-   "gantry_height": "2.1",
-   "car_park_basement": "Y"
-  },
-  "google_name": "Taman Jurong SC Loading Bay",
-  "ev": true,
-  "ev_cp_ids": [
-   "R117542G-001",
-   "R117542G-002"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 100.0,
   "category": "HDB Estate"
  },
  {
@@ -131101,50 +130861,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_L0092",
-  "name": "Little Road",
-  "address": "Little Road",
-  "lat": 1.3382328,
-  "lon": 103.8850955,
-  "geocode_source": "ura",
-  "availability_key": "L0092",
-  "sources": [
-   "ura",
-   "google"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Car Lots": 6
-   },
-   "total_lots": 6
-  },
-  "google_name": "Bartley Secondary Drop-off Point",
-  "ev": true,
-  "ev_cp_ids": [
-   "R114789F-001",
-   "R114789F-002"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 120.0,
-  "category": "Street (URA)"
- },
- {
   "id": "ura_L0096",
   "name": "Lorong 101 Changi",
   "address": "Lorong 101 Changi",
@@ -138960,41 +138676,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_S0136",
-  "name": "Service Road Off Zion Road",
-  "address": "Service Road Off Zion Road",
-  "lat": 1.2936143,
-  "lon": 103.8307963,
-  "geocode_source": "ura",
-  "availability_key": "S0136",
-  "sources": [
-   "ura",
-   "google"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking",
-  "ura_info": {
-   "lot_counts": {
-    "Car Lots": 21,
-    "Motorcycle Lots": 10
-   },
-   "total_lots": 31
-  },
-  "google_name": "Motorcycle Parking Lots",
-  "category": "Street (URA)"
- },
- {
   "id": "ura_S0139",
   "name": "Service Road Off Upper Bukit Timah Road",
   "address": "Service Road Off Upper Bukit Timah Road",
@@ -141701,48 +141382,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_T0115",
-  "name": "Telok Kurau Road",
-  "address": "Telok Kurau Road",
-  "lat": 1.3092906,
-  "lon": 103.9120613,
-  "geocode_source": "ura",
-  "availability_key": "T0115",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking",
-  "ura_info": {
-   "lot_counts": {
-    "Car Lots": 22,
-    "Motorcycle Lots": 3
-   },
-   "total_lots": 25
-  },
-  "google_name": "Motorcycle parking",
-  "osm_info": {
-   "osm_id": "way/1424633467",
-   "access": null,
-   "fee": null,
-   "parking_type": "street_side"
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_T0116",
   "name": "Teban Gardens Crescent",
   "address": "Teban Gardens Crescent",
@@ -143843,41 +143482,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_W0045",
-  "name": "Warna Road",
-  "address": "Warna Road",
-  "lat": 1.3118778,
-  "lon": 103.796694,
-  "geocode_source": "ura",
-  "availability_key": "W0045",
-  "sources": [
-   "ura",
-   "google"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking",
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 7,
-    "Car Lots": 14
-   },
-   "total_lots": 21
-  },
-  "google_name": "Public Motorcycle Parking",
-  "category": "Street (URA)"
- },
- {
   "id": "ura_W0046",
   "name": "Woodlands Industrial Park E1",
   "address": "Woodlands Industrial Park E1",
@@ -144315,51 +143919,6 @@
    "osm_id": "way/875707771",
    "access": null,
    "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_Z0001",
-  "name": "Zion Road Off Street",
-  "address": "Zion Road Off Street",
-  "lat": 1.2924047,
-  "lon": 103.8307292,
-  "geocode_source": "ura",
-  "availability_key": "Z0001",
-  "sources": [
-   "ura",
-   "google",
-   "osm",
-   "lta"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "Central, North & North East",
-   "rates": {
-    "weekday_1": {
-     "raw": "Daily: 0700-0700: $0.50 / 30 mins (Per Minute Charging)",
-     "per_half_hour": 0.5
-    },
-    "weekday_2": null,
-    "saturday": null,
-    "sunday_publicholiday": null
-   }
-  },
-  "google_primary_type": "parking",
-  "ura_info": {
-   "lot_counts": {
-    "Car Lots": 12,
-    "Motorcycle Lots": 5
-   },
-   "total_lots": 17
-  },
-  "google_name": "Z0001 Bike Parking",
-  "osm_info": {
-   "osm_id": "way/261472814",
-   "access": null,
-   "fee": "yes",
    "parking_type": "surface"
   },
   "category": "Street (URA)"
@@ -145183,25 +144742,6 @@
    "VOLT SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 30.0,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00029",
-  "name": "1 Maritime Sq Garage",
-  "address": "1 Maritime Sq Garage",
-  "lat": 1.264562,
-  "lon": 103.8201563,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "Bicycle Rack",
   "category": "Commercial/Private"
  },
  {
@@ -146291,68 +145831,6 @@
   "category": "Mall"
  },
  {
-  "id": "GOOG_00065",
-  "name": "Marina Bay Financial Centre",
-  "address": "Marina Bay Financial Centre",
-  "lat": 1.2795941,
-  "lon": 103.8544222,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google",
-   "osm",
-   "lta"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": {
-   "category": "South & CBD",
-   "rates": {
-    "weekday_1": {
-     "raw": "6am-6pm: $1.07 per 10 mins"
-    },
-    "weekday_2": {
-     "raw": "Aft 6pm: $3.21 for 1st 4hrs; $0.27 for sub. 10 mins"
-    },
-    "saturday": {
-     "raw": "$3.21 for 1st 4hrs; $0.27 for sub. 10 mins"
-    },
-    "sunday_publicholiday": {
-     "raw": "Same as Saturday",
-     "same_as": "Same as Saturday"
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "Delivery Waiting Bay near Tower 3 Level 1 Perimeter facing Central Boulevard Road",
-  "osm_info": {
-   "osm_id": "node/1316829243",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102593F-001",
-   "R102594Z-001",
-   "R102595C-001",
-   "R102596G-001",
-   "R102597R-001",
-   "R102598D-001",
-   "R102599H-001",
-   "R117152D-001",
-   "R117153H-001"
-  ],
-  "ev_total": 9,
-  "ev_operators": [
-   "NOVOWATT PTE. LTD.",
-   "VOLT SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 30.0,
-  "category": "Mall"
- },
- {
   "id": "GOOG_00066",
   "name": "Oxley Tower Carpark",
   "address": "Oxley Tower Carpark",
@@ -146492,25 +145970,6 @@
   "category": "Mall"
  },
  {
-  "id": "GOOG_00070",
-  "name": "8 Marina Boulevard Promenade",
-  "address": "8 Marina Boulevard Promenade",
-  "lat": 1.2803434999999999,
-  "lon": 103.8550904,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "Marina bay sanda bicycle rack",
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00072",
   "name": "Free Air Pump Station",
   "address": "Free Air Pump Station",
@@ -146594,34 +146053,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00074",
-  "name": "Delivery Waiting Bay Near Tower 2 facing Straits View, near Fullerton Clinic",
-  "address": "Delivery Waiting Bay Near Tower 2 facing Straits View, near Fullerton Clinic",
-  "lat": 1.279444,
-  "lon": 103.85333299999999,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking",
-  "google_place_id": null,
-  "ev": true,
-  "ev_cp_ids": [
-   "R102595C-001",
-   "R102596G-001"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "VOLT SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 22.0,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00075",
   "name": "Marina Barrage Public Carpark",
   "address": "Marina Barrage Public Carpark",
@@ -146658,34 +146089,6 @@
    "fee": "no",
    "parking_type": "surface"
   },
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00076",
-  "name": "Public Bike Parking",
-  "address": "Public Bike Parking",
-  "lat": 1.2910268,
-  "lon": 103.62500759999999,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking",
-  "google_place_id": null,
-  "ev": true,
-  "ev_cp_ids": [
-   "R121308Z-001",
-   "R121308Z-002"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "ELECTRIC PTE. LTD."
-  ],
-  "ev_max_power_kw": 50.0,
   "category": "Commercial/Private"
  },
  {
@@ -151741,24 +151144,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00244",
-  "name": "Delivery Waiting Bay at Basement carpark, beside 3B",
-  "address": "Delivery Waiting Bay at Basement carpark, beside 3B",
-  "lat": 1.3122399,
-  "lon": 103.7990732,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00245",
   "name": "Parking",
   "address": "Parking",
@@ -152857,25 +152242,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00290",
-  "name": "MWC VEHICLES PARKING",
-  "address": "MWC VEHICLES PARKING",
-  "lat": 1.3320458,
-  "lon": 103.6988119,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "MWC BICYCLE PARKING",
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00291",
   "name": "South Carpark",
   "address": "South Carpark",
@@ -153243,36 +152609,6 @@
   },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00308",
-  "name": "Ulu Pandan Bus Depot Back Gate",
-  "address": "Ulu Pandan Bus Depot Back Gate",
-  "lat": 1.3264732,
-  "lon": 103.754509,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "ev": true,
-  "ev_cp_ids": [
-   "R124962E-001",
-   "R124962E-002",
-   "R124963K-001",
-   "R124963K-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 190.0,
   "category": "Commercial/Private"
  },
  {
@@ -153645,31 +152981,6 @@
   ],
   "ev_max_power_kw": 60.0,
   "category": "Mall"
- },
- {
-  "id": "GOOG_00327",
-  "name": "3015A Ubi Rd 1 Parking take bus",
-  "address": "3015A Ubi Rd 1 Parking take bus",
-  "lat": 1.3289560000000002,
-  "lon": 103.89354379999999,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google",
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "osm_info": {
-   "osm_id": "way/931655352",
-   "access": "yes",
-   "fee": "yes",
-   "parking_type": "surface"
-  },
-  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00328",
@@ -157340,34 +156651,6 @@
   "category": "Mall"
  },
  {
-  "id": "GOOG_00487",
-  "name": "Delivery Waiting Bay at basement carpark of the mall",
-  "address": "Delivery Waiting Bay at basement carpark of the mall",
-  "lat": 1.36048,
-  "lon": 103.97019,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking",
-  "google_place_id": null,
-  "ev": true,
-  "ev_cp_ids": [
-   "R105376D-001",
-   "R105376D-002"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "CITY ENERGY GO PTE. LTD."
-  ],
-  "ev_max_power_kw": 50.0,
-  "category": "Mall"
- },
- {
   "id": "GOOG_00489",
   "name": "Jewel Carpark Lobby E",
   "address": "Jewel Carpark Lobby E",
@@ -157583,32 +156866,6 @@
   "rates": null,
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00503",
-  "name": "Chestnut Nature Park Car Park",
-  "address": "Chestnut Nature Park Car Park",
-  "lat": 1.3719462,
-  "lon": 103.77977,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google",
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "GoBike Pickup/Dropoff, Chestnut Nature Park",
-  "osm_info": {
-   "osm_id": "way/407626559",
-   "access": "yes",
-   "fee": null,
-   "parking_type": "surface"
-  },
   "category": "Commercial/Private"
  },
  {
@@ -158417,32 +157674,6 @@
   "google_place_id": null,
   "osm_info": {
    "osm_id": "way/1468445315",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00536",
-  "name": "Ang Mo Kio Avenue 9 Parking",
-  "address": "Ang Mo Kio Avenue 9 Parking",
-  "lat": 1.3819706999999999,
-  "lon": 103.84610880000001,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google",
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "Motorcycle parking",
-  "osm_info": {
-   "osm_id": "way/1468445316",
    "access": null,
    "fee": null,
    "parking_type": "surface"
@@ -159691,39 +158922,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00605",
-  "name": "Punggol Coast Mall Carpark Entrance",
-  "address": "Punggol Coast Mall Carpark Entrance",
-  "lat": 1.4154022,
-  "lon": 103.90907870000001,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "Delivery Waiting Bay beside drop-off point at Tower 82 of Punggol Digital District and near Punggol Coastal Mall",
-  "ev": true,
-  "ev_cp_ids": [
-   "R113037R-001",
-   "R113037R-002",
-   "R113038D-001",
-   "R113040R-001",
-   "R113041D-001",
-   "R113042H-001"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 100.0,
-  "category": "Mall"
- },
- {
   "id": "GOOG_00606",
   "name": "Northshore Plaza I Carpark",
   "address": "Northshore Plaza I Carpark",
@@ -159766,32 +158964,6 @@
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00608",
-  "name": "Punggol Point Park Car Park",
-  "address": "Punggol Point Park Car Park",
-  "lat": 1.4207589999999999,
-  "lon": 103.91127639999999,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google",
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "Motorcycle parking",
-  "osm_info": {
-   "osm_id": "way/374840504",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Mall"
  },
  {
   "id": "GOOG_00610",
@@ -159879,24 +159051,6 @@
   "free_parking": null,
   "rates": null,
   "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00621",
-  "name": "Delivery Waiting Bay at Ground floor level 1 outside McDonald's",
-  "address": "Delivery Waiting Bay at Ground floor level 1 outside McDonald's",
-  "lat": 1.429541,
-  "lon": 103.78137199999999,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking",
   "google_place_id": null,
   "category": "Commercial/Private"
  },
@@ -160186,25 +159340,6 @@
    "ST ENGINEERING URBAN SOLUTIONS LTD."
   ],
   "ev_max_power_kw": 120.0,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00636",
-  "name": "W15 Marsiling Park",
-  "address": "W15 Marsiling Park",
-  "lat": 1.4381681,
-  "lon": 103.7706395,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "Motorcycle Parking",
   "category": "Commercial/Private"
  },
  {
