@@ -651,25 +651,34 @@ def main():
         voided_sg = 0
         print("  (no sg_boundary.json; skipping Singapore-boundary void)", file=sys.stderr)
 
-    # 3c3) void POIs that are not car parking. Google/OSM surface delivery and
-    # loading bays, bicycle/motorcycle parking, bus depots and drop-off points; a
-    # car driver can never use these, so they must not appear as options. Real
-    # parking "garages" and "heavy vehicle" parks contain none of these tokens, so
-    # they are deliberately NOT matched.
+    # 3c3) void POIs a car driver can never use: delivery/loading bays, bicycle
+    # and motorcycle parking, bus depots, drop-off points, and heavy-vehicle /
+    # coach (tour-bus) parks. Real parking "garages" are kept (garage = a car park
+    # here, and they carry none of these tokens); a combined facility named
+    # "Car Park & Coach Park" is kept too, since cars can park there.
     non_car_re = re.compile(
         r"delivery waiting bay|waiting bay|loading[ /]|unloading|"
         r"bicycle|bike park|bike rack|motorcycle parking|"
         r"drop[- ]?off point|pick[- ]?up point|pickup/dropoff|gobike|"
-        r"bus depot|bus terminal|take bus",
+        r"bus depot|bus terminal|take bus|heavy vehicle",
         re.I,
     )
+
+    def is_non_car(e):
+        name = (e.get("name") or "") + " " + (e.get("google_name") or "")
+        low = name.lower()
+        if non_car_re.search(name):
+            return True
+        # Coach (tour-bus) parks, unless the same facility also has a car park.
+        if "coach park" in low and "car park" not in low:
+            return True
+        return False
+
     before_junk = len(merged)
-    merged = [
-        e for e in merged
-        if not non_car_re.search((e.get("name") or "") + " " + (e.get("google_name") or ""))
-    ]
+    merged = [e for e in merged if not is_non_car(e)]
     voided_junk = before_junk - len(merged)
-    print(f"voided {voided_junk} non-car-parking POIs (delivery/bike/bus/etc.)", file=sys.stderr)
+    print(f"voided {voided_junk} non-car-parking POIs (delivery/bike/bus/heavy-vehicle/coach)",
+          file=sys.stderr)
 
     voids = set(load_opt(MANUAL_VOIDS, []))
     missing = voids - {e["id"] for e in merged}

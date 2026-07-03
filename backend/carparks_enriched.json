@@ -117005,41 +117005,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_A0049",
-  "name": "Ang Mo Kio Avenue 1 Heavy Vehicle Park",
-  "address": "Ang Mo Kio Avenue 1 Heavy Vehicle Park",
-  "lat": 1.359234,
-  "lon": 103.8529243,
-  "geocode_source": "ura",
-  "availability_key": "A0049",
-  "sources": [
-   "ura",
-   "google"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 62,
-    "Motorcycle Lots": 12
-   },
-   "total_lots": 74
-  },
-  "google_name": "Ang Mo Kio Avenue 1 Heavy Vehicle Park",
-  "category": "Street (URA)"
- },
- {
   "id": "ura_A0054",
   "name": "Anchorvale Street",
   "address": "Anchorvale Street",
@@ -117168,48 +117133,6 @@
     "Car Lots": 19
    },
    "total_lots": 19
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_B0004",
-  "name": "Bulim Avenue Heavy Vehicle Park",
-  "address": "Bulim Avenue Heavy Vehicle Park",
-  "lat": 1.3567605,
-  "lon": 103.7096509,
-  "geocode_source": "ura",
-  "availability_key": "B0004",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 439,
-    "Motorcycle Lots": 88
-   },
-   "total_lots": 527
-  },
-  "google_name": "Bulim Avenue Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/938101956",
-   "access": null,
-   "fee": "yes",
-   "parking_type": null
   },
   "category": "Street (URA)"
  },
@@ -117961,48 +117884,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_B0082",
-  "name": "Braddell Road Heavy Vehicle Park",
-  "address": "Braddell Road Heavy Vehicle Park",
-  "lat": 1.3446444,
-  "lon": 103.8577078,
-  "geocode_source": "ura",
-  "availability_key": "B0082",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_garage",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 81,
-    "Motorcycle Lots": 29
-   },
-   "total_lots": 110
-  },
-  "google_name": "Braddell Road Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/117055187",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_B0084",
   "name": "Beach Road",
   "address": "Beach Road",
@@ -118041,48 +117922,6 @@
     "Car Lots": 8
    },
    "total_lots": 8
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_B0086",
-  "name": "Bukit Batok East Avenue 2 Heavy Vehicle Park",
-  "address": "Bukit Batok East Avenue 2 Heavy Vehicle Park",
-  "lat": 1.3500797,
-  "lon": 103.7615003,
-  "geocode_source": "ura",
-  "availability_key": "B0086",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 212,
-    "Motorcycle Lots": 45
-   },
-   "total_lots": 257
-  },
-  "google_name": "Bukit Batok East Avenue 2 Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/75408653",
-   "access": null,
-   "fee": null,
-   "parking_type": null
   },
   "category": "Street (URA)"
  },
@@ -118299,50 +118138,6 @@
    "osm_id": "way/244776199",
    "access": "yes",
    "fee": "yes",
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_B0099",
-  "name": "Bendemeer Road Heavy Vehicle Park",
-  "address": "Bendemeer Road Heavy Vehicle Park",
-  "lat": 1.3141128,
-  "lon": 103.8609756,
-  "geocode_source": "ura",
-  "availability_key": "B0099",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 39,
-    "Lorry Lots": 83,
-    "Car Lots": 9,
-    "Coach Lots": 33
-   },
-   "total_lots": 164
-  },
-  "google_name": "Bendemeer Road Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/465145068",
-   "access": "private",
-   "fee": null,
    "parking_type": "surface"
   },
   "category": "Street (URA)"
@@ -122411,48 +122206,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_D0029",
-  "name": "Dairy Farm Road /  Petir Road Heavy Vehcle Park",
-  "address": "Dairy Farm Road /  Petir Road Heavy Vehcle Park",
-  "lat": 1.3657098,
-  "lon": 103.7762325,
-  "geocode_source": "ura",
-  "availability_key": "D0029",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 255,
-    "Motorcycle Lots": 29
-   },
-   "total_lots": 284
-  },
-  "google_name": "Dairy Farm Road/Petir Road Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/256462371",
-   "access": null,
-   "fee": "yes",
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_E0009",
   "name": "Emerald Hill Road",
   "address": "Emerald Hill Road",
@@ -122482,41 +122235,6 @@
    },
    "total_lots": 35
   },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_E0010",
-  "name": "Eunos Road 7 / Eunos Avenue 6  Hvp",
-  "address": "Eunos Road 7 / Eunos Avenue 6  Hvp",
-  "lat": 1.3226162,
-  "lon": 103.8930571,
-  "geocode_source": "ura",
-  "availability_key": "E0010",
-  "sources": [
-   "ura",
-   "google"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 63,
-    "Lorry Lots": 145
-   },
-   "total_lots": 208
-  },
-  "google_name": "Eunos Road 7/Eunos Avenue 6 Heavy Vehicle Park",
   "category": "Street (URA)"
  },
  {
@@ -123088,48 +122806,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_F0011",
-  "name": "Foresthill Hvp",
-  "address": "Foresthill Hvp",
-  "lat": 1.3749602,
-  "lon": 103.7330227,
-  "geocode_source": "ura",
-  "availability_key": "F0011",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 158,
-    "Motorcycle Lots": 20
-   },
-   "total_lots": 178
-  },
-  "google_name": "Forest Hill Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/1035240122",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_F0013",
   "name": "Fourth Chin Bee Road",
   "address": "Fourth Chin Bee Road",
@@ -123329,47 +123005,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_F0029",
-  "name": "Fort Road / East Coast Park Heavy Vehicle Park",
-  "address": "Fort Road / East Coast Park Heavy Vehicle Park",
-  "lat": 1.2951328,
-  "lon": 103.8841075,
-  "geocode_source": "ura",
-  "availability_key": "F0029",
-  "sources": [
-   "ura",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": null,
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 28,
-    "Car Lots": 20,
-    "Lorry Lots": 85
-   },
-   "total_lots": 133
-  },
-  "osm_info": {
-   "osm_id": "way/150829217",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_F0030",
   "name": "Farleigh Avenue",
   "address": "Farleigh Avenue",
@@ -123437,48 +123072,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_F0032",
-  "name": "Fourth Chin Bee Road Heavy Vehicle Park",
-  "address": "Fourth Chin Bee Road Heavy Vehicle Park",
-  "lat": 1.333089,
-  "lon": 103.7187651,
-  "geocode_source": "ura",
-  "availability_key": "F0032",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 240,
-    "Motorcycle Lots": 42
-   },
-   "total_lots": 282
-  },
-  "google_name": "Fourth Chin Bee Road Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/733873247",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_G0002",
   "name": "Geylang Road",
   "address": "Geylang Road",
@@ -123508,48 +123101,6 @@
     "Motorcycle Lots": 62
    },
    "total_lots": 231
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_G0004",
-  "name": "Gali Batu Close Hvp",
-  "address": "Gali Batu Close Hvp",
-  "lat": 1.4045273,
-  "lon": 103.7593706,
-  "geocode_source": "ura",
-  "availability_key": "G0004",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 150,
-    "Lorry Lots": 216
-   },
-   "total_lots": 366
-  },
-  "google_name": "Gali Batu close heavy vehicle carpark",
-  "osm_info": {
-   "osm_id": "way/1306985274",
-   "access": null,
-   "fee": null,
-   "parking_type": null
   },
   "category": "Street (URA)"
  },
@@ -124797,58 +124348,6 @@
    },
    "total_lots": 7
   },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_H0064",
-  "name": "Holland Road / Peirce Road Coach Park",
-  "address": "Holland Road / Peirce Road Coach Park",
-  "lat": 1.3072251,
-  "lon": 103.809688,
-  "geocode_source": "ura",
-  "availability_key": "H0064",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 80,
-    "Motorcycle Lots": 20
-   },
-   "total_lots": 100
-  },
-  "google_name": "Peirce Road Coach Park H0064",
-  "osm_info": {
-   "osm_id": "way/1052409740",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "ev": true,
-  "ev_cp_ids": [
-   "R113401R-001",
-   "R113402D-001"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "EIGEN ENERGY PTE. LTD."
-  ],
-  "ev_max_power_kw": 22.0,
   "category": "Street (URA)"
  },
  {
@@ -126626,46 +126125,6 @@
     "Car Lots": 8
    },
    "total_lots": 8
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_J0099",
-  "name": "Jalan Bahar Heavy Vehicle Park",
-  "address": "Jalan Bahar Heavy Vehicle Park",
-  "lat": 1.3479515,
-  "lon": 103.7025307,
-  "geocode_source": "ura",
-  "availability_key": "J0099",
-  "sources": [
-   "ura",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": null,
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 40,
-    "Lorry Lots": 360
-   },
-   "total_lots": 400
-  },
-  "osm_info": {
-   "osm_id": "way/107936180",
-   "access": "no",
-   "fee": null,
-   "parking_type": "surface"
   },
   "category": "Street (URA)"
  },
@@ -130720,48 +130179,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_L0086",
-  "name": "Loyang Close Hvp",
-  "address": "Loyang Close Hvp",
-  "lat": 1.3693354,
-  "lon": 103.965966,
-  "geocode_source": "ura",
-  "availability_key": "L0086",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_garage",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 61,
-    "Motorcycle Lots": 46
-   },
-   "total_lots": 107
-  },
-  "google_name": "Loyang Close Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/1149028817",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_L0087",
   "name": "Loyang Crescent",
   "address": "Loyang Crescent",
@@ -132638,46 +132055,6 @@
    "osm_id": "way/54139192",
    "access": "yes",
    "fee": "yes",
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_M0079",
-  "name": "Marsiling Crescent  Heavy Vehicle Park",
-  "address": "Marsiling Crescent  Heavy Vehicle Park",
-  "lat": 1.4475027,
-  "lon": 103.7766549,
-  "geocode_source": "ura",
-  "availability_key": "M0079",
-  "sources": [
-   "ura",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": null,
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 170,
-    "Lorry Lots": 593
-   },
-   "total_lots": 763
-  },
-  "osm_info": {
-   "osm_id": "way/135852134",
-   "access": null,
-   "fee": null,
    "parking_type": "surface"
   },
   "category": "Street (URA)"
@@ -135165,38 +134542,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_P0103",
-  "name": "Pioneer Road Heavy Vehicle Park",
-  "address": "Pioneer Road Heavy Vehicle Park",
-  "lat": 1.313234,
-  "lon": 103.683561,
-  "geocode_source": "ura",
-  "availability_key": "P0103",
-  "sources": [
-   "ura"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": null,
-  "ura_info": {
-   "lot_counts": {
-    "Trailer Lots": 573
-   },
-   "total_lots": 573
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_P0106",
   "name": "Pasir Panjang Road / Clementi Road Off Street",
   "address": "Pasir Panjang Road / Clementi Road Off Street",
@@ -135371,48 +134716,6 @@
   "osm_info": {
    "osm_id": "way/201767827",
    "access": "yes",
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_P0114",
-  "name": "Pasir Laba Road Trailer Park",
-  "address": "Pasir Laba Road Trailer Park",
-  "lat": 1.3290532,
-  "lon": 103.6682753,
-  "geocode_source": "ura",
-  "availability_key": "P0114",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 65,
-    "Trailer Lots": 442
-   },
-   "total_lots": 507
-  },
-  "google_name": "Pasir Laba Heavy Vehicle Parking",
-  "osm_info": {
-   "osm_id": "way/456545977",
-   "access": null,
    "fee": null,
    "parking_type": "surface"
   },
@@ -136058,48 +135361,6 @@
     "Car Lots": 3
    },
    "total_lots": 3
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_R0040",
-  "name": "Raffles Boulevard Coach Park",
-  "address": "Raffles Boulevard Coach Park",
-  "lat": 1.2917908,
-  "lon": 103.8620474,
-  "geocode_source": "ura",
-  "availability_key": "R0040",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (Central Area)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$1.20 / 30 min (max $20/day)",
-     "subsequent_half_hour": 1.2,
-     "per_half_hour": 1.2
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 51,
-    "Motorcycle Lots": 30
-   },
-   "total_lots": 81
-  },
-  "google_name": "Raffles Boulevard Coach Park",
-  "osm_info": {
-   "osm_id": "way/429052424",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
   },
   "category": "Street (URA)"
  },
@@ -138136,49 +137397,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_S0109",
-  "name": "Sin Ming Road Heavy Vehicle Park",
-  "address": "Sin Ming Road Heavy Vehicle Park",
-  "lat": 1.3571985,
-  "lon": 103.8381228,
-  "geocode_source": "ura",
-  "availability_key": "S0109",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 82,
-    "Car Lots": 69,
-    "Motorcycle Lots": 17
-   },
-   "total_lots": 168
-  },
-  "google_name": "Sin Ming Road Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/364095738",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_S0110",
   "name": "Service Road Off Onan Road",
   "address": "Service Road Off Onan Road",
@@ -138208,48 +137426,6 @@
     "Motorcycle Lots": 10
    },
    "total_lots": 12
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_S0111",
-  "name": "Stagmont Ring Heavy Vehicle Park",
-  "address": "Stagmont Ring Heavy Vehicle Park",
-  "lat": 1.3926969,
-  "lon": 103.7536345,
-  "geocode_source": "ura",
-  "availability_key": "S0111",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 37,
-    "Lorry Lots": 188
-   },
-   "total_lots": 225
-  },
-  "google_name": "Stagmont Ring Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "relation/11083751",
-   "access": "private",
-   "fee": null,
-   "parking_type": "surface"
   },
   "category": "Street (URA)"
  },
@@ -138938,46 +138114,6 @@
    "access": null,
    "fee": null,
    "parking_type": null
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_S0151",
-  "name": "Sembawang Drive Heavy Vehicle Park",
-  "address": "Sembawang Drive Heavy Vehicle Park",
-  "lat": 1.4609809,
-  "lon": 103.8149631,
-  "geocode_source": "ura",
-  "availability_key": "S0151",
-  "sources": [
-   "ura",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": null,
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 49,
-    "Lorry Lots": 127
-   },
-   "total_lots": 176
-  },
-  "osm_info": {
-   "osm_id": "way/234156247",
-   "access": "yes",
-   "fee": null,
-   "parking_type": "surface"
   },
   "category": "Street (URA)"
  },
@@ -141242,48 +140378,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_T0109",
-  "name": "Telok Blangah Drive Heavy Vehicle Park",
-  "address": "Telok Blangah Drive Heavy Vehicle Park",
-  "lat": 1.2740635,
-  "lon": 103.805177,
-  "geocode_source": "ura",
-  "availability_key": "T0109",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 55,
-    "Motorcycle Lots": 18
-   },
-   "total_lots": 73
-  },
-  "google_name": "Heavy Vehicle Carpark",
-  "osm_info": {
-   "osm_id": "way/499248516",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_T0111",
   "name": "Tuas Link 2",
   "address": "Tuas Link 2",
@@ -141617,41 +140711,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_T0131",
-  "name": "Tampines Avenue 9 / Avenue 10 Heavy Vehicle Park",
-  "address": "Tampines Avenue 9 / Avenue 10 Heavy Vehicle Park",
-  "lat": 1.3622352,
-  "lon": 103.9323034,
-  "geocode_source": "ura",
-  "availability_key": "T0131",
-  "sources": [
-   "ura",
-   "google"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Motorcycle Lots": 131,
-    "Lorry Lots": 528
-   },
-   "total_lots": 659
-  },
-  "google_name": "\u6de1\u6ee8\u5c3c\u505c\u8f66\u573a",
-  "category": "Street (URA)"
- },
- {
   "id": "ura_T0140",
   "name": "Tanjong Katong Road Off Street",
   "address": "Tanjong Katong Road Off Street",
@@ -141909,40 +140968,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_T0148",
-  "name": "Tuas South Avenue 1 Trailer Park",
-  "address": "Tuas South Avenue 1 Trailer Park",
-  "lat": 1.3208723,
-  "lon": 103.630315,
-  "geocode_source": "ura",
-  "availability_key": "T0148",
-  "sources": [
-   "ura",
-   "google"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Trailer Lots": 321
-   },
-   "total_lots": 321
-  },
-  "google_name": "URA Heavy Vehicle Park",
-  "category": "Street (URA)"
- },
- {
   "id": "ura_T0149",
   "name": "Tampines Industrial Avenue 1",
   "address": "Tampines Industrial Avenue 1",
@@ -142003,83 +141028,6 @@
     "Trailer Lots": 24
    },
    "total_lots": 24
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_T0151",
-  "name": "Tampines Road H V Park",
-  "address": "Tampines Road H V Park",
-  "lat": 1.3637617,
-  "lon": 103.9034487,
-  "geocode_source": "ura",
-  "availability_key": "T0151",
-  "sources": [
-   "ura",
-   "google"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 338,
-    "Motorcycle Lots": 105
-   },
-   "total_lots": 443
-  },
-  "google_name": "Tampines Road Heavy Vehicle Park",
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_T0153",
-  "name": "Tampines North Drive 3 Hvp",
-  "address": "Tampines North Drive 3 Hvp",
-  "lat": 1.3725826,
-  "lon": 103.9362627,
-  "geocode_source": "ura",
-  "availability_key": "T0153",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 367,
-    "Motorcycle Lots": 45
-   },
-   "total_lots": 412
-  },
-  "google_name": "Tampines North Drive 3 Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/688083240",
-   "access": null,
-   "fee": null,
-   "parking_type": null
   },
   "category": "Street (URA)"
  },
@@ -143799,49 +142747,6 @@
   "category": "Street (URA)"
  },
  {
-  "id": "ura_Y0017",
-  "name": "Yishun Avenue 7 Heavy Vehicle Park",
-  "address": "Yishun Avenue 7 Heavy Vehicle Park",
-  "lat": 1.4443689,
-  "lon": 103.8407287,
-  "geocode_source": "ura",
-  "availability_key": "Y0017",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 661,
-    "Motorcycle Lots": 120,
-    "Trailer Lots": 25
-   },
-   "total_lots": 806
-  },
-  "google_name": "Yishun Avenue 7 Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/252391662",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
   "id": "ura_Y0019",
   "name": "Yan Kit Road / Cantonment Road Off Street",
   "address": "Yan Kit Road / Cantonment Road Off Street",
@@ -143875,48 +142780,6 @@
   },
   "osm_info": {
    "osm_id": "way/739513988",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_Y0020",
-  "name": "Yio Chu Kang Road Hvp",
-  "address": "Yio Chu Kang Road Hvp",
-  "lat": 1.3910257,
-  "lon": 103.8629719,
-  "geocode_source": "ura",
-  "availability_key": "Y0020",
-  "sources": [
-   "ura",
-   "google",
-   "osm"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": "parking_lot",
-  "ura_info": {
-   "lot_counts": {
-    "Lorry Lots": 433,
-    "Motorcycle Lots": 138
-   },
-   "total_lots": 571
-  },
-  "google_name": "Yio Chu Kang Road Heavy Vehicle Park",
-  "osm_info": {
-   "osm_id": "way/875707771",
    "access": null,
    "fee": null,
    "parking_type": "surface"
@@ -145250,32 +144113,6 @@
    "access": "yes",
    "fee": "no",
    "parking_type": "surface"
-  },
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00047",
-  "name": "Mount Faber Carpark C",
-  "address": "Mount Faber Carpark C",
-  "lat": 1.2730845,
-  "lon": 103.81715030000001,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google",
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "Mount Faber Coach Park",
-  "osm_info": {
-   "osm_id": "way/54139160",
-   "access": null,
-   "fee": null,
-   "parking_type": "street_side"
   },
   "category": "Commercial/Private"
  },
