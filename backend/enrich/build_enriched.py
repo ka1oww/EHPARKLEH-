@@ -755,7 +755,12 @@ def main():
     rates_attached = 0
     standard_attached = 0
     for e in merged:
-        r = match_rate(e.get("name") or e.get("address"), rate_idx)
+        src = set(e.get("sources", []))
+        # HDB carparks follow the HDB standard schedule, never the LTA off-street
+        # rate dataset. Matching them by name mis-stamps CBD rates onto heartland
+        # town-centre blocks (e.g. "... CENTRAL" -> a "South & CBD" $2.20/hr row),
+        # so skip the dataset match for anything HDB-sourced.
+        r = None if "hdb" in src else match_rate(e.get("name") or e.get("address"), rate_idx)
         if r:
             e["rates"] = {"category": r.get("category"), "rates": r.get("rates")}
             if "lta" not in e["sources"]:
@@ -764,7 +769,6 @@ def main():
         else:
             # No exact dataset rate: apply the published HDB/URA standard schedule
             # to gov carparks that actually offer short-term parking.
-            src = set(e.get("sources", []))
             st = (e.get("hdb_info") or {}).get("short_term_parking")
             offers = ("hdb" in src and (not st or str(st).upper() != "NO")) or ("ura" in src)
             if offers:
@@ -783,6 +787,35 @@ def main():
     manual_attached = attach_manual_rates(merged, manual_rows)
     print(f"attached hand-curated indicative rates to {manual_attached} carparks "
           f"(of {len(manual_rows)} curated rows)", file=sys.stderr)
+
+    # 8) void business POIs + private/restricted lots. Google surfaces valet firms,
+    # petrol stations, workshops, recycling depots, private condos, members' clubs
+    # and staff-only lots as "Commercial/Private" carparks; the public can't park a
+    # car at any of them. Only touch google/osm-only records with NO rate: anything
+    # carrying an hdb/ura/lta/onemotoring source (or a real rate) is a genuine bay
+    # with a bad Google alias, so it is kept.
+    restricted_re = re.compile(
+        r"valet|chauffeur|petrol|fuel station|加油|charging station|ev charging|"
+        r"workshop|customs|recycling|warehouse|technolog|board point|"
+        r"condominium|\bmansions?\b|country club|golf club|members? club|"
+        r"guest parking|staff car ?park|private car ?park|dormitory|consulate|embassy",
+        re.I,
+    )
+
+    def is_non_public(e):
+        if e.get("category") != "Commercial/Private":
+            return False
+        if set(e.get("sources", [])) - {"google", "osm"}:
+            return False
+        if e.get("rates"):
+            return False
+        name = (e.get("name") or "") + " " + (e.get("google_name") or "")
+        return bool(restricted_re.search(name))
+
+    before_np = len(merged)
+    merged = [e for e in merged if not is_non_public(e)]
+    voided_nonpublic = before_np - len(merged)
+    print(f"voided {voided_nonpublic} business/private/restricted google-only POIs", file=sys.stderr)
 
     with open(OUT, "w") as f:
         json.dump(merged, f, indent=1)
@@ -815,6 +848,7 @@ def main():
     lines.append(f"- Voided inside military areas ({len(mil_areas)} camps/bases): {voided_military}")
     lines.append(f"- Voided outside Singapore (Johor etc.): {voided_sg}")
     lines.append(f"- Voided non-car-parking POIs (delivery/bike/bus/etc.): {voided_junk}")
+    lines.append(f"- Voided business/private/restricted POIs: {voided_nonpublic}")
     lines.append(f"- Dropped standalone OSM carparks: {dropped_osm}")
     lines.append(f"- Voided from manual_voids.json (Google junk/condos + flagged): {voided_manual}")
     lines.append(f"- LTA rates attached: {rates_attached} (of {len(rates)} rate rows)")

@@ -6383,28 +6383,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -6733,28 +6722,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -14612,27 +14590,21 @@
    "hdb",
    "google",
    "osm",
-   "lta"
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
+     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (indicative)"
     },
     "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
+     "raw": "Same as weekdays"
     },
     "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "6.00am-5.59am the next day: $3.56 per entry"
     }
    }
   },
@@ -14666,28 +14638,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -14733,28 +14694,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "BASEMENT CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -14844,28 +14794,17 @@
   "availability_key": "BM30",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -14909,28 +14848,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -19897,28 +19825,17 @@
   "availability_key": "B7B",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -20839,28 +20756,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -21557,28 +21463,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -21623,28 +21518,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -23236,28 +23120,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -23904,28 +23777,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "CK24",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -23951,28 +23813,17 @@
   "availability_key": "CK25",
   "sources": [
    "hdb",
-   "google",
-   "lta"
+   "google"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -27054,27 +26905,21 @@
   "sources": [
    "hdb",
    "google",
-   "lta"
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
+     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (indicative)"
     },
     "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
+     "raw": "Same as weekdays"
     },
     "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "6.00am-5.59am the next day: $3.56 per entry"
     }
    }
   },
@@ -27126,28 +26971,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -27190,28 +27024,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "CK9",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -27248,27 +27071,21 @@
   "availability_key": "CK9A",
   "sources": [
    "hdb",
-   "lta"
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
+     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (indicative)"
     },
     "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
+     "raw": "Same as weekdays"
     },
     "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "6.00am-5.59am the next day: $3.56 per entry"
     }
    }
   },
@@ -33149,28 +32966,17 @@
   "availability_key": "GE2",
   "sources": [
    "hdb",
-   "google",
-   "lta"
+   "google"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -37257,28 +37063,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -37608,28 +37403,17 @@
   "availability_key": "HG53",
   "sources": [
    "hdb",
-   "google",
-   "lta"
+   "google"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -37775,28 +37559,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "HG56",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -38146,28 +37919,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -38212,28 +37974,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -41732,28 +41483,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -42254,28 +41994,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -42891,28 +42620,17 @@
   "availability_key": "JM3",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -43068,28 +42786,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -43696,27 +43403,21 @@
   "availability_key": "JSR2",
   "sources": [
    "hdb",
-   "lta"
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
+     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (indicative)"
     },
     "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
+     "raw": "Same as weekdays"
     },
     "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "6.00am-5.59am the next day: $3.56 per entry"
     }
    }
   },
@@ -43756,27 +43457,21 @@
   "availability_key": "JS1L",
   "sources": [
    "hdb",
-   "lta"
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
+     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (indicative)"
     },
     "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
+     "raw": "Same as weekdays"
     },
     "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "6.00am-5.59am the next day: $3.56 per entry"
     }
    }
   },
@@ -48452,28 +48147,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -48521,28 +48205,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -53941,28 +53614,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -57714,28 +57376,17 @@
   "availability_key": "PL14",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -57940,28 +57591,17 @@
   "availability_key": "PL18",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -58003,28 +57643,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "PL19",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "BASEMENT CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -58117,28 +57746,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -58186,28 +57804,17 @@
   "availability_key": "PL22",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -58395,28 +58002,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -58683,28 +58279,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -58907,28 +58492,17 @@
   "availability_key": "PL35",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -59499,28 +59073,17 @@
   "availability_key": "PL46",
   "sources": [
    "hdb",
-   "google",
-   "lta"
+   "google"
   ],
   "type": "COVERED CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -65107,28 +64670,17 @@
   "availability_key": "PR3",
   "sources": [
    "hdb",
-   "google",
-   "lta"
+   "google"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -66045,27 +65597,21 @@
   "availability_key": "P35L",
   "sources": [
    "hdb",
-   "lta"
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
+     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (indicative)"
     },
     "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
+     "raw": "Same as weekdays"
     },
     "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "6.00am-5.59am the next day: $3.56 per entry"
     }
    }
   },
@@ -73014,28 +72560,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "SE19",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -73124,28 +72659,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -73178,28 +72702,17 @@
   "availability_key": "SE21",
   "sources": [
    "hdb",
-   "google",
-   "lta"
+   "google"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -73226,28 +72739,17 @@
   "availability_key": "SE22",
   "sources": [
    "hdb",
-   "google",
-   "lta"
+   "google"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -73285,28 +72787,17 @@
   "availability_key": "SE23",
   "sources": [
    "hdb",
-   "google",
-   "lta"
+   "google"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -73404,28 +72895,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -73468,28 +72948,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "SE26",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -73527,28 +72996,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -73593,28 +73051,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -74657,28 +74104,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -80073,28 +79509,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "SK72",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "BASEMENT CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -80131,28 +79556,17 @@
   "availability_key": "SK73",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -84360,28 +83774,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -87862,28 +87265,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -90741,28 +90133,17 @@
   "availability_key": "TM36",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -90805,28 +90186,17 @@
   "availability_key": "TM37",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -91195,28 +90565,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -91260,28 +90619,17 @@
   "availability_key": "TM47",
   "sources": [
    "hdb",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -92870,28 +92218,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -95140,28 +94477,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -98307,27 +97633,21 @@
   "availability_key": "T47L",
   "sources": [
    "hdb",
-   "lta"
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
+     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (indicative)"
     },
     "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
+     "raw": "Same as weekdays"
     },
     "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "6.00am-5.59am the next day: $3.56 per entry"
     }
    }
   },
@@ -98597,28 +97917,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "T54",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -98656,27 +97965,21 @@
   "sources": [
    "hdb",
    "google",
-   "lta"
+   "onemotoring"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
+     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (indicative)"
     },
     "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
+     "raw": "Same as weekdays"
     },
     "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "6.00am-5.59am the next day: $3.56 per entry"
     }
    }
   },
@@ -101618,28 +100921,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -101730,28 +101022,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -101798,28 +101079,17 @@
   "availability_key": "U41",
   "sources": [
    "hdb",
-   "google",
-   "lta"
+   "google"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -101845,28 +101115,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "U41A",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -113302,28 +112561,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "Y41",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -113361,28 +112609,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -113429,28 +112666,17 @@
   "geocode_source": "hdb_official",
   "availability_key": "Y43",
   "sources": [
-   "hdb",
-   "lta"
+   "hdb"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -114283,28 +113509,17 @@
   "sources": [
    "hdb",
    "google",
-   "osm",
-   "lta"
+   "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -114348,28 +113563,17 @@
   "availability_key": "Y56",
   "sources": [
    "hdb",
-   "google",
-   "lta"
+   "google"
   ],
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "South & CBD",
+   "category": "HDB/URA standard (non-Central)",
    "rates": {
     "weekday_1": {
-     "raw": "6am-5pm: $2.20 for 1st hr; $1.10 for sub. \u00bd hr or part thereof",
-     "first_hour": 2.2,
-     "subsequent_half_hour": 1.1
-    },
-    "weekday_2": {
-     "raw": "Aft 5pm: $3.50 per entry"
-    },
-    "saturday": {
-     "raw": "Same as wkdays",
-     "same_as": "Same as wkdays"
-    },
-    "sunday_publicholiday": {
-     "raw": "$3.50 per entry"
+     "raw": "$0.60 / 30 min (max $12/day)",
+     "subsequent_half_hour": 0.6,
+     "per_half_hour": 0.6
     }
    }
   },
@@ -142942,31 +142146,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00004",
-  "name": "SGC Guest Parking",
-  "address": "SGC Guest Parking",
-  "lat": 1.2469028,
-  "lon": 103.8284944,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google",
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "osm_info": {
-   "osm_id": "way/163029120",
-   "access": null,
-   "fee": null,
-   "parking_type": "surface"
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00005",
   "name": "Sentosa free couch park",
   "address": "Sentosa free couch park",
@@ -145257,24 +144436,6 @@
    "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 22.0,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00090",
-  "name": "Alexis Condominium Car Park",
-  "address": "Alexis Condominium Car Park",
-  "lat": 1.291316,
-  "lon": 103.8075135,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
   "category": "Commercial/Private"
  },
  {
@@ -148278,25 +147439,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00182",
-  "name": "FRIN Car Valet Services",
-  "address": "FRIN Car Valet Services",
-  "lat": 1.3025607,
-  "lon": 103.8637763,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking",
-  "google_place_id": null,
-  "google_name": "6001 Beach Rd Garage",
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00183",
   "name": "200 Stadium Blvd Parking",
   "address": "200 Stadium Blvd Parking",
@@ -148655,24 +147797,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00195",
-  "name": "Cartoon agagone recycling",
-  "address": "Cartoon agagone recycling",
-  "lat": 1.3069709,
-  "lon": 103.6272276,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00196",
   "name": "LHN Parking - Liner @ Tuas",
   "address": "LHN Parking - Liner @ Tuas",
@@ -148999,24 +148123,6 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00208",
-  "name": "My Chauffeur Valet Dempsey Drive Home Valet Service",
-  "address": "My Chauffeur Valet Dempsey Drive Home Valet Service",
-  "lat": 1.305834,
-  "lon": 103.810209,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "chauffeur_service",
-  "google_place_id": null,
   "category": "Commercial/Private"
  },
  {
@@ -150978,24 +150084,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00281",
-  "name": "National Service Resort Country Club Carpark Entrance",
-  "address": "National Service Resort Country Club Carpark Entrance",
-  "lat": 1.3169784,
-  "lon": 103.9756491,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00282",
   "name": "Visitor Carpark",
   "address": "Visitor Carpark",
@@ -151646,24 +150734,6 @@
   "address": "TP16",
   "lat": 1.3332267,
   "lon": 103.8492708,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00319",
-  "name": "Balestier Warehouse",
-  "address": "Balestier Warehouse",
-  "lat": 1.3265101,
-  "lon": 103.85214239999999,
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
@@ -152715,63 +151785,11 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00364",
-  "name": "Techelm Technologies Pte Ltd",
-  "address": "Techelm Technologies Pte Ltd",
-  "lat": 1.3368729,
-  "lon": 103.75407969999999,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "electrician",
-  "google_place_id": null,
-  "ev": true,
-  "ev_cp_ids": [
-   "R101872F-001",
-   "R101872F-002",
-   "R101873Z-001",
-   "R101873Z-002",
-   "R110502A-001",
-   "R110503E-001",
-   "R114413B-001"
-  ],
-  "ev_total": 7,
-  "ev_operators": [
-   "EVONE CHARGING PTE. LTD.",
-   "KED ENERGY PTE. LTD."
-  ],
-  "ev_max_power_kw": 190.0,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00365",
   "name": "RotoAccess (S) Pte Ltd",
   "address": "RotoAccess (S) Pte Ltd",
   "lat": 1.3386673999999998,
   "lon": 103.7592296,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00366",
-  "name": "\u52a0\u6cb9\u7ad9\u26fd\ufe0f",
-  "address": "\u52a0\u6cb9\u7ad9\u26fd\ufe0f",
-  "lat": 1.338524,
-  "lon": 103.757082,
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
@@ -153194,24 +152212,6 @@
   "free_parking": null,
   "rates": null,
   "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00384",
-  "name": "J & H Customs",
-  "address": "J & H Customs",
-  "lat": 1.3410794,
-  "lon": 103.9111262,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "store",
   "google_place_id": null,
   "category": "Commercial/Private"
  },
@@ -154366,24 +153366,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00435",
-  "name": "HDT EV charging stations for Electric car",
-  "address": "HDT EV charging stations for Electric car",
-  "lat": 1.3502216999999999,
-  "lon": 103.8411117,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00436",
   "name": "Junction 8 car park",
   "address": "Junction 8 car park",
@@ -154474,24 +153456,6 @@
   "address": "HDB Carpark Exit - OPEN NOW",
   "lat": 1.3538630999999999,
   "lon": 103.86558169999999,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00440",
-  "name": "Bishan Depot Staff Carpark",
-  "address": "Bishan Depot Staff Carpark",
-  "lat": 1.3539341999999999,
-  "lon": 103.8553014,
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
@@ -155348,31 +154312,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00480",
-  "name": "JS Valet Services",
-  "address": "JS Valet Services",
-  "lat": 1.3663045,
-  "lon": 103.8727785,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google",
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking",
-  "google_place_id": null,
-  "osm_info": {
-   "osm_id": "node/11041180204",
-   "access": null,
-   "fee": null,
-   "parking_type": "underground"
-  },
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00481",
   "name": "Car Park",
   "address": "Car Park",
@@ -155396,24 +154335,6 @@
   "address": "HG36",
   "lat": 1.3657921,
   "lon": 103.8884884,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
-  "id": "GOOG_00483",
-  "name": "\u52a0\u6cb9",
-  "address": "\u52a0\u6cb9",
-  "lat": 1.3599436999999999,
-  "lon": 103.89867699999999,
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
@@ -156668,24 +155589,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00544",
-  "name": "Valor Valet",
-  "address": "Valor Valet",
-  "lat": 1.3866676,
-  "lon": 103.87023660000001,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00546",
   "name": "LHN Parking - Blk 20 Amk Techlink Ang Mo Kio Ind Pk 2A",
   "address": "LHN Parking - Blk 20 Amk Techlink Ang Mo Kio Ind Pk 2A",
@@ -157353,24 +156256,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00579",
-  "name": "Hong Heng Mansions",
-  "address": "Hong Heng Mansions",
-  "lat": 1.4029418999999999,
-  "lon": 103.81762379999999,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00581",
   "name": "Lower Seletar Reservoir Carpark",
   "address": "Lower Seletar Reservoir Carpark",
@@ -157874,24 +156759,6 @@
   "category": "Commercial/Private"
  },
  {
-  "id": "GOOG_00620",
-  "name": "Kranji Lodge 1 Private Car Park",
-  "address": "Kranji Lodge 1 Private Car Park",
-  "lat": 1.4330882999999999,
-  "lon": 103.7614955,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "category": "Commercial/Private"
- },
- {
   "id": "GOOG_00622",
   "name": "Y7",
   "address": "Y7",
@@ -158315,32 +157182,6 @@
   "google_place_id": null,
   "google_name": "Car Park Entrance Civic Centre",
   "category": "Mall"
- },
- {
-  "id": "GOOG_00642",
-  "name": "RP Staff Carpark",
-  "address": "RP Staff Carpark",
-  "lat": 1.4440241999999999,
-  "lon": 103.7867977,
-  "geocode_source": "google",
-  "availability_key": null,
-  "sources": [
-   "google",
-   "osm"
-  ],
-  "type": null,
-  "free_parking": null,
-  "rates": null,
-  "google_primary_type": "parking_lot",
-  "google_place_id": null,
-  "google_name": "Republic Poly Multistorey Carpark",
-  "osm_info": {
-   "osm_id": "way/178582375",
-   "access": null,
-   "fee": null,
-   "parking_type": null
-  },
-  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00643",
