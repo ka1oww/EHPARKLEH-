@@ -39,6 +39,7 @@ GOV_RATES = os.path.join(HERE, "gov_rates.json")
 MILITARY = os.path.join(HERE, "military_areas.json")
 MANUAL_VOIDS = os.path.join(HERE, "manual_voids.json")
 CENTRAL_AREA = os.path.join(HERE, "central_area.json")
+SG_BOUNDARY = os.path.join(HERE, "sg_boundary.json")
 EV = os.path.join(HERE, "ev_points.json")
 ONEMOTORING = os.path.join(HERE, "onemotoring_rates.json")
 
@@ -583,6 +584,34 @@ def main():
     dropped_osm = before_osm - len(merged)
     print(f"dropped {dropped_osm} standalone OSM carparks", file=sys.stderr)
 
+    # 3c2) void carparks outside Singapore. Google/OSM pull in many Johor,
+    # Malaysia carparks near the Causeway and Second Link (Legoland, Danga Bay,
+    # CIQ parking). Point-in-polygon against the URA planning areas removes them
+    # without hardcoding ids. Guard: only void when the boundary is present, so a
+    # missing file can never empty the dataset.
+    sg_rings = load_opt(SG_BOUNDARY, [])
+    if sg_rings:
+        sg_boxes = []
+        for ring in sg_rings:
+            lats = [p[0] for p in ring]
+            lons = [p[1] for p in ring]
+            sg_boxes.append((min(lats), max(lats), min(lons), max(lons), ring))
+
+        def in_singapore(lat, lon):
+            for mnlat, mxlat, mnlon, mxlon, ring in sg_boxes:
+                if mnlat <= lat <= mxlat and mnlon <= lon <= mxlon and point_in_ring(lat, lon, ring):
+                    return True
+            return False
+
+        before_sg = len(merged)
+        merged = [e for e in merged if in_singapore(e["lat"], e["lon"])]
+        voided_sg = before_sg - len(merged)
+        print(f"voided {voided_sg} carparks outside Singapore "
+              f"({len(sg_boxes)} planning-area rings)", file=sys.stderr)
+    else:
+        voided_sg = 0
+        print("  (no sg_boundary.json; skipping Singapore-boundary void)", file=sys.stderr)
+
     voids = set(load_opt(MANUAL_VOIDS, []))
     missing = voids - {e["id"] for e in merged}
     if missing:
@@ -710,6 +739,7 @@ def main():
     lines.append(f"- Dedupe merges (Google/OSM folded into existing): {merges}")
     lines.append(f"- Dedupe policy: gov authoritative; fold within {DEDUPE_HARD_M:.0f}m proximity, or {DEDUPE_NAME_M:.0f}m when names match")
     lines.append(f"- Voided inside military areas ({len(mil_areas)} camps/bases): {voided_military}")
+    lines.append(f"- Voided outside Singapore (Johor etc.): {voided_sg}")
     lines.append(f"- Dropped standalone OSM carparks: {dropped_osm}")
     lines.append(f"- Voided from manual_voids.json (Google junk/condos + flagged): {voided_manual}")
     lines.append(f"- LTA rates attached: {rates_attached} (of {len(rates)} rate rows)")
