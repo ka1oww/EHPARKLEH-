@@ -390,6 +390,22 @@ MALL_KW = ["mall", "plaza", "centre", "center", "junction", "city", "point",
 PRIVATE_KW = ["tower", "building", "office", "hotel", "residenc", "condo",
               "apartment", "club", "hospital", "medical", "industrial", "park "]
 
+# Real malls that carry no mall keyword (or are mis-sourced), so keyword bucketing
+# alone dumps them into the wrong category. Checked first in classify().
+MALL_WHITELIST = re.compile(
+    r"313@somerset|\bnex\b|compass one|white sands|great world|katong v|"
+    r"\bkap\b|jcube|one holland village|kallang wave",
+    re.I,
+)
+# Facilities that DO carry a mall keyword ("hub"/"centre"/"point") but are not
+# malls, so the keyword rule mislabels them. Forced to Commercial/Private.
+NON_MALL = re.compile(
+    r"hospital|sports hub|sports complex|sports centre|stadium|arts centre|"
+    r"cultural centre|community (?:club|centre|hub)|\bsgx\b|prison|"
+    r"polytechnic|\bpoly\b|\bdepot\b|institute|university|college",
+    re.I,
+)
+
 
 def classify(cp):
     sources = cp.get("sources", [])
@@ -400,12 +416,23 @@ def classify(cp):
              + " " + (cp.get("google_name") or "")).lower()
     gtype = (cp.get("google_primary_type") or "").lower()
 
+    # Known malls win first (overrides source + keyword rules; fixes NEX tagged
+    # HDB and Compass One / 313@Somerset tagged Private).
+    if MALL_WHITELIST.search(names):
+        return "Mall"
+    # HDB blocks named as such but google/osm-only (mis-binned to Private).
+    if re.search(r"\bblk\b|\bhdb\b", names) and "ura" not in sources:
+        return "HDB Estate"
     if "ura" in sources:
         return "Street (URA)"
     # Registered HDB carparks are authoritative: classify by source BEFORE name,
     # so an HDB block whose address contains "... Centre" is not mislabelled Mall.
     if "hdb" in sources:
         return "HDB Estate"
+    # Facilities carrying a mall keyword but that aren't malls (hospitals, sports
+    # hubs, SGX, polytechnics).
+    if NON_MALL.search(names):
+        return "Commercial/Private"
     if any(k in names for k in MALL_KW):
         return "Mall"
     if any(k in names for k in PRIVATE_KW):
@@ -750,6 +777,29 @@ def main():
                 "per_half_hour": per,
             }},
         }
+
+    # 3d) name hygiene: strip zero-width chars + listing spam ("OPEN NOW"), and
+    # backfill a generic/empty name from the Google alias where we have a better
+    # one. Code-only names ("Q96") are left alone: they are real gov carparks.
+    _ZW = {ord(c): None for c in "​‌‍﻿"}
+    _GENERIC = {"", "parking", "car park", "carpark", "unnamed", "unnamed carpark",
+                "open air car park", "multi-storey carpark", "multistorey carpark"}
+
+    def _clean(s):
+        if not s:
+            return s
+        s = s.translate(_ZW)
+        s = re.sub(r"\s*[-–]?\s*open now\b\.?", "", s, flags=re.I)
+        return re.sub(r"\s+", " ", s).strip()
+
+    for e in merged:
+        for k in ("name", "address", "google_name"):
+            if e.get(k):
+                e[k] = _clean(e[k])
+        nm = (e.get("name") or "").strip().lower()
+        gn = (e.get("google_name") or "").strip()
+        if nm in _GENERIC and gn and gn.lower() not in _GENERIC:
+            e["name"] = gn
 
     # 4) attach rates + 5) classify
     rates_attached = 0

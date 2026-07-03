@@ -30594,8 +30594,8 @@
  },
  {
   "id": "C9",
-  "name": "BLK 340/342/343/346-348 CLEMENTI AVENUE  5",
-  "address": "BLK 340/342/343/346-348 CLEMENTI AVENUE  5",
+  "name": "BLK 340/342/343/346-348 CLEMENTI AVENUE 5",
+  "address": "BLK 340/342/343/346-348 CLEMENTI AVENUE 5",
   "lat": 1.3176492,
   "lon": 103.7703123,
   "geocode_source": "hdb_official",
@@ -37548,7 +37548,7 @@
    "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 120.0,
-  "category": "Mall"
+  "category": "HDB Estate"
  },
  {
   "id": "HG56",
@@ -59719,8 +59719,8 @@
  },
  {
   "id": "PL58",
-  "name": "663  PUNGGOL DRIVE",
-  "address": "663  PUNGGOL DRIVE",
+  "name": "663 PUNGGOL DRIVE",
+  "address": "663 PUNGGOL DRIVE",
   "lat": 1.3999148,
   "lon": 103.9167907,
   "geocode_source": "hdb_official",
@@ -72549,7 +72549,7 @@
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
-  "category": "HDB Estate"
+  "category": "Mall"
  },
  {
   "id": "SE19",
@@ -118174,8 +118174,8 @@
  },
  {
   "id": "ura_BL062",
-  "name": "Backlane Bet Temple Street /  Smith Street",
-  "address": "Backlane Bet Temple Street /  Smith Street",
+  "name": "Backlane Bet Temple Street / Smith Street",
+  "address": "Backlane Bet Temple Street / Smith Street",
   "lat": 1.2822051,
   "lon": 103.8448862,
   "geocode_source": "ura",
@@ -118206,8 +118206,8 @@
  },
  {
   "id": "ura_BL067",
-  "name": "Backlane Bet Ann  Siang Road / Erskine Road",
-  "address": "Backlane Bet Ann  Siang Road / Erskine Road",
+  "name": "Backlane Bet Ann Siang Road / Erskine Road",
+  "address": "Backlane Bet Ann Siang Road / Erskine Road",
   "lat": 1.2812324,
   "lon": 103.8453556,
   "geocode_source": "ura",
@@ -118415,8 +118415,8 @@
  },
  {
   "id": "ura_BL111",
-  "name": "Backlane Bet  Mayo Street / Dunlop Street",
-  "address": "Backlane Bet  Mayo Street / Dunlop Street",
+  "name": "Backlane Bet Mayo Street / Dunlop Street",
+  "address": "Backlane Bet Mayo Street / Dunlop Street",
   "lat": 1.3041266,
   "lon": 103.8541048,
   "geocode_source": "ura",
@@ -128333,8 +128333,8 @@
  },
  {
   "id": "ura_L0039",
-  "name": "Lorong 27a  Geylang",
-  "address": "Lorong 27a  Geylang",
+  "name": "Lorong 27a Geylang",
+  "address": "Lorong 27a Geylang",
   "lat": 1.3144794,
   "lon": 103.8847402,
   "geocode_source": "ura",
@@ -130277,8 +130277,8 @@
  },
  {
   "id": "ura_M0003",
-  "name": "Marne  Road",
-  "address": "Marne  Road",
+  "name": "Marne Road",
+  "address": "Marne Road",
   "lat": 1.3127927,
   "lon": 103.8570654,
   "geocode_source": "ura",
@@ -136690,8 +136690,8 @@
  },
  {
   "id": "ura_S0115",
-  "name": "Service Road  Off Hamilton Road / Cavan Road",
-  "address": "Service Road  Off Hamilton Road / Cavan Road",
+  "name": "Service Road Off Hamilton Road / Cavan Road",
+  "address": "Service Road Off Hamilton Road / Cavan Road",
   "lat": 1.3115797,
   "lon": 103.8616864,
   "geocode_source": "ura",
@@ -137281,8 +137281,8 @@
  },
  {
   "id": "ura_S0150",
-  "name": "Sultan Gate / Aliwal Street Off Street  (eps)",
-  "address": "Sultan Gate / Aliwal Street Off Street  (eps)",
+  "name": "Sultan Gate / Aliwal Street Off Street (eps)",
+  "address": "Sultan Gate / Aliwal Street Off Street (eps)",
   "lat": 1.30244,
   "lon": 103.8606564,
   "geocode_source": "ura",
@@ -138211,8 +138211,8 @@
  },
  {
   "id": "ura_T0020",
-  "name": "Tanjong  Penjuru",
-  "address": "Tanjong  Penjuru",
+  "name": "Tanjong Penjuru",
+  "address": "Tanjong Penjuru",
   "lat": 1.3041654,
   "lon": 103.7367672,
   "geocode_source": "ura",
@@ -140094,8 +140094,8 @@
  },
  {
   "id": "ura_T0146",
-  "name": "Tai Seng  Street",
-  "address": "Tai Seng  Street",
+  "name": "Tai Seng Street",
+  "address": "Tai Seng Street",
   "lat": 1.3364602,
   "lon": 103.8893282,
   "geocode_source": "ura",
@@ -140269,8 +140269,8 @@
  },
  {
   "id": "ura_U0003",
-  "name": "Ubi Avenue  3",
-  "address": "Ubi Avenue  3",
+  "name": "Ubi Avenue 3",
+  "address": "Ubi Avenue 3",
   "lat": 1.3319455,
   "lon": 103.8943954,
   "geocode_source": "ura",
@@ -142246,7 +142246,7 @@
   },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00008",
@@ -142479,7 +142479,7 @@
  },
  {
   "id": "GOOG_00019",
-  "name": "Car park",
+  "name": "LHN Parking - 34 Boon Leat Terrace",
   "address": "Car park",
   "lat": 1.2698254,
   "lon": 103.7995845,
@@ -142488,21 +142488,26 @@
   "sources": [
    "google",
    "osm",
-   "onemotoring"
+   "lta"
   ],
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA OneMotoring guide)",
+   "category": "South & CBD",
    "rates": {
     "weekday_1": {
-     "raw": "$2.20 1st hr, $1.10/30min (indicative)"
+     "raw": "$0.80 / 30 mins",
+     "per_half_hour": 0.8
+    },
+    "weekday_2": {
+     "raw": "1800-2200: $2.50 per entry. 2200-0700: $4.00 per entry"
     },
     "saturday": {
-     "raw": "7.00am-1.00pm: $1.60 for 1st hr; $0.80 for sub. 30min; 1.00pm-7.00am: $2.50 per entry"
+     "raw": "0700-1300: $0.80 /30 mins. 1300-0700: $4.00 /entry",
+     "per_half_hour": 0.8
     },
     "sunday_publicholiday": {
-     "raw": "7.00am-7.00am: $2.50 per entry"
+     "raw": "$4.00 / entry"
     }
    }
   },
@@ -143519,7 +143524,7 @@
    "fee": null,
    "parking_type": null
   },
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00056",
@@ -143752,7 +143757,7 @@
    "KED ENERGY PTE. LTD."
   ],
   "ev_max_power_kw": 60.0,
-  "category": "Mall"
+  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00063",
@@ -143844,7 +143849,7 @@
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 22.0,
-  "category": "Mall"
+  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00066",
@@ -146417,7 +146422,7 @@
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 480.0,
-  "category": "Commercial/Private"
+  "category": "Mall"
  },
  {
   "id": "GOOG_00155",
@@ -146587,7 +146592,7 @@
    "VOLT SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 50.0,
-  "category": "Commercial/Private"
+  "category": "Mall"
  },
  {
   "id": "GOOG_00160",
@@ -146981,7 +146986,7 @@
   },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Mall"
+  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00169",
@@ -147487,7 +147492,7 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "category": "Mall"
+  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00185",
@@ -147615,7 +147620,7 @@
   },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "Mall"
  },
  {
   "id": "GOOG_00189",
@@ -148079,7 +148084,7 @@
    "TESLA MOTORS SINGAPORE PRIVATE LIMITED"
   ],
   "ev_max_power_kw": 250.0,
-  "category": "Commercial/Private"
+  "category": "Mall"
  },
  {
   "id": "GOOG_00206",
@@ -148679,7 +148684,7 @@
    "fee": null,
    "parking_type": "underground"
   },
-  "category": "Mall"
+  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00223",
@@ -148704,7 +148709,7 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "category": "Mall"
+  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00224",
@@ -149964,7 +149969,7 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "category": "Mall"
+  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00276",
@@ -150574,8 +150579,8 @@
  },
  {
   "id": "GOOG_00312",
-  "name": "LHN Parking - 1 Clementi Loop\u200b",
-  "address": "LHN Parking - 1 Clementi Loop\u200b",
+  "name": "LHN Parking - 1 Clementi Loop",
+  "address": "LHN Parking - 1 Clementi Loop",
   "lat": 1.3250952,
   "lon": 103.76349549999999,
   "geocode_source": "google",
@@ -151139,7 +151144,7 @@
   "rates": null,
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00337",
@@ -151757,7 +151762,7 @@
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "google_name": "23 Jurong East Street 31 Parking",
-  "category": "Mall"
+  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00363",
@@ -151868,7 +151873,7 @@
    "FASTPARKNCHARGE PTE. LTD."
   ],
   "ev_max_power_kw": 50.0,
-  "category": "Commercial/Private"
+  "category": "Mall"
  },
  {
   "id": "GOOG_00369",
@@ -153194,7 +153199,7 @@
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00429",
@@ -153237,7 +153242,7 @@
    "fee": null,
    "parking_type": "multi-storey"
   },
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00431",
@@ -153452,8 +153457,8 @@
  },
  {
   "id": "GOOG_00439",
-  "name": "HDB Carpark Exit - OPEN NOW",
-  "address": "HDB Carpark Exit - OPEN NOW",
+  "name": "HDB Carpark Exit",
+  "address": "HDB Carpark Exit",
   "lat": 1.3538630999999999,
   "lon": 103.86558169999999,
   "geocode_source": "google",
@@ -153466,7 +153471,7 @@
   "rates": null,
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00441",
@@ -153509,7 +153514,7 @@
   "rates": null,
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "Mall"
  },
  {
   "id": "GOOG_00443",
@@ -153747,7 +153752,7 @@
   "rates": null,
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00454",
@@ -153908,7 +153913,7 @@
    "fee": null,
    "parking_type": "multi-storey"
   },
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00462",
@@ -154624,7 +154629,7 @@
   "rates": null,
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00504",
@@ -154692,7 +154697,7 @@
   "rates": null,
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Mall"
+  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00507",
@@ -154971,7 +154976,7 @@
   "rates": null,
   "google_primary_type": "parking",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00518",
@@ -155112,7 +155117,7 @@
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 100.0,
-  "category": "Commercial/Private"
+  "category": "Mall"
  },
  {
   "id": "GOOG_00524",
@@ -155586,7 +155591,7 @@
   "rates": null,
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00546",
@@ -155617,7 +155622,7 @@
    "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 22.0,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00547",
@@ -156140,7 +156145,7 @@
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 100.0,
-  "category": "Commercial/Private"
+  "category": "Mall"
  },
  {
   "id": "GOOG_00573",
@@ -156667,7 +156672,7 @@
    "fee": null,
    "parking_type": "underground"
   },
-  "category": "Mall"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00607",
@@ -156842,7 +156847,7 @@
   "rates": null,
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Mall"
+  "category": "Commercial/Private"
  },
  {
   "id": "GOOG_00626",
@@ -157080,7 +157085,7 @@
   "rates": null,
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00639",
@@ -157385,7 +157390,7 @@
   "rates": null,
   "google_primary_type": "parking_garage",
   "google_place_id": null,
-  "category": "Commercial/Private"
+  "category": "HDB Estate"
  },
  {
   "id": "GOOG_00654",

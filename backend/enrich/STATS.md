@@ -1,15 +1,15 @@
 # Enriched Carpark Dataset — Stats
 
-Generated: 2026-07-03 17:33:05
+Generated: 2026-07-03 17:45:37
 
 **Total carparks:** 3566
 
 ## By category
 
-- HDB Estate: 2260
+- HDB Estate: 2275
 - Street (URA): 742
-- Commercial/Private: 479
-- Mall: 85
+- Commercial/Private: 467
+- Mall: 82
 
 ## By source (carparks tagged with each source)
 
@@ -17,8 +17,8 @@ Generated: 2026-07-03 17:33:05
 - google: 2054
 - osm: 1829
 - ura: 742
-- lta: 124
-- onemotoring: 55
+- lta: 125
+- onemotoring: 54
 - manual: 8
 
 ## Pipeline
@@ -35,10 +35,10 @@ Generated: 2026-07-03 17:33:05
 - Voided business/private/restricted POIs: 18
 - Dropped standalone OSM carparks: 977
 - Voided from manual_voids.json (Google junk/condos + flagged): 8
-- LTA rates attached: 122 (of 357 rate rows)
+- LTA rates attached: 123 (of 357 rate rows)
 - HDB/URA standard rates applied: 2815
 - Carparks flagged with EV charging: 2121 (of 2706 EV sites)
-- OneMotoring indicative rates attached: 55
+- OneMotoring indicative rates attached: 54
 - Hand-curated indicative rates attached: 8
 
 ## Geocoding
