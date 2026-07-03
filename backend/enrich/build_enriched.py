@@ -300,9 +300,9 @@ def _om_summary(s):
 
 def _om_rates_blob(row):
     wk = _om_summary(row.get("weekday_before")) or _om_summary(row.get("weekday_after"))
-    raw = f"{wk} (LTA guide)" if wk else "See LTA guide"
+    raw = f"{wk} (indicative)" if wk else "Indicative rate (LTA guide)"
     return {
-        "category": "Indicative (LTA guide)",
+        "category": "Indicative (LTA OneMotoring guide)",
         "rates": {
             "weekday_1": {"raw": raw},
             "saturday": {"raw": row.get("saturday") or None},

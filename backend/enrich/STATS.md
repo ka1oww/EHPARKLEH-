@@ -1,6 +1,6 @@
 # Enriched Carpark Dataset — Stats
 
-Generated: 2026-07-03 11:38:38
+Generated: 2026-07-03 16:29:13
 
 **Total carparks:** 3725
 

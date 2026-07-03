@@ -35892,10 +35892,10 @@
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.30 1st hr, $0.70/30min (LTA guide)"
+     "raw": "$1.30 1st hr, $0.70/30min (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -37864,10 +37864,10 @@
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.35 1st hr, $0.95/30min (LTA guide)"
+     "raw": "$1.35 1st hr, $0.95/30min (indicative)"
     },
     "saturday": {
      "raw": "6am-6pm: $1.50 for 1st hr; $1.15 sub.30min or part thereof; 6pm-6am: $2.25 per entry"
@@ -46636,10 +46636,10 @@
   "type": "SURFACE CAR PARK",
   "free_parking": "NO",
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.80 1st hr, $1.50/30min (LTA guide)"
+     "raw": "$2.80 1st hr, $1.50/30min (indicative)"
     },
     "saturday": {
      "raw": "7.00am-1.00pm: $2.80 for 1st hr; $1.50 for sub. 30 min. 1.00pm-7.00am the following day: $3.05 per entry."
@@ -144496,10 +144496,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -144559,10 +144559,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -144592,10 +144592,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -144630,10 +144630,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -144688,10 +144688,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -144776,10 +144776,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -144808,10 +144808,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (LTA guide)"
+     "raw": "$2.20 per hr based on per-15 minute charging or part there\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -144892,10 +144892,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.20 1st hr, $1.10/30min (LTA guide)"
+     "raw": "$2.20 1st hr, $1.10/30min (indicative)"
     },
     "saturday": {
      "raw": "7.00am-1.00pm: $1.60 for 1st hr; $0.80 for sub. 30min; 1.00pm-7.00am: $2.50 per entry"
@@ -145420,10 +145420,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.80 for 1st hr or part thereof; $0.80 for sub. 1 per 2 h\u2026 (LTA guide)"
+     "raw": "$1.80 for 1st hr or part thereof; $0.80 for sub. 1 per 2 h\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -146169,10 +146169,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.45 per 30 min block (LTA guide)"
+     "raw": "$2.45 per 30 min block (indicative)"
     },
     "saturday": {
      "raw": "$3.82 per entry"
@@ -146525,10 +146525,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (LTA guide)"
+     "raw": "$2.24 for 1st hr or part thereof; $1.12 for sub. \u00bd hr or p\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -146558,10 +146558,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$3.00 per 30 min (LTA guide)"
+     "raw": "$3.00 per 30 min (indicative)"
     },
     "saturday": {
      "raw": "6.00pm-5.590am (next day): $3.50 per entry."
@@ -146637,10 +146637,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$0.025 per min for the 1st 5hr, $0.05 per min for next sub\u2026 (LTA guide)"
+     "raw": "$0.025 per min for the 1st 5hr, $0.05 per min for next sub\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -146784,10 +146784,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.10 per hr (LTA guide)"
+     "raw": "$1.10 per hr (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -147485,10 +147485,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.40 per 30min. (LTA guide)"
+     "raw": "$1.40 per 30min. (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -147642,10 +147642,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.07 per 10min block or part thereof. (LTA guide)"
+     "raw": "$1.07 per 10min block or part thereof. (indicative)"
     },
     "saturday": {
      "raw": "7.00am-2.59pm: $1.07/10min block. 3.00pm-11.59am next day: $3.75 per entry"
@@ -147816,10 +147816,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$3.27 per \u00bd hr (LTA guide)"
+     "raw": "$3.27 per \u00bd hr (indicative)"
     },
     "saturday": {
      "raw": "7.00am-6.59am next day: $3.82 per entry"
@@ -148409,10 +148409,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.00 per 30min or part thereof (per min. charging) (LTA guide)"
+     "raw": "$1.00 per 30min or part thereof (per min. charging) (indicative)"
     },
     "saturday": {
      "raw": "7.00am to 7.00am: $1.00 per entry"
@@ -148641,10 +148641,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$0.60 per 30min (LTA guide)"
+     "raw": "$0.60 per 30min (indicative)"
     },
     "saturday": {
      "raw": "Fri/Sat/Sun/PH: 10.00pm-6.00pm: $0.60 per 30min; 6.00pm-10.00pm: $4.00 per entry"
@@ -149108,10 +149108,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$4.00 1st hr, $2.00/30min (LTA guide)"
+     "raw": "$4.00 1st hr, $2.00/30min (indicative)"
     },
     "saturday": {
      "raw": "3.00am-3.00am the following day: $6.00 per 1st 2hr, $2.00 per 30min."
@@ -149279,10 +149279,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.70 1st hr, $1.35/30min (LTA guide)"
+     "raw": "$2.70 1st hr, $1.35/30min (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -149565,10 +149565,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$3.20 per \u00bd hr. (LTA guide)"
+     "raw": "$3.20 per \u00bd hr. (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -149773,10 +149773,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.10 per every 30min (LTA guide)"
+     "raw": "$1.10 per every 30min (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -150009,10 +150009,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$3.21 for 1st hr; $1.605 for sub. 30min. (LTA guide)"
+     "raw": "$3.21 for 1st hr; $1.605 for sub. 30min. (indicative)"
     },
     "saturday": {
      "raw": "7.00am-12.00pm: $3.20 for 1st hr; $1.50 for sub. 30min. 12.00pm-7.00am: $4.28 per entry."
@@ -150447,10 +150447,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$0.76 per 30min. (LTA guide)"
+     "raw": "$0.76 per 30min. (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -150497,10 +150497,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.70 for 1st hr or part thereof; $0.85 for sub. \u00bd hr (LTA guide)"
+     "raw": "$1.70 for 1st hr or part thereof; $0.85 for sub. \u00bd hr (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -150638,10 +150638,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.70 1st hr, $0.85/30min (LTA guide)"
+     "raw": "$1.70 1st hr, $0.85/30min (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -150671,10 +150671,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.18 for the first 1 hour; $0.55 for sub. 15min (LTA guide)"
+     "raw": "$2.18 for the first 1 hour; $0.55 for sub. 15min (indicative)"
     },
     "saturday": {
      "raw": "6.00pm-7.00am: $3.43 per entry; 7.00am-6.00pm: $2.29 for the first 1 hour; $0.57 for sub. 15min"
@@ -151418,10 +151418,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$0.50 1st hr, $0.20/15min (LTA guide)"
+     "raw": "$0.50 1st hr, $0.20/15min (indicative)"
     },
     "saturday": {
      "raw": "6.01am-10.00am: $0.60 for 1st hr; $0.40 for sub. 15min; 10.01am-9.00pm: $2.00 for 1st hr; $0.50 for sub. 15min; 9.01pm-6.00am: $2.50 per entry."
@@ -151858,10 +151858,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.18 per hour (Capped at $10.68), (LTA guide)"
+     "raw": "$2.18 per hour (Capped at $10.68), (indicative)"
     },
     "saturday": {
      "raw": "7.00am-7.00am: $2.18 per hour"
@@ -152087,10 +152087,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.50 1st hr, $1.20/30min (LTA guide)"
+     "raw": "$2.50 1st hr, $1.20/30min (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -152966,10 +152966,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$0.45 per 15min. No parking after 12 midnight. (LTA guide)"
+     "raw": "$0.45 per 15min. No parking after 12 midnight. (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -153143,10 +153143,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$3.00 per hr or part thereof. (LTA guide)"
+     "raw": "$3.00 per hr or part thereof. (indicative)"
     },
     "saturday": {
      "raw": "Fri-Sun: $4.00 per hr."
@@ -155621,10 +155621,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.51 1st hr, $2.18/30min (LTA guide)"
+     "raw": "$2.51 1st hr, $2.18/30min (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -156799,10 +156799,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.53 1st hr, $0.38/15min (LTA guide)"
+     "raw": "$1.53 1st hr, $0.38/15min (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -156913,10 +156913,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.53 1st hr, $0.92/30min (LTA guide)"
+     "raw": "$1.53 1st hr, $0.92/30min (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -157350,10 +157350,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "First 90 min; S$0.65/15 min block Subsequent 30 min or par\u2026 (LTA guide)"
+     "raw": "First 90 min; S$0.65/15 min block Subsequent 30 min or par\u2026 (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -158239,10 +158239,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.35 1st hr, $0.45/15min (LTA guide)"
+     "raw": "$1.35 1st hr, $0.45/15min (indicative)"
     },
     "saturday": {
      "raw": "3.00am-5.59pm: $2.65 for 1st 2-hrs; $0.45 for sub. 15 min; 6.00pm-11.59pm: $2.65 per entry; 12.00am-2.59am: Sub. 15min or part thereof at $0.45"
@@ -158540,10 +158540,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.53 1st hr, $0.38/15min (LTA guide)"
+     "raw": "$1.53 1st hr, $0.38/15min (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -159498,10 +159498,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.50 for 1st hr; $0.80 for sub. \u00bd hr or part thereof. (LTA guide)"
+     "raw": "$1.50 for 1st hr; $0.80 for sub. \u00bd hr or part thereof. (indicative)"
     },
     "saturday": {
      "raw": "6.00am-5.59am: $1.60 for 1st hr; $0.80 for sub. \u00bd hr or part thereof."
@@ -160205,10 +160205,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.40 1st hr, $0.80/30min (LTA guide)"
+     "raw": "$1.40 1st hr, $0.80/30min (indicative)"
     },
     "saturday": {
      "raw": "6am-5.59am: $1.50 for 1st hr; $0.80 for sub. 30min."
@@ -160419,10 +160419,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": ". $0.60 per \u00bd hr. (LTA guide)"
+     "raw": ". $0.60 per \u00bd hr. (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -160451,10 +160451,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$0.60 per \u00bd hr. (LTA guide)"
+     "raw": "$0.60 per \u00bd hr. (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
@@ -160879,10 +160879,10 @@
   "type": null,
   "free_parking": null,
   "rates": {
-   "category": "Indicative (LTA guide)",
+   "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.40 1st hr, $0.80/30min (LTA guide)"
+     "raw": "$1.40 1st hr, $0.80/30min (indicative)"
     },
     "saturday": {
      "raw": "6am-5.59am: $1.50 for 1st hr; $0.80 for sub. 30min."
