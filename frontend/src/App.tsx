@@ -273,7 +273,7 @@ export default function App() {
         <div className="mx-auto w-full max-w-screen-2xl px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3">
           <div className="flex items-center justify-between gap-3 pb-3">
             <div className="flex items-center gap-2.5">
-              <img src="/brand-car.svg" className="size-8" alt="" />
+              <img src="/brand-car.svg" className="size-11" alt="" />
               <div className="leading-none">
                 <h1 className="font-display text-lg font-bold tracking-tight">
                   EhParkLeh
