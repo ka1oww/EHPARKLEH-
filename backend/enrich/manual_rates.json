@@ -1,0 +1,44 @@
+[
+  {
+    "match": "AMK Hub",
+    "weekday": "$1.40 1st hr, $0.70/30min",
+    "source": "https://amk-hub.com/parking",
+    "checked": "2026-07-02"
+  },
+  {
+    "match": "Seletar Mall",
+    "weekday": "$1.50 1st hr, $0.80/30min (Mon-Thu)",
+    "source": "https://theseletarmall.com.sg/explore-the-seletar-mall/parking/",
+    "checked": "2026-07-02"
+  },
+  {
+    "match": "Tampines Hub",
+    "weekday": "$0.02/min, then $2.40/entry after 6pm",
+    "source": "https://tampines-hub.com/parking",
+    "checked": "2026-07-02"
+  },
+  {
+    "match": "PLQ Mall",
+    "weekday": "$1.60 1st hr, $0.85/30min",
+    "source": "https://www.payalebarquarter.com/getting-here/",
+    "checked": "2026-07-02"
+  },
+  {
+    "match": "Woodleigh Mall",
+    "weekday": "$1.55 1st hr, $0.80/30min",
+    "source": "https://www.thewoodleighmall.com/visit",
+    "checked": "2026-07-02"
+  },
+  {
+    "match": "Pasir Ris Mall",
+    "weekday": "$1.36 1st hr, $0.90/30min (6am-6pm)",
+    "source": "https://pasirrismall.com.sg/explore-pasir-ris-mall/parking/",
+    "checked": "2026-07-02"
+  },
+  {
+    "match": "Punggol Coast Mall",
+    "weekday": "$1.09/30min, then $2.73/entry after 6pm",
+    "source": "https://punggolcoast.com/parking/",
+    "checked": "2026-07-02"
+  }
+]

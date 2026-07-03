@@ -152398,11 +152398,21 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "manual"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (curated)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.60 1st hr, $0.85/30min (indicative)"
+    }
+   },
+   "source": "https://www.payalebarquarter.com/getting-here/",
+   "checked": "2026-07-02"
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Mall"
@@ -154891,11 +154901,21 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "manual"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (curated)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.55 1st hr, $0.80/30min (indicative)"
+    }
+   },
+   "source": "https://www.thewoodleighmall.com/visit",
+   "checked": "2026-07-02"
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "ev": true,
@@ -156497,11 +156517,21 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "manual"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (curated)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$0.02/min, then $2.40/entry after 6pm (indicative)"
+    }
+   },
+   "source": "https://tampines-hub.com/parking",
+   "checked": "2026-07-02"
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Mall"
@@ -156515,11 +156545,21 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "manual"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (curated)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$0.02/min, then $2.40/entry after 6pm (indicative)"
+    }
+   },
+   "source": "https://tampines-hub.com/parking",
+   "checked": "2026-07-02"
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Mall"
@@ -157086,11 +157126,21 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "manual"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (curated)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.40 1st hr, $0.70/30min (indicative)"
+    }
+   },
+   "source": "https://amk-hub.com/parking",
+   "checked": "2026-07-02"
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "category": "Mall"
@@ -157971,11 +158021,21 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "manual"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (curated)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.36 1st hr, $0.90/30min (6am-6pm) (indicative)"
+    }
+   },
+   "source": "https://pasirrismall.com.sg/explore-pasir-ris-mall/parking/",
+   "checked": "2026-07-02"
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "ev": true,
@@ -159018,11 +159078,21 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "manual"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (curated)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.50 1st hr, $0.80/30min (Mon-Thu) (indicative)"
+    }
+   },
+   "source": "https://theseletarmall.com.sg/explore-the-seletar-mall/parking/",
+   "checked": "2026-07-02"
+  },
   "google_primary_type": "parking_garage",
   "google_place_id": null,
   "ev": true,
@@ -159732,11 +159802,21 @@
   "geocode_source": "google",
   "availability_key": null,
   "sources": [
-   "google"
+   "google",
+   "manual"
   ],
   "type": null,
   "free_parking": null,
-  "rates": null,
+  "rates": {
+   "category": "Indicative (curated)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.09/30min, then $2.73/entry after 6pm (indicative)"
+    }
+   },
+   "source": "https://punggolcoast.com/parking/",
+   "checked": "2026-07-02"
+  },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
   "google_name": "Tower 98 Punggol Coast Mall Car Park",

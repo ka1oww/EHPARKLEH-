@@ -42,6 +42,7 @@ CENTRAL_AREA = os.path.join(HERE, "central_area.json")
 SG_BOUNDARY = os.path.join(HERE, "sg_boundary.json")
 EV = os.path.join(HERE, "ev_points.json")
 ONEMOTORING = os.path.join(HERE, "onemotoring_rates.json")
+MANUAL_RATES = os.path.join(HERE, "manual_rates.json")
 
 # Flag a carpark as EV-capable if an LTA charging site sits within this radius.
 EV_MATCH_M = 75.0
@@ -340,6 +341,44 @@ def attach_onemotoring(records, om_rows):
             if "onemotoring" not in e.get("sources", []):
                 e.setdefault("sources", []).append("onemotoring")
             count += 1
+    return count
+
+
+def attach_manual_rates(records, rows):
+    """Hand-curated indicative rates for specific carparks (heartland malls not in
+    OneMotoring). Each row has a distinctive `match` substring plus a source URL
+    and check date, so provenance stays auditable. Matches record name / Google
+    alias / address; fills only carparks that still have no rate."""
+    # A curated needle like "Punggol Coast Mall" can also appear in the name of a
+    # non-carpark POI beside it ("Delivery Waiting Bay ... at Punggol Coast Mall").
+    # Skip anything that reads as a loading/drop-off/motorcycle point, not a carpark.
+    junk = ("delivery", "waiting bay", "drop-off", "drop off", "loading",
+            "motorcycle", "lobby")
+    count = 0
+    for row in rows:
+        needle = (row.get("match") or "").lower().strip()
+        summary = (row.get("weekday") or "").strip()
+        if not needle:
+            continue
+        for e in records:
+            if e.get("rates"):
+                continue
+            name = ((e.get("name") or "") + " " + (e.get("google_name") or "")).lower()
+            if any(j in name for j in junk):
+                continue
+            hay = " ".join([e.get("name") or "", e.get("google_name") or "",
+                            e.get("address") or ""]).lower()
+            if needle in hay:
+                e["rates"] = {
+                    "category": "Indicative (curated)",
+                    "rates": {"weekday_1": {"raw": f"{summary} (indicative)" if summary
+                                            else "Indicative rate"}},
+                    "source": row.get("source"),
+                    "checked": row.get("checked"),
+                }
+                if "manual" not in e.get("sources", []):
+                    e.setdefault("sources", []).append("manual")
+                count += 1
     return count
 
 
@@ -710,6 +749,12 @@ def main():
     print(f"attached OneMotoring indicative rates to {om_attached} carparks "
           f"(of {len(om_rows)} guide rows)", file=sys.stderr)
 
+    # 7) hand-curated indicative rates (heartland malls not in OneMotoring).
+    manual_rows = load_opt(MANUAL_RATES, [])
+    manual_attached = attach_manual_rates(merged, manual_rows)
+    print(f"attached hand-curated indicative rates to {manual_attached} carparks "
+          f"(of {len(manual_rows)} curated rows)", file=sys.stderr)
+
     with open(OUT, "w") as f:
         json.dump(merged, f, indent=1)
 
@@ -746,6 +791,7 @@ def main():
     lines.append(f"- HDB/URA standard rates applied: {standard_attached}")
     lines.append(f"- Carparks flagged with EV charging: {ev_flagged} (of {len(ev_points)} EV sites)")
     lines.append(f"- OneMotoring indicative rates attached: {om_attached}")
+    lines.append(f"- Hand-curated indicative rates attached: {manual_attached}")
     lines.append(f"\n## Geocoding\n")
     lines.append(f"- SVY21 fallback before: 467")
     lines.append(f"- OneMap re-geocode attempts: {svy21_attempted} (rest cached)")
