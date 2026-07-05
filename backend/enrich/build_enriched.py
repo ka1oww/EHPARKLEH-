@@ -47,11 +47,10 @@ CARWASH = os.path.join(HERE, "carwash_points.json")
 
 # Flag a carpark as EV-capable if an LTA charging site sits within this radius.
 EV_MATCH_M = 75.0
-# A car_wash POI counts as "at this carpark" within this radius. The signal is
-# location, not the name (the in-MSCP machines carry all sorts of Google names).
-# 75m, not tighter: the carpark coordinate is the HDB centroid but the wash-bay
-# pin sits at the deck/entrance, often 50-100m away, so 50m missed real matches.
-CARWASH_MATCH_M = 75.0
+# Max distance from a wash bay to the carpark it belongs to. The wash pin sits at
+# the deck/entrance, often 50-100m from the HDB centroid, so 100m; beyond that a
+# "car_wash" is a standalone shop, not an in-carpark bay.
+CARWASH_MATCH_M = 100.0
 # car_wash POIs that are NOT an in-carpark wash bay/machine (detailers, mobile
 # services, distributors, workshops) — excluded by name.
 CARWASH_NOT = re.compile(
@@ -778,31 +777,31 @@ def main():
     washes = [p for p in carwash_points
               if isinstance(p.get("lat"), (int, float)) and isinstance(p.get("lon"), (int, float))
               and not CARWASH_NOT.search(p.get("name") or "")]
-    cw_grid = defaultdict(list)
-    for p in washes:
-        cw_grid[grid_key(p["lat"], p["lon"])].append(p)
+    # Assign each wash to its ONE nearest HDB carpark (a bay between two blocks
+    # must not be double-counted onto both). Scoped to HDB carparks: a wash near a
+    # mall/street carpark is a detailing shop, not an in-carpark self-service bay.
+    cp_grid = defaultdict(list)
+    for i, e in enumerate(merged):
+        if "hdb" in e.get("sources", []):
+            cp_grid[grid_key(e["lat"], e["lon"])].append(i)
 
     carwash_flagged = 0
-    for e in merged:
-        # The self-service machines are an HDB-MSCP thing; a wash near a mall or
-        # street carpark is a detailing shop, not an in-carpark bay, so scope to
-        # HDB-sourced carparks to keep precision high.
-        if "hdb" not in e.get("sources", []):
-            continue
-        gk = grid_key(e["lat"], e["lon"])
-        best, best_d = None, CARWASH_MATCH_M
+    for p in washes:
+        gk = grid_key(p["lat"], p["lon"])
+        best_i, best_d = None, CARWASH_MATCH_M
         for dx in (-1, 0, 1):
             for dy in (-1, 0, 1):
-                for p in cw_grid.get((gk[0] + dx, gk[1] + dy), []):
-                    d = haversine(e["lat"], e["lon"], p["lat"], p["lon"])
+                for i in cp_grid.get((gk[0] + dx, gk[1] + dy), []):
+                    d = haversine(p["lat"], p["lon"], merged[i]["lat"], merged[i]["lon"])
                     if d <= best_d:
-                        best_d, best = d, p
-        if best:
-            e["carwash"] = True
-            e["carwash_operator"] = carwash_operator(best["name"])
+                        best_d, best_i = d, i
+        if best_i is not None and not merged[best_i].get("carwash"):
+            merged[best_i]["carwash"] = True
+            merged[best_i]["carwash_operator"] = carwash_operator(p["name"])
             carwash_flagged += 1
     print(f"flagged {carwash_flagged} carparks with a car wash "
-          f"(within {CARWASH_MATCH_M:.0f}m of {len(washes)} wash bays)", file=sys.stderr)
+          f"(each of {len(washes)} washes -> nearest HDB carpark within {CARWASH_MATCH_M:.0f}m)",
+          file=sys.stderr)
 
     # Central Area geofence (URA planning areas) for the HDB/URA standard rate:
     # $1.20/30min inside the Central Area, $0.60/30min elsewhere.
