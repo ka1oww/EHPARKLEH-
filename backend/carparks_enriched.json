@@ -5885,6 +5885,8 @@
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -8718,6 +8720,8 @@
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -10084,6 +10088,8 @@
    "fee": null,
    "parking_type": null
   },
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -14643,6 +14649,8 @@
    "fee": null,
    "parking_type": null
   },
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -20545,6 +20553,8 @@
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -27903,6 +27913,8 @@
    "MNL SOLUTIONS PTE. LTD."
   ],
   "ev_max_power_kw": 22.0,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -35447,6 +35459,8 @@
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -40939,6 +40953,8 @@
    "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -50501,6 +50517,8 @@
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -51820,6 +51838,8 @@
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -52075,6 +52095,8 @@
    "STRIDES YTL PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -53127,6 +53149,8 @@
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Beaver",
   "category": "HDB Estate"
  },
  {
@@ -53639,6 +53663,8 @@
    "fee": "yes",
    "parking_type": "surface"
   },
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -53832,6 +53858,8 @@
    "car_park_basement": "N"
   },
   "google_name": "Parkway Parade Car Park Entrance",
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -79813,6 +79841,8 @@
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -81204,6 +81234,8 @@
    "STRIDES YTL PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -83572,6 +83604,8 @@
    "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -91941,6 +91975,8 @@
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -98626,6 +98662,8 @@
    "STRIDES YTL PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {
@@ -109100,6 +109138,8 @@
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Self-service",
   "category": "HDB Estate"
  },
  {

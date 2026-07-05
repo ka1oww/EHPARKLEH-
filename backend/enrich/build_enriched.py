@@ -47,11 +47,11 @@ CARWASH = os.path.join(HERE, "carwash_points.json")
 
 # Flag a carpark as EV-capable if an LTA charging site sits within this radius.
 EV_MATCH_M = 75.0
-# A car_wash POI counts as "at this carpark" only within this radius. The signal
-# is location (a wash bay physically inside the carpark), not the name, since the
-# in-MSCP machines carry all sorts of Google names ("HDB Jet Wash Bay", block
-# addresses, "Self-Service Car Wash", Beaver, QE, ...).
-CARWASH_MATCH_M = 50.0
+# A car_wash POI counts as "at this carpark" within this radius. The signal is
+# location, not the name (the in-MSCP machines carry all sorts of Google names).
+# 75m, not tighter: the carpark coordinate is the HDB centroid but the wash-bay
+# pin sits at the deck/entrance, often 50-100m away, so 50m missed real matches.
+CARWASH_MATCH_M = 75.0
 # car_wash POIs that are NOT an in-carpark wash bay/machine (detailers, mobile
 # services, distributors, workshops) — excluded by name.
 CARWASH_NOT = re.compile(
