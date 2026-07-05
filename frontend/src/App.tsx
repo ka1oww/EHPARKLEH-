@@ -238,9 +238,24 @@ export default function App() {
   }
 
   function handleNearMe() {
+    setError('')
     getCurrentPosition()
-      .then((loc) => search(loc.lat, loc.lon))
-      .catch(() => setError('Could not get your location. Please allow location access.'))
+      .then((loc) => {
+        const inSG = loc.lat >= 1.13 && loc.lat <= 1.5 && loc.lon >= 103.55 && loc.lon <= 104.15
+        if (!inSG) {
+          setError('You seem to be outside Singapore. Search a place instead to see carparks there.')
+          return
+        }
+        return search(loc.lat, loc.lon)
+      })
+      .catch((err: unknown) => {
+        const denied = (err as { code?: number } | null)?.code === 1
+        setError(
+          denied
+            ? 'Location is blocked for this site. Allow it in your browser settings, then tap Near me again.'
+            : "Couldn't get your location. Try again, or search a place instead.",
+        )
+      })
   }
 
   function handleSelectEntry(id: string) {

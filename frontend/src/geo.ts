@@ -9,10 +9,12 @@ import { Capacitor } from '@capacitor/core'
 import { Geolocation } from '@capacitor/geolocation'
 import type { LatLon } from './types'
 
+// Forgiving defaults: accept a recent fix rather than forcing a fresh GPS lock,
+// which often times out indoors / on desktop even after permission is granted.
 const POSITION_OPTS = {
   enableHighAccuracy: true,
-  timeout: 10000,
-  maximumAge: 0,
+  timeout: 15000,
+  maximumAge: 60000,
 }
 
 /**
@@ -39,16 +41,25 @@ export async function getCurrentPosition(): Promise<LatLon> {
     return { lat: pos.coords.latitude, lon: pos.coords.longitude }
   }
 
-  // Web fallback: identical to the original navigator.geolocation path.
+  // Web fallback. Try a quick high-accuracy fix; if it fails (common indoors or
+  // on desktop, where high-accuracy GPS times out even after permission), fall
+  // back to a coarse, cache-friendly read before giving up.
   return new Promise<LatLon>((resolve, reject) => {
     if (!navigator.geolocation) {
       reject(new Error('Geolocation unsupported'))
       return
     }
+    const ok = (pos: GeolocationPosition) =>
+      resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude })
     navigator.geolocation.getCurrentPosition(
-      pos => resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude }),
-      err => reject(err),
-      POSITION_OPTS,
+      ok,
+      () =>
+        navigator.geolocation.getCurrentPosition(ok, reject, {
+          enableHighAccuracy: false,
+          timeout: 15000,
+          maximumAge: 300000,
+        }),
+      { enableHighAccuracy: true, timeout: 8000, maximumAge: 60000 },
     )
   })
 }
