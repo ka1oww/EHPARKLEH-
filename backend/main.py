@@ -156,6 +156,9 @@ class Carpark(BaseModel):
     ev_available: Optional[int] = None
     ev_operators: list[str] = []
     ev_max_power_kw: Optional[float] = None
+    # Self-service car wash (Beaver / QE) inside the carpark, from Google Places.
+    carwash: bool = False
+    carwash_operator: Optional[str] = None
 
 
 class OsmParking(BaseModel):
@@ -277,6 +280,8 @@ def load_carpark_records() -> list[dict]:
                 "ev_total": cp.get("ev_total"),
                 "ev_operators": cp.get("ev_operators", []),
                 "ev_max_power_kw": cp.get("ev_max_power_kw"),
+                "carwash": bool(cp.get("carwash")),
+                "carwash_operator": cp.get("carwash_operator"),
             }
         )
     return out
@@ -468,6 +473,7 @@ def filter_carparks(
     has_lots: bool = False,
     has_ev: bool = False,
     ev_availability: Optional[dict] = None,
+    has_carwash: bool = False,
 ) -> list[Carpark]:
     """Server-side spatial + category + flag filtering. Pure, so it is testable."""
     ev_availability = ev_availability or {}
@@ -481,6 +487,9 @@ def filter_carparks(
             continue
 
         if has_ev and not cp.get("ev"):
+            continue
+
+        if has_carwash and not cp.get("carwash"):
             continue
 
         avail = availability.get(cp["availability_key"], {})
@@ -524,6 +533,8 @@ def filter_carparks(
                     ev_available=ev_available,
                     ev_operators=cp.get("ev_operators", []),
                     ev_max_power_kw=cp.get("ev_max_power_kw"),
+                    carwash=bool(cp.get("carwash")),
+                    carwash_operator=cp.get("carwash_operator"),
                 )
             )
         except Exception:
@@ -544,6 +555,7 @@ async def get_carparks(
     free_now: bool = Query(False, description="Only carparks with free parking now"),
     has_lots: bool = Query(False, description="Only carparks with live lots available"),
     has_ev: bool = Query(False, description="Only carparks with EV charging"),
+    has_carwash: bool = Query(False, description="Only carparks with a self-service car wash"),
 ):
     if not _carpark_cache:
         # Startup loads the cache asynchronously; guard against an empty cache.
@@ -566,6 +578,7 @@ async def get_carparks(
         has_lots=has_lots,
         has_ev=has_ev,
         ev_availability=ev_availability,
+        has_carwash=has_carwash,
     )
 
 

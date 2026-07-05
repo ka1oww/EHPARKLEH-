@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowUpRight, Navigation, Wallet, Tag, Info, Star, Share2, Zap } from 'lucide-react'
+import { ArrowUpRight, Navigation, Wallet, Tag, Info, Star, Share2, Zap, Droplets } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { AvailabilityChip } from '@/components/AvailabilityChip'
@@ -248,6 +248,14 @@ export function CarparkCard({
                 total={entry.ev_total}
                 maxPowerKw={entry.ev_max_power_kw}
               />
+            )}
+            {entry.carwash && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-sky-500/15 px-2 py-0.5 text-xs font-semibold text-sky-600">
+                <Droplets className="size-3" aria-hidden="true" />
+                {entry.carwash_operator && entry.carwash_operator !== 'Self-service'
+                  ? entry.carwash_operator
+                  : 'Car wash'}
+              </span>
             )}
           </div>
 

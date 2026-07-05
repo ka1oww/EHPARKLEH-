@@ -1,4 +1,4 @@
-import { Check, Gift, Zap } from 'lucide-react'
+import { Check, Gift, Zap, Droplets } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { RadiusSelect } from '@/components/RadiusSelect'
 
@@ -21,6 +21,8 @@ interface Props {
   onHasLots: (v: boolean) => void
   hasEv: boolean
   onHasEv: (v: boolean) => void
+  hasCarwash: boolean
+  onHasCarwash: (v: boolean) => void
   radius: number
   onRadius: (r: number) => void
 }
@@ -61,6 +63,8 @@ export function FilterBar({
   onHasLots,
   hasEv,
   onHasEv,
+  hasCarwash,
+  onHasCarwash,
   radius,
   onRadius,
 }: Props) {
@@ -87,6 +91,10 @@ export function FilterBar({
       <Chip active={hasEv} onClick={() => onHasEv(!hasEv)}>
         <Zap className="size-3.5" aria-hidden="true" />
         EV charging
+      </Chip>
+      <Chip active={hasCarwash} onClick={() => onHasCarwash(!hasCarwash)}>
+        <Droplets className="size-3.5" aria-hidden="true" />
+        Car wash
       </Chip>
 
       <span className="mx-1 h-5 w-px shrink-0 bg-hairline" aria-hidden="true" />

@@ -68,6 +68,7 @@ The data layers are complementary:
 | Long tail | OSM / Overpass amenity=parking | Free spots the gov and Google miss | Free |
 | Indicative rates | LTA OneMotoring commercial-carpark guide | Rates for malls and private carparks absent from the datasets | Free |
 | Curated rates | Hand-verified from mall operators' own sites | Heartland malls not in OneMotoring, sourced + dated | Free |
+| Car wash | Google Places car_wash, in-carpark bays | HDB carparks with a self-service wash (Beaver, QE) | Free tier |
 
 Google is used only to **discover** a location (name, coordinates, place_id). The persistent store and everything served to users comes from OpenStreetMap and government data. Availability and rates always come from the government layer; Google never provides them. This is the ToS-safe pattern.
 
@@ -80,8 +81,8 @@ The build order is:
 1. `fetch_gov.py` pulls the data.gov.sg HDB information, URA parking-lot GeoJSON, and LTA carpark rates into `gov_*.json`.
 2. `crawl_google.py` runs a one-time grid crawl of Singapore for `type=parking` against the Places API. It respects a hard call cap (`GOOGLE_PLACES_MAX_CALLS`) so a bug cannot run up a bill.
 3. `crawl_osm.py` queries Overpass for `amenity=parking` across Singapore.
-4. `crawl_ev.py` pulls every EV charging point and its connectors from LTA DataMall (needs `LTA_DATAMALL_KEY`). `crawl_onemotoring.py` pulls LTA's OneMotoring rate guide for commercial carparks. `crawl_military.py`, `crawl_central_area.py`, and `crawl_sg_boundary.py` fetch the geofences used below.
-5. `build_enriched.py` merges the sources onto the existing geocoded spine, dedupes by spatial proximity and name similarity, classifies each carpark, re-geocodes SVY21 fallback rows through OneMap (cached), attaches LTA and standard rates, then OneMotoring indicative rates by name for carparks a dataset rate misses, then a small hand-curated set (`manual_rates.json`, sourced from mall operator sites and dated) for heartland malls, flags carparks with EV charging within 75 m, voids military areas, carparks outside Singapore (Johor pins near the Causeway), non-car-parking POIs (delivery and loading bays, bicycle and motorcycle parking, bus depots, drop-off points, heavy-vehicle and coach parks), business and private/restricted lots (valet firms, petrol stations, condos, staff-only), and a manual removal list, drops standalone OSM pins, and writes `carparks_enriched.json` and `STATS.md`.
+4. `crawl_ev.py` pulls every EV charging point and its connectors from LTA DataMall (needs `LTA_DATAMALL_KEY`). `crawl_onemotoring.py` pulls LTA's OneMotoring rate guide for commercial carparks. `crawl_carwash.py` pulls Google Places `car_wash` POIs. `crawl_military.py`, `crawl_central_area.py`, and `crawl_sg_boundary.py` fetch the geofences used below.
+5. `build_enriched.py` merges the sources onto the existing geocoded spine, dedupes by spatial proximity and name similarity, classifies each carpark, re-geocodes SVY21 fallback rows through OneMap (cached), attaches LTA and standard rates, then OneMotoring indicative rates by name for carparks a dataset rate misses, then a small hand-curated set (`manual_rates.json`, sourced from mall operator sites and dated) for heartland malls, flags carparks with EV charging within 75 m and HDB carparks with a self-service car wash within 50 m, voids military areas, carparks outside Singapore (Johor pins near the Causeway), non-car-parking POIs (delivery and loading bays, bicycle and motorcycle parking, bus depots, drop-off points, heavy-vehicle and coach parks), business and private/restricted lots (valet firms, petrol stations, condos, staff-only), and a manual removal list, drops standalone OSM pins, and writes `carparks_enriched.json` and `STATS.md`.
 
 Standalone OSM pins are dropped from the served dataset because they were the main source of construction-site and private junk; OSM still corroborates during dedup, and the live `/api/parking/osm` layer supplies OSM parking at search time. Live EV availability is fetched per request from LTA DataMall and cached, so the served dataset holds only the static EV flag.
 
@@ -93,6 +94,7 @@ python enrich/crawl_google.py   # needs GOOGLE_PLACES_API_KEY
 python enrich/crawl_osm.py
 python enrich/crawl_ev.py            # needs LTA_DATAMALL_KEY
 python enrich/crawl_onemotoring.py  # LTA commercial-carpark rate guide
+python enrich/crawl_carwash.py      # Google Places car_wash POIs
 python enrich/build_enriched.py
 ```
 

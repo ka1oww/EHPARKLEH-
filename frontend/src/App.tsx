@@ -83,6 +83,7 @@ export default function App() {
   const [freeNow, setFreeNow] = useState(false)
   const [hasLots, setHasLots] = useState(false)
   const [hasEv, setHasEv] = useState(false)
+  const [hasCarwash, setHasCarwash] = useState(false)
   const [carparks, setCarparks] = useState<Carpark[]>([])
   const [osmParking, setOsmParking] = useState<OsmParking[]>([])
   const [center, setCenter] = useState<LatLon | null>(null)
@@ -155,7 +156,7 @@ export default function App() {
   useEffect(() => {
     if (center) search(center.lat, center.lon)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [radius, category, freeNow, hasLots, hasEv])
+  }, [radius, category, freeNow, hasLots, hasEv, hasCarwash])
 
   async function search(lat: number, lon: number) {
     setLoading(true)
@@ -170,6 +171,7 @@ export default function App() {
       if (freeNow) params.set('free_now', 'true')
       if (hasLots) params.set('has_lots', 'true')
       if (hasEv) params.set('has_ev', 'true')
+      if (hasCarwash) params.set('has_carwash', 'true')
 
       const [hdbRes, osmRes] = await Promise.all([
         fetch(`${API_BASE}/api/carparks?${params.toString()}`),
@@ -323,6 +325,8 @@ export default function App() {
             onHasLots={setHasLots}
             hasEv={hasEv}
             onHasEv={setHasEv}
+            hasCarwash={hasCarwash}
+            onHasCarwash={setHasCarwash}
             radius={radius}
             onRadius={setRadius}
           />

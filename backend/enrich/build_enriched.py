@@ -43,9 +43,29 @@ SG_BOUNDARY = os.path.join(HERE, "sg_boundary.json")
 EV = os.path.join(HERE, "ev_points.json")
 ONEMOTORING = os.path.join(HERE, "onemotoring_rates.json")
 MANUAL_RATES = os.path.join(HERE, "manual_rates.json")
+CARWASH = os.path.join(HERE, "carwash_points.json")
 
 # Flag a carpark as EV-capable if an LTA charging site sits within this radius.
 EV_MATCH_M = 75.0
+# A car_wash POI counts as "at this carpark" only within this radius. The signal
+# is location (a wash bay physically inside the carpark), not the name, since the
+# in-MSCP machines carry all sorts of Google names ("HDB Jet Wash Bay", block
+# addresses, "Self-Service Car Wash", Beaver, QE, ...).
+CARWASH_MATCH_M = 50.0
+# car_wash POIs that are NOT an in-carpark wash bay/machine (detailers, mobile
+# services, distributors, workshops) — excluded by name.
+CARWASH_NOT = re.compile(
+    r"detail|grooming|auto\s*spa|polish|coating|ceramic|workshop|servicing|"
+    r"leather|\btint|studio|garage|pit\s*stop|mobile|distributor|\b3m\b|glitz", re.I)
+
+
+def carwash_operator(name):
+    n = (name or "").lower()
+    if "beaver" in n:
+        return "Beaver"
+    if "qe" in n or "car care" in n:
+        return "QE Car Care"
+    return "Self-service"
 
 OUT = os.path.join(BACKEND, "carparks_enriched.json")
 STATS = os.path.join(HERE, "STATS.md")
@@ -752,6 +772,38 @@ def main():
     print(f"flagged {ev_flagged} carparks with EV charging "
           f"(within {EV_MATCH_M:.0f}m of {len(ev_points)} EV sites)", file=sys.stderr)
 
+    # 3f) flag carparks with a self-service car wash (Beaver / QE) inside them,
+    # from Google Places car_wash POIs filtered to self-service names.
+    carwash_points = load_opt(CARWASH, [])
+    washes = [p for p in carwash_points
+              if isinstance(p.get("lat"), (int, float)) and isinstance(p.get("lon"), (int, float))
+              and not CARWASH_NOT.search(p.get("name") or "")]
+    cw_grid = defaultdict(list)
+    for p in washes:
+        cw_grid[grid_key(p["lat"], p["lon"])].append(p)
+
+    carwash_flagged = 0
+    for e in merged:
+        # The self-service machines are an HDB-MSCP thing; a wash near a mall or
+        # street carpark is a detailing shop, not an in-carpark bay, so scope to
+        # HDB-sourced carparks to keep precision high.
+        if "hdb" not in e.get("sources", []):
+            continue
+        gk = grid_key(e["lat"], e["lon"])
+        best, best_d = None, CARWASH_MATCH_M
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for p in cw_grid.get((gk[0] + dx, gk[1] + dy), []):
+                    d = haversine(e["lat"], e["lon"], p["lat"], p["lon"])
+                    if d <= best_d:
+                        best_d, best = d, p
+        if best:
+            e["carwash"] = True
+            e["carwash_operator"] = carwash_operator(best["name"])
+            carwash_flagged += 1
+    print(f"flagged {carwash_flagged} carparks with a car wash "
+          f"(within {CARWASH_MATCH_M:.0f}m of {len(washes)} wash bays)", file=sys.stderr)
+
     # Central Area geofence (URA planning areas) for the HDB/URA standard rate:
     # $1.20/30min inside the Central Area, $0.60/30min elsewhere.
     central_boxes = []
@@ -904,6 +956,7 @@ def main():
     lines.append(f"- LTA rates attached: {rates_attached} (of {len(rates)} rate rows)")
     lines.append(f"- HDB/URA standard rates applied: {standard_attached}")
     lines.append(f"- Carparks flagged with EV charging: {ev_flagged} (of {len(ev_points)} EV sites)")
+    lines.append(f"- Carparks flagged with a self-service car wash: {carwash_flagged}")
     lines.append(f"- OneMotoring indicative rates attached: {om_attached}")
     lines.append(f"- Hand-curated indicative rates attached: {manual_attached}")
     lines.append(f"\n## Geocoding\n")

@@ -1,0 +1,4754 @@
+[
+  {
+    "place_id": "ChIJS1vxX8Ib2jERvwFSDP61tsU",
+    "name": "SPC",
+    "lat": 1.2718038,
+    "lon": 103.80708829999999,
+    "primary_type": "gas_station",
+    "address": "616 Telok Blangah Rd, Singapore 109027"
+  },
+  {
+    "place_id": "ChIJVRt6mlgZ2jERbBnMESC6gzw",
+    "name": "Prime Auto Care VivoCity (Yellow Zone) B2 Carpark",
+    "lat": 1.2647138999999998,
+    "lon": 103.8231658,
+    "primary_type": "car_wash",
+    "address": "1 HarbourFront Walk, Lot 616 on B2 Carpark, VivoCity, Singapore 098585"
+  },
+  {
+    "place_id": "ChIJ-d48FwAb2jERXdikMWestws",
+    "name": "Wash & Shine",
+    "lat": 1.2772564,
+    "lon": 103.7908018,
+    "primary_type": "car_wash",
+    "address": "158 Pasir Panjang Rd, Singapore 118555"
+  },
+  {
+    "place_id": "ChIJ4SVQsb0EtqkRb-3xbVPamOM",
+    "name": "Two Fellas Auto Care",
+    "lat": 1.2820459,
+    "lon": 103.78681859999999,
+    "primary_type": "car_wash",
+    "address": "1 Zehnder Rd, Singapore 117686"
+  },
+  {
+    "place_id": "ChIJFyN1dm0Z2jERTpwiRoYFZNU",
+    "name": "Tapwash",
+    "lat": 1.2811595,
+    "lon": 103.84331879999999,
+    "primary_type": "car_wash",
+    "address": "5 Banda St, Singapore 050005"
+  },
+  {
+    "place_id": "ChIJ_RftBwAZ2jERFWslVyMxUjA",
+    "name": "7VJ3+8V7 សិង្ហបុរី",
+    "lat": 1.280797,
+    "lon": 103.854666,
+    "primary_type": "car_wash",
+    "address": "6 Raffles Pl, Singapore 048580"
+  },
+  {
+    "place_id": "ChIJP6wnhgAb2jERTrAwfq1692M",
+    "name": "Progrooming Car Wash Services",
+    "lat": 1.2842297999999999,
+    "lon": 103.77985059999999,
+    "primary_type": "car_wash",
+    "address": "West Coast Car Mart West Coast Carmart Lot 7, W Coast Hwy, #117864 31, Singapore 117864"
+  },
+  {
+    "place_id": "ChIJFRKpWT0R2jER5jcXNt4Xscw",
+    "name": "Express Autoshine @ Lengkee (Ceramic Coating, Car Wash, Polishing)",
+    "lat": 1.2887659,
+    "lon": 103.81144479999999,
+    "primary_type": "car_wash",
+    "address": "9 Chang Charn Rd, Singapore 159638"
+  },
+  {
+    "place_id": "ChIJsTzLM4cX2jERIuDQ47kf9cg",
+    "name": "WrapStyle by Hyper 21 - Premium Car Wrapping & Paint Protection Company",
+    "lat": 1.2850165999999998,
+    "lon": 103.80414119999999,
+    "primary_type": "car_repair",
+    "address": "1010 Bukit Merah Lane 3, #01-117, Singapore 159724"
+  },
+  {
+    "place_id": "ChIJafpTBjUa2jERNywAvavQ9Eo",
+    "name": "Wash & Shine",
+    "lat": 1.2915055,
+    "lon": 103.8007726,
+    "primary_type": "car_wash",
+    "address": "264 Queensway, Singapore 149062"
+  },
+  {
+    "place_id": "ChIJc57oijkb2jERY4-l8UJxLDk",
+    "name": "Car Wash",
+    "lat": 1.2904817,
+    "lon": 103.80656189999999,
+    "primary_type": "car_wash",
+    "address": "360 Alexandra Rd, Singapore 159951"
+  },
+  {
+    "place_id": "ChIJpxdIavgb2jERq2eb3j6HgcY",
+    "name": "DM Autohaus Pte Ltd / DM Detailing Lab",
+    "lat": 1.2833379999999999,
+    "lon": 103.8069596,
+    "primary_type": "car_dealer",
+    "address": "3 Depot Cl, #01-01, Singapore 109840"
+  },
+  {
+    "place_id": "ChIJEWNbinwb2jERBH9qZsN6CcM",
+    "name": "TS Car Refresh Workshop",
+    "lat": 1.2844849,
+    "lon": 103.80537819999999,
+    "primary_type": "car_wash",
+    "address": "Block, 1002 Bukit Merah Lane 3, #01-79, Singapore 159719"
+  },
+  {
+    "place_id": "ChIJjydSAjUa2jERz17ZWQfwdXY",
+    "name": "Mobil 1 Car Care",
+    "lat": 1.2912571,
+    "lon": 103.80118189999999,
+    "primary_type": "car_wash",
+    "address": "Queensway, Singapore 149062"
+  },
+  {
+    "place_id": "ChIJxVSrFwAb2jERa6DAvSgek_g",
+    "name": "GOODWOOD Detail Studio Pte Ltd",
+    "lat": 1.2891306999999999,
+    "lon": 103.81218419999999,
+    "primary_type": "car_wash",
+    "address": "8 Chang Charn Rd, Singapore 159637"
+  },
+  {
+    "place_id": "ChIJk4kzsWEb2jER6amCE75SNsY",
+    "name": "GOODWOOD Automobili",
+    "lat": 1.2891306999999999,
+    "lon": 103.81218419999999,
+    "primary_type": "car_dealer",
+    "address": "8 Chang Charn Rd, Singapore 159637"
+  },
+  {
+    "place_id": "ChIJO-Y6WNEb2jERXfM1lX2AYIk",
+    "name": "Caltex Jalan Bukit Merah",
+    "lat": 1.2844674,
+    "lon": 103.8150184,
+    "primary_type": "gas_station",
+    "address": "3781 Jalan Bukit Merah, Singapore 159463"
+  },
+  {
+    "place_id": "ChIJ9dL3P_Qb2jERTzehlCU6KdE",
+    "name": "SuperSAM Carwash @ SPC Bukit Merah",
+    "lat": 1.2842517999999998,
+    "lon": 103.818657,
+    "primary_type": "car_wash",
+    "address": "3800 Jalan Bukit Merah, Singapore 159464"
+  },
+  {
+    "place_id": "ChIJwebj4iwa2jER5HulaqKTM1k",
+    "name": "C&C Mitsubishi Authorised Service Centre (Alexandra)",
+    "lat": 1.2915576,
+    "lon": 103.8133141,
+    "primary_type": "car_repair",
+    "address": "239 Alexandra Rd, Singapore 159930"
+  },
+  {
+    "place_id": "ChIJC3EIbb4b2jERrRVws2T8kOg",
+    "name": "Halo Collective by Angelwax",
+    "lat": 1.2898083999999999,
+    "lon": 103.812874,
+    "primary_type": "car_repair",
+    "address": "2 Kung Chong Rd, #01-02 AA Centre, Singapore 159140"
+  },
+  {
+    "place_id": "ChIJOxejLkIR2jER5zoFBKZE9oc",
+    "name": "Autoglym Professional Detailing Center",
+    "lat": 1.2900165,
+    "lon": 103.812128,
+    "primary_type": "car_wash",
+    "address": "8 Kung Chong Rd, Singapore 159145"
+  },
+  {
+    "place_id": "ChIJU7mvhtYb2jERvdJDAgfwFiQ",
+    "name": "Ushinez",
+    "lat": 1.2842276,
+    "lon": 103.8183954,
+    "primary_type": "car_wash",
+    "address": "3800 Jalan Bukit Merah, Singapore 159464"
+  },
+  {
+    "place_id": "ChIJl-32cgAb2jERYiwU06j2UOM",
+    "name": "JBM work",
+    "lat": 1.2828116,
+    "lon": 103.8210738,
+    "primary_type": "car_wash",
+    "address": "2991 Jalan Bukit Merah, Singapore 159458"
+  },
+  {
+    "place_id": "ChIJ-5EhdQAb2jERzEAT98wqKac",
+    "name": "Xpert-60 Car Wash",
+    "lat": 1.2846547,
+    "lon": 103.81503389999999,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJy6Ke0YIZ2jERsRnbCcwUaR8",
+    "name": "Distributor of 3M",
+    "lat": 1.2910378,
+    "lon": 103.8327862,
+    "primary_type": "car_wash",
+    "address": "Zion Rd, Singapore"
+  },
+  {
+    "place_id": "ChIJEU8vSXkZ2jERU0dQtUudGk4",
+    "name": "SuperSAM Carwash @ SPC Havelock",
+    "lat": 1.2885175,
+    "lon": 103.83817839999999,
+    "primary_type": "car_wash",
+    "address": "397 Havelock Rd, Singapore 169630"
+  },
+  {
+    "place_id": "ChIJDz82EasZ2jER7RpB-U_bAw0",
+    "name": "Trilogy Auto Detailing",
+    "lat": 1.2918386,
+    "lon": 103.8400394,
+    "primary_type": "car_wash",
+    "address": "55 Mohamed Sultan Road, B2, within the carpark, Lower, Singapore 238995"
+  },
+  {
+    "place_id": "ChIJg3QDEuwZ2jERdEuALdhMQig",
+    "name": "MintGroom Car Detailing",
+    "lat": 1.2920729,
+    "lon": 103.8599514,
+    "primary_type": "car_wash",
+    "address": "Millenia Walk Carpark Basement 1, Yellow Zone, Singapore 039596"
+  },
+  {
+    "place_id": "ChIJCYQuHDMZ2jERsnUTsbzp5VA",
+    "name": "WashWerkz Unlimited Wash (The Esplanade )",
+    "lat": 1.289857,
+    "lon": 103.8552799,
+    "primary_type": "car_wash",
+    "address": "1, Esplanade Drive , Basement 2 car park, The Esplanade , ( Green Sector, Singapore 038981"
+  },
+  {
+    "place_id": "ChIJq5dad4IZ2jERK6MjX_j_lsY",
+    "name": "CARs International - Marina Square",
+    "lat": 1.2914329999999998,
+    "lon": 103.8576787,
+    "primary_type": "car_wash",
+    "address": "6 Raffles Boulevard, B1, Orange Zone Carpark, Marina Square, Singapore 039594"
+  },
+  {
+    "place_id": "ChIJFXjA1Z8b2jER98amCgJzg_U",
+    "name": "HDB Jet Wash Bay",
+    "lat": 1.3027731,
+    "lon": 103.78368569999999,
+    "primary_type": "car_wash",
+    "address": "2A Dover Rd, Singapore 131002"
+  },
+  {
+    "place_id": "ChIJUXG0a8cb2jER0NCM2bylTbU",
+    "name": "Blackantyellow Prime Detailing",
+    "lat": 1.3046058,
+    "lon": 103.7818037,
+    "primary_type": "car_repair",
+    "address": "Dover Cres, Block 28 MSCP, Singapore 133028"
+  },
+  {
+    "place_id": "ChIJB5l-YUAa2jERqcD9m8guH0U",
+    "name": "Glymaxx",
+    "lat": 1.3044544999999999,
+    "lon": 103.7968083,
+    "primary_type": "car_wash",
+    "address": "1 Commonwealth Ln, #02-03 One Commonwealth, Singapore 149544"
+  },
+  {
+    "place_id": "ChIJXcUYqUMX2jERePQU44zd5aI",
+    "name": "Auto Finesse Express",
+    "lat": 1.304438,
+    "lon": 103.796798,
+    "primary_type": "car_wash",
+    "address": "One Commonwealth, Singapore 149544"
+  },
+  {
+    "place_id": "ChIJW0chZ4MZ2jER98mJXVV0HBU",
+    "name": "Prime Auto Care Great World City B2 (L125)",
+    "lat": 1.2934899,
+    "lon": 103.8316116,
+    "primary_type": "car_wash",
+    "address": "〒237994, Kim Seng Promenade, 1号, Carpark Great World City, B2"
+  },
+  {
+    "place_id": "ChIJHWPwHZIZ2jERnMWQrs6aKiY",
+    "name": "CARs International - Ngee Ann City",
+    "lat": 1.3025571999999999,
+    "lon": 103.83456799999999,
+    "primary_type": "car_wash",
+    "address": "391 Orchard Rd, B3 Carpark Ngee Ann City, Singapore 238872"
+  },
+  {
+    "place_id": "ChIJuSN3yOcZ2jERm8UUExjSyS0",
+    "name": "CARs International - Paragon",
+    "lat": 1.3039633,
+    "lon": 103.8360565,
+    "primary_type": "car_wash",
+    "address": "290 Orchard Rd, Paragon, Singapore 238859"
+  },
+  {
+    "place_id": "ChIJJ7FKg6YZ2jER9ZIRoHRuJqA",
+    "name": "CARs International - Raffles City",
+    "lat": 1.2929994999999999,
+    "lon": 103.85346229999999,
+    "primary_type": "car_wash",
+    "address": "Singapore 179101"
+  },
+  {
+    "place_id": "ChIJDSMLhLsZ2jER2PrgHxSsS8A",
+    "name": "Baoyi Car Care Materials Co. Ltd",
+    "lat": 1.3010652999999999,
+    "lon": 103.8510439,
+    "primary_type": "car_wash",
+    "address": "210 Middle Rd, Singapore 188994"
+  },
+  {
+    "place_id": "ChIJWx-h1rIZ2jER_Z-RR0IJOXs",
+    "name": "CARs International - Suntec City Orange Zone",
+    "lat": 1.2951259,
+    "lon": 103.8583686,
+    "primary_type": "car_wash",
+    "address": "Suntec City Basement 1 Carpark (Orange Zone between Tower 1 and 2, Lobby H Section F41, Singapore"
+  },
+  {
+    "place_id": "ChIJqwKf_5kZ2jERBzp-GstSixk",
+    "name": "CARs International - Suntec City Red Zone",
+    "lat": 1.2950127999999999,
+    "lon": 103.85985769999999,
+    "primary_type": "car_wash",
+    "address": "3E Temasek Blvd, Singapore 038984"
+  },
+  {
+    "place_id": "ChIJ33GTVLEZ2jERMpHms0VaCOU",
+    "name": "Shine Guard Auto Service Centre",
+    "lat": 1.302832,
+    "lon": 103.861969,
+    "primary_type": "car_wash",
+    "address": "100 Jln Sultan, Singapore 199001"
+  },
+  {
+    "place_id": "ChIJXcWIQK8Z2jER4uOp61XTq3g",
+    "name": "Complete Auto Restoration Services",
+    "lat": 1.2946605,
+    "lon": 103.8579809,
+    "primary_type": "car_wash",
+    "address": "5 Temasek Blvd, Singapore 038985"
+  },
+  {
+    "place_id": "ChIJRa5lmboZ2jER57iat2SgwL8",
+    "name": "Abs Car Grooming Centre",
+    "lat": 1.2999542,
+    "lon": 103.8560009,
+    "primary_type": "car_wash",
+    "address": "230 Victoria St, Singapore"
+  },
+  {
+    "place_id": "ChIJ851yvrEZ2jERnHrJHvvLSOk",
+    "name": "Carbonite Elechmech (S) Pte. Ltd.",
+    "lat": 1.299782,
+    "lon": 103.860659,
+    "primary_type": "car_wash",
+    "address": "7500A Beach Rd, Singapore 199591"
+  },
+  {
+    "place_id": "ChIJ7TkzEUQY2jEREpEWyjZWuaI",
+    "name": "SPC Mountbatten",
+    "lat": 1.3021151,
+    "lon": 103.8843162,
+    "primary_type": "gas_station",
+    "address": "710 Mountbatten Rd, Singapore 437734"
+  },
+  {
+    "place_id": "ChIJzXKPJUgZ2jER_woyxuPKbfI",
+    "name": "HDB carpark self-operated car wash",
+    "lat": 1.3006071,
+    "lon": 103.8836942,
+    "primary_type": "car_wash",
+    "address": "Blk 12 Kampong Arang Rd, Singapore 431012"
+  },
+  {
+    "place_id": "ChIJq6qqo3EY2jERDtZByMCmnTg",
+    "name": "CARs International - Parkway Parade",
+    "lat": 1.300891,
+    "lon": 103.90592769999999,
+    "primary_type": "car_wash",
+    "address": "80 Marine Parade Rd, Singapore 449269"
+  },
+  {
+    "place_id": "ChIJHwHHE3EY2jERjX0GcAccPvM",
+    "name": "Auto Makeover Marine Parade",
+    "lat": 1.3013232,
+    "lon": 103.9066973,
+    "primary_type": "car_wash",
+    "address": "89 Marine Parade Central, Singapore 440089"
+  },
+  {
+    "place_id": "ChIJ74A6h2sZ2jERfMWSBr0vWf0",
+    "name": "Detailfaction",
+    "lat": 1.3043529,
+    "lon": 103.9036918,
+    "primary_type": "car_wash",
+    "address": "1 Brooke Rd, #B1-04 Katong Plaza, Singapore 429979"
+  },
+  {
+    "place_id": "ChIJhQ4VbHIY2jERbLgJWOmDk8o",
+    "name": "Kelvosky Collezion",
+    "lat": 1.3041909999999999,
+    "lon": 103.903803,
+    "primary_type": "car_wash",
+    "address": "1 Brooke Rd, Singapore 429979"
+  },
+  {
+    "place_id": "ChIJxYypKiwF2jERvtG6PJenGbM",
+    "name": "Lalalalapa",
+    "lat": 1.3147437,
+    "lon": 103.69542829999999,
+    "primary_type": "car_wash",
+    "address": "30 Pioneer Cres, Singapore 628560"
+  },
+  {
+    "place_id": "ChIJ5c4o4pQa2jERx5A7lUd1uZU",
+    "name": "Car Wash",
+    "lat": 1.3097899,
+    "lon": 103.7551281,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJu685QD4b2jERczxfkurUGfg",
+    "name": "Wash n’ Run",
+    "lat": 1.3080627,
+    "lon": 103.7613647,
+    "primary_type": "car_wash",
+    "address": "181 W Coast Rd, Singapore 127373"
+  },
+  {
+    "place_id": "ChIJpZ7edowb2jERAGQblJcTURw",
+    "name": "Professional Car Grooming Services",
+    "lat": 1.311756,
+    "lon": 103.76556199999999,
+    "primary_type": "car_wash",
+    "address": "462A Clementi Ave 3, Singapore 121462"
+  },
+  {
+    "place_id": "ChIJ0aZ8xY4a2jERZG3ZYy8Xwlg",
+    "name": "Caltex Clementi",
+    "lat": 1.3146295,
+    "lon": 103.76858709999999,
+    "primary_type": "gas_station",
+    "address": "126 Clementi Ave 2, Singapore 129930"
+  },
+  {
+    "place_id": "ChIJlwX67UIR2jER2IEsaSQYfDY",
+    "name": "Hoodster Mobile Car Wash (Clementi)",
+    "lat": 1.311563,
+    "lon": 103.7881523,
+    "primary_type": "car_wash",
+    "address": "20 Ghim Moh Rd, Singapore 270020"
+  },
+  {
+    "place_id": "ChIJiVsLZ5sb2jERReJiOfgJWl0",
+    "name": "QE Car Wash Bay",
+    "lat": 1.3087906,
+    "lon": 103.7960167,
+    "primary_type": "car_wash",
+    "address": "5A Holland Cl, Singapore 271005"
+  },
+  {
+    "place_id": "ChIJex-mwYwZ2jER0-g9kykD7d0",
+    "name": "Clean N Wax Auto Services",
+    "lat": 1.3072293,
+    "lon": 103.82933229999999,
+    "primary_type": "car_wash",
+    "address": "400 Orchard Rd, #03-00 Orchard Towers, Singapore 238875"
+  },
+  {
+    "place_id": "ChIJq6pqkowZ2jERP0C6ZGSAvTo",
+    "name": "DP Car Polishing Services",
+    "lat": 1.3062023,
+    "lon": 103.82866969999999,
+    "primary_type": "car_wash",
+    "address": "583 Orchard Rd, Singapore 238884"
+  },
+  {
+    "place_id": "ChIJXaG6xZgR2jERb8YZkt8ASlc",
+    "name": "Car Fresh",
+    "lat": 1.3039063,
+    "lon": 103.831959,
+    "primary_type": "car_wash",
+    "address": "Singapore 238857"
+  },
+  {
+    "place_id": "ChIJ5YR4llYZ2jERzEi-ix7Tz4o",
+    "name": "Car Wash & Run",
+    "lat": 1.3110150999999999,
+    "lon": 103.84256219999999,
+    "primary_type": "car_wash",
+    "address": "141 Bukit Timah Rd, Singapore 229841"
+  },
+  {
+    "place_id": "ChIJtVWeQ-oZ2jER65J5yWjHhm0",
+    "name": "Mobil 1 Car Care",
+    "lat": 1.3108260999999999,
+    "lon": 103.8427241,
+    "primary_type": "car_wash",
+    "address": "141 Bukit Timah Rd, Singapore 229837"
+  },
+  {
+    "place_id": "ChIJsWdq4gUZ2jERfkkCkOy-O84",
+    "name": "Red Marque by Supremo: The Art of Car Detailing",
+    "lat": 1.309975,
+    "lon": 103.8625523,
+    "primary_type": "car_repair",
+    "address": "20 Penhas Rd, Singapore 208184"
+  },
+  {
+    "place_id": "ChIJcx2YSl4Z2jERKAZM9NS2X3w",
+    "name": "CARs International - City Square Mall",
+    "lat": 1.3113982,
+    "lon": 103.8565897,
+    "primary_type": "car_wash",
+    "address": "180 Kitchener Rd, B3-01 City Square Mall, Singapore 208539"
+  },
+  {
+    "place_id": "ChIJf1IDi7cZ2jEROzPzmW2iFWE",
+    "name": "Prompt Auto Pte Ltd",
+    "lat": 1.3064597999999998,
+    "lon": 103.8566096,
+    "primary_type": "car_wash",
+    "address": "23 Kelantan Ln, Singapore 208642"
+  },
+  {
+    "place_id": "ChIJUaMqO1kZ2jERqkaqjU0YoX8",
+    "name": "Tambal pan pak paijo",
+    "lat": 1.3089058999999998,
+    "lon": 103.87639159999999,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJb_ICIQkZ2jERqXhV_866K7Y",
+    "name": "Supersam Carwash",
+    "lat": 1.3110408,
+    "lon": 103.8836096,
+    "primary_type": "car_wash",
+    "address": "225 Guillemard Rd, EAST 399739"
+  },
+  {
+    "place_id": "ChIJi8ARv2EZ2jERnR7l1--K6Vw",
+    "name": "Shell Car Wash",
+    "lat": 1.3106733000000002,
+    "lon": 103.8839809,
+    "primary_type": "car_wash",
+    "address": "132 Guillemard Rd, Singapore 399720"
+  },
+  {
+    "place_id": "ChIJkwJzIOnUza0Rdh9YQU4DsX8",
+    "name": "KW Car Wash & Grooming Pte Ltd",
+    "lat": 1.310023,
+    "lon": 103.88243109999999,
+    "primary_type": "car_wash",
+    "address": "102 Guillemard Rd, Singapore 399719"
+  },
+  {
+    "place_id": "ChIJsTLKbDkY2jERe_0nufEuTgg",
+    "name": "Car Wash",
+    "lat": 1.3111157999999998,
+    "lon": 103.88348669999999,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJ3172FgAZ2jERDVATrMWWPCU",
+    "name": "MSCP Car wash bay",
+    "lat": 1.3088829,
+    "lon": 103.88761360000001,
+    "primary_type": "car_wash",
+    "address": "93A Jln Dua, Singapore 391093"
+  },
+  {
+    "place_id": "ChIJZZxbmBMZ2jERvEfr-y1rNWQ",
+    "name": "Quick Clean Car Wash",
+    "lat": 1.3086893,
+    "lon": 103.882953,
+    "primary_type": "car_wash",
+    "address": "11A Pine Cl, Singapore 392011"
+  },
+  {
+    "place_id": "ChIJ1aGQSGcZ2jERdYjSI5f9WUk",
+    "name": "LOTUS DETAILING",
+    "lat": 1.3149712,
+    "lon": 103.87951460000001,
+    "primary_type": "car_wash",
+    "address": "62 Lor 19 Geylang, Singapore 388508"
+  },
+  {
+    "place_id": "ChIJ65x5NBQY2jERQ0yHVkfOLcw",
+    "name": "ExxonMobil Oil Singapore Pte Ltd",
+    "lat": 1.3113156,
+    "lon": 103.8943158,
+    "primary_type": "auto_parts_store",
+    "address": "189 Tanjong Katong Rd, Singapore 436991"
+  },
+  {
+    "place_id": "ChIJd5o2omkZ2jERXO3VFLv4qck",
+    "name": "Shell Car Wash",
+    "lat": 1.308165,
+    "lon": 103.9099715,
+    "primary_type": "car_wash",
+    "address": "338 E Coast Rd, Singapore 428961"
+  },
+  {
+    "place_id": "ChIJqY-EGgsY2jERDqGSJpobzZQ",
+    "name": "Caltex East Coast",
+    "lat": 1.3090434,
+    "lon": 103.91081439999999,
+    "primary_type": "gas_station",
+    "address": "355 E Coast Rd, Singapore 428972"
+  },
+  {
+    "place_id": "ChIJCW4oGQsY2jERm1f7UgL6rqE",
+    "name": "Car Wash",
+    "lat": 1.3087554,
+    "lon": 103.9110942,
+    "primary_type": "car_wash",
+    "address": "357 E Coast Rd, Singapore 428972"
+  },
+  {
+    "place_id": "ChIJ0acLOgAZ2jERpwgKmKFbWe4",
+    "name": "X|PERT.60 Car Wash",
+    "lat": 1.3090696,
+    "lon": 103.9110326,
+    "primary_type": "car_wash",
+    "address": "355 E Coast Rd, Singapore 428972"
+  },
+  {
+    "place_id": "ChIJvTy6CgAF2jER8Eb4dFFI9BI",
+    "name": "Tuas",
+    "lat": 1.3251579999999998,
+    "lon": 103.654883,
+    "primary_type": "car_wash",
+    "address": "24 Tuas Ave 2, Singapore 639455"
+  },
+  {
+    "place_id": "ChIJUYelEakF2jERTxPZVXRiBHQ",
+    "name": "Express Autoshine @ Autoworld Car wash (Fumigation , Polishing , SONAX Coating)",
+    "lat": 1.323971,
+    "lon": 103.6906384,
+    "primary_type": "car_wash",
+    "address": "9A Lok Yang Way, Singapore 628628"
+  },
+  {
+    "place_id": "ChIJH_hTtRQY2jEREyy0vvxEgG4",
+    "name": "EAD Xpress",
+    "lat": 1.3240437,
+    "lon": 103.6907289,
+    "primary_type": "car_wash",
+    "address": "9A Lok Yang Way, Singapore 628628"
+  },
+  {
+    "place_id": "ChIJ7WR-Z_0F2jER2yc39eWGh0g",
+    "name": "Mint Auto Detailing SG",
+    "lat": 1.3253049,
+    "lon": 103.6946803,
+    "primary_type": "car_wash",
+    "address": "9 Pioneer Rd N, #01-58, Singapore 628461"
+  },
+  {
+    "place_id": "ChIJm0XpdwAF2jER5cuvJg92cag",
+    "name": "car repair place sg",
+    "lat": 1.3251416999999999,
+    "lon": 103.6948106,
+    "primary_type": "car_wash",
+    "address": "Pioneer Rd N, Singapore"
+  },
+  {
+    "place_id": "ChIJtyenTJEF2jERBHfW7X9gLHo",
+    "name": "Island Car Wash and Grooming Pte. Ltd.",
+    "lat": 1.3249227,
+    "lon": 103.7228621,
+    "primary_type": "car_wash",
+    "address": "1 Corporation Dr, #02-16, Singapore 619775"
+  },
+  {
+    "place_id": "ChIJEyF7nAwF2jERcsqOE8yLMDM",
+    "name": "Supagard",
+    "lat": 1.3253359,
+    "lon": 103.7227506,
+    "primary_type": "car_wash",
+    "address": "1 Corporation Dr, #06-05, Singapore 619775"
+  },
+  {
+    "place_id": "ChIJrzYxtFUF2jERBXBbehSOFdk",
+    "name": "Wash n' Run",
+    "lat": 1.3251387,
+    "lon": 103.7248154,
+    "primary_type": "car_wash",
+    "address": "302 Jln. Ahmad Ibrahim, Singapura 619594"
+  },
+  {
+    "place_id": "ChIJy01zWREb2jERIG0dqza3g1A",
+    "name": "TheGarageGuys SG",
+    "lat": 1.3220998,
+    "lon": 103.75759149999999,
+    "primary_type": "car_wash",
+    "address": "Faber Walk, Singapore 128995"
+  },
+  {
+    "place_id": "ChIJNXjqM-UZ2jERIVPW6WAI38Q",
+    "name": "Caltex Dunearn",
+    "lat": 1.3187824,
+    "lon": 103.8331322,
+    "primary_type": "gas_station",
+    "address": "130 Dunearn Rd, Singapore 309436"
+  },
+  {
+    "place_id": "ChIJu1p6VNEZ2jERMU2kwyLGOpg",
+    "name": "Expert-Go Car Wash",
+    "lat": 1.3187963999999999,
+    "lon": 103.83347649999999,
+    "primary_type": "car_wash",
+    "address": "130 Dunearn Rd, Singapore 309436"
+  },
+  {
+    "place_id": "ChIJsRa1Kv8Z2jERi4kJzsB7mnA",
+    "name": "One Stop Car Beauty Centre",
+    "lat": 1.3219106,
+    "lon": 103.82457500000001,
+    "primary_type": "car_wash",
+    "address": "1 Plymouth Ave, Singapore 297753"
+  },
+  {
+    "place_id": "ChIJEVInbe8Z2jERTBStS4py4fA",
+    "name": "Wash n' Run",
+    "lat": 1.3161532,
+    "lon": 103.83711,
+    "primary_type": "car_wash",
+    "address": "30 Dunearn Rd, Singapore 309425"
+  },
+  {
+    "place_id": "ChIJwVLxPAAZ2jERG-F0DoXis8c",
+    "name": "Beaver Car Wash (Self-Service)",
+    "lat": 1.3208005,
+    "lon": 103.8594028,
+    "primary_type": "car_wash",
+    "address": "108A McNair Rd, Singapore 322108"
+  },
+  {
+    "place_id": "ChIJD5FMegAZ2jERnP8hT9QBNq8",
+    "name": "Beaver Car wash",
+    "lat": 1.3202140000000002,
+    "lon": 103.8690953,
+    "primary_type": "car_wash",
+    "address": "65A Kallang Bahru, Block 65A HDB, Kallang Bahru, MSCP, Singapore 331065"
+  },
+  {
+    "place_id": "ChIJc9DhzS4Y2jERI0I4MzO8CVY",
+    "name": "Carbon Mechanical Product (S) Pte. Ltd.",
+    "lat": 1.3213869999999999,
+    "lon": 103.875901,
+    "primary_type": "car_wash",
+    "address": "155 Kallang Wy, Singapore 349244"
+  },
+  {
+    "place_id": "ChIJxf8HsS8Y2jERPAHvIkDeexQ",
+    "name": "Car Pride Groomworks",
+    "lat": 1.318597,
+    "lon": 103.877201,
+    "primary_type": "car_wash",
+    "address": "701 Sims Dr, Singapore 387383"
+  },
+  {
+    "place_id": "ChIJSx-AFzwZ2jERMe_JWgl1b4w",
+    "name": "Superman Carwash @ ESSO Aljunied",
+    "lat": 1.3243022,
+    "lon": 103.8808023,
+    "primary_type": "car_wash",
+    "address": "611 Aljunied Rd, Singapore 389830"
+  },
+  {
+    "place_id": "ChIJ5YH33IAZ2jERfeO1jC6zfrs",
+    "name": "Prime Auto Care",
+    "lat": 1.3162732,
+    "lon": 103.880894,
+    "primary_type": "car_wash",
+    "address": "71 Lor 23 Geylang, WPS517 388386"
+  },
+  {
+    "place_id": "ChIJlb6N0n0Z2jERxv2CBiyczD8",
+    "name": "CarFix (Office)",
+    "lat": 1.3185498,
+    "lon": 103.89073049999999,
+    "primary_type": "",
+    "address": "1014 Geylang East Ave 3, #07-240, Singapore 389729"
+  },
+  {
+    "place_id": "ChIJXXTdcGES2jERIX0j6mo4Wj8",
+    "name": "Scrap Car Yard",
+    "lat": 1.3187929999999999,
+    "lon": 103.89076860000002,
+    "primary_type": "car_dealer",
+    "address": "1015 Geylang East Ave 3, #01-137, Singapore 389730"
+  },
+  {
+    "place_id": "ChIJZ7rRV-gZ2jERBO3witISxO0",
+    "name": "Performance Autostyle",
+    "lat": 1.3184358,
+    "lon": 103.8927403,
+    "primary_type": "car_wash",
+    "address": "60 Paya Lebar Rd, #07-54 Paya Lebar Square, Singapore 409051"
+  },
+  {
+    "place_id": "ChIJK4E0ULgZ2jERQRstNhMFA2s",
+    "name": "Avenor Auto",
+    "lat": 1.3162223,
+    "lon": 103.8896161,
+    "primary_type": "car_wash",
+    "address": "540 Sims Ave, #03-05, Singapore 387603"
+  },
+  {
+    "place_id": "ChIJkRtSZ_MX2jERxPSOgZ4Qq_A",
+    "name": "Ride Trade",
+    "lat": 1.3184358,
+    "lon": 103.8927403,
+    "primary_type": "aquarium",
+    "address": "60 Paya Lebar Rd, #07-54 Paya Lebar Square, Singapore 409051"
+  },
+  {
+    "place_id": "ChIJRUzOfBAY2jERWDSlL1y2soQ",
+    "name": "Caltex Changi",
+    "lat": 1.3163186,
+    "lon": 103.9001587,
+    "primary_type": "gas_station",
+    "address": "78 Changi Rd, Singapore 419714"
+  },
+  {
+    "place_id": "ChIJodG4cAYY2jERg5nHK7OqjcM",
+    "name": "Wash & Shine",
+    "lat": 1.3184968,
+    "lon": 103.9090276,
+    "primary_type": "car_wash",
+    "address": "339 Changi Rd, Singapore 419810"
+  },
+  {
+    "place_id": "ChIJA1_vYhAY2jERoDIysurkLuE",
+    "name": "Car Wash",
+    "lat": 1.3161775999999998,
+    "lon": 103.9000344,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJWZl50ZgZ2jER9mXUw8x0qYs",
+    "name": "Kamikaze Concepts Singapore",
+    "lat": 1.3256774999999998,
+    "lon": 103.89813749999999,
+    "primary_type": "car_wash",
+    "address": "51 Paya Ubi Industrial Park, #03-18, Singapore 408933"
+  },
+  {
+    "place_id": "ChIJK5ucRiEZ2jEROHhMA6rMSgc",
+    "name": "Island Car Wash and Grooming Pte Ltd",
+    "lat": 1.3183103,
+    "lon": 103.9100886,
+    "primary_type": "car_wash",
+    "address": "360 Changi Rd, keng yee garden, Singapore 419822"
+  },
+  {
+    "place_id": "ChIJjWR7T10Z2jERAUz3lJw2iq4",
+    "name": "MF11 Car Wash",
+    "lat": 1.3186235,
+    "lon": 103.9129427,
+    "primary_type": "car_wash",
+    "address": "460 Changi Rd, Singapore 419883"
+  },
+  {
+    "place_id": "ChIJn62Bkqki2jERsa7t8jhzu_g",
+    "name": "Wash n' Run",
+    "lat": 1.3205341,
+    "lon": 103.9160757,
+    "primary_type": "car_wash",
+    "address": "649 Changi Rd, Singapore 419946"
+  },
+  {
+    "place_id": "ChIJZ5NWD6Yi2jERxjOGGm9C4s0",
+    "name": "Swift Car Care Pte Ltd",
+    "lat": 1.3161479999999999,
+    "lon": 103.919809,
+    "primary_type": "car_wash",
+    "address": "38 Siglap Dr, Singapore 456163"
+  },
+  {
+    "place_id": "ChIJXVinFmEj2jERXHVDgrAiN4c",
+    "name": "Jet Spray and Vacuum | washing bay",
+    "lat": 1.3242133999999999,
+    "lon": 103.9282051,
+    "primary_type": "car_wash",
+    "address": "223 Bedok N Dr, Singapore 460223"
+  },
+  {
+    "place_id": "ChIJTZepXf0j2jERCAjiWkm_8UM",
+    "name": "Engarde Detailing",
+    "lat": 1.3182593,
+    "lon": 103.94722399999999,
+    "primary_type": "car_wash",
+    "address": "154 Bedok S Rd, Singapore 460154"
+  },
+  {
+    "place_id": "ChIJkVHyyOUP2jERymZmqahGSUc",
+    "name": "Street Stylerz Automotive Pte Ltd",
+    "lat": 1.3326725000000001,
+    "lon": 103.69788829999999,
+    "primary_type": "car_wash",
+    "address": "1 Soon Lee St, #02-31, Singapore 627605"
+  },
+  {
+    "place_id": "ChIJUb_ZJ4wP2jERphCRFQPyfDE",
+    "name": "5D Solutions Pte Ltd",
+    "lat": 1.3341589,
+    "lon": 103.69967160000002,
+    "primary_type": "car_repair",
+    "address": "7 Soon Lee St, #01-26 Ispace, Singapore 627608"
+  },
+  {
+    "place_id": "ChIJUb_ZJ4wP2jER2_91rK8-Si4",
+    "name": "Supremo Auto Detailer",
+    "lat": 1.3339463999999999,
+    "lon": 103.70013399999999,
+    "primary_type": "car_repair",
+    "address": "7 Soon Lee St, #02-01, Singapore 627608"
+  },
+  {
+    "place_id": "ChIJ31xKFlUP2jERJrMBIpr7wPE",
+    "name": "Fatboy Detailing Services",
+    "lat": 1.333947,
+    "lon": 103.7001332,
+    "primary_type": "car_wash",
+    "address": "7 Soon Lee St, #05-29, Singapore 628718"
+  },
+  {
+    "place_id": "ChIJEzGX00EP2jERgmxXTPo7dDs",
+    "name": "Mesmerise Detailing",
+    "lat": 1.3341047,
+    "lon": 103.69887179999999,
+    "primary_type": "car_wash",
+    "address": "5 Soon Lee St, #02-17, Singapore 627607"
+  },
+  {
+    "place_id": "ChIJRdC_QSQP2jERATF9kMLvggU",
+    "name": "Cs Car Care Detailing",
+    "lat": 1.3352309999999998,
+    "lon": 103.7068352,
+    "primary_type": "car_wash",
+    "address": "333 Boon Lay Way, basement carpark, Singapore 649848"
+  },
+  {
+    "place_id": "ChIJhVEESwAF2jERlTT1Fhc4F-w",
+    "name": "Day Night Wash @REVV | Driveline Singapore | 24 Hours Automated Car Wash | 30mins Grace Period",
+    "lat": 1.3254301,
+    "lon": 103.7230288,
+    "primary_type": "car_wash",
+    "address": "1 Corporation Dr, #01-03 REVV Singapore, Singapore 619775"
+  },
+  {
+    "place_id": "ChIJm02cCCQX2jERoktOXwgvTlo",
+    "name": "KGC Workshop Pte. Ltd.",
+    "lat": 1.3250317,
+    "lon": 103.7234914,
+    "primary_type": "car_repair",
+    "address": "1 Corporation Dr, #04-05, Singapore 619775"
+  },
+  {
+    "place_id": "ChIJh4jq6noX2jERnm_lpEEmW_I",
+    "name": "Cloud Wash By Wash Collective",
+    "lat": 1.3254301,
+    "lon": 103.7230288,
+    "primary_type": "car_wash",
+    "address": "1 Corporation Dr, #03-14, Singapore 619775"
+  },
+  {
+    "place_id": "ChIJA6TnyckW2jERpfQzKTIRMNM",
+    "name": "Concierge Car Wash Powered by Smart Details",
+    "lat": 1.3250549,
+    "lon": 103.72363949999999,
+    "primary_type": "car_wash",
+    "address": "1 Corporation Dr, #02-12, Singapore 619775"
+  },
+  {
+    "place_id": "ChIJM6MYyLcF2jERSwvr2eDp0GI",
+    "name": "Genesis Detailers",
+    "lat": 1.3254177999999999,
+    "lon": 103.7230113,
+    "primary_type": "car_wash",
+    "address": "1 Corporation Dr, Singapore 619775"
+  },
+  {
+    "place_id": "ChIJI5Iim94F2jERnBmeo2Fq-XQ",
+    "name": "RT AUTOMOBILE PTE LTD",
+    "lat": 1.3254177999999999,
+    "lon": 103.7230113,
+    "primary_type": "car_wash",
+    "address": "REVV@Corporation, 1 Corporation Dr, #01-08, Singapore 619775"
+  },
+  {
+    "place_id": "ChIJt6poflsR2jERlDMzogjZlSU",
+    "name": "CARs International - Westgate B2 Carpark",
+    "lat": 1.3343783999999999,
+    "lon": 103.7427835,
+    "primary_type": "car_wash",
+    "address": "3 Gateway Dr, Singapore 608532"
+  },
+  {
+    "place_id": "ChIJb6t9KgAR2jERA3vp1A3UOyI",
+    "name": "WashWerkz Unlimited Wash (Toh Guan)",
+    "lat": 1.3361678,
+    "lon": 103.75384679999999,
+    "primary_type": "car_wash",
+    "address": "48 Toh Guan Rd E, #01-141, Singapore 608586"
+  },
+  {
+    "place_id": "ChIJl08ZcgAR2jER0Iqaa6Ya548",
+    "name": "Washwerkz Unlimitedwash.sg ( Toh Guan TWO)",
+    "lat": 1.3359368999999999,
+    "lon": 103.7543692,
+    "primary_type": "car_wash",
+    "address": "Blk 40 Toh Guan Rd E, #01-62 Enterprise Hub, Singapore 608582"
+  },
+  {
+    "place_id": "ChIJ-yLjZ3UQ2jERh72UE9P_PNo",
+    "name": "United Automobile Services",
+    "lat": 1.3283820000000002,
+    "lon": 103.752966,
+    "primary_type": "car_repair",
+    "address": "18 Boon Lay Way, #04-109, Singapore 609966"
+  },
+  {
+    "place_id": "ChIJl2trFJIR2jERAOcxWULZSjo",
+    "name": "3M Authorized Car Grooming Centre by UNITED Automobile Services",
+    "lat": 1.3283820000000002,
+    "lon": 103.752966,
+    "primary_type": "store",
+    "address": "18 Boon Lay Way, #04-109/94 Tradehub 21, Singapore 609966"
+  },
+  {
+    "place_id": "ChIJP1X0eccR2jERAy330k66hvo",
+    "name": "Zirconite Singapore",
+    "lat": 1.3355903,
+    "lon": 103.74665689999999,
+    "primary_type": "car_repair",
+    "address": "2 Jurong East Street 21 IMM Building L3, #31 to 33 Carpark Lots, Singapore 609601"
+  },
+  {
+    "place_id": "ChIJ88aCWEoR2jERQ73pZrwcC4E",
+    "name": "Lemon Tree Auto Detailing",
+    "lat": 1.3349575,
+    "lon": 103.7468492,
+    "primary_type": "car_wash",
+    "address": "2 Jurong East Street 21, #03-150A, Singapore 609601"
+  },
+  {
+    "place_id": "ChIJ8X2c09kR2jERLwBfc-8Q42k",
+    "name": "Gulf W Detailer Singapore",
+    "lat": 1.336668,
+    "lon": 103.7534101,
+    "primary_type": "",
+    "address": "48 Toh Guan Rd E, #04-114 Enterprise Hub, Singapore 608586"
+  },
+  {
+    "place_id": "ChIJ94DWUYwR2jERRGOxFRHYePA",
+    "name": "Sparkling Car Polishing",
+    "lat": 1.3283820000000002,
+    "lon": 103.752966,
+    "primary_type": "car_wash",
+    "address": "18 Boon Lay Way, #06-98, Singapore 609966"
+  },
+  {
+    "place_id": "ChIJUTf-O0AR2jERhAlfKfiKHFI",
+    "name": "Sparker detailing",
+    "lat": 1.3361338,
+    "lon": 103.75280649999999,
+    "primary_type": "car_wash",
+    "address": "Toh Guan Rd E, #01-24, Singapore 608579"
+  },
+  {
+    "place_id": "ChIJSalJWW0Q2jERSs4EW2EW5jw",
+    "name": "ArmorCoatUSA (Singapore) LLP",
+    "lat": 1.3366599,
+    "lon": 103.75314209999999,
+    "primary_type": "car_wash",
+    "address": "42 Toh Guan Rd E, Singapore 608583"
+  },
+  {
+    "place_id": "ChIJRVpQWW0Q2jERG60-tT7u8-U",
+    "name": "Prospeed Specialist",
+    "lat": 1.3366599,
+    "lon": 103.75314209999999,
+    "primary_type": "car_wash",
+    "address": "42 Toh Guan Rd E, Singapore 608583"
+  },
+  {
+    "place_id": "ChIJp1cDRwAR2jERagIepbq5fO0",
+    "name": "Day Night Wash @Toh Tuck",
+    "lat": 1.3342851,
+    "lon": 103.75885749999999,
+    "primary_type": "car_wash",
+    "address": "50 Old Toh Tuck Rd, Cynergy Station, Singapore 597657"
+  },
+  {
+    "place_id": "ChIJPasofwAR2jERwHqIFqaa-yk",
+    "name": "Linden drive",
+    "lat": 1.333936,
+    "lon": 103.8019029,
+    "primary_type": "car_wash",
+    "address": "Linden Dr, Singapore"
+  },
+  {
+    "place_id": "ChIJv2yuBgAR2jERTdHojkJ07-o",
+    "name": "borneo carwash",
+    "lat": 1.3288421,
+    "lon": 103.8183279,
+    "primary_type": "car_wash",
+    "address": "lot 10640, Jln Ilmu, senadin, Singapore"
+  },
+  {
+    "place_id": "ChIJbc8-AWAX2jERad2ioYvvjFY",
+    "name": "Caltex Balestier",
+    "lat": 1.3267752,
+    "lon": 103.8452568,
+    "primary_type": "gas_station",
+    "address": "542 Balestier Rd, Singapore 329864"
+  },
+  {
+    "place_id": "ChIJw20EdGgX2jER_oFHtWr3hmk",
+    "name": "Wash n' Run",
+    "lat": 1.3361593999999999,
+    "lon": 103.84664250000002,
+    "primary_type": "car_wash",
+    "address": "399 Lor 2 Toa Payoh, Singapore 319640"
+  },
+  {
+    "place_id": "ChIJ98uGA2AX2jERt8rf4qJuRkg",
+    "name": "Turtle Car Wash",
+    "lat": 1.3268153999999999,
+    "lon": 103.845333,
+    "primary_type": "car_wash",
+    "address": "542 Balestier Rd, Singapore 329870"
+  },
+  {
+    "place_id": "ChIJa0TuH6wX2jER3MD7074ynZU",
+    "name": "Procarz Grooming Pte Ltd",
+    "lat": 1.3322835,
+    "lon": 103.85124499999999,
+    "primary_type": "car_wash",
+    "address": "190 Toa Payoh Central, Singapore 319196"
+  },
+  {
+    "place_id": "ChIJsVE-QgAX2jER_Rmmp0hQ6W0",
+    "name": "AutoBath Auto Car Wash & Wax",
+    "lat": 1.3297915999999999,
+    "lon": 103.85464119999999,
+    "primary_type": "car_wash",
+    "address": "293 Lor 6 Toa Payoh, Singapore 319387"
+  },
+  {
+    "place_id": "ChIJ7RwtIhkX2jERQ23GnSiFpv8",
+    "name": "Snow Detailing",
+    "lat": 1.3352899,
+    "lon": 103.8461172,
+    "primary_type": "car_wash",
+    "address": "145 Lor 2 Toa Payoh, Singapore 310145"
+  },
+  {
+    "place_id": "ChIJY9b9mCIX2jERKhrK1akbv7A",
+    "name": "FRESHEST Car Wash",
+    "lat": 1.3345209999999998,
+    "lon": 103.845658,
+    "primary_type": "car_wash",
+    "address": "Lor 2 Toa Payoh, Level 6 146A, Singapore 310146"
+  },
+  {
+    "place_id": "ChIJ0dguNdYX2jERmA9JP9g_kAM",
+    "name": "Beaver Self-Service Car Wash MSCP 261A",
+    "lat": 1.3337999,
+    "lon": 103.85555040000001,
+    "primary_type": "car_wash",
+    "address": "Blk 261A Toa Payoh E, #1A MSCP Deck, Singapore 310261"
+  },
+  {
+    "place_id": "ChIJl1gWt8cX2jERRRAtiC3ps4U",
+    "name": "Multi-Function CarWash",
+    "lat": 1.3372058,
+    "lon": 103.85773499999999,
+    "primary_type": "car_wash",
+    "address": "10A Lor 7 Toa Payoh, Singapore 311010"
+  },
+  {
+    "place_id": "ChIJC2q844AX2jERznz2kTX__ts",
+    "name": "Wash N'Run",
+    "lat": 1.3286348,
+    "lon": 103.871811,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJY_2ZhYcX2jERIODJo433IQg",
+    "name": "SONAX Experience Centre",
+    "lat": 1.3297961,
+    "lon": 103.87661179999999,
+    "primary_type": "auto_parts_store",
+    "address": "2 Kallang Pudding Road #01-04 Sonax Experience Centre, Mactech Building (Contact via WhatsApp, Singapore 349307"
+  },
+  {
+    "place_id": "ChIJQ0ZeS-0X2jERcZ8Bp1W78NQ",
+    "name": "117 multistorey carpark car washing bay with waterjet & vacuum cleaner",
+    "lat": 1.3363768999999999,
+    "lon": 103.87328989999999,
+    "primary_type": "car_wash",
+    "address": "117 Alkaff Cres, Singapore"
+  },
+  {
+    "place_id": "ChIJ0dAaCT0X2jERNDwIA-wzAe4",
+    "name": "Self service coin-operated car wash",
+    "lat": 1.3338252,
+    "lon": 103.87097589999999,
+    "primary_type": "car_wash",
+    "address": "106 Bidadari Park Dr, Singapore 342106"
+  },
+  {
+    "place_id": "ChIJDfbv3YAX2jERqfeqrDI6DDw",
+    "name": "Waxco",
+    "lat": 1.3283929,
+    "lon": 103.8724029,
+    "primary_type": "car_wash",
+    "address": "3 Lor Bakar Batu, No. 3, Singapore 348741"
+  },
+  {
+    "place_id": "ChIJJ9WU04AX2jERcipmKXvYetY",
+    "name": "GreenApps",
+    "lat": 1.3282254,
+    "lon": 103.8730915,
+    "primary_type": "car_wash",
+    "address": "28 Genting Ln, Singapore 349585"
+  },
+  {
+    "place_id": "ChIJ45jHV4AX2jER6jxgNAyuv7E",
+    "name": "Caltex MacPherson",
+    "lat": 1.3326299,
+    "lon": 103.8836644,
+    "primary_type": "gas_station",
+    "address": "465 MacPherson Rd, Singapore 368183"
+  },
+  {
+    "place_id": "ChIJ15PeWrUZ2jERYfVUMPVUZzs",
+    "name": "WashWerkz UnlimitedWash.sg ( Playfair Road )",
+    "lat": 1.3341313,
+    "lon": 103.88651639999999,
+    "primary_type": "car_wash",
+    "address": "21 Playfair Rd, Singapore 367988"
+  },
+  {
+    "place_id": "ChIJwVx-GSAX2jERx2uh_d9eknw",
+    "name": "Express Autoshine @ OneKA MacPherson (Car Wash , Tinting , SONAX Coating, Fumigation))",
+    "lat": 1.3325126,
+    "lon": 103.8823049,
+    "primary_type": "car_wash",
+    "address": "1 Kampong Ampat, #03-11 One KA @ MacPherson, Singapore 368314"
+  },
+  {
+    "place_id": "ChIJ10cr-GkX2jERM4Yq92j2YdE",
+    "name": "Groomers Lab Pte Ltd",
+    "lat": 1.3331585,
+    "lon": 103.8821342,
+    "primary_type": "car_wash",
+    "address": "1 Kampong Ampat, #05-02 One KA@MacPherson, Singapore 368314"
+  },
+  {
+    "place_id": "ChIJ5yh3W48X2jERnMMzsftIpWc",
+    "name": "Manual Car Wash - SPC MacPherson",
+    "lat": 1.3319171,
+    "lon": 103.88043429999999,
+    "primary_type": "car_wash",
+    "address": "429 MacPherson Rd, Singapore 368140"
+  },
+  {
+    "place_id": "ChIJW5NKRrwX2jERy46ndtvhGpI",
+    "name": "X|PERT.60 Car Wash",
+    "lat": 1.3327403,
+    "lon": 103.883814,
+    "primary_type": "car_wash",
+    "address": "465 MacPherson Rd, Singapore 368183"
+  },
+  {
+    "place_id": "ChIJcydQlNMX2jER8eFxn_6NWuw",
+    "name": "GoWash Mobile Car Detailing",
+    "lat": 1.3362752999999998,
+    "lon": 103.88401220000002,
+    "primary_type": "car_wash",
+    "address": "20 Shaw Rd, Singapore 367956"
+  },
+  {
+    "place_id": "ChIJdfpT7Y4X2jERGq_lpD5LVWA",
+    "name": "Sonax Techneat - Car Care Center",
+    "lat": 1.3327349,
+    "lon": 103.8839311,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJF_lEoe9c0WURSTtuaIPtU5U",
+    "name": "Glitz detailing",
+    "lat": 1.3349564000000003,
+    "lon": 103.87962089999999,
+    "primary_type": "car_wash",
+    "address": "9 Joo Seng Rd, Singapore 360009"
+  },
+  {
+    "place_id": "ChIJYX-fiT8X2jER1n7IEAlrr0U",
+    "name": "Autowash24 Ubi (Staff: 1pm - 1am, Wed Off)",
+    "lat": 1.3296588,
+    "lon": 103.8948344,
+    "primary_type": "car_wash",
+    "address": "3020A Ubi Rd 1, #01-38, Singapore 408714"
+  },
+  {
+    "place_id": "ChIJlSmloKAX2jERGoKzcxDbGSE",
+    "name": "Coatconut Detailing",
+    "lat": 1.3335202,
+    "lon": 103.89479089999999,
+    "primary_type": "car_repair",
+    "address": "Ubi Vertex, 33 Ubi Ave 3, #01-36, Singapore 408868"
+  },
+  {
+    "place_id": "ChIJMc8r574Z2jERafbMG_xhnI8",
+    "name": "AA Trust Automotive Pte Ltd",
+    "lat": 1.3326864,
+    "lon": 103.8934077,
+    "primary_type": "car_dealer",
+    "address": "33 Ubi Ave 3, #01-15 Vertex, Singapore 408868"
+  },
+  {
+    "place_id": "ChIJPTeqiKEZ2jERyx6jiCpveC0",
+    "name": "Imperial Auto Style",
+    "lat": 1.3332954,
+    "lon": 103.8947704,
+    "primary_type": "car_repair",
+    "address": "33 Ubi Ave 3, #01-40 Vertex, Singapore 408868"
+  },
+  {
+    "place_id": "ChIJfYQ3gO8X2jERE2JQtMMBius",
+    "name": "Angelwax Asia",
+    "lat": 1.3257982,
+    "lon": 103.89789689999999,
+    "primary_type": "car_wash",
+    "address": "51 Ubi Ave 1, #03-22, Singapore 408933"
+  },
+  {
+    "place_id": "ChIJWaKNB8gZ2jERCHo9wy_f-Lw",
+    "name": "Zenith Car Detailing (Kovalent Coatings Singapore)",
+    "lat": 1.3254092,
+    "lon": 103.8969352,
+    "primary_type": "car_repair",
+    "address": "53 Ubi Ave 1, #01-36, Singapore 408934"
+  },
+  {
+    "place_id": "ChIJt_D9Z14X2jER9jMl5bF1Rwg",
+    "name": "SGCarnovator Pte Ltd",
+    "lat": 1.3294666,
+    "lon": 103.895315,
+    "primary_type": "car_wash",
+    "address": "Blk 3019A Ubi Rd 1, #01-32, Singapore 408713"
+  },
+  {
+    "place_id": "ChIJw4o37uoX2jERVFXUrkOptjs",
+    "name": "KeePer LABO - Car Coating & Car Detailing Services in Singapore",
+    "lat": 1.3321077,
+    "lon": 103.89613130000001,
+    "primary_type": "car_repair",
+    "address": "10 Ubi View, #1F, Autobacs 408543"
+  },
+  {
+    "place_id": "ChIJD1Lhp_YX2jERfMNuQHzBxus",
+    "name": "Nihon Etching (S) Pte. Ltd.",
+    "lat": 1.3301558999999998,
+    "lon": 103.8970779,
+    "primary_type": "car_wash",
+    "address": "3029A Ubi Rd 3, Singapore 408661"
+  },
+  {
+    "place_id": "ChIJI6IHRvQX2jERLEF2dDhcumk",
+    "name": "AUTOGLOSS SPRAY PAINT | AUTOMOTIVE SPRAY PAINT SHOP | CAR SPRAY PAINT | ACCIDENT REPAIR | CAR WASH | CAR COATING",
+    "lat": 1.3290484999999999,
+    "lon": 103.89497689999999,
+    "primary_type": "car_repair",
+    "address": "3022A Ubi Rd 1, #01-52, Singapore 408716"
+  },
+  {
+    "place_id": "ChIJyS42dQAX2jER_O00b-sN3mM",
+    "name": "MACZTECH PTE LTD",
+    "lat": 1.3330457,
+    "lon": 103.89452,
+    "primary_type": "car_dealer",
+    "address": "33 Ubi Ave 3, #01-42, Singapore 408868"
+  },
+  {
+    "place_id": "ChIJuYoTPyMX2jERJgqJ7nM5f5o",
+    "name": "AUTOARCH Detailing",
+    "lat": 1.3322825000000003,
+    "lon": 103.89604779999999,
+    "primary_type": "car_wash",
+    "address": "10 Ubi View, Carpark, Singapore 408543"
+  },
+  {
+    "place_id": "ChIJq7Y8e7YX2jERNWlGWSuSztg",
+    "name": "Macztech Detailing",
+    "lat": 1.3330457,
+    "lon": 103.89452,
+    "primary_type": "car_wash",
+    "address": "33 Ubi Ave 3, #01=42, Singapore 408868"
+  },
+  {
+    "place_id": "ChIJvyryRcQX2jERX5U4OjLkwiE",
+    "name": "DETAILING WERKZ PTE. LTD.",
+    "lat": 1.3264365000000002,
+    "lon": 103.8935834,
+    "primary_type": "car_wash",
+    "address": "6 Ubi Rd 1, #03-02 Wintech Centre, Singapore 408726"
+  },
+  {
+    "place_id": "ChIJKbYW-B0Y2jERAyKDAR3MYYM",
+    "name": "UM2 Performance Tuning",
+    "lat": 1.3261798,
+    "lon": 103.89766189999999,
+    "primary_type": "car_wash",
+    "address": "51 Ubi Avenue 1 #01-23 Paya Ubi Industrial Park, Singapore"
+  },
+  {
+    "place_id": "ChIJT5l_GgAX2jER38DbrZ4Muc4",
+    "name": "DaVinci Wash",
+    "lat": 1.3319208999999999,
+    "lon": 103.8889346,
+    "primary_type": "car_wash",
+    "address": "255 Paya Lebar Rd, Singapore 409037"
+  },
+  {
+    "place_id": "ChIJ_x4QLVcX2jERCHZjxtqOXS8",
+    "name": "ACCEL SERVICES PTE. LTD.",
+    "lat": 1.3272865999999999,
+    "lon": 103.8906648,
+    "primary_type": "car_wash",
+    "address": "140 Paya Lebar Rd, Singapore 409015"
+  },
+  {
+    "place_id": "ChIJB6-WewAX2jERgzPoCUHDlV0",
+    "name": "Day Night Wash @EBC | Driveline Singapore | 24 Hours Automated Car Wash",
+    "lat": 1.3363763,
+    "lon": 103.902113,
+    "primary_type": "car_wash",
+    "address": "18 Kaki Bukit Rd 3, #01-22 Entrepreneur Business Centre, Singapore 415978"
+  },
+  {
+    "place_id": "ChIJW72YPokX2jERKcGcQ4Q6KRE",
+    "name": "D'BUNK'D Detailing",
+    "lat": 1.3345076999999999,
+    "lon": 103.9013238,
+    "primary_type": "car_wash",
+    "address": "Eunos Technolink, 3 Kaki Bukit Rd 1, #01-02, Singapore 415935"
+  },
+  {
+    "place_id": "ChIJ-6ZXSMoX2jER4X5KumsG0Io",
+    "name": "Day Night Wash @ EBC - open 24 hours | Auto Car Wash",
+    "lat": 1.3372562,
+    "lon": 103.9028896,
+    "primary_type": "car_wash",
+    "address": "18 Kaki Bukit Rd 3, #01-22 Entrepreneur Business Centre, Singapore 415978"
+  },
+  {
+    "place_id": "ChIJZ9Cq1JwX2jERBSy-kqv21rc",
+    "name": "Waxoyl Singapore",
+    "lat": 1.3338790999999999,
+    "lon": 103.90078969999999,
+    "primary_type": "car_wash",
+    "address": "7 Kaki Bukit Rd 1, #01-10 Eunos Technolink, Singapore 415937"
+  },
+  {
+    "place_id": "ChIJVVUVwPEX2jER5LtVfDIKid8",
+    "name": "First Autoworks",
+    "lat": 1.3345002,
+    "lon": 103.8985398,
+    "primary_type": "car_repair",
+    "address": "7 Ubi Cl, Singapore 408604"
+  },
+  {
+    "place_id": "ChIJIc_Hbq0X2jERa-5cjVQY9_E",
+    "name": "ACM Performance Pte Ltd",
+    "lat": 1.3371779,
+    "lon": 103.9007036,
+    "primary_type": "car_repair",
+    "address": "2 Kaki Bukit Ave 2, #02-09, Autohub 417921"
+  },
+  {
+    "place_id": "ChIJRUoVVNIX2jEREr6S-XVn8Fw",
+    "name": "Candy Auto Care",
+    "lat": 1.3363102999999998,
+    "lon": 103.90034089999999,
+    "primary_type": "car_wash",
+    "address": "2 Kaki Bukit Ave 2, #02-09, AutoHub 413002"
+  },
+  {
+    "place_id": "ChIJnQvQGPAZ2jERCJJWedCGfjE",
+    "name": "Unique Car Beauty Shop",
+    "lat": 1.3255465,
+    "lon": 103.89754479999999,
+    "primary_type": "car_wash",
+    "address": "53 Ubi Ave 1, #01-44 Paya Ubi Industrial park, Singapore 408934"
+  },
+  {
+    "place_id": "ChIJk_c_LPEX2jER65GdD-sGTQA",
+    "name": "Ace Technology Singapore Pte Ltd",
+    "lat": 1.3311290000000002,
+    "lon": 103.899443,
+    "primary_type": "car_wash",
+    "address": "24 Ubi Rd 4, Singapore 408612"
+  },
+  {
+    "place_id": "ChIJ9SrS68IX2jER4Qs2U7TkAGI",
+    "name": "Paramount Detailing Pte Ltd",
+    "lat": 1.3363741999999998,
+    "lon": 103.8999235,
+    "primary_type": "car_wash",
+    "address": "10 Kaki Bukit Rd 2, #01-01 First East Centre, Singapore 417868"
+  },
+  {
+    "place_id": "ChIJz3Nn-lQ92jERvnGKb-7TDxk",
+    "name": "Groomwerkz - Chai Chee",
+    "lat": 1.3289008999999998,
+    "lon": 103.91784299999999,
+    "primary_type": "car_wash",
+    "address": "502 Chai Chee Ln, B1-00/01 Lock+Store Chai Chee inside Lock+Store, Singapore 469025"
+  },
+  {
+    "place_id": "ChIJ9WImSow92jER_Y8qIj4JImY",
+    "name": "WashWerkz Unlimited Wash (Chai Chee)",
+    "lat": 1.3289008999999998,
+    "lon": 103.91784299999999,
+    "primary_type": "car_wash",
+    "address": "502 Chai Chee Ln, B1-00 Inside Lock + Store, Singapore 469025"
+  },
+  {
+    "place_id": "ChIJwR-FlOIX2jERk0bIhvymcp0",
+    "name": "Pacific Reflections Professional Car Grooming Center",
+    "lat": 1.3369499999999999,
+    "lon": 103.913091,
+    "primary_type": "car_wash",
+    "address": "95 Kaki Bukit Ave 1, Singapore 415982"
+  },
+  {
+    "place_id": "ChIJawe17CYX2jERjHZY8zsu6_o",
+    "name": "Everest Detailing",
+    "lat": 1.337237,
+    "lon": 103.91254119999999,
+    "primary_type": "car_wash",
+    "address": "109 Kaki Bukit Ave 1, Singapore 415989"
+  },
+  {
+    "place_id": "ChIJL6W2U9Y92jERgJh-StSrQPM",
+    "name": "Wash n' Run",
+    "lat": 1.3283445999999999,
+    "lon": 103.9395827,
+    "primary_type": "car_wash",
+    "address": "99 Bedok North Rd, Singapore 469677"
+  },
+  {
+    "place_id": "ChIJKcTvCQA92jERAhNIyNTXd0o",
+    "name": "Esso",
+    "lat": 1.3282904,
+    "lon": 103.9398501,
+    "primary_type": "car_wash",
+    "address": "99 Bedok North Rd, Singapore 469677"
+  },
+  {
+    "place_id": "ChIJcYni6jc92jERNUlfXwazp7c",
+    "name": "Carlover Polish",
+    "lat": 1.3344559,
+    "lon": 103.9379194,
+    "primary_type": "car_wash",
+    "address": "100 Bedok North Ave 4, Block 101, Singapore 460100"
+  },
+  {
+    "place_id": "ChIJUZdcHKoJ2jERKyYz85vlQXQ",
+    "name": "Tuhu Car Wash",
+    "lat": 1.3377607999999999,
+    "lon": 103.59231609999999,
+    "primary_type": "car_wash",
+    "address": "P1, Jalan Forest City 4, Forest City, 81550 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJH4SSBgAJ2jERjTKkZNp_gEk",
+    "name": "MR Digital",
+    "lat": 1.3414074,
+    "lon": 103.5942939,
+    "primary_type": "car_wash",
+    "address": "Gelang Patah, Malaysia"
+  },
+  {
+    "place_id": "ChIJ03PLjJoP2jERs8r24d9zdJw",
+    "name": "Caltex",
+    "lat": 1.3386514999999999,
+    "lon": 103.6927743,
+    "primary_type": "gas_station",
+    "address": "21 Jurong West Street 93, Singapore 648964"
+  },
+  {
+    "place_id": "ChIJvbD_c0UP2jERv8a1yl7askg",
+    "name": "CARs International - Jurong Point B2",
+    "lat": 1.339874,
+    "lon": 103.706464,
+    "primary_type": "car_wash",
+    "address": "1 Jurong West Central 2, B2 Carpark Jurong Point, Singapore 648886"
+  },
+  {
+    "place_id": "ChIJUZfZdDYR2jERZOpN6BBPcH0",
+    "name": "Detail Inc",
+    "lat": 1.3375287999999999,
+    "lon": 103.7547128,
+    "primary_type": "car_wash",
+    "address": "21 toh guan road east 2nd floor, #01-05 Toh Guan Centre, Singapore 608609"
+  },
+  {
+    "place_id": "ChIJxxtGtGgT2jERXklcjONQwcY",
+    "name": "Playberz Motosport",
+    "lat": 1.3375285,
+    "lon": 103.7547136,
+    "primary_type": "auto_parts_store",
+    "address": "21 Toh Guan Rd E, #06-11 Toh Guan Centre, Singapore 608609"
+  },
+  {
+    "place_id": "ChIJqaaLLC4R2jERX1h2Qteh6Vw",
+    "name": "Cartistry [Toh Guan]",
+    "lat": 1.3367788,
+    "lon": 103.7543671,
+    "primary_type": "car_repair",
+    "address": "48 Toh Guan Rd E, #04-126 Enterprise Hub, Singapore 608586"
+  },
+  {
+    "place_id": "ChIJs7OwRysR2jERF32zWS98gx0",
+    "name": "Wash & Shine",
+    "lat": 1.3431845999999998,
+    "lon": 103.75818559999999,
+    "primary_type": "car_wash",
+    "address": "50 Bukit Batok East Ave 3, Singapore 659879"
+  },
+  {
+    "place_id": "ChIJgcEUd20Q2jERqmxzOnFif_Q",
+    "name": "Klar Details - Professional Car Detailing @ Toh Guan By Motoserv",
+    "lat": 1.3365541,
+    "lon": 103.7554962,
+    "primary_type": "car_wash",
+    "address": "48 Toh Guan Rd E, #02-124, Singapore 608586"
+  },
+  {
+    "place_id": "ChIJc816lY4P2jERd8x86ACiZdM",
+    "name": "QMI Toughguard Car Grooming",
+    "lat": 1.3379146,
+    "lon": 103.7540968,
+    "primary_type": "car_repair",
+    "address": "21 Toh Guan Road East Road, Toh Guan Rd, #06-15 Centre, Singapore 608609"
+  },
+  {
+    "place_id": "ChIJjaCOyHAR2jER-qm5k-ILzA8",
+    "name": "AIGIS@SG",
+    "lat": 1.3379311999999999,
+    "lon": 103.75451149999999,
+    "primary_type": "",
+    "address": "Singapore, Toh Guan Rd E, 21号, Toh Guan Centre, #01-07 邮政编码: 608609"
+  },
+  {
+    "place_id": "ChIJQQreoAMX2jERtHjvDatpjWY",
+    "name": "Karpride Tech & Touch Car Wash",
+    "lat": 1.3369406,
+    "lon": 103.7546187,
+    "primary_type": "car_wash",
+    "address": "48 Toh Guan Rd E, #03-110 Enterprise Hub, Singapore 608586"
+  },
+  {
+    "place_id": "ChIJ6d08LY8P2jERK98TMQ3_Z2A",
+    "name": "GRANDE AFFARI PTE LTD",
+    "lat": 1.3375285,
+    "lon": 103.7547136,
+    "primary_type": "supplier",
+    "address": "21 Toh Guan Rd E, #06-29 Toh Guan Centre, Singapore 608609"
+  },
+  {
+    "place_id": "ChIJUSJckLYR2jER_ecIH5c1Zr4",
+    "name": "mcarwashsg",
+    "lat": 1.3468004999999998,
+    "lon": 103.7534938,
+    "primary_type": "car_wash",
+    "address": "215 Bukit Batok Street 21, Singapore 650215"
+  },
+  {
+    "place_id": "ChIJ4ccWd20Q2jERs8fgcYv63jE",
+    "name": "The Car Studio",
+    "lat": 1.3368622,
+    "lon": 103.7544958,
+    "primary_type": "car_wash",
+    "address": "48 Toh Guan Rd E, Singapore 608586"
+  },
+  {
+    "place_id": "ChIJi1FBC20Q2jER_R9qQHGmIJ4",
+    "name": "Imperial-1 Pte Ltd",
+    "lat": 1.3376732,
+    "lon": 103.7546974,
+    "primary_type": "car_wash",
+    "address": "21 Toh Guan Rd E, Singapore 608609"
+  },
+  {
+    "place_id": "ChIJvV1-2aMR2jERDThC2AJdh5I",
+    "name": "Carpow @ Bukit Batok",
+    "lat": 1.3392441,
+    "lon": 103.75962969999999,
+    "primary_type": "car_wash",
+    "address": "1 Bukit Batok Cres, #03-33 WCEGA Plaza, Singapore 658064"
+  },
+  {
+    "place_id": "ChIJRevs1DoR2jERiu0ow8mVVpo",
+    "name": "Shell Car Wash",
+    "lat": 1.3475314,
+    "lon": 103.764986,
+    "primary_type": "car_wash",
+    "address": "28 Bukit Batok East Ave 6, Singapore 659760"
+  },
+  {
+    "place_id": "ChIJQY55h9AR2jER4dM9_kq3fiA",
+    "name": "Island car wash And grooming Pte Ltd",
+    "lat": 1.3386673999999998,
+    "lon": 103.75923940000001,
+    "primary_type": "car_wash",
+    "address": "1 Bukit Batok Cres, #02-42, Singapore 658064"
+  },
+  {
+    "place_id": "ChIJ3WcZiW4Q2jERp3EgtjJHbZc",
+    "name": "BlackNano Paint Protection Center",
+    "lat": 1.3386673999999998,
+    "lon": 103.75923940000001,
+    "primary_type": "car_repair",
+    "address": "1 Bukit Batok Cres, #04-24/04-25 Wcega Plaza, Singapore 658064"
+  },
+  {
+    "place_id": "ChIJgREdLekR2jERLzos1K-ef1A",
+    "name": "Crystal Auto Detailing",
+    "lat": 1.3386673999999998,
+    "lon": 103.75923940000001,
+    "primary_type": "car_wash",
+    "address": "1 Bukit Batok Cres, #05-53 WCEGA PLAZA, Singapore 658064"
+  },
+  {
+    "place_id": "ChIJTQMvxpER2jERORe-Ts3JDcM",
+    "name": "AW Auto Care",
+    "lat": 1.3386673999999998,
+    "lon": 103.75923940000001,
+    "primary_type": "car_repair",
+    "address": "1 Bukit Batok Cres, #07-30 WCEGA Plaza, Singapore 658064"
+  },
+  {
+    "place_id": "ChIJ81Ob7EgR2jERugMakwnpmUc",
+    "name": "G'zox Singapore",
+    "lat": 1.3386673999999998,
+    "lon": 103.75923940000001,
+    "primary_type": "car_wash",
+    "address": "1 Bukit Batok Cres, #03-16 Wcega Plaza, Singapore 658064"
+  },
+  {
+    "place_id": "ChIJVbpWxG_uWWAR4OIaU0d3nkw",
+    "name": "ShinyTomato Premium Car Detailing",
+    "lat": 1.3386673999999998,
+    "lon": 103.7592296,
+    "primary_type": "car_wash",
+    "address": "1 Bukit Batok Cres, #02-45 Wcega Plaza, Singapore 658064"
+  },
+  {
+    "place_id": "ChIJb-pKOFwR2jERD23MjTIq0kE",
+    "name": "Cartechnik Pte Ltd",
+    "lat": 1.3386118,
+    "lon": 103.7591698,
+    "primary_type": "car_wash",
+    "address": "Singapore, Bukit Batok Cres, WCEGA Plaza, #06-42 邮政编码: 658064"
+  },
+  {
+    "place_id": "ChIJq6pqYG4Q2jERvV9qyL2wiO8",
+    "name": "Autotriz Innovative Surface Creation",
+    "lat": 1.3386673999999998,
+    "lon": 103.7592296,
+    "primary_type": "car_wash",
+    "address": "1 Bukit Batok Cres, #03-01, Singapore 658064"
+  },
+  {
+    "place_id": "ChIJB9AdiW4Q2jERvBcYc-PE9I4",
+    "name": "MiracleBodyWorkz",
+    "lat": 1.3386551,
+    "lon": 103.7594428,
+    "primary_type": "car_repair",
+    "address": "1 Bukit Batok Cres, Singapore 658064"
+  },
+  {
+    "place_id": "ChIJ2-nb3-xVuG8RvUvJweuaO5M",
+    "name": "OneBit Auto",
+    "lat": 1.3386673999999998,
+    "lon": 103.75923940000001,
+    "primary_type": "car_wash",
+    "address": "1 Bukit Batok Cres, #05-53, Singapore 658064"
+  },
+  {
+    "place_id": "ChIJ_1z9KgAX2jEREsSYCe7PmYQ",
+    "name": "Raffles Institution missile silo",
+    "lat": 1.3462790000000002,
+    "lon": 103.8457219,
+    "primary_type": "car_wash",
+    "address": "1 Raffles Institution Ln, Singapore 575954"
+  },
+  {
+    "place_id": "ChIJv-bhp6EX2jERGUkPrs9KSfw",
+    "name": "Caltex Upp. Serangoon",
+    "lat": 1.3473795,
+    "lon": 103.8716609,
+    "primary_type": "gas_station",
+    "address": "559 Upper Serangoon Rd, Singapore 534561"
+  },
+  {
+    "place_id": "ChIJv9A1LUEX2jERaPbCi23o5FQ",
+    "name": "Wet Dog",
+    "lat": 1.3375176,
+    "lon": 103.8829543,
+    "primary_type": "store",
+    "address": "130 Joo Seng Rd, #05-04, Singapore 368357"
+  },
+  {
+    "place_id": "ChIJdXR4LgAX2jERZSlMY_DrybM",
+    "name": "Main gate GC",
+    "lat": 1.3394385,
+    "lon": 103.877787,
+    "primary_type": "car_wash",
+    "address": "9 Mount Vernon Rd, Singapore 367828"
+  },
+  {
+    "place_id": "ChIJz8Gnyo4X2jERNWUh_Uv7geM",
+    "name": "Unli-Wash 365",
+    "lat": 1.3364828,
+    "lon": 103.8865569,
+    "primary_type": "car_wash",
+    "address": "76 Playfair Rd, Singapore 367996"
+  },
+  {
+    "place_id": "ChIJE9DkqfMX2jERxr5R4Zr8ank",
+    "name": "Aire Pro Designs Custom Paint",
+    "lat": 1.3329499999999999,
+    "lon": 103.894131,
+    "primary_type": "car_wash",
+    "address": "33 Ubi Ave 3, Singapore 408868"
+  },
+  {
+    "place_id": "ChIJF3wYGQ8T2jERq-rOt7Dh0yk",
+    "name": "Jerga Details",
+    "lat": 1.3384104,
+    "lon": 103.90578950000001,
+    "primary_type": "car_repair",
+    "address": "8 Kaki Bukit Avenue 4, Premier @ Kaki Bukit, #01-05 (GATE 1 Important Note: Enter from gate 1, turn, right and go down the slope, Singapore 415875"
+  },
+  {
+    "place_id": "ChIJBwAA8I4X2jER7rnWCgVqU70",
+    "name": "Techneat Car Care",
+    "lat": 1.3384104,
+    "lon": 103.90578950000001,
+    "primary_type": "car_wash",
+    "address": "8 Kaki Bukit Ave 4, #03-40/44, Singapore 415875"
+  },
+  {
+    "place_id": "ChIJ6y-WPwcX2jERRC5dKxDj7Ng",
+    "name": "The Arena Detailing",
+    "lat": 1.3388001000000003,
+    "lon": 103.90626250000001,
+    "primary_type": "car_wash",
+    "address": "8 Kaki Bukit Ave 4, #04-36 Kaki Bukit, Singapore 415874"
+  },
+  {
+    "place_id": "ChIJ4Uk8HyIX2jEReeI4qrxYWYw",
+    "name": "Carpitiam (Previously Carmetic Detailing)",
+    "lat": 1.3388555,
+    "lon": 103.90626739999999,
+    "primary_type": "car_wash",
+    "address": "04-40 (Gate 2, 8 Kaki Bukit Ave 4, Premier @ Kaki Bukit, Singapore 415875"
+  },
+  {
+    "place_id": "ChIJQVk0h8kX2jERD6YsWYXZgHg",
+    "name": "Detail Lab",
+    "lat": 1.344998,
+    "lon": 103.8979102,
+    "primary_type": "car_repair",
+    "address": "2 Defu South Street 1, #04-06 Defu Industrial City, Singapore 533755"
+  },
+  {
+    "place_id": "ChIJvZnYu90X2jERHPTucE20FDc",
+    "name": "Saiko Detailing",
+    "lat": 1.3384104,
+    "lon": 103.90578950000001,
+    "primary_type": "service",
+    "address": "Kaki Bukit Ave 4, #05-55 Premier @Kaki Bukit, Singapore 415875"
+  },
+  {
+    "place_id": "ChIJ-ctyWYoV2jERjVEOY_wD-Wg",
+    "name": "Master Detailer Pte Ltd",
+    "lat": 1.3384104,
+    "lon": 103.90578950000001,
+    "primary_type": "car_wash",
+    "address": "8 Kaki Bukit Ave 4, #04-18 Premier @ Kaki Bukit, Singapore 415875"
+  },
+  {
+    "place_id": "ChIJhcLsu1EX2jER4ZRRq4Wwvr8",
+    "name": "Quantum Detailing",
+    "lat": 1.3384104,
+    "lon": 103.90578950000001,
+    "primary_type": "car_wash",
+    "address": "8 Kaki Bukit Ave 4, #04-22 Premier @ Kaki Bukit, Singapore 415875"
+  },
+  {
+    "place_id": "ChIJVVVVfeQX2jERY5sudllVzXc",
+    "name": "First Autoworks",
+    "lat": 1.3381341999999998,
+    "lon": 103.90778089999999,
+    "primary_type": "car_repair",
+    "address": "23 Kaki Bukit Ave 4, Singapore 415933"
+  },
+  {
+    "place_id": "ChIJ0eVjavgV2jER5yaCovZ2yik",
+    "name": "Gemini Car Detailing",
+    "lat": 1.3384104,
+    "lon": 103.90578950000001,
+    "primary_type": "car_wash",
+    "address": "8 Kaki Bukit Ave 4, #04-18, Singapore 415875"
+  },
+  {
+    "place_id": "ChIJWyKWRIUX2jERK6r7zaAgjwI",
+    "name": "Radiant Wash",
+    "lat": 1.3371473,
+    "lon": 103.9027594,
+    "primary_type": "car_wash",
+    "address": "18 Kaki Bukit Rd 3, #05-18, Singapore 415978"
+  },
+  {
+    "place_id": "ChIJIbH-geAX2jERBds4h0Zwr-k",
+    "name": "MCS Auto Grooming",
+    "lat": 1.338705,
+    "lon": 103.8991207,
+    "primary_type": "car_wash",
+    "address": "10 Kaki Bukit Rd 2, #03-17, Singapore 417868"
+  },
+  {
+    "place_id": "ChIJw9ZW4RoX2jER1T4400llZiM",
+    "name": "Day Night Wash @BBC | Driveline Singapore | 24 Hours Automated Car Wash | Free Parking after 10pm",
+    "lat": 1.3387168999999999,
+    "lon": 103.9109987,
+    "primary_type": "car_wash",
+    "address": "13 Kaki Bukit Rd 4, #03-14 Bartley Biz Centre, Singapore 417807"
+  },
+  {
+    "place_id": "ChIJzcEmTn4X2jER-D7NbOUjg_4",
+    "name": "DetailOutz - Bike Wash & Car Wash Detailing Services",
+    "lat": 1.3401421,
+    "lon": 103.9107822,
+    "primary_type": "service",
+    "address": "25 Kaki Bukit Rd 4, #03-28, Singapore 417800"
+  },
+  {
+    "place_id": "ChIJt41DteMX2jERWb3bGKldOi4",
+    "name": "Ceramic Works - Car Coating Pros",
+    "lat": 1.3389847,
+    "lon": 103.91170939999999,
+    "primary_type": "car_repair",
+    "address": "13 Kaki Bukit Rd 4, #01-29 Bartley Biz Centre, Singapore 417807"
+  },
+  {
+    "place_id": "ChIJddpcfrMX2jERRo25T1it42s",
+    "name": "Supagard-KB",
+    "lat": 1.3397704,
+    "lon": 103.9105804,
+    "primary_type": "car_wash",
+    "address": "25 Kaki Bukit Rd 4, #01-34 Synergy @ KB, Singapore 417800"
+  },
+  {
+    "place_id": "ChIJIZx5ykMR2jERuY0LBmnZ2aA",
+    "name": "Octopus Car Detailing SG",
+    "lat": 1.3391340999999999,
+    "lon": 103.91156579999999,
+    "primary_type": "car_wash",
+    "address": "13 Kaki Bukit Rd 4, #03-03 Bartley Biz Centre, Singapore 417807"
+  },
+  {
+    "place_id": "ChIJieouA_IX2jERK7wANgLltao",
+    "name": "Day Night Wash @ BBC - open 24 hours | Auto Car Wash",
+    "lat": 1.339073,
+    "lon": 103.9114536,
+    "primary_type": "car_wash",
+    "address": "13 Kaki Bukit Rd 4, #03-14 Bartley Biz Centre, Singapore 417807"
+  },
+  {
+    "place_id": "ChIJjcSPnJoX2jERvJC_T-F0XXU",
+    "name": "Divine Splash Spray Painting",
+    "lat": 1.3397704,
+    "lon": 103.9105804,
+    "primary_type": "car_repair",
+    "address": "25 Kaki Bukit Road 4 Synergy@KB, #05-36, #05-37, Singapore 417800"
+  },
+  {
+    "place_id": "ChIJzfW8WuQX2jERwCPx1nBzcZc",
+    "name": "GK Detailing",
+    "lat": 1.340408,
+    "lon": 103.9110453,
+    "primary_type": "car_wash",
+    "address": "25 Kaki Bukit Road 4, #06-59, Synergy@kb, Singapore 417800"
+  },
+  {
+    "place_id": "ChIJS5PzRPAX2jER8z9u4Lmk1Qw",
+    "name": "Vglobal Car Salon Pte Ltd",
+    "lat": 1.3409233,
+    "lon": 103.91421779999999,
+    "primary_type": "car_wash",
+    "address": "68 Kaki Bukit Ave 6, #01-05 Ark@Kaki Bukit, Singapore 417896"
+  },
+  {
+    "place_id": "ChIJMVuI169aUw0Rq9JNUCJg-pw",
+    "name": "HYDROWRAPZ SG",
+    "lat": 1.3407277,
+    "lon": 103.91088979999999,
+    "primary_type": "",
+    "address": "25 Kaki Bukit Road 4, Kaki Bukit, #01-58 Synergy@, Singapore 417800"
+  },
+  {
+    "place_id": "ChIJPZYa0g0X2jEReMT_tIqfxN4",
+    "name": "Dtm Detailing Werkz",
+    "lat": 1.3397704,
+    "lon": 103.9105804,
+    "primary_type": "car_wash",
+    "address": "25 Kaki Bukit Road 4 Synergy@KB, #07-64, Singapore 417800"
+  },
+  {
+    "place_id": "ChIJU5comBg92jERRooyJvnOA48",
+    "name": "Hock Wah Motor Workshop Pte Ltd",
+    "lat": 1.3360953,
+    "lon": 103.9497382,
+    "primary_type": "car_repair",
+    "address": "3011 Bedok Industrial Park E, Bedok North Ave 4, #01-2008/2010/2012/2014, Singapore 489977"
+  },
+  {
+    "place_id": "ChIJpfomigAX2jERJAKr4uwb9Yo",
+    "name": "Finn's Auto Detailing",
+    "lat": 1.3447881,
+    "lon": 103.9418625,
+    "primary_type": "car_wash",
+    "address": "1A Tampines Street 92, Safra Level 2 Carpark, Singapore 528882"
+  },
+  {
+    "place_id": "ChIJwyq3NTMP2jEREGTuIdzwAes",
+    "name": "Detailduck",
+    "lat": 1.3487217999999999,
+    "lon": 103.7081553,
+    "primary_type": "car_wash",
+    "address": "183 Boon Lay Dr, Singapore 640183"
+  },
+  {
+    "place_id": "ChIJx9c6UdkP2jERWiO7YBXc_n0",
+    "name": "Wash n' Run",
+    "lat": 1.3511240999999998,
+    "lon": 103.7234186,
+    "primary_type": "car_wash",
+    "address": "10 Jurong West Ave 1, Singapore 649517"
+  },
+  {
+    "place_id": "ChIJn6cZDaIP2jERQrpk10nRN74",
+    "name": "Self-Service Car Wash",
+    "lat": 1.3494831999999999,
+    "lon": 103.7179213,
+    "primary_type": "car_wash",
+    "address": "505A Jurong West Street, 52 Deck, #1B, Singapore 641505"
+  },
+  {
+    "place_id": "ChIJUz-MiJ8P2jERwiV-U8UD5q4",
+    "name": "Detailium",
+    "lat": 1.3494222,
+    "lon": 103.71793609999999,
+    "primary_type": "car_wash",
+    "address": "505A Jurong West Street 52, Singapore 641505"
+  },
+  {
+    "place_id": "ChIJJxdAcNER2jERTYS7-YXsldA",
+    "name": "Beedetailing",
+    "lat": 1.3575069,
+    "lon": 103.74297179999999,
+    "primary_type": "car_wash",
+    "address": "465A Bukit Batok West Ave. 8, #12-954, Singapore 651465"
+  },
+  {
+    "place_id": "ChIJ6aHOQgAR2jER7IAhZNQCld8",
+    "name": "HDB Car Wash Bay",
+    "lat": 1.3566747,
+    "lon": 103.74004479999999,
+    "primary_type": "car_wash",
+    "address": "439 Bukit Batok West Ave. 8, Singapore"
+  },
+  {
+    "place_id": "ChIJHYPlkC4X2jERWIbhUjqX1F4",
+    "name": "Wash N Run",
+    "lat": 1.3578702999999999,
+    "lon": 103.8282853,
+    "primary_type": "car_wash",
+    "address": "347 Upper Thomson Rd, Singapore"
+  },
+  {
+    "place_id": "ChIJ65J9DCQX2jERpNtQu5mi_do",
+    "name": "City Auto Pte ltd",
+    "lat": 1.3583719,
+    "lon": 103.8386082,
+    "primary_type": "car_repair",
+    "address": "Blk 8 sin ming industrial estate # 01-58/60/62, Sector c, Singapore 575643"
+  },
+  {
+    "place_id": "ChIJ4SZelxYX2jERM-SPr8QJBJU",
+    "name": "Prime Auto Care - Junction 8",
+    "lat": 1.3503209,
+    "lon": 103.8486223,
+    "primary_type": "car_wash",
+    "address": "9 Bishan Place, B2, K1 Junction 8, Singapore 579837"
+  },
+  {
+    "place_id": "ChIJqZxVoRYX2jERGw-9R6rltoA",
+    "name": "CARs International - Bishan",
+    "lat": 1.3502277999999999,
+    "lon": 103.8495111,
+    "primary_type": "car_wash",
+    "address": "514 Bishan Street 13 Level 2 Deck 1, Above, Singapore 570514"
+  },
+  {
+    "place_id": "ChIJyWCtZSIX2jERJC3Y1mgGAvs",
+    "name": "Autoglym Car Polishing",
+    "lat": 1.3574277,
+    "lon": 103.8438953,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJ4zuJXwcX2jERJHCMmgdLzys",
+    "name": "Car Wash",
+    "lat": 1.3581288,
+    "lon": 103.8679861,
+    "primary_type": "car_wash",
+    "address": "279 Lorong Chuan, Singapore 556771"
+  },
+  {
+    "place_id": "ChIJIwG68YoX2jERt_WqdwBU7QI",
+    "name": "S E H Automotive Enterprise",
+    "lat": 1.3578485999999999,
+    "lon": 103.86795939999999,
+    "primary_type": "car_wash",
+    "address": "277 Lorong Chuan, Singapura 556771"
+  },
+  {
+    "place_id": "ChIJNytzPrAX2jERObwlY84kQuw",
+    "name": "Caltex Upper Serangoon",
+    "lat": 1.3557236,
+    "lon": 103.8807183,
+    "primary_type": "gas_station",
+    "address": "818 Upper Serangoon Rd, Singapore 534677"
+  },
+  {
+    "place_id": "ChIJn5LdvrQX2jERAhNIX57FuSs",
+    "name": "Car Armour SG",
+    "lat": 1.3490783,
+    "lon": 103.878146,
+    "primary_type": "car_wash",
+    "address": "1 Lew Lian Vale, #03-02, Singapore 537016"
+  },
+  {
+    "place_id": "ChIJP_k_02g92jERY5l4jhZVBIk",
+    "name": "Caltex",
+    "lat": 1.3493751,
+    "lon": 103.92844319999999,
+    "primary_type": "gas_station",
+    "address": "1 Tampines Ave 8, Singapore 529594"
+  },
+  {
+    "place_id": "ChIJDYcfLW892jER3qsgwS5lffQ",
+    "name": "Xpert-GO Car Wash",
+    "lat": 1.3494313999999998,
+    "lon": 103.9281922,
+    "primary_type": "car_wash",
+    "address": "1 Tampines Ave 8, Singapore 529594"
+  },
+  {
+    "place_id": "ChIJWSrJxPQ92jERIf1f3zZXYlA",
+    "name": "Wash Car Car",
+    "lat": 1.3548441999999998,
+    "lon": 103.93874319999999,
+    "primary_type": "car_wash",
+    "address": "859B Tampines Ave 5, Deck 4A, MSCP, Singapore 522859"
+  },
+  {
+    "place_id": "ChIJgVphjBE92jERfC-TqQyY-EA",
+    "name": "CARs International - Tampines Mall",
+    "lat": 1.3524509999999998,
+    "lon": 103.9446732,
+    "primary_type": "car_wash",
+    "address": "Carpark, 4 Tampines Central 5, Basement 2 Tampines Mall, Singapore 529510"
+  },
+  {
+    "place_id": "ChIJzZOp_8092jERpeGlQxtfrIQ",
+    "name": "Ian car wash pte ltd",
+    "lat": 1.3570723,
+    "lon": 103.9510541,
+    "primary_type": "car_wash",
+    "address": "Block 449 Tampines Street 42, Singapore 520449"
+  },
+  {
+    "place_id": "ChIJ6UFrwsc92jERxvhRTLn9fyg",
+    "name": "Autowash24 Changi (Staff: 1pm - 1am)",
+    "lat": 1.3496017999999999,
+    "lon": 103.9705242,
+    "primary_type": "car_wash",
+    "address": "15 Changi North Street 1, #01-31, Singapore 498765"
+  },
+  {
+    "place_id": "ChIJk859Z3UQ2jERJp72EHr6Mdg",
+    "name": "Unicar Cosmetic (Mobile Car Detailing Service)",
+    "lat": 1.36328,
+    "lon": 103.74768999999999,
+    "primary_type": "car_repair",
+    "address": "329 Bukit Batok Street 33, Singapore 650329"
+  },
+  {
+    "place_id": "ChIJgZX1EX4X2jERUCQJRAPhquM",
+    "name": "Boons’ Carwash Pte Ltd",
+    "lat": 1.3582003,
+    "lon": 103.8332678,
+    "primary_type": "car_wash",
+    "address": "20 Sin Ming Ln, #01-60, Singapore 573968"
+  },
+  {
+    "place_id": "ChIJvZfs02EX2jERYNR3QQEus5s",
+    "name": "Kirei 24hr Automated Car Wash @ Sinming",
+    "lat": 1.3591617999999999,
+    "lon": 103.83392940000002,
+    "primary_type": "car_wash",
+    "address": "Block 24, #01-104 Midview City, Singapore 573979"
+  },
+  {
+    "place_id": "ChIJhWQRqwgX2jER56dKqo4Zqzw",
+    "name": "Car Wash Bay - Bright Hill Drive Blk448A Multistorey Carpark",
+    "lat": 1.3579647,
+    "lon": 103.83113859999999,
+    "primary_type": "car_wash",
+    "address": "Blk 448A Bright Hill Dr, Singapore 571448"
+  },
+  {
+    "place_id": "ChIJe4978sQX2jERoa9Gqo1xJy4",
+    "name": "High Speed Motor Pte Ltd",
+    "lat": 1.3600775999999999,
+    "lon": 103.83397939999999,
+    "primary_type": "car_wash",
+    "address": "28 Sin Ming Ln, Singapore 573972"
+  },
+  {
+    "place_id": "ChIJu4_Df7YW2jER62A6A65eaF0",
+    "name": "Garage R Performance Centre Pte Ltd",
+    "lat": 1.3593762,
+    "lon": 103.83798499999999,
+    "primary_type": "car_repair",
+    "address": "160 Sin Ming Dr, #08-01 Sin Ming AutoCity, Singapore 575722"
+  },
+  {
+    "place_id": "ChIJp08nLQAX2jERiOyMFyhSs3o",
+    "name": "Washwerkz UnlimitedWash.sg ( Sin Ming Lane )",
+    "lat": 1.3585108,
+    "lon": 103.8340317,
+    "primary_type": "car_wash",
+    "address": "18 Sin Ming Ln, #01 29, Singapore 573960"
+  },
+  {
+    "place_id": "ChIJS-9kECQX2jERMS_OuS0bKQ8",
+    "name": "Tuff Clad Pte Ltd",
+    "lat": 1.3592374999999999,
+    "lon": 103.83926609999999,
+    "primary_type": "car_repair",
+    "address": "160 Sin Ming Dr, #04-09 Sin Ming AutoCity, Singapore 575722"
+  },
+  {
+    "place_id": "ChIJEbL9tZcX2jERKlE014Rzl-w",
+    "name": "Colour Vibe Pte Ltd",
+    "lat": 1.3606623,
+    "lon": 103.83963059999999,
+    "primary_type": "car_repair",
+    "address": "176 Sin Ming Dr, #05-16 Sin Ming AutoCare, Singapore 575721"
+  },
+  {
+    "place_id": "ChIJuxAvV_wX2jER9v2w01o_WJg",
+    "name": "ART ~ Automotive Restoration Team",
+    "lat": 1.3597120999999999,
+    "lon": 103.8382819,
+    "primary_type": "car_repair",
+    "address": "160 Sin Ming Dr, #05-21 Sin Ming AutoCity, Singapore 575722"
+  },
+  {
+    "place_id": "ChIJ8cw9RiEX2jEREUDGjBlti18",
+    "name": "Amazing Glaze AG5",
+    "lat": 1.3605258999999998,
+    "lon": 103.83976510000001,
+    "primary_type": "car_repair",
+    "address": "176 Sin Ming Dr, #03-04 Sin Ming AutoCare, Singapore 575721"
+  },
+  {
+    "place_id": "ChIJ4eF85C4X2jERzbtAEmQf-LU",
+    "name": "Driven Detailing Pte Ltd | Car Detailing, Coating & Grooming",
+    "lat": 1.3595203,
+    "lon": 103.83883499999999,
+    "primary_type": "car_wash",
+    "address": "160 Sin Ming Dr, #02-15 Sin Ming AutoCity, Singapore 575722"
+  },
+  {
+    "place_id": "ChIJkSiBTiEX2jERcNPqOaMMH1s",
+    "name": "Elite Auto Saloon Pte Ltd",
+    "lat": 1.3607683000000002,
+    "lon": 103.8395336,
+    "primary_type": "car_wash",
+    "address": "176 Sin Ming Dr, Singapore 575721"
+  },
+  {
+    "place_id": "ChIJ-8rTZpkX2jERb9poPyWyeDs",
+    "name": "Ultimate Styling - One Stop Car Wrapping & Detailing Singapore",
+    "lat": 1.3602142,
+    "lon": 103.8394278,
+    "primary_type": "car_repair",
+    "address": "176 Sin Ming Dr, #02-15 Auto Care, Singapore 575721"
+  },
+  {
+    "place_id": "ChIJkSiBTiEX2jEREv9ANmBZGEk",
+    "name": "Detailingclub",
+    "lat": 1.3607683000000002,
+    "lon": 103.8395336,
+    "primary_type": "car_wash",
+    "address": "176 Sin Ming Dr, Singapore 575721"
+  },
+  {
+    "place_id": "ChIJLzxXHAAX2jERjYErkLme4WM",
+    "name": "Car Wash",
+    "lat": 1.3624475,
+    "lon": 103.85262650000001,
+    "primary_type": "car_wash",
+    "address": "2225 Ang Mo Kio Ave 8, Esso, Singapore 569810"
+  },
+  {
+    "place_id": "ChIJsVJLg3MX2jER7ePiJ3YLGdQ",
+    "name": "SuperSAM Carwash @ ESSO Yio Chu Kang",
+    "lat": 1.3610289,
+    "lon": 103.8739411,
+    "primary_type": "car_wash",
+    "address": "160 Yio Chu Kang Rd, Singapore 545614"
+  },
+  {
+    "place_id": "ChIJhYqX-p4X2jERCNoQUGfkNiY",
+    "name": "Wash n' Run",
+    "lat": 1.3610289,
+    "lon": 103.8739411,
+    "primary_type": "car_wash",
+    "address": "160 Yio Chu Kang Rd, Singapore 545614"
+  },
+  {
+    "place_id": "ChIJYwyfn6oX2jER8voLX0wjC4w",
+    "name": "Wash N' Run",
+    "lat": 1.3624615999999998,
+    "lon": 103.86814059999999,
+    "primary_type": "car_wash",
+    "address": "384 Lorong Chuan, Singapura 556810"
+  },
+  {
+    "place_id": "ChIJ2zjbXrEX2jERoXu45Ks1PNc",
+    "name": "Wash n' Run",
+    "lat": 1.358898,
+    "lon": 103.8841662,
+    "primary_type": "car_wash",
+    "address": "866 Upper Serangoon Rd, Singapore 534694"
+  },
+  {
+    "place_id": "ChIJbfL5ZQA92jERmBg0W6siqr0",
+    "name": "Anand",
+    "lat": 1.359553,
+    "lon": 103.96756599999999,
+    "primary_type": "car_wash",
+    "address": "Singapore 509741"
+  },
+  {
+    "place_id": "ChIJI0NxW8g92jERvJUWqSGic7A",
+    "name": "CARs International - Jewel Changi Airport",
+    "lat": 1.3603912,
+    "lon": 103.98964199999999,
+    "primary_type": "car_wash",
+    "address": "78 Airport Boulevard B3, K200, Singapore 819666"
+  },
+  {
+    "place_id": "ChIJB2DyEXUR2jERt9t5APp8xOU",
+    "name": "Wash Car Car (CCK)",
+    "lat": 1.3750609,
+    "lon": 103.74344930000001,
+    "primary_type": "car_wash",
+    "address": "801 Keat Hong Cl, Singapore 680801"
+  },
+  {
+    "place_id": "ChIJa4SZLq0R2jERoFvd0RgUShg",
+    "name": "Exceptional Mobile Car Detailing",
+    "lat": 1.3761884,
+    "lon": 103.7373934,
+    "primary_type": "car_repair",
+    "address": "483A Choa Chu Kang Ave 5, Singapore 681483"
+  },
+  {
+    "place_id": "ChIJc5LohXAR2jER3gRX2b0NJPo",
+    "name": "Wash n Run",
+    "lat": 1.3774705999999999,
+    "lon": 103.750075,
+    "primary_type": "car_wash",
+    "address": "31 Choa Chu Kang Wy, Esso Choa Chu Kang Way, Singapore 688786"
+  },
+  {
+    "place_id": "ChIJvzUuPRoP2jERQjErILHDP6Y",
+    "name": "AA Detailers",
+    "lat": 1.3768835000000001,
+    "lon": 103.76430889999999,
+    "primary_type": "car_wash",
+    "address": "163A Gangsa Rd, Singapore 670163"
+  },
+  {
+    "place_id": "ChIJVX0MR6MR2jEREsfLsQ2juhg",
+    "name": "CARs International - Bukit Panjang Plaza",
+    "lat": 1.37973,
+    "lon": 103.7645073,
+    "primary_type": "car_wash",
+    "address": "1 Jelebu Rd, Plaza b1 Carpark, Singapore 677743"
+  },
+  {
+    "place_id": "ChIJWUa1HvUR2jERJCfh-W-9o9Q",
+    "name": "Jet Spray and Vacuum | washing bay",
+    "lat": 1.3773503,
+    "lon": 103.77353860000001,
+    "primary_type": "car_wash",
+    "address": "259A Bangkit Rd, Singapore 670259"
+  },
+  {
+    "place_id": "ChIJXZVqd9EW2jERZRfFbIlHsYQ",
+    "name": "Caltex Thomson",
+    "lat": 1.3708908,
+    "lon": 103.82827569999999,
+    "primary_type": "gas_station",
+    "address": "555 Upper Thomson Rd, Singapore 574417"
+  },
+  {
+    "place_id": "ChIJ9Su23dEW2jERRb8X4y3baKM",
+    "name": "Wash N Run",
+    "lat": 1.3731164,
+    "lon": 103.82879679999999,
+    "primary_type": "car_wash",
+    "address": "594 Upper Thomson Rd, Singapore 574420"
+  },
+  {
+    "place_id": "ChIJS6ss6fwX2jERHaEkHva3M5U",
+    "name": "Superman Carwash @ ESSO Upper Thomson",
+    "lat": 1.3730944999999999,
+    "lon": 103.8290076,
+    "primary_type": "car_wash",
+    "address": "594 Upper Thomson Rd, Singapore 149061"
+  },
+  {
+    "place_id": "ChIJkS2cndEW2jERKwccs93o4Ws",
+    "name": "Car Wash",
+    "lat": 1.3708897,
+    "lon": 103.8281966,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJm1ErZNEW2jERzhQZTTJwkco",
+    "name": "Handwash Sonax",
+    "lat": 1.3702246,
+    "lon": 103.8280329,
+    "primary_type": "car_wash",
+    "address": "Old Upper Thomson Rd, Singapore"
+  },
+  {
+    "place_id": "ChIJmxAOZdEW2jERJ_xtrUNg6tw",
+    "name": "Mobil 1 Car Care",
+    "lat": 1.3704576,
+    "lon": 103.8280917,
+    "primary_type": "car_wash",
+    "address": "Old Upper Thomson Rd, Singapore"
+  },
+  {
+    "place_id": "ChIJ6fSAfMMW2jER_wXnl7LMyBc",
+    "name": "Bubblewash",
+    "lat": 1.3752304000000002,
+    "lon": 103.8395115,
+    "primary_type": "car_wash",
+    "address": "157 Ang Mo Kio Ave 4, Singapore 560157"
+  },
+  {
+    "place_id": "ChIJX7g0YYYX2jERv-wR78cx174",
+    "name": "Block 428 Car Washing Point",
+    "lat": 1.3688813,
+    "lon": 103.8544058,
+    "primary_type": "car_wash",
+    "address": "428 Ang Mo Kio Ave 3, Block 428, Singapore 560428"
+  },
+  {
+    "place_id": "ChIJWeKGCOcW2jERyPqt9fwC-Zs",
+    "name": "Re-Glitz Car Workz",
+    "lat": 1.3703827,
+    "lon": 103.84675659999999,
+    "primary_type": "car_wash",
+    "address": "712A Ang Mo Kio Ave 6, Singapore 561712"
+  },
+  {
+    "place_id": "ChIJs4ueFQAX2jER6fJGNZU_DH8",
+    "name": "Autowash24 AMK (Staff: 1pm - 1am, Tue Off)",
+    "lat": 1.3717692,
+    "lon": 103.8612636,
+    "primary_type": "car_wash",
+    "address": "5035 Ang Mo Kio Ind Park 2, #01-367, Singapore 569538"
+  },
+  {
+    "place_id": "ChIJv5WRRskX2jERO459QTG7jrE",
+    "name": "Fuji Car Wash - Open DAILY",
+    "lat": 1.3725094999999998,
+    "lon": 103.8665585,
+    "primary_type": "car_wash",
+    "address": "4 Ang Mo Kio Ave 12, Singapore 569498"
+  },
+  {
+    "place_id": "ChIJe4a0pvYX2jEREE0pxPwRtOc",
+    "name": "Wrapworks Singapore",
+    "lat": 1.3770632999999999,
+    "lon": 103.8687901,
+    "primary_type": "car_repair",
+    "address": "10 Ang Mo Kio Industrial Park 2A, #04-08 AMK AutoPoint, Singapore 568047"
+  },
+  {
+    "place_id": "ChIJ33o3rvEZ2jERj0R8XSLRxwE",
+    "name": "Gleam Auto",
+    "lat": 1.3754431,
+    "lon": 103.8758239,
+    "primary_type": "car_wash",
+    "address": "50 Serangoon North Ave 4, #01-10/11 First Centre, Singapore 555856"
+  },
+  {
+    "place_id": "ChIJU98QHiMX2jERAOmaV2GcfD4",
+    "name": "SuperWash",
+    "lat": 1.3756361,
+    "lon": 103.87624939999999,
+    "primary_type": "car_wash",
+    "address": "50 Serangoon North Ave 4, #03-21 First Centre, Singapore 555856"
+  },
+  {
+    "place_id": "ChIJL_ag2uM92jERnkg3gKoi8ms",
+    "name": "Dr Polish ( AMK Autopoint )",
+    "lat": 1.3772449,
+    "lon": 103.86938029999999,
+    "primary_type": "car_wash",
+    "address": "#01-07 AMK AutoPoint, Singapore 568047"
+  },
+  {
+    "place_id": "ChIJd4H-IbEZ2jERI7Ot6jga51M",
+    "name": "Washlah Pro Auto Detailing (HQ)",
+    "lat": 1.3774845,
+    "lon": 103.8757112,
+    "primary_type": "car_wash",
+    "address": "Northstar@AMK, 7030 Ang Mo Kio Ave 5, #01-52, Singapore 569880"
+  },
+  {
+    "place_id": "ChIJxVCuTVoW2jERsu9dRK7gdCg",
+    "name": "Elite Image Detailing",
+    "lat": 1.3756361,
+    "lon": 103.87624939999999,
+    "primary_type": "",
+    "address": "50 Serangoon North Ave 4, #01-06, Singapore 555856"
+  },
+  {
+    "place_id": "ChIJR_At5F8X2jERPjzzKOkStv0",
+    "name": "Island Car Wash and Grooming Pte Ltd",
+    "lat": 1.3774864,
+    "lon": 103.8756875,
+    "primary_type": "car_wash",
+    "address": "7030 Ang Mo Kio Ave 5, #01-53, Singapore 569880"
+  },
+  {
+    "place_id": "ChIJ1aNWb7YX2jER7beIxNK9hkA",
+    "name": "HDB Car Wash Bay with Jet",
+    "lat": 1.3732567,
+    "lon": 103.8716896,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJ_6CGnZ4X2jERoztpgcg4irw",
+    "name": "R69 Ultimate Detailing",
+    "lat": 1.3756116,
+    "lon": 103.8759211,
+    "primary_type": "car_wash",
+    "address": "50 Serangoon North Ave 4, #04-15 First Centre, Singapore 555856"
+  },
+  {
+    "place_id": "ChIJH_ZSNJYW2jERl4XfSbq2xNA",
+    "name": "J2 Professional Carcare Pte Ltd",
+    "lat": 1.3770758,
+    "lon": 103.8693607,
+    "primary_type": "car_wash",
+    "address": "Blk 10 Ang Mo Kio Industrial Park 2A #03-01 AMK Autopoint, Singapore 568047"
+  },
+  {
+    "place_id": "ChIJf1g7HsMX2jER0Ly4GAg44BU",
+    "name": "Detailworks Singapore",
+    "lat": 1.3775228,
+    "lon": 103.8758696,
+    "primary_type": "car_wash",
+    "address": "7030 Ang Mo Kio Ave 5, #01-51 7030, Singapore 569880"
+  },
+  {
+    "place_id": "ChIJ0Qgms1sW2jERR9u_2mLyQhk",
+    "name": "DetailKing LLP",
+    "lat": 1.3753655,
+    "lon": 103.8758482,
+    "primary_type": "car_wash",
+    "address": "Serangoon North Ave 4, Singapore 555856"
+  },
+  {
+    "place_id": "ChIJJ-7iOiAX2jER9dtq-LeD7lE",
+    "name": "Visual Mechanics",
+    "lat": 1.3770706,
+    "lon": 103.8690919,
+    "primary_type": "car_wash",
+    "address": "10 Ang Mo Kio Industrial Park 2A, #04-11 AMK AutoPoint, Singapore 568047"
+  },
+  {
+    "place_id": "ChIJhcoAVwAX2jERwh_rzxQkv64",
+    "name": "GK Carwash",
+    "lat": 1.3770703000000002,
+    "lon": 103.87488,
+    "primary_type": "car_wash",
+    "address": "55 Serangoon North Ave 4, #04-06 S9 @, Singapore 555859"
+  },
+  {
+    "place_id": "ChIJPafM9KMX2jER9CyXj167lkk",
+    "name": "HDB Car Wash Bay",
+    "lat": 1.3753168,
+    "lon": 103.8841479,
+    "primary_type": "car_wash",
+    "address": "919A Hougang Ave 4, Singapore 531919"
+  },
+  {
+    "place_id": "ChIJU3YxjFsW2jER7_-7fZPkmV8",
+    "name": "Oxygen Performance Grooming",
+    "lat": 1.3781233,
+    "lon": 103.8762144,
+    "primary_type": "car_wash",
+    "address": "7030 Ang Mo Kio Ave 5, #02-44 Northstar @ AMK, Singapore 569880"
+  },
+  {
+    "place_id": "ChIJ25cGC1MX2jERBPrNi3zrlgE",
+    "name": "Maxima Car Care Manual Car Wash",
+    "lat": 1.3688344,
+    "lon": 103.8844543,
+    "primary_type": "car_wash",
+    "address": "120 Hougang Ave 2, Singapore 538858"
+  },
+  {
+    "place_id": "ChIJf7dmxQsX2jERk-EoQphehno",
+    "name": "Supreme Auto Shine",
+    "lat": 1.3764337,
+    "lon": 103.88417659999999,
+    "primary_type": "car_repair",
+    "address": "921 Hougang Street 91, Singapore 530921"
+  },
+  {
+    "place_id": "ChIJWRW9um4X2jERNiuQ4ds5rhQ",
+    "name": "Absolute Detailers",
+    "lat": 1.3713990999999999,
+    "lon": 103.88145829999999,
+    "primary_type": "sporting_goods_store",
+    "address": "Blk 644 Hougang Ave 8, Singapore 530644"
+  },
+  {
+    "place_id": "ChIJW_3s_08hr44R7Ej_q9YFGJs",
+    "name": "Muskershine",
+    "lat": 1.3768331,
+    "lon": 103.9003936,
+    "primary_type": "car_wash",
+    "address": "473A Upper Serangoon Cres, Singapore 531473"
+  },
+  {
+    "place_id": "ChIJk4ADC4g92jERiKGQGV9E3dI",
+    "name": "Liberty Shine Car Wash - Tampines",
+    "lat": 1.3717799,
+    "lon": 103.9337714,
+    "primary_type": "car_wash",
+    "address": "1 Tampines North Dr. 1, Basement lobby 5 T-Space Building, Singapore 528559"
+  },
+  {
+    "place_id": "ChIJn6cFZq092jERAIraHpm0Di0",
+    "name": "KW Car Wash and Grooming Pte Ltd",
+    "lat": 1.3717603999999999,
+    "lon": 103.9337724,
+    "primary_type": "car_wash",
+    "address": "1 Tampines North Dr. 1, #01-33 T-Space, Singapore 528559"
+  },
+  {
+    "place_id": "ChIJhWDR_bw92jERKw8bEb6qV9c",
+    "name": "Wash N' Run",
+    "lat": 1.3749607,
+    "lon": 103.9405934,
+    "primary_type": "car_wash",
+    "address": "61 Pasir Ris Dr 1, Singapore 519525"
+  },
+  {
+    "place_id": "ChIJp4g_y0A92jER4xQBsYjztrY",
+    "name": "AutoApp Singapore",
+    "lat": 1.3713473999999999,
+    "lon": 103.9334411,
+    "primary_type": "car_repair",
+    "address": "1 Tampines North Dr. 1, #06-32, Singapore 528559"
+  },
+  {
+    "place_id": "ChIJvU4NST8X2jERUxHqzZEjS8Y",
+    "name": "Waaza Singapore",
+    "lat": 1.3714975,
+    "lon": 103.9334446,
+    "primary_type": "car_wash",
+    "address": "Tampines North Dr. 1, Singapore 528559"
+  },
+  {
+    "place_id": "ChIJ0dU9UYUX2jERGJxT91_VFIE",
+    "name": "ninety9 Detailworks Singapore",
+    "lat": 1.3717603999999999,
+    "lon": 103.9337724,
+    "primary_type": "car_wash",
+    "address": "1 Tampines North Dr. 1, T-Space B1 Basement Carpark, Singapore 528559"
+  },
+  {
+    "place_id": "ChIJnbU5Lqk92jERcj0gaSZsGA8",
+    "name": "GD Auto Detailing",
+    "lat": 1.3727951,
+    "lon": 103.9482283,
+    "primary_type": "car_repair",
+    "address": "7 Pasir Ris Central Basement 2 Carpark, Lot 13 | 14, Singapore 519612"
+  },
+  {
+    "place_id": "ChIJ-baC-rM92jERMzT2R_8NPEY",
+    "name": "Jus Shine Car Grooming",
+    "lat": 1.3775749,
+    "lon": 103.9554071,
+    "primary_type": "car_wash",
+    "address": "1 Pasir Ris Cl, #3 MSCP Deck, Singapore 519599"
+  },
+  {
+    "place_id": "ChIJ96TY6Hs92jERdgGF3ATn2lc",
+    "name": "Self serve car wash and vacuum",
+    "lat": 1.3696757,
+    "lon": 103.95769399999999,
+    "primary_type": "car_wash",
+    "address": "441 Pasir Ris Drive 6, Singapore 510441"
+  },
+  {
+    "place_id": "ChIJB8DCJAAR2jERzc_Opn5uM1M",
+    "name": "CARs International - Lot 1",
+    "lat": 1.3852086,
+    "lon": 103.7449371,
+    "primary_type": "car_wash",
+    "address": "21 Choa Chu Kang Ave 4, Singapore 689812"
+  },
+  {
+    "place_id": "ChIJKagzaQAR2jERek8fFgtwags",
+    "name": "Autoarch Detailing",
+    "lat": 1.3887966,
+    "lon": 103.7470306,
+    "primary_type": "car_wash",
+    "address": "28 Choa Chu Kang Dr, Singapore 689964"
+  },
+  {
+    "place_id": "ChIJfbuIX1IR2jERJwmeuwa7eYA",
+    "name": "Hoodster Mobile Car Wash",
+    "lat": 1.3863790999999999,
+    "lon": 103.76454659999999,
+    "primary_type": "car_wash",
+    "address": "Bukit Panjang Ring Rd, Singapore 670537"
+  },
+  {
+    "place_id": "ChIJyw_ivy4R2jERiahvxlLnrLw",
+    "name": "WashBuddySG",
+    "lat": 1.3798797,
+    "lon": 103.76552029999999,
+    "primary_type": "car_wash",
+    "address": "Lompang Rd, Singapore 670178"
+  },
+  {
+    "place_id": "ChIJNVPtosIR2jERQlJeAV0_T6Q",
+    "name": "Detailing Busters",
+    "lat": 1.3806711999999999,
+    "lon": 103.7676031,
+    "primary_type": "car_wash",
+    "address": "Fajar Rd, Singapore 670404"
+  },
+  {
+    "place_id": "ChIJ3Tvd7noX2jEReHo632jf65c",
+    "name": "Rebornz Color Werks Pte Ltd",
+    "lat": 1.3858198,
+    "lon": 103.84475289999999,
+    "primary_type": "building_materials_store",
+    "address": "3 Ang Mo Kio, Ang Mo Kio Street 62, #01-12 Link @ AMK, Singapore 569139"
+  },
+  {
+    "place_id": "ChIJVZ-cpB0X2jER1Qhp1GFfnbU",
+    "name": "D'Car Guys",
+    "lat": 1.3858945999999999,
+    "lon": 103.8454928,
+    "primary_type": "",
+    "address": "3 Ang Mo Kio Street 62, #01-21, Singapore 569139"
+  },
+  {
+    "place_id": "ChIJL3QKpvkX2jERXaIOVvul1WU",
+    "name": "Euro Washer",
+    "lat": 1.3861541,
+    "lon": 103.84499459999999,
+    "primary_type": "car_wash",
+    "address": "3 Ang Mo Kio Street, #62 01-06, Singapore 569139"
+  },
+  {
+    "place_id": "ChIJifVXn4kX2jERIO9wZCeCabg",
+    "name": "A Performance SG The Wrap Specialist",
+    "lat": 1.3861541,
+    "lon": 103.84499459999999,
+    "primary_type": "car_repair",
+    "address": "3 Ang Mo Kio Street 62, #01-06, Singapore 569139"
+  },
+  {
+    "place_id": "ChIJozMq0zkX2jERFI6dma487mk",
+    "name": "CURE Detailing",
+    "lat": 1.3870521999999998,
+    "lon": 103.8446779,
+    "primary_type": "car_wash",
+    "address": "3 Ang Mo Kio Street 62, #01-29, link@amk 569139"
+  },
+  {
+    "place_id": "ChIJJ8VPZscX2jERHu3ze23623Q",
+    "name": "ININE Auto Studio",
+    "lat": 1.3861541,
+    "lon": 103.84499459999999,
+    "primary_type": "car_wash",
+    "address": "3 Ang Mo Kio Street 62 Link@AMK 01 -19, Singapore 569139"
+  },
+  {
+    "place_id": "ChIJBTuownsX2jERCwyHMBxgZzM",
+    "name": "918 CarSpa",
+    "lat": 1.3861541,
+    "lon": 103.84499459999999,
+    "primary_type": "car_wash",
+    "address": "3 Ang Mo Kio Street 62, Singapore 569139"
+  },
+  {
+    "place_id": "ChIJidGbfXMX2jERMFja4sARjqI",
+    "name": "Mobile Auto Car Grooming Services",
+    "lat": 1.3848080999999999,
+    "lon": 103.8815362,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJa0ulgrwX2jERWqmqBBlsVLM",
+    "name": "EQ Car Wash System (306 car park)",
+    "lat": 1.3907108,
+    "lon": 103.88823579999999,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJeYSZVacX2jER7ZmqYKfk0Cc",
+    "name": "Shine N Shoot",
+    "lat": 1.3841331,
+    "lon": 103.8981068,
+    "primary_type": "car_wash",
+    "address": "208 Compassvale Ln, Singapore 540208"
+  },
+  {
+    "place_id": "ChIJ9SsKDxcW2jERO7lQwjtgTdk",
+    "name": "Wash N' Run",
+    "lat": 1.3852726,
+    "lon": 103.9006697,
+    "primary_type": "car_wash",
+    "address": "211 Punggol Rd, Singapore 546673"
+  },
+  {
+    "place_id": "ChIJSf-tXcQR2jERR1tb_Vf2wq0",
+    "name": "2Wash Detailing",
+    "lat": 1.3868603000000002,
+    "lon": 103.9123918,
+    "primary_type": "car_wash",
+    "address": "173 Sengkang E Dr, Singapore 540173"
+  },
+  {
+    "place_id": "ChIJx0r1m4QJ2jERtv6YydGUpV0",
+    "name": "Car wash",
+    "lat": 1.3950227,
+    "lon": 103.62703390000001,
+    "primary_type": "car_wash",
+    "address": "CAR WASH) Sunway Xpark Golf Driving Range, Persiaran Medini 5, Sunway City, 79250 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJy8AMCwAJ2jERYZANFifcqyE",
+    "name": "The Elite Car Wash & Detailing",
+    "lat": 1.3967929,
+    "lon": 103.63141829999999,
+    "primary_type": "car_wash",
+    "address": "9JWJ+PH, 81550 Iskandar Puteri, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJ43rJ9G8J2jERtIFMpJ9Dah0",
+    "name": "BMM VIP CAR WASH AND SPA",
+    "lat": 1.3940787,
+    "lon": 103.63562230000001,
+    "primary_type": "car_wash",
+    "address": "3-01, LAMAN NIAGA SUNWAY, Persiaran Medini 3, Bandar Medini Iskandar, 79250 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJWzt9-nkR2jERLbaNh4p2coc",
+    "name": "Relex Detailing",
+    "lat": 1.3953100999999999,
+    "lon": 103.74601659999999,
+    "primary_type": "car_wash",
+    "address": "Choa Chu Kang Street 52, Singapore 681567"
+  },
+  {
+    "place_id": "ChIJLzMyCgAR2jER_8RUmUQZP-c",
+    "name": "Car Wash Service",
+    "lat": 1.3947173,
+    "lon": 103.7538745,
+    "primary_type": "car_wash",
+    "address": "Woodlands Rd, Singapore"
+  },
+  {
+    "place_id": "ChIJv51ZDAAR2jERnvmLcSaQY-M",
+    "name": "BoonWash Mobile Car Detailing",
+    "lat": 1.4014004,
+    "lon": 103.75077239999999,
+    "primary_type": "car_wash",
+    "address": "662 Choa Chu Kang Cres, Block 662, Singapore 680662"
+  },
+  {
+    "place_id": "ChIJ4X3kdQAX2jERnv1c2Ak-JBI",
+    "name": "Wash n’ Run",
+    "lat": 1.3953898999999998,
+    "lon": 103.88025909999999,
+    "primary_type": "car_wash",
+    "address": "150 Sengkang W Wy, Singapore"
+  },
+  {
+    "place_id": "ChIJgZvu1DsX2jERPnE1jTI1KbI",
+    "name": "Kar_Detail",
+    "lat": 1.3931094,
+    "lon": 103.88708319999999,
+    "primary_type": "car_wash",
+    "address": "Mobile Service, Singapore 543350"
+  },
+  {
+    "place_id": "ChIJgbuahQ0W2jERNvSpQD4XgFY",
+    "name": "CARs International - Compass One",
+    "lat": 1.3920112,
+    "lon": 103.8950057,
+    "primary_type": "car_wash",
+    "address": "1 Sengkang Square, Singapore 545078"
+  },
+  {
+    "place_id": "ChIJnZ3fpQgV2jERTZq8WFgwjig",
+    "name": "Car Wash and Vacuum",
+    "lat": 1.401281,
+    "lon": 103.89929529999999,
+    "primary_type": "car_wash",
+    "address": "211C Punggol Walk, Singapore 823211"
+  },
+  {
+    "place_id": "ChIJa0f5nD4X2jER7Pp6rSjYOCY",
+    "name": "Wash & Gloss Detailing",
+    "lat": 1.3949443000000001,
+    "lon": 103.9053082,
+    "primary_type": "car_wash",
+    "address": "188b Rivervale Dr, Singapore 542188"
+  },
+  {
+    "place_id": "ChIJVVUVYAIW2jERoaN89HUM9jU",
+    "name": "magicWorks Bike & Car Grooming",
+    "lat": 1.3941746,
+    "lon": 103.91303959999999,
+    "primary_type": "car_wash",
+    "address": "168 Punggol Fld, B2, Singapore 820168"
+  },
+  {
+    "place_id": "ChIJQwWgsAAW2jERPF_gWav6g3k",
+    "name": "Wash & Shine",
+    "lat": 1.4002665,
+    "lon": 103.90928579999999,
+    "primary_type": "car_wash",
+    "address": "Singapore"
+  },
+  {
+    "place_id": "ChIJbV0TebcX2jERIF4LGCVtMCs",
+    "name": "DETAILFREAKSG",
+    "lat": 1.3994754,
+    "lon": 103.911712,
+    "primary_type": "car_wash",
+    "address": "623A Punggol Central, Singapore 821623"
+  },
+  {
+    "place_id": "ChIJ58rXOAA92jERlSb9wAg7lmQ",
+    "name": "Pitstop Detailz",
+    "lat": 1.3994868,
+    "lon": 103.9155512,
+    "primary_type": "car_wash",
+    "address": "638 Punggol Dr., Singapore 820638"
+  },
+  {
+    "place_id": "ChIJIwznkFkX2jERED6nWUfH8pg",
+    "name": "Ian Car Wash Pte Ltd",
+    "lat": 1.4000184,
+    "lon": 103.90894779999999,
+    "primary_type": "car_wash",
+    "address": "Block 193 Edgefield Plains, Singapore 820193"
+  },
+  {
+    "place_id": "ChIJOc_RlF0L2jERmbHH3VGVfDw",
+    "name": "Blck label Motorsport Medini",
+    "lat": 1.4103435,
+    "lon": 103.6205968,
+    "primary_type": "car_repair",
+    "address": "No 22, Blok C1, Pusat Perdagangan ION Medini, 1, Persiaran Medini Sentral 6, Bandar Medini Iskandar, 79600 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJn33oXwAL2jERE5iGdFeznrI",
+    "name": "M90 AUTO GARAGE",
+    "lat": 1.4035073,
+    "lon": 103.62351129999999,
+    "primary_type": "car_repair",
+    "address": "5 , BLOK E, ION MEDINI, 4, Persiaran Medini Sentral 5, 79250 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJu9Ya1jUL2jERbzbYYTKPlEE",
+    "name": "J.D.L Car Wash & Auto Detailing",
+    "lat": 1.4065486,
+    "lon": 103.619959,
+    "primary_type": "car_wash",
+    "address": "No.43, Blok A3, Iskandar, Persiaran Medini Sentral 5, Bandar Medini Iskandar, 79250 Iskandar, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJq7H-YVgW2jERkUU1hZ0dg3E",
+    "name": "Smart Car Rental",
+    "lat": 1.4112175999999998,
+    "lon": 103.75776049999999,
+    "primary_type": "car_rental",
+    "address": "1 Mandai Link, #01-02, Singapore 728650"
+  },
+  {
+    "place_id": "ChIJz_BzUv4T2jERGmWljw3fXjc",
+    "name": "Caltex",
+    "lat": 1.4034942,
+    "lon": 103.81845299999999,
+    "primary_type": "gas_station",
+    "address": "62 Sembawang Rd, Singapore 779089"
+  },
+  {
+    "place_id": "ChIJt0WVICAV2jERyHwBuFZ5VA0",
+    "name": "Day Night Wash @OCC | Driveline Singapore | Automated Car Wash till 1am | Free Parking",
+    "lat": 1.4111422,
+    "lon": 103.84308759999999,
+    "primary_type": "car_wash",
+    "address": "1 Orchid Club Rd, #01-40 Recreation Clubhouse (NTUC Carpark, Singapore 769162"
+  },
+  {
+    "place_id": "ChIJL8bexHEV2jERDVmxEkp3FcE",
+    "name": "Gecko Dudes Pte Ltd",
+    "lat": 1.4077101,
+    "lon": 103.87123079999999,
+    "primary_type": "car_wash",
+    "address": "16 Mornington Cres, Singapore 798650"
+  },
+  {
+    "place_id": "ChIJN_DcEkgV2jERBSoNB9Ag4fc",
+    "name": "CARs International - Waterway Point B1 Carpark (Lot 12 -14)",
+    "lat": 1.4066273,
+    "lon": 103.90225520000001,
+    "primary_type": "car_wash",
+    "address": "83 Punggol Central, Waterway Point B1 Carpark, Singapore 828761"
+  },
+  {
+    "place_id": "ChIJ-Wm3yfAL2jERjIG1AdHR3g0",
+    "name": "Magic Monkey Car Wash",
+    "lat": 1.4193559,
+    "lon": 103.59378099999999,
+    "primary_type": "car_wash",
+    "address": "17, Jln Niaga Aspira 1/2, GERBANG NUSAJAYA, 79200 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJSUHmJAQL2jERe2OkZLwZcSA",
+    "name": "Daddy Auto Detailing",
+    "lat": 1.419476,
+    "lon": 103.5938951,
+    "primary_type": "car_wash",
+    "address": "13, Jln Niaga Aspira 1/2, GERBANG NUSAJAYA, 81550 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ6XbuBAAL2jERupgizEbmnG0",
+    "name": "KS Auto Detailing Studio",
+    "lat": 1.4195274999999998,
+    "lon": 103.5939214,
+    "primary_type": "car_wash",
+    "address": "13, Jln Niaga Aspira 1/2, GERBANG NUSAJAYA, 81550 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJb3HYxvgL2jER2lC_Wd5Pg0I",
+    "name": "FORTADOR CAR DETAILING @MEDINI",
+    "lat": 1.4163668,
+    "lon": 103.62236019999999,
+    "primary_type": "car_wash",
+    "address": "FORTADOR CAR DETAILING SDN.BHD 15-01 Pusat komersil visi Medini Persiaran Medini 2, Bandar Medini Iskandar Puteri, 79250 Johor bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJhXGISwAL2jERlhPWrHO3_SM",
+    "name": "SAIF CAR WASH",
+    "lat": 1.4173403999999998,
+    "lon": 103.6225838,
+    "primary_type": "car_wash",
+    "address": "No 6, Versis Medini, Jalan Persiaran 2, 79250 Iskandar Puteri, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJlydXTgAN2jERkjilLqCSS4s",
+    "name": "LUX Auto Spa",
+    "lat": 1.4173737,
+    "lon": 103.6546959,
+    "primary_type": "car_wash",
+    "address": "2, Persiaran Puteri Selatan, Kota Iskandar, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJcxdbMQAN2jER5nHZHG_wVKQ",
+    "name": "Puteri Harbour",
+    "lat": 1.4163839999999999,
+    "lon": 103.66076,
+    "primary_type": "car_wash",
+    "address": "CM85+9V, 79100 Iskandar Puteri, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJj-WESZMX2jERK0xyxjZDTHM",
+    "name": "Steam Artes",
+    "lat": 1.420083,
+    "lon": 103.8391747,
+    "primary_type": "service",
+    "address": "blk 637 Yishun Street 61, Singapore 760637"
+  },
+  {
+    "place_id": "ChIJexQzzJ0V2jER9hBvFSSK1Yw",
+    "name": "Car detailing (mobile)",
+    "lat": 1.418588,
+    "lon": 103.8454462,
+    "primary_type": "car_wash",
+    "address": "5 Yishun St 51, Singapore 767998"
+  },
+  {
+    "place_id": "ChIJNRuvAesV2jERVf0lWWRF15w",
+    "name": "Rpm Detail",
+    "lat": 1.4133779,
+    "lon": 103.89876439999999,
+    "primary_type": "car_wash",
+    "address": "325 Sumang Walk, MSCP, Mobile Detail, Singapore 820325"
+  },
+  {
+    "place_id": "ChIJQVniB3AV2jEReW5FuevaHgE",
+    "name": "Magic Car Wash",
+    "lat": 1.4197454,
+    "lon": 103.90681649999999,
+    "primary_type": "car_wash",
+    "address": "425B Northshore Cres, Singapore 822425"
+  },
+  {
+    "place_id": "ChIJafGvMQQV2jERli-Mx0uOmMQ",
+    "name": "AMS Wash Factory",
+    "lat": 1.431011,
+    "lon": 103.75299299999999,
+    "primary_type": "car_wash",
+    "address": "60 Jalan Lam Huat #03-16 Carros Centre Shared with ST, Midnight Wash, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJpySMmngT2jERjjjt4-ASSkI",
+    "name": "ST Midnight Wash",
+    "lat": 1.431011,
+    "lon": 103.75299299999999,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #03-16, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJcYYKhMoT2jERSZSgaKGnutc",
+    "name": "Island Car Wash and Grooming Pte Ltd",
+    "lat": 1.4310105,
+    "lon": 103.75299319999999,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #03-04, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJZVfcJYET2jERjSn6PnBsryA",
+    "name": "Art of Detailing",
+    "lat": 1.4309193,
+    "lon": 103.7527733,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #03-73, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJsz0GoOET2jER1cuqVGuNN8U",
+    "name": "Molecule Art Detailing ( MAD )",
+    "lat": 1.4309086,
+    "lon": 103.75289029999999,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #06-29 Carros Centre, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJNW9jw80X2jERGdQi2V4kT_s",
+    "name": "Think One Autocare Pte Ltd",
+    "lat": 1.4310105,
+    "lon": 103.75299319999999,
+    "primary_type": "car_repair",
+    "address": "60 Jln Lam Huat, #02-32 Carros Centre, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJ8UMo4KET2jERVsqX2gwSPws",
+    "name": "Wet Dreams Auto Detailing",
+    "lat": 1.4307260000000002,
+    "lon": 103.7527495,
+    "primary_type": "store",
+    "address": "60 Jln Lam Huat, #05-52 Carros Centre, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJjcsZfYET2jERL1YuHHZuavE",
+    "name": "Car wash Singapore",
+    "lat": 1.4310105,
+    "lon": 103.75299319999999,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #04-58, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJ5WxSEs8T2jERVrE-tICGR4A",
+    "name": "Adriv Detailing (Mobile Service)",
+    "lat": 1.4310105,
+    "lon": 103.75299319999999,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #03-41, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJBYx9-L8T2jERnh-xY-nuVUM",
+    "name": "Craftsmen's",
+    "lat": 1.4310105,
+    "lon": 103.75299319999999,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #03-29, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJh7d2oM8P2jERtrYlQOYhXdU",
+    "name": "Carnage Shine | Late Night / Midnight Car Wash",
+    "lat": 1.4307260000000002,
+    "lon": 103.7527495,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #03-16 Carros Centre, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJmS7wpv4T2jERjQ6cIvfNS8g",
+    "name": "Pure Detailing",
+    "lat": 1.4310105,
+    "lon": 103.75299319999999,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #05-71 Carros Centre, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJ5ecxoW4T2jERYWPNz7Ao5cQ",
+    "name": "AuraShine detailing",
+    "lat": 1.4307260000000002,
+    "lon": 103.7527495,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #04-58A, Singapore 737651"
+  },
+  {
+    "place_id": "ChIJAQAAAD8Q2jER8oO0KX3L6wI",
+    "name": "Sennau Automobile Pte. Ltd.",
+    "lat": 1.4307260000000002,
+    "lon": 103.7527495,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #03-13, Singapore 728862"
+  },
+  {
+    "place_id": "ChIJTTt7YigT2jERKKtDEiGhhSw",
+    "name": "K.RICH DETAILING PRIVATE LTD",
+    "lat": 1.4310105,
+    "lon": 103.75299319999999,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #05-61, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJmZx_q1ET2jERtMWPw0iAoIY",
+    "name": "Followerz Detailerz",
+    "lat": 1.4310105,
+    "lon": 103.75299319999999,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #05-54 Carros Centre, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJ94TB_TYT2jERJX14J2LdyHU",
+    "name": "SG2000 Motor Leasing",
+    "lat": 1.4307260000000002,
+    "lon": 103.7527495,
+    "primary_type": "car_dealer",
+    "address": "60 Jln Lam Huat, #06-60/61, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJh9dbStkT2jER4Wmzc1Q3BlE",
+    "name": "Q WASH DETAILING PTE LTD",
+    "lat": 1.4307721999999998,
+    "lon": 103.7523495,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #04-23/24, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJsVGas3cT2jERVLxf4RrpBOg",
+    "name": "WashMe",
+    "lat": 1.4307260000000002,
+    "lon": 103.7527495,
+    "primary_type": "car_wash",
+    "address": "60 Jln Lam Huat, #07-30/31 Carros Centre, Singapore 737869"
+  },
+  {
+    "place_id": "ChIJYXjdy68T2jERU38TqvAbCog",
+    "name": "Wash n' Run",
+    "lat": 1.4308918,
+    "lon": 103.78440789999999,
+    "primary_type": "car_wash",
+    "address": "50 Woodlands Ave 1, Singapore 739066"
+  },
+  {
+    "place_id": "ChIJvdIhY2YU2jERemu71KdZSXg",
+    "name": "Wash n' Run",
+    "lat": 1.4317811,
+    "lon": 103.8397635,
+    "primary_type": "car_wash",
+    "address": "10 Yishun Ave 9, Singapore 768888"
+  },
+  {
+    "place_id": "ChIJETHUbnoL2jER-SJlZ7OglYg",
+    "name": "B3 CarWash & Detailing Center",
+    "lat": 1.4417354,
+    "lon": 103.59762549999999,
+    "primary_type": "car_wash",
+    "address": "32,JALAN NUSA PUNCAK 2 TAMAN NUSA PUNCAK Gelang Patah, Kampung Baharu, 81550 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJdRdzjecL2jERzBTMmJj0ioI",
+    "name": "MSS AUTO DETAILING",
+    "lat": 1.4418909,
+    "lon": 103.5975191,
+    "primary_type": "car_wash",
+    "address": "26, Jalan Nusa Puncak 1, Kampung Baharu, 81550 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJwyYcZxAL2jER6_W7K3R4DA8",
+    "name": "Feng Car Grooming Centre",
+    "lat": 1.4388746,
+    "lon": 103.61709800000001,
+    "primary_type": "car_wash",
+    "address": "17, Jalan Eko Botani 3/7, TAMAN EKO BOTANI79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJH1yYdAAL2jER4OUFLGkEKOQ",
+    "name": "Caltex Car Wash - Pusat Cuci Kenderaan",
+    "lat": 1.4360655999999998,
+    "lon": 103.6184836,
+    "primary_type": "car_wash",
+    "address": "CJP9+C9, 79100 Gelang Patah, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJpVuMiJUL2jERCmDYorwkACs",
+    "name": "Premium Car Wash & Detailing",
+    "lat": 1.4358881,
+    "lon": 103.6186934,
+    "primary_type": "car_wash",
+    "address": "Jalan Dataran EduCity, Educity, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJU_3T5XwL2jERnHnF7jiF2wc",
+    "name": "BAL Garage 46",
+    "lat": 1.4404287999999998,
+    "lon": 103.6260305,
+    "primary_type": "car_wash",
+    "address": "NO543 THE, TATE ECO BOTANIC, 2, Persiaran Eko Botani 2, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJiWKP6dYL2jERVZ-I0GtDAPU",
+    "name": "NUR AUTO SPA CAR WASH & DETAILING CENTER",
+    "lat": 1.4365659,
+    "lon": 103.6225772,
+    "primary_type": "car_wash",
+    "address": "Persiaran Eko Botani 2, Township, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJYeOSMQAL2jERI5yFwX5xFOA",
+    "name": "AM Luxury car wash",
+    "lat": 1.4370500000000002,
+    "lon": 103.6232648,
+    "primary_type": "car_wash",
+    "address": "Jalan Eco Botani 2/8, 79100 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ42VW34oN2jERyzUREoWnSl8",
+    "name": "MAJESTIC CAR WASH",
+    "lat": 1.4401245,
+    "lon": 103.6317443,
+    "primary_type": "car_wash",
+    "address": "No 9, Jalan Nadi 3, taman bukit senadi, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJrYqPvpsL2jER7MF7PypMU6I",
+    "name": "HABS CARWASH & DETAILING",
+    "lat": 1.4397253,
+    "lon": 103.6323884,
+    "primary_type": "car_wash",
+    "address": "NO 5, JALAN NADI 4, TAMAN BUKIT SENADI, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ-5L-HQAL2jERpHpF3WcXeYc",
+    "name": "SHINE MATE CAR WASH",
+    "lat": 1.4394508,
+    "lon": 103.6312648,
+    "primary_type": "car_wash",
+    "address": "No.4, Jalan Nadi 6, Taman Bukit Senadi, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJnf4pEq0L2jER2hzZYXhsS_4",
+    "name": "LAJUNIOR CAR WASH @ MAJESTIC CARWASH",
+    "lat": 1.440243,
+    "lon": 103.63182239999999,
+    "primary_type": "car_wash",
+    "address": "No 9, Jalan Nadi 3, taman bukit senadi, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJg8IVmb0L2jER6otDPsWxxD0",
+    "name": "Carbox Auto Detailing Sdn Bhd",
+    "lat": 1.439563,
+    "lon": 103.6317146,
+    "primary_type": "car_wash",
+    "address": "No. 15, Jalan Nadi 5, Taman Bukit Senadi, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJLZvsp1gT2jERhM3YcNu1HhY",
+    "name": "Shell Car Wash",
+    "lat": 1.4384051,
+    "lon": 103.7753379,
+    "primary_type": "car_wash",
+    "address": "10 Marsiling Rd, Singapore 739109"
+  },
+  {
+    "place_id": "ChIJ-0ZHqfsT2jERLp6s7olzGuA",
+    "name": "SharkDetailz",
+    "lat": 1.4372989,
+    "lon": 103.7748737,
+    "primary_type": "car_wash",
+    "address": "187 Marsiling Rd, Singapore 730187"
+  },
+  {
+    "place_id": "ChIJH6CPHo49iakRYxjAhTm9FDE",
+    "name": "Clean Dino Pte Ltd",
+    "lat": 1.4354369999999999,
+    "lon": 103.78459219999999,
+    "primary_type": "car_wash",
+    "address": "12 Woodlands Sq, tower 1 #12-76 woods square building, Singapore 737715"
+  },
+  {
+    "place_id": "ChIJgS2YhSuwYSARmjwyvvJ5GoQ",
+    "name": "Car Magic SG",
+    "lat": 1.4398703,
+    "lon": 103.7967505,
+    "primary_type": "car_wash",
+    "address": "706 Woodlands Drive 40, Singapore 730706"
+  },
+  {
+    "place_id": "ChIJdVnQy40T2jERAugUGTc2R6Y",
+    "name": "Starcrest Auto Detailing",
+    "lat": 1.435803,
+    "lon": 103.798532,
+    "primary_type": "car_wash",
+    "address": "Blk 661A Woodlands Ring Rd, Singapore 731661"
+  },
+  {
+    "place_id": "ChIJmczEM8UT2jERxd1SuyKqVSQ",
+    "name": "EZS Car Wash",
+    "lat": 1.4444645,
+    "lon": 103.7914251,
+    "primary_type": "car_wash",
+    "address": "881A Woodlands Street 82, Singapore 731881"
+  },
+  {
+    "place_id": "ChIJoadlDZ8T2jERKZXBybpGZVE",
+    "name": "Tornado Wash Pte Ltd",
+    "lat": 1.4406021,
+    "lon": 103.80938599999999,
+    "primary_type": "car_wash",
+    "address": "101 Woodlands Ave 12, #01-07, Singapore 737719"
+  },
+  {
+    "place_id": "ChIJH_2PTQAT2jER_RJLR2XOBpM",
+    "name": "WASH MY RIDE",
+    "lat": 1.4391962,
+    "lon": 103.8090259,
+    "primary_type": "car_wash",
+    "address": "101 Woodlands Ave 12, #05-21, Singapore 737719"
+  },
+  {
+    "place_id": "ChIJ-dygWjIT2jERULR3wwIqAYk",
+    "name": "ARTsthetic Decal",
+    "lat": 1.4392498,
+    "lon": 103.80888639999999,
+    "primary_type": "",
+    "address": "Polaris@Woodlands, 101 Woodlands Ave 12, #06-14, Singapore 737719"
+  },
+  {
+    "place_id": "ChIJGeUREasT2jERDz2aY_fHpmM",
+    "name": "48 Pro Car Grooming",
+    "lat": 1.4391962,
+    "lon": 103.8090259,
+    "primary_type": "car_wash",
+    "address": "101 Woodlands Ave 12, #02-14 Polaris@Woodlands, Singapore 737719"
+  },
+  {
+    "place_id": "ChIJcdA3kVgT2jERwcwTWMA_3ZY",
+    "name": "Veto",
+    "lat": 1.4385027000000001,
+    "lon": 103.8078613,
+    "primary_type": "car_wash",
+    "address": "39 Woodlands Cl, #01-16, Singapore 737854"
+  },
+  {
+    "place_id": "ChIJc0d7SlsT2jERYf_uDqwZkXw",
+    "name": "NLAS FOAM",
+    "lat": 1.4378735,
+    "lon": 103.8067738,
+    "primary_type": "car_wash",
+    "address": "39 Woodlands Cl, Singapore 737856"
+  },
+  {
+    "place_id": "ChIJAQAARV0S2jERReL7DpabK3U",
+    "name": "The Stickerhousez",
+    "lat": 1.4347485,
+    "lon": 103.8026471,
+    "primary_type": "store",
+    "address": "11 Woodlands Cl, #04-15 WOODLANDS 11, Singapore 737853"
+  },
+  {
+    "place_id": "ChIJXRfkgC0T2jERE46T2u5zCds",
+    "name": "SqueakyClean Car Wash",
+    "lat": 1.4382323,
+    "lon": 103.8051211,
+    "primary_type": "car_wash",
+    "address": "694 Woodlands Drive 62, Singapore 730694"
+  },
+  {
+    "place_id": "ChIJO5MGrxgT2jERS8h-nXu_48I",
+    "name": "Mythic Auto Detailing",
+    "lat": 1.4378735,
+    "lon": 103.8067738,
+    "primary_type": "car_wash",
+    "address": "Mega@Woodlands, 39 Woodlands Cl, #01-23, Singapore 737856"
+  },
+  {
+    "place_id": "ChIJrZcFE60T2jER6SqNZaN8NHg",
+    "name": "Shine N Bites",
+    "lat": 1.4365554999999999,
+    "lon": 103.8060065,
+    "primary_type": "service",
+    "address": "31 Woodlands Cl, #01-23 Woodlands Horizon, Singapore 737855"
+  },
+  {
+    "place_id": "ChIJdzjsanYT2jERAe79QFLUwJs",
+    "name": "TDG Essential Services Pte Ltd",
+    "lat": 1.443126,
+    "lon": 103.8160238,
+    "primary_type": "storage",
+    "address": "10 Gambas Cres, Singapore 757046"
+  },
+  {
+    "place_id": "ChIJR7IgwHt674ERFSnXpqTFOnM",
+    "name": "Singapore Car Polishing & Detailing Services",
+    "lat": 1.437375,
+    "lon": 103.82909599999999,
+    "primary_type": "car_wash",
+    "address": "One Canberra, Singapore 768072"
+  },
+  {
+    "place_id": "ChIJTWGRdYgV2jERrq9DgTImFys",
+    "name": "Carpow @ Yishun",
+    "lat": 1.4356269,
+    "lon": 103.8432113,
+    "primary_type": "car_wash",
+    "address": "2 Yishun Industrial Street 1, #02-14, Singapore 768159"
+  },
+  {
+    "place_id": "ChIJlUkllsYV2jERwySx4gQ7rNQ",
+    "name": "Kirei 24hr Automated Car Wash @ Yishun",
+    "lat": 1.4362285,
+    "lon": 103.8428764,
+    "primary_type": "car_wash",
+    "address": "2 Yishun Industrial Street 1, #01-10 Northpoint Bizhub, Singapore 768159"
+  },
+  {
+    "place_id": "ChIJX6o6CvPfdQoRqs2JVqX5anY",
+    "name": "RefineLab Detailing",
+    "lat": 1.4360435,
+    "lon": 103.84293939999999,
+    "primary_type": "car_wash",
+    "address": "2 Yishun Industrial Street 1, #03-24 Northpoint Bizhub, Singapore 768159"
+  },
+  {
+    "place_id": "ChIJiQN_YGAU2jERKisIXsBlNIw",
+    "name": "Shine Like Knights Auto Detailing",
+    "lat": 1.4373479999999998,
+    "lon": 103.8440207,
+    "primary_type": "car_wash",
+    "address": "15 Yishun Industrial Street 1, #01-23 Win 5, Singapore 768091"
+  },
+  {
+    "place_id": "ChIJqciBPWAU2jERjf1h2-S-A3Y",
+    "name": "New Age Polish Pte Ltd",
+    "lat": 1.4389342999999999,
+    "lon": 103.84405799999999,
+    "primary_type": "car_repair",
+    "address": "11 Yishun Industrial Street 1, #01-112 North Spring BizHub, Singapore 768089"
+  },
+  {
+    "place_id": "ChIJ_ycMbGoX2jEREhiJnz1WNZI",
+    "name": "Hydrowash Detailing",
+    "lat": 1.4362285,
+    "lon": 103.8428764,
+    "primary_type": "car_wash",
+    "address": "2 Yishun Industrial Street 1, #03-01 Northpoint Bizhub, Singapore 768159"
+  },
+  {
+    "place_id": "ChIJcwJnxHsV2jERgJUP2KlxhOM",
+    "name": "My Tyre Autoservice Pte Ltd",
+    "lat": 1.4362285,
+    "lon": 103.8428764,
+    "primary_type": "car_repair",
+    "address": "2 Yishun Industrial Street 1, #01-02 Northpoint Bizhub, Singapore 768159"
+  },
+  {
+    "place_id": "ChIJc1jNpUAV2jER3ONjTN_5nQw",
+    "name": "Restyle My Car Yishun | Car Detailing | Car Wash",
+    "lat": 1.4377887999999999,
+    "lon": 103.8442699,
+    "primary_type": "car_wash",
+    "address": "15 Yishun Industrial Street 1, #01-31 Win 5, Singapore 768091"
+  },
+  {
+    "place_id": "ChIJm1u5jk4V2jERbezSkSWeoF8",
+    "name": "Freedom Car Detailing",
+    "lat": 1.4362285,
+    "lon": 103.8428764,
+    "primary_type": "car_wash",
+    "address": "2 Yishun Industrial Street 1, #02-16 NorthPoint Bizhub, Singapore 768159"
+  },
+  {
+    "place_id": "ChIJBRMTk7oV2jERrVGB99LcxIU",
+    "name": "DOW Detailing Pte Ltd",
+    "lat": 1.4362285,
+    "lon": 103.8428764,
+    "primary_type": "car_wash",
+    "address": "2 Yishun Industrial Street 1 Bizhub, #03-06 North Point, Singapore 768159"
+  },
+  {
+    "place_id": "ChIJrUrQgq892jERzijTPJL4-OA",
+    "name": "WePolish",
+    "lat": 1.4378194,
+    "lon": 103.84311849999999,
+    "primary_type": "car_wash",
+    "address": "7 Yishun Industrial Street 1, Bizhub, #01-32 North Spring, Singapore 768162"
+  },
+  {
+    "place_id": "ChIJxWbJZ-sV2jER3iPDBSJoj6A",
+    "name": "Ascension Works",
+    "lat": 1.4366681,
+    "lon": 103.8437831,
+    "primary_type": "car_repair",
+    "address": "6, Yishun Industrial Street 1 North View Bizhub, Singapore 768090"
+  },
+  {
+    "place_id": "ChIJ0x7G1s0V2jERprRn3YMnR1M",
+    "name": "Mb Workmanship",
+    "lat": 1.4362285,
+    "lon": 103.8428764,
+    "primary_type": "car_wash",
+    "address": "2 Yishun Industrial Street 1, #03-02, Singapore 768159"
+  },
+  {
+    "place_id": "ChIJTVsO9A4V2jERzxStjTvBUK4",
+    "name": "MBK CARWASH PTE. LTD.",
+    "lat": 1.4362285,
+    "lon": 103.8428764,
+    "primary_type": "car_wash",
+    "address": "2 YISHUN INDUSTRIAL STREET 1, BIZHUB, #01-15 NORTH POINT, Singapore 768159"
+  },
+  {
+    "place_id": "ChIJ8auwo88V2jER13V4LTqiuNY",
+    "name": "Island car wash and grooming Pte Ltd",
+    "lat": 1.4362285,
+    "lon": 103.8428764,
+    "primary_type": "car_wash",
+    "address": "Northpoint bizhub, Yishun Industrial Street 1, #01-26, Singapore 768159"
+  },
+  {
+    "place_id": "ChIJs6h8TMk_2jERA6XllzGh66M",
+    "name": "Rafidi Car Wash",
+    "lat": 1.4441062999999998,
+    "lon": 103.9320036,
+    "primary_type": "car_wash",
+    "address": "Jalan Pengkalan 5, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ02_SJUE_2jERstS1OKgvdZ8",
+    "name": "FourZ Carwash",
+    "lat": 1.4444797,
+    "lon": 103.93218549999999,
+    "primary_type": "car_wash",
+    "address": "81700 Pasir Gudang, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJ6RFI6lsL2jERDPN93QHLTlw",
+    "name": "Avenue 68",
+    "lat": 1.454443,
+    "lon": 103.5983084,
+    "primary_type": "car_wash",
+    "address": "Malaysia, Johor Darul Ta'zim, Iskandar Puteri, Pusat Komersial SuriaJalan Suria 17邮政编码: 79200"
+  },
+  {
+    "place_id": "ChIJQyIJdT8L2jERgaxzUEyGvEQ",
+    "name": "LL Shining Cleaning Car Wash",
+    "lat": 1.4542230999999999,
+    "lon": 103.59831559999999,
+    "primary_type": "car_wash",
+    "address": "29, Jalan Suria 1, Pusat Komersial Suria, 81550 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJUUQ9NUoL2jERDOyFweXqLMk",
+    "name": "NJS Car wash (Tidur Station)",
+    "lat": 1.4501635,
+    "lon": 103.5930313,
+    "primary_type": "car_wash",
+    "address": "36, Medan Nusa Perintis 5, Taman Nusa Perintis 2, 81550 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJmZwzHAAL2jERpHxfwh77Bag",
+    "name": "Elsyamia Car Wash",
+    "lat": 1.454399,
+    "lon": 103.5982851,
+    "primary_type": "car_wash",
+    "address": "Pusat Komersial Suria, Jalan Suria 1 邮政, 编码:, 79200 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJq-ZYfQAL2jERqa6nKyVZ3Gw",
+    "name": "AM CAR WASH",
+    "lat": 1.4553677,
+    "lon": 103.59938849999999,
+    "primary_type": "car_wash",
+    "address": "29, Jalan Suria 2, PUSAT KOMERSIAL SURIA Iskandar Puteri, Taman Nusa Perintis, 81550 Gelang Patah, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJ__0rAQAL2jER2cEJ9uGiIn0",
+    "name": "Sohan",
+    "lat": 1.445292,
+    "lon": 103.60374189999999,
+    "primary_type": "car_wash",
+    "address": "Nusa Cemerlang Industrial Park, 81550 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJue9N4xwL2jERfbzYdJcj53w",
+    "name": "Pusat Mencuci Kereta Seven Stars",
+    "lat": 1.451802,
+    "lon": 103.5931797,
+    "primary_type": "car_wash",
+    "address": "Taman Nusa Perintis, 81550 Gelang Patah, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJm18vD94L2jERpyjOyY5KpCY",
+    "name": "Hermanos Mobile Carwash",
+    "lat": 1.4529703999999999,
+    "lon": 103.62974600000001,
+    "primary_type": "car_wash",
+    "address": "Jalan Gita 1/4, Horizon Hills, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJJ4mX12IT2jERPCudSeZyaX4",
+    "name": "Car Wash",
+    "lat": 1.4517483999999998,
+    "lon": 103.79564309999999,
+    "primary_type": "car_wash",
+    "address": "128 Woodlands Industrial Park E5, Singapore 757851"
+  },
+  {
+    "place_id": "ChIJEa-DLSIT2jERo6MIORSQqOs",
+    "name": "Washwerkz Pte Ltd ( Woodlands Wave9 )",
+    "lat": 1.4486675999999998,
+    "lon": 103.7974977,
+    "primary_type": "car_wash",
+    "address": "71 Woodlands Industrial Park E9, #01-16 Wave 9, Singapore 757048"
+  },
+  {
+    "place_id": "ChIJ4ccWd20Q2jERGaRIG-x_MGg",
+    "name": "TotalEnergies Astee Autolution Car Wash & Services",
+    "lat": 1.451136,
+    "lon": 103.7932522,
+    "primary_type": "car_wash",
+    "address": "186 Woodlands Industrial Park E5, #01-03, Singapore 757515"
+  },
+  {
+    "place_id": "ChIJOUuq9O8T2jERumeziD8Plpc",
+    "name": "AutoBath 24/7 Automatic Contactless Car Wash & Wax",
+    "lat": 1.4490958999999999,
+    "lon": 103.7990502,
+    "primary_type": "car_wash",
+    "address": "61 Woodlands Industrial Park E9, #01-14 E9, Premium 757047"
+  },
+  {
+    "place_id": "ChIJm19XiBET2jEReZgNjrxj2JE",
+    "name": "Modern Automotive Services Pte. Ltd.",
+    "lat": 1.4489691999999998,
+    "lon": 103.7989578,
+    "primary_type": "car_wash",
+    "address": "61 Woodlands Industrial Park E9, #01-22/23/24, Singapore 757047"
+  },
+  {
+    "place_id": "ChIJUaeInjwT2jERsnbnxlUXovE",
+    "name": "Kinostylez Detailing",
+    "lat": 1.4490996999999999,
+    "lon": 103.79872239999999,
+    "primary_type": "car_wash",
+    "address": "61 Woodlands Industrial Park E9, #01-18 E9, Premium 757047"
+  },
+  {
+    "place_id": "ChIJl_ZimAsT2jER26ObToZlg-E",
+    "name": "Karcher Car Wash",
+    "lat": 1.4515116,
+    "lon": 103.79340030000002,
+    "primary_type": "car_wash",
+    "address": "Blk 184 Woodlands Industrial Park E5, #01-05, Singapore 757514"
+  },
+  {
+    "place_id": "ChIJj_W1XL0T2jER3BxzrctoOJ4",
+    "name": "Supreme Shine",
+    "lat": 1.4494483,
+    "lon": 103.79875700000001,
+    "primary_type": "car_wash",
+    "address": "61 Woodlands Industrial Park E9, #01-38B Premium E9, Singapore 757047"
+  },
+  {
+    "place_id": "ChIJn_b6cvET2jERamUfYvr3VUo",
+    "name": "Island car wash and grooming pte ltd",
+    "lat": 1.4492285999999999,
+    "lon": 103.7986239,
+    "primary_type": "car_wash",
+    "address": "61 Woodlands Industrial Park E9, #01-06 E9, PREMIUM 757047"
+  },
+  {
+    "place_id": "ChIJ66slseUX2jERgxCYkNEalk0",
+    "name": "KEIZO CUSTOM",
+    "lat": 1.4494578,
+    "lon": 103.7988101,
+    "primary_type": "car_repair",
+    "address": "61 Woodlands Industrial Park E9, #01-12 Aceliving Pte Ltd, Singapore 757047"
+  },
+  {
+    "place_id": "ChIJJ-JZgFgT2jERm3BdkCLIamA",
+    "name": "Mentari Shinetastic",
+    "lat": 1.4492285999999999,
+    "lon": 103.7986239,
+    "primary_type": "car_wash",
+    "address": "61 Woodlands Industrial Park E9, #01-08 Aceliving Pte Ltd, Singapore 757047"
+  },
+  {
+    "place_id": "ChIJKTzwACAT2jERlevYAsMAqWk",
+    "name": "SudsN'Glide",
+    "lat": 1.447239,
+    "lon": 103.798843,
+    "primary_type": "car_wash",
+    "address": "Singapore 730769"
+  },
+  {
+    "place_id": "ChIJRZCJXJET2jER5NY259J8Ki0",
+    "name": "JM Detailing Supplies Pte. Ltd.",
+    "lat": 1.4553,
+    "lon": 103.8142649,
+    "primary_type": "wholesaler",
+    "address": "463A Sembawang Dr, Singapore 751463"
+  },
+  {
+    "place_id": "ChIJo4x84yZ9kGcRDo7N-5yuQL4",
+    "name": "Triple Shine Car Grooming",
+    "lat": 1.4482171,
+    "lon": 103.81963359999999,
+    "primary_type": "car_wash",
+    "address": "30 Sembawang Dr, Singapore 757713"
+  },
+  {
+    "place_id": "ChIJOf1lxm4T2jERcrzyneW2PrU",
+    "name": "Liberty Shine Car Wash - Sembawang",
+    "lat": 1.4453424,
+    "lon": 103.81349379999999,
+    "primary_type": "car_wash",
+    "address": "Ark@Gambas, 7 Gambas Cres, 1st Floor Car Park, Singapore 757087"
+  },
+  {
+    "place_id": "ChIJl4i3o0cV2jER5YFqpIqFOWM",
+    "name": "HydroAuto Detailer",
+    "lat": 1.4503665,
+    "lon": 103.82636389999999,
+    "primary_type": "car_wash",
+    "address": "591 Montreal Link, Singapore 821402"
+  },
+  {
+    "place_id": "ChIJXd-mh0c_2jER5lnSDeixo88",
+    "name": "ABAH CAR WASH",
+    "lat": 1.455554,
+    "lon": 103.9359614,
+    "primary_type": "car_wash",
+    "address": "No. 31, 7, Jalan Lampam, Taman Tanjung Puteri Resort, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJudhuUQBr2jERJQXtoUOitlg",
+    "name": "AM DETAIL XPERTZ",
+    "lat": 1.4545150999999998,
+    "lon": 103.9354951,
+    "primary_type": "car_wash",
+    "address": "7, Jalan Lampam 7, Taman Tanjung Puteri Resort, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJGTDmKPML2jER-KLHk9f_4Fw",
+    "name": "Spin Wheel Car Wash",
+    "lat": 1.4571203,
+    "lon": 103.59594279999999,
+    "primary_type": "car_wash",
+    "address": "3, 28, Jalan Nusa Perintis 12, Taman Nusa Perintis, 81550 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJkSftFwAL2jEROYLzTts1mWM",
+    "name": "LAJUNIOR CAR WASH",
+    "lat": 1.45882,
+    "lon": 103.5964744,
+    "primary_type": "car_wash",
+    "address": "6, Jalan SILC 1/12, kawansan Perindustrian SILC79200 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ0V5KHUML2jERf25NeHIa6iY",
+    "name": "Blue Zephyr Car Wash",
+    "lat": 1.461685,
+    "lon": 103.6225774,
+    "primary_type": "car_wash",
+    "address": "11, Jalan Horizon Perdana 4, 79100 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ2VGHOzgN2jERX8CXdluGO8A",
+    "name": "Vintage Car Wash Sireh Park",
+    "lat": 1.461466,
+    "lon": 103.6477621,
+    "primary_type": "car_wash",
+    "address": "Jalan Nusa Idaman, Nusa Idaman, 79100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJX4PpZAAN2jER5uhtcfOmt7E",
+    "name": "Brotherhood Auto car detailing & services",
+    "lat": 1.4658688,
+    "lon": 103.65441870000001,
+    "primary_type": "car_wash",
+    "address": "38, Jalan Indah 23/3, Taman Bukit Indah 2, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ988VZgAT2jERuMpiC5zhiwA",
+    "name": "ENS Car Wash",
+    "lat": 1.463709,
+    "lon": 103.7300922,
+    "primary_type": "car_wash",
+    "address": "Block 3C, Bay Point Country Garden, Jalan, Persiaran Danga Perdana, Danga Bay, 80200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJwewvSJgT2jERCBSx7H2z7Cw",
+    "name": "Kilat On The Way",
+    "lat": 1.4643636999999998,
+    "lon": 103.7361553,
+    "primary_type": "car_wash",
+    "address": "Jalan Mohd Amin Johor Bahru, Kampung Mohd Amin, 80200 Johor, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJUV-MMAAT2jERuUUizbfS5rY",
+    "name": "tm shine lab",
+    "lat": 1.4616624,
+    "lon": 103.73768009999999,
+    "primary_type": "car_wash",
+    "address": "Kampung Mohd Amin, 80200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ4XAEmccS2jERw9iklbNtXaM",
+    "name": "F & S Car Wash",
+    "lat": 1.4659369,
+    "lon": 103.75333090000001,
+    "primary_type": "car_wash",
+    "address": "62, Jalan Yahya Awal, Bandar Johor Bahru, 80100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJN8_GmccS2jERyhIlGjzPmOo",
+    "name": "Golden Pairlion Enterprise Sdn. Bhd",
+    "lat": 1.466024,
+    "lon": 103.7531188,
+    "primary_type": "car_wash",
+    "address": "Lrg 2, Bandar Johor Bahru, 80100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJjaSnOxIT2jERNRXaTUzJfw8",
+    "name": "F&S SUPER SHINE",
+    "lat": 1.4662007,
+    "lon": 103.75272290000001,
+    "primary_type": "car_wash",
+    "address": "13a, Jalan Yahya Awal, Bandar Johor Bahru, 80100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJfUI0RwAT2jERe6KNgWI2ZGA",
+    "name": "City Snow Wash",
+    "lat": 1.4662237,
+    "lon": 103.7532501,
+    "primary_type": "car_wash",
+    "address": "7, Lorong 5, Bandar Johor Bahru, 80100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJLZY0bNwS2jERY8yviy2J0O0",
+    "name": "48 Hours Car Grooming Center",
+    "lat": 1.4623112999999999,
+    "lon": 103.7678261,
+    "primary_type": "car_wash",
+    "address": "7, Jalan Lumba Kuda, Bukit Chagar, 80200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ0QMJytwS2jERTn--ES5Ct7I",
+    "name": "Pusat Cuci Kereta City One",
+    "lat": 1.4619179,
+    "lon": 103.7639799,
+    "primary_type": "car_wash",
+    "address": "Level Basement 1, Johor Bahru City Square, Lot No. MB-15, Jalan Tun Abdul Razak, Bandar Johor Bahru, 80000 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ5W2oEgAT2jERh7hPt5Frkoc",
+    "name": "CARs International (City Square JB)",
+    "lat": 1.4618984,
+    "lon": 103.7637207,
+    "primary_type": "car_wash",
+    "address": "Lot No. MB2–T1, Level B2, 106, Jalan Wong Ah Fook, Bandar Johor Bahru, 80000 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ897CIgAT2jERbDMt4Sv_ECo",
+    "name": "FLARE 7 DETAIL LAB",
+    "lat": 1.4610379999999998,
+    "lon": 103.76807389999999,
+    "primary_type": "car_wash",
+    "address": "Malaysia。 14, Jalan Bukit Meldrum, Tanjung Puteri, 80300 Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJ3T708acT2jERKlMEKewkpHc",
+    "name": "We Are Brothers Snow Car Wash",
+    "lat": 1.4636723999999999,
+    "lon": 103.77068340000001,
+    "primary_type": "car_wash",
+    "address": "8, Jalan Ah Siang, Kampung Ah Siang, 80300 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ9Zc74V8V2jERii7X8KHzL_Y",
+    "name": "Dynn Carwash",
+    "lat": 1.4576738,
+    "lon": 103.9132248,
+    "primary_type": "car_wash",
+    "address": "Kawasan Perindustrian Pasir Gudang, 81700 Pasir Gudang, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJEZ2UvlY_2jER_YO9wopcLSQ",
+    "name": "GANK BOTTOM",
+    "lat": 1.4565776,
+    "lon": 103.92864139999999,
+    "primary_type": "car_wash",
+    "address": "Taman Tanjung Puteri, 81700 Pasir Gudang, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJf3BUN0EL2jEROIfMxHOSUsI",
+    "name": "Bubble Shop Auto Detailing",
+    "lat": 1.4706628000000002,
+    "lon": 103.61591980000001,
+    "primary_type": "car_wash",
+    "address": "52, Jalan Sentral 28, Taman Nusa Sentral, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ7fvLaRoL2jERZ8p68Z_EwD8",
+    "name": "GTI CAR WASH",
+    "lat": 1.4719414,
+    "lon": 103.6152267,
+    "primary_type": "car_wash",
+    "address": "88, Jalan Sentral 28, Taman Nusa Sentral, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ8d7f6LIL2jERY8mJn1mntUc",
+    "name": "Dfee Auto Care",
+    "lat": 1.4695752,
+    "lon": 103.6171722,
+    "primary_type": "car_wash",
+    "address": "24&26, Jalan Sentral 28, Taman Nusa Sentral, 79100 Iskandar Puteri, Johor Gelang Patah, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJuWU7zlgL2jERF9IIPFmhnr8",
+    "name": "OSVIII AUTO DETAILING",
+    "lat": 1.4695395999999998,
+    "lon": 103.6175133,
+    "primary_type": "car_wash",
+    "address": "16, Jalan Sentral 28 Iskandar Puteri, 79100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJJULBMEYL2jERJVcJ-i9ne4Q",
+    "name": "Car wash",
+    "lat": 1.4676407999999999,
+    "lon": 103.6166483,
+    "primary_type": "car_wash",
+    "address": "69, Jln Sentral 2, Taman Nusa Sentral, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJY4XJCXgL2jERkPgOfsUUtWA",
+    "name": "GKLV FABULOUS CAR@MOTORCYCLE SNOWWASH",
+    "lat": 1.4676685999999999,
+    "lon": 103.61671849999999,
+    "primary_type": "car_wash",
+    "address": "No69, Jln Sentral 2, Taman Nusa Sentral, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJI6odyj0L2jER-0jlfy6oCCE",
+    "name": "GOLDEN TOUCH SNOW WASH & DETAILING",
+    "lat": 1.4750292,
+    "lon": 103.6177508,
+    "primary_type": "car_wash",
+    "address": "22, Jln Sentral 27/14, Taman Nusa Sentral, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ1dh0PxsL2jERUxQyKxex7Vg",
+    "name": "RETRO Car Wash (Taman Nusa Sentral)",
+    "lat": 1.4697333,
+    "lon": 103.62751,
+    "primary_type": "car_wash",
+    "address": "133, Jln Sentral 24, Taman Nusa Sentral, 79100 Iskandar Puteri, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJmy5MQOQL2jERkx-RA-Oz-No",
+    "name": "SNJ Auto Shine",
+    "lat": 1.469425,
+    "lon": 103.62186000000001,
+    "primary_type": "car_wash",
+    "address": "98 Jalan Sentral 1 Taman Nusa Sentral, Nusa Sentral, 79100 Gelang Patah, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJo9lXXCEL2jER00OUAfd5z6w",
+    "name": "SMART WASH",
+    "lat": 1.4689663,
+    "lon": 103.627161,
+    "primary_type": "car_wash",
+    "address": "NO.109, 109, Jln Sentral 24, Taman Nusa Sentral, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJGyGVO0wL2jERTZvmazssosk",
+    "name": "333 Premium Car Beauty",
+    "lat": 1.4688636,
+    "lon": 103.62675279999999,
+    "primary_type": "car_wash",
+    "address": "95, Jln Sentral 24, Taman Nusa Sentral, 79100 Iskandar Puteri, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJ_eP7e1AL2jERqI5O5568Gsc",
+    "name": "Shree Indah Snow Carwash",
+    "lat": 1.4690022999999999,
+    "lon": 103.6271577,
+    "primary_type": "car_wash",
+    "address": "109, Jln Sentral 24, 79100 Gelang Patah, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJWextlU8L2jER8SYNdeyQy_4",
+    "name": "Victor Car Wash",
+    "lat": 1.4698632999999999,
+    "lon": 103.62304019999999,
+    "primary_type": "car_wash",
+    "address": "79100 Gelang Patah, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJ2chIoxIL2jERg-2-rWhewUk",
+    "name": "Sentral Car Wash T.K",
+    "lat": 1.4690877999999998,
+    "lon": 103.6252272,
+    "primary_type": "car_wash",
+    "address": "49, Jln Sentral 24, 79100 Johor Bahru, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJv-XnTs4L2jERlslhmdkREzs",
+    "name": "QS Car Auto Detailing🚘CAR WASH",
+    "lat": 1.4707819000000002,
+    "lon": 103.62792909999999,
+    "primary_type": "car_wash",
+    "address": "167, Jln Sentral 24, 79100 Johor Bahru, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJmbr3t6gN2jERbvD56BvpMFY",
+    "name": "Neue Car Spa （Car Wash Bukit Indah ）",
+    "lat": 1.4690235,
+    "lon": 103.64758529999999,
+    "primary_type": "car_wash",
+    "address": "30&32, Jalan Indah 28/1, Taman Bukit Indah 2, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJP68yyBMN2jER_VCF5OcdCBY",
+    "name": "Neue Car Spa - Car Wash Nusa Idaman",
+    "lat": 1.4743226,
+    "lon": 103.6405959,
+    "primary_type": "car_wash",
+    "address": "24, Jalan Susur Idaman, Nusa Idaman, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJXccXYgAN2jERUSdTnBU4wQg",
+    "name": "SJ Luxury Car Spa & Detailing",
+    "lat": 1.4743910999999998,
+    "lon": 103.64209559999999,
+    "primary_type": "car_wash",
+    "address": "1, Jalan Idaman 9/1, Taman Nusa Idaman, 79100 Iskandar Puteri, Nusa Idaman, 79100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJSfZbYJsN2jERT5TMwCvgJ7o",
+    "name": "NBT INFINITE SERVICES CARWASH & POLISHING CENTRE",
+    "lat": 1.4688121,
+    "lon": 103.6508934,
+    "primary_type": "car_wash",
+    "address": "4, Jalan Indah 25/16, Taman Bukit Indah 2, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJP4ZWPAAN2jERfan19Hku8O4",
+    "name": "LXZ Car Wash",
+    "lat": 1.4743876999999999,
+    "lon": 103.64063550000002,
+    "primary_type": "car_wash",
+    "address": "22, Jalan Susur Idaman, Nusa Idaman, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJkUXFk6sM2jER47_NoE1iA3s",
+    "name": "Kristal Snow Car Wash",
+    "lat": 1.4743753,
+    "lon": 103.6405983,
+    "primary_type": "car_wash",
+    "address": "79100, 2-381, Jalan Susur Idaman, Nusa Idaman, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJs--JVR8N2jERQfAvNuCiFcs",
+    "name": "SKS CAR WASH",
+    "lat": 1.4748789999999998,
+    "lon": 103.6411291,
+    "primary_type": "car_wash",
+    "address": "16, Jalan Susur Idaman, Taman Nusa Idaman, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJr7e_ESsN2jERbTmJCHnOIjc",
+    "name": "Sree Nath Snow Car Wash",
+    "lat": 1.4743876999999999,
+    "lon": 103.64063550000002,
+    "primary_type": "car_wash",
+    "address": "22, Jalan Susur Idaman, Nusa Idaman, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJMZ2O3OEN2jERd3bZvvkFrj4",
+    "name": "Rs Auto Salon",
+    "lat": 1.4759176999999999,
+    "lon": 103.64084229999999,
+    "primary_type": "car_wash",
+    "address": "26, Jalan Ceria 1a, Taman Nusa Indah, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJuQtf6BIN2jERkEicmrBZNuA",
+    "name": "Option 2 Auto Spa & Detailing",
+    "lat": 1.4705697,
+    "lon": 103.6527826,
+    "primary_type": "car_wash",
+    "address": "30, Jalan Indah 25/9, Taman Bukit Indah, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJTQwYngAN2jERM_Sljr2dJE0",
+    "name": "Takata Car Detailing",
+    "lat": 1.4691561,
+    "lon": 103.6522798,
+    "primary_type": "car_wash",
+    "address": "25, Jalan Indah 25/4, Taman Bukit Indah 2, 79100 Iskandar Puteri, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJaQlHKAAN2jERYr9UWczJ_g0",
+    "name": "CAR WASH",
+    "lat": 1.4706184,
+    "lon": 103.65439549999999,
+    "primary_type": "car_wash",
+    "address": "3, Jalan Indah 22/2, Taman Bukit Indah 2, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJkXL-J-wN2jERdsDgCY446GU",
+    "name": "CPJ car wash",
+    "lat": 1.4701441,
+    "lon": 103.6517489,
+    "primary_type": "car_wash",
+    "address": "No 10, Jalan Indah 25/3, Taman Bukit Indah, 79100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJl5nM2bYM2jERLPrVfx3yHwM",
+    "name": "Backlane / IDEMITSU",
+    "lat": 1.4710664999999998,
+    "lon": 103.6542934,
+    "primary_type": "car_wash",
+    "address": "19, Jalan Indah 22/2, Presint 1, Nusa Idaman, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJt9sSLGwN2jER1iWhhqn2HeQ",
+    "name": "KILAT MOBILE DETAILING 亮点汽车美容",
+    "lat": 1.4741971999999999,
+    "lon": 103.6642512,
+    "primary_type": "car_wash",
+    "address": "14, Jalan Indah 19/4a, Taman Bukit Indah, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJJanim9YM2jERVRhEhsOGgA4",
+    "name": "Mzzm Car Wash",
+    "lat": 1.4727113,
+    "lon": 103.6786305,
+    "primary_type": "car_wash",
+    "address": "15, Jalan Baiduri 1/1, Taman Baiduri, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJXXwlSbcN2jERH6kpTpybqak",
+    "name": "Tom Autospa",
+    "lat": 1.4723357,
+    "lon": 103.6808593,
+    "primary_type": "car_wash",
+    "address": "33, Jalan Baiduri 1, Taman Baiduri, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJgT9BwM4N2jEReWVodcpQD5A",
+    "name": "JSV AUTOCARE PERLING",
+    "lat": 1.4761164999999998,
+    "lon": 103.67935220000001,
+    "primary_type": "car_wash",
+    "address": "PTD 30504, Jalan Layang, Taman Perling, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJr3cnJ9IM2jER6o7vhK2pK5w",
+    "name": "E Vista",
+    "lat": 1.4732218,
+    "lon": 103.6728723,
+    "primary_type": "car_wash",
+    "address": "146, Jalan Layang 16, Taman Perling, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJAUoy98IN2jERsVnPeIENOrk",
+    "name": "7 harta garaj",
+    "lat": 1.4725017,
+    "lon": 103.69758709999999,
+    "primary_type": "car_wash",
+    "address": "Jalan Salim Baharu, 81200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJkQYyfgAT2jERdB4Kfe7Vw50",
+    "name": "Supernova nano mist",
+    "lat": 1.4691908999999999,
+    "lon": 103.7363956,
+    "primary_type": "car_wash",
+    "address": "2297, 2298, Jalan Kolam Ayer, Taman Kolam Air, 80200 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJG0Xyx7IS2jERbNkTsytCe3Q",
+    "name": "Golden Car Wash",
+    "lat": 1.4767312,
+    "lon": 103.7419535,
+    "primary_type": "car_wash",
+    "address": "Jalan Abdul Samad, Kolam Ayer, 80100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJszDLkjsT2jER51EUZ9AxWkM",
+    "name": "Duta Carewash Centre",
+    "lat": 1.4755009,
+    "lon": 103.741801,
+    "primary_type": "car_wash",
+    "address": "38a, Jalan Abdul Samad, Kolam Ayer, 80100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJty5IBwAT2jERHUgxJcPnBHM",
+    "name": "Carwash depan kpj",
+    "lat": 1.4759776999999998,
+    "lon": 103.7419559,
+    "primary_type": "car_wash",
+    "address": "39B, Jalan Abdul Samad, Kolam Ayer, 80100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ-a0iCrgS2jERysrt0hv9vRE",
+    "name": "Golden Car Wash",
+    "lat": 1.4669628,
+    "lon": 103.7519947,
+    "primary_type": "car_wash",
+    "address": "11, Lorong 5, Kampung Mahmoddiah, 80100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJeaQRQ6MT2jEReYBzyMV_TH0",
+    "name": "Kleen Park",
+    "lat": 1.4667398,
+    "lon": 103.75231169999999,
+    "primary_type": "car_wash",
+    "address": "18, Jalan Yahya Awal, Bandar Johor Bahru, 80100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ1bhHZwAT2jERh2F0rDSobm8",
+    "name": "Carwash Johor",
+    "lat": 1.4669516,
+    "lon": 103.7519573,
+    "primary_type": "car_wash",
+    "address": "11, Lorong 5, Kampung Mahmoddiah, 80100 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJK4h8aQAT2jEROHARl3_1EyY",
+    "name": "Car wash Tawakal",
+    "lat": 1.4732726,
+    "lon": 103.7488837,
+    "primary_type": "car_wash",
+    "address": "Yahya Awal, 80000 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJVT3o6tES2jERL8Km_Z58I4g",
+    "name": "Legend Car Wash (B Point)",
+    "lat": 1.4710436999999998,
+    "lon": 103.7650256,
+    "primary_type": "car_wash",
+    "address": "250, Jalan Lingkaran Dalam, Bukit Senyum, 80300 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ0TiYqtES2jERE6Ioo136G10",
+    "name": "Storey Car Wash",
+    "lat": 1.4705127999999998,
+    "lon": 103.76582289999999,
+    "primary_type": "car_wash",
+    "address": "755, Jalan Storey, Kim Teng Park, 80300 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJRZhVsNES2jER8W6qO2Rgj2M",
+    "name": "786 Car Wash",
+    "lat": 1.4706302,
+    "lon": 103.7654118,
+    "primary_type": "car_wash",
+    "address": "Jalan Bukit Chagar, Kim Teng Park, 80300 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJwbK0sdES2jERrG4VRF9hXuw",
+    "name": "Tigers Car Wash (JB)",
+    "lat": 1.4705567,
+    "lon": 103.76571519999999,
+    "primary_type": "car_wash",
+    "address": "Bukit Senyum, 80300 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJYUm3RgAT2jERSmu4pRRyElY",
+    "name": "Legend Park Car Wash",
+    "lat": 1.4708061,
+    "lon": 103.761303,
+    "primary_type": "car_wash",
+    "address": "3g, Jalan Tebrau, Wadi Hana, 80250 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ6arnVQAT2jERbq553wDpAfo",
+    "name": "Wait & See Auto Spa",
+    "lat": 1.4719027999999998,
+    "lon": 103.7645297,
+    "primary_type": "car_wash",
+    "address": "12 F-1, Wisma Nufri, Jalan Yahya Aldatar, Bukit Senyum, 80300 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJV5BqdAAT2jERKMGLPzGsC0s",
+    "name": "Sheraton Carwash",
+    "lat": 1.4705565,
+    "lon": 103.7659236,
+    "primary_type": "car_wash",
+    "address": "120, Jalan Bukit Chagar, Kim Teng Park, 80300 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJt2mncwAT2jERI8-KQtvPm0A",
+    "name": "No Name car wash",
+    "lat": 1.4717208,
+    "lon": 103.7741023,
+    "primary_type": "car_wash",
+    "address": "Jalan Biru 3, Taman Pelangi, 80400 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJxSQWZQBt2jERwtS1GJ4K7hs",
+    "name": "Johor car wash( Shyan)",
+    "lat": 1.4774732,
+    "lon": 103.77149960000001,
+    "primary_type": "car_wash",
+    "address": "1, Jalan Jerau 5, Taman Pelangi, 80400 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJEyC6ZwAT2jER23VVhAPJVOw",
+    "name": "ABDUL ROHOMAN ->CAR WASH",
+    "lat": 1.4764646,
+    "lon": 103.7691704,
+    "primary_type": "car_wash",
+    "address": "1, Jalan Kuning 1, Taman Pelangi, 80400 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJnaG9KgAT2jERpcWtntN5eyM",
+    "name": "Mutiara Car Wash",
+    "lat": 1.4719852,
+    "lon": 103.77475,
+    "primary_type": "car_wash",
+    "address": "26, Jalan Biru 3, Taman Pelangi, 80400 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJW_qkJQAT2jERJ_9hB8N_Vxs",
+    "name": "Tanvir Car Wash",
+    "lat": 1.476281,
+    "lon": 103.7692591,
+    "primary_type": "car_wash",
+    "address": "Jalan Kuning 1, Taman Pelangi, 80400 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ50kZbgBt2jER_77j33GSExI",
+    "name": "RAS PELANGI CARWASH",
+    "lat": 1.4774732,
+    "lon": 103.77149960000001,
+    "primary_type": "car_wash",
+    "address": "1, Jalan Jerau 5, Taman Pelangi, 80400 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJheWCvXoT2jERATVW_SZVE0g",
+    "name": "North Sea Station Car Wash & Valet",
+    "lat": 1.4704754999999998,
+    "lon": 103.7838609,
+    "primary_type": "car_wash",
+    "address": "Lot Zone G, Fun Zon Berjaya Waterfront Complex 88, Jalan Ibrahim Sultan, Jln Stulang Laut, Duty Free Zone, 80300 Johor Bahru, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJVa4zYgAV2jERMeD8E9fNHj4",
+    "name": "BS CAR WASH",
+    "lat": 1.476048,
+    "lon": 103.86733939999999,
+    "primary_type": "car_wash",
+    "address": "87, Jln Sierra Perdana 4, Taman Sierra Perdana, 81750 Masai, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJE9pGfTZr2jEREppTQrdPXAU",
+    "name": "Jadelove carwash masai",
+    "lat": 1.4739148000000002,
+    "lon": 103.8684888,
+    "primary_type": "car_wash",
+    "address": "28, Jalan Sierra Perdana 6/3, taman sirr 14, 81750 Masai, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJw-r80KcV2jERzMUZAlJq1Rk",
+    "name": "Old skool car wash",
+    "lat": 1.4760598,
+    "lon": 103.8671213,
+    "primary_type": "car_wash",
+    "address": "Jln Sierra Perdana 4, Taman Sierra Perdana, 81200 JOHOR BAHRU, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJvakgwr8V2jERBQ_h_aYI3ao",
+    "name": "MNMAUTODETAILING",
+    "lat": 1.4759593,
+    "lon": 103.8667471,
+    "primary_type": "car_wash",
+    "address": "98, Jln Sierra Perdana 4/1, Taman Sierra Perdana, 81750 Masai, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJX0kTKHgV2jERt8m6i1PWZ4c",
+    "name": "ONXY CAR DETAILING",
+    "lat": 1.4739303,
+    "lon": 103.86845919999999,
+    "primary_type": "car_wash",
+    "address": "29, Jalan Sierra Perdana 6/3, Taman sierra, 81750 Masai, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJt8psegAV2jERPoj4-BD5B3o",
+    "name": "Guzel detailing",
+    "lat": 1.4731442,
+    "lon": 103.8688566,
+    "primary_type": "car_wash",
+    "address": "6, Jalan Sierra Perdana 6/2, 81750 Masai, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ_5h2T9UU2jERogQy-6GsoMo",
+    "name": "Fairul Auto Carwash",
+    "lat": 1.4760970999999998,
+    "lon": 103.8671363,
+    "primary_type": "car_wash",
+    "address": "Taman Sierra Perdana, 81750 Masai, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJDdq03OQV2jERHkFmHMLQOXM",
+    "name": "Mollah Car wash Enterprise",
+    "lat": 1.4754076,
+    "lon": 103.8677532,
+    "primary_type": "car_wash",
+    "address": "64, Jln Sierra Perdana 4/1, Taman Sierra Perdana, 81750 Masai, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ96yJKbEV2jERdfGPuqqCW0A",
+    "name": "Wash Lab Car Detailing Centre",
+    "lat": 1.4731442,
+    "lon": 103.8688566,
+    "primary_type": "car_wash",
+    "address": "6, Jalan Sierra Perdana 6/2, Taman Sierra Perdana, 81750 Masai, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJNeWefQAV2jERT_LT76TQeOA",
+    "name": "MMH Car Spa Car Wash",
+    "lat": 1.4662557999999999,
+    "lon": 103.8972672,
+    "primary_type": "car_wash",
+    "address": "38, Jalan Mawar 46, Taman Mawar, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJwQ6OOqUV2jERv5_XfqKTYVQ",
+    "name": "𝐃’𝐋𝐢𝐥𝐲 𝐂𝐚𝐫 𝐖𝐚𝐬𝐡",
+    "lat": 1.465434,
+    "lon": 103.89708689999999,
+    "primary_type": "car_wash",
+    "address": "10, Jalan Mawar 46, Taman Mawar, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJ1_mWLAAV2jERiv_cfsXokN0",
+    "name": "YH carwash",
+    "lat": 1.473328,
+    "lon": 103.8961951,
+    "primary_type": "car_wash",
+    "address": "3a, Jalan Mawar 1, Taman Mawar, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJUz6Zq48V2jERE88Wj3JKdFU",
+    "name": "AZJ BERSATU CAR WASH",
+    "lat": 1.4726583,
+    "lon": 103.8973664,
+    "primary_type": "car_wash",
+    "address": "23 JALAN TAMAN MAWAR 1 PASIR GUDANG, Taman Mawar, 81700 Johor, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJNZktkBcV2jERgs6q03eS0Eg",
+    "name": "Hybrid Autospa & Detailing Johor Bahru",
+    "lat": 1.4713486999999998,
+    "lon": 103.90152739999999,
+    "primary_type": "car_wash",
+    "address": "33, Jalan Mawar Merah, 3/1, Business Centre 2, Kawasan Perindustrian Pasir Gudang, 81700 Pasir Gudang, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJVWXqGRg_2jERL3pz6g9-lzU",
+    "name": "RZ CARWASH",
+    "lat": 1.4736608999999998,
+    "lon": 103.9300937,
+    "primary_type": "car_wash",
+    "address": "16, Jalan Siakap 7, Taman Pasir Putih, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJh7svKss_2jERwGWG1WYjFNo",
+    "name": "NAKHODA MANAGEMENT CAR WASH",
+    "lat": 1.473773,
+    "lon": 103.9300277,
+    "primary_type": "car_wash",
+    "address": "Rizab Keretapi KM26 Mukim Plentong (Berhadapan Kebayan, Taman Pasir Putih, 81700 Pasir Gudang, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJrwET9PY_2jERAAVEPahipdk",
+    "name": "TPP Car Wash",
+    "lat": 1.4735575,
+    "lon": 103.9300683,
+    "primary_type": "car_wash",
+    "address": "Taman Pasir Putih, 81700 Pasir Gudang, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJfSyd99E_2jERMqBWgw4wQ_4",
+    "name": "Marsya Carwash",
+    "lat": 1.4736919,
+    "lon": 103.93006760000002,
+    "primary_type": "car_wash",
+    "address": "Taman Pasir Putih, 81700 Pasir Gudang, Johor, Malaysia"
+  },
+  {
+    "place_id": "ChIJSyzv5I4_2jER3Avs1LA4mcY",
+    "name": "Platinum Snow Car Wash",
+    "lat": 1.4730258999999999,
+    "lon": 103.9318778,
+    "primary_type": "car_wash",
+    "address": "19-01, Jalan Siakap 3/1, Taman Pasir Putih, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJKYwgBAA_2jERDa_KYP-8cyQ",
+    "name": "AJ CAR WASH & DETAILING",
+    "lat": 1.4735376,
+    "lon": 103.931315,
+    "primary_type": "car_wash",
+    "address": "Jalan Siakap 3/2, Taman Pasir Putih, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJgZ5J-AA_2jERQwmPi1lqSM0",
+    "name": "SRS BROTHERS CARWASH",
+    "lat": 1.4724686,
+    "lon": 103.93296579999999,
+    "primary_type": "car_wash",
+    "address": "1, Jalan Siakap 8, Taman Pasir Putih, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJJR-vkFI_2jER5QSwvuvMt4I",
+    "name": "JJ AUTOCARE",
+    "lat": 1.4725127999999998,
+    "lon": 103.9327684,
+    "primary_type": "car_wash",
+    "address": "No 19, 01, Jalan Siakap 3/1, Taman Pasir Putih, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJDfcZJ1U_2jERPnIlqDQQA6I",
+    "name": "4FOUR B CAR WASH",
+    "lat": 1.4744545,
+    "lon": 103.93141449999999,
+    "primary_type": "car_wash",
+    "address": "41, Jalan Asli 17, Taman Pasir Putih, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJIR6ptk8_2jERXNlYthg33LQ",
+    "name": "Gloss Shield Protection Automobile",
+    "lat": 1.4669659,
+    "lon": 103.9444784,
+    "primary_type": "car_wash",
+    "address": "6, Jln Selasih 15, Taman Pasir Putih, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  },
+  {
+    "place_id": "ChIJkYWdA4U_2jERfeJX9by-_Qs",
+    "name": "MK DETAILING CAR",
+    "lat": 1.4688717,
+    "lon": 103.9443501,
+    "primary_type": "car_wash",
+    "address": "28 Jalan Selasih 25 Taman Pasir Putih 81700 Pasir Gudang Johor Homebase, Taman Pasir Putih, 81700 Pasir Gudang, Johor Darul Ta'zim, Malaysia"
+  }
+]

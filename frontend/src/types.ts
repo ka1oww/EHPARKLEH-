@@ -57,6 +57,8 @@ export interface Carpark {
   ev_available: number | null
   ev_operators: string[]
   ev_max_power_kw: number | null
+  carwash: boolean
+  carwash_operator: string | null
   // Legacy display fields read by the existing UI. Kept optional so behaviour
   // is preserved verbatim during the migration.
   cost_per_30min?: number
