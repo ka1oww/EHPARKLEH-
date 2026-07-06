@@ -1,6 +1,6 @@
 {
- "source": "beaverenergy.com.sg/self-service-car-wash-singapore (Beaver's public location list)",
- "note": "Curated snapshot of the operator's published self-service car wash locations; indicative and may lag as machines are added/removed. QE Car Care has no public list, so QE machines come from the Google car_wash layer.",
+ "source": "Beaver (beaverenergy.com.sg) + QE Car Care (qe.com.sg) public location lists",
+ "note": "Curated snapshot of the operators' published self-service car wash locations; indicative and may lag. Matched to carparks by block + street.",
  "checked": "2026-07-06",
  "locations": [
   {
@@ -1147,6 +1147,1441 @@
    "operator": "Beaver",
    "block": "682",
    "street": "Edgedale Plains"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "104C",
+   "street": "AMK Ave 4"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "130A",
+   "street": "AMK Ave 3"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "132A",
+   "street": "AMK Ave 3"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "227",
+   "street": "AMK St 23"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "255A",
+   "street": "AMK Ave 4"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "256A",
+   "street": "AMK Ave 3"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "260",
+   "street": "AMK Street 21"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "309B",
+   "street": "AMK Ave 1"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "316B",
+   "street": "AMK Ave 1"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "323A",
+   "street": "AMK Ave 3"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "347A",
+   "street": "AMK Ave 3"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "352A",
+   "street": "AMK Street 31"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "455",
+   "street": "AMK Street 44"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "588",
+   "street": "AMK Street 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "590",
+   "street": "AMK Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "596",
+   "street": "AMK Street 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "613A",
+   "street": "AMK Ave 4"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "700",
+   "street": "AMK Ave 6"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "712A",
+   "street": "AMK Ave 6"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "402",
+   "street": "Fernvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "404",
+   "street": "Fernvale Lane"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "406",
+   "street": "Fernvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "408",
+   "street": "Fernvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "410",
+   "street": "Fernvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "413",
+   "street": "Fernvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "414",
+   "street": "Fernvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "416",
+   "street": "Fernvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "417",
+   "street": "Fernvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "435A",
+   "street": "Hougang Ave 8"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "548A",
+   "street": "Hougang Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "559A",
+   "street": "Hougang Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "566A",
+   "street": "Hougang Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "567A",
+   "street": "Hougang Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "574A",
+   "street": "Hougang Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "576A",
+   "street": "Hougang Ave 9"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "699D",
+   "street": "Hougang Street 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "909A",
+   "street": "Hougang Street 91"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "919A",
+   "street": "Hougang Street 91"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "925A",
+   "street": "Hougang Ave 9"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "931A",
+   "street": "Hougang Street 91"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "933A",
+   "street": "Hougang Ave 9"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "941A",
+   "street": "Hougang Street 92"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "946A",
+   "street": "Hougang Street 92"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "955A",
+   "street": "Hougang Ave 9"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "966A",
+   "street": "Hougang Street 92"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "971A",
+   "street": "Hougang Street 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "980",
+   "street": "Buangkok Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "984",
+   "street": "Buangkok Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "988",
+   "street": "Buangkok Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "991",
+   "street": "Buangkok Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "993",
+   "street": "Buangkok Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "996",
+   "street": "Buangkok Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "997",
+   "street": "Buangkok Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "998",
+   "street": "Buangkok Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "504A",
+   "street": "SRG North Ave 4"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "512A",
+   "street": "SRG North Ave 4"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "542A",
+   "street": "SRG North Ave 3"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "546A",
+   "street": "SRG North Ave 3"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "550A",
+   "street": "SRG North Ave 3"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "513A",
+   "street": "Bedok North Ave 2"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "547C",
+   "street": "Bedok North Ave 1"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "145A",
+   "street": "Bedok Reservoir Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "613C",
+   "street": "Bedok Reservoir Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "637A",
+   "street": "Bedok Reservoir Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "714A",
+   "street": "Bedok Reservoir Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "748A",
+   "street": "Bedok Reservoir Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "649",
+   "street": "Jalan Tenaga"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "651A",
+   "street": "Jalan Tenaga"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "660A",
+   "street": "Jalan Tenaga"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "671A",
+   "street": "Jalan Damai"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "159A",
+   "street": "Hougang St 11"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "166A",
+   "street": "Hougang Ave 1"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "172A",
+   "street": "Hougang Ave 1"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "220A",
+   "street": "Hougang St 21"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "229",
+   "street": "Hougang St 21"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "373A",
+   "street": "Hougang St 31"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "376",
+   "street": "Hougang St 32"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "830A",
+   "street": "Hougang Central"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "838A",
+   "street": "Hougang Central"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "850A",
+   "street": "Hougang Central"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "364",
+   "street": "Upper Serangoon Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "365",
+   "street": "Upper Serangoon Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "465A",
+   "street": "Upper Serangoon Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "476A",
+   "street": "Upper Serangoon View"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "470",
+   "street": "Upper Serangoon Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "473",
+   "street": "Upper Serangoon Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "475",
+   "street": "Upper Serangoon Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "141A",
+   "street": "Serangoon North Ave 2"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "149A",
+   "street": "Serangoon North Ave 1"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "150",
+   "street": "Serangoon North Ave 1"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "115",
+   "street": "Yishun Ring Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "296A",
+   "street": "Yishun Street 20"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "307",
+   "street": "Yishun Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "315",
+   "street": "Yishun Ave 9"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "317",
+   "street": "Yishun Ave 9"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "320",
+   "street": "Yishun Central"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "333",
+   "street": "Yishun St 31"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "334",
+   "street": "Yishun Ave 6"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "342A",
+   "street": "Yishun Ring Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "347",
+   "street": "Yishun Ave 11"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "382",
+   "street": "Yishun St 31"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "385",
+   "street": "Yishun Ave 6"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "419",
+   "street": "Yishun Ave 11"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "426",
+   "street": "Yishun Ave 11"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "429",
+   "street": "Yishun Ave 11"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "430",
+   "street": "Yishun Ave 11"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "431",
+   "street": "Yishun Ave 11"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "441",
+   "street": "Yishun Ave 6"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "456",
+   "street": "Yishun St 41"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "461",
+   "street": "Yishun St 43"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "465",
+   "street": "Yishun Ave 6"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "468",
+   "street": "Yishun Ave 6"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "470",
+   "street": "Yishun St 42"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "476",
+   "street": "Yishun St 43"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "478",
+   "street": "Yishun St 42"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "501",
+   "street": "Yishun Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "504",
+   "street": "Yishun Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "506",
+   "street": "Yishun Ave 4"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "512",
+   "street": "Yishun Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "513",
+   "street": "Yishun Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "671",
+   "street": "Yishun Ave 4"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "673",
+   "street": "Yishun Ave 4"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "674",
+   "street": "Yishun Ave 4"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "676",
+   "street": "Yishun Ring Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "735",
+   "street": "Yishun Ave 5"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "813",
+   "street": "Yishun Ring Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "848A",
+   "street": "Yishun Street 81"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "301",
+   "street": "Anchorvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "303",
+   "street": "Anchorvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "304",
+   "street": "Anchorvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "305",
+   "street": "Anchorvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "306",
+   "street": "Anchorvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "308",
+   "street": "Anchorvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "310",
+   "street": "Anchorvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "312",
+   "street": "Anchorvale Lane"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "313A",
+   "street": "Anchorvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "318",
+   "street": "Anchorvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "319",
+   "street": "Anchorvale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "321",
+   "street": "Anchorvale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "326",
+   "street": "Anchorvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "329",
+   "street": "Anchorvale Street"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "332",
+   "street": "Anchorvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "334",
+   "street": "Anchorvale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "338",
+   "street": "Anchorvale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "351",
+   "street": "Anchorvale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "353",
+   "street": "Anchorvale Lane"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "203",
+   "street": "Compassvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "204",
+   "street": "Compassvale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "205D",
+   "street": "Compassvale Lane"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "208",
+   "street": "Compassvale Lane"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "210",
+   "street": "Compassvale Lane"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "212",
+   "street": "Compassvale Lane"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "215",
+   "street": "Compassvale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "217",
+   "street": "Compassvale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "224E",
+   "street": "Compassvale Walk"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "226D",
+   "street": "Compassvale Walk"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "228D",
+   "street": "Compassvale Walk"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "233A",
+   "street": "Compassvale Walk"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "236",
+   "street": "Compassvale Walk"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "241A",
+   "street": "Compassvale Walk"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "248A",
+   "street": "Compassvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "257",
+   "street": "Compassvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "259",
+   "street": "Compassvale Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "261",
+   "street": "Compassvale Street"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "266",
+   "street": "Compassvale Bow"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "267",
+   "street": "Compassvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "269",
+   "street": "Compassvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "273",
+   "street": "Compassvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "275",
+   "street": "Compassvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "277",
+   "street": "Compassvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "278",
+   "street": "Compassvale Bow"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "289",
+   "street": "Compassvale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "290",
+   "street": "Compassvale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "291",
+   "street": "Compassvale Street"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "293",
+   "street": "Compassvale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "295",
+   "street": "Compassvale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "297",
+   "street": "Compassvale Street"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "299",
+   "street": "Compassvale Street"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "102A",
+   "street": "Rivervale Walk"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "103A",
+   "street": "Rivervale Walk"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "111A",
+   "street": "Rivervale Walk"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "117D",
+   "street": "Rivervale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "120",
+   "street": "Rivervale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "122F",
+   "street": "Rivervale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "124D",
+   "street": "Rivervale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "126A",
+   "street": "Rivervale Street"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "133A",
+   "street": "Rivervale Street"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "142A",
+   "street": "Rivervale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "146A",
+   "street": "Rivervale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "156A",
+   "street": "Rivervale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "160",
+   "street": "Rivervale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "161",
+   "street": "Rivervale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "164",
+   "street": "Rivervale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "180",
+   "street": "Rivervale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "184",
+   "street": "Rivervale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "185",
+   "street": "Rivervale Crescent"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "188E",
+   "street": "Rivervale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "190C",
+   "street": "Rivervale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "191C",
+   "street": "Rivervale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "195A",
+   "street": "Rivervale Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "121E",
+   "street": "Seng Kang East Way"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "200",
+   "street": "Seng Kang East Way"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "201",
+   "street": "Seng Kang East Way"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "260",
+   "street": "Seng Kang East Way"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "270",
+   "street": "Seng Kang Central"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "272",
+   "street": "Seng Kang Central"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "279",
+   "street": "Seng Kang East Way"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "281",
+   "street": "Seng Kang East Way"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "323",
+   "street": "Seng Kang East Way"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "325",
+   "street": "Seng Kang East Way"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "430",
+   "street": "Fernvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "432",
+   "street": "Fernvale Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "434",
+   "street": "Fernvale Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "437",
+   "street": "Fernvale Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "439",
+   "street": "Fernvale Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "440",
+   "street": "Fernvale Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "441",
+   "street": "Fernvale Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "443",
+   "street": "Fernvale Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "446",
+   "street": "Jalan Kayu"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "448",
+   "street": "Sengkang West Way"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "450",
+   "street": "Sengkang West Way"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "453",
+   "street": "Fernvale Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "455",
+   "street": "Sengkang West Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "457",
+   "street": "Sengkang West Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "460",
+   "street": "Sengkang West Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "462",
+   "street": "Sengkang West Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "465",
+   "street": "Fernvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "468",
+   "street": "Fernvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "470",
+   "street": "Fernvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "472",
+   "street": "Fernvale Link"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "22A",
+   "street": "Teban Gardens Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "57A",
+   "street": "Teban Gardens Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "61",
+   "street": "Teban Gardens Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "63A",
+   "street": "Teban Gardens Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "271",
+   "street": "Jurong West St 24"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "273",
+   "street": "Jurong West St 24"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "276",
+   "street": "Jurong West St 25"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "505A",
+   "street": "Jurong West St 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "517B",
+   "street": "Jurong West St 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "560",
+   "street": "Jurong West St 42"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "601A",
+   "street": "Jurong West St 62"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "617A",
+   "street": "Jurong West St 65"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "624A",
+   "street": "Jurong West St 61"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "502A",
+   "street": "CCK Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "511A",
+   "street": "CCK Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "513A",
+   "street": "CCK Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "527A",
+   "street": "CCK Street 51"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "541A",
+   "street": "CCK Street 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "552A",
+   "street": "CCK Street 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "559A",
+   "street": "CCK North 6"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "567A",
+   "street": "CCK Street 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "573A",
+   "street": "CCK Street 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "604A",
+   "street": "CCK Street 52"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "610A",
+   "street": "CCK Street 62"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "611A",
+   "street": "CCK Street 62"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "621A",
+   "street": "CCK Street 62"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "625A",
+   "street": "CCK Street 62"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "2A",
+   "street": "Marsiling Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "7A",
+   "street": "Marsiling Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "13A",
+   "street": "Marsiling Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "29A",
+   "street": "Marsiling Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "34A",
+   "street": "Marsiling Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "181",
+   "street": "Marsiling Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "182",
+   "street": "Woodlands Street 13"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "185",
+   "street": "Woodlands Street 13"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "305",
+   "street": "Woodlands Street 31"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "289H",
+   "street": "Bukit Batok St 25"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "290H",
+   "street": "Bukit Batok St 24"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "291F",
+   "street": "Bukit Batok St 24"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "622A",
+   "street": "Bukit Batok Central"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "628A",
+   "street": "Bukit Batok Central"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "644",
+   "street": "Bukit Batok Central"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "413A",
+   "street": "Commonwealth Ave"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "455A",
+   "street": "Clementi Ave 3"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "417",
+   "street": "Clementi Ave 1"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "286E",
+   "street": "Toh Guan Rd"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "135A",
+   "street": "Bishan Street 12"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "152A",
+   "street": "Bishan Street 11"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "448A",
+   "street": "Bright Hill Drive"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "22A",
+   "street": "Sin Ming Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "24A",
+   "street": "Sin Ming Road"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "410A",
+   "street": "Sin Ming Avenue"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "4A",
+   "street": "Toa Payoh Lor 7"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "10A",
+   "street": "Toa Payoh Lor 7"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "84C",
+   "street": "Toa Payoh Lor 2"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "146A",
+   "street": "Toa Payoh Lor 2"
+  },
+  {
+   "operator": "QE Car Care",
+   "block": "261A",
+   "street": "Toa Payoh East"
   }
  ]
 }

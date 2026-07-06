@@ -68,22 +68,43 @@ def carwash_operator(name):
     return "Self-service"
 
 
+# Abbreviations expanded to their full multi-word form before tokenising, so
+# both sides of a match agree (HDB names spell towns out; the operator lists
+# abbreviate them, e.g. AMK -> Ang Mo Kio, CCK -> Choa Chu Kang).
 _CW_ABBR = {"rd": "road", "st": "street", "ave": "avenue", "av": "avenue",
             "dr": "drive", "cres": "crescent", "cl": "close", "pl": "place",
-            "upp": "upper"}
+            "upp": "upper", "ctrl": "central", "nth": "north", "sth": "south",
+            "amk": "ang mo kio", "cck": "choa chu kang", "srg": "serangoon",
+            "lor": "lorong", "tpy": "toa payoh"}
+
+# Road-type words that don't identify the town. Dropped from the key because
+# the operator lists label streets loosely (QE lists "130A AMK Ave 3" where HDB
+# records the same block as "Street 12"); a block number is unique within a
+# town, so block + town words is the reliable match.
+_CW_GENERIC = {"avenue", "street", "road", "drive", "lane", "close", "crescent",
+               "place", "link", "walk", "bow", "way", "view", "ring", "jalan",
+               "lorong"}
 
 
 def _cw_norm(block, street):
-    """Normalise a block + street into a match key: 'blockdigits|streettokens'."""
-    b = re.sub(r"[a-z]", "", (block or "").lower())
-    if not b:
+    """Normalise block + street into a match key: 'block|towntokens' (sorted,
+    road-type words and numbers dropped)."""
+    m = re.match(r"([0-9]+[a-z]?)", (block or "").strip().lower())
+    if not m:
         return None
-    toks = [_CW_ABBR.get(t, t) for t in re.sub(r"[^a-z0-9 ]", " ", (street or "").lower()).split()]
-    return b + "|" + "".join(toks)
+    s = re.sub(r"[^a-z0-9 ]", " ", (street or "").lower())
+    s = re.sub(r"\bseng\s+kang\b", "sengkang", s)
+    toks = []
+    for t in s.split():
+        toks.extend(_CW_ABBR.get(t, t).split())
+    toks = sorted({t for t in toks if t not in _CW_GENERIC and not t.isdigit()})
+    if not toks:
+        return None
+    return m.group(1) + "|" + "".join(toks)
 
 
 def _cw_key_from_name(name):
-    m = re.match(r"BLK?\s*([0-9]+[A-Za-z]?)\s+(.+)", name or "", re.I)
+    m = re.match(r"(?:BLO?C?K\s*)?([0-9]+[A-Za-z]?)\s+(.+)", name or "", re.I)
     return _cw_norm(m.group(1), m.group(2)) if m else None
 
 OUT = os.path.join(BACKEND, "carparks_enriched.json")
