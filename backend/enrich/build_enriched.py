@@ -44,6 +44,7 @@ EV = os.path.join(HERE, "ev_points.json")
 ONEMOTORING = os.path.join(HERE, "onemotoring_rates.json")
 MANUAL_RATES = os.path.join(HERE, "manual_rates.json")
 CARWASH = os.path.join(HERE, "carwash_points.json")
+CARWASH_LOCATIONS = os.path.join(HERE, "carwash_locations.json")
 
 # Flag a carpark as EV-capable if an LTA charging site sits within this radius.
 EV_MATCH_M = 75.0
@@ -65,6 +66,25 @@ def carwash_operator(name):
     if "qe" in n or "car care" in n:
         return "QE Car Care"
     return "Self-service"
+
+
+_CW_ABBR = {"rd": "road", "st": "street", "ave": "avenue", "av": "avenue",
+            "dr": "drive", "cres": "crescent", "cl": "close", "pl": "place",
+            "upp": "upper"}
+
+
+def _cw_norm(block, street):
+    """Normalise a block + street into a match key: 'blockdigits|streettokens'."""
+    b = re.sub(r"[a-z]", "", (block or "").lower())
+    if not b:
+        return None
+    toks = [_CW_ABBR.get(t, t) for t in re.sub(r"[^a-z0-9 ]", " ", (street or "").lower()).split()]
+    return b + "|" + "".join(toks)
+
+
+def _cw_key_from_name(name):
+    m = re.match(r"BLK?\s*([0-9]+[A-Za-z]?)\s+(.+)", name or "", re.I)
+    return _cw_norm(m.group(1), m.group(2)) if m else None
 
 OUT = os.path.join(BACKEND, "carparks_enriched.json")
 STATS = os.path.join(HERE, "STATS.md")
@@ -771,21 +791,39 @@ def main():
     print(f"flagged {ev_flagged} carparks with EV charging "
           f"(within {EV_MATCH_M:.0f}m of {len(ev_points)} EV sites)", file=sys.stderr)
 
-    # 3f) flag carparks with a self-service car wash (Beaver / QE) inside them,
-    # from Google Places car_wash POIs filtered to self-service names.
+    # 3f) car wash. Scoped to HDB carparks (self-service machines are an HDB-MSCP
+    # thing). (a) The operators' curated published lists, matched by block+street
+    # (Beaver publishes ~180 blocks; their site blocks bots, so it is a dated
+    # snapshot). (b) The Google car_wash layer, each POI assigned to its ONE
+    # nearest HDB carpark, to cover QE (no public list) and any block Beaver omits.
+    carwash_flagged = 0
+
+    # (a) curated operator list by block+street
+    curated = load_opt(CARWASH_LOCATIONS, {})
+    cur_keys = {}
+    for loc in curated.get("locations", []):
+        k = _cw_norm(loc.get("block", ""), loc.get("street", ""))
+        if k:
+            cur_keys.setdefault(k, loc.get("operator") or "Self-service")
+    for e in merged:
+        if "hdb" not in e.get("sources", []) or e.get("carwash"):
+            continue
+        k = _cw_key_from_name(e.get("name") or e.get("address") or "")
+        if k and k in cur_keys:
+            e["carwash"] = True
+            e["carwash_operator"] = cur_keys[k]
+            carwash_flagged += 1
+    curated_hits = carwash_flagged
+
+    # (b) Google car_wash POIs -> nearest HDB carpark (supplements QE / unlisted)
     carwash_points = load_opt(CARWASH, [])
     washes = [p for p in carwash_points
               if isinstance(p.get("lat"), (int, float)) and isinstance(p.get("lon"), (int, float))
               and not CARWASH_NOT.search(p.get("name") or "")]
-    # Assign each wash to its ONE nearest HDB carpark (a bay between two blocks
-    # must not be double-counted onto both). Scoped to HDB carparks: a wash near a
-    # mall/street carpark is a detailing shop, not an in-carpark self-service bay.
     cp_grid = defaultdict(list)
     for i, e in enumerate(merged):
         if "hdb" in e.get("sources", []):
             cp_grid[grid_key(e["lat"], e["lon"])].append(i)
-
-    carwash_flagged = 0
     for p in washes:
         gk = grid_key(p["lat"], p["lon"])
         best_i, best_d = None, CARWASH_MATCH_M
@@ -800,7 +838,7 @@ def main():
             merged[best_i]["carwash_operator"] = carwash_operator(p["name"])
             carwash_flagged += 1
     print(f"flagged {carwash_flagged} carparks with a car wash "
-          f"(each of {len(washes)} washes -> nearest HDB carpark within {CARWASH_MATCH_M:.0f}m)",
+          f"({curated_hits} from operator lists + {carwash_flagged - curated_hits} from Google car_wash)",
           file=sys.stderr)
 
     # Central Area geofence (URA planning areas) for the HDB/URA standard rate:

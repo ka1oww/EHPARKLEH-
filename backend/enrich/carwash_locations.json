@@ -1,0 +1,1152 @@
+{
+ "source": "beaverenergy.com.sg/self-service-car-wash-singapore (Beaver's public location list)",
+ "note": "Curated snapshot of the operator's published self-service car wash locations; indicative and may lag as machines are added/removed. QE Car Care has no public list, so QE machines come from the Google car_wash layer.",
+ "checked": "2026-07-06",
+ "locations": [
+  {
+   "operator": "Beaver",
+   "block": "32A",
+   "street": "Jalan Bahagia"
+  },
+  {
+   "operator": "Beaver",
+   "block": "78",
+   "street": "Lor Limau"
+  },
+  {
+   "operator": "Beaver",
+   "block": "116",
+   "street": "Jalan Tenteram"
+  },
+  {
+   "operator": "Beaver",
+   "block": "98",
+   "street": "Whampoa Dr"
+  },
+  {
+   "operator": "Beaver",
+   "block": "19A",
+   "street": "Jalan Tenteram"
+  },
+  {
+   "operator": "Beaver",
+   "block": "85A",
+   "street": "Whampoa Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "112",
+   "street": "Whampoa Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "60A",
+   "street": "Geylang Bahru"
+  },
+  {
+   "operator": "Beaver",
+   "block": "65A",
+   "street": "Kallang Bahru"
+  },
+  {
+   "operator": "Beaver",
+   "block": "20",
+   "street": "Lorong 3 Geylang"
+  },
+  {
+   "operator": "Beaver",
+   "block": "115",
+   "street": "Jalan Ayer"
+  },
+  {
+   "operator": "Beaver",
+   "block": "5A",
+   "street": "Upper Boon Keng Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "8A",
+   "street": "Upper Boon Keng Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "13A",
+   "street": "Upper Boon Keng Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "50A",
+   "street": "Sims Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "8A",
+   "street": "Jalan Kukoh"
+  },
+  {
+   "operator": "Beaver",
+   "block": "51",
+   "street": "Havelock Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "44A",
+   "street": "Havelock Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "96",
+   "street": "Havelock Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "78",
+   "street": "Indus Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "28A",
+   "street": "Beo Crescent"
+  },
+  {
+   "operator": "Beaver",
+   "block": "39",
+   "street": "Bendemeer Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "49A",
+   "street": "Whampoa South"
+  },
+  {
+   "operator": "Beaver",
+   "block": "10",
+   "street": "Bendemeer Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "26A",
+   "street": "St George's Lane"
+  },
+  {
+   "operator": "Beaver",
+   "block": "8C",
+   "street": "Boon Keng Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "6A",
+   "street": "Boon Keng Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "4A",
+   "street": "St George's Lane"
+  },
+  {
+   "operator": "Beaver",
+   "block": "2A",
+   "street": "Kempas Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "149",
+   "street": "Towner Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "113",
+   "street": "Mcnair Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "108",
+   "street": "Mcnair Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "101A",
+   "street": "Bidadari Park Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "103",
+   "street": "Bidadari Park Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "106A",
+   "street": "Bidadari Park Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "113",
+   "street": "Alkaff Crescent"
+  },
+  {
+   "operator": "Beaver",
+   "block": "109A",
+   "street": "Bidadari Park"
+  },
+  {
+   "operator": "Beaver",
+   "block": "117",
+   "street": "Alkaff Crescent"
+  },
+  {
+   "operator": "Beaver",
+   "block": "207",
+   "street": "Woodleigh Link"
+  },
+  {
+   "operator": "Beaver",
+   "block": "201",
+   "street": "Woodleigh Link"
+  },
+  {
+   "operator": "Beaver",
+   "block": "212",
+   "street": "Woodleigh Hillside"
+  },
+  {
+   "operator": "Beaver",
+   "block": "206",
+   "street": "Woodleigh Link"
+  },
+  {
+   "operator": "Beaver",
+   "block": "213",
+   "street": "Woodleigh Hillside"
+  },
+  {
+   "operator": "Beaver",
+   "block": "214",
+   "street": "Woodleigh Hillside"
+  },
+  {
+   "operator": "Beaver",
+   "block": "2A",
+   "street": "Upp Aljuneid Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "119",
+   "street": "Alkaff Crescent"
+  },
+  {
+   "operator": "Beaver",
+   "block": "227",
+   "street": "Bartley Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "233",
+   "street": "Upp Aljuneid Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "814",
+   "street": "Jellicoe Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "638",
+   "street": "Veerasamy Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "13",
+   "street": "North Bridge Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "35A",
+   "street": "Bedok South Ave 2"
+  },
+  {
+   "operator": "Beaver",
+   "block": "34A",
+   "street": "Bedok South Ave 2"
+  },
+  {
+   "operator": "Beaver",
+   "block": "19A",
+   "street": "Bedok South"
+  },
+  {
+   "operator": "Beaver",
+   "block": "30A",
+   "street": "New Upp Changi Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "10A",
+   "street": "Bedok South Ave 2"
+  },
+  {
+   "operator": "Beaver",
+   "block": "2A",
+   "street": "Bedok South Ave 1"
+  },
+  {
+   "operator": "Beaver",
+   "block": "13A",
+   "street": "Bedok South Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "154A",
+   "street": "Bedok South Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "208A",
+   "street": "New Upp Changi Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "215",
+   "street": "Bedok Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "219A",
+   "street": "Bedok Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "220",
+   "street": "Bedok Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "222",
+   "street": "Bedok North Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "94A",
+   "street": "Bedok North Ave 4"
+  },
+  {
+   "operator": "Beaver",
+   "block": "431",
+   "street": "Bedok North Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "114A",
+   "street": "Bedok North St 2"
+  },
+  {
+   "operator": "Beaver",
+   "block": "116",
+   "street": "Bedok North Rd"
+  },
+  {
+   "operator": "Beaver",
+   "block": "187",
+   "street": "Bedok North St 4"
+  },
+  {
+   "operator": "Beaver",
+   "block": "184",
+   "street": "Bedok North Rd"
+  },
+  {
+   "operator": "Beaver",
+   "block": "761",
+   "street": "Bedok Reservoir View"
+  },
+  {
+   "operator": "Beaver",
+   "block": "765",
+   "street": "Bedok Reservoir View"
+  },
+  {
+   "operator": "Beaver",
+   "block": "769A",
+   "street": "Bedok Reservoir View"
+  },
+  {
+   "operator": "Beaver",
+   "block": "772",
+   "street": "Bedok Reservoir View"
+  },
+  {
+   "operator": "Beaver",
+   "block": "166",
+   "street": "Simei Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "256",
+   "street": "Simei St 1"
+  },
+  {
+   "operator": "Beaver",
+   "block": "248",
+   "street": "Simei St 3"
+  },
+  {
+   "operator": "Beaver",
+   "block": "125",
+   "street": "Simei St 1"
+  },
+  {
+   "operator": "Beaver",
+   "block": "115",
+   "street": "Simei St 1"
+  },
+  {
+   "operator": "Beaver",
+   "block": "18A",
+   "street": "Jalan Membina"
+  },
+  {
+   "operator": "Beaver",
+   "block": "26A",
+   "street": "Jalan Membina"
+  },
+  {
+   "operator": "Beaver",
+   "block": "117",
+   "street": "Jalan Membina"
+  },
+  {
+   "operator": "Beaver",
+   "block": "126",
+   "street": "Bukit Merah View"
+  },
+  {
+   "operator": "Beaver",
+   "block": "129",
+   "street": "Bukit Merah View"
+  },
+  {
+   "operator": "Beaver",
+   "block": "120B",
+   "street": "Kim Tian Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "125A",
+   "street": "Kim Tian Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "119A",
+   "street": "Kim Tian Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "127",
+   "street": "Kim Tian Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "126",
+   "street": "Kim Tian View"
+  },
+  {
+   "operator": "Beaver",
+   "block": "2B",
+   "street": "Boon Tiong Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "11A",
+   "street": "Boon Tiong Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "8C",
+   "street": "Boon Tiong Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "108",
+   "street": "Spottiswood Park"
+  },
+  {
+   "operator": "Beaver",
+   "block": "1E",
+   "street": "Cantonment Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "1D",
+   "street": "Cantonment Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "6A",
+   "street": "Everton Park"
+  },
+  {
+   "operator": "Beaver",
+   "block": "10",
+   "street": "Cantonment Close"
+  },
+  {
+   "operator": "Beaver",
+   "block": "4",
+   "street": "Tanjong Pagar Plaza"
+  },
+  {
+   "operator": "Beaver",
+   "block": "3",
+   "street": "Tanjong Pagar Plaza"
+  },
+  {
+   "operator": "Beaver",
+   "block": "6A",
+   "street": "Farrer Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "3A",
+   "street": "Telok Blangah Crescent"
+  },
+  {
+   "operator": "Beaver",
+   "block": "16A",
+   "street": "Telok Blangah Crescent"
+  },
+  {
+   "operator": "Beaver",
+   "block": "23A",
+   "street": "Telok Blangah Crescent"
+  },
+  {
+   "operator": "Beaver",
+   "block": "113A",
+   "street": "Jalan Bukit Merah"
+  },
+  {
+   "operator": "Beaver",
+   "block": "96",
+   "street": "Henderson Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "104A",
+   "street": "Henderson Crescent"
+  },
+  {
+   "operator": "Beaver",
+   "block": "74",
+   "street": "Redhill Close"
+  },
+  {
+   "operator": "Beaver",
+   "block": "70A",
+   "street": "Redhill Close"
+  },
+  {
+   "operator": "Beaver",
+   "block": "73",
+   "street": "Redhill Close"
+  },
+  {
+   "operator": "Beaver",
+   "block": "671",
+   "street": "Klang Lane"
+  },
+  {
+   "operator": "Beaver",
+   "block": "37A",
+   "street": "Cambridge Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "14A",
+   "street": "Farrer Park Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "88A",
+   "street": "Redhill Close"
+  },
+  {
+   "operator": "Beaver",
+   "block": "129A",
+   "street": "Clarence Lane"
+  },
+  {
+   "operator": "Beaver",
+   "block": "78A",
+   "street": "Dawson Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "85",
+   "street": "Dawson Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "89A",
+   "street": "Dawson Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "95A",
+   "street": "Dawson Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "53A",
+   "street": "Strathmore Ave"
+  },
+  {
+   "operator": "Beaver",
+   "block": "56A",
+   "street": "Strathmore Ave"
+  },
+  {
+   "operator": "Beaver",
+   "block": "31A",
+   "street": "Margaret Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "37A",
+   "street": "Margaret Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "41",
+   "street": "Margaret Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "19A",
+   "street": "Queen's Close"
+  },
+  {
+   "operator": "Beaver",
+   "block": "60A",
+   "street": "Strathmore Ave"
+  },
+  {
+   "operator": "Beaver",
+   "block": "61",
+   "street": "Strathmore Ave"
+  },
+  {
+   "operator": "Beaver",
+   "block": "64",
+   "street": "Lengkok Bahru"
+  },
+  {
+   "operator": "Beaver",
+   "block": "169A",
+   "street": "Stirling Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "171A",
+   "street": "Stirling Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "37A",
+   "street": "Jalan Rumah Tinggi"
+  },
+  {
+   "operator": "Beaver",
+   "block": "2A",
+   "street": "Jalan Bukit Merah"
+  },
+  {
+   "operator": "Beaver",
+   "block": "88A",
+   "street": "Tanglin Halt Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "148A",
+   "street": "Meiling Street"
+  },
+  {
+   "operator": "Beaver",
+   "block": "157A",
+   "street": "Meiling Street"
+  },
+  {
+   "operator": "Beaver",
+   "block": "161A",
+   "street": "Meiling Street"
+  },
+  {
+   "operator": "Beaver",
+   "block": "7B",
+   "street": "Commonwealth Ave"
+  },
+  {
+   "operator": "Beaver",
+   "block": "84A",
+   "street": "Commonwealth Close"
+  },
+  {
+   "operator": "Beaver",
+   "block": "5A",
+   "street": "Holland Close"
+  },
+  {
+   "operator": "Beaver",
+   "block": "10A",
+   "street": "Holland Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "18",
+   "street": "Holland Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "131A",
+   "street": "Jalan Bukit Merah"
+  },
+  {
+   "operator": "Beaver",
+   "block": "134A",
+   "street": "Jalan Bukit Merah"
+  },
+  {
+   "operator": "Beaver",
+   "block": "119",
+   "street": "Bukit Merah Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "54",
+   "street": "Commonwealth Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "37B",
+   "street": "Commonwealth Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "101",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "105",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "107",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "109",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "121",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "126",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "128",
+   "street": "Punggol Field Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "131",
+   "street": "Edgedale Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "137",
+   "street": "Edgedale Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "162",
+   "street": "Punggol Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "166",
+   "street": "Punggol Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "169",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "170D",
+   "street": "Punggol East"
+  },
+  {
+   "operator": "Beaver",
+   "block": "171",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "172",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "174",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "175",
+   "street": "Punggol East"
+  },
+  {
+   "operator": "Beaver",
+   "block": "180",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "192",
+   "street": "Punggol Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "194",
+   "street": "Punggol Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "196",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "199",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "201",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "204",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "207",
+   "street": "Punggol Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "210",
+   "street": "Punggol Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "211",
+   "street": "Punggol Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "213",
+   "street": "Punggol Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "217",
+   "street": "Sumang Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "222",
+   "street": "Sumang Lane"
+  },
+  {
+   "operator": "Beaver",
+   "block": "226",
+   "street": "Sumang Lane"
+  },
+  {
+   "operator": "Beaver",
+   "block": "228",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "233",
+   "street": "Sumang Lane"
+  },
+  {
+   "operator": "Beaver",
+   "block": "256",
+   "street": "Sumang Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "259",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "261",
+   "street": "Punggol Way"
+  },
+  {
+   "operator": "Beaver",
+   "block": "266",
+   "street": "Punggol Way"
+  },
+  {
+   "operator": "Beaver",
+   "block": "267",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "270",
+   "street": "Punggol Field"
+  },
+  {
+   "operator": "Beaver",
+   "block": "271",
+   "street": "Punggol Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "273",
+   "street": "Punggol Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "288",
+   "street": "Punggol Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "292",
+   "street": "Punggol Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "301",
+   "street": "Punggol Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "302",
+   "street": "Punggol Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "305",
+   "street": "Punggol Place"
+  },
+  {
+   "operator": "Beaver",
+   "block": "312",
+   "street": "Sumang Link"
+  },
+  {
+   "operator": "Beaver",
+   "block": "314",
+   "street": "Punggol Way"
+  },
+  {
+   "operator": "Beaver",
+   "block": "322",
+   "street": "Sumang Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "325",
+   "street": "Sumang Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "326",
+   "street": "Sumang Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "402",
+   "street": "Northshore Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "411",
+   "street": "Northshore Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "416",
+   "street": "Northshore Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "423C",
+   "street": "Northshore Crescent"
+  },
+  {
+   "operator": "Beaver",
+   "block": "433",
+   "street": "Northshore Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "602",
+   "street": "Punggol Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "603",
+   "street": "Punggol Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "612",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "677D",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "678C",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "614",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "616",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "624",
+   "street": "Punggol Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "633",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "638",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "642",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "644",
+   "street": "Punggol Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "650",
+   "street": "Punggol Central"
+  },
+  {
+   "operator": "Beaver",
+   "block": "653",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "659",
+   "street": "Punggol East"
+  },
+  {
+   "operator": "Beaver",
+   "block": "663",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "119",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "308B",
+   "street": "Punggol Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "308A",
+   "street": "Punggol Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "310A",
+   "street": "Punggol Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "421A",
+   "street": "Northshore Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "435",
+   "street": "Northshore Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "656B",
+   "street": "Punggol East"
+  },
+  {
+   "operator": "Beaver",
+   "block": "661",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "670",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "672",
+   "street": "Edgefield Plains"
+  },
+  {
+   "operator": "Beaver",
+   "block": "676D",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "682",
+   "street": "Edgedale Plains"
+  }
+ ]
+}
