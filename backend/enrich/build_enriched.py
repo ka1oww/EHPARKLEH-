@@ -52,11 +52,16 @@ EV_MATCH_M = 75.0
 # the deck/entrance, often 50-100m from the HDB centroid, so 100m; beyond that a
 # "car_wash" is a standalone shop, not an in-carpark bay.
 CARWASH_MATCH_M = 100.0
-# car_wash POIs that are NOT an in-carpark wash bay/machine (detailers, mobile
-# services, distributors, workshops) — excluded by name.
+# car_wash POIs that are NOT an in-carpark self-service wash bay/machine
+# (detailers, mobile services, distributors, workshops) — excluded by name.
+# Also excludes petrol-station washes (Shell/Caltex/Esso/SPC/etc.): those are
+# attended kiosk washes at a fuel station that a proximity match wrongly
+# attaches to a neighbouring HDB carpark, not a machine inside the MSCP.
 CARWASH_NOT = re.compile(
     r"detail|grooming|auto\s*spa|polish|coating|ceramic|workshop|servicing|"
-    r"leather|\btint|studio|garage|pit\s*stop|mobile|distributor|\b3m\b|glitz", re.I)
+    r"leather|\btint|studio|garage|pit\s*stop|mobile|distributor|\b3m\b|glitz|"
+    r"\bshell\b|caltex|\besso\b|\bspc\b|sinopec|\bmobil\b|\bbp\b|petrol|"
+    r"petrol\s*kiosk|service\s*station|fuel\s*station", re.I)
 
 
 def carwash_operator(name):
