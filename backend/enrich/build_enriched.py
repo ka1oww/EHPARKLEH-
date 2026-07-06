@@ -43,36 +43,10 @@ SG_BOUNDARY = os.path.join(HERE, "sg_boundary.json")
 EV = os.path.join(HERE, "ev_points.json")
 ONEMOTORING = os.path.join(HERE, "onemotoring_rates.json")
 MANUAL_RATES = os.path.join(HERE, "manual_rates.json")
-CARWASH = os.path.join(HERE, "carwash_points.json")
 CARWASH_LOCATIONS = os.path.join(HERE, "carwash_locations.json")
 
 # Flag a carpark as EV-capable if an LTA charging site sits within this radius.
 EV_MATCH_M = 75.0
-# Max distance from a wash bay to the carpark it belongs to. The wash pin sits at
-# the deck/entrance, often 50-100m from the HDB centroid, so 100m; beyond that a
-# "car_wash" is a standalone shop, not an in-carpark bay.
-CARWASH_MATCH_M = 100.0
-# car_wash POIs that are NOT an in-carpark self-service wash bay/machine
-# (detailers, mobile services, distributors, workshops) — excluded by name.
-# Also excludes petrol-station washes (Shell/Caltex/Esso/SPC/etc.): those are
-# attended kiosk washes at a fuel station that a proximity match wrongly
-# attaches to a neighbouring HDB carpark, not a machine inside the MSCP.
-CARWASH_NOT = re.compile(
-    r"detail|grooming|auto\s*spa|polish|coating|ceramic|workshop|servicing|"
-    r"leather|\btint|studio|garage|pit\s*stop|mobile|distributor|\b3m\b|glitz|"
-    r"\bshell\b|caltex|\besso\b|\bspc\b|sinopec|\bmobil\b|\bbp\b|petrol|"
-    r"petrol\s*kiosk|service\s*station|fuel\s*station|"
-    # manual / attended shops (not a self-service machine)
-    r"\bmanual\b|auto\s*service|service\s*cent(?:re|er)|auto\s*care|auto\s*pte", re.I)
-
-
-def carwash_operator(name):
-    n = (name or "").lower()
-    if "beaver" in n:
-        return "Beaver"
-    if "qe" in n or "car care" in n:
-        return "QE Car Care"
-    return "Self-service"
 
 
 # Abbreviations expanded to their full multi-word form before tokenising, so
@@ -820,13 +794,13 @@ def main():
           f"(within {EV_MATCH_M:.0f}m of {len(ev_points)} EV sites)", file=sys.stderr)
 
     # 3f) car wash. Scoped to HDB carparks (self-service machines are an HDB-MSCP
-    # thing). (a) The operators' curated published lists, matched by block+street
-    # (Beaver publishes ~180 blocks; their site blocks bots, so it is a dated
-    # snapshot). (b) The Google car_wash layer, each POI assigned to its ONE
-    # nearest HDB carpark, to cover QE (no public list) and any block Beaver omits.
+    # thing). Flagged only from the two operators' published block lists (Beaver +
+    # QE Car Care), matched by block + town. Google's car_wash layer was dropped:
+    # its POIs don't distinguish an in-MSCP self-service machine from a petrol-
+    # kiosk or standalone wash, and proximity-matching pinned those to the nearest
+    # HDB carpark, so it produced false positives. The operator lists are the
+    # authoritative source for MSCP self-service machines.
     carwash_flagged = 0
-
-    # (a) curated operator list by block+street
     curated = load_opt(CARWASH_LOCATIONS, {})
     cur_keys = {}
     for loc in curated.get("locations", []):
@@ -841,33 +815,8 @@ def main():
             e["carwash"] = True
             e["carwash_operator"] = cur_keys[k]
             carwash_flagged += 1
-    curated_hits = carwash_flagged
-
-    # (b) Google car_wash POIs -> nearest HDB carpark (supplements QE / unlisted)
-    carwash_points = load_opt(CARWASH, [])
-    washes = [p for p in carwash_points
-              if isinstance(p.get("lat"), (int, float)) and isinstance(p.get("lon"), (int, float))
-              and not CARWASH_NOT.search(p.get("name") or "")]
-    cp_grid = defaultdict(list)
-    for i, e in enumerate(merged):
-        if "hdb" in e.get("sources", []):
-            cp_grid[grid_key(e["lat"], e["lon"])].append(i)
-    for p in washes:
-        gk = grid_key(p["lat"], p["lon"])
-        best_i, best_d = None, CARWASH_MATCH_M
-        for dx in (-1, 0, 1):
-            for dy in (-1, 0, 1):
-                for i in cp_grid.get((gk[0] + dx, gk[1] + dy), []):
-                    d = haversine(p["lat"], p["lon"], merged[i]["lat"], merged[i]["lon"])
-                    if d <= best_d:
-                        best_d, best_i = d, i
-        if best_i is not None and not merged[best_i].get("carwash"):
-            merged[best_i]["carwash"] = True
-            merged[best_i]["carwash_operator"] = carwash_operator(p["name"])
-            carwash_flagged += 1
     print(f"flagged {carwash_flagged} carparks with a car wash "
-          f"({curated_hits} from operator lists + {carwash_flagged - curated_hits} from Google car_wash)",
-          file=sys.stderr)
+          f"(from Beaver + QE published lists)", file=sys.stderr)
 
     # Central Area geofence (URA planning areas) for the HDB/URA standard rate:
     # $1.20/30min inside the Central Area, $0.60/30min elsewhere.
