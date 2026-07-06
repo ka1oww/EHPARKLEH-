@@ -1,6 +1,6 @@
 {
- "source": "Beaver (beaverenergy.com.sg) + QE Car Care (qe.com.sg) public location lists",
- "note": "Curated snapshot of the operators' published self-service car wash locations; indicative and may lag. Matched to carparks by block + street.",
+ "source": "Beaver (beaverenergy.com.sg/self-service-car-wash-singapore) + QE Car Care (qe.com.sg) public location lists",
+ "note": "Curated snapshot of the operators' published self-service car wash locations; indicative and may lag. Matched to carparks by block + town (a block number is unique within a town). Trailing lane markers and parenthetical alternate blocks in Beaver's list are normalised.",
  "checked": "2026-07-06",
  "locations": [
   {
@@ -296,6 +296,11 @@
   {
    "operator": "Beaver",
    "block": "154A",
+   "street": "Bedok South Road"
+  },
+  {
+   "operator": "Beaver",
+   "block": "154",
    "street": "Bedok South Road"
   },
   {
@@ -1000,6 +1005,11 @@
   },
   {
    "operator": "Beaver",
+   "block": "413",
+   "street": "Northshore Drive"
+  },
+  {
+   "operator": "Beaver",
    "block": "423C",
    "street": "Northshore Crescent"
   },
@@ -1055,6 +1065,11 @@
   },
   {
    "operator": "Beaver",
+   "block": "636",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
    "block": "638",
    "street": "Punggol Drive"
   },
@@ -1105,7 +1120,22 @@
   },
   {
    "operator": "Beaver",
+   "block": "308C",
+   "street": "Punggol Walk"
+  },
+  {
+   "operator": "Beaver",
    "block": "310A",
+   "street": "Punggol Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "310B",
+   "street": "Punggol Walk"
+  },
+  {
+   "operator": "Beaver",
+   "block": "310C",
    "street": "Punggol Walk"
   },
   {
@@ -1115,13 +1145,48 @@
   },
   {
    "operator": "Beaver",
+   "block": "421C",
+   "street": "Northshore Drive"
+  },
+  {
+   "operator": "Beaver",
    "block": "435",
    "street": "Northshore Drive"
   },
   {
    "operator": "Beaver",
+   "block": "446B",
+   "street": "Punggol Way"
+  },
+  {
+   "operator": "Beaver",
+   "block": "447A",
+   "street": "Punggol Way"
+  },
+  {
+   "operator": "Beaver",
+   "block": "445B",
+   "street": "Punggol Way"
+  },
+  {
+   "operator": "Beaver",
    "block": "656B",
    "street": "Punggol East"
+  },
+  {
+   "operator": "Beaver",
+   "block": "665",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "666A",
+   "street": "Punggol Drive"
+  },
+  {
+   "operator": "Beaver",
+   "block": "667B",
+   "street": "Punggol Drive"
   },
   {
    "operator": "Beaver",

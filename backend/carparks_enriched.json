@@ -19600,6 +19600,8 @@
    "STRIDES YTL PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
+  "carwash": true,
+  "carwash_operator": "Beaver",
   "category": "HDB Estate"
  },
  {
@@ -60183,6 +60185,8 @@
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
+  "carwash": true,
+  "carwash_operator": "Beaver",
   "category": "HDB Estate"
  },
  {
