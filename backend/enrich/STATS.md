@@ -1,6 +1,6 @@
 # Enriched Carpark Dataset — Stats
 
-Generated: 2026-07-06 14:24:06
+Generated: 2026-07-06 16:15:05
 
 **Total carparks:** 3566
 
@@ -38,7 +38,7 @@ Generated: 2026-07-06 14:24:06
 - LTA rates attached: 123 (of 357 rate rows)
 - HDB/URA standard rates applied: 2815
 - Carparks flagged with EV charging: 2121 (of 2706 EV sites)
-- Carparks flagged with a self-service car wash: 467
+- Carparks flagged with a self-service car wash: 462
 - OneMotoring indicative rates attached: 54
 - Hand-curated indicative rates attached: 8
 

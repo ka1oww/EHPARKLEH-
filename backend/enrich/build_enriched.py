@@ -61,7 +61,9 @@ CARWASH_NOT = re.compile(
     r"detail|grooming|auto\s*spa|polish|coating|ceramic|workshop|servicing|"
     r"leather|\btint|studio|garage|pit\s*stop|mobile|distributor|\b3m\b|glitz|"
     r"\bshell\b|caltex|\besso\b|\bspc\b|sinopec|\bmobil\b|\bbp\b|petrol|"
-    r"petrol\s*kiosk|service\s*station|fuel\s*station", re.I)
+    r"petrol\s*kiosk|service\s*station|fuel\s*station|"
+    # manual / attended shops (not a self-service machine)
+    r"\bmanual\b|auto\s*service|service\s*cent(?:re|er)|auto\s*care|auto\s*pte", re.I)
 
 
 def carwash_operator(name):
