@@ -117,7 +117,13 @@ export default function App() {
   // the filter-change debounce timer.
   const abortRef = useRef<AbortController | null>(null)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
-  const prevRadiusRef = useRef(radius)
+  // Live mirror of center (read inside the debounce timer so a coalesced refetch
+  // uses the current place, never a stale capture), the radius the last fetch
+  // actually used, and whether a pending refetch still owes an OSM refresh.
+  const centerRef = useRef<LatLon | null>(center)
+  centerRef.current = center
+  const lastFetchRadiusRef = useRef(radius)
+  const pendingOsmRef = useRef(false)
 
   // Core fetch. `newLocation` searches a fresh place (fetch OSM too, save the
   // snapshot + shareable URL, clear selection). Filter toggles pass
@@ -131,6 +137,10 @@ export default function App() {
     ) => {
       const includeOsm = opts?.includeOsm ?? true
       const newLocation = opts?.newLocation ?? true
+      // A new-location search cancels any pending filter/radius refetch, so a
+      // stale debounced request can't fire afterwards and snap back to the old
+      // place (which would also leave the URL and data disagreeing).
+      if (newLocation) clearTimeout(debounceRef.current)
       abortRef.current?.abort()
       const ac = new AbortController()
       abortRef.current = ac
@@ -168,7 +178,12 @@ export default function App() {
         if (includeOsm) osmData = res[1].ok ? await res[1].json() : []
 
         setCarparks(hdbData)
-        if (includeOsm) setOsmParking(osmData)
+        if (includeOsm) {
+          setOsmParking(osmData)
+          // OSM is now current for this radius, so clear the pending-OSM debt.
+          lastFetchRadiusRef.current = radius
+          pendingOsmRef.current = false
+        }
         setCenter({ lat, lon })
         setSearched(true)
         if (newLocation) {
@@ -277,12 +292,17 @@ export default function App() {
   // is refetched only when the radius (its only input) actually changed.
   useEffect(() => {
     if (!center) return
-    const radiusChanged = prevRadiusRef.current !== radius
-    prevRadiusRef.current = radius
-    const { lat, lon } = center
+    // OSM depends only on lat/lon/radius, so refetch it only when the radius has
+    // changed since the last fetch. Accumulate the flag across coalesced
+    // (debounced) toggles so a radius change isn't dropped by a later chip
+    // toggle; read the live center inside the timer so it never fires at a
+    // stale place.
+    if (radius !== lastFetchRadiusRef.current) pendingOsmRef.current = true
     clearTimeout(debounceRef.current)
     debounceRef.current = setTimeout(() => {
-      runSearch(lat, lon, { includeOsm: radiusChanged, newLocation: false })
+      const c = centerRef.current
+      if (!c) return
+      runSearch(c.lat, c.lon, { includeOsm: pendingOsmRef.current, newLocation: false })
     }, 250)
     return () => clearTimeout(debounceRef.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps

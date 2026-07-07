@@ -243,14 +243,20 @@ function Map({
     // Fit bounds only on a genuinely new search (a new center), so toggling
     // filters or re-fetching at the same place keeps the user's pan/zoom.
     const sig = `${center.lat},${center.lon}`
-    if (markers.length > 0 && lastFitRef.current !== sig) {
+    if (lastFitRef.current !== sig) {
       lastFitRef.current = sig
-      const pts: L.LatLngTuple[] = [
-        [center.lat, center.lon],
-        ...carparks.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
-        ...osmParking.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
-      ]
-      map.fitBounds(L.latLngBounds(pts), { padding: [40, 40] })
+      if (markers.length > 0) {
+        const pts: L.LatLngTuple[] = [
+          [center.lat, center.lon],
+          ...carparks.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
+          ...osmParking.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
+        ]
+        map.fitBounds(L.latLngBounds(pts), { padding: [40, 40] })
+      } else {
+        // A new search with no results: still follow to the destination rather
+        // than leaving the map on the previous place.
+        map.setView([center.lat, center.lon], 15)
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [carparks, osmParking, center])
