@@ -161,9 +161,16 @@ function Map({
         [center.lat, center.lon],
         15,
       )
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-        maxZoom: 19,
+      // Stadia Maps "Alidade Smooth": a light, muted basemap so the coloured
+      // parking pins pop. Authenticated by domain (localhost for dev, the
+      // production origin registered in the Stadia dashboard) — no key in the
+      // bundle. Within their tile-usage terms, unlike the OSMF community server.
+      L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://stadiamaps.com/" target="_blank" rel="noopener">Stadia Maps</a> ' +
+          '&copy; <a href="https://openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> ' +
+          '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+        maxZoom: 20,
       }).addTo(map)
       // One cluster group holds all parking pins: it clusters dense areas and
       // only renders markers in/near the viewport (viewport culling).

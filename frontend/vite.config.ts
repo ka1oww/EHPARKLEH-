@@ -105,11 +105,13 @@ export default defineConfig({
             },
           },
           {
-            // OpenStreetMap tiles for the Leaflet map.
-            urlPattern: ({ url }) => url.hostname.endsWith('tile.openstreetmap.org'),
+            // Stadia Maps basemap tiles for the Leaflet map. Cached on demand as
+            // the user pans (not pre-seeded), so the last-viewed area survives
+            // offline.
+            urlPattern: ({ url }) => url.hostname.endsWith('tiles.stadiamaps.com'),
             handler: 'CacheFirst',
             options: {
-              cacheName: 'osm-tiles',
+              cacheName: 'map-tiles',
               expiration: {
                 maxEntries: 500,
                 maxAgeSeconds: 60 * 60 * 24 * 7, // 1 week
