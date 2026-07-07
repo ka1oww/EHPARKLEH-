@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
-import { List, Map as MapIcon, Coffee, AlertCircle, Compass, WifiOff } from 'lucide-react'
-import Map from './Map'
+import { useState, useEffect, useMemo, useCallback, useRef, lazy, Suspense } from 'react'
+import { List, Map as MapIcon, Coffee, AlertCircle, Compass, WifiOff, Loader2 } from 'lucide-react'
 import { getCurrentPosition } from './geo'
 import { cn } from '@/lib/utils'
 import { SearchBar } from '@/components/SearchBar'
@@ -18,6 +17,11 @@ import type {
   LatLon,
   ParkingEntry,
 } from './types'
+
+// Leaflet + the map are code-split: the list is what renders first (and is the
+// default mobile tab), so the ~180 KB map bundle is fetched only when a search
+// sets a center or the user opens the map tab.
+const Map = lazy(() => import('./Map'))
 
 // Backend base URL. Override via VITE_API_BASE in frontend/.env; falls back to
 // the deployed Render backend so existing builds keep working unchanged.
@@ -75,6 +79,14 @@ function MapLegend() {
   )
 }
 
+function MapFallback() {
+  return (
+    <div className="flex h-full items-center justify-center bg-secondary/40">
+      <Loader2 className="size-6 animate-spin text-primary" aria-hidden="true" />
+    </div>
+  )
+}
+
 export default function App() {
   const [userLocation, setUserLocation] = useState<LatLon | null>(null)
   const [mobileTab, setMobileTab] = useState<'list' | 'map'>('list')
@@ -89,20 +101,127 @@ export default function App() {
   const [center, setCenter] = useState<LatLon | null>(null)
   const [loading, setLoading] = useState(false)
   // After a few seconds of loading, assume Render's free tier is cold-starting
-  // and soften the copy so a ~50s first request doesn't read as "broken".
+  // and soften the copy so a slow first request doesn't read as "broken".
   const [slowLoad, setSlowLoad] = useState(false)
   const [error, setError] = useState('')
+  // Whether a search has run yet, so "0 results" reads as a neutral empty state
+  // ("try a larger radius") rather than the initial "where are you parking" prompt.
+  const [searched, setSearched] = useState(false)
   const [selected, setSelected] = useState<string | null>(null)
   const [sort, setSort] = useState<SortKey>('distance')
   const { isFavourite, toggle: toggleFavourite } = useFavourites()
   const { recents, add: addRecent, clear: clearRecents } = useRecentSearches()
   const [online, setOnline] = useState(() => navigator.onLine)
 
+  // In-flight request controller (so a newer search cancels an older one) and
+  // the filter-change debounce timer.
+  const abortRef = useRef<AbortController | null>(null)
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const prevRadiusRef = useRef(radius)
+
+  // Core fetch. `newLocation` searches a fresh place (fetch OSM too, save the
+  // snapshot + shareable URL, clear selection). Filter toggles pass
+  // newLocation:false and only refetch carparks (OSM depends solely on
+  // lat/lon/radius), unless the radius itself changed.
+  const runSearch = useCallback(
+    async (
+      lat: number,
+      lon: number,
+      opts?: { includeOsm?: boolean; newLocation?: boolean },
+    ) => {
+      const includeOsm = opts?.includeOsm ?? true
+      const newLocation = opts?.newLocation ?? true
+      abortRef.current?.abort()
+      const ac = new AbortController()
+      abortRef.current = ac
+      setLoading(true)
+      setError('')
+      try {
+        const params = new URLSearchParams({
+          lat: String(lat),
+          lon: String(lon),
+          radius: String(radius),
+        })
+        if (category) params.set('category', category)
+        if (freeNow) params.set('free_now', 'true')
+        if (hasLots) params.set('has_lots', 'true')
+        if (hasEv) params.set('has_ev', 'true')
+        if (hasCarwash) params.set('has_carwash', 'true')
+
+        const reqs: Promise<Response>[] = [
+          fetch(`${API_BASE}/api/carparks?${params.toString()}`, { signal: ac.signal }),
+        ]
+        if (includeOsm) {
+          reqs.push(
+            fetch(`${API_BASE}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${radius}`, {
+              signal: ac.signal,
+            }),
+          )
+        }
+        const res = await Promise.all(reqs)
+        // A non-OK carparks response is a server error, not an empty result: let
+        // it fall to the catch so the user sees "can't reach the server" rather
+        // than a misleading empty state.
+        if (!res[0].ok) throw new Error(`carparks ${res[0].status}`)
+        const hdbData: Carpark[] = await res[0].json()
+        let osmData: OsmParking[] = []
+        if (includeOsm) osmData = res[1].ok ? await res[1].json() : []
+
+        setCarparks(hdbData)
+        if (includeOsm) setOsmParking(osmData)
+        setCenter({ lat, lon })
+        setSearched(true)
+        if (newLocation) {
+          setSelected(null)
+          try {
+            localStorage.setItem(
+              'ehparkleh:last',
+              JSON.stringify({ carparks: hdbData, osmParking: osmData, center: { lat, lon }, ts: Date.now() }),
+            )
+          } catch {
+            /* storage unavailable */
+          }
+          // Reflect the search in the URL so results are shareable + survive refresh.
+          try {
+            const sp = new URLSearchParams(window.location.search)
+            sp.set('lat', lat.toFixed(5))
+            sp.set('lon', lon.toFixed(5))
+            window.history.replaceState(null, '', `${window.location.pathname}?${sp.toString()}`)
+          } catch {
+            /* history unavailable */
+          }
+        }
+      } catch (err) {
+        // A superseded request was aborted on purpose; keep the loading state for
+        // the newer request that replaced it.
+        if ((err as { name?: string })?.name === 'AbortError') return
+        setError("Can't reach the server right now. Please try again shortly.")
+      } finally {
+        if (!ac.signal.aborted) setLoading(false)
+      }
+    },
+    [radius, category, freeNow, hasLots, hasEv, hasCarwash],
+  )
+
+  // Only auto-read location on open if permission is already granted, so a
+  // first-time visitor is never hit with a geolocation prompt before acting.
   useEffect(() => {
-    // Native (Capacitor) or web geolocation; silently ignore failures here.
-    getCurrentPosition()
-      .then((loc) => setUserLocation(loc))
-      .catch(() => {})
+    let cancelled = false
+    async function maybeLocate() {
+      try {
+        if (!navigator.permissions?.query) return // can't tell without prompting
+        const status = await navigator.permissions.query({ name: 'geolocation' as PermissionName })
+        if (status.state !== 'granted') return
+        const loc = await getCurrentPosition()
+        if (!cancelled) setUserLocation(loc)
+      } catch {
+        /* ignore */
+      }
+    }
+    maybeLocate()
+    return () => {
+      cancelled = true
+    }
   }, [])
 
   // Track connectivity for the offline banner.
@@ -136,7 +255,7 @@ export default function App() {
       const qlat = parseFloat(sp.get('lat') ?? '')
       const qlon = parseFloat(sp.get('lon') ?? '')
       if (Number.isFinite(qlat) && Number.isFinite(qlon)) {
-        search(qlat, qlon)
+        runSearch(qlat, qlon)
         return
       }
       const snap = JSON.parse(localStorage.getItem('ehparkleh:last') || 'null')
@@ -144,7 +263,8 @@ export default function App() {
         setCarparks(snap.carparks || [])
         setOsmParking(snap.osmParking || [])
         setCenter(snap.center)
-        if (navigator.onLine) search(snap.center.lat, snap.center.lon)
+        setSearched(true)
+        if (navigator.onLine) runSearch(snap.center.lat, snap.center.lon)
       }
     } catch {
       /* ignore malformed snapshot / URL */
@@ -152,66 +272,21 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Re-run the last search whenever a filter changes, so list + map stay in sync.
+  // Re-run the last search when a filter or the radius changes, so list + map
+  // stay in sync. Debounced so rapid chip toggling issues one request, and OSM
+  // is refetched only when the radius (its only input) actually changed.
   useEffect(() => {
-    if (center) search(center.lat, center.lon)
+    if (!center) return
+    const radiusChanged = prevRadiusRef.current !== radius
+    prevRadiusRef.current = radius
+    const { lat, lon } = center
+    clearTimeout(debounceRef.current)
+    debounceRef.current = setTimeout(() => {
+      runSearch(lat, lon, { includeOsm: radiusChanged, newLocation: false })
+    }, 250)
+    return () => clearTimeout(debounceRef.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [radius, category, freeNow, hasLots, hasEv, hasCarwash])
-
-  async function search(lat: number, lon: number) {
-    setLoading(true)
-    setError('')
-    try {
-      const params = new URLSearchParams({
-        lat: String(lat),
-        lon: String(lon),
-        radius: String(radius),
-      })
-      if (category) params.set('category', category)
-      if (freeNow) params.set('free_now', 'true')
-      if (hasLots) params.set('has_lots', 'true')
-      if (hasEv) params.set('has_ev', 'true')
-      if (hasCarwash) params.set('has_carwash', 'true')
-
-      const [hdbRes, osmRes] = await Promise.all([
-        fetch(`${API_BASE}/api/carparks?${params.toString()}`),
-        fetch(`${API_BASE}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${radius}`),
-      ])
-      // A non-OK carparks response is a server error, not an empty result: let
-      // it fall to the catch so the user sees "can't reach the server" rather
-      // than a misleading "no spots found".
-      if (!hdbRes.ok) throw new Error(`carparks ${hdbRes.status}`)
-      const hdbData: Carpark[] = await hdbRes.json()
-      const osmData: OsmParking[] = osmRes.ok ? await osmRes.json() : []
-      setCarparks(hdbData)
-      setOsmParking(osmData)
-      setCenter({ lat, lon })
-      setSelected(null)
-      try {
-        localStorage.setItem(
-          'ehparkleh:last',
-          JSON.stringify({ carparks: hdbData, osmParking: osmData, center: { lat, lon }, ts: Date.now() }),
-        )
-      } catch {
-        /* storage unavailable */
-      }
-      // Reflect the search in the URL so results are shareable + survive refresh.
-      try {
-        const sp = new URLSearchParams(window.location.search)
-        sp.set('lat', lat.toFixed(5))
-        sp.set('lon', lon.toFixed(5))
-        window.history.replaceState(null, '', `${window.location.pathname}?${sp.toString()}`)
-      } catch {
-        /* history unavailable */
-      }
-      if (hdbData.length === 0 && osmData.length === 0) {
-        setError('No spots found here. Try a larger radius or fewer filters.')
-      }
-    } catch {
-      setError("Can't reach the server right now. Please try again shortly.")
-    }
-    setLoading(false)
-  }
 
   async function handleSubmit(query: string) {
     setLoading(true)
@@ -224,7 +299,7 @@ export default function App() {
         return
       }
       const { lat, lon }: GeocodeResult = await res.json()
-      await search(lat, lon)
+      await runSearch(lat, lon)
       addRecent(query, lat, lon)
     } catch {
       setError("Can't reach the server right now. Please try again shortly.")
@@ -233,7 +308,7 @@ export default function App() {
   }
 
   function handlePickSuggestion(s: Suggestion) {
-    search(s.lat, s.lon)
+    runSearch(s.lat, s.lon)
     addRecent(s.address, s.lat, s.lon)
   }
 
@@ -241,12 +316,13 @@ export default function App() {
     setError('')
     getCurrentPosition()
       .then((loc) => {
+        setUserLocation(loc)
         const inSG = loc.lat >= 1.13 && loc.lat <= 1.5 && loc.lon >= 103.55 && loc.lon <= 104.15
         if (!inSG) {
           setError('You seem to be outside Singapore. Search a place instead to see carparks there.')
           return
         }
-        return search(loc.lat, loc.lon)
+        return runSearch(loc.lat, loc.lon)
       })
       .catch((err: unknown) => {
         const denied = (err as { code?: number } | null)?.code === 1
@@ -258,28 +334,50 @@ export default function App() {
       })
   }
 
-  function handleSelectEntry(id: string) {
-    setSelected(id === selected ? null : id)
+  // Stable handler passed to memoised CarparkCard / Map: toggles the selected id.
+  const handleSelectEntry = useCallback((id: string) => {
+    setSelected((prev) => (prev === id ? null : id))
     setMobileTab('map')
-  }
+  }, [])
+
+  const anyFilterActive = category !== null || freeNow || hasLots || hasEv || hasCarwash
+  const resetFilters = useCallback(() => {
+    setCategory(null)
+    setFreeNow(false)
+    setHasLots(false)
+    setHasEv(false)
+    setHasCarwash(false)
+  }, [])
 
   // The enriched dataset is already deduped, but the live OSM layer is not, so
   // drop OSM pins that sit on top of an enriched carpark (otherwise dense areas
-  // render two markers for one physical carpark).
-  const dedupedOsm = osmParking.filter(
-    (o) => !carparks.some((c) => metresBetween(o.lat, o.lon, c.lat, c.lon) < OSM_DEDUP_M),
+  // render two markers for one physical carpark). Memoised so its identity is
+  // stable across unrelated re-renders (selection, sort, banners).
+  const dedupedOsm = useMemo(
+    () =>
+      osmParking.filter(
+        (o) => !carparks.some((c) => metresBetween(o.lat, o.lon, c.lat, c.lon) < OSM_DEDUP_M),
+      ),
+    [osmParking, carparks],
   )
 
-  const allParking: ParkingEntry[] = [
-    ...carparks.map((cp): ParkingEntry => ({ ...cp, source: 'hdb' })),
-    ...dedupedOsm.map((cp): ParkingEntry => ({ ...cp, source: 'osm' })),
-  ]
+  const allParking: ParkingEntry[] = useMemo(
+    () => [
+      ...carparks.map((cp): ParkingEntry => ({ ...cp, source: 'hdb' })),
+      ...dedupedOsm.map((cp): ParkingEntry => ({ ...cp, source: 'osm' })),
+    ],
+    [carparks, dedupedOsm],
+  )
 
-  const sortedParking = [...allParking].sort((a, b) => {
-    if (sort === 'availability') return availValue(b) - availValue(a)
-    if (sort === 'price') return priceValue(a) - priceValue(b)
-    return a.distance_m - b.distance_m
-  })
+  const sortedParking = useMemo(
+    () =>
+      [...allParking].sort((a, b) => {
+        if (sort === 'availability') return availValue(b) - availValue(a)
+        if (sort === 'price') return priceValue(a) - priceValue(b)
+        return a.distance_m - b.distance_m
+      }),
+    [allParking, sort],
+  )
 
   const totalNearby = allParking.length
 
@@ -304,7 +402,7 @@ export default function App() {
               href="https://buymeacoffee.com/zhehang"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
+              className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
             >
               <Coffee className="size-3.5" aria-hidden="true" />
               <span className="hidden sm:inline">Buy me a coffee</span>
@@ -320,7 +418,7 @@ export default function App() {
             onNearMe={handleNearMe}
             recents={recents}
             onPickRecent={(r) => {
-              search(r.lat, r.lon)
+              runSearch(r.lat, r.lon)
               addRecent(r.query, r.lat, r.lon)
             }}
             onClearRecents={clearRecents}
@@ -344,12 +442,14 @@ export default function App() {
             onHasCarwash={setHasCarwash}
             radius={radius}
             onRadius={setRadius}
+            anyFilterActive={anyFilterActive}
+            onReset={resetFilters}
           />
         </div>
       </div>
 
       {!online && (
-        <div className="shrink-0 bg-amber-500/15 px-4 py-2">
+        <div className="shrink-0 bg-amber-500/15 px-4 py-2" role="status">
           <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-medium text-amber-700">
             <WifiOff className="size-4 shrink-0" aria-hidden="true" />
             You're offline: showing your last results.
@@ -357,7 +457,7 @@ export default function App() {
         </div>
       )}
       {error && (
-        <div className="shrink-0 bg-destructive/10 px-4 py-2">
+        <div className="shrink-0 bg-destructive/10 px-4 py-2" role="alert">
           <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-medium text-destructive">
             <AlertCircle className="size-4 shrink-0" aria-hidden="true" />
             {error}
@@ -377,7 +477,7 @@ export default function App() {
               onClick={() => setMobileTab(tab)}
               aria-pressed={mobileTab === tab}
               className={cn(
-                'inline-flex items-center justify-center gap-1.5 rounded-md py-1.5 text-sm font-semibold capitalize transition-colors',
+                'inline-flex min-h-11 items-center justify-center gap-1.5 rounded-md py-2 text-sm font-semibold capitalize transition-colors',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                 mobileTab === tab
                   ? 'bg-white text-ink shadow-sm'
@@ -399,6 +499,7 @@ export default function App() {
       <main className="mx-auto flex w-full max-w-screen-2xl min-h-0 flex-1 overflow-hidden">
         {/* List */}
         <section
+          aria-label="Carpark list"
           className={cn(
             'min-h-0 w-full flex-col overflow-y-auto md:flex md:w-[42%] md:max-w-md md:border-r md:border-hairline',
             mobileTab === 'map' ? 'hidden' : 'flex',
@@ -407,7 +508,11 @@ export default function App() {
           <div className="flex flex-col gap-2.5 p-4">
             {loading && (
               <>
-                <p className="font-data text-xs font-bold tracking-wide text-muted-foreground uppercase">
+                <p
+                  className="font-data text-xs font-bold tracking-wide text-muted-foreground uppercase"
+                  role="status"
+                  aria-live="polite"
+                >
                   {slowLoad ? 'Waking the server, hang tight…' : 'Finding spots…'}
                 </p>
                 {[0, 1, 2].map((i) => (
@@ -418,7 +523,7 @@ export default function App() {
 
             {!loading && totalNearby > 0 && (
               <div className="flex items-center justify-between gap-2 px-0.5">
-                <p className="text-sm font-medium text-slate-body">
+                <p className="text-sm font-medium text-slate-body" aria-live="polite">
                   <span className="font-data font-bold text-ink tabular-nums">{totalNearby}</span>{' '}
                   spot{totalNearby === 1 ? '' : 's'} nearby
                 </p>
@@ -427,7 +532,7 @@ export default function App() {
                   <select
                     value={sort}
                     onChange={(e) => setSort(e.target.value as SortKey)}
-                    className="rounded-md border border-hairline bg-white px-2 py-1 text-xs font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="min-h-9 rounded-md border border-hairline bg-white px-2 py-1.5 text-xs font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     <option value="distance">Distance</option>
                     <option value="availability">Availability</option>
@@ -437,7 +542,8 @@ export default function App() {
               </div>
             )}
 
-            {!loading && totalNearby === 0 && !error && (
+            {/* Never searched yet: the welcome prompt. */}
+            {!loading && !searched && totalNearby === 0 && !error && (
               <div className="flex flex-col items-center gap-3 px-6 py-16 text-center">
                 <div className="flex size-14 items-center justify-center rounded-2xl bg-secondary">
                   <Compass className="size-7 text-primary" aria-hidden="true" />
@@ -451,6 +557,30 @@ export default function App() {
               </div>
             )}
 
+            {/* Searched, but nothing matched: a neutral empty state, not an error. */}
+            {!loading && searched && totalNearby === 0 && !error && (
+              <div className="flex flex-col items-center gap-3 px-6 py-16 text-center">
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-secondary">
+                  <Compass className="size-7 text-primary" aria-hidden="true" />
+                </div>
+                <p className="font-display text-base font-semibold text-ink">
+                  No spots match here
+                </p>
+                <p className="max-w-xs text-sm text-muted-foreground">
+                  Try a larger search radius{anyFilterActive ? ', or clear your filters' : ''}.
+                </p>
+                {anyFilterActive && (
+                  <button
+                    type="button"
+                    onClick={resetFilters}
+                    className="mt-1 inline-flex min-h-9 items-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    Clear filters
+                  </button>
+                )}
+              </div>
+            )}
+
             {!loading &&
               sortedParking.map((entry, i) => (
                 <CarparkCard
@@ -458,9 +588,9 @@ export default function App() {
                   entry={entry}
                   rank={i + 1}
                   selected={selected === entry.id}
-                  onSelect={() => handleSelectEntry(entry.id)}
+                  onSelect={handleSelectEntry}
                   isFavourite={isFavourite(entry.id)}
-                  onToggleFavourite={() => toggleFavourite(entry.id)}
+                  onToggleFavourite={toggleFavourite}
                 />
               ))}
           </div>
@@ -468,6 +598,7 @@ export default function App() {
 
         {/* Map */}
         <section
+          aria-label="Map of nearby carparks"
           className={cn(
             'relative min-h-0 flex-1',
             mobileTab === 'list' ? 'hidden md:block' : 'block',
@@ -476,15 +607,17 @@ export default function App() {
           {center ? (
             <>
               <MapLegend />
-              <Map
-                center={center}
-                carparks={carparks}
-                osmParking={dedupedOsm}
-                selected={selected}
-                onSelect={setSelected}
-                userLocation={userLocation}
-                visible={mobileTab === 'map'}
-              />
+              <Suspense fallback={<MapFallback />}>
+                <Map
+                  center={center}
+                  carparks={carparks}
+                  osmParking={dedupedOsm}
+                  selected={selected}
+                  onSelect={setSelected}
+                  userLocation={userLocation}
+                  visible={mobileTab === 'map'}
+                />
+              </Suspense>
             </>
           ) : (
             <div className="flex h-full flex-col items-center justify-center gap-4 bg-secondary/40 px-6 text-center">

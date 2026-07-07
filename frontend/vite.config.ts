@@ -11,6 +11,18 @@ export default defineConfig({
       '@': path.resolve(import.meta.dirname, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Split React into its own long-lived chunk so app-code changes don't
+        // bust the (large, rarely-changing) framework cache. Leaflet lands in
+        // its own chunk automatically via the lazy import in App.tsx.
+        manualChunks(id) {
+          if (/node_modules\/(react|react-dom|scheduler)\//.test(id)) return 'vendor-react'
+        },
+      },
+    },
+  },
   plugins: [
     react(),
     tailwindcss(),
@@ -63,8 +75,31 @@ export default defineConfig({
               cacheName: 'api-cache',
               networkTimeoutSeconds: 10,
               expiration: {
-                maxEntries: 60,
+                // Every distinct filter/coord combination is its own cache key,
+                // so allow a generous number of entries before eviction.
+                maxEntries: 200,
                 maxAgeSeconds: 60 * 60 * 24, // 1 day
+              },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            // Google Fonts stylesheet: refresh in the background, serve from
+            // cache instantly (and offline).
+            urlPattern: ({ url }) => url.hostname === 'fonts.googleapis.com',
+            handler: 'StaleWhileRevalidate',
+            options: { cacheName: 'google-fonts-stylesheets' },
+          },
+          {
+            // Google Fonts woff2 files: immutable, cache for a year so they load
+            // offline and never refetch. Fixes fonts failing offline before.
+            urlPattern: ({ url }) => url.hostname === 'fonts.gstatic.com',
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-webfonts',
+              expiration: {
+                maxEntries: 30,
+                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
               },
               cacheableResponse: { statuses: [0, 200] },
             },

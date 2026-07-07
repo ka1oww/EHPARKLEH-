@@ -23,7 +23,7 @@ export function InstallPrompt() {
             <button
               type="button"
               onClick={promptInstall}
-              className="shrink-0 rounded-full bg-signal px-3 py-1 text-xs font-semibold text-accent-foreground transition-colors hover:bg-signal/90"
+              className="min-h-9 shrink-0 rounded-full bg-signal px-4 py-1.5 text-xs font-semibold text-accent-foreground transition-colors hover:bg-signal/90"
             >
               Install
             </button>
@@ -41,7 +41,7 @@ export function InstallPrompt() {
           type="button"
           onClick={dismiss}
           aria-label="Dismiss install prompt"
-          className="shrink-0 rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground"
+          className="shrink-0 rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <X className="size-4" aria-hidden="true" />
         </button>

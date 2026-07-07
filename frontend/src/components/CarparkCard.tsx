@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { ArrowUpRight, Navigation, Wallet, Tag, Info, Star, Share2, Zap, Droplets } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
@@ -10,13 +10,19 @@ interface Props {
   entry: ParkingEntry
   rank: number
   selected: boolean
-  onSelect: () => void
+  onSelect: (id: string) => void
   isFavourite: boolean
-  onToggleFavourite: () => void
+  onToggleFavourite: (id: string) => void
 }
 
 function gmapsHref(lat: number, lon: number): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`
+}
+
+// Distance is the driver's first signal, so it reads large and near-ink, and
+// switches to km past 1000m for glanceability.
+function fmtDistance(m: number): string {
+  return m >= 1000 ? `${(m / 1000).toFixed(1)} km` : `${m} m`
 }
 
 function DirectionsLink({ lat, lon }: { lat: number; lon: number }) {
@@ -26,7 +32,7 @@ function DirectionsLink({ lat, lon }: { lat: number; lon: number }) {
       target="_blank"
       rel="noopener noreferrer"
       onClick={(e) => e.stopPropagation()}
-      className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="pointer-events-auto inline-flex min-h-9 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <Navigation className="size-3.5" aria-hidden="true" />
       Directions
@@ -57,7 +63,7 @@ function ShareButton({ name, lat, lon }: { name: string; lat: number; lon: numbe
       type="button"
       onClick={share}
       aria-label={`Share ${name}`}
-      className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="pointer-events-auto inline-flex min-h-9 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <Share2 className="size-3.5" aria-hidden="true" />
       {copied ? 'Copied' : 'Share'}
@@ -76,9 +82,9 @@ function StarButton({ active, onClick }: { active: boolean; onClick: () => void 
       aria-pressed={active}
       aria-label={active ? 'Remove from saved' : 'Save carpark'}
       className={cn(
-        'inline-flex size-7 shrink-0 items-center justify-center rounded-md transition-colors',
+        'pointer-events-auto inline-flex size-9 shrink-0 items-center justify-center rounded-md transition-colors',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-        active ? 'text-amber-400' : 'text-muted-foreground/40 hover:text-amber-400',
+        active ? 'text-amber-400' : 'text-muted-foreground/50 hover:text-amber-400',
       )}
     >
       <Star className={cn('size-4', active && 'fill-current')} aria-hidden="true" />
@@ -131,85 +137,90 @@ function EvBadge({
 
 function Distance({ m }: { m: number }) {
   return (
-    <span className="font-data shrink-0 text-xs font-bold tabular-nums text-muted-foreground">
-      {m}m
+    <span className="font-data shrink-0 text-sm font-bold tabular-nums text-slate-body">
+      {fmtDistance(m)}
     </span>
   )
 }
 
-export function CarparkCard({
-  entry,
-  rank,
-  selected,
-  onSelect,
-  isFavourite,
-  onToggleFavourite,
-}: Props) {
-  // Root is a div with role="button" (not a <button>) so the inner star / share
-  // / directions controls are valid, focusable interactive elements.
-  const base = cn(
-    'group w-full cursor-pointer rounded-xl border bg-card p-3.5 text-left shadow-sm transition-all',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+function FreeNowPill({ text }: { text: string }) {
+  return (
+    <div className="mt-2 inline-flex items-center gap-1.5 rounded-md bg-avail-free/10 px-2 py-1 text-xs font-medium text-avail-free">
+      <span aria-hidden="true">●</span>
+      {text}
+    </div>
+  )
+}
+
+function CarparkCardImpl({ entry, rank, selected, onSelect, isFavourite, onToggleFavourite }: Props) {
+  // A stretched, transparent <button> (behind the content) is the select action:
+  // it is keyboard-focusable and screen-reader-labelled, and the content layer is
+  // pointer-events-none so a tap anywhere falls through to it, while the star /
+  // share / directions controls (pointer-events-auto) capture their own taps.
+  // This keeps the interactive controls OUT of the button, unlike a role="button"
+  // wrapper, which is invalid when it nests other buttons.
+  const title = entry.source === 'osm' ? entry.name : entry.address
+  const container = cn(
+    'group relative w-full rounded-xl border bg-card p-3.5 text-left shadow-sm transition-all',
     selected
       ? 'border-signal ring-1 ring-signal shadow-md'
       : 'border-hairline hover:border-slate-300 hover:shadow-md',
   )
-  const rootProps = {
-    role: 'button',
-    tabIndex: 0,
-    'aria-pressed': selected,
-    onClick: onSelect,
-    onKeyDown: (e: React.KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault()
-        onSelect()
-      }
-    },
-    className: base,
-  }
+  const selectButton = (
+    <button
+      type="button"
+      aria-pressed={selected}
+      aria-label={`Show ${title} on map`}
+      onClick={() => onSelect(entry.id)}
+      className="absolute inset-0 z-[1] cursor-pointer rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+    />
+  )
 
   if (entry.source === 'osm') {
     return (
-      <div {...rootProps}>
-        <div className="flex items-start gap-3">
-          <span
-            className="font-data mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-secondary text-sm font-bold text-secondary-foreground"
-            aria-hidden="true"
-          >
-            P
-          </span>
-          <div className="min-w-0 flex-1">
-            <div className="flex items-start justify-between gap-1.5">
-              <span className="font-display text-sm font-semibold leading-snug text-ink">
-                {entry.name}
-              </span>
-              <div className="flex shrink-0 items-center gap-1">
-                <Distance m={entry.distance_m} />
-                <StarButton active={isFavourite} onClick={onToggleFavourite} />
+      <div className={container}>
+        {selectButton}
+        <div className="pointer-events-none relative z-[2]">
+          <div className="flex items-start gap-3">
+            <span
+              className="font-data mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-secondary text-sm font-bold text-secondary-foreground"
+              aria-hidden="true"
+            >
+              P
+            </span>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-start justify-between gap-1.5">
+                <span className="font-display text-sm font-semibold leading-snug text-ink">
+                  {entry.name}
+                </span>
+                <div className="flex shrink-0 items-center gap-1.5">
+                  <Distance m={entry.distance_m} />
+                  <StarButton active={isFavourite} onClick={() => onToggleFavourite(entry.id)} />
+                </div>
+              </div>
+              <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                {entry.fee === 'no' && (
+                  <Badge className="bg-avail-free/12 font-medium text-avail-free hover:bg-avail-free/12">
+                    Free
+                  </Badge>
+                )}
+                {entry.parking_type && (
+                  <Badge variant="secondary" className="font-medium capitalize">
+                    {entry.parking_type}
+                  </Badge>
+                )}
               </div>
             </div>
-            <div className="mt-2 flex flex-wrap items-center gap-1.5">
-              {entry.fee === 'no' && (
-                <Badge className="bg-avail-free/12 font-medium text-avail-free hover:bg-avail-free/12">
-                  Free
-                </Badge>
-              )}
-              {entry.parking_type && (
-                <Badge variant="secondary" className="font-medium capitalize">
-                  {entry.parking_type}
-                </Badge>
-              )}
-            </div>
           </div>
-        </div>
-        <div className="mt-3 flex items-center justify-between border-t border-hairline pt-2.5">
-          <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Info className="size-3.5" aria-hidden="true" />
-            No live lots or rates here
-          </span>
-          <div className="flex items-center gap-0.5">
-            <ShareButton name={entry.name} lat={entry.lat} lon={entry.lon} />
-            <DirectionsLink lat={entry.lat} lon={entry.lon} />
+          <div className="mt-3 flex items-center justify-between border-t border-hairline pt-2.5">
+            <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Info className="size-3.5" aria-hidden="true" />
+              No live lots or rates here
+            </span>
+            <div className="flex items-center gap-0.5">
+              <ShareButton name={entry.name} lat={entry.lat} lon={entry.lon} />
+              <DirectionsLink lat={entry.lat} lon={entry.lon} />
+            </div>
           </div>
         </div>
       </div>
@@ -220,81 +231,85 @@ export function CarparkCard({
   const isLive = entry.lots_available !== null
 
   return (
-    <div {...rootProps}>
-      <div className="flex items-start gap-3">
-        <span
-          className="font-data mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground tabular-nums"
-          aria-hidden="true"
-        >
-          {rank}
-        </span>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-start justify-between gap-1.5">
-            <span className="font-display text-sm font-semibold leading-snug text-ink">
-              {entry.address}
-            </span>
-            <div className="flex shrink-0 items-center gap-1">
-              <Distance m={entry.distance_m} />
-              <StarButton active={isFavourite} onClick={onToggleFavourite} />
-            </div>
-          </div>
-
-          <div className="mt-2.5 flex flex-wrap items-center gap-2">
-            <AvailabilityChip available={entry.lots_available} total={entry.total_lots} />
-            {isLive && <LiveBadge />}
-            {entry.ev && (
-              <EvBadge
-                available={entry.ev_available}
-                total={entry.ev_total}
-                maxPowerKw={entry.ev_max_power_kw}
-              />
-            )}
-            {entry.carwash && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-sky-500/15 px-2 py-0.5 text-xs font-semibold text-sky-600">
-                <Droplets className="size-3" aria-hidden="true" />
-                {entry.carwash_operator && entry.carwash_operator !== 'Self-service'
-                  ? entry.carwash_operator
-                  : 'Car wash'}
+    <div className={container}>
+      {selectButton}
+      <div className="pointer-events-none relative z-[2]">
+        <div className="flex items-start gap-3">
+          <span
+            className="font-data mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground tabular-nums"
+            aria-hidden="true"
+          >
+            {rank}
+          </span>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-start justify-between gap-1.5">
+              <span className="font-display text-sm font-semibold leading-snug text-ink">
+                {entry.address}
               </span>
-            )}
-          </div>
-
-          <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
-            {entry.rate.known ? (
-              <Badge variant="secondary" className="gap-1 font-medium">
-                <Wallet className="size-3" aria-hidden="true" />
-                {entry.rate.summary}
-              </Badge>
-            ) : (
-              <Badge variant="outline" className="gap-1 font-normal text-muted-foreground">
-                <Wallet className="size-3" aria-hidden="true" />
-                Rate unknown
-              </Badge>
-            )}
-            {entry.category && (
-              <Badge variant="outline" className="gap-1 font-medium text-muted-foreground">
-                <Tag className="size-3" aria-hidden="true" />
-                {entry.category}
-              </Badge>
-            )}
-          </div>
-
-          {freeText && (
-            <div className="mt-2 inline-flex items-center gap-1.5 rounded-md bg-avail-free/10 px-2 py-1 text-xs font-medium text-avail-free">
-              <span aria-hidden="true">●</span>
-              {freeText}
+              <div className="flex shrink-0 items-center gap-1.5">
+                <Distance m={entry.distance_m} />
+                <StarButton active={isFavourite} onClick={() => onToggleFavourite(entry.id)} />
+              </div>
             </div>
-          )}
-        </div>
-      </div>
 
-      <div className="mt-3 flex items-center justify-between border-t border-hairline pt-2.5">
-        <span className="text-xs text-muted-foreground">{entry.type || 'Carpark'}</span>
-        <div className="flex items-center gap-0.5">
-          <ShareButton name={entry.address} lat={entry.lat} lon={entry.lon} />
-          <DirectionsLink lat={entry.lat} lon={entry.lon} />
+            <div className="mt-2.5 flex flex-wrap items-center gap-2">
+              <AvailabilityChip available={entry.lots_available} total={entry.total_lots} />
+              {isLive && <LiveBadge />}
+              {entry.ev && (
+                <EvBadge
+                  available={entry.ev_available}
+                  total={entry.ev_total}
+                  maxPowerKw={entry.ev_max_power_kw}
+                />
+              )}
+              {entry.carwash && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-sky-500/15 px-2 py-0.5 text-xs font-semibold text-sky-600">
+                  <Droplets className="size-3" aria-hidden="true" />
+                  {entry.carwash_operator && entry.carwash_operator !== 'Self-service'
+                    ? entry.carwash_operator
+                    : 'Car wash'}
+                </span>
+              )}
+            </div>
+
+            {/* "Free now?" is a top decision factor, so it sits right under
+                availability rather than at the bottom of the card. */}
+            {freeText && <FreeNowPill text={freeText} />}
+
+            <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
+              {entry.rate.known ? (
+                <Badge variant="secondary" className="gap-1 font-medium">
+                  <Wallet className="size-3" aria-hidden="true" />
+                  {entry.rate.summary}
+                </Badge>
+              ) : (
+                <Badge variant="outline" className="gap-1 font-normal text-muted-foreground">
+                  <Wallet className="size-3" aria-hidden="true" />
+                  Rate unknown
+                </Badge>
+              )}
+              {entry.category && (
+                <Badge variant="outline" className="gap-1 font-medium text-muted-foreground">
+                  <Tag className="size-3" aria-hidden="true" />
+                  {entry.category}
+                </Badge>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-3 flex items-center justify-between border-t border-hairline pt-2.5">
+          <span className="text-xs text-muted-foreground">{entry.type || 'Carpark'}</span>
+          <div className="flex items-center gap-0.5">
+            <ShareButton name={entry.address} lat={entry.lat} lon={entry.lon} />
+            <DirectionsLink lat={entry.lat} lon={entry.lon} />
+          </div>
         </div>
       </div>
     </div>
   )
 }
+
+// Memoised: with stable id-based handlers from App, only the two cards whose
+// `selected` flips (or whose data/favourite changes) re-render on a selection.
+export const CarparkCard = memo(CarparkCardImpl)

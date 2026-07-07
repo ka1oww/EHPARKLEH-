@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { MapPin, Search, LocateFixed, Loader2, Clock } from 'lucide-react'
+import { MapPin, Search, LocateFixed, Loader2, Clock, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import type { Suggestion } from '@/types'
@@ -18,6 +18,8 @@ interface Props {
   onPickRecent: (r: RecentSearch) => void
   onClearRecents: () => void
 }
+
+const LISTBOX_ID = 'searchbar-listbox'
 
 // Indigo command-bar search with debounced server-side autocomplete.
 // Behaviour preserved: debounce 300ms, >=2 chars to query, Enter geocodes,
@@ -38,6 +40,7 @@ export function SearchBar({
   const [activeIdx, setActiveIdx] = useState(-1)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const boxRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -88,12 +91,28 @@ export function SearchBar({
     onPickRecent(r)
   }
 
+  function clearInput() {
+    setQuery('')
+    setSuggestions([])
+    setActiveIdx(-1)
+    setOpen(recents.length > 0)
+    inputRef.current?.focus()
+  }
+
+  // Exactly one dropdown list shows at a time; keyboard nav drives whichever it is.
   const showRecents = open && !query.trim() && suggestions.length === 0 && recents.length > 0
+  const listType: 'suggestions' | 'recents' | 'none' =
+    open && suggestions.length > 0 ? 'suggestions' : showRecents ? 'recents' : 'none'
+  const listLen = listType === 'suggestions' ? suggestions.length : listType === 'recents' ? recents.length : 0
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (activeIdx >= 0 && suggestions[activeIdx]) {
+    if (listType === 'suggestions' && activeIdx >= 0 && suggestions[activeIdx]) {
       pick(suggestions[activeIdx])
+      return
+    }
+    if (listType === 'recents' && activeIdx >= 0 && recents[activeIdx]) {
+      pickRecent(recents[activeIdx])
       return
     }
     if (!query.trim()) return
@@ -103,13 +122,13 @@ export function SearchBar({
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (!open || suggestions.length === 0) return
+    if (listType === 'none' || listLen === 0) return
     if (e.key === 'ArrowDown') {
       e.preventDefault()
-      setActiveIdx((i) => (i + 1) % suggestions.length)
+      setActiveIdx((i) => (i + 1) % listLen)
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
-      setActiveIdx((i) => (i <= 0 ? suggestions.length - 1 : i - 1))
+      setActiveIdx((i) => (i <= 0 ? listLen - 1 : i - 1))
     } else if (e.key === 'Escape') {
       setOpen(false)
     }
@@ -125,6 +144,7 @@ export function SearchBar({
               aria-hidden="true"
             />
             <input
+              ref={inputRef}
               value={query}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
@@ -134,12 +154,29 @@ export function SearchBar({
               placeholder="Park where? e.g. Toa Payoh Hub"
               autoComplete="off"
               aria-label="Search a destination"
+              role="combobox"
+              aria-expanded={listType !== 'none'}
+              aria-controls={LISTBOX_ID}
+              aria-autocomplete="list"
+              aria-activedescendant={activeIdx >= 0 ? `${LISTBOX_ID}-opt-${activeIdx}` : undefined}
+              // text-base (16px) on mobile so iOS Safari doesn't auto-zoom on focus.
               className={cn(
-                'h-11 w-full rounded-xl border border-transparent bg-white pr-3 pl-10 text-sm text-ink shadow-sm',
+                'h-11 w-full rounded-xl border border-transparent bg-white pl-10 text-base text-ink shadow-sm sm:text-sm',
+                query ? 'pr-10' : 'pr-3',
                 'placeholder:text-muted-foreground/80',
                 'focus-visible:border-signal focus-visible:ring-2 focus-visible:ring-signal/50 focus-visible:outline-none',
               )}
             />
+            {query && (
+              <button
+                type="button"
+                onClick={clearInput}
+                aria-label="Clear search"
+                className="absolute top-1/2 right-2.5 flex size-7 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <X className="size-4" aria-hidden="true" />
+              </button>
+            )}
           </div>
           <Button
             type="submit"
@@ -152,6 +189,7 @@ export function SearchBar({
 
         {showRecents && (
           <ul
+            id={LISTBOX_ID}
             className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 overflow-hidden rounded-xl border border-hairline bg-popover py-1 shadow-lg"
             role="listbox"
           >
@@ -165,12 +203,16 @@ export function SearchBar({
                 Clear
               </button>
             </li>
-            {recents.map((r) => (
-              <li key={r.query} role="option">
+            {recents.map((r, i) => (
+              <li key={r.query} id={`${LISTBOX_ID}-opt-${i}`} role="option" aria-selected={i === activeIdx}>
                 <button
                   type="button"
                   onMouseDown={() => pickRecent(r)}
-                  className="flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body hover:bg-secondary/60"
+                  onMouseEnter={() => setActiveIdx(i)}
+                  className={cn(
+                    'flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
+                    i === activeIdx ? 'bg-secondary text-foreground' : 'hover:bg-secondary/60',
+                  )}
                 >
                   <Clock className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
                   <span className="truncate">{r.query}</span>
@@ -182,11 +224,12 @@ export function SearchBar({
 
         {open && suggestions.length > 0 && (
           <ul
+            id={LISTBOX_ID}
             className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 overflow-hidden rounded-xl border border-hairline bg-popover py-1 shadow-lg"
             role="listbox"
           >
             {suggestions.map((s, i) => (
-              <li key={i} role="option" aria-selected={i === activeIdx}>
+              <li key={i} id={`${LISTBOX_ID}-opt-${i}`} role="option" aria-selected={i === activeIdx}>
                 <button
                   type="button"
                   onMouseDown={() => pick(s)}

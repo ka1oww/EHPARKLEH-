@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { memo, useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
@@ -18,11 +18,13 @@ const USER_BLUE = '#2563EB'
 
 // Carpark pin as a coloured dot (a divIcon, not a vector circleMarker, so it can
 // live inside a marker cluster — markercluster cannot cluster circleMarkers).
+// The per-state class adds a shape glyph (ring / bar / centre dot) so the pins
+// are distinguishable without relying on colour alone (colour-blind safe).
 function carparkIcon(state: AvailState, selected: boolean): L.DivIcon {
   const size = selected ? 26 : 18
   return L.divIcon({
     className: '',
-    html: `<div class="cp-dot${selected ? ' cp-dot--selected' : ''}" style="background:${availColor(state)}"></div>`,
+    html: `<div class="cp-dot cp-dot--${state}${selected ? ' cp-dot--selected' : ''}" style="background:${availColor(state)}"></div>`,
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
   })
@@ -123,7 +125,13 @@ interface MapProps {
   visible: boolean
 }
 
-export default function Map({
+interface MarkerMeta {
+  marker: L.Marker
+  kind: 'hdb' | 'osm'
+  state?: AvailState
+}
+
+function Map({
   center,
   carparks,
   osmParking = [],
@@ -137,6 +145,15 @@ export default function Map({
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null)
   const centerMarkerRef = useRef<L.CircleMarker | null>(null)
   const userMarkerRef = useRef<L.CircleMarker | null>(null)
+  // Marker lookup for cheap selection styling, the last-fitted center (so we
+  // only re-fit on a genuinely new search), the previously-selected id, and a
+  // live mirror of `selected` so marker click handlers read it without being
+  // rebuilt on every selection change.
+  const metaRef = useRef<Record<string, MarkerMeta>>({})
+  const lastFitRef = useRef<string>('')
+  const prevSelRef = useRef<string | null>(null)
+  const selectedRef = useRef<string | null>(selected)
+  selectedRef.current = selected
 
   useEffect(() => {
     if (!instanceRef.current && mapRef.current) {
@@ -176,7 +193,9 @@ export default function Map({
       .bindPopup('Destination')
   }, [center])
 
-  // Rebuild the clustered parking pins (carparks + de-duped OSM) on any change.
+  // Build the clustered parking pins (carparks + de-duped OSM). Runs only when
+  // the data or center changes — NOT on selection (that is handled separately),
+  // so tapping a pin no longer tears down and rebuilds all 400+ markers.
   useEffect(() => {
     const map = instanceRef.current
     const cluster = clusterRef.current
@@ -186,12 +205,15 @@ export default function Map({
     const markers: L.Marker[] = []
     // Plain record, not a Map: this component is itself named `Map`, which would
     // shadow the built-in `Map` constructor here.
-    const byId: Record<string, L.Marker> = {}
+    const meta: Record<string, MarkerMeta> = {}
+    const sel = selectedRef.current
 
     carparks.forEach((cp, i) => {
       const a = getAvailability(cp.lots_available, cp.total_lots)
+      const title = `${cp.address} — ${a.state === 'nodata' ? 'no live lot data' : `${a.available}/${a.total} lots`}`
       const m = L.marker([cp.lat, cp.lon], {
-        icon: carparkIcon(a.state, cp.id === selected),
+        icon: carparkIcon(a.state, cp.id === sel),
+        title,
       })
         .bindPopup(
           popupHtml(
@@ -202,26 +224,27 @@ export default function Map({
             gmapsDir(cp.lat, cp.lon),
           ),
         )
-        .on('click', () => onSelect(cp.id === selected ? null : cp.id))
+        .on('click', () => onSelect(cp.id === selectedRef.current ? null : cp.id))
       markers.push(m)
-      byId[cp.id] = m
+      meta[cp.id] = { marker: m, kind: 'hdb', state: a.state }
     })
 
     osmParking.forEach((cp) => {
-      const m = L.marker([cp.lat, cp.lon], { icon: pIcon })
+      const m = L.marker([cp.lat, cp.lon], { icon: pIcon, title: cp.name })
         .bindPopup(osmPopupHtml(cp.name, cp.distance_m, gmapsDir(cp.lat, cp.lon)))
-        .on('click', () => onSelect(cp.id === selected ? null : cp.id))
+        .on('click', () => onSelect(cp.id === selectedRef.current ? null : cp.id))
       markers.push(m)
-      byId[cp.id] = m
+      meta[cp.id] = { marker: m, kind: 'osm' }
     })
 
     cluster.addLayers(markers)
+    metaRef.current = meta
 
-    const selMarker = selected ? byId[selected] : undefined
-    if (selMarker) {
-      // Expand any cluster hiding the selected pin, then open its popup.
-      cluster.zoomToShowLayer(selMarker, () => selMarker.openPopup())
-    } else if (markers.length > 0) {
+    // Fit bounds only on a genuinely new search (a new center), so toggling
+    // filters or re-fetching at the same place keeps the user's pan/zoom.
+    const sig = `${center.lat},${center.lon}`
+    if (markers.length > 0 && lastFitRef.current !== sig) {
+      lastFitRef.current = sig
       const pts: L.LatLngTuple[] = [
         [center.lat, center.lon],
         ...carparks.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
@@ -229,7 +252,30 @@ export default function Map({
       ]
       map.fitBounds(L.latLngBounds(pts), { padding: [40, 40] })
     }
-  }, [carparks, osmParking, selected])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [carparks, osmParking, center])
+
+  // Selection: restyle just the affected pins and open the selected popup,
+  // instead of rebuilding the whole layer.
+  useEffect(() => {
+    const cluster = clusterRef.current
+    if (!cluster) return
+    const meta = metaRef.current
+    const prev = prevSelRef.current
+    if (prev && prev !== selected) {
+      const pm = meta[prev]
+      if (pm?.kind === 'hdb' && pm.state) pm.marker.setIcon(carparkIcon(pm.state, false))
+    }
+    if (selected) {
+      const sm = meta[selected]
+      if (sm) {
+        if (sm.kind === 'hdb' && sm.state) sm.marker.setIcon(carparkIcon(sm.state, true))
+        // Expand any cluster hiding the selected pin, then open its popup.
+        cluster.zoomToShowLayer(sm.marker, () => sm.marker.openPopup())
+      }
+    }
+    prevSelRef.current = selected
+  }, [selected])
 
   useEffect(() => {
     const map = instanceRef.current
@@ -254,3 +300,7 @@ export default function Map({
 
   return <div ref={mapRef} style={{ height: '100%', width: '100%' }} />
 }
+
+// Memoised so unrelated App state (sort, loading, banners) no longer re-renders
+// the map; it only updates when center / carparks / selection actually change.
+export default memo(Map)
