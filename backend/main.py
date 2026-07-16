@@ -469,7 +469,7 @@ def filter_carparks(
     radius: int,
     availability: dict,
     category: Optional[str] = None,
-    free_now: bool = False,
+    free_sun_ph: bool = False,
     has_lots: bool = False,
     has_ev: bool = False,
     ev_availability: Optional[dict] = None,
@@ -499,9 +499,11 @@ def filter_carparks(
         if has_lots and not (isinstance(lots_available, int) and lots_available > 0):
             continue
 
+        # The HDB dataset's only free-parking windows are "SUN & PH FR ...", so
+        # a non-"NO" value always means free on Sundays & public holidays.
         free_info = cp.get("free_parking_info")
         is_free = bool(free_info) and str(free_info).upper() != "NO"
-        if free_now and not is_free:
+        if free_sun_ph and not is_free:
             continue
 
         # Live EV count: how many of this carpark's connectors report available.
@@ -552,7 +554,7 @@ async def get_carparks(
     lon: float = Query(..., ge=SG_LON_MIN, le=SG_LON_MAX),
     radius: int = Query(500, ge=MIN_RADIUS_M, le=MAX_RADIUS_M),
     category: Optional[CategoryFilter] = Query(None, description="HDB | Mall | Street | Private"),
-    free_now: bool = Query(False, description="Only carparks with free parking now"),
+    free_sun_ph: bool = Query(False, description="Only carparks free on Sundays & public holidays"),
     has_lots: bool = Query(False, description="Only carparks with live lots available"),
     has_ev: bool = Query(False, description="Only carparks with EV charging"),
     has_carwash: bool = Query(False, description="Only carparks with a self-service car wash"),
@@ -574,7 +576,7 @@ async def get_carparks(
         radius=radius,
         availability=availability,
         category=category,
-        free_now=free_now,
+        free_sun_ph=free_sun_ph,
         has_lots=has_lots,
         has_ev=has_ev,
         ev_availability=ev_availability,

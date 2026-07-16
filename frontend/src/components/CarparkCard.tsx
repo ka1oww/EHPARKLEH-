@@ -150,11 +150,11 @@ function Distance({ m }: { m: number }) {
   )
 }
 
-function FreeNowPill({ text }: { text: string }) {
+function FreeSunPhPill({ text }: { text: string }) {
   return (
-    <div className="mt-2 inline-flex items-center gap-1.5 rounded-md bg-avail-free/10 px-2 py-1 text-xs font-medium text-avail-free">
-      <span aria-hidden="true">●</span>
-      {text}
+    <div className="mt-2 inline-flex max-w-full items-start gap-1.5 rounded-md bg-avail-free/10 px-2 py-1 text-xs font-medium text-avail-free">
+      <span className="mt-0.5 shrink-0" aria-hidden="true">●</span>
+      <span className="min-w-0">{text}</span>
     </div>
   )
 }
@@ -197,7 +197,7 @@ function CarparkCardImpl({ entry, rank, selected, onSelect, isFavourite, onToggl
             </span>
             <div className="min-w-0 flex-1">
               <div className="flex items-start justify-between gap-1.5">
-                <span className="font-display text-sm font-semibold leading-snug text-ink">
+                <span className="min-w-0 font-display text-sm font-semibold leading-snug break-words text-ink">
                   {entry.name}
                 </span>
                 <div className="flex shrink-0 items-center gap-1.5">
@@ -251,7 +251,7 @@ function CarparkCardImpl({ entry, rank, selected, onSelect, isFavourite, onToggl
           </span>
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-1.5">
-              <span className="font-display text-sm font-semibold leading-snug text-ink">
+              <span className="min-w-0 font-display text-sm font-semibold leading-snug break-words text-ink">
                 {entry.address}
               </span>
               <div className="flex shrink-0 items-center gap-1.5">
@@ -280,15 +280,20 @@ function CarparkCardImpl({ entry, rank, selected, onSelect, isFavourite, onToggl
               )}
             </div>
 
-            {/* "Free now?" is a top decision factor, so it sits right under
-                availability rather than at the bottom of the card. */}
-            {freeText && <FreeNowPill text={freeText} />}
+            {/* "Free on Sundays & PH?" is a top decision factor, so it sits
+                right under availability rather than at the bottom of the card. */}
+            {freeText && <FreeSunPhPill text={freeText} />}
 
-            <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
+            <div className="mt-2.5 flex flex-wrap items-start gap-1.5">
               {entry.rate.known ? (
-                <Badge variant="secondary" className="gap-1 font-medium">
-                  <Wallet className="size-3" aria-hidden="true" />
-                  {entry.rate.summary}
+                // Some (OneMotoring) rate summaries carry a long parenthetical
+                // note, so this badge wraps instead of overflowing the card.
+                <Badge
+                  variant="secondary"
+                  className="max-w-full items-start justify-start gap-1 text-left font-medium whitespace-normal"
+                >
+                  <Wallet className="mt-px size-3 shrink-0" aria-hidden="true" />
+                  <span className="min-w-0">{entry.rate.summary}</span>
                 </Badge>
               ) : (
                 <Badge variant="outline" className="gap-1 font-normal text-muted-foreground">

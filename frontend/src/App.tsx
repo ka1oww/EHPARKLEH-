@@ -92,7 +92,7 @@ export default function App() {
   const [mobileTab, setMobileTab] = useState<'list' | 'map'>('list')
   const [radius, setRadius] = useState(500)
   const [category, setCategory] = useState<string | null>(null)
-  const [freeNow, setFreeNow] = useState(false)
+  const [freeSunPh, setFreeSunPh] = useState(false)
   const [hasLots, setHasLots] = useState(false)
   const [hasEv, setHasEv] = useState(false)
   const [hasCarwash, setHasCarwash] = useState(false)
@@ -153,7 +153,7 @@ export default function App() {
           radius: String(radius),
         })
         if (category) params.set('category', category)
-        if (freeNow) params.set('free_now', 'true')
+        if (freeSunPh) params.set('free_sun_ph', 'true')
         if (hasLots) params.set('has_lots', 'true')
         if (hasEv) params.set('has_ev', 'true')
         if (hasCarwash) params.set('has_carwash', 'true')
@@ -215,7 +215,7 @@ export default function App() {
         if (!ac.signal.aborted) setLoading(false)
       }
     },
-    [radius, category, freeNow, hasLots, hasEv, hasCarwash],
+    [radius, category, freeSunPh, hasLots, hasEv, hasCarwash],
   )
 
   // Only auto-read location on open if permission is already granted, so a
@@ -306,7 +306,7 @@ export default function App() {
     }, 250)
     return () => clearTimeout(debounceRef.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [radius, category, freeNow, hasLots, hasEv, hasCarwash])
+  }, [radius, category, freeSunPh, hasLots, hasEv, hasCarwash])
 
   async function handleSubmit(query: string) {
     setLoading(true)
@@ -360,10 +360,10 @@ export default function App() {
     setMobileTab('map')
   }, [])
 
-  const anyFilterActive = category !== null || freeNow || hasLots || hasEv || hasCarwash
+  const anyFilterActive = category !== null || freeSunPh || hasLots || hasEv || hasCarwash
   const resetFilters = useCallback(() => {
     setCategory(null)
-    setFreeNow(false)
+    setFreeSunPh(false)
     setHasLots(false)
     setHasEv(false)
     setHasCarwash(false)
@@ -452,8 +452,8 @@ export default function App() {
           <FilterBar
             category={category}
             onCategory={setCategory}
-            freeNow={freeNow}
-            onFreeNow={setFreeNow}
+            freeSunPh={freeSunPh}
+            onFreeSunPh={setFreeSunPh}
             hasLots={hasLots}
             onHasLots={setHasLots}
             hasEv={hasEv}

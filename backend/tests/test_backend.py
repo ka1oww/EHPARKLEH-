@@ -156,9 +156,9 @@ def test_category_filtering(monkeypatch):
     assert {c.id for c in out} == {"B"}
 
 
-def test_free_now_filtering(monkeypatch):
+def test_free_sun_ph_filtering(monkeypatch):
     monkeypatch.setattr(main, "_carpark_cache", _build_cache())
-    out = main.filter_carparks(1.3000, 103.8000, radius=500, availability={}, free_now=True)
+    out = main.filter_carparks(1.3000, 103.8000, radius=500, availability={}, free_sun_ph=True)
     # Only A has a non-"NO" free_parking string within range.
     assert {c.id for c in out} == {"A"}
 

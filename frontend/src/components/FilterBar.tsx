@@ -15,8 +15,8 @@ const CATEGORY_CHIPS: { label: string; value: string | null }[] = [
 interface Props {
   category: string | null
   onCategory: (c: string | null) => void
-  freeNow: boolean
-  onFreeNow: (v: boolean) => void
+  freeSunPh: boolean
+  onFreeSunPh: (v: boolean) => void
   hasLots: boolean
   onHasLots: (v: boolean) => void
   hasEv: boolean
@@ -59,8 +59,8 @@ function Chip({
 export function FilterBar({
   category,
   onCategory,
-  freeNow,
-  onFreeNow,
+  freeSunPh,
+  onFreeSunPh,
   hasLots,
   onHasLots,
   hasEv,
@@ -85,9 +85,9 @@ export function FilterBar({
 
         <span className="mx-1 h-5 w-px shrink-0 bg-hairline" aria-hidden="true" />
 
-        <Chip active={freeNow} onClick={() => onFreeNow(!freeNow)}>
+        <Chip active={freeSunPh} onClick={() => onFreeSunPh(!freeSunPh)}>
           <Gift className="size-3.5" aria-hidden="true" />
-          Free now
+          Free Sun &amp; PH
         </Chip>
         <Chip active={hasLots} onClick={() => onHasLots(!hasLots)}>
           <Check className="size-3.5" aria-hidden="true" />
