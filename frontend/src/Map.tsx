@@ -69,19 +69,26 @@ function esc(s: string): string {
   return String(s).replace(/[&<>"']/g, (c) => ESC[c])
 }
 
-// Google Maps directions deep link (opens the Maps app if installed, else web).
+// Navigation deep links (open the app if installed, else web).
 function gmapsDir(lat: number, lon: number): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`
 }
+function wazeDir(lat: number, lon: number): string {
+  return `https://www.waze.com/ul?ll=${lat},${lon}&navigate=yes`
+}
 
-// "Open in Google Maps" action rendered inside a Leaflet popup. Its click stays
-// inside the popup (target=_blank), so it never toggles the marker selection.
-function gmapsLinkHtml(href: string): string {
-  return (
+// Google Maps + Waze actions rendered inside a Leaflet popup. Clicks stay inside
+// the popup (target=_blank), so they never toggle the marker selection.
+function navLinksHtml(lat: number, lon: number): string {
+  const link = (href: string, text: string) =>
     `<a href="${href}" target="_blank" rel="noopener noreferrer" ` +
-    `style="display:inline-flex;align-items:center;gap:4px;margin-top:9px;` +
-    `font-size:12px;font-weight:700;color:#4338CA;text-decoration:none">` +
-    `Open in Google Maps ↗</a>`
+    `style="display:inline-flex;align-items:center;gap:4px;` +
+    `font-size:12px;font-weight:700;color:#4338CA;text-decoration:none">${text} ↗</a>`
+  return (
+    `<div style="display:flex;gap:14px;margin-top:9px">` +
+    link(gmapsDir(lat, lon), 'Google Maps') +
+    link(wazeDir(lat, lon), 'Waze') +
+    `</div>`
   )
 }
 
@@ -90,7 +97,8 @@ function popupHtml(
   distance: number,
   rate: string,
   ledHtml: string,
-  mapsHref: string,
+  lat: number,
+  lon: number,
 ): string {
   return (
     `<div style="font-family:Inter,system-ui,sans-serif;min-width:170px">` +
@@ -99,18 +107,18 @@ function popupHtml(
     `<div style="margin-top:7px;font-size:12px;color:#475569">` +
     `<span style="font-family:'Space Mono',monospace;font-weight:700">${distance}m</span> away · ${esc(rate)}` +
     `</div>` +
-    gmapsLinkHtml(mapsHref) +
+    navLinksHtml(lat, lon) +
     `</div>`
   )
 }
 
-function osmPopupHtml(name: string, distance: number, mapsHref: string): string {
+function osmPopupHtml(name: string, distance: number, lat: number, lon: number): string {
   return (
     `<div style="font-family:Inter,system-ui,sans-serif;min-width:150px">` +
     `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:4px">${esc(name)}</div>` +
     `<div style="font-size:12px;color:#475569"><span style="font-family:'Space Mono',monospace;font-weight:700">${distance}m</span> away</div>` +
     `<div style="font-size:12px;color:#94a3b8;font-style:italic;margin-top:2px">No live lots or rates</div>` +
-    gmapsLinkHtml(mapsHref) +
+    navLinksHtml(lat, lon) +
     `</div>`
   )
 }
@@ -228,7 +236,8 @@ function Map({
             cp.distance_m,
             cp.rate.known ? cp.rate.summary : 'Rate unknown',
             ledChipHtml(a.state, a.available, a.total),
-            gmapsDir(cp.lat, cp.lon),
+            cp.lat,
+            cp.lon,
           ),
         )
         .on('click', () => onSelect(cp.id === selectedRef.current ? null : cp.id))
@@ -238,7 +247,7 @@ function Map({
 
     osmParking.forEach((cp) => {
       const m = L.marker([cp.lat, cp.lon], { icon: pIcon, title: cp.name })
-        .bindPopup(osmPopupHtml(cp.name, cp.distance_m, gmapsDir(cp.lat, cp.lon)))
+        .bindPopup(osmPopupHtml(cp.name, cp.distance_m, cp.lat, cp.lon))
         .on('click', () => onSelect(cp.id === selectedRef.current ? null : cp.id))
       markers.push(m)
       meta[cp.id] = { marker: m, kind: 'osm' }

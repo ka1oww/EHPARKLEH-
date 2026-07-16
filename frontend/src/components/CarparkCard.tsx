@@ -1,5 +1,5 @@
 import { memo, useState } from 'react'
-import { ArrowUpRight, Navigation, Wallet, Tag, Info, Star, Share2, Zap, Droplets } from 'lucide-react'
+import { Navigation, Navigation2, Wallet, Tag, Info, Star, Share2, Zap, Droplets, type LucideIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { AvailabilityChip } from '@/components/AvailabilityChip'
@@ -19,24 +19,31 @@ function gmapsHref(lat: number, lon: number): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`
 }
 
+// Waze universal deep link: opens the Waze app (or web) and starts navigation
+// to the coordinates. navigate=yes routes immediately.
+function wazeHref(lat: number, lon: number): string {
+  return `https://www.waze.com/ul?ll=${lat},${lon}&navigate=yes`
+}
+
 // Distance is the driver's first signal, so it reads large and near-ink, and
 // switches to km past 1000m for glanceability.
 function fmtDistance(m: number): string {
   return m >= 1000 ? `${(m / 1000).toFixed(1)} km` : `${m} m`
 }
 
-function DirectionsLink({ lat, lon }: { lat: number; lon: number }) {
+// A navigation deep-link (Google Maps or Waze). Opens in a new tab; its click
+// is kept off the card's stretched select button.
+function NavLink({ href, label, icon: Icon }: { href: string; label: string; icon: LucideIcon }) {
   return (
     <a
-      href={gmapsHref(lat, lon)}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       onClick={(e) => e.stopPropagation()}
       className="pointer-events-auto inline-flex min-h-9 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <Navigation className="size-3.5" aria-hidden="true" />
-      Directions
-      <ArrowUpRight className="size-3" aria-hidden="true" />
+      <Icon className="size-3.5" aria-hidden="true" />
+      {label}
     </a>
   )
 }
@@ -212,14 +219,15 @@ function CarparkCardImpl({ entry, rank, selected, onSelect, isFavourite, onToggl
               </div>
             </div>
           </div>
-          <div className="mt-3 flex items-center justify-between border-t border-hairline pt-2.5">
-            <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-              <Info className="size-3.5" aria-hidden="true" />
-              No live lots or rates here
+          <div className="mt-3 flex items-center justify-between gap-2 border-t border-hairline pt-2.5">
+            <span className="inline-flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
+              <Info className="size-3.5 shrink-0" aria-hidden="true" />
+              <span className="truncate">No live info</span>
             </span>
-            <div className="flex items-center gap-0.5">
+            <div className="flex shrink-0 items-center gap-0.5">
               <ShareButton name={entry.name} lat={entry.lat} lon={entry.lon} />
-              <DirectionsLink lat={entry.lat} lon={entry.lon} />
+              <NavLink href={gmapsHref(entry.lat, entry.lon)} label="Maps" icon={Navigation} />
+              <NavLink href={wazeHref(entry.lat, entry.lon)} label="Waze" icon={Navigation2} />
             </div>
           </div>
         </div>
@@ -298,11 +306,12 @@ function CarparkCardImpl({ entry, rank, selected, onSelect, isFavourite, onToggl
           </div>
         </div>
 
-        <div className="mt-3 flex items-center justify-between border-t border-hairline pt-2.5">
-          <span className="text-xs text-muted-foreground">{entry.type || 'Carpark'}</span>
-          <div className="flex items-center gap-0.5">
+        <div className="mt-3 flex items-center justify-between gap-2 border-t border-hairline pt-2.5">
+          <span className="min-w-0 truncate text-xs text-muted-foreground">{entry.type || 'Carpark'}</span>
+          <div className="flex shrink-0 items-center gap-0.5">
             <ShareButton name={entry.address} lat={entry.lat} lon={entry.lon} />
-            <DirectionsLink lat={entry.lat} lon={entry.lon} />
+            <NavLink href={gmapsHref(entry.lat, entry.lon)} label="Maps" icon={Navigation} />
+            <NavLink href={wazeHref(entry.lat, entry.lon)} label="Waze" icon={Navigation2} />
           </div>
         </div>
       </div>
