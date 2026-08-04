@@ -16,6 +16,8 @@ Every finder reads the same free government availability feed, so live lot count
 - Real LTA rates. Where a carpark has no dataset rate, the published HDB/URA standard schedule is applied, with the Central Area geofenced to the higher tier.
 - Free-parking windows parsed into plain English.
 - Filters by carpark type and by EV charging, the latter showing live "N free of M chargers" from LTA DataMall.
+- A deliberate Near me action requests location only when you tap it; if access is denied, you can retry or search for a place instead.
+- A no-match search stays neutral and suggests widening the radius or clearing active filters.
 - Recent searches, saved favourites, and a shareable URL that reproduces a result on load.
 - Installable PWA that falls back to the last results offline; iOS and Android wrappers through Capacitor.
 

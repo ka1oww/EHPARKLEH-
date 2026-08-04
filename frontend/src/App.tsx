@@ -22,6 +22,7 @@ import type {
 // default mobile tab), so the ~180 KB map bundle is fetched only when a search
 // sets a center or the user opens the map tab.
 const Map = lazy(() => import('./Map'))
+const MOBILE_MEDIA_QUERY = '(max-width: 767.98px)'
 
 // Backend base URL. Override via VITE_API_BASE in frontend/.env; falls back to
 // the deployed Render backend so existing builds keep working unchanged.
@@ -87,7 +88,25 @@ function MapFallback() {
   )
 }
 
+// CSS alone can hide the map on mobile, but would still mount it (and start the
+// lazy import) behind the list. Keep it out of the mobile list-first path until
+// the person deliberately chooses the Map tab. Desktop keeps the split view.
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia(MOBILE_MEDIA_QUERY).matches)
+
+  useEffect(() => {
+    const media = window.matchMedia(MOBILE_MEDIA_QUERY)
+    const update = () => setIsMobile(media.matches)
+    update()
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
+
+  return isMobile
+}
+
 export default function App() {
+  const isMobile = useIsMobile()
   const [userLocation, setUserLocation] = useState<LatLon | null>(null)
   const [mobileTab, setMobileTab] = useState<'list' | 'map'>('list')
   const [radius, setRadius] = useState(500)
@@ -217,27 +236,6 @@ export default function App() {
     },
     [radius, category, freeSunPh, hasLots, hasEv, hasCarwash],
   )
-
-  // Only auto-read location on open if permission is already granted, so a
-  // first-time visitor is never hit with a geolocation prompt before acting.
-  useEffect(() => {
-    let cancelled = false
-    async function maybeLocate() {
-      try {
-        if (!navigator.permissions?.query) return // can't tell without prompting
-        const status = await navigator.permissions.query({ name: 'geolocation' as PermissionName })
-        if (status.state !== 'granted') return
-        const loc = await getCurrentPosition()
-        if (!cancelled) setUserLocation(loc)
-      } catch {
-        /* ignore */
-      }
-    }
-    maybeLocate()
-    return () => {
-      cancelled = true
-    }
-  }, [])
 
   // Track connectivity for the offline banner.
   useEffect(() => {
@@ -593,7 +591,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={resetFilters}
-                    className="mt-1 inline-flex min-h-9 items-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="mt-1 inline-flex min-h-11 items-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     Clear filters
                   </button>
@@ -626,18 +624,22 @@ export default function App() {
         >
           {center ? (
             <>
-              <MapLegend />
-              <Suspense fallback={<MapFallback />}>
-                <Map
-                  center={center}
-                  carparks={carparks}
-                  osmParking={dedupedOsm}
-                  selected={selected}
-                  onSelect={setSelected}
-                  userLocation={userLocation}
-                  visible={mobileTab === 'map'}
-                />
-              </Suspense>
+              {!isMobile || mobileTab === 'map' ? (
+                <>
+                  <MapLegend />
+                  <Suspense fallback={<MapFallback />}>
+                    <Map
+                      center={center}
+                      carparks={carparks}
+                      osmParking={dedupedOsm}
+                      selected={selected}
+                      onSelect={setSelected}
+                      userLocation={userLocation}
+                      visible={mobileTab === 'map'}
+                    />
+                  </Suspense>
+                </>
+              ) : null}
             </>
           ) : (
             <div className="flex h-full flex-col items-center justify-center gap-4 bg-secondary/40 px-6 text-center">

@@ -35,7 +35,7 @@ export function AvailabilityChip({ available, total, showLabel = true, className
   return (
     <div className={cn('inline-flex items-center gap-2.5', className)}>
       <div
-        className="inline-flex items-center gap-2 rounded-lg bg-led px-2.5 py-1.5 shadow-sm ring-1 ring-white/5"
+        className="inline-flex items-center gap-2 rounded-lg bg-led px-3 py-2 shadow-sm ring-1 ring-white/5"
         role="img"
         aria-label={
           a.state === 'nodata'
@@ -57,7 +57,7 @@ export function AvailabilityChip({ available, total, showLabel = true, className
         <span className="text-white/40" aria-hidden="true">
           ·
         </span>
-        <span className={cn('font-data text-[13px] font-bold tabular-nums', STATE_TEXT[a.state])}>
+        <span className={cn('font-data text-sm font-bold tabular-nums', STATE_TEXT[a.state])}>
           {a.state === 'nodata' ? 'NO DATA' : `${a.available} LOTS`}
         </span>
       </div>

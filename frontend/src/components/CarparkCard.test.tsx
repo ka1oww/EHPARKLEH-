@@ -55,6 +55,13 @@ describe('CarparkCard', () => {
     expect(screen.getByText('1.8 km')).toBeInTheDocument()
   })
 
+  it('does not add an unnecessary decimal for whole kilometre distances', () => {
+    render(
+      <CarparkCard entry={hdbEntry({ distance_m: 1000 })} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+    expect(screen.getByText('1 km')).toBeInTheDocument()
+  })
+
   it('calls onSelect with the entry id when the card is activated', () => {
     const onSelect = vi.fn()
     render(

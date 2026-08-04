@@ -28,7 +28,9 @@ function wazeHref(lat: number, lon: number): string {
 // Distance is the driver's first signal, so it reads large and near-ink, and
 // switches to km past 1000m for glanceability.
 function fmtDistance(m: number): string {
-  return m >= 1000 ? `${(m / 1000).toFixed(1)} km` : `${m} m`
+  return m >= 1000
+    ? `${new Intl.NumberFormat('en-SG', { maximumFractionDigits: 1 }).format(m / 1000)} km`
+    : `${m} m`
 }
 
 // A navigation deep-link (Google Maps or Waze). Opens in a new tab; its click
@@ -40,7 +42,7 @@ function NavLink({ href, label, icon: Icon }: { href: string; label: string; ico
       target="_blank"
       rel="noopener noreferrer"
       onClick={(e) => e.stopPropagation()}
-      className="pointer-events-auto inline-flex min-h-9 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="pointer-events-auto inline-flex min-h-11 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <Icon className="size-3.5" aria-hidden="true" />
       {label}
@@ -70,7 +72,7 @@ function ShareButton({ name, lat, lon }: { name: string; lat: number; lon: numbe
       type="button"
       onClick={share}
       aria-label={`Share ${name}`}
-      className="pointer-events-auto inline-flex min-h-9 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="pointer-events-auto inline-flex min-h-11 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <Share2 className="size-3.5" aria-hidden="true" />
       {copied ? 'Copied' : 'Share'}
@@ -89,7 +91,7 @@ function StarButton({ active, onClick }: { active: boolean; onClick: () => void 
       aria-pressed={active}
       aria-label={active ? 'Remove from saved' : 'Save carpark'}
       className={cn(
-        'pointer-events-auto inline-flex size-9 shrink-0 items-center justify-center rounded-md transition-colors',
+        'pointer-events-auto inline-flex size-11 shrink-0 items-center justify-center rounded-md transition-colors',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
         active ? 'text-amber-400' : 'text-muted-foreground/50 hover:text-amber-400',
       )}
@@ -144,7 +146,7 @@ function EvBadge({
 
 function Distance({ m }: { m: number }) {
   return (
-    <span className="font-data shrink-0 text-sm font-bold tabular-nums text-slate-body">
+    <span className="font-data shrink-0 text-base font-bold tabular-nums text-ink">
       {fmtDistance(m)}
     </span>
   )

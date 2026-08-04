@@ -33,7 +33,7 @@ export function RadiusSelect({ value, onChange, className }: Props) {
             aria-checked={active}
             onClick={() => onChange(r)}
             className={cn(
-              'font-data rounded-full px-3 py-2 text-xs font-bold tabular-nums transition-colors',
+              'font-data min-h-11 rounded-full px-3 py-2 text-xs font-bold tabular-nums transition-colors',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background',
               active
                 ? 'bg-signal text-accent-foreground shadow-sm'
