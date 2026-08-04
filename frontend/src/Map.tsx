@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from 'react'
+import { memo, useEffect, useMemo, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
@@ -139,6 +139,30 @@ interface MarkerMeta {
   state?: AvailState
 }
 
+// API responses are freshly allocated even when their marker-relevant content
+// is unchanged. Use values, rather than array identity, to avoid rebuilding a
+// large Leaflet cluster group for an equivalent response.
+function markerSignature(carparks: Carpark[], osmParking: OsmParking[]): string {
+  return [
+    ...carparks.map((cp) => [
+      'h', cp.id, cp.lat, cp.lon, cp.address, cp.distance_m, cp.lots_available,
+      cp.total_lots, cp.rate.known, cp.rate.summary,
+    ].join(',')).sort(),
+    ...osmParking.map((cp) => ['o', cp.id, cp.lat, cp.lon, cp.name, cp.distance_m].join(',')).sort(),
+  ].join('|')
+}
+
+// Only coordinates and identities determine whether framing results is useful.
+// Availability or popup-copy changes should refresh pins, not move the driver.
+function spatialSignature(center: LatLon, carparks: Carpark[], osmParking: OsmParking[]): string {
+  return [
+    center.lat,
+    center.lon,
+    ...carparks.map((cp) => `h:${cp.id}:${cp.lat}:${cp.lon}`).sort(),
+    ...osmParking.map((cp) => `o:${cp.id}:${cp.lat}:${cp.lon}`).sort(),
+  ].join('|')
+}
+
 function Map({
   center,
   carparks,
@@ -153,15 +177,23 @@ function Map({
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null)
   const centerMarkerRef = useRef<L.CircleMarker | null>(null)
   const userMarkerRef = useRef<L.CircleMarker | null>(null)
-  // Marker lookup for cheap selection styling, the last-fitted center (so we
-  // only re-fit on a genuinely new search), the previously-selected id, and a
-  // live mirror of `selected` so marker click handlers read it without being
-  // rebuilt on every selection change.
+  // Marker lookup for cheap selection styling, the last-fitted spatial
+  // signature (so we frame only a genuinely changed result set), the
+  // previously-selected id, and a live mirror of `selected` so marker click
+  // handlers read it without being rebuilt on every selection change.
   const metaRef = useRef<Record<string, MarkerMeta>>({})
   const lastFitRef = useRef<string>('')
   const prevSelRef = useRef<string | null>(null)
   const selectedRef = useRef<string | null>(selected)
   selectedRef.current = selected
+  const currentMarkerSignature = useMemo(
+    () => markerSignature(carparks, osmParking),
+    [carparks, osmParking],
+  )
+  const currentSpatialSignature = useMemo(
+    () => spatialSignature(center, carparks, osmParking),
+    [center, carparks, osmParking],
+  )
 
   useEffect(() => {
     if (!instanceRef.current && mapRef.current) {
@@ -208,9 +240,9 @@ function Map({
       .bindPopup('Destination')
   }, [center])
 
-  // Build the clustered parking pins (carparks + de-duped OSM). Runs only when
-  // the data or center changes — NOT on selection (that is handled separately),
-  // so tapping a pin no longer tears down and rebuilds all 400+ markers.
+  // Build the clustered parking pins (carparks + de-duped OSM). A semantic
+  // signature, rather than response-array identity, keeps equivalent refetches
+  // from tearing down hundreds of Leaflet markers. Selection is separate.
   useEffect(() => {
     const map = instanceRef.current
     const cluster = clusterRef.current
@@ -256,26 +288,29 @@ function Map({
     cluster.addLayers(markers)
     metaRef.current = meta
 
-    // Fit bounds only on a genuinely new search (a new center), so toggling
-    // filters or re-fetching at the same place keeps the user's pan/zoom.
-    const sig = `${center.lat},${center.lon}`
-    if (lastFitRef.current !== sig) {
-      lastFitRef.current = sig
-      if (markers.length > 0) {
-        const pts: L.LatLngTuple[] = [
-          [center.lat, center.lon],
-          ...carparks.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
-          ...osmParking.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
-        ]
-        map.fitBounds(L.latLngBounds(pts), { padding: [40, 40] })
-      } else {
-        // A new search with no results: still follow to the destination rather
-        // than leaving the map on the previous place.
-        map.setView([center.lat, center.lon], 15)
-      }
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [carparks, osmParking, center])
+  }, [currentMarkerSignature])
+
+  // Deliberately frame a new spatial result set. This is intentionally separate
+  // from marker construction: selection, sort, loading/error/offline banners,
+  // and availability-only refreshes retain the driver's manual viewport.
+  useEffect(() => {
+    const map = instanceRef.current
+    if (!map || lastFitRef.current === currentSpatialSignature) return
+    lastFitRef.current = currentSpatialSignature
+    if (carparks.length + osmParking.length > 0) {
+      const pts: L.LatLngTuple[] = [
+        [center.lat, center.lon],
+        ...carparks.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
+        ...osmParking.map((cp) => [cp.lat, cp.lon] as L.LatLngTuple),
+      ]
+      map.fitBounds(L.latLngBounds(pts), { padding: [40, 40] })
+    } else {
+      // A changed result set with no results: still follow the destination
+      // rather than leaving the map on the previous place.
+      map.setView([center.lat, center.lon], 15)
+    }
+  }, [carparks, center, currentSpatialSignature, osmParking])
 
   // Selection: restyle just the affected pins and open the selected popup,
   // instead of rebuilding the whole layer.

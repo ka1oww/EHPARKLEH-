@@ -44,6 +44,14 @@ function metresBetween(aLat: number, aLon: number, bLat: number, bLon: number): 
 }
 
 type SortKey = 'distance' | 'availability' | 'price'
+type SearchFilters = {
+  radius: number
+  category: string | null
+  freeSunPh: boolean
+  hasLots: boolean
+  hasEv: boolean
+  hasCarwash: boolean
+}
 
 // More live lots first; entries without live data (OSM / unknown) sink.
 function availValue(e: ParkingEntry): number {
@@ -135,14 +143,33 @@ export default function App() {
   // In-flight request controller (so a newer search cancels an older one) and
   // the filter-change debounce timer.
   const abortRef = useRef<AbortController | null>(null)
+  // Aborting saves work, but a response can still finish between an await and
+  // abort. Only the newest request is allowed to publish state.
+  const requestVersionRef = useRef(0)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
-  // Live mirror of center (read inside the debounce timer so a coalesced refetch
-  // uses the current place, never a stale capture), the radius the last fetch
-  // actually used, and whether a pending refetch still owes an OSM refresh.
+  // Live search inputs let debounced work use the current place and filters,
+  // never stale captures. Track OSM freshness separately because it depends
+  // only on location and radius, while new-location work also carries URL,
+  // snapshot, and selection-reset responsibilities.
   const centerRef = useRef<LatLon | null>(center)
   centerRef.current = center
+  const searchCenterRef = useRef<LatLon | null>(null)
+  const searchFiltersRef = useRef<SearchFilters>({
+    radius,
+    category,
+    freeSunPh,
+    hasLots,
+    hasEv,
+    hasCarwash,
+  })
+  searchFiltersRef.current = { radius, category, freeSunPh, hasLots, hasEv, hasCarwash }
   const lastFetchRadiusRef = useRef(radius)
   const pendingOsmRef = useRef(false)
+  const pendingNewLocationRef = useRef(false)
+  const invalidateCurrentSearch = useCallback(() => {
+    abortRef.current?.abort()
+    requestVersionRef.current += 1
+  }, [])
 
   // Core fetch. `newLocation` searches a fresh place (fetch OSM too, save the
   // snapshot + shareable URL, clear selection). Filter toggles pass
@@ -154,35 +181,42 @@ export default function App() {
       lon: number,
       opts?: { includeOsm?: boolean; newLocation?: boolean },
     ) => {
+      const filters = searchFiltersRef.current
       const includeOsm = opts?.includeOsm ?? true
       const newLocation = opts?.newLocation ?? true
+      searchCenterRef.current = { lat, lon }
       // A new-location search cancels any pending filter/radius refetch, so a
       // stale debounced request can't fire afterwards and snap back to the old
       // place (which would also leave the URL and data disagreeing).
-      if (newLocation) clearTimeout(debounceRef.current)
-      abortRef.current?.abort()
+      if (newLocation) {
+        clearTimeout(debounceRef.current)
+        pendingOsmRef.current = true
+        pendingNewLocationRef.current = true
+      }
+      invalidateCurrentSearch()
       const ac = new AbortController()
       abortRef.current = ac
+      const requestVersion = requestVersionRef.current
       setLoading(true)
       setError('')
       try {
         const params = new URLSearchParams({
           lat: String(lat),
           lon: String(lon),
-          radius: String(radius),
+          radius: String(filters.radius),
         })
-        if (category) params.set('category', category)
-        if (freeSunPh) params.set('free_sun_ph', 'true')
-        if (hasLots) params.set('has_lots', 'true')
-        if (hasEv) params.set('has_ev', 'true')
-        if (hasCarwash) params.set('has_carwash', 'true')
+        if (filters.category) params.set('category', filters.category)
+        if (filters.freeSunPh) params.set('free_sun_ph', 'true')
+        if (filters.hasLots) params.set('has_lots', 'true')
+        if (filters.hasEv) params.set('has_ev', 'true')
+        if (filters.hasCarwash) params.set('has_carwash', 'true')
 
         const reqs: Promise<Response>[] = [
           fetch(`${API_BASE}/api/carparks?${params.toString()}`, { signal: ac.signal }),
         ]
         if (includeOsm) {
           reqs.push(
-            fetch(`${API_BASE}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${radius}`, {
+            fetch(`${API_BASE}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${filters.radius}`, {
               signal: ac.signal,
             }),
           )
@@ -196,17 +230,22 @@ export default function App() {
         let osmData: OsmParking[] = []
         if (includeOsm) osmData = res[1].ok ? await res[1].json() : []
 
+        // `AbortController` is best-effort once a response has resolved. This
+        // guard prevents an older response from winning a rapid filter race.
+        if (requestVersion !== requestVersionRef.current) return
+
         setCarparks(hdbData)
         if (includeOsm) {
           setOsmParking(osmData)
           // OSM is now current for this radius, so clear the pending-OSM debt.
-          lastFetchRadiusRef.current = radius
+          lastFetchRadiusRef.current = filters.radius
           pendingOsmRef.current = false
         }
         setCenter({ lat, lon })
         setSearched(true)
         if (newLocation) {
           setSelected(null)
+          pendingNewLocationRef.current = false
           try {
             localStorage.setItem(
               'ehparkleh:last',
@@ -228,13 +267,13 @@ export default function App() {
       } catch (err) {
         // A superseded request was aborted on purpose; keep the loading state for
         // the newer request that replaced it.
-        if ((err as { name?: string })?.name === 'AbortError') return
+        if ((err as { name?: string })?.name === 'AbortError' || requestVersion !== requestVersionRef.current) return
         setError("Can't reach the server right now. Please try again shortly.")
       } finally {
-        if (!ac.signal.aborted) setLoading(false)
+        if (!ac.signal.aborted && requestVersion === requestVersionRef.current) setLoading(false)
       }
     },
-    [radius, category, freeSunPh, hasLots, hasEv, hasCarwash],
+    [invalidateCurrentSearch],
   )
 
   // Track connectivity for the offline banner.
@@ -287,20 +326,24 @@ export default function App() {
 
   // Re-run the last search when a filter or the radius changes, so list + map
   // stay in sync. Debounced so rapid chip toggling issues one request, and OSM
-  // is refetched only when the radius (its only input) actually changed.
+  // is refetched only when its location or radius inputs actually change.
   useEffect(() => {
-    if (!center) return
+    const target = searchCenterRef.current ?? centerRef.current
+    if (!target) return
     // OSM depends only on lat/lon/radius, so refetch it only when the radius has
-    // changed since the last fetch. Accumulate the flag across coalesced
-    // (debounced) toggles so a radius change isn't dropped by a later chip
-    // toggle; read the live center inside the timer so it never fires at a
-    // stale place.
-    if (radius !== lastFetchRadiusRef.current) pendingOsmRef.current = true
+    // changed since the last fetch. A new-location search also needs OSM even
+    // when it uses the same radius. Recompute this from the settled inputs so
+    // reverting a rapid radius change does not leave stale OSM work pending.
+    pendingOsmRef.current =
+      pendingNewLocationRef.current || radius !== lastFetchRadiusRef.current
     clearTimeout(debounceRef.current)
     debounceRef.current = setTimeout(() => {
-      const c = centerRef.current
+      const c = searchCenterRef.current ?? centerRef.current
       if (!c) return
-      runSearch(c.lat, c.lon, { includeOsm: pendingOsmRef.current, newLocation: false })
+      runSearch(c.lat, c.lon, {
+        includeOsm: pendingOsmRef.current,
+        newLocation: pendingNewLocationRef.current,
+      })
     }, 250)
     return () => clearTimeout(debounceRef.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -359,13 +402,56 @@ export default function App() {
   }, [])
 
   const anyFilterActive = category !== null || freeSunPh || hasLots || hasEv || hasCarwash
+  const invalidateFilterSearch = useCallback((changes: Partial<SearchFilters>) => {
+    searchFiltersRef.current = { ...searchFiltersRef.current, ...changes }
+    clearTimeout(debounceRef.current)
+    invalidateCurrentSearch()
+  }, [invalidateCurrentSearch])
+  const handleCategory = useCallback((nextCategory: string | null) => {
+    if (nextCategory === category) return
+    invalidateFilterSearch({ category: nextCategory })
+    setCategory(nextCategory)
+  }, [category, invalidateFilterSearch])
+  const handleFreeSunPh = useCallback((nextFreeSunPh: boolean) => {
+    if (nextFreeSunPh === freeSunPh) return
+    invalidateFilterSearch({ freeSunPh: nextFreeSunPh })
+    setFreeSunPh(nextFreeSunPh)
+  }, [freeSunPh, invalidateFilterSearch])
+  const handleHasLots = useCallback((nextHasLots: boolean) => {
+    if (nextHasLots === hasLots) return
+    invalidateFilterSearch({ hasLots: nextHasLots })
+    setHasLots(nextHasLots)
+  }, [hasLots, invalidateFilterSearch])
+  const handleHasEv = useCallback((nextHasEv: boolean) => {
+    if (nextHasEv === hasEv) return
+    invalidateFilterSearch({ hasEv: nextHasEv })
+    setHasEv(nextHasEv)
+  }, [hasEv, invalidateFilterSearch])
+  const handleHasCarwash = useCallback((nextHasCarwash: boolean) => {
+    if (nextHasCarwash === hasCarwash) return
+    invalidateFilterSearch({ hasCarwash: nextHasCarwash })
+    setHasCarwash(nextHasCarwash)
+  }, [hasCarwash, invalidateFilterSearch])
+  const handleRadius = useCallback((nextRadius: number) => {
+    if (nextRadius === radius) return
+    invalidateFilterSearch({ radius: nextRadius })
+    setRadius(nextRadius)
+  }, [invalidateFilterSearch, radius])
   const resetFilters = useCallback(() => {
+    if (!anyFilterActive) return
+    invalidateFilterSearch({
+      category: null,
+      freeSunPh: false,
+      hasLots: false,
+      hasEv: false,
+      hasCarwash: false,
+    })
     setCategory(null)
     setFreeSunPh(false)
     setHasLots(false)
     setHasEv(false)
     setHasCarwash(false)
-  }, [])
+  }, [anyFilterActive, invalidateFilterSearch])
 
   // The enriched dataset is already deduped, but the live OSM layer is not, so
   // drop OSM pins that sit on top of an enriched carpark (otherwise dense areas
@@ -449,17 +535,17 @@ export default function App() {
         <div className="mx-auto w-full max-w-screen-2xl px-4">
           <FilterBar
             category={category}
-            onCategory={setCategory}
+            onCategory={handleCategory}
             freeSunPh={freeSunPh}
-            onFreeSunPh={setFreeSunPh}
+            onFreeSunPh={handleFreeSunPh}
             hasLots={hasLots}
-            onHasLots={setHasLots}
+            onHasLots={handleHasLots}
             hasEv={hasEv}
-            onHasEv={setHasEv}
+            onHasEv={handleHasEv}
             hasCarwash={hasCarwash}
-            onHasCarwash={setHasCarwash}
+            onHasCarwash={handleHasCarwash}
             radius={radius}
-            onRadius={setRadius}
+            onRadius={handleRadius}
             anyFilterActive={anyFilterActive}
             onReset={resetFilters}
           />
