@@ -162,6 +162,10 @@ npx cap open ios              # Xcode; requires an Apple Developer account to si
 
 The frontend deploys to Vercel and the backend to Render, both from `main`. `render.yaml` records the backend service configuration.
 
+### Backend keep-warm
+
+GitHub Actions runs [`.github/workflows/keep-warm.yml`](.github/workflows/keep-warm.yml) every five minutes (`*/5 * * * *`) and supports a safe manual run through **Run workflow**. It sends only a GET request to the public health endpoint, `https://ehparkleh-backend.onrender.com/health`, to reduce the observed first-request delay. The request has connection and overall timeouts plus two retries, so a persistent failure remains visible in the workflow run. GitHub Actions schedules are best effort: runs can be delayed during periods of high load and may be disabled after 60 days without repository activity.
+
 **Frontend (Vercel).** Root directory `frontend/`, framework preset Vite (build `npm run build`, output `dist`). `VITE_API_BASE` can point at the backend; it falls back to the Render URL when unset, so no env var is strictly required.
 
 **Backend (Render).** Root directory `backend/`, start command `uvicorn main:app --host 0.0.0.0 --port $PORT`, build `pip install -r requirements.txt`. The served `carparks_enriched.json` is committed, so no build-time regeneration is needed; set the build command to `./build.sh` to rebuild the dataset on each deploy instead. Set `LTA_DATAMALL_KEY` in the environment for live EV charger counts. CORS allows the production frontend origin plus anything listed in `ALLOWED_ORIGINS`.

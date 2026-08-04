@@ -1,0 +1,22 @@
+name: Keep backend warm
+
+# Scheduled GitHub Actions runs are best effort: GitHub may delay them under
+# load and may disable schedules after 60 days of repository inactivity.
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  ping:
+    name: GET backend health endpoint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping backend /health
+        run: >-
+          curl --fail --silent --show-error --output /dev/null
+          --connect-timeout 10 --max-time 30
+          --retry 2 --retry-delay 2 --retry-all-errors --retry-connrefused
+          https://ehparkleh-backend.onrender.com/health
