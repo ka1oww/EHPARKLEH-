@@ -12,7 +12,8 @@ Every finder reads the same free government availability feed, so live lot count
 
 ## Features
 
-- Live free-lot counts from data.gov.sg, cached about 60 seconds.
+- Live free-lot counts from data.gov.sg, cached about 60 seconds and refreshed
+  in the background after expiry so an existing snapshot never blocks a search.
 - Real LTA rates. Where a carpark has no dataset rate, the published HDB/URA standard schedule is applied, with the Central Area geofenced to the higher tier.
 - Free-parking windows parsed into plain English.
 - Filters by carpark type and by EV charging, the latter showing live "N free of M chargers" from LTA DataMall.
@@ -32,7 +33,7 @@ flowchart TB
 
     subgraph Backend["FastAPI backend (Python)"]
         API["Endpoints: /api/carparks, /api/suggestions,<br/>/api/geocode, /api/parking/osm, /health"]
-        CACHE["In-memory TTL caches (~60s)<br/>availability + EV charger snapshots"]
+        CACHE["In-memory stale-while-revalidate caches (~60s)<br/>availability + EV charger snapshots"]
         RATES["Rate resolver<br/>(LTA dataset, not a bounding box)"]
         DATA["carparks_enriched.json<br/>merged + deduped + classified"]
     end
@@ -86,7 +87,7 @@ The build order is:
 4. `crawl_ev.py` pulls every EV charging point and its connectors from LTA DataMall (needs `LTA_DATAMALL_KEY`). `crawl_onemotoring.py` pulls LTA's OneMotoring rate guide for commercial carparks. `crawl_military.py`, `crawl_central_area.py`, and `crawl_sg_boundary.py` fetch the geofences used below.
 5. `build_enriched.py` merges the sources onto the existing geocoded spine, dedupes by spatial proximity and name similarity, classifies each carpark, re-geocodes SVY21 fallback rows through OneMap (cached), attaches LTA and standard rates, then OneMotoring indicative rates by name for carparks a dataset rate misses, then a small hand-curated set (`manual_rates.json`, sourced from mall operator sites and dated) for heartland malls, flags carparks with EV charging within 75 m and HDB carparks with a self-service car wash (Beaver and QE Car Care's published block lists in `carwash_locations.json`, matched to a carpark by block and town since a block number is unique within a town; these two operators run the self-service machines in HDB multi-storey carparks), voids military areas, carparks outside Singapore (Johor pins near the Causeway), non-car-parking POIs (delivery and loading bays, bicycle and motorcycle parking, bus depots, drop-off points, heavy-vehicle and coach parks), business and private/restricted lots (valet firms, petrol stations, condos, staff-only), and a manual removal list, drops standalone OSM pins, and writes `carparks_enriched.json` and `STATS.md`.
 
-Standalone OSM pins are dropped from the served dataset because they were the main source of construction-site and private junk; OSM still corroborates during dedup, and the live `/api/parking/osm` layer supplies OSM parking at search time. Live EV availability is fetched per request from LTA DataMall and cached, so the served dataset holds only the static EV flag.
+Standalone OSM pins are dropped from the served dataset because they were the main source of construction-site and private junk; OSM still corroborates during dedup, and the live `/api/parking/osm` layer supplies OSM parking at search time. When configured, live EV availability is joined at request time from a stale-while-revalidate LTA DataMall snapshot, so the served dataset holds only the static EV flag.
 
 Run the pipeline from `backend/` with the venv active:
 
@@ -115,6 +116,16 @@ uvicorn main:app --reload --port 8000
 ```
 
 The API serves on `http://localhost:8000`. `.env` holds the Google and LTA DataMall keys and tunables (call cap, availability TTL, log level); it is git-ignored. data.gov.sg and OneMap are keyless for the serving path.
+
+`/api/carparks` reports `availability`, `ev`, `local_filter`, `total`, and
+`process_uptime` metrics in the `Server-Timing` response header. Cache states
+and refresh outcomes are also emitted as structured `key=value` application
+logs, correlated by a non-secret per-process boot ID. A feed with an empty cache
+waits for its first refresh attempt; the availability refresh and any configured
+EV refresh start concurrently. After that, expired snapshots are served
+immediately while one single-flight background refresh per feed updates the
+cache. Refreshes share one connection-pooled HTTP client for the process
+lifetime, and a failed refresh preserves the last good snapshot.
 
 Run the tests:
 

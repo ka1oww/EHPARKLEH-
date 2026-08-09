@@ -1,6 +1,6 @@
-"""Backend hardening tests: data load, category filtering, rates resolution,
-and the availability TTL cache (with httpx mocked)."""
+"""Backend hardening tests: data, filtering, and live-feed cache behavior."""
 
+import asyncio
 import sys
 import time
 from pathlib import Path
@@ -14,6 +14,9 @@ if str(BACKEND_DIR) not in sys.path:
 
 import main  # noqa: E402
 
+FAST_PATH_TIMEOUT = 0.25
+ASYNC_TEST_TIMEOUT = 1.0
+
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -26,11 +29,29 @@ def loaded_cache():
 
 
 @pytest.fixture(autouse=True)
-def reset_avail_cache():
-    """Clear the availability TTL cache before each test."""
-    main._avail_cache["data"] = None
-    main._avail_cache["fetched_at"] = 0.0
+async def reset_live_caches():
+    """Give every test empty caches and clean up background refresh tasks."""
+
+    async def cancel_refreshes():
+        tasks = [
+            task
+            for task in (main._avail_refresh_task, main._ev_refresh_task)
+            if task is not None and not task.done()
+        ]
+        for task in tasks:
+            task.cancel()
+        if tasks:
+            await asyncio.gather(*tasks, return_exceptions=True)
+
+    await cancel_refreshes()
+    main._avail_refresh_task = None
+    main._ev_refresh_task = None
+    main._avail_cache = {"data": None, "fetched_at": 0.0}
+    main._ev_avail_cache = {"data": None, "fetched_at": 0.0}
     yield
+    await cancel_refreshes()
+    main._avail_refresh_task = None
+    main._ev_refresh_task = None
 
 
 # ---------------------------------------------------------------------------
@@ -222,7 +243,7 @@ class _FakeClient:
 
     calls = 0
 
-    async def get(self, url):
+    async def get(self, url, **_kwargs):
         _FakeClient.calls += 1
         return _FakeResponse(SAMPLE_FEED)
 
@@ -245,33 +266,360 @@ async def test_availability_parse_and_cache():
 
 
 @pytest.mark.asyncio
-async def test_availability_refetches_after_ttl(monkeypatch):
-    _FakeClient.calls = 0
-    client = _FakeClient()
+async def test_availability_hit_is_fast_and_does_not_refresh():
+    snapshot = {"A": {"lots_available": 8, "total_lots": 20}}
+    main._avail_cache = {"data": snapshot, "fetched_at": time.monotonic()}
 
-    await main.get_availability(client=client)
-    assert _FakeClient.calls == 1
+    class _ExplodingClient:
+        calls = 0
 
-    # Expire the cache by rewinding fetched_at past the TTL.
-    main._avail_cache["fetched_at"] = time.monotonic() - (main.AVAILABILITY_TTL_SECONDS + 1)
+        async def get(self, url, **_kwargs):
+            self.calls += 1
+            raise AssertionError(f"unexpected refresh: {url}")
 
-    await main.get_availability(client=client)
-    assert _FakeClient.calls == 2
+    client = _ExplodingClient()
+    timing = main.CacheTiming()
+    started = time.perf_counter()
+    out = await asyncio.wait_for(
+        main.get_availability(client=client, timing=timing),
+        timeout=FAST_PATH_TIMEOUT,
+    )
+
+    assert out is snapshot
+    assert client.calls == 0
+    assert timing.state == "hit"
+    assert timing.refresh == "none"
+    assert (time.perf_counter() - started) < FAST_PATH_TIMEOUT
+
+
+class _BlockingAvailabilityClient:
+    def __init__(self, payload=SAMPLE_FEED, *, fail=False):
+        self.payload = payload
+        self.fail = fail
+        self.calls = 0
+        self.started = asyncio.Event()
+        self.release = asyncio.Event()
+
+    async def get(self, _url, **_kwargs):
+        self.calls += 1
+        self.started.set()
+        await self.release.wait()
+        if self.fail:
+            raise RuntimeError("availability unavailable")
+        return _FakeResponse(self.payload)
+
+
+def _expired(snapshot):
+    return {
+        "data": snapshot,
+        "fetched_at": time.monotonic() - main.AVAILABILITY_TTL_SECONDS - 1,
+    }
 
 
 @pytest.mark.asyncio
-async def test_availability_serves_stale_on_error():
-    # Prime the cache with good data.
-    _FakeClient.calls = 0
-    client = _FakeClient()
-    good = await main.get_availability(client=client)
+async def test_stale_availability_returns_without_waiting_for_slow_upstream():
+    stale = {"OLD": {"lots_available": 1, "total_lots": 2}}
+    old_cache = _expired(stale)
+    main._avail_cache = old_cache
+    client = _BlockingAvailabilityClient()
+    timing = main.CacheTiming()
 
-    # Expire it, then fail the next fetch; should serve the stale snapshot.
-    main._avail_cache["fetched_at"] = time.monotonic() - (main.AVAILABILITY_TTL_SECONDS + 1)
+    out = await asyncio.wait_for(
+        main.get_availability(client=client, timing=timing),
+        timeout=FAST_PATH_TIMEOUT,
+    )
+    assert out is stale
+    assert timing.state == "stale"
+    assert timing.refresh == "background-scheduled"
+    assert main._avail_cache is old_cache
 
-    class _FailingClient:
-        async def get(self, url):
-            raise RuntimeError("network down")
+    await asyncio.wait_for(client.started.wait(), timeout=ASYNC_TEST_TIMEOUT)
+    refresh = main._avail_refresh_task
+    assert refresh is not None and not refresh.done()
+    client.release.set()
+    assert await asyncio.wait_for(refresh, timeout=ASYNC_TEST_TIMEOUT) is True
+    assert main._avail_cache is not old_cache
+    assert main._avail_cache["data"]["A"]["lots_available"] == 42
 
-    out = await main.get_availability(client=_FailingClient())
-    assert out == good
+
+@pytest.mark.asyncio
+async def test_concurrent_stale_availability_requests_start_one_refresh():
+    stale = {"OLD": {"lots_available": 1, "total_lots": 2}}
+    main._avail_cache = _expired(stale)
+    client = _BlockingAvailabilityClient()
+
+    results = await asyncio.wait_for(
+        asyncio.gather(*(main.get_availability(client=client) for _ in range(20))),
+        timeout=FAST_PATH_TIMEOUT,
+    )
+    assert all(result is stale for result in results)
+    await asyncio.wait_for(client.started.wait(), timeout=ASYNC_TEST_TIMEOUT)
+    assert client.calls == 1
+
+    refresh = main._avail_refresh_task
+    assert refresh is not None
+    client.release.set()
+    await asyncio.wait_for(refresh, timeout=ASYNC_TEST_TIMEOUT)
+    assert client.calls == 1
+
+
+@pytest.mark.asyncio
+async def test_failed_availability_refresh_retains_last_good_snapshot():
+    stale = {"A": {"lots_available": 7, "total_lots": 10}}
+    old_cache = _expired(stale)
+    main._avail_cache = old_cache
+    client = _BlockingAvailabilityClient(fail=True)
+
+    assert await main.get_availability(client=client) is stale
+    await asyncio.wait_for(client.started.wait(), timeout=ASYNC_TEST_TIMEOUT)
+    refresh = main._avail_refresh_task
+    assert refresh is not None
+    client.release.set()
+    assert await asyncio.wait_for(refresh, timeout=ASYNC_TEST_TIMEOUT) is False
+    assert main._avail_cache is old_cache
+    assert main._avail_cache["data"] is stale
+
+
+@pytest.mark.asyncio
+async def test_empty_availability_waits_for_first_snapshot_and_is_bounded():
+    client = _BlockingAvailabilityClient()
+    request = asyncio.create_task(main.get_availability(client=client))
+
+    await asyncio.wait_for(client.started.wait(), timeout=ASYNC_TEST_TIMEOUT)
+    assert not request.done()
+    client.release.set()
+    out = await asyncio.wait_for(request, timeout=ASYNC_TEST_TIMEOUT)
+    assert out["A"] == {"lots_available": 42, "total_lots": 100}
+    assert client.calls == 1
+
+
+@pytest.mark.asyncio
+async def test_empty_availability_failure_returns_empty_map():
+    client = _BlockingAvailabilityClient(fail=True)
+    request = asyncio.create_task(main.get_availability(client=client))
+
+    await asyncio.wait_for(client.started.wait(), timeout=ASYNC_TEST_TIMEOUT)
+    client.release.set()
+    assert await asyncio.wait_for(request, timeout=ASYNC_TEST_TIMEOUT) == {}
+
+
+EV_META = {"value": [{"Link": "https://example.test/ev-status.json"}]}
+EV_FEED = {
+    "evLocationsData": [
+        {
+            "chargingPoints": [
+                {"plugTypes": [{"evIds": [{"evCpId": "EV1", "status": "1"}]}]}
+            ]
+        }
+    ]
+}
+
+
+class _BlockingEVClient:
+    def __init__(self, *, fail=False):
+        self.fail = fail
+        self.calls = []
+        self.started = asyncio.Event()
+        self.release = asyncio.Event()
+
+    async def get(self, url, **_kwargs):
+        self.calls.append(url)
+        if url == main.EVC_BATCH_URL:
+            self.started.set()
+            await self.release.wait()
+            if self.fail:
+                raise RuntimeError("ev unavailable")
+            return _FakeResponse(EV_META)
+        return _FakeResponse(EV_FEED)
+
+
+@pytest.mark.asyncio
+async def test_ev_hit_does_not_refresh(monkeypatch):
+    monkeypatch.setattr(main, "LTA_DATAMALL_KEY", "test-key")
+    snapshot = {"EV1": "1"}
+    main._ev_avail_cache = {"data": snapshot, "fetched_at": time.monotonic()}
+    client = _BlockingEVClient()
+    timing = main.CacheTiming()
+
+    out = await asyncio.wait_for(
+        main.get_ev_availability(client=client, timing=timing),
+        timeout=FAST_PATH_TIMEOUT,
+    )
+    assert out is snapshot
+    assert client.calls == []
+    assert timing.state == "hit"
+    assert timing.refresh == "none"
+
+
+@pytest.mark.asyncio
+async def test_concurrent_stale_ev_requests_start_one_two_step_refresh(monkeypatch):
+    monkeypatch.setattr(main, "LTA_DATAMALL_KEY", "test-key")
+    stale = {"OLD-EV": "0"}
+    old_cache = {
+        "data": stale,
+        "fetched_at": time.monotonic() - main.EV_AVAILABILITY_TTL_SECONDS - 1,
+    }
+    main._ev_avail_cache = old_cache
+    client = _BlockingEVClient()
+
+    results = await asyncio.wait_for(
+        asyncio.gather(*(main.get_ev_availability(client=client) for _ in range(20))),
+        timeout=FAST_PATH_TIMEOUT,
+    )
+    assert all(result is stale for result in results)
+    await asyncio.wait_for(client.started.wait(), timeout=ASYNC_TEST_TIMEOUT)
+    assert client.calls == [main.EVC_BATCH_URL]
+    assert main._ev_avail_cache is old_cache
+
+    refresh = main._ev_refresh_task
+    assert refresh is not None
+    client.release.set()
+    assert await asyncio.wait_for(refresh, timeout=ASYNC_TEST_TIMEOUT) is True
+    assert client.calls == [main.EVC_BATCH_URL, "https://example.test/ev-status.json"]
+    assert main._ev_avail_cache is not old_cache
+    assert main._ev_avail_cache["data"] == {"EV1": "1"}
+
+
+@pytest.mark.asyncio
+async def test_failed_ev_refresh_retains_last_good_snapshot(monkeypatch):
+    monkeypatch.setattr(main, "LTA_DATAMALL_KEY", "test-key")
+    stale = {"OLD-EV": "1"}
+    old_cache = {
+        "data": stale,
+        "fetched_at": time.monotonic() - main.EV_AVAILABILITY_TTL_SECONDS - 1,
+    }
+    main._ev_avail_cache = old_cache
+    client = _BlockingEVClient(fail=True)
+
+    assert await main.get_ev_availability(client=client) is stale
+    await asyncio.wait_for(client.started.wait(), timeout=ASYNC_TEST_TIMEOUT)
+    refresh = main._ev_refresh_task
+    assert refresh is not None
+    client.release.set()
+    assert await asyncio.wait_for(refresh, timeout=ASYNC_TEST_TIMEOUT) is False
+    assert main._ev_avail_cache is old_cache
+    assert main._ev_avail_cache["data"] is stale
+
+
+@pytest.mark.asyncio
+async def test_ev_without_key_is_disabled_without_refresh(monkeypatch):
+    monkeypatch.setattr(main, "LTA_DATAMALL_KEY", "")
+    client = _BlockingEVClient()
+    timing = main.CacheTiming()
+
+    assert await main.get_ev_availability(client=client, timing=timing) == {}
+    assert client.calls == []
+    assert timing.state == "disabled"
+
+
+class _IndependentFeedsClient:
+    def __init__(self, failing_phase):
+        self.failing_phase = failing_phase
+
+    async def get(self, url, **_kwargs):
+        if url == main.AVAILABILITY_URL:
+            if self.failing_phase == "availability":
+                raise RuntimeError("availability failed")
+            return _FakeResponse(SAMPLE_FEED)
+        if url == main.EVC_BATCH_URL:
+            if self.failing_phase == "ev":
+                raise RuntimeError("ev failed")
+            return _FakeResponse(EV_META)
+        return _FakeResponse(EV_FEED)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failing_phase", ["availability", "ev"])
+async def test_feed_failures_are_independent(monkeypatch, failing_phase):
+    monkeypatch.setattr(main, "LTA_DATAMALL_KEY", "test-key")
+    client = _IndependentFeedsClient(failing_phase)
+    availability, ev = await asyncio.wait_for(
+        asyncio.gather(
+            main.get_availability(client=client),
+            main.get_ev_availability(client=client),
+        ),
+        timeout=ASYNC_TEST_TIMEOUT,
+    )
+
+    if failing_phase == "availability":
+        assert availability == {}
+        assert ev == {"EV1": "1"}
+    else:
+        assert availability["A"]["lots_available"] == 42
+        assert ev == {}
+
+
+@pytest.mark.asyncio
+async def test_carparks_fetches_feeds_concurrently_and_exposes_timing(monkeypatch):
+    monkeypatch.setattr(main, "_carpark_cache", _build_cache())
+    both_started = asyncio.Event()
+    started = set()
+
+    async def fake_feed(name, timing, result):
+        started.add(name)
+        if len(started) == 2:
+            both_started.set()
+        await asyncio.wait_for(both_started.wait(), timeout=ASYNC_TEST_TIMEOUT)
+        timing.state = "stale"
+        timing.refresh = "background-scheduled"
+        timing.duration_ms = 0.4
+        return result
+
+    async def fake_availability(*, timing, **_kwargs):
+        return await fake_feed("availability", timing, {})
+
+    async def fake_ev(*, timing, **_kwargs):
+        return await fake_feed("ev", timing, {})
+
+    monkeypatch.setattr(main, "get_availability", fake_availability)
+    monkeypatch.setattr(main, "get_ev_availability", fake_ev)
+    response = main.Response()
+
+    results = await asyncio.wait_for(
+        main.get_carparks(
+            response=response,
+            lat=1.3,
+            lon=103.8,
+            radius=500,
+            category=None,
+            free_sun_ph=False,
+            has_lots=False,
+            has_ev=False,
+            has_carwash=False,
+        ),
+        timeout=ASYNC_TEST_TIMEOUT,
+    )
+
+    assert len(results) == 2
+    assert started == {"availability", "ev"}
+    server_timing = response.headers["server-timing"]
+    assert (
+        "process_uptime;dur=" in server_timing
+        and f'desc="{main.PROCESS_BOOT_ID}@{main.PROCESS_BOOTED_AT}"' in server_timing
+    )
+    assert 'availability;dur=0.4;desc="stale:background-scheduled"' in server_timing
+    assert 'ev;dur=0.4;desc="stale:background-scheduled"' in server_timing
+    assert "local_filter;dur=" in server_timing
+    assert "total;dur=" in server_timing
+    assert response.headers["timing-allow-origin"] == "*"
+
+
+@pytest.mark.asyncio
+async def test_lifespan_reuses_and_closes_one_upstream_client(monkeypatch):
+    class _SharedClient:
+        def __init__(self, **_kwargs):
+            self.closed = False
+
+        async def aclose(self):
+            self.closed = True
+
+    shared = _SharedClient()
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: shared)
+    monkeypatch.setattr(main, "load_carpark_records", _build_cache)
+
+    async with main.lifespan(main.app):
+        assert main._upstream_client is shared
+        assert not shared.closed
+
+    assert shared.closed
+    assert main._upstream_client is None

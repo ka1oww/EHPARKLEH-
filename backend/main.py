@@ -1,5 +1,10 @@
+import asyncio
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Query, HTTPException
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from uuid import uuid4
+
+from fastapi import FastAPI, Query, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, Literal
@@ -27,6 +32,17 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s %(name)s: %(message)s",
 )
 logger = logging.getLogger("ehparkleh")
+
+# Per-process correlation values. They contain no host/account data and let
+# runtime logs distinguish a normal cache refresh from a real process boot.
+PROCESS_BOOT_ID = uuid4().hex[:12]
+PROCESS_BOOTED_AT = datetime.now(timezone.utc).isoformat()
+PROCESS_BOOT_MONOTONIC = time.monotonic()
+
+# One upstream client is shared for the whole application lifetime so repeated
+# cache refreshes reuse connections. Tests may still inject a purpose-built
+# client into the cache accessors.
+_upstream_client: Optional[httpx.AsyncClient] = None
 
 # Google Places API config (used by the Phase 1 enrichment crawler).
 GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY", "")
@@ -57,10 +73,35 @@ MIN_RADIUS_M, MAX_RADIUS_M = 50, 2000
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     # Load the static carpark dataset once at startup.
-    global _carpark_cache
+    global _carpark_cache, _upstream_client
+    global _avail_refresh_task, _ev_refresh_task
     _carpark_cache = load_carpark_records()
-    logger.info("Loaded %d carparks from %s", len(_carpark_cache), _data_file().name)
-    yield
+    _upstream_client = httpx.AsyncClient(timeout=httpx.Timeout(20.0, connect=10.0))
+    logger.info(
+        "process_boot boot_id=%s booted_at=%s carparks=%d data_file=%s",
+        PROCESS_BOOT_ID,
+        PROCESS_BOOTED_AT,
+        len(_carpark_cache),
+        _data_file().name,
+    )
+    try:
+        yield
+    finally:
+        # A shutdown must not leave refresh tasks using a client that has just
+        # been closed. Cancellation does not alter the last-good snapshots.
+        refresh_tasks = [
+            task
+            for task in (_avail_refresh_task, _ev_refresh_task)
+            if task is not None and not task.done()
+        ]
+        for task in refresh_tasks:
+            task.cancel()
+        if refresh_tasks:
+            await asyncio.gather(*refresh_tasks, return_exceptions=True)
+        _avail_refresh_task = None
+        _ev_refresh_task = None
+        await _upstream_client.aclose()
+        _upstream_client = None
 
 
 app = FastAPI(title="EhParkLeh API", version="2", lifespan=lifespan)
@@ -84,6 +125,7 @@ app.add_middleware(
     allow_origins=ALLOWED_ORIGINS,
     allow_methods=["GET"],   # read-only API
     allow_headers=["*"],
+    expose_headers=["Server-Timing", "Timing-Allow-Origin"],
 )
 
 # ---------------------------------------------------------------------------
@@ -292,6 +334,24 @@ def load_carpark_records() -> list[dict]:
 # ---------------------------------------------------------------------------
 # _avail_cache holds the most recent parsed snapshot and the time it was taken.
 _avail_cache: dict = {"data": None, "fetched_at": 0.0}
+_avail_refresh_task: Optional[asyncio.Task[bool]] = None
+
+
+@dataclass
+class CacheTiming:
+    """Request-local cache metadata used for logs and Server-Timing."""
+
+    state: str = "empty"
+    refresh: str = "none"
+    duration_ms: float = 0.0
+
+
+def _active_upstream_client(client: Optional[httpx.AsyncClient] = None):
+    if client is not None:
+        return client
+    if _upstream_client is None:
+        raise RuntimeError("Upstream client is unavailable outside application lifespan")
+    return _upstream_client
 
 
 def _parse_availability(payload: dict) -> dict:
@@ -307,43 +367,119 @@ def _parse_availability(payload: dict) -> dict:
     return avail
 
 
-async def get_availability(client: Optional[httpx.AsyncClient] = None) -> dict:
-    """Return the availability map, using a ~60s TTL cache.
+async def _refresh_availability(client: Optional[httpx.AsyncClient] = None) -> bool:
+    """Fetch and atomically publish a new availability snapshot."""
+    global _avail_cache
 
-    Each search reuses the cached snapshot instead of re-fetching all
-    carparks. On a fetch error we log it and serve the last good snapshot
-    (or an empty map) rather than failing the whole request.
-    """
-    now = time.monotonic()
-    if (
-        _avail_cache["data"] is not None
-        and (now - _avail_cache["fetched_at"]) < AVAILABILITY_TTL_SECONDS
-    ):
-        return _avail_cache["data"]
-
-    own_client = client is None
-    if own_client:
-        client = httpx.AsyncClient(timeout=15)
+    started = time.perf_counter()
+    retained_snapshot = _avail_cache["data"] is not None
     try:
-        resp = await client.get(AVAILABILITY_URL)
+        upstream = _active_upstream_client(client)
+        resp = await upstream.get(AVAILABILITY_URL, timeout=15.0)
         resp.raise_for_status()
         avail = _parse_availability(resp.json())
-        _avail_cache["data"] = avail
-        _avail_cache["fetched_at"] = now
-        logger.info("Refreshed availability: %d carparks", len(avail))
-        return avail
+        # Replace the cache object only after fetch + parse both succeed, so a
+        # reader can observe either the complete old snapshot or complete new
+        # snapshot, never a partially updated pair of fields.
+        _avail_cache = {"data": avail, "fetched_at": time.monotonic()}
+        logger.info(
+            "upstream_refresh phase=availability result=success duration_ms=%.1f "
+            "records=%d boot_id=%s",
+            (time.perf_counter() - started) * 1000,
+            len(avail),
+            PROCESS_BOOT_ID,
+        )
+        return True
+    except asyncio.CancelledError:
+        logger.info(
+            "upstream_refresh phase=availability result=cancelled duration_ms=%.1f boot_id=%s",
+            (time.perf_counter() - started) * 1000,
+            PROCESS_BOOT_ID,
+        )
+        raise
+    except Exception as exc:
+        # Log only the exception class so upstream request details cannot leak
+        # into telemetry.
+        logger.warning(
+            "upstream_refresh phase=availability result=failure duration_ms=%.1f "
+            "cache_retained=%s error_type=%s boot_id=%s",
+            (time.perf_counter() - started) * 1000,
+            retained_snapshot,
+            type(exc).__name__,
+            PROCESS_BOOT_ID,
+        )
+        return False
+
+
+def _clear_availability_refresh(task: asyncio.Task[bool]) -> None:
+    global _avail_refresh_task
+    if _avail_refresh_task is task:
+        _avail_refresh_task = None
+    try:
+        task.result()
+    except asyncio.CancelledError:
+        pass
     except Exception:
-        logger.exception("Failed to fetch/parse availability feed")
-        # Serve stale data if we have it, else an empty map.
+        # _refresh_availability handles expected failures. Keep this guard so
+        # an unexpected programming error is still retrieved and visible.
+        logger.exception("Availability refresh task failed unexpectedly")
+
+
+def _start_availability_refresh(
+    client: Optional[httpx.AsyncClient] = None,
+) -> tuple[asyncio.Task[bool], str]:
+    """Return the one in-flight refresh task, creating it if needed."""
+    global _avail_refresh_task
+    if _avail_refresh_task is not None and not _avail_refresh_task.done():
+        return _avail_refresh_task, "inflight"
+    task = asyncio.create_task(
+        _refresh_availability(client), name="refresh-carpark-availability"
+    )
+    _avail_refresh_task = task
+    task.add_done_callback(_clear_availability_refresh)
+    return task, "scheduled"
+
+
+async def get_availability(
+    client: Optional[httpx.AsyncClient] = None,
+    timing: Optional[CacheTiming] = None,
+) -> dict:
+    """Return availability with stale-while-revalidate and single-flight fetches.
+
+    A cache hit is returned directly. An expired last-good snapshot is returned
+    immediately while one background task refreshes it. Only an empty cache
+    awaits the shared refresh task, preserving the cold-process behavior.
+    """
+    phase = timing if timing is not None else CacheTiming()
+    started = time.perf_counter()
+    try:
+        now = time.monotonic()
+        cached = _avail_cache["data"]
+        if (
+            cached is not None
+            and (now - _avail_cache["fetched_at"]) < AVAILABILITY_TTL_SECONDS
+        ):
+            phase.state = "hit"
+            return cached
+
+        task, refresh_state = _start_availability_refresh(client)
+        if cached is not None:
+            phase.state = "stale"
+            phase.refresh = f"background-{refresh_state}"
+            return cached
+
+        phase.state = "empty"
+        phase.refresh = f"awaited-{refresh_state}"
+        await task
         return _avail_cache["data"] or {}
     finally:
-        if own_client:
-            await client.aclose()
+        phase.duration_ms = (time.perf_counter() - started) * 1000
 
 
 # EV charger availability: {evCpId: status}, "0" occupied / "1" available /
 # "" | "100" not available. TTL-cached like the carpark feed.
 _ev_avail_cache: dict = {"data": None, "fetched_at": 0.0}
+_ev_refresh_task: Optional[asyncio.Task[bool]] = None
 
 
 def _parse_ev_availability(payload: dict) -> dict:
@@ -359,30 +495,18 @@ def _parse_ev_availability(payload: dict) -> dict:
     return status
 
 
-async def get_ev_availability(client: Optional[httpx.AsyncClient] = None) -> dict:
-    """Return {evCpId: status} from LTA DataMall's EVC batch feed, ~60s cached.
+async def _refresh_ev_availability(client: Optional[httpx.AsyncClient] = None) -> bool:
+    """Fetch and atomically publish a new EV connector snapshot."""
+    global _ev_avail_cache
 
-    Requires LTA_DATAMALL_KEY. Without it (or on error) we return the last good
-    snapshot or an empty map, so EV filtering keeps working and only the live
-    per-connector count degrades to unknown.
-    """
-    if not LTA_DATAMALL_KEY:
-        return {}
-
-    now = time.monotonic()
-    if (
-        _ev_avail_cache["data"] is not None
-        and (now - _ev_avail_cache["fetched_at"]) < EV_AVAILABILITY_TTL_SECONDS
-    ):
-        return _ev_avail_cache["data"]
-
-    own_client = client is None
-    if own_client:
-        client = httpx.AsyncClient(timeout=20)
+    started = time.perf_counter()
+    retained_snapshot = _ev_avail_cache["data"] is not None
     try:
-        meta = await client.get(
+        upstream = _active_upstream_client(client)
+        meta = await upstream.get(
             EVC_BATCH_URL,
             headers={"AccountKey": LTA_DATAMALL_KEY, "accept": "application/json"},
+            timeout=20.0,
         )
         meta.raise_for_status()
         value = meta.json().get("value") or []
@@ -390,19 +514,96 @@ async def get_ev_availability(client: Optional[httpx.AsyncClient] = None) -> dic
         if not link:
             raise RuntimeError("EVCBatch returned no download link")
         # The link is a short-lived (5 min) pre-signed S3 URL; download at once.
-        file_resp = await client.get(link)
+        file_resp = await upstream.get(link, timeout=20.0)
         file_resp.raise_for_status()
         status_map = _parse_ev_availability(file_resp.json())
-        _ev_avail_cache["data"] = status_map
-        _ev_avail_cache["fetched_at"] = now
-        logger.info("Refreshed EV availability: %d connectors", len(status_map))
-        return status_map
+        _ev_avail_cache = {"data": status_map, "fetched_at": time.monotonic()}
+        logger.info(
+            "upstream_refresh phase=ev result=success duration_ms=%.1f connectors=%d boot_id=%s",
+            (time.perf_counter() - started) * 1000,
+            len(status_map),
+            PROCESS_BOOT_ID,
+        )
+        return True
+    except asyncio.CancelledError:
+        logger.info(
+            "upstream_refresh phase=ev result=cancelled duration_ms=%.1f boot_id=%s",
+            (time.perf_counter() - started) * 1000,
+            PROCESS_BOOT_ID,
+        )
+        raise
+    except Exception as exc:
+        # Do not emit exception text or tracebacks here: failures downloading a
+        # signed batch URL can otherwise place that short-lived secret in logs.
+        logger.warning(
+            "upstream_refresh phase=ev result=failure duration_ms=%.1f "
+            "cache_retained=%s error_type=%s boot_id=%s",
+            (time.perf_counter() - started) * 1000,
+            retained_snapshot,
+            type(exc).__name__,
+            PROCESS_BOOT_ID,
+        )
+        return False
+
+
+def _clear_ev_refresh(task: asyncio.Task[bool]) -> None:
+    global _ev_refresh_task
+    if _ev_refresh_task is task:
+        _ev_refresh_task = None
+    try:
+        task.result()
+    except asyncio.CancelledError:
+        pass
     except Exception:
-        logger.exception("Failed to fetch/parse EV availability feed")
+        logger.exception("EV refresh task failed unexpectedly")
+
+
+def _start_ev_refresh(
+    client: Optional[httpx.AsyncClient] = None,
+) -> tuple[asyncio.Task[bool], str]:
+    """Return the one in-flight EV refresh task, creating it if needed."""
+    global _ev_refresh_task
+    if _ev_refresh_task is not None and not _ev_refresh_task.done():
+        return _ev_refresh_task, "inflight"
+    task = asyncio.create_task(_refresh_ev_availability(client), name="refresh-ev-availability")
+    _ev_refresh_task = task
+    task.add_done_callback(_clear_ev_refresh)
+    return task, "scheduled"
+
+
+async def get_ev_availability(
+    client: Optional[httpx.AsyncClient] = None,
+    timing: Optional[CacheTiming] = None,
+) -> dict:
+    """Return EV status with stale-while-revalidate and single-flight fetches."""
+    phase = timing if timing is not None else CacheTiming()
+    started = time.perf_counter()
+    try:
+        if not LTA_DATAMALL_KEY:
+            phase.state = "disabled"
+            return {}
+
+        now = time.monotonic()
+        cached = _ev_avail_cache["data"]
+        if (
+            cached is not None
+            and (now - _ev_avail_cache["fetched_at"]) < EV_AVAILABILITY_TTL_SECONDS
+        ):
+            phase.state = "hit"
+            return cached
+
+        task, refresh_state = _start_ev_refresh(client)
+        if cached is not None:
+            phase.state = "stale"
+            phase.refresh = f"background-{refresh_state}"
+            return cached
+
+        phase.state = "empty"
+        phase.refresh = f"awaited-{refresh_state}"
+        await task
         return _ev_avail_cache["data"] or {}
     finally:
-        if own_client:
-            await client.aclose()
+        phase.duration_ms = (time.perf_counter() - started) * 1000
 
 
 # ---------------------------------------------------------------------------
@@ -550,6 +751,7 @@ def filter_carparks(
 
 @app.get("/api/carparks", response_model=list[Carpark])
 async def get_carparks(
+    response: Response,
     lat: float = Query(..., ge=SG_LAT_MIN, le=SG_LAT_MAX),
     lon: float = Query(..., ge=SG_LON_MIN, le=SG_LON_MAX),
     radius: int = Query(500, ge=MIN_RADIUS_M, le=MAX_RADIUS_M),
@@ -559,18 +761,26 @@ async def get_carparks(
     has_ev: bool = Query(False, description="Only carparks with EV charging"),
     has_carwash: bool = Query(False, description="Only carparks with a self-service car wash"),
 ):
+    request_started = time.perf_counter()
     if not _carpark_cache:
         # Startup loads the cache asynchronously; guard against an empty cache.
         raise HTTPException(
             status_code=503, detail="Carpark data not loaded yet. Try again in a moment."
         )
 
-    availability = await get_availability()
-    # EV feed is ~60s-cached (at most one upstream call per minute across all
-    # traffic) and returns instantly with no key configured, so fetch it every
-    # time for consistent live counts on any EV carpark, filtered or not.
-    ev_availability = await get_ev_availability()
-    return filter_carparks(
+    availability_timing = CacheTiming()
+    ev_timing = CacheTiming()
+    # On an empty process both independent feeds may need a blocking first
+    # snapshot. Start them together instead of serialising their latency. Once
+    # populated, expired snapshots return immediately and refresh in the
+    # background through the same calls.
+    availability, ev_availability = await asyncio.gather(
+        get_availability(timing=availability_timing),
+        get_ev_availability(timing=ev_timing),
+    )
+
+    filter_started = time.perf_counter()
+    results = filter_carparks(
         lat=lat,
         lon=lon,
         radius=radius,
@@ -582,6 +792,48 @@ async def get_carparks(
         ev_availability=ev_availability,
         has_carwash=has_carwash,
     )
+    filter_ms = (time.perf_counter() - filter_started) * 1000
+    total_ms = (time.perf_counter() - request_started) * 1000
+
+    # Cache state and phase durations are intentionally visible to the browser
+    # so production latency can be attributed without exposing credentials or
+    # upstream URLs. Timing-Allow-Origin makes the header readable cross-origin.
+    response.headers["Server-Timing"] = ", ".join(
+        [
+            (
+                f'process_uptime;dur={(time.monotonic() - PROCESS_BOOT_MONOTONIC) * 1000:.1f};'
+                f'desc="{PROCESS_BOOT_ID}@{PROCESS_BOOTED_AT}"'
+            ),
+            (
+                f'availability;dur={availability_timing.duration_ms:.1f};desc="'
+                f'{availability_timing.state}:{availability_timing.refresh}"'
+            ),
+            (
+                f'ev;dur={ev_timing.duration_ms:.1f};desc="'
+                f'{ev_timing.state}:{ev_timing.refresh}"'
+            ),
+            f'local_filter;dur={filter_ms:.1f}',
+            f'total;dur={total_ms:.1f}',
+        ]
+    )
+    response.headers["Timing-Allow-Origin"] = "*"
+    logger.info(
+        "request_timing endpoint=carparks boot_id=%s "
+        "availability_state=%s availability_refresh=%s availability_ms=%.1f "
+        "ev_state=%s ev_refresh=%s ev_ms=%.1f local_filter_ms=%.1f "
+        "total_ms=%.1f results=%d",
+        PROCESS_BOOT_ID,
+        availability_timing.state,
+        availability_timing.refresh,
+        availability_timing.duration_ms,
+        ev_timing.state,
+        ev_timing.refresh,
+        ev_timing.duration_ms,
+        filter_ms,
+        total_ms,
+        len(results),
+    )
+    return results
 
 
 # Short TTL cache for the live OSM/Overpass layer, keyed by rounded coords +
