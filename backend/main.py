@@ -227,7 +227,7 @@ class OsmParking(BaseModel):
     capacity: Optional[str] = None
 
 
-# Carpark locations are static — loaded once at startup, never re-fetched.
+# Carpark locations are static: loaded once at startup, never re-fetched.
 _carpark_cache: list[dict] = []
 
 

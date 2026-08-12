@@ -4,7 +4,7 @@ build_enriched.py can void carparks that fall outside Singapore. Google/OSM pull
 in many Johor, Malaysia carparks near the Causeway and Second Link; these are not
 usable and must not appear.
 
-Output: sg_boundary.json — a list of polygon rings, each [[lat, lon], ...].
+Output: sg_boundary.json, a list of polygon rings, each [[lat, lon], ...].
 Run: backend/venv/bin/python enrich/crawl_sg_boundary.py
 """
 import json

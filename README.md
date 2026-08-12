@@ -209,8 +209,6 @@ frontend/                 React 19 + TypeScript + Vite
   android/  ios/          Capacitor native projects
 .github/workflows/ci.yml  lint, typecheck, test, build on push and PR
 render.yaml               backend service configuration
-V2_PLAN.md                the v2 build spec
-V2_BUILD_REPORT.md        what the v2 build delivered and what is outstanding
 ```
 
 ## Stack

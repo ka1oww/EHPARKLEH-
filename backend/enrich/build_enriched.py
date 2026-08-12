@@ -945,7 +945,7 @@ def main():
     final_svy = sum(1 for e in merged if e.get("geocode_source") == "svy21")
 
     lines = []
-    lines.append("# Enriched Carpark Dataset — Stats\n")
+    lines.append("# Enriched Carpark Dataset: Stats\n")
     lines.append(f"Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
     lines.append(f"**Total carparks:** {len(merged)}\n")
     lines.append("## By category\n")

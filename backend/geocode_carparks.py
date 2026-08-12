@@ -109,7 +109,7 @@ async def main():
             })
 
             if (i + 1) % 50 == 0:
-                print(f"  {i+1}/{len(records)} done — {failed} fell back to SVY21")
+                print(f"  {i+1}/{len(records)} done, {failed} fell back to SVY21")
 
             await asyncio.sleep(0.08)  # ~12 req/s, respectful rate
 

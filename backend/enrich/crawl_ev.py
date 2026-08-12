@@ -5,7 +5,7 @@ Points (Batch) API and save them to ev_points.json for the enrichment build.
 The Batch endpoint (EVCBatch) returns a short-lived (5 min) pre-signed S3 link
 to a single JSON file of every charging location and its connectors. We flatten
 each location to {name, address, lat, lon, postalCode, connectors:[...]}, where
-each connector carries its LTA-assigned evCpId — the stable id main.py uses to
+each connector carries its LTA-assigned evCpId, the stable id main.py uses to
 join live per-connector availability at request time.
 
 Needs LTA_DATAMALL_KEY (a free DataMall AccountKey) in backend/.env or the

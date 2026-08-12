@@ -75,7 +75,7 @@ def fetch_overpass(query: str) -> dict:
                     resp = client.post(endpoint, data={"data": query})
 
                 # 429 (too many requests) and 504 (gateway timeout) are the
-                # standard Overpass load-shedding codes — back off and retry.
+                # standard Overpass load-shedding codes: back off and retry.
                 if resp.status_code in (429, 504):
                     last_error = f"{endpoint} returned HTTP {resp.status_code}"
                     print(f"  [{endpoint}] HTTP {resp.status_code} (rate limited / busy)")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fetch the URA Central Area boundary (Master Plan 2019 planning areas) so HDB/URA
 short-term parking rates can be split into Central ($1.20/30min) vs non-Central
-($0.60/30min). Output: central_area.json — a list of polygon rings, each [ [lat,lon], ... ].
+($0.60/30min). Output: central_area.json, a list of polygon rings, each [ [lat,lon], ... ].
 """
 import json
 import os
