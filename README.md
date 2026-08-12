@@ -125,7 +125,12 @@ waits for its first refresh attempt; the availability refresh and any configured
 EV refresh start concurrently. After that, expired snapshots are served
 immediately while one single-flight background refresh per feed updates the
 cache. Refreshes share one connection-pooled HTTP client for the process
-lifetime, and a failed refresh preserves the last good snapshot.
+lifetime, and a failed refresh preserves the last good snapshot. Startup and
+`/health` schedule (but never wait for) refreshes of empty or expired caches so
+the existing keep-warm check also prepares a last-good snapshot for searches.
+Response headers expose each feed's cache state and snapshot freshness deadline;
+the frontend automatically downgrades expired, offline, or retained-after-error
+values and does not service-worker-cache live search results.
 
 Run the tests:
 
@@ -175,7 +180,17 @@ The frontend deploys to Vercel and the backend to Render, both from `main`. `ren
 
 ### Backend keep-warm
 
-GitHub Actions runs [`.github/workflows/keep-warm.yml`](.github/workflows/keep-warm.yml) every five minutes (`*/5 * * * *`) and supports a safe manual run through **Run workflow**. It sends only a GET request to the public health endpoint, `https://ehparkleh-backend.onrender.com/health`, to reduce the observed first-request delay. The request has connection and overall timeouts plus two retries, so a persistent failure remains visible in the workflow run. GitHub Actions schedules are best effort: runs can be delayed during periods of high load and may be disabled after 60 days without repository activity.
+GitHub Actions runs [`.github/workflows/keep-warm.yml`](.github/workflows/keep-warm.yml) every five minutes (`*/5 * * * *`) and supports a safe manual run through **Run workflow**. It sends only a GET request to the public health endpoint, `https://ehparkleh-backend.onrender.com/health`, to reduce the observed first-request delay. The health handler returns without waiting on upstream feeds, but single-flights any needed background cache refresh. The request has connection and overall timeouts plus two retries, so a persistent failure remains visible in the workflow run. GitHub Actions schedules are best effort: runs can be delayed during periods of high load and may be disabled after 60 days without repository activity.
+
+Run the production-readiness smoke check from the repository root:
+
+```bash
+./scripts/smoke-production.py --samples 5
+```
+
+It uses fixed public coordinates, records only counts and phase/cache/process
+timings, and exits non-zero on an incompatible or unhealthy response. See
+[`docs/production-readiness.md`](docs/production-readiness.md) for interpretation.
 
 **Frontend (Vercel).** Root directory `frontend/`, framework preset Vite (build `npm run build`, output `dist`). `VITE_API_BASE` can point at the backend; it falls back to the Render URL when unset, so no env var is strictly required.
 

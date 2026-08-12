@@ -9,6 +9,13 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useFavourites } from './useFavourites'
 import { useRecentSearches } from './useRecentSearches'
 import { InstallPrompt } from '@/components/InstallPrompt'
+import {
+  liveFeedFreshness,
+  nextLiveFeedFreshnessTransition,
+  readLiveFeedSnapshot,
+  SAVED_FEED_FRESHNESS,
+  type LiveFeedSnapshot,
+} from './freshness'
 import type {
   Carpark,
   OsmParking,
@@ -31,6 +38,32 @@ const API_BASE = import.meta.env.VITE_API_BASE || 'https://ehparkleh-backend.onr
 // Distance (m) below which a live-OSM pin is treated as the same carpark as an
 // already-deduped enriched entry, and dropped.
 const OSM_DEDUP_M = 60
+// OSM is a useful supplemental layer, but primary carpark results must not wait
+// for Overpass during a slow or failed request.
+const OSM_TIMEOUT_MS = 5_000
+
+function osmSearchKey(lat: number, lon: number, radius: number) {
+  return `${lat}:${lon}:${radius}`
+}
+
+async function fetchOptionalOsm(url: string, searchSignal: AbortSignal) {
+  const controller = new AbortController()
+  const cancel = () => controller.abort()
+  const timeout = setTimeout(cancel, OSM_TIMEOUT_MS)
+  if (searchSignal.aborted) cancel()
+  else searchSignal.addEventListener('abort', cancel, { once: true })
+
+  try {
+    const response = await fetch(url, { signal: controller.signal })
+    if (!response.ok) return { ok: false as const, data: [] as OsmParking[] }
+    return { ok: true as const, data: (await response.json()) as OsmParking[] }
+  } catch {
+    return { ok: false as const, data: [] as OsmParking[] }
+  } finally {
+    clearTimeout(timeout)
+    searchSignal.removeEventListener('abort', cancel)
+  }
+}
 
 // Rough great-circle distance in metres.
 function metresBetween(aLat: number, aLon: number, bLat: number, bLon: number): number {
@@ -127,9 +160,13 @@ export default function App() {
   const [osmParking, setOsmParking] = useState<OsmParking[]>([])
   const [center, setCenter] = useState<LatLon | null>(null)
   const [loading, setLoading] = useState(false)
-  // After a few seconds of loading, assume Render's free tier is cold-starting
-  // and soften the copy so a slow first request doesn't read as "broken".
+  const [preserveResultsWhileLoading, setPreserveResultsWhileLoading] = useState(false)
+  // A long request can be Render startup, empty application caches, network
+  // variance, or another dependency. Keep the delayed copy causal-neutral.
   const [slowLoad, setSlowLoad] = useState(false)
+  const [feedSnapshot, setFeedSnapshot] = useState<LiveFeedSnapshot | null>(null)
+  const [freshnessNow, setFreshnessNow] = useState(() => Date.now())
+  const [retainedResultsSaved, setRetainedResultsSaved] = useState(true)
   const [error, setError] = useState('')
   // Whether a search has run yet, so "0 results" reads as a neutral empty state
   // ("try a larger radius") rather than the initial "where are you parking" prompt.
@@ -139,6 +176,20 @@ export default function App() {
   const { isFavourite, toggle: toggleFavourite } = useFavourites()
   const { recents, add: addRecent, clear: clearRecents } = useRecentSearches()
   const [online, setOnline] = useState(() => navigator.onLine)
+  const feedFreshness = useMemo(
+    () =>
+      !online || retainedResultsSaved
+        ? SAVED_FEED_FRESHNESS
+        : liveFeedFreshness(feedSnapshot, freshnessNow),
+    [feedSnapshot, freshnessNow, online, retainedResultsSaved],
+  )
+  const nextFreshnessTransition = useMemo(
+    () =>
+      !online || retainedResultsSaved
+        ? null
+        : nextLiveFeedFreshnessTransition(feedSnapshot, freshnessNow),
+    [feedSnapshot, freshnessNow, online, retainedResultsSaved],
+  )
 
   // In-flight request controller (so a newer search cancels an older one) and
   // the filter-change debounce timer.
@@ -147,6 +198,7 @@ export default function App() {
   // abort. Only the newest request is allowed to publish state.
   const requestVersionRef = useRef(0)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const filterEffectReadyRef = useRef(false)
   // Live search inputs let debounced work use the current place and filters,
   // never stale captures. Track OSM freshness separately because it depends
   // only on location and radius, while new-location work also carries URL,
@@ -163,7 +215,7 @@ export default function App() {
     hasCarwash,
   })
   searchFiltersRef.current = { radius, category, freeSunPh, hasLots, hasEv, hasCarwash }
-  const lastFetchRadiusRef = useRef(radius)
+  const lastOsmSearchKeyRef = useRef<string | null>(null)
   const pendingOsmRef = useRef(false)
   const pendingNewLocationRef = useRef(false)
   const invalidateCurrentSearch = useCallback(() => {
@@ -179,11 +231,12 @@ export default function App() {
     async (
       lat: number,
       lon: number,
-      opts?: { includeOsm?: boolean; newLocation?: boolean },
+      opts?: { includeOsm?: boolean; newLocation?: boolean; preserveResults?: boolean },
     ) => {
       const filters = searchFiltersRef.current
       const includeOsm = opts?.includeOsm ?? true
       const newLocation = opts?.newLocation ?? true
+      const preserveResults = opts?.preserveResults ?? false
       searchCenterRef.current = { lat, lon }
       // A new-location search cancels any pending filter/radius refetch, so a
       // stale debounced request can't fire afterwards and snap back to the old
@@ -197,6 +250,7 @@ export default function App() {
       const ac = new AbortController()
       abortRef.current = ac
       const requestVersion = requestVersionRef.current
+      setPreserveResultsWhileLoading(preserveResults)
       setLoading(true)
       setError('')
       try {
@@ -211,35 +265,34 @@ export default function App() {
         if (filters.hasEv) params.set('has_ev', 'true')
         if (filters.hasCarwash) params.set('has_carwash', 'true')
 
-        const reqs: Promise<Response>[] = [
-          fetch(`${API_BASE}/api/carparks?${params.toString()}`, { signal: ac.signal }),
-        ]
-        if (includeOsm) {
-          reqs.push(
-            fetch(`${API_BASE}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${filters.radius}`, {
-              signal: ac.signal,
-            }),
-          )
-        }
-        const res = await Promise.all(reqs)
+        const osmPromise = includeOsm
+          ? fetchOptionalOsm(
+              `${API_BASE}/api/parking/osm?lat=${lat}&lon=${lon}&radius=${filters.radius}`,
+              ac.signal,
+            )
+          : undefined
+        const response = await fetch(`${API_BASE}/api/carparks?${params.toString()}`, {
+          signal: ac.signal,
+        })
         // A non-OK carparks response is a server error, not an empty result: let
         // it fall to the catch so the user sees "can't reach the server" rather
         // than a misleading empty state.
-        if (!res[0].ok) throw new Error(`carparks ${res[0].status}`)
-        const hdbData: Carpark[] = await res[0].json()
-        let osmData: OsmParking[] = []
-        if (includeOsm) osmData = res[1].ok ? await res[1].json() : []
+        if (!response.ok) throw new Error(`carparks ${response.status}`)
+        const hdbData: Carpark[] = await response.json()
+        const responseSnapshot = readLiveFeedSnapshot(response.headers)
 
         // `AbortController` is best-effort once a response has resolved. This
         // guard prevents an older response from winning a rapid filter race.
         if (requestVersion !== requestVersionRef.current) return
 
         setCarparks(hdbData)
+        setFeedSnapshot(responseSnapshot)
+        setFreshnessNow(Date.now())
+        setRetainedResultsSaved(false)
         if (includeOsm) {
-          setOsmParking(osmData)
-          // OSM is now current for this radius, so clear the pending-OSM debt.
-          lastFetchRadiusRef.current = filters.radius
-          pendingOsmRef.current = false
+          // Never mix OSM pins from the previous place/radius with the newly
+          // published primary results. The optional layer fills in separately.
+          setOsmParking([])
         }
         setCenter({ lat, lon })
         setSearched(true)
@@ -249,7 +302,7 @@ export default function App() {
           try {
             localStorage.setItem(
               'ehparkleh:last',
-              JSON.stringify({ carparks: hdbData, osmParking: osmData, center: { lat, lon }, ts: Date.now() }),
+              JSON.stringify({ carparks: hdbData, osmParking: [], center: { lat, lon }, ts: Date.now() }),
             )
           } catch {
             /* storage unavailable */
@@ -264,13 +317,45 @@ export default function App() {
             /* history unavailable */
           }
         }
+
+        if (osmPromise) {
+          void osmPromise.then((osmResult) => {
+            if (
+              !osmResult.ok ||
+              ac.signal.aborted ||
+              requestVersion !== requestVersionRef.current
+            ) return
+            setOsmParking(osmResult.data)
+            lastOsmSearchKeyRef.current = osmSearchKey(lat, lon, filters.radius)
+            pendingOsmRef.current = false
+            if (newLocation) {
+              try {
+                localStorage.setItem(
+                  'ehparkleh:last',
+                  JSON.stringify({
+                    carparks: hdbData,
+                    osmParking: osmResult.data,
+                    center: { lat, lon },
+                    ts: Date.now(),
+                  }),
+                )
+              } catch {
+                /* storage unavailable */
+              }
+            }
+          })
+        }
       } catch (err) {
         // A superseded request was aborted on purpose; keep the loading state for
         // the newer request that replaced it.
         if ((err as { name?: string })?.name === 'AbortError' || requestVersion !== requestVersionRef.current) return
+        setRetainedResultsSaved(true)
         setError("Can't reach the server right now. Please try again shortly.")
       } finally {
-        if (!ac.signal.aborted && requestVersion === requestVersionRef.current) setLoading(false)
+        if (!ac.signal.aborted && requestVersion === requestVersionRef.current) {
+          setLoading(false)
+          setPreserveResultsWhileLoading(false)
+        }
       }
     },
     [invalidateCurrentSearch],
@@ -278,7 +363,10 @@ export default function App() {
 
   // Track connectivity for the offline banner.
   useEffect(() => {
-    const on = () => setOnline(true)
+    const on = () => {
+      setFreshnessNow(Date.now())
+      setOnline(true)
+    }
     const off = () => setOnline(false)
     window.addEventListener('online', on)
     window.addEventListener('offline', off)
@@ -288,7 +376,17 @@ export default function App() {
     }
   }, [])
 
-  // Flip to the "waking the server" message if a request runs long.
+  useEffect(() => {
+    if (nextFreshnessTransition === null) return
+    const timer = window.setTimeout(
+      () => setFreshnessNow(Date.now()),
+      Math.max(0, nextFreshnessTransition - Date.now() + 1),
+    )
+    return () => window.clearTimeout(timer)
+  }, [nextFreshnessTransition])
+
+  // Use a truthful generic message when the primary request runs long. The
+  // browser cannot identify a platform wake until a response arrives.
   useEffect(() => {
     if (!loading) {
       setSlowLoad(false)
@@ -314,9 +412,13 @@ export default function App() {
       if (snap?.center) {
         setCarparks(snap.carparks || [])
         setOsmParking(snap.osmParking || [])
+        setFeedSnapshot(null)
+        setRetainedResultsSaved(true)
         setCenter(snap.center)
         setSearched(true)
-        if (navigator.onLine) runSearch(snap.center.lat, snap.center.lon)
+        if (navigator.onLine) {
+          runSearch(snap.center.lat, snap.center.lon, { preserveResults: true })
+        }
       }
     } catch {
       /* ignore malformed snapshot / URL */
@@ -328,14 +430,20 @@ export default function App() {
   // stay in sync. Debounced so rapid chip toggling issues one request, and OSM
   // is refetched only when its location or radius inputs actually change.
   useEffect(() => {
+    // The location-restoration effect directly starts the first search. Do not
+    // schedule the same unchanged filters again 250 ms later.
+    if (!filterEffectReadyRef.current) {
+      filterEffectReadyRef.current = true
+      return
+    }
     const target = searchCenterRef.current ?? centerRef.current
     if (!target) return
-    // OSM depends only on lat/lon/radius, so refetch it only when the radius has
-    // changed since the last fetch. A new-location search also needs OSM even
-    // when it uses the same radius. Recompute this from the settled inputs so
-    // reverting a rapid radius change does not leave stale OSM work pending.
+    // OSM depends only on lat/lon/radius. Compare that full key with the last
+    // successful optional response, so an aborted OSM request is retried while
+    // reverting a rapid radius change to a known key creates no extra request.
     pendingOsmRef.current =
-      pendingNewLocationRef.current || radius !== lastFetchRadiusRef.current
+      pendingNewLocationRef.current ||
+      osmSearchKey(target.lat, target.lon, radius) !== lastOsmSearchKeyRef.current
     clearTimeout(debounceRef.current)
     debounceRef.current = setTimeout(() => {
       const c = searchCenterRef.current ?? centerRef.current
@@ -355,6 +463,7 @@ export default function App() {
     try {
       const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(query)}`)
       if (!res.ok) {
+        setRetainedResultsSaved(true)
         setError("Couldn't find that place. Try another search.")
         setLoading(false)
         return
@@ -363,6 +472,7 @@ export default function App() {
       await runSearch(lat, lon)
       addRecent(query, lat, lon)
     } catch {
+      setRetainedResultsSaved(true)
       setError("Can't reach the server right now. Please try again shortly.")
       setLoading(false)
     }
@@ -568,6 +678,15 @@ export default function App() {
           </div>
         </div>
       )}
+      {searched && feedFreshness.availability !== 'fresh' && carparks.some((cp) => cp.lots_available !== null) && (
+        <div className="shrink-0 bg-amber-500/15 px-4 py-2" role="status">
+          <div className="mx-auto w-full max-w-screen-2xl text-sm font-medium text-amber-800">
+            {feedFreshness.availability === 'recent'
+              ? 'Lot counts are from a recent update and may be out of date.'
+              : 'Showing saved lot counts. They may be out of date.'}
+          </div>
+        </div>
+      )}
 
       <InstallPrompt />
 
@@ -617,15 +736,20 @@ export default function App() {
                   role="status"
                   aria-live="polite"
                 >
-                  {slowLoad ? 'Waking the server, hang tight…' : 'Finding spots…'}
+                  {slowLoad
+                    ? 'Live parking data is taking longer than usual…'
+                    : preserveResultsWhileLoading
+                      ? 'Refreshing saved spots…'
+                      : 'Finding spots…'}
                 </p>
-                {[0, 1, 2].map((i) => (
-                  <Skeleton key={i} className="h-28 w-full rounded-xl" />
-                ))}
+                {!preserveResultsWhileLoading &&
+                  [0, 1, 2].map((i) => (
+                    <Skeleton key={i} className="h-28 w-full rounded-xl" />
+                  ))}
               </>
             )}
 
-            {!loading && totalNearby > 0 && (
+            {(!loading || preserveResultsWhileLoading) && totalNearby > 0 && (
               <div className="flex items-center justify-between gap-2 px-0.5">
                 <p className="text-sm font-medium text-slate-body" aria-live="polite">
                   <span className="font-data font-bold text-ink tabular-nums">{totalNearby}</span>{' '}
@@ -685,7 +809,7 @@ export default function App() {
               </div>
             )}
 
-            {!loading &&
+            {(!loading || preserveResultsWhileLoading) &&
               sortedParking.map((entry, i) => (
                 <CarparkCard
                   key={entry.id}
@@ -695,6 +819,8 @@ export default function App() {
                   onSelect={handleSelectEntry}
                   isFavourite={isFavourite(entry.id)}
                   onToggleFavourite={toggleFavourite}
+                  availabilityFreshness={feedFreshness.availability}
+                  evFreshness={feedFreshness.ev}
                 />
               ))}
           </div>
@@ -722,6 +848,7 @@ export default function App() {
                       onSelect={setSelected}
                       userLocation={userLocation}
                       visible={mobileTab === 'map'}
+                      availabilityFreshness={feedFreshness.availability}
                     />
                   </Suspense>
                 </>

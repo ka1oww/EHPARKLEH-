@@ -9,7 +9,18 @@ vi.mock('./geo', () => ({ getCurrentPosition: vi.fn(() => Promise.reject(new Err
 
 import App from './App'
 
-const okJson = (data: unknown) => ({ ok: true, status: 200, json: async () => data })
+const okJson = (data: unknown, headerValues: Record<string, string> = {}) => ({
+  ok: true,
+  status: 200,
+  headers: new Headers(headerValues),
+  json: async () => data,
+})
+
+const liveHeaders = (freshUntil: number) => ({
+  'X-EhParkLeh-Availability-State': 'hit',
+  'X-EhParkLeh-Availability-Fresh-Until': new Date(freshUntil).toISOString(),
+  'X-EhParkLeh-Ev-State': 'disabled',
+})
 
 const carpark = (id: string, address = id) => ({
   id,
@@ -42,11 +53,204 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  vi.useRealTimers()
   vi.unstubAllGlobals()
   vi.restoreAllMocks()
 })
 
 describe('App search result states', () => {
+  it('does not duplicate the initial deep-link search after the filter debounce', async () => {
+    vi.useFakeTimers()
+    const fetchMock = vi.fn(async (_input: RequestInfo | URL) => okJson([]))
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(250)
+    })
+
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).includes('/api/carparks'))).toHaveLength(1)
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).includes('/api/parking/osm'))).toHaveLength(1)
+    vi.useRealTimers()
+  })
+
+  it('publishes primary carpark results without waiting for optional OSM', async () => {
+    let resolveOsm: ((response: ReturnType<typeof okJson>) => void) | undefined
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      if (String(input).includes('/api/parking/osm')) {
+        return new Promise((resolve) => { resolveOsm = resolve })
+      }
+      return Promise.resolve(okJson([carpark('primary-result', 'Primary result')]))
+    })
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+
+    expect(await screen.findByText('Primary result')).toBeInTheDocument()
+    expect(screen.queryByText(/Finding spots/i)).not.toBeInTheDocument()
+    await act(async () => { resolveOsm?.(okJson([])) })
+  })
+
+  it('keeps primary results when the optional OSM request fails', async () => {
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      if (String(input).includes('/api/parking/osm')) {
+        return Promise.resolve({ ok: false, status: 503, json: async () => ({}) })
+      }
+      return Promise.resolve(okJson([carpark('fallback-result', 'Fallback result')]))
+    })
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+
+    expect(await screen.findByText('Fallback result')).toBeInTheDocument()
+    expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()
+  })
+
+  it('bounds an optional OSM timeout without blocking or removing primary results', async () => {
+    vi.useFakeTimers()
+    const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (String(input).includes('/api/parking/osm')) {
+        return new Promise((_resolve, reject) => {
+          init?.signal?.addEventListener('abort', () => reject(new DOMException('timed out', 'AbortError')))
+        })
+      }
+      return Promise.resolve(okJson([carpark('timeout-result', 'Timeout result')]))
+    })
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+    await act(async () => {
+      await Promise.resolve()
+    })
+    expect(screen.getByText('Timeout result')).toBeInTheDocument()
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(5_000)
+    })
+    expect(screen.getByText('Timeout result')).toBeInTheDocument()
+    expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()
+    vi.useRealTimers()
+  })
+
+  it('keeps saved results visible and labelled during a slow live refresh', async () => {
+    window.history.replaceState(null, '', '/')
+    localStorage.setItem(
+      'ehparkleh:last',
+      JSON.stringify({
+        carparks: [carpark('saved-result', 'Saved result')],
+        osmParking: [],
+        center: { lat: 1.37, lon: 103.85 },
+        ts: 0,
+      }),
+    )
+    let resolvePrimary: ((response: ReturnType<typeof okJson>) => void) | undefined
+    vi.stubGlobal(
+      'fetch',
+      vi.fn((input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? new Promise((resolve) => { resolvePrimary = resolve })
+          : Promise.resolve(okJson([])),
+      ),
+    )
+
+    render(<App />)
+
+    expect(await screen.findByText('Saved result')).toBeInTheDocument()
+    expect(screen.getByText('Saved')).toBeInTheDocument()
+    expect(screen.getByText(/Refreshing saved spots/i)).toBeInTheDocument()
+    await act(async () => { resolvePrimary?.(okJson([carpark('fresh-result', 'Fresh result')])) })
+  })
+
+  it('downgrades live results when the feed snapshot deadline passes', async () => {
+    vi.useFakeTimers()
+    vi.setSystemTime(new Date('2026-08-09T11:00:00.000Z'))
+    const freshUntil = Date.now() + 1_000
+    vi.stubGlobal(
+      'fetch',
+      vi.fn((input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? Promise.resolve(okJson([carpark('aging-result', 'Aging result')], liveHeaders(freshUntil)))
+          : Promise.resolve(okJson([])),
+      ),
+    )
+
+    render(<App />)
+    await act(async () => { await Promise.resolve() })
+    expect(screen.getByText('Live')).toBeInTheDocument()
+
+    await act(async () => { await vi.advanceTimersByTimeAsync(1_001) })
+    expect(screen.getByText('Recent')).toBeInTheDocument()
+    expect(screen.getByText(/Lot counts are from a recent update/i)).toBeInTheDocument()
+    expect(screen.queryByText(/refresh runs/i)).not.toBeInTheDocument()
+
+    await act(async () => { await vi.advanceTimersByTimeAsync(120_000) })
+    expect(screen.getByText('Saved')).toBeInTheDocument()
+  })
+
+  it('labels retained live results saved when the browser goes offline', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn((input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? Promise.resolve(okJson([carpark('offline-result', 'Offline result')], liveHeaders(Date.now() + 60_000)))
+          : Promise.resolve(okJson([])),
+      ),
+    )
+
+    render(<App />)
+    expect(await screen.findByText('Offline result')).toBeInTheDocument()
+    expect(screen.getByText('Live')).toBeInTheDocument()
+
+    act(() => window.dispatchEvent(new Event('offline')))
+    expect(screen.getByText('Saved')).toBeInTheDocument()
+  })
+
+  it('labels previous live results saved when a later search errors', async () => {
+    let primaryCalls = 0
+    vi.stubGlobal(
+      'fetch',
+      vi.fn((input: RequestInfo | URL) => {
+        if (!String(input).includes('/api/carparks')) return Promise.resolve(okJson([]))
+        primaryCalls += 1
+        return Promise.resolve(
+          primaryCalls === 1
+            ? okJson([carpark('retained-result', 'Retained result')], liveHeaders(Date.now() + 60_000))
+            : { ok: false, status: 503, headers: new Headers(), json: async () => ({}) },
+        )
+      }),
+    )
+
+    render(<App />)
+    expect(await screen.findByText('Retained result')).toBeInTheDocument()
+    expect(screen.getByText('Live')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: /EV charging/i }))
+    expect(await screen.findByText(/Can't reach the server/i)).toBeInTheDocument()
+    expect(screen.getByText('Retained result')).toBeInTheDocument()
+    expect(screen.getByText('Saved')).toBeInTheDocument()
+  })
+
+  it('uses causal-neutral copy for a slow primary request', async () => {
+    vi.useFakeTimers()
+    vi.stubGlobal(
+      'fetch',
+      vi.fn((input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? new Promise(() => {})
+          : Promise.resolve(okJson([])),
+      ),
+    )
+
+    render(<App />)
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(4_000)
+    })
+
+    expect(screen.getByText(/Live parking data is taking longer than usual/i)).toBeInTheDocument()
+    expect(screen.queryByText(/Waking the server/i)).not.toBeInTheDocument()
+    vi.useRealTimers()
+  })
+
   it('shows a neutral empty state (not an error) when a search returns nothing', async () => {
     vi.stubGlobal(
       'fetch',
@@ -76,7 +280,9 @@ describe('App search result states', () => {
     render(<App />)
 
     expect(getCurrentPosition).not.toHaveBeenCalled()
-    fireEvent.click(screen.getByRole('button', { name: /near me/i }))
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: /near me/i }))
+    })
     expect(getCurrentPosition).toHaveBeenCalledOnce()
   })
 
@@ -130,6 +336,30 @@ describe('App search result states', () => {
 
     expect(fetchMock.mock.calls.filter(([url]) => String(url).includes('/api/carparks'))).toHaveLength(2)
     expect(fetchMock.mock.calls.filter(([url]) => String(url).includes('/api/parking/osm'))).toHaveLength(1)
+    vi.useRealTimers()
+  })
+
+  it('retries OSM when a filter aborts the still-pending optional request', async () => {
+    vi.useFakeTimers()
+    let osmCalls = 0
+    const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (!String(input).includes('/api/parking/osm')) return Promise.resolve(okJson([]))
+      osmCalls += 1
+      if (osmCalls > 1) return Promise.resolve(okJson([]))
+      return new Promise((_resolve, reject) => {
+        init?.signal?.addEventListener('abort', () => reject(new DOMException('superseded', 'AbortError')))
+      })
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    render(<App />)
+
+    await act(async () => {})
+    fireEvent.click(screen.getByRole('button', { name: /EV charging/i }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(250)
+    })
+
+    expect(osmCalls).toBe(2)
     vi.useRealTimers()
   })
 
@@ -265,7 +495,9 @@ describe('App search result states', () => {
       await Promise.resolve()
     })
 
-    const destinationRequest = fetchMock.mock.calls.find(([url]) => String(url).includes('lat=1.4'))
+    const destinationRequest = fetchMock.mock.calls.find(([url]) =>
+      String(url).includes('/api/carparks') && String(url).includes('lat=1.4'),
+    )
     expect(String(destinationRequest?.[0])).toContain('has_ev=true')
     expect(screen.getByText('Geocoded result')).toBeInTheDocument()
     vi.useRealTimers()
@@ -296,7 +528,9 @@ describe('App search result states', () => {
       await Promise.resolve()
     })
 
-    const destinationRequest = fetchMock.mock.calls.find(([url]) => String(url).includes('lat=1.4'))
+    const destinationRequest = fetchMock.mock.calls.find(([url]) =>
+      String(url).includes('/api/carparks') && String(url).includes('lat=1.4'),
+    )
     expect(String(destinationRequest?.[0])).toContain('has_ev=true')
     expect(screen.getByText('Nearby result')).toBeInTheDocument()
     vi.useRealTimers()

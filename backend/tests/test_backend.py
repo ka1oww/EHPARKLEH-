@@ -3,7 +3,9 @@
 import asyncio
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
+from unittest.mock import Mock
 
 import pytest
 
@@ -268,7 +270,12 @@ async def test_availability_parse_and_cache():
 @pytest.mark.asyncio
 async def test_availability_hit_is_fast_and_does_not_refresh():
     snapshot = {"A": {"lots_available": 8, "total_lots": 20}}
-    main._avail_cache = {"data": snapshot, "fetched_at": time.monotonic()}
+    fresh_until = time.time() + main.AVAILABILITY_TTL_SECONDS
+    main._avail_cache = {
+        "data": snapshot,
+        "fetched_at": time.monotonic(),
+        "fresh_until": fresh_until,
+    }
 
     class _ExplodingClient:
         calls = 0
@@ -289,6 +296,7 @@ async def test_availability_hit_is_fast_and_does_not_refresh():
     assert client.calls == 0
     assert timing.state == "hit"
     assert timing.refresh == "none"
+    assert timing.fresh_until == fresh_until
     assert (time.perf_counter() - started) < FAST_PATH_TIMEOUT
 
 
@@ -313,6 +321,7 @@ def _expired(snapshot):
     return {
         "data": snapshot,
         "fetched_at": time.monotonic() - main.AVAILABILITY_TTL_SECONDS - 1,
+        "fresh_until": time.time() - 1,
     }
 
 
@@ -381,6 +390,24 @@ async def test_failed_availability_refresh_retains_last_good_snapshot():
 
 
 @pytest.mark.asyncio
+async def test_availability_timeout_retains_last_good_snapshot():
+    stale = {"A": {"lots_available": 7, "total_lots": 10}}
+    old_cache = _expired(stale)
+    main._avail_cache = old_cache
+
+    class _TimeoutClient:
+        async def get(self, _url, **_kwargs):
+            raise main.httpx.ReadTimeout("controlled test timeout")
+
+    assert await main.get_availability(client=_TimeoutClient()) is stale
+    refresh = main._avail_refresh_task
+    assert refresh is not None
+    assert await asyncio.wait_for(refresh, timeout=ASYNC_TEST_TIMEOUT) is False
+    assert main._avail_cache is old_cache
+    assert main._avail_cache["data"] is stale
+
+
+@pytest.mark.asyncio
 async def test_empty_availability_waits_for_first_snapshot_and_is_bounded():
     client = _BlockingAvailabilityClient()
     request = asyncio.create_task(main.get_availability(client=client))
@@ -437,7 +464,12 @@ class _BlockingEVClient:
 async def test_ev_hit_does_not_refresh(monkeypatch):
     monkeypatch.setattr(main, "LTA_DATAMALL_KEY", "test-key")
     snapshot = {"EV1": "1"}
-    main._ev_avail_cache = {"data": snapshot, "fetched_at": time.monotonic()}
+    fresh_until = time.time() + main.EV_AVAILABILITY_TTL_SECONDS
+    main._ev_avail_cache = {
+        "data": snapshot,
+        "fetched_at": time.monotonic(),
+        "fresh_until": fresh_until,
+    }
     client = _BlockingEVClient()
     timing = main.CacheTiming()
 
@@ -449,6 +481,7 @@ async def test_ev_hit_does_not_refresh(monkeypatch):
     assert client.calls == []
     assert timing.state == "hit"
     assert timing.refresh == "none"
+    assert timing.fresh_until == fresh_until
 
 
 @pytest.mark.asyncio
@@ -458,6 +491,7 @@ async def test_concurrent_stale_ev_requests_start_one_two_step_refresh(monkeypat
     old_cache = {
         "data": stale,
         "fetched_at": time.monotonic() - main.EV_AVAILABILITY_TTL_SECONDS - 1,
+        "fresh_until": time.time() - 1,
     }
     main._ev_avail_cache = old_cache
     client = _BlockingEVClient()
@@ -487,6 +521,7 @@ async def test_failed_ev_refresh_retains_last_good_snapshot(monkeypatch):
     old_cache = {
         "data": stale,
         "fetched_at": time.monotonic() - main.EV_AVAILABILITY_TTL_SECONDS - 1,
+        "fresh_until": time.time() - 1,
     }
     main._ev_avail_cache = old_cache
     client = _BlockingEVClient(fail=True)
@@ -550,10 +585,49 @@ async def test_feed_failures_are_independent(monkeypatch, failing_phase):
 
 
 @pytest.mark.asyncio
+async def test_cache_priming_is_non_blocking_and_single_flight(monkeypatch):
+    monkeypatch.setattr(main, "LTA_DATAMALL_KEY", "test-key")
+    client = _IndependentFeedsClient(failing_phase=None)
+
+    first = main.prime_live_feed_caches(trigger="test", client=client)
+    availability_task = main._avail_refresh_task
+    ev_task = main._ev_refresh_task
+    second = main.prime_live_feed_caches(trigger="test", client=client)
+
+    assert first == {"availability": "empty", "ev": "empty"}
+    assert second == first
+    assert main._avail_refresh_task is availability_task
+    assert main._ev_refresh_task is ev_task
+    assert availability_task is not None and ev_task is not None
+
+    assert await asyncio.wait_for(availability_task, timeout=ASYNC_TEST_TIMEOUT) is True
+    assert await asyncio.wait_for(ev_task, timeout=ASYNC_TEST_TIMEOUT) is True
+    await asyncio.sleep(0)
+
+    assert main.prime_live_feed_caches(trigger="test", client=client) == {
+        "availability": "hit",
+        "ev": "hit",
+    }
+    assert main._avail_refresh_task is None
+    assert main._ev_refresh_task is None
+
+
+@pytest.mark.asyncio
+async def test_health_schedules_cache_readiness_without_changing_payload(monkeypatch):
+    prime = Mock()
+    monkeypatch.setattr(main, "prime_live_feed_caches", prime)
+    monkeypatch.setattr(main, "_carpark_cache", _build_cache())
+
+    assert await main.health() == {"status": "ok", "carparks_loaded": 3}
+    prime.assert_called_once_with(trigger="health")
+
+
+@pytest.mark.asyncio
 async def test_carparks_fetches_feeds_concurrently_and_exposes_timing(monkeypatch):
     monkeypatch.setattr(main, "_carpark_cache", _build_cache())
     both_started = asyncio.Event()
     started = set()
+    fresh_until = time.time() + 30
 
     async def fake_feed(name, timing, result):
         started.add(name)
@@ -563,6 +637,7 @@ async def test_carparks_fetches_feeds_concurrently_and_exposes_timing(monkeypatc
         timing.state = "stale"
         timing.refresh = "background-scheduled"
         timing.duration_ms = 0.4
+        timing.fresh_until = fresh_until
         return result
 
     async def fake_availability(*, timing, **_kwargs):
@@ -602,6 +677,53 @@ async def test_carparks_fetches_feeds_concurrently_and_exposes_timing(monkeypatc
     assert "local_filter;dur=" in server_timing
     assert "total;dur=" in server_timing
     assert response.headers["timing-allow-origin"] == "*"
+    assert response.headers["x-ehparkleh-availability-state"] == "stale"
+    assert response.headers["x-ehparkleh-ev-state"] == "stale"
+    expected_fresh_until = datetime.fromtimestamp(fresh_until, timezone.utc).isoformat()
+    assert response.headers["x-ehparkleh-availability-fresh-until"] == expected_fresh_until
+    assert response.headers["x-ehparkleh-ev-fresh-until"] == expected_fresh_until
+    assert datetime.fromisoformat(response.headers["x-ehparkleh-generated-at"]).tzinfo
+    assert response.headers["cache-control"] == "no-store"
+
+
+@pytest.mark.asyncio
+async def test_osm_identifies_the_app_to_overpass(monkeypatch):
+    request = {}
+
+    class _OsmResponse:
+        def json(self):
+            return {
+                "elements": [
+                    {
+                        "type": "node",
+                        "id": 42,
+                        "lat": 1.3324,
+                        "lon": 103.8475,
+                        "tags": {"amenity": "parking", "name": "Test parking"},
+                    }
+                ]
+            }
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, url, **kwargs):
+            request.update(url=url, **kwargs)
+            return _OsmResponse()
+
+    monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+    results = await main.parking_osm(lat=1.3323, lon=103.8474, radius=500)
+
+    assert request["url"] == "https://overpass-api.de/api/interpreter"
+    assert request["headers"] == {"User-Agent": main.OVERPASS_USER_AGENT}
+    assert results[0].id == "osm_42"
+    assert results[0].name == "Test parking"
 
 
 @pytest.mark.asyncio

@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
 import { getAvailability, availColor, type AvailState } from './availability'
+import type { FeedFreshness } from './freshness'
 import type { Carpark, OsmParking, LatLon } from './types'
 
 const pIcon = L.divIcon({
@@ -42,15 +43,25 @@ function clusterIcon(cluster: L.MarkerCluster): L.DivIcon {
 }
 
 // LED-style availability chip rendered inside Leaflet popups.
-function ledChipHtml(state: AvailState, available: number | null, total: number | null): string {
+function ledChipHtml(
+  state: AvailState,
+  available: number | null,
+  total: number | null,
+  freshness: FeedFreshness,
+): string {
   const dot = availColor(state)
   const text =
     state === 'nodata' ? 'NO DATA' : `${available} <span style="opacity:.55">/ ${total}</span> LOTS`
+  const freshnessLabel =
+    state !== 'nodata' && freshness !== 'fresh'
+      ? `<span style="font-size:9px;letter-spacing:.08em;opacity:.7">${freshness === 'recent' ? 'RECENT' : 'SAVED'}</span>`
+      : ''
   return (
     `<span class="led-popup-chip">` +
     `<span style="width:7px;height:7px;border-radius:999px;background:${dot};box-shadow:0 0 5px ${dot}"></span>` +
     `<span style="opacity:.55">P</span>` +
     `<span style="color:${dot}">${text}</span>` +
+    freshnessLabel +
     `</span>`
   )
 }
@@ -131,6 +142,7 @@ interface MapProps {
   onSelect: (id: string | null) => void
   userLocation: LatLon | null
   visible: boolean
+  availabilityFreshness?: FeedFreshness
 }
 
 interface MarkerMeta {
@@ -142,8 +154,13 @@ interface MarkerMeta {
 // API responses are freshly allocated even when their marker-relevant content
 // is unchanged. Use values, rather than array identity, to avoid rebuilding a
 // large Leaflet cluster group for an equivalent response.
-function markerSignature(carparks: Carpark[], osmParking: OsmParking[]): string {
+function markerSignature(
+  carparks: Carpark[],
+  osmParking: OsmParking[],
+  availabilityFreshness: FeedFreshness,
+): string {
   return [
+    availabilityFreshness,
     ...carparks.map((cp) => [
       'h', cp.id, cp.lat, cp.lon, cp.address, cp.distance_m, cp.lots_available,
       cp.total_lots, cp.rate.known, cp.rate.summary,
@@ -171,6 +188,7 @@ function Map({
   onSelect,
   userLocation,
   visible,
+  availabilityFreshness = 'fresh',
 }: MapProps) {
   const mapRef = useRef<HTMLDivElement>(null)
   const instanceRef = useRef<L.Map | null>(null)
@@ -187,8 +205,8 @@ function Map({
   const selectedRef = useRef<string | null>(selected)
   selectedRef.current = selected
   const currentMarkerSignature = useMemo(
-    () => markerSignature(carparks, osmParking),
-    [carparks, osmParking],
+    () => markerSignature(carparks, osmParking, availabilityFreshness),
+    [availabilityFreshness, carparks, osmParking],
   )
   const currentSpatialSignature = useMemo(
     () => spatialSignature(center, carparks, osmParking),
@@ -267,7 +285,7 @@ function Map({
             `${i + 1}. ${cp.address}`,
             cp.distance_m,
             cp.rate.known ? cp.rate.summary : 'Rate unknown',
-            ledChipHtml(a.state, a.available, a.total),
+            ledChipHtml(a.state, a.available, a.total, availabilityFreshness),
             cp.lat,
             cp.lon,
           ),

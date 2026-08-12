@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { AvailabilityChip } from '@/components/AvailabilityChip'
 import { parseFreeParking } from '@/rules'
+import type { FeedFreshness } from '@/freshness'
 import type { ParkingEntry } from '@/types'
 
 interface Props {
@@ -13,6 +14,8 @@ interface Props {
   onSelect: (id: string) => void
   isFavourite: boolean
   onToggleFavourite: (id: string) => void
+  availabilityFreshness?: FeedFreshness
+  evFreshness?: FeedFreshness
 }
 
 function gmapsHref(lat: number, lon: number): string {
@@ -101,11 +104,31 @@ function StarButton({ active, onClick }: { active: boolean; onClick: () => void 
   )
 }
 
-function LiveBadge() {
+function LiveBadge({ freshness }: { freshness: FeedFreshness }) {
+  const label = freshness === 'fresh' ? 'Live' : freshness === 'recent' ? 'Recent' : 'Saved'
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-avail-free/12 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-avail-free uppercase">
-      <span className="led-dot-live size-1.5 rounded-full bg-avail-free" aria-hidden="true" />
-      Live
+    <span
+      className={cn(
+        'inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[10px] font-bold tracking-wide uppercase',
+        freshness === 'fresh'
+          ? 'bg-avail-free/12 text-avail-free'
+          : freshness === 'recent'
+            ? 'bg-amber-500/15 text-amber-700'
+            : 'bg-slate-500/12 text-slate-600',
+      )}
+    >
+      <span
+        className={cn(
+          'size-1.5 rounded-full',
+          freshness === 'fresh'
+            ? 'led-dot-live bg-avail-free'
+            : freshness === 'recent'
+              ? 'bg-amber-500'
+              : 'bg-slate-400',
+        )}
+        aria-hidden="true"
+      />
+      {label}
     </span>
   )
 }
@@ -117,19 +140,24 @@ function EvBadge({
   available,
   total,
   maxPowerKw,
+  freshness,
 }: {
   available: number | null
   total: number | null
   maxPowerKw: number | null
+  freshness: FeedFreshness
 }) {
   const hasLive = available !== null && total !== null
   const free = hasLive && available > 0
   const fast = typeof maxPowerKw === 'number' && maxPowerKw >= 43
-  const label = hasLive
+  const countLabel = hasLive
     ? `${available}/${total} chargers free`
     : total
       ? `EV · ${total} chargers`
       : 'EV charging'
+  const label = hasLive && freshness !== 'fresh'
+    ? `${countLabel} · ${freshness === 'recent' ? 'recent' : 'saved'}`
+    : countLabel
   return (
     <span
       className={cn(
@@ -161,7 +189,16 @@ function FreeSunPhPill({ text }: { text: string }) {
   )
 }
 
-function CarparkCardImpl({ entry, rank, selected, onSelect, isFavourite, onToggleFavourite }: Props) {
+function CarparkCardImpl({
+  entry,
+  rank,
+  selected,
+  onSelect,
+  isFavourite,
+  onToggleFavourite,
+  availabilityFreshness = 'fresh',
+  evFreshness = 'fresh',
+}: Props) {
   // A stretched, transparent <button> (behind the content) is the select action:
   // it is keyboard-focusable and screen-reader-labelled, and the content layer is
   // pointer-events-none so a tap anywhere falls through to it, while the star /
@@ -264,12 +301,13 @@ function CarparkCardImpl({ entry, rank, selected, onSelect, isFavourite, onToggl
 
             <div className="mt-2.5 flex flex-wrap items-center gap-2">
               <AvailabilityChip available={entry.lots_available} total={entry.total_lots} />
-              {isLive && <LiveBadge />}
+              {isLive && <LiveBadge freshness={availabilityFreshness} />}
               {entry.ev && (
                 <EvBadge
                   available={entry.ev_available}
                   total={entry.ev_total}
                   maxPowerKw={entry.ev_max_power_kw}
+                  freshness={evFreshness}
                 />
               )}
               {entry.carwash && (

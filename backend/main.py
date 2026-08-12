@@ -85,6 +85,10 @@ async def lifespan(_app: FastAPI):
         _data_file().name,
     )
     try:
+        # Seed last-good live snapshots without delaying application readiness.
+        # The same single-flight helper is used by /health, so a scheduled
+        # health ping repairs an empty/expired cache before the next search.
+        prime_live_feed_caches(trigger="startup")
         yield
     finally:
         # A shutdown must not leave refresh tasks using a client that has just
@@ -125,7 +129,15 @@ app.add_middleware(
     allow_origins=ALLOWED_ORIGINS,
     allow_methods=["GET"],   # read-only API
     allow_headers=["*"],
-    expose_headers=["Server-Timing", "Timing-Allow-Origin"],
+    expose_headers=[
+        "Server-Timing",
+        "Timing-Allow-Origin",
+        "X-EhParkLeh-Availability-State",
+        "X-EhParkLeh-Availability-Fresh-Until",
+        "X-EhParkLeh-Ev-State",
+        "X-EhParkLeh-Ev-Fresh-Until",
+        "X-EhParkLeh-Generated-At",
+    ],
 )
 
 # ---------------------------------------------------------------------------
@@ -332,7 +344,7 @@ def load_carpark_records() -> list[dict]:
 # ---------------------------------------------------------------------------
 # Availability fetch with an in-memory TTL cache
 # ---------------------------------------------------------------------------
-# _avail_cache holds the most recent parsed snapshot and the time it was taken.
+# _avail_cache holds the most recent parsed snapshot and its freshness window.
 _avail_cache: dict = {"data": None, "fetched_at": 0.0}
 _avail_refresh_task: Optional[asyncio.Task[bool]] = None
 
@@ -344,6 +356,16 @@ class CacheTiming:
     state: str = "empty"
     refresh: str = "none"
     duration_ms: float = 0.0
+    fresh_until: Optional[float] = None
+
+
+def _live_feed_snapshot(data: dict, ttl_seconds: int) -> dict:
+    snapshot_at = time.time()
+    return {
+        "data": data,
+        "fetched_at": time.monotonic(),
+        "fresh_until": snapshot_at + ttl_seconds,
+    }
 
 
 def _active_upstream_client(client: Optional[httpx.AsyncClient] = None):
@@ -381,7 +403,7 @@ async def _refresh_availability(client: Optional[httpx.AsyncClient] = None) -> b
         # Replace the cache object only after fetch + parse both succeed, so a
         # reader can observe either the complete old snapshot or complete new
         # snapshot, never a partially updated pair of fields.
-        _avail_cache = {"data": avail, "fetched_at": time.monotonic()}
+        _avail_cache = _live_feed_snapshot(avail, AVAILABILITY_TTL_SECONDS)
         logger.info(
             "upstream_refresh phase=availability result=success duration_ms=%.1f "
             "records=%d boot_id=%s",
@@ -454,24 +476,29 @@ async def get_availability(
     started = time.perf_counter()
     try:
         now = time.monotonic()
-        cached = _avail_cache["data"]
+        cache = _avail_cache
+        cached = cache["data"]
         if (
             cached is not None
-            and (now - _avail_cache["fetched_at"]) < AVAILABILITY_TTL_SECONDS
+            and (now - cache["fetched_at"]) < AVAILABILITY_TTL_SECONDS
         ):
             phase.state = "hit"
+            phase.fresh_until = cache.get("fresh_until")
             return cached
 
         task, refresh_state = _start_availability_refresh(client)
         if cached is not None:
             phase.state = "stale"
             phase.refresh = f"background-{refresh_state}"
+            phase.fresh_until = cache.get("fresh_until")
             return cached
 
         phase.state = "empty"
         phase.refresh = f"awaited-{refresh_state}"
         await task
-        return _avail_cache["data"] or {}
+        cache = _avail_cache
+        phase.fresh_until = cache.get("fresh_until")
+        return cache["data"] or {}
     finally:
         phase.duration_ms = (time.perf_counter() - started) * 1000
 
@@ -517,7 +544,7 @@ async def _refresh_ev_availability(client: Optional[httpx.AsyncClient] = None) -
         file_resp = await upstream.get(link, timeout=20.0)
         file_resp.raise_for_status()
         status_map = _parse_ev_availability(file_resp.json())
-        _ev_avail_cache = {"data": status_map, "fetched_at": time.monotonic()}
+        _ev_avail_cache = _live_feed_snapshot(status_map, EV_AVAILABILITY_TTL_SECONDS)
         logger.info(
             "upstream_refresh phase=ev result=success duration_ms=%.1f connectors=%d boot_id=%s",
             (time.perf_counter() - started) * 1000,
@@ -584,26 +611,77 @@ async def get_ev_availability(
             return {}
 
         now = time.monotonic()
-        cached = _ev_avail_cache["data"]
+        cache = _ev_avail_cache
+        cached = cache["data"]
         if (
             cached is not None
-            and (now - _ev_avail_cache["fetched_at"]) < EV_AVAILABILITY_TTL_SECONDS
+            and (now - cache["fetched_at"]) < EV_AVAILABILITY_TTL_SECONDS
         ):
             phase.state = "hit"
+            phase.fresh_until = cache.get("fresh_until")
             return cached
 
         task, refresh_state = _start_ev_refresh(client)
         if cached is not None:
             phase.state = "stale"
             phase.refresh = f"background-{refresh_state}"
+            phase.fresh_until = cache.get("fresh_until")
             return cached
 
         phase.state = "empty"
         phase.refresh = f"awaited-{refresh_state}"
         await task
-        return _ev_avail_cache["data"] or {}
+        cache = _ev_avail_cache
+        phase.fresh_until = cache.get("fresh_until")
+        return cache["data"] or {}
     finally:
         phase.duration_ms = (time.perf_counter() - started) * 1000
+
+
+def _cache_state(cache: dict, ttl_seconds: int) -> str:
+    """Describe a live-feed snapshot without exposing its contents."""
+    if cache["data"] is None:
+        return "empty"
+    if (time.monotonic() - cache["fetched_at"]) < ttl_seconds:
+        return "hit"
+    return "stale"
+
+
+def prime_live_feed_caches(
+    *,
+    trigger: str,
+    client: Optional[httpx.AsyncClient] = None,
+) -> dict[str, str]:
+    """Refresh empty/expired feed caches in the background, single-flight.
+
+    Startup and the public health check call this helper. It never awaits an
+    upstream service, so neither application readiness nor health monitoring is
+    turned into another blocking user-facing dependency.
+    """
+    availability_state = _cache_state(_avail_cache, AVAILABILITY_TTL_SECONDS)
+    ev_state = (
+        _cache_state(_ev_avail_cache, EV_AVAILABILITY_TTL_SECONDS)
+        if LTA_DATAMALL_KEY
+        else "disabled"
+    )
+    refreshes: list[str] = []
+
+    if availability_state != "hit":
+        _, refresh_state = _start_availability_refresh(client)
+        refreshes.append(f"availability-{refresh_state}")
+    if ev_state not in {"hit", "disabled"}:
+        _, refresh_state = _start_ev_refresh(client)
+        refreshes.append(f"ev-{refresh_state}")
+
+    logger.info(
+        "cache_prime trigger=%s availability_state=%s ev_state=%s refreshes=%s boot_id=%s",
+        trigger,
+        availability_state,
+        ev_state,
+        ",".join(refreshes) if refreshes else "none",
+        PROCESS_BOOT_ID,
+    )
+    return {"availability": availability_state, "ev": ev_state}
 
 
 # ---------------------------------------------------------------------------
@@ -611,6 +689,7 @@ async def get_ev_availability(
 # ---------------------------------------------------------------------------
 @app.get("/health")
 async def health():
+    prime_live_feed_caches(trigger="health")
     return {"status": "ok", "carparks_loaded": len(_carpark_cache)}
 
 
@@ -817,6 +896,20 @@ async def get_carparks(
         ]
     )
     response.headers["Timing-Allow-Origin"] = "*"
+    response.headers["X-EhParkLeh-Availability-State"] = availability_timing.state
+    response.headers["X-EhParkLeh-Ev-State"] = ev_timing.state
+    if availability_timing.fresh_until is not None:
+        response.headers["X-EhParkLeh-Availability-Fresh-Until"] = datetime.fromtimestamp(
+            availability_timing.fresh_until, timezone.utc
+        ).isoformat()
+    if ev_timing.fresh_until is not None:
+        response.headers["X-EhParkLeh-Ev-Fresh-Until"] = datetime.fromtimestamp(
+            ev_timing.fresh_until, timezone.utc
+        ).isoformat()
+    response.headers["X-EhParkLeh-Generated-At"] = datetime.now(timezone.utc).isoformat()
+    # Live search responses must not be silently replayed by browser or edge
+    # caches. The app has an explicit, visibly labelled saved-results fallback.
+    response.headers["Cache-Control"] = "no-store"
     logger.info(
         "request_timing endpoint=carparks boot_id=%s "
         "availability_state=%s availability_refresh=%s availability_ms=%.1f "
@@ -843,6 +936,7 @@ async def get_carparks(
 # radius clamp) blunts hammering / use as a free proxy.
 OSM_TTL_SECONDS = int(os.getenv("OSM_TTL_SECONDS", "120"))
 OSM_CACHE_MAX = 256
+OVERPASS_USER_AGENT = "EhParkLeh/1.0 (+https://ehparkleh.vercel.app)"
 _osm_cache: dict = {}  # {(rlat, rlon, radius): (fetched_at, list[OsmParking])}
 
 
@@ -869,7 +963,9 @@ out center;
     try:
         async with httpx.AsyncClient(timeout=15) as client:
             resp = await client.post(
-                "https://overpass-api.de/api/interpreter", data={"data": query}
+                "https://overpass-api.de/api/interpreter",
+                data={"data": query},
+                headers={"User-Agent": OVERPASS_USER_AGENT},
             )
         elements = resp.json().get("elements", [])
     except Exception:

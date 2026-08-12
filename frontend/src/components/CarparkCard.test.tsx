@@ -81,4 +81,18 @@ describe('CarparkCard', () => {
     expect(onToggleFavourite).toHaveBeenCalledWith('cp7')
     expect(onSelect).not.toHaveBeenCalled()
   })
+
+  it('never labels recent or saved lot counts as live', () => {
+    const { rerender } = render(
+      <CarparkCard entry={hdbEntry()} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} availabilityFreshness="recent" />,
+    )
+    expect(screen.getByText('Recent')).toBeInTheDocument()
+    expect(screen.queryByText('Live')).not.toBeInTheDocument()
+
+    rerender(
+      <CarparkCard entry={hdbEntry()} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} availabilityFreshness="saved" />,
+    )
+    expect(screen.getByText('Saved')).toBeInTheDocument()
+    expect(screen.queryByText('Live')).not.toBeInTheDocument()
+  })
 })
