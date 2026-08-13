@@ -90,6 +90,10 @@ The dev server runs at `http://localhost:5173`. Run the local checks with `npm r
 
 The frontend deploys to Vercel and the backend to Render. [`render.yaml`](render.yaml) records the backend service, and [`backend/build.sh`](backend/build.sh) can regenerate the dataset during a backend build. GitHub Actions runs lint, typecheck, tests, and the frontend build, plus the backend test suite.
 
+### Backend keep-warm
+
+Render's free plan idles the backend when it receives no traffic. [`.github/workflows/keep-warm.yml`](.github/workflows/keep-warm.yml) keeps it active with four-minute `/health` pings from a long-running job, then relaunches itself; the GitHub Actions cron is only a recovery backstop. See [`docs/keep-warm-cadence.md`](docs/keep-warm-cadence.md) for the measured failure of the former cron-only approach, the current workflow contract and resource-hour tradeoff, and the checks that remain.
+
 ## Stack
 
 React 19, TypeScript, Vite, Leaflet, vite-plugin-pwa, Capacitor, and Vitest on the frontend. FastAPI, Pydantic, and httpx on the backend. The data sources are data.gov.sg, OpenStreetMap, Google Places API, LTA DataMall, LTA OneMotoring, and OneMap.

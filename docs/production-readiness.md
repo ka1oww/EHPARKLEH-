@@ -76,9 +76,9 @@ describes snapshot age and does not by itself claim that a refresh is running.
 
 ## Remaining external or unverified stages
 
-- A genuine Render sleep wake was not induced. The five-minute keep-warm workflow was succeeding, and deliberately stopping it or the service would create an artificial outage. The observed 10:41 process boot followed a deployment, not a proven sleep wake.
+- A genuine Render sleep wake was not induced during this task; the keep-warm workflow (then a five-minute cron) was succeeding, and deliberately stopping it or the service would have created an artificial outage. The observed 10:41 process boot followed a deployment, not a proven sleep wake. A real cold start was measured later in the separate [keep-warm reliability work](keep-warm-cadence.md).
 - Provider edge/network time remains variable and is outside application `total`.
-- GitHub scheduled workflows are best effort. If they are delayed or disabled, a free service may still sleep; no paid plan, external scheduler, or additional keepalive was selected here.
+- Keep-warm reliability is tracked separately. The former five-minute cron has been replaced by a self-relaunching Actions job; [`keep-warm-cadence.md`](keep-warm-cadence.md) owns the current mechanism, measurements, and remaining verification limits.
 - The current task's production behavior remains unverified until its own deployment completes. Use the smoke command and browser timing before claiming success.
 
 ## Demo video storyboard

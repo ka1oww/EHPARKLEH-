@@ -1,22 +1,97 @@
 name: Keep backend warm
 
-# Scheduled GitHub Actions runs are best effort: GitHub may delay them under
-# load and may disable schedules after 60 days of repository inactivity.
+# The schedule is a recovery backstop, not the keep-warm clock: GitHub's
+# best-effort cron drifted beyond Render's free-tier idle window in this repo.
+# Cadence therefore comes from the in-job sleep loop, and workflow_dispatch
+# chains jobs using the built-in GITHUB_TOKEN plus actions: write. The loop is
+# capped at 350 minutes so the 355-minute job timeout retains handoff headroom.
+# Concurrency leaves at most one run pending. If inactivity disables the
+# workflow itself, the backstop cannot run and a maintainer must re-enable it.
+# Evidence, operating tradeoffs, and remaining limits:
+# docs/keep-warm-cadence.md
+
 on:
   schedule:
     - cron: '*/5 * * * *'
   workflow_dispatch:
+    inputs:
+      loop_seconds:
+        description: >-
+          Manual loop duration in seconds (1-21000), for testing the chain
+          end-to-end without waiting ~5h50m. Leave blank for a normal run.
+        required: false
+        default: ""
 
-permissions: {}
+permissions:
+  actions: write # required to re-trigger this workflow via `gh workflow run`
+
+concurrency:
+  group: keep-warm
+  cancel-in-progress: false
 
 jobs:
-  ping:
-    name: GET backend health endpoint
+  ping-loop:
+    name: Ping /health on a loop, then re-trigger
     runs-on: ubuntu-latest
+    timeout-minutes: 355
     steps:
-      - name: Ping backend /health
-        run: >-
-          curl --fail --silent --show-error --output /dev/null
-          --connect-timeout 10 --max-time 30
-          --retry 2 --retry-delay 2 --retry-all-errors --retry-connrefused
-          https://ehparkleh-backend.onrender.com/health
+      - name: Ping backend /health every 4 minutes for ~5h50m
+        env:
+          LOOP_SECONDS: ${{ github.event.inputs.loop_seconds }}
+        run: |
+          set -uo pipefail
+          max_duration=21000 # 350 * 60
+          duration="${LOOP_SECONDS:-$max_duration}"
+          if ! [[ "$duration" =~ ^[1-9][0-9]*$ ]] || [ "$duration" -gt "$max_duration" ]; then
+            echo "loop_seconds must be a positive integer no greater than $max_duration" >&2
+            exit 1
+          fi
+          end=$(( $(date +%s) + duration ))
+          ping_end=$((end - 100))
+          if [ "$duration" -le 100 ]; then
+            ping_end="$end"
+          fi
+          ping_attempts=0
+          ping_successes=0
+          ping_failures=0
+          while [ "$(date +%s)" -lt "$ping_end" ]; do
+            request_budget=$((ping_end - $(date +%s)))
+            if [ "$request_budget" -le 0 ]; then
+              break
+            fi
+            ping_attempts=$((ping_attempts + 1))
+            if timeout --signal=KILL "$request_budget" \
+                curl --fail --silent --show-error --output /dev/null \
+                --connect-timeout 10 --max-time 30 \
+                --retry 2 --retry-delay 2 --retry-all-errors --retry-connrefused \
+                https://ehparkleh-backend.onrender.com/health; then
+              ping_successes=$((ping_successes + 1))
+              echo "$(date -u +%FT%TZ) ping ok"
+            else
+              ping_failures=$((ping_failures + 1))
+              echo "$(date -u +%FT%TZ) ping FAILED (continuing loop)"
+            fi
+            remaining=$((end - $(date +%s)))
+            if [ "$remaining" -le 0 ]; then
+              break
+            fi
+            sleep_for=240
+            if [ "$remaining" -lt "$sleep_for" ]; then
+              sleep_for="$remaining"
+            fi
+            sleep "$sleep_for"
+          done
+          echo "Ping summary: $ping_successes succeeded, $ping_failures failed, $ping_attempts attempted"
+          if [ "$ping_successes" -eq 0 ]; then
+            echo "No keep-warm ping succeeded during this run" >&2
+            exit 1
+          fi
+
+      - name: Re-trigger this workflow to continue the chain
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run keep-warm.yml \
+            --repo "${{ github.repository }}" \
+            --ref "${{ github.ref_name }}"
