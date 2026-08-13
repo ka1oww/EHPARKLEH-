@@ -30,7 +30,7 @@ HDB and URA form the government spine. Google discovers additional locations. OS
 
 Rates are attached in order: matched LTA rates, HDB/URA standard rates for eligible government car parks, OneMotoring indicative rates, then hand-curated indicative rates. Therefore the pipeline marks guide and manual rates as indicative.
 
-Standalone OSM records are dropped from the served dataset because they produced construction-site and private noise. OSM still corroborates during deduplication, and `/api/parking/osm` supplies on-demand OSM parking at search time.
+Standalone OSM records are dropped from the served dataset because they produced construction-site and private noise. OSM still corroborates during deduplication, and `/api/parking/osm` supplies on-demand OSM parking at search time for unfiltered searches. While any category or amenity filter is active, the frontend excludes that unverified OSM layer from the list, map, and nearby count because OSM entries do not carry the data needed to verify those filters.
 
 Run the enrichment pipeline from `backend/` with the virtual environment active:
 
@@ -57,6 +57,7 @@ The backend sends cache state and freshness deadlines in response headers. The f
 - Search by destination or Near me. Location permission is requested only when Near me is tapped.
 - Filter by HDB, malls, street, or private car parks, then narrow by free Sunday and public holiday parking, available lots, EV charging, car wash, or radius.
 - Show resolved rates, parsed free-parking rules, lot counts, EV connector counts, and self-service car wash operators. EV site flags come from LTA DataMall, with live connector counts when the feed is configured. Car wash flags come from Beaver and QE Car Care published lists.
+- Live OSM parking entries are shown for unfiltered searches; they are hidden from the list, map, and nearby count whenever a filter is active because they do not carry the filter data needed to verify a match.
 - Cluster dense map markers, frame a new result set, and preserve manual map movement when availability refreshes. Selecting a card opens its map popup.
 - Keep recent searches, saved favourites, shareable result URLs, and the last results for offline use. The app is an installable PWA with iOS and Android wrappers through Capacitor.
 

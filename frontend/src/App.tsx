@@ -65,6 +65,10 @@ async function fetchOptionalOsm(url: string, searchSignal: AbortSignal) {
   }
 }
 
+// Stable identity so hiding the OSM layer while a filter is active doesn't
+// itself churn the `allParking` memo (and the Map's props) every render.
+const EMPTY_OSM: OsmParking[] = []
+
 // Rough great-circle distance in metres.
 function metresBetween(aLat: number, aLon: number, bLat: number, bLon: number): number {
   const R = 6371000
@@ -157,6 +161,7 @@ export default function App() {
   const [hasEv, setHasEv] = useState(false)
   const [hasCarwash, setHasCarwash] = useState(false)
   const [carparks, setCarparks] = useState<Carpark[]>([])
+  const [carparksAreUnfiltered, setCarparksAreUnfiltered] = useState(true)
   const [osmParking, setOsmParking] = useState<OsmParking[]>([])
   const [center, setCenter] = useState<LatLon | null>(null)
   const [loading, setLoading] = useState(false)
@@ -289,6 +294,13 @@ export default function App() {
         setFeedSnapshot(responseSnapshot)
         setFreshnessNow(Date.now())
         setRetainedResultsSaved(false)
+        setCarparksAreUnfiltered(
+          filters.category === null &&
+            !filters.freeSunPh &&
+            !filters.hasLots &&
+            !filters.hasEv &&
+            !filters.hasCarwash,
+        )
         if (includeOsm) {
           // Never mix OSM pins from the previous place/radius with the newly
           // published primary results. The optional layer fills in separately.
@@ -575,12 +587,23 @@ export default function App() {
     [osmParking, carparks],
   )
 
+  // OSM entries carry no amenity or category data of their own, so they can
+  // never genuinely match `has_ev` / `has_carwash` / `category` / `free_sun_ph`
+  // / `has_lots` — those are all server-side filters on `carparks`, and any of
+  // them can shrink that set. Deduping against a shrunk set would also
+  // un-suppress OSM pins that were only hidden because the carpark sitting on
+  // top of them survived the previous (looser) filter. Dropping the OSM layer
+  // entirely while any filter is active fixes both: nothing is shown as
+  // matching a filter it has no data for, and a filter toggle can only ever
+  // remove unverified pins, never add them back.
+  const visibleOsm = anyFilterActive || !carparksAreUnfiltered ? EMPTY_OSM : dedupedOsm
+
   const allParking: ParkingEntry[] = useMemo(
     () => [
       ...carparks.map((cp): ParkingEntry => ({ ...cp, source: 'hdb' })),
-      ...dedupedOsm.map((cp): ParkingEntry => ({ ...cp, source: 'osm' })),
+      ...visibleOsm.map((cp): ParkingEntry => ({ ...cp, source: 'osm' })),
     ],
-    [carparks, dedupedOsm],
+    [carparks, visibleOsm],
   )
 
   const sortedParking = useMemo(
@@ -843,7 +866,7 @@ export default function App() {
                     <Map
                       center={center}
                       carparks={carparks}
-                      osmParking={dedupedOsm}
+                      osmParking={visibleOsm}
                       selected={selected}
                       onSelect={setSelected}
                       userLocation={userLocation}

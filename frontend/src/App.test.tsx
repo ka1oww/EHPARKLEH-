@@ -22,6 +22,17 @@ const liveHeaders = (freshUntil: number) => ({
   'X-EhParkLeh-Ev-State': 'disabled',
 })
 
+// The "N spots nearby" count splits its number into a <span>, so a plain text
+// match never sees the whole sentence; match on normalised element text instead.
+const spotsNearby = (n: number) =>
+  screen.getByText(
+    (_, node) =>
+      (node?.textContent ?? '').replace(/\s+/g, ' ').trim() === `${n} spot${n === 1 ? '' : 's'} nearby`,
+  )
+
+const lastMapProps = () =>
+  (MapMock.mock.calls as unknown[][]).at(-1)?.[0] as { osmParking: unknown[] } | undefined
+
 const carpark = (id: string, address = id) => ({
   id,
   name: null,
@@ -43,6 +54,21 @@ const carpark = (id: string, address = id) => ({
   ev_max_power_kw: null,
   carwash: false,
   carwash_operator: null,
+})
+
+// Coordinates default far from `carpark()`'s (1.37, 103.85) so an OSM entry
+// isn't accidentally deduped in tests that don't care about that; override
+// lat/lon to co-locate one deliberately.
+const osm = (id: string, name = id) => ({
+  id,
+  name,
+  lat: 1.3,
+  lon: 103.8,
+  distance_m: 120,
+  source: 'osm',
+  fee: null,
+  parking_type: null,
+  capacity: null,
 })
 
 beforeEach(() => {
@@ -566,6 +592,85 @@ describe('App search result states', () => {
 
     expect(screen.getByText('New result')).toBeInTheDocument()
     expect(screen.queryByText('Old result')).not.toBeInTheDocument()
+    vi.useRealTimers()
+  })
+})
+
+describe('OSM layer under active filters', () => {
+  // OSM has no amenity/category data, so it can never genuinely match a
+  // filter. It also isn't refetched on a filter toggle (only carparks are),
+  // so these tests reuse the same OSM response across both fetches.
+  it('hides OSM entries, and drops them from the count, once a filter narrows the carpark set', async () => {
+    vi.useFakeTimers()
+    let carparkCalls = 0
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      const url = String(input)
+      if (url.includes('/api/parking/osm')) return Promise.resolve(okJson([osm('osm-1', 'Open lot')]))
+      if (!url.includes('/api/carparks')) return Promise.resolve(okJson([]))
+      carparkCalls += 1
+      return Promise.resolve(
+        okJson(
+          carparkCalls === 1
+            ? [carpark('cp-1', 'Carpark 1'), carpark('cp-2', 'Carpark 2')]
+            : [carpark('cp-1', 'Carpark 1')],
+        ),
+      )
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    render(<App />)
+    await act(async () => {})
+
+    expect(screen.getByText('Open lot')).toBeInTheDocument()
+    expect(spotsNearby(3)).toBeInTheDocument()
+    expect(lastMapProps()?.osmParking).toEqual([expect.objectContaining({ id: 'osm-1' })])
+
+    fireEvent.click(screen.getByRole('button', { name: /EV charging/i }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(250)
+    })
+
+    expect(screen.queryByText('Open lot')).not.toBeInTheDocument()
+    expect(spotsNearby(1)).toBeInTheDocument()
+    expect(lastMapProps()?.osmParking).toEqual([])
+    vi.useRealTimers()
+  })
+
+  it('never resurfaces an OSM pin that a looser search had suppressed, once a filter removes the carpark sitting on it', async () => {
+    vi.useFakeTimers()
+    let carparkCalls = 0
+    const evCarpark = { ...carpark('cp-ev', 'EV carpark'), ev: true, lat: 1.4, lon: 103.9 }
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      const url = String(input)
+      // Sits on top of the non-EV carpark below (same coordinates), so the
+      // unfiltered dedupe suppresses it from the start.
+      if (url.includes('/api/parking/osm')) {
+        return Promise.resolve(okJson([{ ...osm('osm-1', 'Suppressed lot'), lat: 1.37, lon: 103.85 }]))
+      }
+      if (!url.includes('/api/carparks')) return Promise.resolve(okJson([]))
+      carparkCalls += 1
+      return Promise.resolve(
+        okJson(carparkCalls === 1 ? [carpark('cp-non-ev', 'Non-EV carpark'), evCarpark] : [evCarpark]),
+      )
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    render(<App />)
+    await act(async () => {})
+
+    // Baseline: the OSM pin sits on the non-EV carpark, so dedupe hides it.
+    expect(screen.queryByText('Suppressed lot')).not.toBeInTheDocument()
+    expect(spotsNearby(2)).toBeInTheDocument()
+    expect(lastMapProps()?.osmParking).toEqual([])
+
+    fireEvent.click(screen.getByRole('button', { name: /EV charging/i }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(250)
+    })
+
+    // The EV filter drops the non-EV carpark the OSM pin was hiding behind.
+    // It must stay suppressed, not reappear as an unlabelled "matching" entry.
+    expect(screen.queryByText('Suppressed lot')).not.toBeInTheDocument()
+    expect(spotsNearby(1)).toBeInTheDocument()
+    expect(lastMapProps()?.osmParking).toEqual([])
     vi.useRealTimers()
   })
 })
