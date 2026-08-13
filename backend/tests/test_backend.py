@@ -687,10 +687,234 @@ async def test_carparks_fetches_feeds_concurrently_and_exposes_timing(monkeypatc
 
 
 @pytest.mark.asyncio
+async def test_suggestions_propagates_onemap_http_failure(monkeypatch):
+    class _SuggestionResponse:
+        def raise_for_status(self):
+            request = main.httpx.Request("GET", "https://www.onemap.gov.sg")
+            response = main.httpx.Response(503, request=request)
+            raise main.httpx.HTTPStatusError("upstream failure", request=request, response=response)
+
+        def json(self):
+            return {"results": []}
+
+    class _SuggestionClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def get(self, *_args, **_kwargs):
+            return _SuggestionResponse()
+
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _SuggestionClient())
+
+    with pytest.raises(main.HTTPException) as error:
+        await main.suggestions(q="Toa Payoh")
+
+    assert error.value.status_code == 502
+
+
+@pytest.mark.asyncio
+async def test_suggestions_propagates_onemap_timeout(monkeypatch):
+    class _SuggestionClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def get(self, *_args, **_kwargs):
+            raise main.httpx.ReadTimeout("upstream timeout")
+
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _SuggestionClient())
+
+    with pytest.raises(main.HTTPException) as error:
+        await main.suggestions(q="Toa Payoh")
+
+    assert error.value.status_code == 504
+
+
+@pytest.mark.asyncio
+async def test_suggestions_keeps_valid_no_match_empty(monkeypatch):
+    class _SuggestionResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"results": []}
+
+    class _SuggestionClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def get(self, *_args, **_kwargs):
+            return _SuggestionResponse()
+
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _SuggestionClient())
+
+    assert await main.suggestions(q="Not a real address") == []
+
+
+@pytest.mark.asyncio
+async def test_suggestions_rejects_wholly_malformed_matches(monkeypatch):
+    class _SuggestionResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {
+                "results": [
+                    {"ADDRESS": "Missing coordinates"},
+                    {"ADDRESS": "Invalid coordinates", "LATITUDE": "north", "LONGITUDE": "east"},
+                ]
+            }
+
+    class _SuggestionClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def get(self, *_args, **_kwargs):
+            return _SuggestionResponse()
+
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _SuggestionClient())
+
+    with pytest.raises(main.HTTPException) as error:
+        await main.suggestions(q="Toa Payoh")
+
+    assert error.value.status_code == 502
+
+
+@pytest.mark.asyncio
+async def test_suggestions_skips_isolated_malformed_matches(monkeypatch):
+    class _SuggestionResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {
+                "results": [
+                    {"ADDRESS": "Missing coordinates"},
+                    {"ADDRESS": "Toa Payoh Hub", "LATITUDE": "1.33", "LONGITUDE": "103.85"},
+                ]
+            }
+
+    class _SuggestionClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def get(self, *_args, **_kwargs):
+            return _SuggestionResponse()
+
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _SuggestionClient())
+
+    assert await main.suggestions(q="Toa Payoh") == [
+        main.Suggestion(address="Toa Payoh Hub", lat=1.33, lon=103.85)
+    ]
+
+
+def _mock_onemap_payload(monkeypatch, payload):
+    class _OneMapResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return payload
+
+    class _OneMapClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def get(self, *_args, **_kwargs):
+            return _OneMapResponse()
+
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OneMapClient())
+
+
+@pytest.mark.asyncio
+async def test_geocode_keeps_valid_no_match_not_found(monkeypatch):
+    _mock_onemap_payload(monkeypatch, {"results": []})
+
+    with pytest.raises(main.HTTPException) as error:
+        await main.geocode(q="Not a real address")
+
+    assert error.value.status_code == 404
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "payload",
+    [
+        {},
+        {"results": None},
+        {"results": {"ADDRESS": "Not a list"}},
+        ["Not an object"],
+    ],
+)
+async def test_geocode_rejects_malformed_results_shape(monkeypatch, payload):
+    _mock_onemap_payload(monkeypatch, payload)
+
+    with pytest.raises(main.HTTPException) as error:
+        await main.geocode(q="Toa Payoh")
+
+    assert error.value.status_code == 502
+
+
+@pytest.mark.asyncio
+async def test_geocode_rejects_wholly_malformed_matches(monkeypatch):
+    _mock_onemap_payload(
+        monkeypatch,
+        {
+            "results": [
+                {"ADDRESS": "Missing coordinates"},
+                {"ADDRESS": "Invalid coordinates", "LATITUDE": "north", "LONGITUDE": "east"},
+            ]
+        },
+    )
+
+    with pytest.raises(main.HTTPException) as error:
+        await main.geocode(q="Toa Payoh")
+
+    assert error.value.status_code == 502
+
+
+@pytest.mark.asyncio
+async def test_geocode_skips_isolated_malformed_matches(monkeypatch):
+    _mock_onemap_payload(
+        monkeypatch,
+        {
+            "results": [
+                {"ADDRESS": "Missing coordinates"},
+                {"ADDRESS": "Toa Payoh Hub", "LATITUDE": "1.33", "LONGITUDE": "103.85"},
+            ]
+        },
+    )
+
+    assert await main.geocode(q="Toa Payoh") == main.GeocodeResult(
+        address="Toa Payoh Hub", lat=1.33, lon=103.85
+    )
+
+
+@pytest.mark.asyncio
 async def test_osm_identifies_the_app_to_overpass(monkeypatch):
     request = {}
 
     class _OsmResponse:
+        def raise_for_status(self):
+            return None
+
         def json(self):
             return {
                 "elements": [
@@ -718,12 +942,111 @@ async def test_osm_identifies_the_app_to_overpass(monkeypatch):
     monkeypatch.setattr(main, "_osm_cache", {})
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
 
-    results = await main.parking_osm(lat=1.3323, lon=103.8474, radius=500)
+    response = main.Response()
+    results = await main.parking_osm(response=response, lat=1.3323, lon=103.8474, radius=500)
 
     assert request["url"] == "https://overpass-api.de/api/interpreter"
     assert request["headers"] == {"User-Agent": main.OVERPASS_USER_AGENT}
     assert results[0].id == "osm_42"
     assert results[0].name == "Test parking"
+    assert response.headers["x-ehparkleh-osm-state"] == "fresh"
+
+
+@pytest.mark.asyncio
+async def test_osm_propagates_overpass_failure_without_cache(monkeypatch):
+    class _OsmResponse:
+        def raise_for_status(self):
+            request = main.httpx.Request("POST", "https://overpass-api.de")
+            response = main.httpx.Response(503, request=request)
+            raise main.httpx.HTTPStatusError("upstream failure", request=request, response=response)
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, *_args, **_kwargs):
+            return _OsmResponse()
+
+    monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+    with pytest.raises(main.HTTPException) as error:
+        await main.parking_osm(response=main.Response(), lat=1.3323, lon=103.8474, radius=500)
+
+    assert error.value.status_code == 502
+
+
+@pytest.mark.asyncio
+async def test_osm_rejects_overpass_error_remark(monkeypatch):
+    class _OsmResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"remark": "runtime error", "elements": []}
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, *_args, **_kwargs):
+            return _OsmResponse()
+
+    osm_cache = {}
+    monkeypatch.setattr(main, "_osm_cache", osm_cache)
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+    with pytest.raises(main.HTTPException) as error:
+        await main.parking_osm(response=main.Response(), lat=1.3323, lon=103.8474, radius=500)
+
+    assert error.value.status_code == 502
+    assert osm_cache == {}
+
+
+@pytest.mark.asyncio
+async def test_osm_marks_cached_fallback_stale(monkeypatch):
+    class _OsmResponse:
+        def raise_for_status(self):
+            request = main.httpx.Request("POST", "https://overpass-api.de")
+            response = main.httpx.Response(503, request=request)
+            raise main.httpx.HTTPStatusError("upstream failure", request=request, response=response)
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, *_args, **_kwargs):
+            return _OsmResponse()
+
+    cached_parking = main.OsmParking(
+        id="osm_cached",
+        name="Cached parking",
+        lat=1.3324,
+        lon=103.8475,
+        distance_m=20,
+    )
+    key = (round(1.3323, 3), round(103.8474, 3), 500)
+    monkeypatch.setattr(
+        main,
+        "_osm_cache",
+        {key: (time.monotonic() - main.OSM_TTL_SECONDS - 1, [cached_parking])},
+    )
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+    response = main.Response()
+    results = await main.parking_osm(response=response, lat=1.3323, lon=103.8474, radius=500)
+
+    assert results == [cached_parking]
+    assert response.headers["x-ehparkleh-osm-state"] == "stale"
 
 
 @pytest.mark.asyncio

@@ -56,7 +56,11 @@ async function fetchOptionalOsm(url: string, searchSignal: AbortSignal) {
   try {
     const response = await fetch(url, { signal: controller.signal })
     if (!response.ok) return { ok: false as const, data: [] as OsmParking[] }
-    return { ok: true as const, data: (await response.json()) as OsmParking[] }
+    return {
+      ok: true as const,
+      data: (await response.json()) as OsmParking[],
+      stale: response.headers.get('X-EhParkLeh-Osm-State') === 'stale',
+    }
   } catch {
     return { ok: false as const, data: [] as OsmParking[] }
   } finally {
@@ -163,6 +167,7 @@ export default function App() {
   const [carparks, setCarparks] = useState<Carpark[]>([])
   const [carparksAreUnfiltered, setCarparksAreUnfiltered] = useState(true)
   const [osmParking, setOsmParking] = useState<OsmParking[]>([])
+  const [osmUnavailable, setOsmUnavailable] = useState(false)
   const [center, setCenter] = useState<LatLon | null>(null)
   const [loading, setLoading] = useState(false)
   const [preserveResultsWhileLoading, setPreserveResultsWhileLoading] = useState(false)
@@ -258,6 +263,7 @@ export default function App() {
       setPreserveResultsWhileLoading(preserveResults)
       setLoading(true)
       setError('')
+      if (includeOsm) setOsmUnavailable(false)
       try {
         const params = new URLSearchParams({
           lat: String(lat),
@@ -333,13 +339,17 @@ export default function App() {
         if (osmPromise) {
           void osmPromise.then((osmResult) => {
             if (
-              !osmResult.ok ||
               ac.signal.aborted ||
               requestVersion !== requestVersionRef.current
             ) return
+            pendingOsmRef.current = false
+            if (!osmResult.ok) {
+              setOsmUnavailable(true)
+              return
+            }
+            setOsmUnavailable(osmResult.stale)
             setOsmParking(osmResult.data)
             lastOsmSearchKeyRef.current = osmSearchKey(lat, lon, filters.radius)
-            pendingOsmRef.current = false
             if (newLocation) {
               try {
                 localStorage.setItem(
@@ -476,7 +486,11 @@ export default function App() {
       const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(query)}`)
       if (!res.ok) {
         setRetainedResultsSaved(true)
-        setError("Couldn't find that place. Try another search.")
+        setError(
+          res.status === 404
+            ? "Couldn't find that place. Try another search."
+            : "Can't reach the server right now. Please try again shortly.",
+        )
         setLoading(false)
         return
       }
@@ -707,6 +721,14 @@ export default function App() {
             {feedFreshness.availability === 'recent'
               ? 'Lot counts are from a recent update and may be out of date.'
               : 'Showing saved lot counts. They may be out of date.'}
+          </div>
+        </div>
+      )}
+      {searched && osmUnavailable && (
+        <div className="shrink-0 bg-secondary/70 px-4 py-2" role="status">
+          <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-medium text-muted-foreground">
+            <AlertCircle className="size-4 shrink-0" aria-hidden="true" />
+            Some map parking spots could not be loaded. Main carpark results are still available.
           </div>
         </div>
       )}

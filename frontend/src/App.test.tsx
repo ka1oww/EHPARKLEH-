@@ -130,6 +130,23 @@ describe('App search result states', () => {
 
     expect(await screen.findByText('Fallback result')).toBeInTheDocument()
     expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()
+    expect(await screen.findByText(/Some map parking spots could not be loaded/i)).toBeInTheDocument()
+  })
+
+  it('reports a stale OSM fallback without blocking primary results', async () => {
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      if (String(input).includes('/api/parking/osm')) {
+        return Promise.resolve(okJson([], { 'X-EhParkLeh-Osm-State': 'stale' }))
+      }
+      return Promise.resolve(okJson([carpark('stale-fallback-result', 'Stale fallback result')]))
+    })
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+
+    expect(await screen.findByText('Stale fallback result')).toBeInTheDocument()
+    expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()
+    expect(await screen.findByText(/Some map parking spots could not be loaded/i)).toBeInTheDocument()
   })
 
   it('bounds an optional OSM timeout without blocking or removing primary results', async () => {
@@ -155,6 +172,7 @@ describe('App search result states', () => {
     })
     expect(screen.getByText('Timeout result')).toBeInTheDocument()
     expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()
+    expect(screen.getByText(/Some map parking spots could not be loaded/i)).toBeInTheDocument()
     vi.useRealTimers()
   })
 
@@ -298,6 +316,44 @@ describe('App search result states', () => {
     render(<App />)
     expect(await screen.findByText(/Can't reach the server/i)).toBeInTheDocument()
     expect(screen.queryByText(/No spots match here/i)).not.toBeInTheDocument()
+  })
+
+  it('keeps a submitted no-match distinct from an address-service failure', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/geocode')
+          ? { ok: false, status: 404, json: async () => ({}) }
+          : okJson([]),
+      ),
+    )
+    render(<App />)
+    await screen.findByText(/No spots match here/i)
+
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'Not a real address' } })
+    fireEvent.submit(screen.getByRole('search'))
+
+    expect(await screen.findByText(/Couldn't find that place/i)).toBeInTheDocument()
+    expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()
+  })
+
+  it('reports a submitted address-service failure instead of a no-match', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/geocode')
+          ? { ok: false, status: 502, json: async () => ({}) }
+          : okJson([]),
+      ),
+    )
+    render(<App />)
+    await screen.findByText(/No spots match here/i)
+
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'Toa Payoh' } })
+    fireEvent.submit(screen.getByRole('search'))
+
+    expect(await screen.findByText(/Can't reach the server/i)).toBeInTheDocument()
+    expect(screen.queryByText(/Couldn't find that place/i)).not.toBeInTheDocument()
   })
 
   it('only obtains location after the person chooses Near me', async () => {

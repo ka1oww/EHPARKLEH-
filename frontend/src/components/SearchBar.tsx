@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { MapPin, Search, LocateFixed, Loader2, Clock, X } from 'lucide-react'
+import { AlertCircle, MapPin, Search, LocateFixed, Loader2, Clock, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import type { Suggestion } from '@/types'
@@ -20,10 +20,14 @@ interface Props {
 }
 
 const LISTBOX_ID = 'searchbar-listbox'
+const STATUS_ID = 'searchbar-status'
+const SUGGESTIONS_TIMEOUT_MS = 5_000
+type SuggestionState = 'idle' | 'loading' | 'ready' | 'empty' | 'error'
 
 // Indigo command-bar search with debounced server-side autocomplete.
-// Behaviour preserved: debounce 300ms, >=2 chars to query, Enter geocodes,
-// picking a suggestion searches its coords directly, click-outside closes.
+// Debounce 300ms, query at >=2 chars, geocode on Enter, and search suggestion
+// coordinates directly. Valid empty responses and retryable failures remain
+// distinct so an upstream outage never masquerades as no matches.
 export function SearchBar({
   apiBase,
   loading,
@@ -36,9 +40,12 @@ export function SearchBar({
 }: Props) {
   const [query, setQuery] = useState('')
   const [suggestions, setSuggestions] = useState<Suggestion[]>([])
+  const [suggestionState, setSuggestionState] = useState<SuggestionState>('idle')
   const [open, setOpen] = useState(false)
   const [activeIdx, setActiveIdx] = useState(-1)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const suggestionAbortRef = useRef<AbortController | null>(null)
+  const suggestionRequestRef = useRef(0)
   const boxRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -49,51 +56,90 @@ export function SearchBar({
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      clearTimeout(debounceRef.current)
+      suggestionAbortRef.current?.abort()
+    }
   }, [])
+
+  async function requestSuggestions(value: string) {
+    suggestionAbortRef.current?.abort()
+    const controller = new AbortController()
+    suggestionAbortRef.current = controller
+    const requestId = ++suggestionRequestRef.current
+    const timeout = setTimeout(() => controller.abort(), SUGGESTIONS_TIMEOUT_MS)
+    setSuggestionState('loading')
+    setSuggestions([])
+
+    try {
+      const res = await fetch(`${apiBase}/api/suggestions?q=${encodeURIComponent(value)}`, {
+        signal: controller.signal,
+      })
+      if (!res.ok) throw new Error(`suggestions ${res.status}`)
+      const data: Suggestion[] = await res.json()
+      if (requestId !== suggestionRequestRef.current) return
+      setSuggestions(data)
+      setSuggestionState(data.length > 0 ? 'ready' : 'empty')
+      setOpen(true)
+    } catch {
+      if (requestId !== suggestionRequestRef.current) return
+      setSuggestions([])
+      setSuggestionState('error')
+      setOpen(true)
+    } finally {
+      clearTimeout(timeout)
+    }
+  }
+
+  function cancelSuggestionRequest() {
+    clearTimeout(debounceRef.current)
+    suggestionAbortRef.current?.abort()
+    suggestionRequestRef.current += 1
+  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const val = e.target.value
     setQuery(val)
     setActiveIdx(-1)
-    clearTimeout(debounceRef.current)
+    cancelSuggestionRequest()
     if (val.trim().length < 2) {
       setSuggestions([])
+      setSuggestionState('idle')
       // Empty field: fall back to showing recents; 1 char: close.
       setOpen(!val.trim() && recents.length > 0)
       return
     }
-    debounceRef.current = setTimeout(async () => {
-      try {
-        const res = await fetch(`${apiBase}/api/suggestions?q=${encodeURIComponent(val)}`)
-        const data: Suggestion[] = await res.json()
-        setSuggestions(data)
-        setOpen(data.length > 0)
-      } catch {
-        setSuggestions([])
-      }
-    }, 300)
+    setSuggestionState('loading')
+    setOpen(false)
+    debounceRef.current = setTimeout(() => void requestSuggestions(val), 300)
   }
 
   function pick(s: Suggestion) {
+    cancelSuggestionRequest()
     setQuery(s.address)
     setSuggestions([])
+    setSuggestionState('idle')
     setOpen(false)
     setActiveIdx(-1)
     onPickSuggestion(s)
   }
 
   function pickRecent(r: RecentSearch) {
+    cancelSuggestionRequest()
     setQuery(r.query)
     setSuggestions([])
+    setSuggestionState('idle')
     setOpen(false)
     setActiveIdx(-1)
     onPickRecent(r)
   }
 
   function clearInput() {
+    cancelSuggestionRequest()
     setQuery('')
     setSuggestions([])
+    setSuggestionState('idle')
     setActiveIdx(-1)
     setOpen(recents.length > 0)
     inputRef.current?.focus()
@@ -104,6 +150,8 @@ export function SearchBar({
   const listType: 'suggestions' | 'recents' | 'none' =
     open && suggestions.length > 0 ? 'suggestions' : showRecents ? 'recents' : 'none'
   const listLen = listType === 'suggestions' ? suggestions.length : listType === 'recents' ? recents.length : 0
+  const showSuggestionMessage =
+    open && query.trim().length >= 2 && (suggestionState === 'empty' || suggestionState === 'error')
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -116,12 +164,18 @@ export function SearchBar({
       return
     }
     if (!query.trim()) return
+    cancelSuggestionRequest()
     setSuggestions([])
+    setSuggestionState('idle')
     setOpen(false)
     onSubmit(query)
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Escape') {
+      setOpen(false)
+      return
+    }
     if (listType === 'none' || listLen === 0) return
     if (e.key === 'ArrowDown') {
       e.preventDefault()
@@ -129,8 +183,6 @@ export function SearchBar({
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
       setActiveIdx((i) => (i <= 0 ? listLen - 1 : i - 1))
-    } else if (e.key === 'Escape') {
-      setOpen(false)
     }
   }
 
@@ -149,14 +201,19 @@ export function SearchBar({
               onChange={handleChange}
               onKeyDown={handleKeyDown}
               onFocus={() => {
-                if (suggestions.length > 0 || (!query.trim() && recents.length > 0)) setOpen(true)
+                if (
+                  suggestions.length > 0 ||
+                  suggestionState === 'empty' ||
+                  suggestionState === 'error' ||
+                  (!query.trim() && recents.length > 0)
+                ) setOpen(true)
               }}
               placeholder="Park where? e.g. Toa Payoh Hub"
               autoComplete="off"
               aria-label="Search a destination"
               role="combobox"
-              aria-expanded={listType !== 'none'}
-              aria-controls={LISTBOX_ID}
+              aria-expanded={listType !== 'none' || showSuggestionMessage}
+              aria-controls={showSuggestionMessage ? STATUS_ID : LISTBOX_ID}
               aria-autocomplete="list"
               aria-activedescendant={activeIdx >= 0 ? `${LISTBOX_ID}-opt-${activeIdx}` : undefined}
               // text-base (16px) on mobile so iOS Safari doesn't auto-zoom on focus.
@@ -245,6 +302,30 @@ export function SearchBar({
               </li>
             ))}
           </ul>
+        )}
+
+        {showSuggestionMessage && (
+          <div
+            id={STATUS_ID}
+            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 rounded-xl border border-hairline bg-popover px-3.5 py-3 text-sm text-slate-body shadow-lg"
+            role={suggestionState === 'error' ? 'alert' : 'status'}
+          >
+            {suggestionState === 'error' ? (
+              <div className="flex items-center gap-2.5">
+                <AlertCircle className="size-4 shrink-0 text-amber-600" aria-hidden="true" />
+                <span className="min-w-0 flex-1">Address service unavailable.</span>
+                <button
+                  type="button"
+                  onClick={() => void requestSuggestions(query)}
+                  className="shrink-0 rounded-md px-2 py-1 text-xs font-semibold text-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  Retry
+                </button>
+              </div>
+            ) : (
+              'No matching addresses found.'
+            )}
+          </div>
         )}
       </div>
 

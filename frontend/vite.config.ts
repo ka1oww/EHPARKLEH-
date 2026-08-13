@@ -62,27 +62,12 @@ export default defineConfig({
       },
       workbox: {
         // Offline app-shell: precache the built assets so the UI loads with no
-        // network. Live carpark counts are deliberately not cached here: App's
+        // network. Search API responses are deliberately not cached here: App's
         // saved-results path labels them explicitly instead of replaying an old
-        // response that still says it was a cache hit.
+        // response that hides an upstream failure or claims stale data is live.
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
         navigateFallback: 'index.html',
         runtimeCaching: [
-          {
-            // OSM is an optional, non-live supplement. A short network timeout
-            // keeps its cached fallback from delaying primary carpark results.
-            urlPattern: ({ url }) => url.pathname === '/api/parking/osm',
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'osm-api-cache-v2',
-              networkTimeoutSeconds: 4,
-              expiration: {
-                maxEntries: 200,
-                maxAgeSeconds: 60 * 60 * 24, // 1 day
-              },
-              cacheableResponse: { statuses: [0, 200] },
-            },
-          },
           {
             // Google Fonts stylesheet: refresh in the background, serve from
             // cache instantly (and offline).

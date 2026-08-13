@@ -62,10 +62,21 @@ This production-readiness change adds:
 - causal-neutral slow copy instead of guessing that Render is waking;
 - per-feed cache-state and snapshot freshness-deadline response headers, with
   `Live`, `Recent`, or `Saved` labels that downgrade as snapshots age;
-- no service-worker caching of live `/api/carparks` responses; and
+- no service-worker caching of live search API responses, preventing a failed
+  request from becoming an unlabelled cached success; and
 - visible saved results during a slow refresh, plus controlled regression tests.
 
-The response body remains compatible. New diagnostics are headers, and `/health` retains its existing JSON shape.
+Successful response bodies remain compatible. Diagnostics stay in headers,
+failure states use non-2xx responses, and `/health` retains its existing JSON
+shape.
+
+Address and supplemental-map failures have separate contracts. A valid empty
+OneMap response is a no-match; timeouts, upstream errors, and unusable response
+shapes return an error so the interface can offer a retry. The optional
+Overpass request never blocks primary carpark results: a failed request without
+a snapshot returns an error, while an expired last-good snapshot is returned
+with `X-EhParkLeh-Osm-State: stale`; either condition produces the same quiet
+supplemental-layer notice.
 
 `X-EhParkLeh-Availability-Fresh-Until` and `X-EhParkLeh-Ev-Fresh-Until` are
 fixed when each successful snapshot is published, rather than regenerated for

@@ -55,6 +55,8 @@ The backend sends cache state and freshness deadlines in response headers. The f
 ## Features
 
 - Search by destination or Near me. Location permission is requested only when Near me is tapped.
+- Address lookup failures are labelled and retryable instead of appearing as no matches; a valid search with no results stays neutral.
+- Main carpark results do not wait for the supplemental OpenStreetMap layer and remain available with a quiet notice when that layer fails.
 - Filter by HDB, malls, street, or private car parks, then narrow by free Sunday and public holiday parking, available lots, EV charging, car wash, or radius.
 - Show resolved rates, parsed free-parking rules, lot counts, EV connector counts, and self-service car wash operators. EV site flags come from LTA DataMall, with live connector counts when the feed is configured. Car wash flags come from Beaver and QE Car Care published lists.
 - Live OSM parking entries are shown for unfiltered searches; they are hidden from the list, map, and nearby count whenever a filter is active because they do not carry the filter data needed to verify a match.

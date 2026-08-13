@@ -137,6 +137,7 @@ app.add_middleware(
         "X-EhParkLeh-Ev-State",
         "X-EhParkLeh-Ev-Fresh-Until",
         "X-EhParkLeh-Generated-At",
+        "X-EhParkLeh-Osm-State",
     ],
 )
 
@@ -705,17 +706,28 @@ async def suggestions(q: str = Query(...)):
             )
         resp.raise_for_status()
         data = resp.json()
-    except Exception:
+    except httpx.TimeoutException as exc:
+        logger.exception("OneMap suggestions request timed out")
+        raise HTTPException(status_code=504, detail="Address service timed out") from exc
+    except Exception as exc:
         logger.exception("OneMap suggestions request failed")
-        return []
-    # Build defensively: skip any result missing the fields we need rather than
-    # 500-ing the whole endpoint if OneMap's schema shifts.
+        raise HTTPException(status_code=502, detail="Address service unavailable") from exc
+    raw_results = data.get("results") if isinstance(data, dict) else None
+    if not isinstance(raw_results, list):
+        logger.error("OneMap suggestions returned malformed results: %r", raw_results)
+        raise HTTPException(status_code=502, detail="Address service unavailable")
+
     out: list[Suggestion] = []
-    for r in data.get("results", [])[:6]:
+    for r in raw_results:
         try:
             out.append(Suggestion(address=r["ADDRESS"], lat=float(r["LATITUDE"]), lon=float(r["LONGITUDE"])))
         except (KeyError, ValueError, TypeError):
             logger.warning("Skipping malformed OneMap suggestion: %r", r)
+        if len(out) == 6:
+            break
+    if raw_results and not out:
+        logger.error("OneMap suggestions returned no usable matches")
+        raise HTTPException(status_code=502, detail="Address service unavailable")
     return out
 
 
@@ -734,12 +746,19 @@ async def geocode(q: str = Query(...)):
         # distinct from a valid search that simply found nothing (404 below).
         logger.exception("OneMap geocode request failed")
         raise HTTPException(status_code=502, detail="Geocoding service unavailable")
-    # Return the first well-formed result; skip malformed ones; 404 if none.
-    for r in (data.get("results") or []):
+    raw_results = data.get("results") if isinstance(data, dict) else None
+    if not isinstance(raw_results, list):
+        logger.error("OneMap geocode returned malformed results: %r", raw_results)
+        raise HTTPException(status_code=502, detail="Geocoding service unavailable")
+
+    for r in raw_results:
         try:
             return GeocodeResult(lat=float(r["LATITUDE"]), lon=float(r["LONGITUDE"]), address=r["ADDRESS"])
         except (KeyError, ValueError, TypeError):
             continue
+    if raw_results:
+        logger.error("OneMap geocode returned no usable matches")
+        raise HTTPException(status_code=502, detail="Geocoding service unavailable")
     raise HTTPException(status_code=404, detail="Location not found")
 
 
@@ -942,6 +961,7 @@ _osm_cache: dict = {}  # {(rlat, rlon, radius): (fetched_at, list[OsmParking])}
 
 @app.get("/api/parking/osm", response_model=list[OsmParking])
 async def parking_osm(
+    response: Response,
     lat: float = Query(..., ge=SG_LAT_MIN, le=SG_LAT_MAX),
     lon: float = Query(..., ge=SG_LON_MIN, le=SG_LON_MAX),
     radius: int = Query(500, ge=MIN_RADIUS_M, le=MAX_RADIUS_M),
@@ -949,6 +969,7 @@ async def parking_osm(
     key = (round(lat, 3), round(lon, 3), radius)
     cached = _osm_cache.get(key)
     if cached and (time.monotonic() - cached[0]) < OSM_TTL_SECONDS:
+        response.headers["X-EhParkLeh-Osm-State"] = "hit"
         return cached[1]
 
     query = f"""
@@ -967,11 +988,20 @@ out center;
                 data={"data": query},
                 headers={"User-Agent": OVERPASS_USER_AGENT},
             )
-        elements = resp.json().get("elements", [])
-    except Exception:
+        resp.raise_for_status()
+        payload = resp.json()
+        if payload.get("remark"):
+            raise RuntimeError("Overpass returned an error remark")
+        elements = payload["elements"]
+        if not isinstance(elements, list):
+            raise TypeError("Overpass elements must be a list")
+    except Exception as exc:
         logger.exception("Overpass/OSM request failed")
-        # Serve a recent snapshot for this area if we have one, else empty.
-        return cached[1] if cached else []
+        if cached:
+            response.headers["X-EhParkLeh-Osm-State"] = "stale"
+            return cached[1]
+        status_code = 504 if isinstance(exc, httpx.TimeoutException) else 502
+        raise HTTPException(status_code=status_code, detail="Map parking service unavailable") from exc
 
     results: list[OsmParking] = []
     for el in elements:
@@ -1005,4 +1035,5 @@ out center;
         oldest = min(_osm_cache, key=lambda k: _osm_cache[k][0])
         _osm_cache.pop(oldest, None)
     _osm_cache[key] = (time.monotonic(), results)
+    response.headers["X-EhParkLeh-Osm-State"] = "fresh"
     return results
