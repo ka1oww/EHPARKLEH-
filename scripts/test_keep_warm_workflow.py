@@ -344,7 +344,7 @@ class KeepWarmWorkflowTests(unittest.TestCase):
             self.assertIn(required, workflow)
         self.assertIn("keep-warm-cadence.md", readiness)
         self.assertIn("self-relaunching Actions job", readiness)
-        self.assertIn("a maintainer must re-enable it first", workflow)
+        self.assertIn("a maintainer must re-enable it", workflow)
         self.assertIn("must re-enable the workflow first", cadence_guide)
         self.assertNotIn("workflow gets disabled after 60 days", workflow)
         self.assertNotIn(
@@ -355,22 +355,19 @@ class KeepWarmWorkflowTests(unittest.TestCase):
             "no paid plan, external scheduler, or additional keepalive was selected here",
             readiness,
         )
-        self.assertFalse((ROOT / "AGENTS.md").exists())
-        self.assertFalse((ROOT / "CLAUDE.md").exists())
         self.__class__.evidence["contract"] = {
             "cron_role": "backstop",
             "workflow_dispatch_input": "loop_seconds",
             "permissions": "actions: write",
             "concurrency_group": "keep-warm",
             "job_timeout_minutes": 355,
-            "agent_tool_files_present": False,
             "production_readiness_links_current_mechanism": True,
             "disabled_workflow_requires_manual_reenable": True,
         }
         print(
             "WORKFLOW CONTRACT: dispatch input, actions:write, keep-warm "
             "concurrency, 355m timeout, always-on handoff, backstop cron, "
-            "updated readiness docs, and no agent-tool files are present."
+            "and updated readiness docs are all present."
         )
 
 

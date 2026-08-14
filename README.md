@@ -4,8 +4,6 @@ I built EhParkLeh to find a car park in Singapore. Search a destination or use N
 
 [Open the live app](https://ehparkleh.vercel.app).
 
-<!-- Demo video: being re-recorded. Add the link here when ready. -->
-
 ## Data pipeline
 
 The current dataset contains **3,566 carparks** tagged across seven sources: HDB, URA, Google, OSM, LTA, OneMotoring, and manual. A carpark can carry more than one source tag. The build records **4,465 dedupe merges**, then voids **54** records inside military areas, **90** outside Singapore, and **94** non-car-parking POIs. These figures are from [`backend/enrich/STATS.md`](backend/enrich/STATS.md).
@@ -87,7 +85,7 @@ npm install
 VITE_API_BASE=http://localhost:8000 npm run dev
 ```
 
-The dev server runs at `http://localhost:5173`. Run the local checks with `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run build` from `frontend/`, or `python -m pytest` from `backend/`.
+The dev server runs at `http://localhost:5173`. Run the local checks with `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run build` from `frontend/`, or `python -m pytest` from `backend/`. Run `python scripts/test_keep_warm_workflow.py` from the repository root to check the keep-warm workflow contract.
 
 ## Deployment
 
