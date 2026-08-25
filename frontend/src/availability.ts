@@ -1,4 +1,4 @@
-// Shared availability logic for the wayfinding LED counter chip.
+// Shared availability logic for the gantry-board lot counter.
 //
 // Turns raw (available, total) lot counts into a colour-coded state so the
 // CarparkCard, the Leaflet map popup, and any other surface stay consistent.
@@ -38,12 +38,12 @@ export function getAvailability(
 export function availColor(state: AvailState): string {
   switch (state) {
     case 'free':
-      return '#16a34a'
+      return '#1C6E4A'
     case 'some':
-      return '#f59e0b'
+      return '#E8A020'
     case 'full':
-      return '#ef4444'
+      return '#C8342A'
     default:
-      return '#64748b'
+      return '#98917F'
   }
 }

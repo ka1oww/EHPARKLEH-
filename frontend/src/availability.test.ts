@@ -25,6 +25,6 @@ describe('availColor', () => {
     const states: AvailState[] = ['free', 'some', 'full', 'nodata']
     const colours = states.map(availColor)
     expect(new Set(colours).size).toBe(states.length)
-    expect(availColor('free')).toBe('#16a34a')
+    expect(availColor('free')).toBe('#1C6E4A')
   })
 })

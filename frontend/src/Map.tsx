@@ -3,7 +3,8 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
-import { getAvailability, availColor, type AvailState } from './availability'
+import { getAvailability, type AvailState } from './availability'
+import { formatLotCount, statusLine, LED_HEX } from './lots'
 import type { FeedFreshness } from './freshness'
 import type { Carpark, OsmParking, LatLon } from './types'
 
@@ -14,24 +15,35 @@ const pIcon = L.divIcon({
   iconAnchor: [11, 11],
 })
 
-const INDIGO = '#4338CA'
-const USER_BLUE = '#2563EB'
+const KAYA = '#1C6E4A'
+const ERP_NAVY = '#1D3A6B'
 
-// Carpark pin as a coloured dot (a divIcon, not a vector circleMarker, so it can
-// live inside a marker cluster — markercluster cannot cluster circleMarkers).
-// The per-state class adds a shape glyph (ring / bar / centre dot) so the pins
-// are distinguishable without relying on colour alone (colour-blind safe).
-function carparkIcon(state: AvailState, selected: boolean): L.DivIcon {
-  const size = selected ? 26 : 18
+// Carpark pin as a gantry board on a short post — the count you would read off
+// the sign at the entrance, planted at the carpark. It is a divIcon, not a
+// vector circleMarker, so it can live inside a marker cluster (markercluster
+// cannot cluster circleMarkers).
+//
+// The board carries the number itself, which is what makes it readable without
+// relying on colour: the previous dot pins needed a per-state shape glyph to be
+// colour-blind safe, and "062" against "FULL" needs no such crutch.
+const PIN_W = 48
+const PIN_H = 38
+
+function carparkIcon(state: AvailState, available: number | null, selected: boolean): L.DivIcon {
   return L.divIcon({
     className: '',
-    html: `<div class="cp-dot cp-dot--${state}${selected ? ' cp-dot--selected' : ''}" style="background:${availColor(state)}"></div>`,
-    iconSize: [size, size],
-    iconAnchor: [size / 2, size / 2],
+    html:
+      `<div class="cp-board${selected ? ' cp-board--selected' : ''}">` +
+      `<div class="gantry" data-state="${state}" style="color:${LED_HEX[state]}">${formatLotCount(available)}</div>` +
+      `<div class="cp-board__post"></div>` +
+      `</div>`,
+    iconSize: [PIN_W, PIN_H],
+    // The post tip is the carpark, so the pin hangs above its own coordinates.
+    iconAnchor: [PIN_W / 2, PIN_H],
   })
 }
 
-// Cluster bubble themed to the app (indigo fill, cyan ring, mono count).
+// Cluster bubble themed to the app (kaya fill, cream ring, mono count).
 function clusterIcon(cluster: L.MarkerCluster): L.DivIcon {
   const n = cluster.getChildCount()
   const size = n < 10 ? 34 : n < 100 ? 40 : 46
@@ -42,27 +54,36 @@ function clusterIcon(cluster: L.MarkerCluster): L.DivIcon {
   })
 }
 
-// LED-style availability chip rendered inside Leaflet popups.
-function ledChipHtml(
+// The gantry board, as the popup's hero. Same rule as the card hero: the
+// eyebrow only says the count is NOW when the feed really is now.
+const POPUP_EYEBROW: Record<FeedFreshness, string> = {
+  fresh: 'LOTS NOW &middot; LIVE',
+  recent: 'LOTS &middot; RECENT UPDATE',
+  saved: 'LOTS &middot; SAVED COUNT',
+}
+
+function boardHtml(
   state: AvailState,
   available: number | null,
   total: number | null,
   freshness: FeedFreshness,
 ): string {
-  const dot = availColor(state)
-  const text =
-    state === 'nodata' ? 'NO DATA' : `${available} <span style="opacity:.55">/ ${total}</span> LOTS`
-  const freshnessLabel =
-    state !== 'nodata' && freshness !== 'fresh'
-      ? `<span style="font-size:9px;letter-spacing:.08em;opacity:.7">${freshness === 'recent' ? 'RECENT' : 'SAVED'}</span>`
-      : ''
+  const eyebrow = state === 'nodata' ? 'NO LIVE COUNT' : POPUP_EYEBROW[freshness]
+  const denominator =
+    state === 'nodata' ? '' : `<div style="font-size:11px;color:#9B957F">of ${total} lots</div>`
   return (
-    `<span class="led-popup-chip">` +
-    `<span style="width:7px;height:7px;border-radius:999px;background:${dot};box-shadow:0 0 5px ${dot}"></span>` +
-    `<span style="opacity:.55">P</span>` +
-    `<span style="color:${dot}">${text}</span>` +
-    freshnessLabel +
-    `</span>`
+    `<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px;` +
+    `background:#2A2320;border-radius:9px;padding:10px 12px">` +
+    `<div>` +
+    `<div style="font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:28px;line-height:1;` +
+    `color:${LED_HEX[state]}">${formatLotCount(available)}</div>` +
+    `<div style="font-size:9px;font-weight:700;letter-spacing:.14em;color:#9B957F;margin-top:4px">${eyebrow}</div>` +
+    `</div>` +
+    `<div style="text-align:right">` +
+    `<div style="font-size:12px;font-weight:800;color:#F6E7C6">${statusLine(state, available)}</div>` +
+    denominator +
+    `</div>` +
+    `</div>`
   )
 }
 
@@ -88,17 +109,20 @@ function wazeDir(lat: number, lon: number): string {
   return `https://www.waze.com/ul?ll=${lat},${lon}&navigate=yes`
 }
 
-// Google Maps + Waze actions rendered inside a Leaflet popup. Clicks stay inside
-// the popup (target=_blank), so they never toggle the marker selection.
+// The go-action and Waze, rendered inside a Leaflet popup. Clicks stay inside
+// the popup (target=_blank), so they never toggle the marker selection. Both
+// keep a 44px hit target, the same as everywhere else in the app.
 function navLinksHtml(lat: number, lon: number): string {
-  const link = (href: string, text: string) =>
-    `<a href="${href}" target="_blank" rel="noopener noreferrer" ` +
-    `style="display:inline-flex;align-items:center;gap:4px;` +
-    `font-size:12px;font-weight:700;color:#4338CA;text-decoration:none">${text} ↗</a>`
   return (
-    `<div style="display:flex;gap:14px;margin-top:9px">` +
-    link(gmapsDir(lat, lon), 'Google Maps') +
-    link(wazeDir(lat, lon), 'Waze') +
+    `<div style="display:flex;align-items:center;gap:8px;margin-top:10px">` +
+    `<a href="${gmapsDir(lat, lon)}" target="_blank" rel="noopener noreferrer" ` +
+    `style="display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:1;min-height:44px;` +
+    `border-radius:10px;background:${KAYA};color:#FFF8EA;text-decoration:none;` +
+    `font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;font-size:15px">Confirm ah &rarr;</a>` +
+    `<a href="${wazeDir(lat, lon)}" target="_blank" rel="noopener noreferrer" ` +
+    `style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 12px;` +
+    `border-radius:10px;border:2px solid ${KAYA};color:${KAYA};text-decoration:none;` +
+    `font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;font-size:14px">Waze</a>` +
     `</div>`
   )
 }
@@ -107,16 +131,16 @@ function popupHtml(
   title: string,
   distance: number,
   rate: string,
-  ledHtml: string,
+  boardHtmlMarkup: string,
   lat: number,
   lon: number,
 ): string {
   return (
-    `<div style="font-family:Inter,system-ui,sans-serif;min-width:170px">` +
-    `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:6px">${esc(title)}</div>` +
-    `${ledHtml}` +
-    `<div style="margin-top:7px;font-size:12px;color:#475569">` +
-    `<span style="font-family:'Space Mono',monospace;font-weight:700">${distance}m</span> away · ${esc(rate)}` +
+    `<div style="font-family:Overpass,system-ui,sans-serif;min-width:210px">` +
+    `<div style="font-weight:800;font-size:15px;color:#2A2320;margin-bottom:8px">${esc(title)}</div>` +
+    `${boardHtmlMarkup}` +
+    `<div style="margin-top:8px;font-size:12px;color:#8A8070">` +
+    `<span style="font-family:'IBM Plex Mono',monospace;font-weight:700">${distance}m</span> away &middot; ${esc(rate)}` +
     `</div>` +
     navLinksHtml(lat, lon) +
     `</div>`
@@ -125,10 +149,10 @@ function popupHtml(
 
 function osmPopupHtml(name: string, distance: number, lat: number, lon: number): string {
   return (
-    `<div style="font-family:Inter,system-ui,sans-serif;min-width:150px">` +
-    `<div style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;color:#1E1B4B;margin-bottom:4px">${esc(name)}</div>` +
-    `<div style="font-size:12px;color:#475569"><span style="font-family:'Space Mono',monospace;font-weight:700">${distance}m</span> away</div>` +
-    `<div style="font-size:12px;color:#94a3b8;font-style:italic;margin-top:2px">No live lots or rates</div>` +
+    `<div style="font-family:Overpass,system-ui,sans-serif;min-width:200px">` +
+    `<div style="font-weight:800;font-size:15px;color:#2A2320;margin-bottom:4px">${esc(name)}</div>` +
+    `<div style="font-size:12px;color:#8A8070"><span style="font-family:'IBM Plex Mono',monospace;font-weight:700">${distance}m</span> away</div>` +
+    `<div style="font-size:12px;color:#98917F;margin-top:2px">No live lots or rates</div>` +
     navLinksHtml(lat, lon) +
     `</div>`
   )
@@ -149,6 +173,7 @@ interface MarkerMeta {
   marker: L.Marker
   kind: 'hdb' | 'osm'
   state?: AvailState
+  available?: number | null
 }
 
 // API responses are freshly allocated even when their marker-relevant content
@@ -249,8 +274,8 @@ function Map({
     if (centerMarkerRef.current) centerMarkerRef.current.remove()
     centerMarkerRef.current = L.circleMarker([center.lat, center.lon], {
       radius: 8,
-      color: '#fff',
-      fillColor: INDIGO,
+      color: '#FFF8EA',
+      fillColor: KAYA,
       fillOpacity: 1,
       weight: 3,
     })
@@ -277,7 +302,7 @@ function Map({
       const a = getAvailability(cp.lots_available, cp.total_lots)
       const title = `${cp.address} — ${a.state === 'nodata' ? 'no live lot data' : `${a.available}/${a.total} lots`}`
       const m = L.marker([cp.lat, cp.lon], {
-        icon: carparkIcon(a.state, cp.id === sel),
+        icon: carparkIcon(a.state, a.available, cp.id === sel),
         title,
       })
         .bindPopup(
@@ -285,14 +310,14 @@ function Map({
             `${i + 1}. ${cp.address}`,
             cp.distance_m,
             cp.rate.known ? cp.rate.summary : 'Rate unknown',
-            ledChipHtml(a.state, a.available, a.total, availabilityFreshness),
+            boardHtml(a.state, a.available, a.total, availabilityFreshness),
             cp.lat,
             cp.lon,
           ),
         )
         .on('click', () => onSelect(cp.id === selectedRef.current ? null : cp.id))
       markers.push(m)
-      meta[cp.id] = { marker: m, kind: 'hdb', state: a.state }
+      meta[cp.id] = { marker: m, kind: 'hdb', state: a.state, available: a.available }
     })
 
     osmParking.forEach((cp) => {
@@ -339,12 +364,16 @@ function Map({
     const prev = prevSelRef.current
     if (prev && prev !== selected) {
       const pm = meta[prev]
-      if (pm?.kind === 'hdb' && pm.state) pm.marker.setIcon(carparkIcon(pm.state, false))
+      if (pm?.kind === 'hdb' && pm.state) {
+        pm.marker.setIcon(carparkIcon(pm.state, pm.available ?? null, false))
+      }
     }
     if (selected) {
       const sm = meta[selected]
       if (sm) {
-        if (sm.kind === 'hdb' && sm.state) sm.marker.setIcon(carparkIcon(sm.state, true))
+        if (sm.kind === 'hdb' && sm.state) {
+          sm.marker.setIcon(carparkIcon(sm.state, sm.available ?? null, true))
+        }
         // Expand any cluster hiding the selected pin, then open its popup.
         cluster.zoomToShowLayer(sm.marker, () => sm.marker.openPopup())
       }
@@ -364,8 +393,8 @@ function Map({
     if (userMarkerRef.current) userMarkerRef.current.remove()
     userMarkerRef.current = L.circleMarker([userLocation.lat, userLocation.lon], {
       radius: 7,
-      color: '#fff',
-      fillColor: USER_BLUE,
+      color: '#FFF8EA',
+      fillColor: ERP_NAVY,
       fillOpacity: 1,
       weight: 3,
     })
