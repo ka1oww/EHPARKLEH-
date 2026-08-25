@@ -968,6 +968,203 @@ describe('App offline board', () => {
   })
 })
 
+describe('App last-session snapshot', () => {
+  // The snapshot a filtered session writes: an EV-filtered carpark subset,
+  // the OSM pins that session had hidden, and the filters that produced it.
+  const evCarpark = () => ({
+    ...carpark('cp-ev', 'EV carpark'),
+    ev: true,
+    ev_total: 2,
+    ev_available: 1,
+  })
+  const plainCarpark = () => carpark('cp-plain', 'Plain carpark')
+  const filteredSnapshot = () => ({
+    carparks: [evCarpark()],
+    osmParking: [osm('osm-1', 'Open lot')],
+    center: { lat: 1.37, lon: 103.85 },
+    ts: 0,
+    filters: {
+      radius: 500,
+      category: null,
+      freeSunPh: false,
+      hasLots: false,
+      hasEv: true,
+      hasCarwash: false,
+    },
+  })
+
+  const goOffline = () =>
+    Object.defineProperty(window.navigator, 'onLine', { value: false, configurable: true })
+  const goOnline = () =>
+    Object.defineProperty(window.navigator, 'onLine', { value: true, configurable: true })
+
+  it('offline cold open restores a filtered snapshot with its chips on, not as the whole picture', async () => {
+    window.history.replaceState(null, '', '/')
+    localStorage.setItem('ehparkleh:last', JSON.stringify(filteredSnapshot()))
+    goOffline()
+    const fetchMock = vi.fn(async () => {
+      throw new TypeError('Failed to fetch')
+    })
+    vi.stubGlobal('fetch', fetchMock)
+
+    try {
+      render(<App />)
+
+      expect(await screen.findByText('EV carpark')).toBeInTheDocument()
+      expect(screen.queryByText('Plain carpark')).not.toBeInTheDocument()
+      // The filter state is restored with the rows, so the board says what it
+      // is instead of passing the subset off as everything nearby.
+      expect(screen.getByText(/Showing EV charging only/i)).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /EV charging/i })).toHaveAttribute(
+        'aria-pressed',
+        'true',
+      )
+      // The OSM pins the filtered view deliberately hid stay hidden...
+      expect(lastMapProps()?.osmParking).toEqual([])
+      // ...so the count matches what a real EV search produced.
+      expect(spotsNearby(1)).toBeInTheDocument()
+      // Time staleness is still labelled as before.
+      expect(screen.getByText('Saved')).toBeInTheDocument()
+      // Offline restore never touches the network.
+      expect(fetchMock).not.toHaveBeenCalled()
+    } finally {
+      goOnline()
+    }
+  })
+
+  it('online cold open refreshes with the restored filters, not a silent unfiltered swap', async () => {
+    window.history.replaceState(null, '', '/')
+    localStorage.setItem('ehparkleh:last', JSON.stringify(filteredSnapshot()))
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input)
+      if (url.includes('/api/parking/osm')) return okJson([osm('osm-1', 'Open lot')])
+      if (url.includes('/api/carparks')) {
+        return url.includes('has_ev=true') ? okJson([evCarpark()]) : okJson([evCarpark(), plainCarpark()])
+      }
+      return okJson([])
+    })
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+
+    // Exactly one primary request, carrying the restored filter and radius.
+    await vi.waitFor(() =>
+      expect(fetchMock.mock.calls.filter(([u]) => String(u).includes('/api/carparks'))).toHaveLength(1),
+    )
+    const refreshUrl = String(
+      fetchMock.mock.calls.find(([u]) => String(u).includes('/api/carparks'))?.[0],
+    )
+    expect(refreshUrl).toContain('has_ev=true')
+    expect(refreshUrl).toContain('radius=500')
+
+    // And the filter UI survives the refreshed result set.
+    expect(await screen.findByText('EV carpark')).toBeInTheDocument()
+    expect(screen.getByText(/Showing EV charging only/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /EV charging/i })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    )
+    expect(lastMapProps()?.osmParking).toEqual([])
+  })
+
+  it('records the active filters in the snapshot when a filtered search moves to a new place', async () => {
+    vi.useFakeTimers()
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input)
+      if (url.includes('/api/geocode')) return okJson({ lat: 1.4, lon: 103.9, address: 'Bishan' })
+      if (url.includes('/api/suggestions')) return okJson([])
+      if (url.includes('/api/parking/osm')) return okJson([osm('osm-1', 'Open lot')])
+      if (url.includes('/api/carparks')) {
+        return url.includes('has_ev=true') ? okJson([evCarpark()]) : okJson([evCarpark(), plainCarpark()])
+      }
+      throw new Error(`unexpected fetch ${url}`)
+    })
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300)
+    })
+    fireEvent.click(screen.getByRole('button', { name: /EV charging/i }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300)
+    })
+
+    // New place while the chip is on: the stored subset must carry its filters.
+    const box = screen.getAllByRole('combobox')[0]
+    fireEvent.change(box, { target: { value: 'Bishan' } })
+    fireEvent.submit(box.closest('form')!)
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300)
+    })
+
+    const snap = JSON.parse(localStorage.getItem('ehparkleh:last') || 'null')
+    expect(snap.center).toEqual({ lat: 1.4, lon: 103.9 })
+    expect(snap.carparks.map((c: { id: string }) => c.id)).toEqual(['cp-ev'])
+    expect(snap.filters).toEqual({
+      radius: 500,
+      category: null,
+      freeSunPh: false,
+      hasLots: false,
+      hasEv: true,
+      hasCarwash: false,
+    })
+    vi.useRealTimers()
+  })
+
+  it('deep-link opens ignore stored snapshot filters entirely', async () => {
+    // beforeEach already points the URL at /?lat=&lon=, so this open is a
+    // reproducible shared link even though storage holds a filtered snapshot.
+    localStorage.setItem('ehparkleh:last', JSON.stringify(filteredSnapshot()))
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) =>
+      String(input).includes('/api/parking/osm')
+        ? okJson([])
+        : okJson([evCarpark(), plainCarpark()]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+
+    expect(await screen.findByText('Plain carpark')).toBeInTheDocument()
+    const carparkUrl = String(
+      fetchMock.mock.calls.find(([u]) => String(u).includes('/api/carparks'))?.[0],
+    )
+    expect(carparkUrl).not.toContain('has_ev')
+    expect(screen.queryByText(/^Showing .* only$/)).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /EV charging/i })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    )
+  })
+
+  it('restores a legacy or malformed snapshot without error, as unfiltered', async () => {
+    window.history.replaceState(null, '', '/')
+    localStorage.setItem(
+      'ehparkleh:last',
+      JSON.stringify({ ...filteredSnapshot(), filters: 'not-an-object' }),
+    )
+    goOffline()
+    vi.stubGlobal('fetch', vi.fn())
+
+    try {
+      render(<App />)
+
+      // Without trustworthy filter data the restore falls back to today's
+      // behaviour: unfiltered defaults, no crash.
+      expect(await screen.findByText('EV carpark')).toBeInTheDocument()
+      expect(screen.queryByText(/^Showing .* only$/)).not.toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /EV charging/i })).toHaveAttribute(
+        'aria-pressed',
+        'false',
+      )
+      expect(lastMapProps()?.osmParking).toHaveLength(1)
+      expect(spotsNearby(2)).toBeInTheDocument()
+    } finally {
+      goOnline()
+    }
+  })
+})
+
 describe('App saved carparks', () => {
   it('keeps a starred carpark, lists it with a live count, and survives a reload', async () => {
     const starred = { ...carpark('cp-678a', 'Blk 678A CCK Crescent'), lots_available: 62 }
