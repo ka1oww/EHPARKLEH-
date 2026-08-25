@@ -15,6 +15,19 @@ const pIcon = L.divIcon({
   iconAnchor: [11, 11],
 })
 
+// The basemap follows the system theme. Same style, same attribution, same
+// domain authentication — only the ink changes.
+const TILE_LIGHT = 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png'
+const TILE_DARK = 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png'
+
+function prefersDark(): boolean {
+  return typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
+}
+
+function tileUrl(dark: boolean): string {
+  return dark ? TILE_DARK : TILE_LIGHT
+}
+
 const KAYA = '#1C6E4A'
 const ERP_NAVY = '#1D3A6B'
 
@@ -121,7 +134,7 @@ function navLinksHtml(lat: number, lon: number): string {
     `font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;font-size:15px">Confirm ah &rarr;</a>` +
     `<a href="${wazeDir(lat, lon)}" target="_blank" rel="noopener noreferrer" ` +
     `style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 12px;` +
-    `border-radius:10px;border:2px solid ${KAYA};color:${KAYA};text-decoration:none;` +
+    `border-radius:10px;border:2px solid var(--link);color:var(--link);text-decoration:none;` +
     `font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;font-size:14px">Waze</a>` +
     `</div>`
   )
@@ -137,9 +150,9 @@ function popupHtml(
 ): string {
   return (
     `<div style="font-family:Overpass,system-ui,sans-serif;min-width:210px">` +
-    `<div style="font-weight:800;font-size:15px;color:#2A2320;margin-bottom:8px">${esc(title)}</div>` +
+    `<div style="font-weight:800;font-size:15px;color:var(--ink);margin-bottom:8px">${esc(title)}</div>` +
     `${boardHtmlMarkup}` +
-    `<div style="margin-top:8px;font-size:12px;color:#8A8070">` +
+    `<div style="margin-top:8px;font-size:12px;color:var(--slate)">` +
     `<span style="font-family:'IBM Plex Mono',monospace;font-weight:700">${distance}m</span> away &middot; ${esc(rate)}` +
     `</div>` +
     navLinksHtml(lat, lon) +
@@ -150,9 +163,9 @@ function popupHtml(
 function osmPopupHtml(name: string, distance: number, lat: number, lon: number): string {
   return (
     `<div style="font-family:Overpass,system-ui,sans-serif;min-width:200px">` +
-    `<div style="font-weight:800;font-size:15px;color:#2A2320;margin-bottom:4px">${esc(name)}</div>` +
-    `<div style="font-size:12px;color:#8A8070"><span style="font-family:'IBM Plex Mono',monospace;font-weight:700">${distance}m</span> away</div>` +
-    `<div style="font-size:12px;color:#98917F;margin-top:2px">No live lots or rates</div>` +
+    `<div style="font-weight:800;font-size:15px;color:var(--ink);margin-bottom:4px">${esc(name)}</div>` +
+    `<div style="font-size:12px;color:var(--slate)"><span style="font-family:'IBM Plex Mono',monospace;font-weight:700">${distance}m</span> away</div>` +
+    `<div style="font-size:12px;color:var(--eyebrow);margin-top:2px">No live lots or rates</div>` +
     navLinksHtml(lat, lon) +
     `</div>`
   )
@@ -217,6 +230,7 @@ function Map({
 }: MapProps) {
   const mapRef = useRef<HTMLDivElement>(null)
   const instanceRef = useRef<L.Map | null>(null)
+  const tilesRef = useRef<L.TileLayer | null>(null)
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null)
   const centerMarkerRef = useRef<L.CircleMarker | null>(null)
   const userMarkerRef = useRef<L.CircleMarker | null>(null)
@@ -244,17 +258,21 @@ function Map({
         [center.lat, center.lon],
         15,
       )
-      // Stadia Maps "Alidade Smooth": a light, muted basemap so the coloured
-      // parking pins pop. Authenticated by domain (localhost for dev, the
-      // production origin registered in the Stadia dashboard) — no key in the
-      // bundle. Within their tile-usage terms, unlike the OSMF community server.
-      L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png', {
+      // Stadia Maps "Alidade Smooth": a muted basemap so the gantry boards pop.
+      // Authenticated by domain (localhost for dev, the production origin
+      // registered in the Stadia dashboard) — no key in the bundle. Within
+      // their tile-usage terms, unlike the OSMF community server. The night
+      // board draws the map as a dark surface, so the dark variant of the same
+      // style follows the system theme; a lit board on a white map at 1am is
+      // the one thing the design is emphatic about not doing.
+      const tiles = L.tileLayer(tileUrl(prefersDark()), {
         attribution:
           '&copy; <a href="https://stadiamaps.com/" target="_blank" rel="noopener">Stadia Maps</a> ' +
           '&copy; <a href="https://openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> ' +
           '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
         maxZoom: 20,
       }).addTo(map)
+      tilesRef.current = tiles
       // One cluster group holds all parking pins: it clusters dense areas and
       // only renders markers in/near the viewport (viewport culling).
       clusterRef.current = L.markerClusterGroup({
@@ -266,6 +284,15 @@ function Map({
       }).addTo(map)
       instanceRef.current = map
     }
+  }, [])
+
+  // Follow a live theme switch, so the map does not stay bright after the
+  // phone rolls into its night appearance under a session already open.
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)')
+    const onChange = (e: MediaQueryListEvent) => tilesRef.current?.setUrl(tileUrl(e.matches))
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
   }, [])
 
   useEffect(() => {

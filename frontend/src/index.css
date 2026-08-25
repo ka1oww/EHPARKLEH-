@@ -69,6 +69,16 @@
   /* ERP homage strip. Reserved for a genuinely notable rate fact. */
   --erp-navy: #1d3a6b;
   --erp-amber: #ffb020;
+  /* The car-wash chip borrows the ERP sign. On a cream card the navy is the
+     legible half; on a dark one it is the amber, which is the same sign read
+     the other way round. */
+  --erp-chip: #1d3a6b1f;
+  --erp-chip-ink: #1d3a6b;
+
+  /* Accent text — links, small icons, ghost-button labels. Kaya reads on
+     cream but disappears on near-black, so at night it becomes the LED green
+     the Night board sets its links in. Fills keep --primary in both themes. */
+  --link: #1c6e4a;
 
   /* The green signboard bar at the top of the app. */
   --brand-bar: #1c6e4a;
@@ -146,6 +156,11 @@
 
     --board: #0d0f0c;
 
+    --erp-chip: #1d3a6b66;
+    --erp-chip-ink: #ffb020;
+
+    --link: #4ce28a;
+
     --brand-bar: #14523a;
 
     --avail-free: #4ce28a;
@@ -201,6 +216,9 @@
 
   --color-erp-navy: var(--erp-navy);
   --color-erp-amber: var(--erp-amber);
+  --color-erp-chip: var(--erp-chip);
+  --color-erp-chip-ink: var(--erp-chip-ink);
+  --color-link: var(--link);
 
   --color-brand-bar: var(--brand-bar);
   --color-brand-bar-foreground: var(--brand-bar-foreground);
@@ -321,7 +339,35 @@
   top: 0;
 }
 
-.leaflet-popup-content-wrapper {
+/* Leaflet's own controls ship a hardcoded white; at night that put a lit strip
+   along the bottom of a dark map. Give them the card surface instead. */
+.leaflet-container .leaflet-control-attribution {
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  color: var(--muted-foreground);
+  font-family: var(--font-body);
+  font-size: 10px;
+}
+
+.leaflet-container .leaflet-control-attribution a {
+  color: var(--link);
+}
+
+.leaflet-container .leaflet-bar a,
+.leaflet-container .leaflet-bar a:hover {
+  background: var(--card);
+  color: var(--foreground);
+  border-bottom-color: var(--hairline);
+}
+
+.leaflet-container .leaflet-bar a:hover {
+  background: var(--secondary);
+}
+
+.leaflet-container .leaflet-bar {
+  border-color: var(--hairline);
+}
+
+.leaflet-container .leaflet-popup-content-wrapper {
   border-radius: 14px;
   background: var(--popover);
   color: var(--foreground);
@@ -329,11 +375,11 @@
   box-shadow: 0 8px 24px rgba(42, 35, 32, 0.18);
 }
 
-.leaflet-popup-tip {
+.leaflet-container .leaflet-popup-tip {
   background: var(--popover);
 }
 
-.leaflet-popup-content {
+.leaflet-container .leaflet-popup-content {
   margin: 0.75rem 0.9rem;
   font-family: var(--font-body);
   color: var(--foreground);

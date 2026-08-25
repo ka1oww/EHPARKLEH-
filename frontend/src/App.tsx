@@ -150,7 +150,7 @@ function SignTile({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'flex size-[88px] items-center justify-center rounded-[20px] border-[3px] border-primary bg-panel font-display text-[42px] font-extrabold text-primary',
+        'flex size-[88px] items-center justify-center rounded-[20px] border-[3px] border-primary bg-panel font-display text-[42px] font-extrabold text-link',
         className,
       )}
       aria-hidden="true"
@@ -163,7 +163,7 @@ function SignTile({ className }: { className?: string }) {
 function MapFallback() {
   return (
     <div className="flex h-full items-center justify-center bg-panel/40">
-      <Loader2 className="size-6 animate-spin text-primary" aria-hidden="true" />
+      <Loader2 className="size-6 animate-spin text-link" aria-hidden="true" />
     </div>
   )
 }
@@ -677,7 +677,7 @@ export default function App() {
                 </h1>
                 {/* The tagline, in the dot-matrix voice. Two question marks,
                     exactly as the design writes it. */}
-                <span className="dot-matrix mt-1 block text-[10px] text-panel">
+                <span className="dot-matrix mt-1 block text-[10px] text-brand-bar-foreground/75">
                   GOT LOT ANOT ??
                 </span>
               </div>
@@ -829,11 +829,17 @@ export default function App() {
 
             {(!loading || preserveResultsWhileLoading) && totalNearby > 0 && (
               <div className="flex items-center justify-between gap-2 px-0.5">
-                {/* The board eyebrow. `uppercase` is styling, so the sentence
-                    stays sentence-case in the accessibility tree. */}
+                {/* Chrome carries `text-transform` into the accessibility tree,
+                    so the board eyebrow would be announced shouted, with its
+                    plural split across two text nodes. The live region carries
+                    a plain sentence instead and the eyebrow is decoration. */}
+                <p className="sr-only" aria-live="polite">
+                  {totalNearby} {totalNearby === 1 ? 'spot' : 'spots'} nearby, sorted by{' '}
+                  {SORT_EYEBROW[sort]}
+                </p>
                 <p
+                  aria-hidden="true"
                   className="text-[11px] font-extrabold tracking-[0.1em] text-eyebrow uppercase"
-                  aria-live="polite"
                 >
                   <span className="font-data tabular-nums">{totalNearby}</span>{' '}
                   spot{totalNearby === 1 ? '' : 's'} · {SORT_EYEBROW[sort]}
@@ -898,7 +904,7 @@ export default function App() {
                     <button
                       type="button"
                       onClick={resetFilters}
-                      className="inline-flex min-h-[50px] items-center rounded-lg border-2 border-primary px-5 font-display text-base font-extrabold text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="inline-flex min-h-[50px] items-center rounded-lg border-2 border-primary px-5 font-display text-base font-extrabold text-link transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       Clear filters
                     </button>

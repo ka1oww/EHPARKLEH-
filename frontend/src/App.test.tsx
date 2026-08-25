@@ -308,6 +308,26 @@ describe('App search result states', () => {
     expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()
   })
 
+  it('announces the list count as a plain sentence, not the shouted board eyebrow', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? okJson([carpark('cp-1', 'Carpark 1')])
+          : okJson([]),
+      ),
+    )
+    render(<App />)
+
+    // The eyebrow is uppercased in CSS, and Chrome carries text-transform into
+    // the accessibility tree, so the announced sentence has to be its own node.
+    const live = await screen.findByText(/1 spot nearby, sorted by nearest first/i)
+    expect(live).toHaveAttribute('aria-live', 'polite')
+    // ...and the decorative eyebrow must stay out of the tree, or the count is
+    // announced twice.
+    expect(spotsNearby(1)).toHaveAttribute('aria-hidden', 'true')
+  })
+
   it('widens the search to the largest radius when the empty state offers the nearest', async () => {
     const fetchMock = vi.fn(async () => okJson([]))
     vi.stubGlobal('fetch', fetchMock)

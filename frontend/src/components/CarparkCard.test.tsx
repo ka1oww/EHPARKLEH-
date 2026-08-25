@@ -147,6 +147,27 @@ describe('CarparkCard', () => {
     expect(screen.queryByText(/FREE/)).not.toBeInTheDocument()
   })
 
+  it('lets the strip be the only voice on free parking, and the hero the only voice on freshness', () => {
+    const free = { free_parking_info: 'SUN & PH FR 7AM-10.30PM' }
+    const { rerender } = render(
+      <CarparkCard entry={hdbEntry(free)} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} availabilityFreshness="fresh" />,
+    )
+    // Unselected, there is no strip and no hero, so the long pill and the LIVE
+    // badge are the only places these facts appear.
+    expect(screen.getByText(/Free on Sundays/i)).toBeInTheDocument()
+    expect(screen.getByText('Live')).toBeInTheDocument()
+
+    rerender(
+      <CarparkCard entry={hdbEntry(free)} rank={1} selected onSelect={noop} isFavourite={false} onToggleFavourite={noop} availabilityFreshness="fresh" />,
+    )
+    // Selected, the strip and the hero say both facts, so the pill and the
+    // badge stand down rather than repeating them on the same card.
+    expect(screen.getByText('SUN & PH FREE 7AM-10.30PM')).toBeInTheDocument()
+    expect(screen.queryByText(/Free on Sundays/i)).not.toBeInTheDocument()
+    expect(screen.getByText('LOTS NOW \u00b7 LIVE')).toBeInTheDocument()
+    expect(screen.queryByText('Live')).not.toBeInTheDocument()
+  })
+
   it('raises the gantry hero for the selected carpark, without claiming a stale count is now', () => {
     const { rerender } = render(
       <CarparkCard entry={hdbEntry()} rank={1} selected onSelect={noop} isFavourite={false} onToggleFavourite={noop} availabilityFreshness="fresh" />,

@@ -16,7 +16,7 @@ export function InstallPrompt() {
       <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm">
         {canPromptInstall ? (
           <>
-            <Download className="size-4 shrink-0 text-primary" aria-hidden="true" />
+            <Download className="size-4 shrink-0 text-link" aria-hidden="true" />
             <span className="min-w-0 flex-1 font-medium text-ink">
               Install EhParkLeh for faster access, even offline.
             </span>
@@ -30,7 +30,7 @@ export function InstallPrompt() {
           </>
         ) : (
           <>
-            <Share className="size-4 shrink-0 text-primary" aria-hidden="true" />
+            <Share className="size-4 shrink-0 text-link" aria-hidden="true" />
             <span className="min-w-0 flex-1 font-medium text-ink">
               Install: tap <span className="font-semibold">Share</span>, then{' '}
               <span className="font-semibold">Add to Home Screen</span>.

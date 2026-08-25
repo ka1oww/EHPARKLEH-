@@ -64,7 +64,7 @@ function NavLink({ href, label, icon: Icon }: { href: string; label: string; ico
       target="_blank"
       rel="noopener noreferrer"
       onClick={(e) => e.stopPropagation()}
-      className="pointer-events-auto inline-flex min-h-11 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-bold text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="pointer-events-auto inline-flex min-h-11 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-bold text-link transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <Icon className="size-3.5" aria-hidden="true" />
       {label}
@@ -286,13 +286,16 @@ function CarparkCardImpl({
                 )}
                 {entry.parking_type && <CategoryPill category={entry.parking_type} />}
               </div>
+              {/* An OSM pin has no feed behind it, so the card says so where the
+                  board would otherwise be — in the meta line, which wraps,
+                  rather than in the go-row, which truncates. */}
+              <span className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Info className="size-3.5 shrink-0" aria-hidden="true" />
+                No live info
+              </span>
             </div>
           </div>
-          <div className="mt-3 flex items-center justify-between gap-2 border-t border-hairline pt-2.5">
-            <span className="inline-flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
-              <Info className="size-3.5 shrink-0" aria-hidden="true" />
-              <span className="truncate">No live info</span>
-            </span>
+          <div className="mt-3 flex items-center justify-end gap-2 border-t border-hairline pt-2.5">
             <div className="flex shrink-0 items-center gap-1">
               <ShareButton name={entry.name} lat={entry.lat} lon={entry.lon} />
               <NavLink href={wazeHref(entry.lat, entry.lon)} label="Waze" icon={Navigation2} />
@@ -354,6 +357,12 @@ function CarparkCardImpl({
                   <span className="font-data tabular-nums">{entry.total_lots} lots</span>
                 </>
               )}
+              {entry.type && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span>{entry.type}</span>
+                </>
+              )}
               {entry.category && <CategoryPill category={entry.category} />}
             </div>
 
@@ -370,8 +379,10 @@ function CarparkCardImpl({
               </div>
             )}
 
+            {/* The hero already carries the count's freshness in its eyebrow,
+                so the badge would only say it twice on the selected card. */}
             <div className="mt-2.5 flex flex-wrap items-center gap-2">
-              {isLive && <LiveBadge freshness={availabilityFreshness} />}
+              {isLive && !selected && <LiveBadge freshness={availabilityFreshness} />}
               {entry.ev && (
                 <EvBadge
                   available={entry.ev_available}
@@ -381,7 +392,7 @@ function CarparkCardImpl({
                 />
               )}
               {entry.carwash && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-erp-navy/12 px-2 py-0.5 text-xs font-semibold text-erp-navy">
+                <span className="inline-flex items-center gap-1 rounded-full bg-erp-chip px-2 py-0.5 text-xs font-semibold text-erp-chip-ink">
                   <Droplets className="size-3" aria-hidden="true" />
                   {entry.carwash_operator && entry.carwash_operator !== 'Self-service'
                     ? entry.carwash_operator
@@ -397,13 +408,18 @@ function CarparkCardImpl({
             </div>
 
             {/* "Free on Sundays & PH?" is a top decision factor, so it sits
-                right under availability rather than at the bottom of the card. */}
-            {freeText && <FreeSunPhPill text={freeText} />}
+                right under availability rather than at the bottom of the card.
+                On the selected card the ERP strip is already saying it, in the
+                shorter form, so the pill stands down rather than repeating it —
+                the strip earns its place by being the only voice on the fact. */}
+            {freeText && !erpHeadline && <FreeSunPhPill text={freeText} />}
           </div>
         </div>
 
-        <div className="mt-3 flex items-center justify-between gap-2 border-t border-hairline pt-2.5">
-          <span className="min-w-0 truncate text-xs text-muted-foreground">{entry.type || 'Carpark'}</span>
+        {/* The go-row. The carpark type used to sit here, but "Confirm ah" is a
+            wide enough action that the label only ever truncated; it reads in
+            full on the meta line above instead. */}
+        <div className="mt-3 flex items-center justify-end gap-2 border-t border-hairline pt-2.5">
           <div className="flex shrink-0 items-center gap-1">
             <ShareButton name={entry.address} lat={entry.lat} lon={entry.lon} />
             <NavLink href={wazeHref(entry.lat, entry.lon)} label="Waze" icon={Navigation2} />

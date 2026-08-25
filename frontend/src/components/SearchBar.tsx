@@ -192,7 +192,7 @@ export function SearchBar({
         <form onSubmit={handleSubmit} className="flex items-center gap-2" role="search">
           <div className="relative flex-1">
             <Search
-              className="pointer-events-none absolute top-1/2 left-3.5 size-[18px] -translate-y-1/2 text-primary"
+              className="pointer-events-none absolute top-1/2 left-3.5 size-[18px] -translate-y-1/2 text-link"
               aria-hidden="true"
             />
             <input
@@ -296,7 +296,7 @@ export function SearchBar({
                     i === activeIdx ? 'bg-secondary text-foreground' : 'hover:bg-secondary/60',
                   )}
                 >
-                  <MapPin className="size-4 shrink-0 text-primary" aria-hidden="true" />
+                  <MapPin className="size-4 shrink-0 text-link" aria-hidden="true" />
                   <span className="truncate">{s.address}</span>
                 </button>
               </li>
@@ -317,7 +317,7 @@ export function SearchBar({
                 <button
                   type="button"
                   onClick={() => void requestSuggestions(query)}
-                  className="shrink-0 rounded-md px-2 py-1 text-xs font-semibold text-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="shrink-0 rounded-md px-2 py-1 text-xs font-semibold text-link hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   Retry
                 </button>
