@@ -6,7 +6,7 @@ I built EhParkLeh to find a car park in Singapore. Search a destination or use N
 
 ## Data pipeline
 
-The current dataset contains **3,566 carparks** tagged across seven sources: HDB, URA, Google, OSM, LTA, OneMotoring, and manual. A carpark can carry more than one source tag. The build records **4,465 dedupe merges**, then voids **54** records inside military areas, **90** outside Singapore, and **94** non-car-parking POIs. These figures are from [`backend/enrich/STATS.md`](backend/enrich/STATS.md).
+The current dataset contains **3,566 carparks** tagged across seven sources: HDB, URA, Google, OSM, LTA, OneMotoring, and manual. A carpark can carry more than one source tag. The build records **4,465 dedupe merges**, then voids **65** records inside restricted areas, **90** outside Singapore, and **93** non-car-parking POIs. These figures are from [`backend/enrich/STATS.md`](backend/enrich/STATS.md).
 
 ```text
 HDB + URA + Google + OSM + LTA + OneMotoring + manual
@@ -15,7 +15,7 @@ HDB + URA + Google + OSM + LTA + OneMotoring + manual
                             v
                  spatial and name deduplication
                             v
-       apply military, boundary, and non-parking exclusions
+      apply restricted, boundary, and non-parking exclusions
                             v
              attach amenities, classify, and resolve rates
                             v
@@ -24,11 +24,15 @@ HDB + URA + Google + OSM + LTA + OneMotoring + manual
 
 HDB and URA form the government spine. Google discovers additional locations. OSM corroborates records during deduplication and supplies a separate on-demand parking layer. LTA supplies rate and EV data, OneMotoring supplies indicative commercial rates, and manual entries cover hand-verified rates.
 
-`fetch_gov.py` downloads HDB, URA, and LTA data. The crawlers collect Google, OSM, EV, OneMotoring, and geofence data. `build_enriched.py` preserves government IDs, folds Google and OSM records into existing records within 90 metres, or within 150 metres when names match, applies the military, boundary, and non-parking exclusions, attaches amenity flags, classifies records, resolves rates, and writes `carparks_enriched.json` and `STATS.md`.
+`fetch_gov.py` downloads HDB, URA, and LTA data. The crawlers collect Google, OSM, EV, OneMotoring, and geofence data. `build_enriched.py` preserves government IDs, folds Google and OSM records into existing records within 90 metres, or within 150 metres when names match, applies the restricted, boundary, and non-parking exclusions, attaches amenity flags, classifies records, resolves rates, and writes `carparks_enriched.json` and `STATS.md`.
 
 Rates are attached in order: matched LTA rates, HDB/URA standard rates for eligible government car parks, OneMotoring indicative rates, then hand-curated indicative rates. Therefore the pipeline marks guide and manual rates as indicative.
 
 Standalone OSM records are dropped from the served dataset because they produced construction-site and private noise. OSM still corroborates during deduplication, and `/api/parking/osm` supplies on-demand OSM parking at search time for unfiltered searches. While any category or amenity filter is active, the frontend excludes that unverified OSM layer from the list, map, and nearby count because OSM entries do not carry the data needed to verify those filters.
+
+### Restricted areas
+
+Parking inside an army camp, air or naval base, or prison exists but no driver can use it, and routing to one sends the driver to a guarded gate. [`backend/restricted.py`](backend/restricted.py) holds the single definition of restricted land, and both the build and the live `/api/parking/osm` layer filter through it, so the static dataset and the on-demand layer cannot disagree. It unions two polygon sources: URA Master Plan `SPECIAL USE` parcels from data.gov.sg (`crawl_restricted.py`), which are authoritative for MINDEF and SAF land, and OpenStreetMap `landuse=military`, `military=*` and `amenity=prison` areas (`crawl_military.py`), which cover the Home Team and police sites URA zones differently. Loading fails closed: a missing or truncated polygon set aborts the build and the boot rather than quietly filtering nothing.
 
 Run the enrichment pipeline from `backend/` with the virtual environment active:
 
@@ -39,6 +43,7 @@ python enrich/crawl_osm.py
 python enrich/crawl_ev.py           # needs LTA_DATAMALL_KEY
 python enrich/crawl_onemotoring.py
 python enrich/crawl_military.py
+python enrich/crawl_restricted.py
 python enrich/crawl_central_area.py
 python enrich/crawl_sg_boundary.py
 python enrich/build_enriched.py
