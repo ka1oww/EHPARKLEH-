@@ -95,4 +95,68 @@ describe('CarparkCard', () => {
     expect(screen.getByText('Saved')).toBeInTheDocument()
     expect(screen.queryByText('Live')).not.toBeInTheDocument()
   })
+  it('writes the lot count as three gantry-board digits', () => {
+    render(
+      <CarparkCard entry={hdbEntry({ lots_available: 62 })} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+    expect(screen.getByText('062')).toBeInTheDocument()
+  })
+
+  it('says FULL, and fades the row back, when there are no lots left', () => {
+    render(
+      <CarparkCard entry={hdbEntry({ lots_available: 0 })} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+    const board = screen.getByText('FULL')
+    expect(board).toBeInTheDocument()
+    expect(board.closest('.opacity-60')).not.toBeNull()
+  })
+
+  it('does not fade a carpark that still has lots', () => {
+    render(
+      <CarparkCard entry={hdbEntry({ lots_available: 40 })} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+    expect(screen.getByText('040').closest('.opacity-60')).toBeNull()
+  })
+
+  it('offers the go-action in the app\u2019s own voice, still deep-linking to Google Maps', () => {
+    render(
+      <CarparkCard entry={hdbEntry({ lat: 1.37, lon: 103.85 })} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+    const cta = screen.getByRole('link', { name: /Confirm ah/i })
+    expect(cta).toHaveAttribute(
+      'href',
+      'https://www.google.com/maps/dir/?api=1&destination=1.37,103.85',
+    )
+  })
+
+  it('lights the dot-matrix strip only for a selected carpark that is genuinely free sometimes', () => {
+    const free = { free_parking_info: 'SUN & PH FR 7AM-10.30PM' }
+    const { rerender } = render(
+      <CarparkCard entry={hdbEntry(free)} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+    expect(screen.queryByText('SUN & PH FREE 7AM-10.30PM')).not.toBeInTheDocument()
+
+    rerender(
+      <CarparkCard entry={hdbEntry(free)} rank={1} selected onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+    expect(screen.getByText('SUN & PH FREE 7AM-10.30PM')).toBeInTheDocument()
+
+    rerender(
+      <CarparkCard entry={hdbEntry({ free_parking_info: 'NO' })} rank={1} selected onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+    expect(screen.queryByText(/FREE/)).not.toBeInTheDocument()
+  })
+
+  it('raises the gantry hero for the selected carpark, without claiming a stale count is now', () => {
+    const { rerender } = render(
+      <CarparkCard entry={hdbEntry()} rank={1} selected onSelect={noop} isFavourite={false} onToggleFavourite={noop} availabilityFreshness="fresh" />,
+    )
+    expect(screen.getByText('LOTS NOW \u00b7 LIVE')).toBeInTheDocument()
+
+    rerender(
+      <CarparkCard entry={hdbEntry()} rank={1} selected onSelect={noop} isFavourite={false} onToggleFavourite={noop} availabilityFreshness="saved" />,
+    )
+    expect(screen.queryByText(/LOTS NOW/)).not.toBeInTheDocument()
+    expect(screen.getByText('LOTS \u00b7 SAVED COUNT')).toBeInTheDocument()
+  })
 })

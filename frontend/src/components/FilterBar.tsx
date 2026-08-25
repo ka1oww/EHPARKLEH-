@@ -44,11 +44,11 @@ function Chip({
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        'inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border px-3.5 text-sm font-medium transition-colors',
+        'inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border-[1.5px] px-3.5 text-sm font-semibold transition-colors',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background',
         active
-          ? 'border-signal bg-signal/15 text-ink ring-1 ring-signal/40'
-          : 'border-hairline bg-white text-muted-foreground hover:border-slate-300 hover:text-foreground',
+          ? 'border-primary bg-panel text-panel-ink'
+          : 'border-hairline bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground',
       )}
     >
       {children}
@@ -108,7 +108,7 @@ export function FilterBar({
           <button
             type="button"
             onClick={onReset}
-            className="inline-flex min-h-11 shrink-0 items-center gap-1 rounded-full border border-transparent px-3 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background"
+            className="inline-flex min-h-11 shrink-0 items-center gap-1 rounded-full border-[1.5px] border-transparent px-3 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background"
           >
             <X className="size-3.5" aria-hidden="true" />
             Clear

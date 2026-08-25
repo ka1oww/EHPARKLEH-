@@ -1,9 +1,11 @@
 import { memo, useState } from 'react'
-import { Navigation, Navigation2, Wallet, Tag, Info, Star, Share2, Zap, Droplets, type LucideIcon } from 'lucide-react'
+import { Navigation2, Wallet, Info, Star, Share2, Zap, Droplets, ArrowRight, type LucideIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { AvailabilityChip } from '@/components/AvailabilityChip'
-import { parseFreeParking } from '@/rules'
+import { GantryHero, ErpStrip } from '@/components/GantryHero'
+import { freeParkingHeadline, parseFreeParking } from '@/rules'
+import { isFullHouse } from '@/lots'
 import type { FeedFreshness } from '@/freshness'
 import type { ParkingEntry } from '@/types'
 
@@ -28,16 +30,33 @@ function wazeHref(lat: number, lon: number): string {
   return `https://www.waze.com/ul?ll=${lat},${lon}&navigate=yes`
 }
 
-// Distance is the driver's first signal, so it reads large and near-ink, and
-// switches to km past 1000m for glanceability.
+// Distance switches to km past 1000m for glanceability.
 function fmtDistance(m: number): string {
   return m >= 1000
     ? `${new Intl.NumberFormat('en-SG', { maximumFractionDigits: 1 }).format(m / 1000)} km`
     : `${m} m`
 }
 
-// A navigation deep-link (Google Maps or Waze). Opens in a new tab; its click
-// is kept off the card's stretched select button.
+// The go-action, in the app's own voice. It is a Google Maps deep link like it
+// always was; only what it says changed. Opens in a new tab; its click is kept
+// off the card's stretched select button. The component is named for what it
+// does rather than what it says, because the copy is the captain's to change.
+function NavigateCta({ lat, lon }: { lat: number; lon: number }) {
+  return (
+    <a
+      href={gmapsHref(lat, lon)}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      className="pointer-events-auto inline-flex min-h-11 items-center gap-1.5 rounded-md bg-primary px-3 font-display text-sm font-extrabold text-primary-foreground transition-colors hover:bg-kaya-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    >
+      Confirm ah
+      <ArrowRight className="size-4" aria-hidden="true" />
+    </a>
+  )
+}
+
+// A secondary navigation deep-link.
 function NavLink({ href, label, icon: Icon }: { href: string; label: string; icon: LucideIcon }) {
   return (
     <a
@@ -45,7 +64,7 @@ function NavLink({ href, label, icon: Icon }: { href: string; label: string; ico
       target="_blank"
       rel="noopener noreferrer"
       onClick={(e) => e.stopPropagation()}
-      className="pointer-events-auto inline-flex min-h-11 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="pointer-events-auto inline-flex min-h-11 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-bold text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <Icon className="size-3.5" aria-hidden="true" />
       {label}
@@ -75,7 +94,7 @@ function ShareButton({ name, lat, lon }: { name: string; lat: number; lon: numbe
       type="button"
       onClick={share}
       aria-label={`Share ${name}`}
-      className="pointer-events-auto inline-flex min-h-11 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="pointer-events-auto inline-flex min-h-11 items-center gap-1 rounded-md px-2.5 py-2 text-xs font-bold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <Share2 className="size-3.5" aria-hidden="true" />
       {copied ? 'Copied' : 'Share'}
@@ -96,7 +115,7 @@ function StarButton({ active, onClick }: { active: boolean; onClick: () => void 
       className={cn(
         'pointer-events-auto inline-flex size-11 shrink-0 items-center justify-center rounded-md transition-colors',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-        active ? 'text-amber-400' : 'text-muted-foreground/50 hover:text-amber-400',
+        active ? 'text-kopi' : 'text-muted-foreground/60 hover:text-kopi',
       )}
     >
       <Star className={cn('size-4', active && 'fill-current')} aria-hidden="true" />
@@ -113,8 +132,8 @@ function LiveBadge({ freshness }: { freshness: FeedFreshness }) {
         freshness === 'fresh'
           ? 'bg-avail-free/12 text-avail-free'
           : freshness === 'recent'
-            ? 'bg-amber-500/15 text-amber-700'
-            : 'bg-slate-500/12 text-slate-600',
+            ? 'bg-kopi/15 text-panel-ink'
+            : 'bg-muted text-muted-foreground',
       )}
     >
       <span
@@ -123,8 +142,8 @@ function LiveBadge({ freshness }: { freshness: FeedFreshness }) {
           freshness === 'fresh'
             ? 'led-dot-live bg-avail-free'
             : freshness === 'recent'
-              ? 'bg-amber-500'
-              : 'bg-slate-400',
+              ? 'bg-kopi'
+              : 'bg-avail-none',
         )}
         aria-hidden="true"
       />
@@ -162,7 +181,7 @@ function EvBadge({
     <span
       className={cn(
         'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold',
-        free ? 'bg-avail-free/12 text-avail-free' : 'bg-amber-500/15 text-amber-600',
+        free ? 'bg-avail-free/12 text-avail-free' : 'bg-kopi/15 text-panel-ink',
       )}
     >
       <Zap className="size-3" aria-hidden="true" />
@@ -173,16 +192,29 @@ function EvBadge({
 }
 
 function Distance({ m }: { m: number }) {
+  return <span className="font-data shrink-0 tabular-nums">{fmtDistance(m)}</span>
+}
+
+// The category, as the small caps pill the signboards use: biscuit for the
+// public estate carparks, a red-tinted one for the malls.
+function CategoryPill({ category }: { category: string }) {
   return (
-    <span className="font-data shrink-0 text-base font-bold tabular-nums text-ink">
-      {fmtDistance(m)}
+    <span
+      className={cn(
+        'shrink-0 rounded-[5px] px-2 py-0.5 text-[10px] font-extrabold tracking-[0.05em] uppercase',
+        category === 'Mall'
+          ? 'bg-bakkwa/12 text-bakkwa'
+          : 'bg-panel text-panel-ink',
+      )}
+    >
+      {category}
     </span>
   )
 }
 
 function FreeSunPhPill({ text }: { text: string }) {
   return (
-    <div className="mt-2 inline-flex max-w-full items-start gap-1.5 rounded-md bg-avail-free/10 px-2 py-1 text-xs font-medium text-avail-free">
+    <div className="mt-2 inline-flex max-w-full items-start gap-1.5 rounded-md bg-avail-free/10 px-2 py-1 text-xs font-semibold text-avail-free">
       <span className="mt-0.5 shrink-0" aria-hidden="true">●</span>
       <span className="min-w-0">{text}</span>
     </div>
@@ -206,11 +238,14 @@ function CarparkCardImpl({
   // This keeps the interactive controls OUT of the button, unlike a role="button"
   // wrapper, which is invalid when it nests other buttons.
   const title = entry.source === 'osm' ? entry.name : entry.address
+  // A carpark with nothing left fades back, the way a full board is one you
+  // stop reading. It is still selectable, shareable and navigable.
+  const full = entry.source === 'hdb' && isFullHouse(entry.lots_available)
   const container = cn(
-    'group relative w-full rounded-xl border bg-card p-3.5 text-left shadow-sm transition-all',
+    'group relative w-full rounded-lg border-[1.5px] bg-card p-3.5 text-left shadow-sm transition-all',
     selected
-      ? 'border-signal ring-1 ring-signal shadow-md'
-      : 'border-hairline hover:border-slate-300 hover:shadow-md',
+      ? 'border-primary ring-1 ring-primary shadow-md'
+      : 'border-hairline hover:border-primary/40 hover:shadow-md',
   )
   const selectButton = (
     <button
@@ -218,7 +253,7 @@ function CarparkCardImpl({
       aria-pressed={selected}
       aria-label={`Show ${title} on map`}
       onClick={() => onSelect(entry.id)}
-      className="absolute inset-0 z-[1] cursor-pointer rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="absolute inset-0 z-[1] cursor-pointer rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     />
   )
 
@@ -229,32 +264,27 @@ function CarparkCardImpl({
         <div className="pointer-events-none relative z-[2]">
           <div className="flex items-start gap-3">
             <span
-              className="font-data mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-secondary text-sm font-bold text-secondary-foreground"
+              className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-md bg-panel font-display text-sm font-extrabold text-panel-ink"
               aria-hidden="true"
             >
               P
             </span>
             <div className="min-w-0 flex-1">
               <div className="flex items-start justify-between gap-1.5">
-                <span className="min-w-0 font-display text-sm font-semibold leading-snug break-words text-ink">
+                <span className="min-w-0 text-[15px] leading-snug font-extrabold break-words text-ink">
                   {entry.name}
                 </span>
-                <div className="flex shrink-0 items-center gap-1.5">
-                  <Distance m={entry.distance_m} />
-                  <StarButton active={isFavourite} onClick={() => onToggleFavourite(entry.id)} />
-                </div>
+                <StarButton active={isFavourite} onClick={() => onToggleFavourite(entry.id)} />
               </div>
-              <div className="mt-2 flex flex-wrap items-center gap-1.5">
+              <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-body">
+                <Distance m={entry.distance_m} />
                 {entry.fee === 'no' && (
-                  <Badge className="bg-avail-free/12 font-medium text-avail-free hover:bg-avail-free/12">
-                    Free
-                  </Badge>
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span className="font-semibold text-avail-free">Free</span>
+                  </>
                 )}
-                {entry.parking_type && (
-                  <Badge variant="secondary" className="font-medium capitalize">
-                    {entry.parking_type}
-                  </Badge>
-                )}
+                {entry.parking_type && <CategoryPill category={entry.parking_type} />}
               </div>
             </div>
           </div>
@@ -263,10 +293,10 @@ function CarparkCardImpl({
               <Info className="size-3.5 shrink-0" aria-hidden="true" />
               <span className="truncate">No live info</span>
             </span>
-            <div className="flex shrink-0 items-center gap-0.5">
+            <div className="flex shrink-0 items-center gap-1">
               <ShareButton name={entry.name} lat={entry.lat} lon={entry.lon} />
-              <NavLink href={gmapsHref(entry.lat, entry.lon)} label="Maps" icon={Navigation} />
               <NavLink href={wazeHref(entry.lat, entry.lon)} label="Waze" icon={Navigation2} />
+              <NavigateCta lat={entry.lat} lon={entry.lon} />
             </div>
           </div>
         </div>
@@ -275,32 +305,72 @@ function CarparkCardImpl({
   }
 
   const freeText = parseFreeParking(entry.free_parking_info)
+  // The dot-matrix strip is a moment, not chrome: it lights up only for a
+  // carpark that is genuinely free at some point, and only on the selected
+  // card, which is the screen that is about this one carpark.
+  const erpHeadline = selected ? freeParkingHeadline(entry.free_parking_info) : null
   const isLive = entry.lots_available !== null
 
   return (
     <div className={container}>
       {selectButton}
-      <div className="pointer-events-none relative z-[2]">
+      <div className={cn('pointer-events-none relative z-[2]', full && 'opacity-60')}>
         <div className="flex items-start gap-3">
           <span
-            className="font-data mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground tabular-nums"
+            className="font-data mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-md bg-primary text-sm font-bold text-primary-foreground tabular-nums"
             aria-hidden="true"
           >
             {rank}
           </span>
           <div className="min-w-0 flex-1">
-            <div className="flex items-start justify-between gap-1.5">
-              <span className="min-w-0 font-display text-sm font-semibold leading-snug break-words text-ink">
+            <div className="flex items-start justify-between gap-2">
+              <span className="min-w-0 text-[15px] leading-snug font-extrabold break-words text-ink">
                 {entry.address}
               </span>
               <div className="flex shrink-0 items-center gap-1.5">
-                <Distance m={entry.distance_m} />
+                <AvailabilityChip
+                  available={entry.lots_available}
+                  total={entry.total_lots}
+                  variant="plain"
+                  showLabel={false}
+                />
                 <StarButton active={isFavourite} onClick={() => onToggleFavourite(entry.id)} />
               </div>
             </div>
 
+            {/* The board shows lots free; the denominator it drops for
+                glanceability still belongs on the card, so it sits here. */}
+            <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-body">
+              <Distance m={entry.distance_m} />
+              {entry.rate.known && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span className="min-w-0">{entry.rate.summary}</span>
+                </>
+              )}
+              {entry.total_lots !== null && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span className="font-data tabular-nums">{entry.total_lots} lots</span>
+                </>
+              )}
+              {entry.category && <CategoryPill category={entry.category} />}
+            </div>
+
+            {/* The board, at full size, for the carpark the screen is about. */}
+            {selected && (
+              <div className="mt-3 flex flex-col gap-2">
+                <GantryHero
+                  available={entry.lots_available}
+                  total={entry.total_lots}
+                  freshness={availabilityFreshness}
+                  note={entry.type}
+                />
+                {erpHeadline && <ErpStrip text={erpHeadline} />}
+              </div>
+            )}
+
             <div className="mt-2.5 flex flex-wrap items-center gap-2">
-              <AvailabilityChip available={entry.lots_available} total={entry.total_lots} />
               {isLive && <LiveBadge freshness={availabilityFreshness} />}
               {entry.ev && (
                 <EvBadge
@@ -311,52 +381,33 @@ function CarparkCardImpl({
                 />
               )}
               {entry.carwash && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-sky-500/15 px-2 py-0.5 text-xs font-semibold text-sky-600">
+                <span className="inline-flex items-center gap-1 rounded-full bg-erp-navy/12 px-2 py-0.5 text-xs font-semibold text-erp-navy">
                   <Droplets className="size-3" aria-hidden="true" />
                   {entry.carwash_operator && entry.carwash_operator !== 'Self-service'
                     ? entry.carwash_operator
                     : 'Car wash'}
                 </span>
               )}
-            </div>
-
-            {/* "Free on Sundays & PH?" is a top decision factor, so it sits
-                right under availability rather than at the bottom of the card. */}
-            {freeText && <FreeSunPhPill text={freeText} />}
-
-            <div className="mt-2.5 flex flex-wrap items-start gap-1.5">
-              {entry.rate.known ? (
-                // Some (OneMotoring) rate summaries carry a long parenthetical
-                // note, so this badge wraps instead of overflowing the card.
-                <Badge
-                  variant="secondary"
-                  className="max-w-full items-start justify-start gap-1 text-left font-medium whitespace-normal"
-                >
-                  <Wallet className="mt-px size-3 shrink-0" aria-hidden="true" />
-                  <span className="min-w-0">{entry.rate.summary}</span>
-                </Badge>
-              ) : (
+              {!entry.rate.known && (
                 <Badge variant="outline" className="gap-1 font-normal text-muted-foreground">
                   <Wallet className="size-3" aria-hidden="true" />
                   Rate unknown
                 </Badge>
               )}
-              {entry.category && (
-                <Badge variant="outline" className="gap-1 font-medium text-muted-foreground">
-                  <Tag className="size-3" aria-hidden="true" />
-                  {entry.category}
-                </Badge>
-              )}
             </div>
+
+            {/* "Free on Sundays & PH?" is a top decision factor, so it sits
+                right under availability rather than at the bottom of the card. */}
+            {freeText && <FreeSunPhPill text={freeText} />}
           </div>
         </div>
 
         <div className="mt-3 flex items-center justify-between gap-2 border-t border-hairline pt-2.5">
           <span className="min-w-0 truncate text-xs text-muted-foreground">{entry.type || 'Carpark'}</span>
-          <div className="flex shrink-0 items-center gap-0.5">
+          <div className="flex shrink-0 items-center gap-1">
             <ShareButton name={entry.address} lat={entry.lat} lon={entry.lon} />
-            <NavLink href={gmapsHref(entry.lat, entry.lon)} label="Maps" icon={Navigation} />
             <NavLink href={wazeHref(entry.lat, entry.lon)} label="Waze" icon={Navigation2} />
+            <NavigateCta lat={entry.lat} lon={entry.lon} />
           </div>
         </div>
       </div>

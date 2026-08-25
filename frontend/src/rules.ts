@@ -69,3 +69,33 @@ function toTitle(s: string): string {
     .replace(/\bFr\b/g, '')
     .trim()
 }
+
+// ------------------------------------------------------------------ //
+// Display: the ERP-homage dot-matrix strip.
+//
+// The strip is a moment, not chrome, so it only lights up for a rate fact
+// worth interrupting the page for — a genuinely free period. It also has room
+// for a handful of characters, which is the second gate: anything this cannot
+// compact confidently returns null and simply does not get a strip.
+// ------------------------------------------------------------------ //
+
+/**
+ * A short, all-caps free-parking headline for the dot-matrix strip, e.g.
+ * "SUN & PH FREE 7AM-10.30PM". Returns null when the carpark is never free, or
+ * when the raw string is not one of the shapes we can shorten without guessing.
+ */
+export function freeParkingHeadline(raw: string | null | undefined): string | null {
+  if (!isFree(raw)) return null
+  const text = raw!.trim().toUpperCase()
+
+  const m = text.match(/^(.+?)\s+FR\s+([\d.:]+\s*[AP]M)\s*[-–]\s*([\d.:]+\s*[AP]M)$/)
+  if (m) {
+    const days = m[1].trim()
+    if (!(days in DAY_PHRASES)) return null
+    return `${days} FREE ${prettyTime(m[2]).toUpperCase()}-${prettyTime(m[3]).toUpperCase()}`
+  }
+
+  if (text in DAY_PHRASES) return `${text} FREE`
+
+  return null
+}
