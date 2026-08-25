@@ -1,5 +1,7 @@
 import { Component, type ReactNode } from 'react'
 
+import { EplMark } from '@/components/EplMark'
+
 interface Props {
   children: ReactNode
 }
@@ -28,7 +30,10 @@ export class ErrorBoundary extends Component<Props, State> {
 
     return (
       <div className="flex h-full flex-col items-center justify-center gap-4 bg-background px-6 text-center">
-        <img src="/brand-car.svg" className="size-16 opacity-90" alt="" />
+        {/* The gantry board, larger than the header wears it. Logos take E
+            calls for the mark as "a moment" on screens that are otherwise
+            empty, and a crash screen is exactly one of those. */}
+        <EplMark className="h-12 opacity-90" />
         <div>
           <p className="font-display text-lg font-semibold text-ink">Eh, something broke.</p>
           <p className="mt-1 max-w-xs text-sm text-muted-foreground">

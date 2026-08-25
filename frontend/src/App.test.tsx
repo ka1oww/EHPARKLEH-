@@ -308,6 +308,23 @@ describe('App search result states', () => {
     expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()
   })
 
+  it('keeps the EPL mark decorative, so the app name is announced once', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => okJson([])),
+    )
+    const { container } = render(<App />)
+    await act(async () => {})
+
+    // The header already carries the name as its <h1>; the mark repeating it
+    // would have a screen reader say "EhParkLeh" twice on every page load.
+    const heading = screen.getByRole('heading', { level: 1, name: 'EhParkLeh' })
+    expect(heading).toBeInTheDocument()
+    const mark = container.querySelector('header svg')
+    expect(mark).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByRole('img', { name: /EhParkLeh/i })).not.toBeInTheDocument()
+  })
+
   it('announces the list count as a plain sentence, not the shouted board eyebrow', async () => {
     vi.stubGlobal(
       'fetch',

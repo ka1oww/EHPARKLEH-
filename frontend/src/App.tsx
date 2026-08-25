@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import { SearchBar } from '@/components/SearchBar'
 import { FilterBar } from '@/components/FilterBar'
 import { MAX_RADIUS } from '@/components/RadiusSelect'
+import { EplMark } from '@/components/EplMark'
 import { CarparkCard } from '@/components/CarparkCard'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useFavourites } from './useFavourites'
@@ -670,7 +671,7 @@ export default function App() {
         <div className="mx-auto w-full max-w-screen-2xl px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3">
           <div className="flex items-center justify-between gap-3 pb-3">
             <div className="flex items-center gap-2.5">
-              <img src="/brand-car.svg" className="size-11" alt="" />
+              <EplMark />
               <div className="leading-none">
                 <h1 className="font-display text-xl font-extrabold tracking-tight">
                   EhParkLeh
