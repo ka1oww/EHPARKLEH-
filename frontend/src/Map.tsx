@@ -28,6 +28,38 @@ function tileUrl(dark: boolean): string {
   return dark ? TILE_DARK : TILE_LIGHT
 }
 
+// Wheel/pinch zoom feel, tuned for a Mac trackpad.
+//
+// Leaflet's defaults are built for a notched mouse wheel: one notch is ~60px of
+// delta, batched every 40ms, and `zoomSnap: 1` rounds each batch UP to a whole
+// zoom level. A trackpad instead emits a stream of small wheel events for the
+// whole gesture, so a half-second pinch became a dozen 40ms batches and each
+// one was rounded up to a full level - the map shot from the street to the
+// island in one gesture. scrollWheelZoom stays on; only the arithmetic changes.
+//
+//  * zoomSnap 0.25 removes the round-up floor: a batch worth a quarter level
+//    moves a quarter level. It is the single biggest cause of the symptom.
+//  * wheelPxPerZoomLevel 180 (from 60) makes a comfortable trackpad gesture
+//    (a few hundred px of accumulated delta) worth about one level, since
+//    Leaflet's sigmoid maps a delta D to roughly 0.72 * D / this value.
+//  * wheelDebounceTime 100 (from 40) groups the gesture into ~5 batches
+//    instead of ~12, so the residual per-batch rounding cannot add up. The
+//    timer fires at most this long after a batch's first event, so zoom still
+//    tracks the fingers rather than lagging behind them.
+//  * zoomDelta 1 is stated, not inherited: the +/- control and the keyboard
+//    keep moving a whole level even though the wheel now moves quarters.
+//
+// Touch pinch is untouched: touchZoom keeps its own continuous handler, and a
+// non-zero zoomSnap keeps its existing settle-and-redraw behaviour. It settles
+// on a quarter level instead of a whole one, which is closer to where the
+// fingers left it.
+const ZOOM_FEEL = {
+  zoomSnap: 0.25,
+  zoomDelta: 1,
+  wheelPxPerZoomLevel: 180,
+  wheelDebounceTime: 100,
+} as const
+
 const KAYA = '#1C6E4A'
 const ERP_NAVY = '#1D3A6B'
 
@@ -125,13 +157,23 @@ function wazeDir(lat: number, lon: number): string {
 // The go-action and Waze, rendered inside a Leaflet popup. Clicks stay inside
 // the popup (target=_blank), so they never toggle the marker selection. Both
 // keep a 44px hit target, the same as everywhere else in the app.
+//
+// "Confirm ah" is a Google Maps deep link and always was, but it is the only
+// destination on the card or popup that does not say whose map it opens, while
+// "Waze" right beside it does — which is why it read as a missing Google link.
+// The eyebrow under the copy names the destination without spending the app's
+// voice on it, in the same 9px tracked style the boards use for their eyebrows.
 function navLinksHtml(lat: number, lon: number): string {
   return (
     `<div style="display:flex;align-items:center;gap:8px;margin-top:10px">` +
     `<a href="${gmapsDir(lat, lon)}" target="_blank" rel="noopener noreferrer" ` +
-    `style="display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:1;min-height:44px;` +
+    `aria-label="Confirm ah — navigate with Google Maps" ` +
+    `style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;min-height:44px;` +
     `border-radius:10px;background:${KAYA};color:#FFF8EA;text-decoration:none;` +
-    `font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;font-size:15px">Confirm ah &rarr;</a>` +
+    `font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;font-size:15px;line-height:1.1">` +
+    `<span>Confirm ah &rarr;</span>` +
+    `<span style="font-size:9px;font-weight:700;letter-spacing:.12em;opacity:.85">GOOGLE MAPS</span>` +
+    `</a>` +
     `<a href="${wazeDir(lat, lon)}" target="_blank" rel="noopener noreferrer" ` +
     `style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 12px;` +
     `border-radius:10px;border:2px solid var(--link);color:var(--link);text-decoration:none;` +
@@ -258,7 +300,7 @@ function Map({
       // zoom control by default — one covered the other. Desktop.dc.html draws
       // the +/- buttons in the top-right corner, so that is where they go, and
       // both are usable again.
-      const map = L.map(mapRef.current, { zoomControl: false }).setView(
+      const map = L.map(mapRef.current, { zoomControl: false, ...ZOOM_FEEL }).setView(
         [center.lat, center.lon],
         15,
       )

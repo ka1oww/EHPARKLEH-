@@ -96,6 +96,59 @@ const props = (overrides: Partial<React.ComponentProps<typeof Map>> = {}) => ({
   ...overrides,
 })
 
+describe('Map zoom feel', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  // A Mac trackpad emits a stream of small wheel events for one gesture.
+  // Leaflet's defaults round each 40ms batch up to a whole zoom level, so the
+  // gesture jumped many levels. These four options are the fix; scrollWheelZoom
+  // stays enabled, and touch pinch keeps a non-zero zoomSnap.
+  it('creates the map with trackpad-tuned wheel zoom, without disabling it', () => {
+    render(<Map {...props()} />)
+
+    const options = (leaflet.L.map.mock.calls[0] as unknown[])[1] as Record<string, unknown>
+    expect(options.zoomSnap).toBe(0.25)
+    expect(options.zoomDelta).toBe(1)
+    expect(options.wheelPxPerZoomLevel).toBe(180)
+    expect(options.wheelDebounceTime).toBe(100)
+    expect(options.scrollWheelZoom).toBeUndefined()
+    expect(options.zoomControl).toBe(false)
+  })
+})
+
+describe('Map popup navigation links', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  // The popup's go-action is a Google Maps deep link, but "Confirm ah" alone
+  // named no destination while "Waze" beside it did, so it read as missing.
+  it('names Google Maps on the popup go-action, alongside Waze', () => {
+    render(<Map {...props({ carparks: [carpark({ lat: 1.37, lon: 103.85 })] })} />)
+
+    const html = leaflet.L.marker.mock.results[0].value.bindPopup.mock.calls[0][0] as string
+    expect(html).toContain('https://www.google.com/maps/dir/?api=1&destination=1.37,103.85')
+    expect(html).toContain('GOOGLE MAPS')
+    expect(html).toContain('aria-label="Confirm ah \u2014 navigate with Google Maps"')
+    expect(html).toContain('https://www.waze.com/ul?ll=1.37,103.85&navigate=yes')
+  })
+
+  it('names Google Maps on an OSM pin popup too', () => {
+    render(
+      <Map
+        {...props({
+          carparks: [],
+          osmParking: [
+            { id: 'osm_1', name: 'Blk 1 Carpark', lat: 1.37, lon: 103.85, distance_m: 90, source: 'osm', fee: null, parking_type: null, capacity: null },
+          ],
+        })}
+      />,
+    )
+
+    const html = leaflet.L.marker.mock.results[0].value.bindPopup.mock.calls[0][0] as string
+    expect(html).toContain('https://www.google.com/maps/dir/?api=1&destination=1.37,103.85')
+    expect(html).toContain('GOOGLE MAPS')
+  })
+})
+
 describe('Map marker and viewport updates', () => {
   beforeEach(() => vi.clearAllMocks())
 

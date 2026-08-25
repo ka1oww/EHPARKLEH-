@@ -238,8 +238,8 @@ class OsmParking(BaseModel):
 _carpark_cache: list[dict] = []
 
 # Restricted-area polygons (army camps, air/naval bases, prisons) are static too.
-# Loaded once and reused; see restricted.py for why both this layer and the build
-# share one definition.
+# Loaded once and reused; see restricted.py for why this layer, the static
+# dataset loader and the build share one definition.
 _restricted_areas = None
 
 
@@ -331,13 +331,31 @@ def _data_file() -> Path:
 
 
 def load_carpark_records() -> list[dict]:
-    """Load and normalise carpark records from disk into the cache shape."""
+    """Load and normalise carpark records from disk into the cache shape.
+
+    The restricted filter is applied here, not only in the build. /api/carparks
+    used to trust enrich/build_enriched.py to have voided camp/base/prison rows
+    already, which held for carparks_enriched.json but not for the
+    carparks_geocoded.json fallback _data_file() drops to when that artifact is
+    missing: ten of its SVY21-fallback coordinates land inside camp land, and
+    each was served with a working navigation deep link. Filtering the records
+    as they load makes the rule hold for whichever dataset backs the deploy.
+
+    Raises RestrictedDataError (via get_restricted_areas) rather than loading an
+    unfiltered dataset, which is the same fail-closed contract restricted.py and
+    /api/parking/osm keep.
+    """
+    restricted_areas = get_restricted_areas()
     data_file = _data_file()
     with open(data_file) as f:
         records = json.load(f)
 
+    excluded = 0
     out: list[dict] = []
     for cp in records:
+        if restricted_areas.contains(cp["lat"], cp["lon"]):
+            excluded += 1
+            continue
         # Enriched records carry richer fields; geocoded fallback records do
         # not. Use .get() throughout so both shapes load cleanly.
         out.append(
@@ -363,6 +381,13 @@ def load_carpark_records() -> list[dict]:
                 "carwash": bool(cp.get("carwash")),
                 "carwash_operator": cp.get("carwash_operator"),
             }
+        )
+    if excluded:
+        logger.info(
+            "dataset_restricted_excluded data_file=%s excluded=%d kept=%d",
+            data_file.name,
+            excluded,
+            len(out),
         )
     return out
 

@@ -129,6 +129,55 @@ describe('CarparkCard', () => {
     )
   })
 
+  // Reported as "the Google Maps links disappeared". They had not: the reskin
+  // renamed the labelled "Maps" link to an unbranded "Confirm ah", next to a
+  // link that still plainly says "Waze". The destination must name itself on
+  // screen and to a screen reader, on both the HDB and the OSM card.
+  it('names Google Maps as the go-action\u2019s destination, next to Waze', () => {
+    render(
+      <CarparkCard entry={hdbEntry({ lat: 1.37, lon: 103.85 })} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+
+    const cta = screen.getByRole('link', { name: /Google Maps/i })
+    expect(cta).toHaveAttribute(
+      'href',
+      'https://www.google.com/maps/dir/?api=1&destination=1.37,103.85',
+    )
+    expect(screen.getByText('GOOGLE MAPS')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Waze/i })).toHaveAttribute(
+      'href',
+      'https://www.waze.com/ul?ll=1.37,103.85&navigate=yes',
+    )
+  })
+
+  it('names Google Maps on an OSM card too', () => {
+    render(
+      <CarparkCard
+        entry={{
+          source: 'osm',
+          id: 'osm_1',
+          name: 'Blk 1 Carpark',
+          lat: 1.37,
+          lon: 103.85,
+          distance_m: 90,
+          fee: null,
+          parking_type: null,
+          capacity: null,
+        }}
+        rank={1}
+        selected={false}
+        onSelect={noop}
+        isFavourite={false}
+        onToggleFavourite={noop}
+      />,
+    )
+
+    expect(screen.getByRole('link', { name: /Google Maps/i })).toHaveAttribute(
+      'href',
+      'https://www.google.com/maps/dir/?api=1&destination=1.37,103.85',
+    )
+  })
+
   it('lights the dot-matrix strip only for a selected carpark that is genuinely free sometimes', () => {
     const free = { free_parking_info: 'SUN & PH FR 7AM-10.30PM' }
     const { rerender } = render(
