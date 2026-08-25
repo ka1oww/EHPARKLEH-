@@ -756,6 +756,54 @@ describe('OSM layer under active filters', () => {
     vi.useRealTimers()
   })
 
+  it('restores OSM entries to the list and the count once the filter chip is switched off', async () => {
+    vi.useFakeTimers()
+    // Car wash, like EV charging, is a server-side amenity filter with no OSM
+    // counterpart: the same OSM response is reused across all three fetches
+    // because a non-spatial filter change never refetches OSM.
+    let carparkCalls = 0
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      const url = String(input)
+      if (url.includes('/api/parking/osm')) return Promise.resolve(okJson([osm('osm-1', 'Open lot')]))
+      if (!url.includes('/api/carparks')) return Promise.resolve(okJson([]))
+      carparkCalls += 1
+      return Promise.resolve(
+        okJson(
+          carparkCalls === 2
+            ? [carpark('cp-1', 'Carpark 1')]
+            : [carpark('cp-1', 'Carpark 1'), carpark('cp-2', 'Carpark 2')],
+        ),
+      )
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    render(<App />)
+    await act(async () => {})
+
+    expect(screen.getByText('Open lot')).toBeInTheDocument()
+    expect(spotsNearby(3)).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: /Car wash/i }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(250)
+    })
+
+    expect(screen.queryByText('Open lot')).not.toBeInTheDocument()
+    expect(spotsNearby(1)).toBeInTheDocument()
+    expect(lastMapProps()?.osmParking).toEqual([])
+
+    fireEvent.click(screen.getByRole('button', { name: /Car wash/i }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(250)
+    })
+
+    expect(screen.getByText('Open lot')).toBeInTheDocument()
+    expect(spotsNearby(3)).toBeInTheDocument()
+    expect(lastMapProps()?.osmParking).toEqual([expect.objectContaining({ id: 'osm-1' })])
+    // The OSM layer came back from state, not a second network round trip.
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).includes('/api/parking/osm'))).toHaveLength(1)
+    vi.useRealTimers()
+  })
+
   it('never resurfaces an OSM pin that a looser search had suppressed, once a filter removes the carpark sitting on it', async () => {
     vi.useFakeTimers()
     let carparkCalls = 0
