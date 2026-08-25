@@ -1,48 +1,73 @@
 import { cn } from '@/lib/utils'
 import { getAvailability, type AvailState } from '@/availability'
+import { formatLotCount, AVAIL_TEXT, LED_TEXT } from '@/lots'
 
-// The signature element: a garage-entrance LED counter.
-// A dark rounded chip with mono text like `P · 42 LOTS`, colour-coded by
-// availability (emerald / amber / red), evoking a car-park gantry display.
+// The signature element: a car-park gantry board.
+//
+// Two ways to wear it. `board` is the lit ink panel — a dark sign carrying a
+// mono LED count, for the map and for the one carpark a screen is about.
+// `plain` is the same count with the board taken away, for a list row, where a
+// column of dark panels would fight the cards it sits in.
 
 const STATE_DOT: Record<AvailState, string> = {
   free: 'bg-avail-free',
   some: 'bg-avail-some',
   full: 'bg-avail-full',
-  nodata: 'bg-slate-400',
-}
-
-// Lighter shades than the marker dots: this text sits on the dark LED chip, so
-// it must clear WCAG AA contrast (the saturated -600 shades do not on near-black).
-const STATE_TEXT: Record<AvailState, string> = {
-  free: 'text-emerald-400',
-  some: 'text-amber-300',
-  full: 'text-red-400',
-  nodata: 'text-slate-300',
+  nodata: 'bg-avail-none',
 }
 
 interface Props {
   available: number | null
   total: number | null
-  /** Show the status word ("Plenty" etc.) beside the chip. */
+  /** Show the status word ("Plenty" etc.) beside the board. */
   showLabel?: boolean
+  variant?: 'board' | 'plain'
   className?: string
 }
 
-export function AvailabilityChip({ available, total, showLabel = true, className }: Props) {
+export function AvailabilityChip({
+  available,
+  total,
+  showLabel = true,
+  variant = 'board',
+  className,
+}: Props) {
   const a = getAvailability(available, total)
+  const count = formatLotCount(a.available)
+  // The accessible name stays plain English and keeps the denominator, which
+  // the board itself drops — a screen reader has no glance to optimise for.
+  const ariaLabel =
+    a.state === 'nodata'
+      ? 'No live lot data'
+      : `${a.available} of ${a.total} lots available, ${a.label}`
+
+  const label = showLabel && (
+    <span className="text-xs font-semibold text-muted-foreground">
+      {a.state === 'nodata' ? 'No live data' : a.label}
+      {a.state !== 'nodata' && a.total !== null && (
+        <span className="font-data font-normal text-muted-foreground/70"> · of {a.total}</span>
+      )}
+    </span>
+  )
+
+  if (variant === 'plain') {
+    return (
+      <div className={cn('inline-flex items-center gap-2.5', className)}>
+        <span
+          className={cn('font-data text-[17px] font-bold tabular-nums', AVAIL_TEXT[a.state])}
+          role="img"
+          aria-label={ariaLabel}
+        >
+          {count}
+        </span>
+        {label}
+      </div>
+    )
+  }
 
   return (
     <div className={cn('inline-flex items-center gap-2.5', className)}>
-      <div
-        className="inline-flex items-center gap-2 rounded-lg bg-led px-3 py-2 shadow-sm ring-1 ring-white/5"
-        role="img"
-        aria-label={
-          a.state === 'nodata'
-            ? 'No live lot data'
-            : `${a.available} of ${a.total} lots available, ${a.label}`
-        }
-      >
+      <div className="gantry" data-state={a.state} role="img" aria-label={ariaLabel}>
         <span
           className={cn(
             'led-dot-live size-2 rounded-full',
@@ -51,24 +76,12 @@ export function AvailabilityChip({ available, total, showLabel = true, className
           )}
           aria-hidden="true"
         />
-        <span className="font-data text-[11px] font-bold tracking-[0.12em] text-white/85">
-          P
-        </span>
-        <span className="text-white/40" aria-hidden="true">
-          ·
-        </span>
-        <span className={cn('font-data text-sm font-bold tabular-nums', STATE_TEXT[a.state])}>
-          {a.state === 'nodata' ? 'NO DATA' : `${a.available} LOTS`}
+        <span className={cn('font-data tabular-nums', LED_TEXT[a.state])}>{count}</span>
+        <span className="board-eyebrow" aria-hidden="true">
+          LOTS
         </span>
       </div>
-      {showLabel && (
-        <span className="text-xs font-medium text-muted-foreground">
-          {a.state === 'nodata' ? 'No live data' : a.label}
-          {a.state !== 'nodata' && a.total !== null && (
-            <span className="font-data text-muted-foreground/70"> · of {a.total}</span>
-          )}
-        </span>
-      )}
+      {label}
     </div>
   )
 }

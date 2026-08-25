@@ -28,13 +28,15 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'brand-car.svg', 'icons/apple-touch-icon.png'],
+      includeAssets: ['favicon.svg', 'icons/apple-touch-icon.png'],
       manifest: {
         name: 'EhParkLeh',
         short_name: 'EhParkLeh',
         description: 'Find parking near you in Singapore, right now.',
-        theme_color: '#1E1B4B',
-        background_color: '#F5F6FB',
+        // Kaya green and the cream surface, so the installed app's splash and
+        // task-switcher chrome match the signboard rather than the old indigo.
+        theme_color: '#1C6E4A',
+        background_color: '#FFF8EA',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '/',

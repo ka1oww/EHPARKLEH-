@@ -24,7 +24,7 @@ const STATUS_ID = 'searchbar-status'
 const SUGGESTIONS_TIMEOUT_MS = 5_000
 type SuggestionState = 'idle' | 'loading' | 'ready' | 'empty' | 'error'
 
-// Indigo command-bar search with debounced server-side autocomplete.
+// Kaya signboard search with debounced server-side autocomplete.
 // Debounce 300ms, query at >=2 chars, geocode on Enter, and search suggestion
 // coordinates directly. Valid empty responses and retryable failures remain
 // distinct so an upstream outage never masquerades as no matches.
@@ -192,7 +192,7 @@ export function SearchBar({
         <form onSubmit={handleSubmit} className="flex items-center gap-2" role="search">
           <div className="relative flex-1">
             <Search
-              className="pointer-events-none absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-muted-foreground"
+              className="pointer-events-none absolute top-1/2 left-3.5 size-[18px] -translate-y-1/2 text-link"
               aria-hidden="true"
             />
             <input
@@ -208,7 +208,7 @@ export function SearchBar({
                   (!query.trim() && recents.length > 0)
                 ) setOpen(true)
               }}
-              placeholder="Park where? e.g. Toa Payoh Hub"
+              placeholder="Where to, boss?"
               autoComplete="off"
               aria-label="Search a destination"
               role="combobox"
@@ -218,10 +218,10 @@ export function SearchBar({
               aria-activedescendant={activeIdx >= 0 ? `${LISTBOX_ID}-opt-${activeIdx}` : undefined}
               // text-base (16px) on mobile so iOS Safari doesn't auto-zoom on focus.
               className={cn(
-                'h-11 w-full rounded-xl border border-transparent bg-white pl-10 text-base text-ink shadow-sm sm:text-sm',
+                'h-12 w-full rounded-lg border-2 border-kaya-dark bg-background pl-10 text-base font-bold text-ink shadow-sm sm:text-sm',
                 query ? 'pr-10' : 'pr-3',
-                'placeholder:text-muted-foreground/80',
-                'focus-visible:border-signal focus-visible:ring-2 focus-visible:ring-signal/50 focus-visible:outline-none',
+                'placeholder:font-bold placeholder:text-muted-foreground',
+                'focus-visible:border-panel focus-visible:ring-2 focus-visible:ring-panel/60 focus-visible:outline-none',
               )}
             />
             {query && (
@@ -238,7 +238,7 @@ export function SearchBar({
           <Button
             type="submit"
             disabled={loading}
-            className="h-11 shrink-0 rounded-xl bg-signal px-4 font-display font-semibold text-accent-foreground hover:bg-signal/90"
+            className="h-12 shrink-0 rounded-lg bg-panel px-4 font-display text-base font-extrabold text-ink hover:bg-panel/85"
           >
             {loading ? <Loader2 className="size-4 animate-spin" /> : 'Search'}
           </Button>
@@ -247,7 +247,7 @@ export function SearchBar({
         {showRecents && (
           <ul
             id={LISTBOX_ID}
-            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 overflow-hidden rounded-xl border border-hairline bg-popover py-1 shadow-lg"
+            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 overflow-hidden rounded-lg border-[1.5px] border-hairline bg-popover py-1 shadow-lg"
             role="listbox"
           >
             <li className="flex items-center justify-between px-3.5 py-1.5 text-[11px] font-semibold tracking-wide text-muted-foreground uppercase">
@@ -267,7 +267,7 @@ export function SearchBar({
                   onMouseDown={() => pickRecent(r)}
                   onMouseEnter={() => setActiveIdx(i)}
                   className={cn(
-                    'flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
+                    'flex min-h-11 w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
                     i === activeIdx ? 'bg-secondary text-foreground' : 'hover:bg-secondary/60',
                   )}
                 >
@@ -282,7 +282,7 @@ export function SearchBar({
         {open && suggestions.length > 0 && (
           <ul
             id={LISTBOX_ID}
-            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 overflow-hidden rounded-xl border border-hairline bg-popover py-1 shadow-lg"
+            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 overflow-hidden rounded-lg border-[1.5px] border-hairline bg-popover py-1 shadow-lg"
             role="listbox"
           >
             {suggestions.map((s, i) => (
@@ -292,11 +292,11 @@ export function SearchBar({
                   onMouseDown={() => pick(s)}
                   onMouseEnter={() => setActiveIdx(i)}
                   className={cn(
-                    'flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
+                    'flex min-h-11 w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
                     i === activeIdx ? 'bg-secondary text-foreground' : 'hover:bg-secondary/60',
                   )}
                 >
-                  <MapPin className="size-4 shrink-0 text-primary" aria-hidden="true" />
+                  <MapPin className="size-4 shrink-0 text-link" aria-hidden="true" />
                   <span className="truncate">{s.address}</span>
                 </button>
               </li>
@@ -307,17 +307,17 @@ export function SearchBar({
         {showSuggestionMessage && (
           <div
             id={STATUS_ID}
-            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 rounded-xl border border-hairline bg-popover px-3.5 py-3 text-sm text-slate-body shadow-lg"
+            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 rounded-lg border-[1.5px] border-hairline bg-popover px-3.5 py-3 text-sm text-slate-body shadow-lg"
             role={suggestionState === 'error' ? 'alert' : 'status'}
           >
             {suggestionState === 'error' ? (
               <div className="flex items-center gap-2.5">
-                <AlertCircle className="size-4 shrink-0 text-amber-600" aria-hidden="true" />
+                <AlertCircle className="size-4 shrink-0 text-kopi" aria-hidden="true" />
                 <span className="min-w-0 flex-1">Address service unavailable.</span>
                 <button
                   type="button"
                   onClick={() => void requestSuggestions(query)}
-                  className="shrink-0 rounded-md px-2 py-1 text-xs font-semibold text-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="shrink-0 rounded-md px-2 py-1 text-xs font-semibold text-link hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   Retry
                 </button>
@@ -333,7 +333,7 @@ export function SearchBar({
         type="button"
         variant="outline"
         onClick={onNearMe}
-        className="h-11 shrink-0 gap-2 rounded-xl border-white/20 bg-white/10 font-medium text-white hover:bg-white/20 hover:text-white"
+        className="h-12 shrink-0 gap-2 rounded-lg border-2 border-brand-bar-foreground/30 bg-brand-bar-foreground/10 font-display text-base font-extrabold text-brand-bar-foreground hover:bg-brand-bar-foreground/20 hover:text-brand-bar-foreground"
       >
         <LocateFixed className="size-4" aria-hidden="true" />
         Near me

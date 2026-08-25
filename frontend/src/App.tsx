@@ -1,9 +1,11 @@
 import { useState, useEffect, useMemo, useCallback, useRef, lazy, Suspense } from 'react'
-import { List, Map as MapIcon, Coffee, AlertCircle, Compass, WifiOff, Loader2 } from 'lucide-react'
+import { List, Map as MapIcon, Coffee, AlertCircle, ArrowRight, WifiOff, Loader2 } from 'lucide-react'
 import { getCurrentPosition } from './geo'
 import { cn } from '@/lib/utils'
 import { SearchBar } from '@/components/SearchBar'
 import { FilterBar } from '@/components/FilterBar'
+import { MAX_RADIUS } from '@/components/RadiusSelect'
+import { EplMark } from '@/components/EplMark'
 import { CarparkCard } from '@/components/CarparkCard'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useFavourites } from './useFavourites'
@@ -85,6 +87,20 @@ function metresBetween(aLat: number, aLon: number, bLat: number, bLon: number): 
 }
 
 type SortKey = 'distance' | 'availability' | 'price'
+
+// What the list eyebrow says the order is. The artboard writes "NEAREST
+// FIRST"; the app can sort three ways, so the eyebrow has to tell the truth
+// about which one is in force.
+const SORT_EYEBROW: Record<SortKey, string> = {
+  distance: 'nearest first',
+  availability: 'most lots first',
+  price: 'cheapest first',
+}
+
+// The search radius, as the empty state says it out loud.
+function fmtRadius(m: number): string {
+  return m >= 1000 ? `${m / 1000} km` : `${m} m`
+}
 type SearchFilters = {
   radius: number
   category: string | null
@@ -108,18 +124,18 @@ function priceValue(e: ParkingEntry): number {
 
 function MapLegend() {
   const items = [
-    { color: '#4338CA', label: 'Destination' },
-    { color: '#16a34a', label: 'Free' },
-    { color: '#f59e0b', label: 'Filling' },
-    { color: '#ef4444', label: 'Full' },
-    { color: '#2563EB', label: 'You' },
+    { color: '#1C6E4A', label: 'Destination' },
+    { color: '#4CE28A', label: 'Plenty' },
+    { color: '#E8A020', label: 'Filling' },
+    { color: '#FF6157', label: 'Full' },
+    { color: '#1D3A6B', label: 'You' },
   ]
   return (
-    <div className="pointer-events-none absolute top-3 left-3 z-[400] flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border border-hairline bg-white/90 px-3 py-2 text-[11px] font-medium text-slate-body shadow-sm backdrop-blur">
+    <div className="pointer-events-none absolute top-3 left-3 z-[400] flex flex-wrap items-center gap-x-3 gap-y-1 rounded-md border-[1.5px] border-hairline bg-card/90 px-3 py-2 text-[11px] font-semibold text-slate-body shadow-sm backdrop-blur">
       {items.map((it) => (
         <span key={it.label} className="inline-flex items-center gap-1.5">
           <span
-            className="size-2.5 rounded-full ring-1 ring-white"
+            className="size-2.5 rounded-full ring-1 ring-card"
             style={{ backgroundColor: it.color }}
           />
           {it.label}
@@ -129,10 +145,26 @@ function MapLegend() {
   )
 }
 
+// The parking-sign tile from the empty-state artboard. It is a sign, not a
+// logo: the captain has not picked a mark yet, so nothing here is branded.
+function SignTile({ className }: { className?: string }) {
+  return (
+    <div
+      className={cn(
+        'flex size-[88px] items-center justify-center rounded-[20px] border-[3px] border-primary bg-panel font-display text-[42px] font-extrabold text-link',
+        className,
+      )}
+      aria-hidden="true"
+    >
+      P
+    </div>
+  )
+}
+
 function MapFallback() {
   return (
-    <div className="flex h-full items-center justify-center bg-secondary/40">
-      <Loader2 className="size-6 animate-spin text-primary" aria-hidden="true" />
+    <div className="flex h-full items-center justify-center bg-panel/40">
+      <Loader2 className="size-6 animate-spin text-link" aria-hidden="true" />
     </div>
   )
 }
@@ -634,18 +666,20 @@ export default function App() {
 
   return (
     <div className="flex h-full flex-col bg-background">
-      {/* Indigo command bar */}
-      <header className="z-20 shrink-0 bg-ink text-white shadow-md">
+      {/* The kaya signboard */}
+      <header className="z-20 shrink-0 bg-brand-bar text-brand-bar-foreground shadow-md">
         <div className="mx-auto w-full max-w-screen-2xl px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3">
           <div className="flex items-center justify-between gap-3 pb-3">
             <div className="flex items-center gap-2.5">
-              <img src="/brand-car.svg" className="size-11" alt="" />
+              <EplMark />
               <div className="leading-none">
-                <h1 className="font-display text-lg font-bold tracking-tight">
+                <h1 className="font-display text-xl font-extrabold tracking-tight">
                   EhParkLeh
                 </h1>
-                <span className="text-[11px] font-medium text-signal">
-                  Find parking near you
+                {/* The tagline, in the dot-matrix voice. Two question marks,
+                    exactly as the design writes it. */}
+                <span className="dot-matrix mt-1 block text-[10px] text-brand-bar-foreground/75">
+                  GOT LOT ANOT ??
                 </span>
               </div>
             </div>
@@ -653,7 +687,7 @@ export default function App() {
               href="https://buymeacoffee.com/zhehang"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border-[1.5px] border-brand-bar-foreground/25 bg-brand-bar-foreground/10 px-3 py-1.5 text-xs font-bold text-brand-bar-foreground transition-colors hover:bg-brand-bar-foreground/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-panel"
             >
               <Coffee className="size-3.5" aria-hidden="true" />
               <span className="hidden sm:inline">Buy me a coffee</span>
@@ -678,7 +712,7 @@ export default function App() {
       </header>
 
       {/* Filter chip row */}
-      <div className="z-10 shrink-0 border-b border-hairline bg-surface shadow-sm">
+      <div className="z-10 shrink-0 border-b border-hairline bg-background shadow-sm">
         <div className="mx-auto w-full max-w-screen-2xl px-4">
           <FilterBar
             category={category}
@@ -700,8 +734,8 @@ export default function App() {
       </div>
 
       {!online && (
-        <div className="shrink-0 bg-amber-500/15 px-4 py-2" role="status">
-          <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-medium text-amber-700">
+        <div className="shrink-0 bg-kopi/15 px-4 py-2" role="status">
+          <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-semibold text-panel-ink">
             <WifiOff className="size-4 shrink-0" aria-hidden="true" />
             You're offline: showing your last results.
           </div>
@@ -709,15 +743,15 @@ export default function App() {
       )}
       {error && (
         <div className="shrink-0 bg-destructive/10 px-4 py-2" role="alert">
-          <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-medium text-destructive">
+          <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-semibold text-destructive">
             <AlertCircle className="size-4 shrink-0" aria-hidden="true" />
             {error}
           </div>
         </div>
       )}
       {searched && feedFreshness.availability !== 'fresh' && carparks.some((cp) => cp.lots_available !== null) && (
-        <div className="shrink-0 bg-amber-500/15 px-4 py-2" role="status">
-          <div className="mx-auto w-full max-w-screen-2xl text-sm font-medium text-amber-800">
+        <div className="shrink-0 bg-kopi/15 px-4 py-2" role="status">
+          <div className="mx-auto w-full max-w-screen-2xl text-sm font-semibold text-panel-ink">
             {feedFreshness.availability === 'recent'
               ? 'Lot counts are from a recent update and may be out of date.'
               : 'Showing saved lot counts. They may be out of date.'}
@@ -725,8 +759,8 @@ export default function App() {
         </div>
       )}
       {searched && osmUnavailable && (
-        <div className="shrink-0 bg-secondary/70 px-4 py-2" role="status">
-          <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-medium text-muted-foreground">
+        <div className="shrink-0 bg-panel/70 px-4 py-2" role="status">
+          <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-2 text-sm font-semibold text-muted-foreground">
             <AlertCircle className="size-4 shrink-0" aria-hidden="true" />
             Some map parking spots could not be loaded. Main carpark results are still available.
           </div>
@@ -736,8 +770,8 @@ export default function App() {
       <InstallPrompt />
 
       {/* Mobile list/map toggle */}
-      <div className="shrink-0 border-b border-hairline bg-surface px-4 py-2 md:hidden">
-        <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-2 gap-1 rounded-lg bg-secondary p-1">
+      <div className="shrink-0 border-b border-hairline bg-background px-4 py-2 md:hidden">
+        <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-2 gap-1 rounded-md bg-panel p-1">
           {(['list', 'map'] as const).map((tab) => (
             <button
               key={tab}
@@ -745,11 +779,11 @@ export default function App() {
               onClick={() => setMobileTab(tab)}
               aria-pressed={mobileTab === tab}
               className={cn(
-                'inline-flex min-h-11 items-center justify-center gap-1.5 rounded-md py-2 text-sm font-semibold capitalize transition-colors',
+                'inline-flex min-h-11 items-center justify-center gap-1.5 rounded-[7px] py-2 font-display text-[15px] font-extrabold capitalize transition-colors',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                 mobileTab === tab
-                  ? 'bg-white text-ink shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground',
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'text-panel-ink hover:text-foreground',
               )}
             >
               {tab === 'list' ? (
@@ -769,7 +803,7 @@ export default function App() {
         <section
           aria-label="Carpark list"
           className={cn(
-            'min-h-0 w-full flex-col overflow-y-auto md:flex md:w-[42%] md:max-w-md md:border-r md:border-hairline',
+            'min-h-0 w-full flex-col overflow-y-auto bg-background md:flex md:w-[42%] md:max-w-md md:border-r md:border-hairline',
             mobileTab === 'map' ? 'hidden' : 'flex',
           )}
         >
@@ -777,7 +811,7 @@ export default function App() {
             {loading && (
               <>
                 <p
-                  className="font-data text-xs font-bold tracking-wide text-muted-foreground uppercase"
+                  className="text-[11px] font-extrabold tracking-[0.1em] text-eyebrow uppercase"
                   role="status"
                   aria-live="polite"
                 >
@@ -789,23 +823,34 @@ export default function App() {
                 </p>
                 {!preserveResultsWhileLoading &&
                   [0, 1, 2].map((i) => (
-                    <Skeleton key={i} className="h-28 w-full rounded-xl" />
+                    <Skeleton key={i} className="h-28 w-full rounded-lg" />
                   ))}
               </>
             )}
 
             {(!loading || preserveResultsWhileLoading) && totalNearby > 0 && (
               <div className="flex items-center justify-between gap-2 px-0.5">
-                <p className="text-sm font-medium text-slate-body" aria-live="polite">
-                  <span className="font-data font-bold text-ink tabular-nums">{totalNearby}</span>{' '}
-                  spot{totalNearby === 1 ? '' : 's'} nearby
+                {/* Chrome carries `text-transform` into the accessibility tree,
+                    so the board eyebrow would be announced shouted, with its
+                    plural split across two text nodes. The live region carries
+                    a plain sentence instead and the eyebrow is decoration. */}
+                <p className="sr-only" aria-live="polite">
+                  {totalNearby} {totalNearby === 1 ? 'spot' : 'spots'} nearby, sorted by{' '}
+                  {SORT_EYEBROW[sort]}
                 </p>
-                <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                <p
+                  aria-hidden="true"
+                  className="text-[11px] font-extrabold tracking-[0.1em] text-eyebrow uppercase"
+                >
+                  <span className="font-data tabular-nums">{totalNearby}</span>{' '}
+                  spot{totalNearby === 1 ? '' : 's'} · {SORT_EYEBROW[sort]}
+                </p>
+                <label className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
                   Sort
                   <select
                     value={sort}
                     onChange={(e) => setSort(e.target.value as SortKey)}
-                    className="min-h-9 rounded-md border border-hairline bg-white px-2 py-1.5 text-xs font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="min-h-11 rounded-md border-[1.5px] border-hairline bg-card px-2 py-1.5 text-xs font-semibold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     <option value="distance">Distance</option>
                     <option value="availability">Availability</option>
@@ -817,14 +862,12 @@ export default function App() {
 
             {/* Never searched yet: the welcome prompt. */}
             {!loading && !searched && totalNearby === 0 && !error && (
-              <div className="flex flex-col items-center gap-3 px-6 py-16 text-center">
-                <div className="flex size-14 items-center justify-center rounded-2xl bg-secondary">
-                  <Compass className="size-7 text-primary" aria-hidden="true" />
-                </div>
-                <p className="font-display text-base font-semibold text-ink">
-                  Where are you parking today?
+              <div className="flex flex-col items-center gap-4 px-6 py-16 text-center">
+                <SignTile />
+                <p className="font-display text-xl font-extrabold text-ink">
+                  Where to, boss?
                 </p>
-                <p className="max-w-xs text-sm text-muted-foreground">
+                <p className="max-w-[290px] text-sm leading-relaxed text-slate-body">
                   Search a place or tap Near me to see live carpark availability around you.
                 </p>
               </div>
@@ -832,25 +875,42 @@ export default function App() {
 
             {/* Searched, but nothing matched: a neutral empty state, not an error. */}
             {!loading && searched && totalNearby === 0 && !error && (
-              <div className="flex flex-col items-center gap-3 px-6 py-16 text-center">
-                <div className="flex size-14 items-center justify-center rounded-2xl bg-secondary">
-                  <Compass className="size-7 text-primary" aria-hidden="true" />
+              <div className="flex flex-col items-center gap-4 px-6 py-16 text-center">
+                <SignTile />
+                <p className="font-display text-xl font-extrabold text-ink">
+                  No public carpark here leh
+                </p>
+                {/* The restricted-land explanation is written as a condition,
+                    not an assertion: army camps, bases and prisons are filtered
+                    server-side and the app is not told that it happened, so
+                    "this area is restricted" is something we cannot honestly
+                    claim from here. */}
+                <p className="max-w-[290px] text-sm leading-relaxed text-slate-body">
+                  Nothing public within {fmtRadius(radius)}. If this is an army camp, a base or a
+                  prison, that is on purpose — we leave out parking you cannot drive into.
+                  {anyFilterActive ? ' Otherwise, clear your filters or search wider.' : ' Otherwise, try searching wider.'}
+                </p>
+                <div className="mt-1 flex flex-wrap items-center justify-center gap-2">
+                  {radius < MAX_RADIUS && (
+                    <button
+                      type="button"
+                      onClick={() => handleRadius(MAX_RADIUS)}
+                      className="inline-flex min-h-[50px] items-center gap-2 rounded-lg bg-primary px-5 font-display text-base font-extrabold text-primary-foreground transition-colors hover:bg-kaya-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      Show nearest
+                      <ArrowRight className="size-4" aria-hidden="true" />
+                    </button>
+                  )}
+                  {anyFilterActive && (
+                    <button
+                      type="button"
+                      onClick={resetFilters}
+                      className="inline-flex min-h-[50px] items-center rounded-lg border-2 border-primary px-5 font-display text-base font-extrabold text-link transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      Clear filters
+                    </button>
+                  )}
                 </div>
-                <p className="font-display text-base font-semibold text-ink">
-                  No spots match here
-                </p>
-                <p className="max-w-xs text-sm text-muted-foreground">
-                  Try a larger search radius{anyFilterActive ? ', or clear your filters' : ''}.
-                </p>
-                {anyFilterActive && (
-                  <button
-                    type="button"
-                    onClick={resetFilters}
-                    className="mt-1 inline-flex min-h-11 items-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                  >
-                    Clear filters
-                  </button>
-                )}
               </div>
             )}
 
@@ -900,13 +960,13 @@ export default function App() {
               ) : null}
             </>
           ) : (
-            <div className="flex h-full flex-col items-center justify-center gap-4 bg-secondary/40 px-6 text-center">
-              <img src="/brand-car.svg" className="size-16 opacity-90" alt="" />
+            <div className="flex h-full flex-col items-center justify-center gap-4 bg-panel/40 px-6 text-center">
+              <SignTile />
               <div>
-                <p className="font-display text-lg font-semibold text-ink">
+                <p className="font-display text-xl font-extrabold text-ink">
                   Eh, park already?
                 </p>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <p className="mt-1 text-sm text-slate-body">
                   Search a place to start.
                 </p>
               </div>

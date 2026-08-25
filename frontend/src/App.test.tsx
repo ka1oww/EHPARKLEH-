@@ -22,12 +22,15 @@ const liveHeaders = (freshUntil: number) => ({
   'X-EhParkLeh-Ev-State': 'disabled',
 })
 
-// The "N spots nearby" count splits its number into a <span>, so a plain text
-// match never sees the whole sentence; match on normalised element text instead.
-const spotsNearby = (n: number) =>
+// The list eyebrow splits its count into a <span>, so a plain text match never
+// sees the whole sentence; match on normalised element text instead. The
+// eyebrow is uppercased in CSS, so its text is still sentence-case here, and it
+// names the sort in force rather than assuming "nearest".
+const spotsNearby = (n: number, order = 'nearest first') =>
   screen.getByText(
     (_, node) =>
-      (node?.textContent ?? '').replace(/\s+/g, ' ').trim() === `${n} spot${n === 1 ? '' : 's'} nearby`,
+      (node?.textContent ?? '').replace(/\s+/g, ' ').trim() ===
+      `${n} spot${n === 1 ? '' : 's'} · ${order}`,
   )
 
 const lastMapProps = () =>
@@ -301,8 +304,67 @@ describe('App search result states', () => {
       vi.fn(async () => okJson([])),
     )
     render(<App />)
-    expect(await screen.findByText(/No spots match here/i)).toBeInTheDocument()
+    expect(await screen.findByText(/No public carpark here leh/i)).toBeInTheDocument()
     expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()
+  })
+
+  it('keeps the EPL mark decorative, so the app name is announced once', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => okJson([])),
+    )
+    const { container } = render(<App />)
+    await act(async () => {})
+
+    // The header already carries the name as its <h1>; the mark repeating it
+    // would have a screen reader say "EhParkLeh" twice on every page load.
+    const heading = screen.getByRole('heading', { level: 1, name: 'EhParkLeh' })
+    expect(heading).toBeInTheDocument()
+    const mark = container.querySelector('header svg')
+    expect(mark).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByRole('img', { name: /EhParkLeh/i })).not.toBeInTheDocument()
+  })
+
+  it('announces the list count as a plain sentence, not the shouted board eyebrow', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? okJson([carpark('cp-1', 'Carpark 1')])
+          : okJson([]),
+      ),
+    )
+    render(<App />)
+
+    // The eyebrow is uppercased in CSS, and Chrome carries text-transform into
+    // the accessibility tree, so the announced sentence has to be its own node.
+    const live = await screen.findByText(/1 spot nearby, sorted by nearest first/i)
+    expect(live).toHaveAttribute('aria-live', 'polite')
+    // ...and the decorative eyebrow must stay out of the tree, or the count is
+    // announced twice.
+    expect(spotsNearby(1)).toHaveAttribute('aria-hidden', 'true')
+  })
+
+  it('widens the search to the largest radius when the empty state offers the nearest', async () => {
+    const fetchMock = vi.fn(async () => okJson([]))
+    vi.stubGlobal('fetch', fetchMock)
+    render(<App />)
+
+    // The default 500m search found nothing, so the offer is on screen.
+    expect(await screen.findByText(/Nothing public within 500 m/i)).toBeInTheDocument()
+    fetchMock.mockClear()
+
+    fireEvent.click(screen.getByRole('button', { name: /Show nearest/i }))
+
+    // It widens to the selector's largest radius and says so in the copy...
+    expect(await screen.findByText(/Nothing public within 2 km/i)).toBeInTheDocument()
+    await vi.waitFor(() =>
+      expect(
+        (fetchMock.mock.calls as unknown[][]).some((c) => String(c[0]).includes('radius=2000')),
+      ).toBe(true),
+    )
+    // ...and stops offering, because there is nothing wider left to reach for.
+    expect(screen.queryByRole('button', { name: /Show nearest/i })).not.toBeInTheDocument()
   })
 
   it('shows an error banner (not the empty state) when the carparks request fails', async () => {
@@ -315,7 +377,7 @@ describe('App search result states', () => {
     )
     render(<App />)
     expect(await screen.findByText(/Can't reach the server/i)).toBeInTheDocument()
-    expect(screen.queryByText(/No spots match here/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/No public carpark here leh/i)).not.toBeInTheDocument()
   })
 
   it('keeps a submitted no-match distinct from an address-service failure', async () => {
@@ -328,7 +390,7 @@ describe('App search result states', () => {
       ),
     )
     render(<App />)
-    await screen.findByText(/No spots match here/i)
+    await screen.findByText(/No public carpark here leh/i)
 
     fireEvent.change(screen.getByRole('combobox'), { target: { value: 'Not a real address' } })
     fireEvent.submit(screen.getByRole('search'))
@@ -347,7 +409,7 @@ describe('App search result states', () => {
       ),
     )
     render(<App />)
-    await screen.findByText(/No spots match here/i)
+    await screen.findByText(/No public carpark here leh/i)
 
     fireEvent.change(screen.getByRole('combobox'), { target: { value: 'Toa Payoh' } })
     fireEvent.submit(screen.getByRole('search'))
@@ -397,7 +459,7 @@ describe('App search result states', () => {
 
     render(<App />)
 
-    await screen.findByText(/No spots match here/i)
+    await screen.findByText(/No public carpark here leh/i)
     expect(matchMedia).toHaveBeenCalledWith('(max-width: 767.98px)')
     expect(MapMock).not.toHaveBeenCalled()
   })
