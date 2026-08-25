@@ -810,19 +810,14 @@ export default function App() {
                 <div className="flex items-center gap-2.5">
                   <EplMark className="md:hidden" />
                   <GantryLockup size="sm" className="hidden md:inline-flex" />
-                  {/* From md the lockup carries the mark and the tagline, so
-                      the wordmark steps back to a screen-reader-only heading
-                      rather than saying the same thing twice on one board. */}
-                  <div className="leading-none">
-                    <h1 className="font-display text-xl font-extrabold tracking-tight md:sr-only">
-                      EhParkLeh
-                    </h1>
-                    {/* The tagline, in the dot-matrix voice. Two question marks,
-                        exactly as the design writes it. */}
-                    <span className="dot-matrix mt-1 block text-[10px] text-brand-bar-foreground/75 md:hidden">
-                      GOT LOT ANOT ??
-                    </span>
-                  </div>
+                  {/* The mark says the name on its own at both sizes: the
+                      compact tile on mobile, where header room is scarce, and
+                      the full lockup (tiles plus dot-matrix tagline) in the
+                      desktop sidebar. So the wordmark and the tagline are not
+                      repeated as text beside it — the heading stays in the
+                      accessibility tree only, where it still names the page
+                      without crowding the board. */}
+                  <h1 className="sr-only">EhParkLeh</h1>
                 </div>
                 <a
                   href="https://buymeacoffee.com/zhehang"

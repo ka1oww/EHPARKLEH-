@@ -1006,3 +1006,33 @@ describe('App desktop rail', () => {
     expect(screen.queryByRole('button', { name: /Nearest with lots/i })).not.toBeInTheDocument()
   })
 })
+
+describe('App mobile header', () => {
+  it('gives the mobile bar the compact mark alone, and keeps the full lockup for the sidebar', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks') ? okJson([carpark('cp-1', 'Carpark 1')]) : okJson([]),
+      ),
+    )
+    const { container } = render(<App />)
+    await screen.findByText('Carpark 1')
+
+    // The name is still announced, but it is no longer set as text beside the
+    // mark — the mobile bar was too crowded with all three.
+    const heading = screen.getByRole('heading', { level: 1, name: 'EhParkLeh' })
+    expect(heading).toHaveClass('sr-only')
+    expect(heading.className).not.toMatch(/font-display/)
+
+    // The tagline survives in exactly one place: the desktop-only lockup.
+    const taglines = screen.getAllByText('GOT LOT ANOT ??')
+    expect(taglines).toHaveLength(1)
+    const lockup = taglines[0].closest('div[class*="md:inline-flex"]')
+    expect(lockup).not.toBeNull()
+    expect(lockup?.className).toMatch(/(^|\s)hidden(\s|$)/)
+
+    // ...and the compact tile is what the mobile bar shows instead.
+    const mark = container.querySelector('header svg')
+    expect(mark?.getAttribute('class')).toMatch(/md:hidden/)
+  })
+})
