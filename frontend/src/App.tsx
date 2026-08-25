@@ -15,6 +15,7 @@ import { useSavedCarparks, type SavedCarparkInput } from './useSavedCarparks'
 import { useRecentSearches } from './useRecentSearches'
 import { InstallPrompt } from '@/components/InstallPrompt'
 import { activeFilterLabel } from './filterLabel'
+import { priceValue } from './pricing'
 import {
   liveFeedFreshness,
   nextLiveFeedFreshnessTransition,
@@ -160,13 +161,6 @@ function readRestorableSnapshot(): RestorableSnapshot {
 // More live lots first; entries without live data (OSM / unknown) sink.
 function availValue(e: ParkingEntry): number {
   return e.source === 'hdb' && e.lots_available != null ? e.lots_available : -1
-}
-// Cheaper first; unknown rate / OSM sink to the bottom.
-function priceValue(e: ParkingEntry): number {
-  if (e.source === 'hdb' && e.rate.known) {
-    return e.rate.first_hour ?? e.rate.subsequent_half_hour ?? Number.POSITIVE_INFINITY
-  }
-  return Number.POSITIVE_INFINITY
 }
 
 // What a card knows about a carpark when its star is pressed, and what the
