@@ -128,6 +128,35 @@ type SearchFilters = {
   hasCarwash: boolean
 }
 
+// What `ehparkleh:last` holds. `filters` records which search produced the
+// stored rows, so a restored board can put the chips back and say "Showing X
+// only" instead of presenting a filtered subset as the whole picture.
+type RestorableSnapshot = {
+  carparks?: Carpark[]
+  osmParking?: OsmParking[]
+  center?: LatLon
+  ts?: number
+  filters?: Partial<SearchFilters>
+} | null
+
+// Read the last-session snapshot, but only when this open will actually use
+// it: a shared ?lat/lon URL must stay reproducible and ignore stored filters.
+function readRestorableSnapshot(): RestorableSnapshot {
+  try {
+    const sp = new URLSearchParams(window.location.search)
+    if (
+      Number.isFinite(parseFloat(sp.get('lat') ?? '')) &&
+      Number.isFinite(parseFloat(sp.get('lon') ?? ''))
+    ) {
+      return null
+    }
+    const snap: RestorableSnapshot = JSON.parse(localStorage.getItem('ehparkleh:last') || 'null')
+    return snap?.center ? snap : null
+  } catch {
+    return null
+  }
+}
+
 // More live lots first; entries without live data (OSM / unknown) sink.
 function availValue(e: ParkingEntry): number {
   return e.source === 'hdb' && e.lots_available != null ? e.lots_available : -1
@@ -236,14 +265,34 @@ export default function App() {
   const isMobile = useIsMobile()
   const [userLocation, setUserLocation] = useState<LatLon | null>(null)
   const [view, setView] = useState<View>('list')
-  const [radius, setRadius] = useState(500)
-  const [category, setCategory] = useState<string | null>(null)
-  const [freeSunPh, setFreeSunPh] = useState(false)
-  const [hasLots, setHasLots] = useState(false)
-  const [hasEv, setHasEv] = useState(false)
-  const [hasCarwash, setHasCarwash] = useState(false)
+  // Read once per open. A filtered snapshot must put its chips back before the
+  // first paint — via the initialisers below — so the "Showing X only" eyebrow,
+  // the hidden OSM layer, the counts, and any background refresh all see the
+  // restored filters from the start. Setting state in the restore effect
+  // instead would re-trigger the debounced filter search after mount.
+  const [initialSnapshot] = useState(readRestorableSnapshot)
+  const snapFilters = initialSnapshot?.filters
+  // Strict `=== true` / `typeof` coercions: a malformed snapshot falls back to
+  // today's defaults rather than poisoning filter state.
+  const [radius, setRadius] = useState(
+    typeof snapFilters?.radius === 'number' ? snapFilters.radius : 500,
+  )
+  const [category, setCategory] = useState<string | null>(
+    typeof snapFilters?.category === 'string' ? snapFilters.category : null,
+  )
+  const [freeSunPh, setFreeSunPh] = useState(snapFilters?.freeSunPh === true)
+  const [hasLots, setHasLots] = useState(snapFilters?.hasLots === true)
+  const [hasEv, setHasEv] = useState(snapFilters?.hasEv === true)
+  const [hasCarwash, setHasCarwash] = useState(snapFilters?.hasCarwash === true)
   const [carparks, setCarparks] = useState<Carpark[]>([])
-  const [carparksAreUnfiltered, setCarparksAreUnfiltered] = useState(true)
+  const [carparksAreUnfiltered, setCarparksAreUnfiltered] = useState(
+    !snapFilters ||
+      ((snapFilters.category ?? null) === null &&
+        !snapFilters.freeSunPh &&
+        !snapFilters.hasLots &&
+        !snapFilters.hasEv &&
+        !snapFilters.hasCarwash),
+  )
   const [osmParking, setOsmParking] = useState<OsmParking[]>([])
   const [osmUnavailable, setOsmUnavailable] = useState(false)
   const [center, setCenter] = useState<LatLon | null>(null)
@@ -404,7 +453,22 @@ export default function App() {
           try {
             localStorage.setItem(
               'ehparkleh:last',
-              JSON.stringify({ carparks: hdbData, osmParking: [], center: { lat, lon }, ts: Date.now() }),
+              JSON.stringify({
+                carparks: hdbData,
+                osmParking: [],
+                center: { lat, lon },
+                ts: Date.now(),
+                // Record which search produced these rows, so a later restore
+                // can present them as the filtered subset they are.
+                filters: {
+                  radius: filters.radius,
+                  category: filters.category,
+                  freeSunPh: filters.freeSunPh,
+                  hasLots: filters.hasLots,
+                  hasEv: filters.hasEv,
+                  hasCarwash: filters.hasCarwash,
+                },
+              }),
             )
           } catch {
             /* storage unavailable */
@@ -443,6 +507,14 @@ export default function App() {
                     osmParking: osmResult.data,
                     center: { lat, lon },
                     ts: Date.now(),
+                    filters: {
+                      radius: filters.radius,
+                      category: filters.category,
+                      freeSunPh: filters.freeSunPh,
+                      hasLots: filters.hasLots,
+                      hasEv: filters.hasEv,
+                      hasCarwash: filters.hasCarwash,
+                    },
                   }),
                 )
               } catch {
@@ -517,7 +589,9 @@ export default function App() {
 
   // Initial location on cold open: a shared URL (?lat=&lon=) wins so links are
   // reproducible; otherwise restore the last snapshot (esp. useful offline),
-  // refreshing it in the background when online.
+  // refreshing it in the background when online. The snapshot's filters were
+  // already folded into state by the lazy initialisers above — this effect
+  // only publishes the rows themselves.
   useEffect(() => {
     try {
       const sp = new URLSearchParams(window.location.search)
@@ -527,7 +601,7 @@ export default function App() {
         runSearch(qlat, qlon)
         return
       }
-      const snap = JSON.parse(localStorage.getItem('ehparkleh:last') || 'null')
+      const snap = initialSnapshot
       if (snap?.center) {
         setCarparks(snap.carparks || [])
         setOsmParking(snap.osmParking || [])
