@@ -46,17 +46,28 @@ function fmtDistance(m: number): string {
 // always was; only what it says changed. Opens in a new tab; its click is kept
 // off the card's stretched select button. The component is named for what it
 // does rather than what it says, because the copy is the captain's to change.
+//
+// The reskin left it the one destination on the card that never names itself,
+// sitting next to a link that plainly says "Waze" — so drivers read the Google
+// link as gone. The eyebrow under the copy names the destination, and the
+// accessible name says it too, without touching the captain's wording.
 function NavigateCta({ lat, lon }: { lat: number; lon: number }) {
   return (
     <a
       href={gmapsHref(lat, lon)}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="Confirm ah — navigate with Google Maps"
       onClick={(e) => e.stopPropagation()}
-      className="pointer-events-auto inline-flex min-h-11 items-center gap-1.5 rounded-md bg-primary px-3 font-display text-sm font-extrabold text-primary-foreground transition-colors hover:bg-kaya-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="pointer-events-auto inline-flex min-h-11 flex-col items-center justify-center rounded-md bg-primary px-3 py-1 font-display text-sm leading-tight font-extrabold text-primary-foreground transition-colors hover:bg-kaya-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
-      Confirm ah
-      <ArrowRight className="size-4" aria-hidden="true" />
+      <span className="inline-flex items-center gap-1.5">
+        Confirm ah
+        <ArrowRight className="size-4" aria-hidden="true" />
+      </span>
+      <span className="text-[9px] font-bold tracking-[0.12em] opacity-85" aria-hidden="true">
+        GOOGLE MAPS
+      </span>
     </a>
   )
 }

@@ -1,11 +1,14 @@
 """One definition of "restricted land", shared by the build and the live layer.
 
 Parking inside an army camp, air base, naval base or prison is not publicly
-usable, so it must never be offered as a parking option. Two paths into the app
-have to honour that: the build-time void in enrich/build_enriched.py, and the
-live OpenStreetMap layer served by /api/parking/osm. They previously disagreed:
-only the build filtered anything, which is how carparks inside Kranji Camp
-reached users. This module is the single definition both now use.
+usable, so it must never be offered as a parking option. Three paths into the
+app have to honour that: the build-time void in enrich/build_enriched.py, the
+static dataset as main.load_carpark_records() reads it, and the live
+OpenStreetMap layer served by /api/parking/osm. They previously disagreed: only
+the build filtered anything, which is how carparks inside Kranji Camp reached
+users, and the build only ever sees carparks_enriched.json - a deploy serving
+the carparks_geocoded.json fallback got no filtering at all. This module is the
+single definition all three now use.
 
 Two polygon sources, unioned because they cover each other's gaps:
 

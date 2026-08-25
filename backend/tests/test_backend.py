@@ -1241,3 +1241,51 @@ def test_restricted_areas_keep_every_served_carpark():
 
     excluded = [cp["id"] for cp in served if areas.contains(cp["lat"], cp["lon"])]
     assert not excluded, f"restricted filter would drop served carparks: {excluded[:5]}"
+
+
+# The static-dataset half of the same rule. /api/carparks never applied the
+# restricted filter itself: it trusted enrich/build_enriched.py to have voided
+# camp rows already, and _data_file() silently falls back to the *unfiltered*
+# carparks_geocoded.json when the enriched artifact is absent (build.sh not run
+# on the deploy). On that path ten SVY21-fallback HDB coordinates sit inside a
+# camp -- CK39/CK55/CK65 are in the Keat Hong / Choa Chu Kang camp land the
+# reported carpark belongs to -- and each came with a working Waze deep link.
+GEOCODED_RESTRICTED_IDS = {"A12", "BJ65", "CK39", "CK55", "CK65", "JS33", "Y23", "Y34", "Y7", "Y8"}
+
+
+def test_load_carpark_records_filters_the_unfiltered_geocoded_fallback(monkeypatch):
+    """The served cache must be filtered whichever dataset file backs it."""
+    geocoded = BACKEND_DIR / "carparks_geocoded.json"
+    monkeypatch.setattr(main, "_data_file", lambda: geocoded)
+
+    served = {cp["id"] for cp in main.load_carpark_records()}
+
+    assert not (served & GEOCODED_RESTRICTED_IDS), (
+        f"restricted carparks served from the fallback dataset: "
+        f"{sorted(served & GEOCODED_RESTRICTED_IDS)}"
+    )
+    # It filters, rather than refusing to load anything.
+    assert len(served) > 2000
+
+
+def test_no_served_carpark_is_inside_restricted_land():
+    """End-to-end over whichever dataset this deploy actually serves."""
+    areas = restricted.load_restricted_areas()
+
+    served = main.load_carpark_records()
+
+    offered = [cp["id"] for cp in served if areas.contains(cp["lat"], cp["lon"])]
+    assert not offered, f"restricted carparks offered by /api/carparks: {offered[:5]}"
+
+
+def test_load_carpark_records_fails_closed_without_polygons(monkeypatch):
+    """Fail-closed contract: no polygons means no dataset, never an unfiltered one."""
+    monkeypatch.setattr(main, "_restricted_areas", None)
+    monkeypatch.setattr(
+        main,
+        "load_restricted_areas",
+        Mock(side_effect=main.RestrictedDataError("military_areas.json is missing")),
+    )
+
+    with pytest.raises(main.RestrictedDataError):
+        main.load_carpark_records()
