@@ -959,6 +959,8 @@ describe('App saved carparks', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'saved' }))
     expect(screen.getByText('Nothing saved yet')).toBeInTheDocument()
+    // The hint names the exact gesture, in the captain's words.
+    expect(screen.getByText('Tap the star on the carpark to save it.')).toBeInTheDocument()
     // No prediction, ever, from a list with no history behind it.
     expect(screen.queryByText(/usually fills/i)).not.toBeInTheDocument()
   })

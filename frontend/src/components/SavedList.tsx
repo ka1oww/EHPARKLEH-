@@ -136,8 +136,7 @@ export function SavedList({
         <Star className="size-9 text-kopi" aria-hidden="true" />
         <p className="font-display text-xl font-extrabold text-ink">Nothing saved yet</p>
         <p className="max-w-[290px] text-sm leading-relaxed text-slate-body">
-          Tap the star on a carpark and it stays here — your usual spots, with their counts, one
-          screen away.
+          Tap the star on the carpark to save it.
         </p>
       </div>
     )
