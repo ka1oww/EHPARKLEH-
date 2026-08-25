@@ -2,6 +2,9 @@ import { cn } from '@/lib/utils'
 
 const RADIUS_OPTIONS = [250, 500, 1000, 2000] as const
 
+/** The widest search this selector offers — what "Show nearest" reaches for. */
+export const MAX_RADIUS = RADIUS_OPTIONS[RADIUS_OPTIONS.length - 1]
+
 function fmt(r: number): string {
   return r >= 1000 ? `${r / 1000}km` : `${r}m`
 }

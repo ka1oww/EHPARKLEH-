@@ -267,7 +267,7 @@ export function SearchBar({
                   onMouseDown={() => pickRecent(r)}
                   onMouseEnter={() => setActiveIdx(i)}
                   className={cn(
-                    'flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
+                    'flex min-h-11 w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
                     i === activeIdx ? 'bg-secondary text-foreground' : 'hover:bg-secondary/60',
                   )}
                 >
@@ -292,7 +292,7 @@ export function SearchBar({
                   onMouseDown={() => pick(s)}
                   onMouseEnter={() => setActiveIdx(i)}
                   className={cn(
-                    'flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
+                    'flex min-h-11 w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
                     i === activeIdx ? 'bg-secondary text-foreground' : 'hover:bg-secondary/60',
                   )}
                 >

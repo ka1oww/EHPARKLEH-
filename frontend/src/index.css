@@ -357,69 +357,6 @@
   box-shadow: 0 2px 6px rgba(42, 35, 32, 0.3);
 }
 
-/* LED chip inside Leaflet popups. */
-.led-popup-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 9px;
-  border-radius: 7px;
-  background: var(--board);
-  color: #fff8ea;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-/* Carpark dot pins (clustered). The colour is set inline by availability; the
-   per-state glyph below adds a shape so the pins are distinguishable without
-   relying on colour alone (colour-blind safe). */
-.cp-dot {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  border-radius: 999px;
-  border: 2px solid var(--surface);
-  box-shadow: 0 1px 4px rgba(42, 35, 32, 0.35);
-}
-/* "some / filling up": white ring inside the dot. */
-.cp-dot--some::after {
-  content: '';
-  position: absolute;
-  inset: 22%;
-  border: 1.5px solid rgba(255, 248, 234, 0.95);
-  border-radius: 999px;
-}
-/* "full": white horizontal bar (a minus). */
-.cp-dot--full::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 22%;
-  right: 22%;
-  height: 2px;
-  transform: translateY(-50%);
-  background: #fff8ea;
-  border-radius: 2px;
-}
-/* "no live data": white centre dot. */
-.cp-dot--nodata::after {
-  content: '';
-  position: absolute;
-  inset: 50%;
-  width: 3px;
-  height: 3px;
-  margin: -1.5px 0 0 -1.5px;
-  background: #fff8ea;
-  border-radius: 999px;
-}
-.cp-dot--selected {
-  border-color: var(--signal);
-  box-shadow: 0 0 0 3px rgba(28, 110, 74, 0.45), 0 1px 5px rgba(42, 35, 32, 0.4);
-}
-
 /* ------------------------------------------------------------------ *
  * The gantry board. A lit ink panel carrying a mono lot count — the
  * signature element, used on map pins, in popups and on the detail hero.
