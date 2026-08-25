@@ -4,75 +4,160 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ------------------------------------------------------------------ *
- * EhParkLeh — parking-wayfinding design system
- * Indigo ink + cyan signal accent, garage-LED availability counters.
+ * EhParkLeh — "Kopi Signboard" design language
+ *
+ * Kaya green signboards on warm kopitiam cream, with gantry-board ink
+ * panels carrying LED lot counts. Three type roles:
+ *   Baloo 2      — brand + calls to action (the friendly, spoken voice)
+ *   Overpass     — all UI text (the signage voice)
+ *   IBM Plex Mono— lot counts only (the gantry-board voice)
+ *
+ * Colour names are the kopitiam ones the design uses: kaya (green),
+ * bakkwa (red), kopi (amber), panel (biscuit), ink (gantry board).
  * ------------------------------------------------------------------ */
 
 :root {
-  --radius: 0.75rem;
+  /* 14px card radius, matching the artboards. */
+  --radius: 0.875rem;
 
   /* Surfaces */
-  --background: #f5f6fb;        /* cool off-white app bg */
-  --foreground: #1e1b4b;        /* indigo ink text */
+  --background: #fff8ea;        /* kopitiam cream app bg */
+  --foreground: #2a2320;        /* gantry ink text */
   --card: #ffffff;
-  --card-foreground: #1e1b4b;
+  --card-foreground: #2a2320;
   --popover: #ffffff;
-  --popover-foreground: #1e1b4b;
+  --popover-foreground: #2a2320;
 
   /* Brand / interactive */
-  --primary: #4338ca;           /* indigo primary */
-  --primary-foreground: #ffffff;
-  --secondary: #eef0fb;         /* tinted indigo surface */
-  --secondary-foreground: #312e81;
-  --muted: #eef0f7;
-  --muted-foreground: #475569;  /* slate body text */
-  --accent: #22d3ee;            /* cyan signal accent */
-  --accent-foreground: #083344;
-  --destructive: #ef4444;
+  --primary: #1c6e4a;           /* kaya green */
+  --primary-foreground: #fff8ea;
+  --secondary: #f6e7c6;         /* biscuit panel */
+  --secondary-foreground: #7a5b12;
+  --muted: #f1e7d2;
+  --muted-foreground: #8a8070;  /* warm grey body text */
+  --accent: #f6e7c6;
+  --accent-foreground: #2a2320;
+  --destructive: #c8342a;       /* bakkwa red */
 
   /* Lines + focus */
-  --border: #e6e8f0;            /* hairline */
-  --input: #e6e8f0;
-  --ring: #22d3ee;              /* cyan focus ring */
+  --border: #e5dcc4;
+  --input: #e5dcc4;
+  --ring: #1c6e4a;
 
   /* Brand tokens */
-  --ink: #1e1b4b;
-  --indigo: #4338ca;
-  --indigo-bright: #4f46e5;
-  --signal: #22d3ee;
+  --kaya: #1c6e4a;
+  --kaya-dark: #14523a;
+  --bakkwa: #c8342a;
+  --kopi: #e8a020;
+  --panel: #f6e7c6;
+  --panel-ink: #7a5b12;
+  --ink: #2a2320;
   --surface: #ffffff;
-  --slate: #475569;
-  --hairline: #e6e8f0;
+  --slate: #8a8070;             /* meta / secondary body copy */
+  --hairline: #e5dcc4;
+  --signal: #1c6e4a;            /* selection + focus accent */
+  --eyebrow: #98917f;           /* small uppercase section labels */
 
-  /* Availability semantics */
-  --avail-free: #16a34a;
-  --avail-some: #f59e0b;
-  --avail-full: #ef4444;
+  /* The gantry board: an ink panel that reads as an LED sign. It stays dark
+     in both themes — a lit board is dark by nature. */
+  --board: #2a2320;
+  --board-muted: #9b957f;
+  --led-free: #4ce28a;
+  --led-some: #e8a020;
+  --led-full: #ff6157;
 
-  /* LED counter chip surface */
-  --led-bg: #131334;
-  --led-bg-soft: #1e1b4b;
+  /* ERP homage strip. Reserved for a genuinely notable rate fact. */
+  --erp-navy: #1d3a6b;
+  --erp-amber: #ffb020;
+
+  /* The green signboard bar at the top of the app. */
+  --brand-bar: #1c6e4a;
+  --brand-bar-foreground: #fff8ea;
+
+  /* Availability semantics, on light surfaces. */
+  --avail-free: #1c6e4a;
+  --avail-some: #e8a020;
+  --avail-full: #c8342a;
+  --avail-none: #98917f;
+
+  /* Map basemap wash behind the tiles. */
+  --map-bg: #ede5ce;
 
   /* Charts (unused but kept for shadcn completeness) */
-  --chart-1: #4338ca;
-  --chart-2: #22d3ee;
-  --chart-3: #16a34a;
-  --chart-4: #f59e0b;
-  --chart-5: #ef4444;
+  --chart-1: #1c6e4a;
+  --chart-2: #e8a020;
+  --chart-3: #c8342a;
+  --chart-4: #1d3a6b;
+  --chart-5: #7a5b12;
 
-  --sidebar: #1e1b4b;
-  --sidebar-foreground: #e6e8f0;
-  --sidebar-primary: #4f46e5;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #22d3ee;
-  --sidebar-accent-foreground: #083344;
-  --sidebar-border: #312e81;
-  --sidebar-ring: #22d3ee;
+  --sidebar: #1c6e4a;
+  --sidebar-foreground: #fff8ea;
+  --sidebar-primary: #14523a;
+  --sidebar-primary-foreground: #fff8ea;
+  --sidebar-accent: #f6e7c6;
+  --sidebar-accent-foreground: #2a2320;
+  --sidebar-border: #14523a;
+  --sidebar-ring: #4ce28a;
 
   /* Fonts */
-  --font-display: "Space Grotesk", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-display: "Baloo 2", system-ui, sans-serif;
+  --font-body: "Overpass", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+/* ------------------------------------------------------------------ *
+ * Night. Dark kopitiam surfaces, LED-green counts, the same kaya green
+ * on the actions. Driven by the OS setting — there is no theme switch
+ * in the app, so a media query is the whole mechanism.
+ * ------------------------------------------------------------------ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #171a17;
+    --foreground: #f6e7c6;
+    --card: #20241f;
+    --card-foreground: #f6e7c6;
+    --popover: #20241f;
+    --popover-foreground: #f6e7c6;
+
+    --primary: #1c6e4a;
+    --primary-foreground: #fff8ea;
+    --secondary: #263025;
+    --secondary-foreground: #e8d9b4;
+    --muted: #232821;
+    --muted-foreground: #9b957f;
+    --accent: #263025;
+    --accent-foreground: #f6e7c6;
+    --destructive: #ff6157;
+
+    --border: #2f3a2e;
+    --input: #2f3a2e;
+    --ring: #4ce28a;
+
+    --panel: #263025;
+    --panel-ink: #e8a020;
+    /* Ink is "the colour text is set in", so it flips with the theme; the
+       gantry --board below deliberately does not. */
+    --ink: #f6e7c6;
+    --surface: #20241f;
+    --slate: #a79e8a;
+    --hairline: #2f3a2e;
+    --signal: #4ce28a;
+    --eyebrow: #8f8a78;
+
+    --board: #0d0f0c;
+
+    --brand-bar: #14523a;
+
+    --avail-free: #4ce28a;
+    --avail-some: #e8a020;
+    --avail-full: #ff6157;
+    --avail-none: #8f8a78;
+
+    --map-bg: #12140f;
+
+    --sidebar: #14523a;
+    --sidebar-border: #2f3a2e;
+  }
 }
 
 @theme inline {
@@ -95,21 +180,35 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  --color-kaya: var(--kaya);
+  --color-kaya-dark: var(--kaya-dark);
+  --color-bakkwa: var(--bakkwa);
+  --color-kopi: var(--kopi);
+  --color-panel: var(--panel);
+  --color-panel-ink: var(--panel-ink);
   --color-ink: var(--ink);
-  --color-indigo-ink: var(--ink);
-  --color-indigo-brand: var(--indigo);
-  --color-indigo-bright: var(--indigo-bright);
-  --color-signal: var(--signal);
   --color-surface: var(--surface);
   --color-slate-body: var(--slate);
   --color-hairline: var(--hairline);
+  --color-signal: var(--signal);
+  --color-eyebrow: var(--eyebrow);
+
+  --color-board: var(--board);
+  --color-board-muted: var(--board-muted);
+  --color-led-free: var(--led-free);
+  --color-led-some: var(--led-some);
+  --color-led-full: var(--led-full);
+
+  --color-erp-navy: var(--erp-navy);
+  --color-erp-amber: var(--erp-amber);
+
+  --color-brand-bar: var(--brand-bar);
+  --color-brand-bar-foreground: var(--brand-bar-foreground);
 
   --color-avail-free: var(--avail-free);
   --color-avail-some: var(--avail-some);
   --color-avail-full: var(--avail-full);
-
-  --color-led: var(--led-bg);
-  --color-led-soft: var(--led-bg-soft);
+  --color-avail-none: var(--avail-none);
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
@@ -130,10 +229,10 @@
   --font-sans: var(--font-body);
   --font-mono: var(--font-mono);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 2px);
 }
 
 @layer base {
@@ -159,6 +258,7 @@
     flex-direction: column;
   }
 
+  /* Baloo 2 sits high on its line; the artboards set headings tight. */
   h1,
   h2,
   h3,
@@ -173,6 +273,23 @@
   }
 }
 
+/* The dot-matrix voice: the ERP strip and the small board eyebrows. Wide
+   letter-spacing is what makes mono read as a light-up sign rather than code. */
+.dot-matrix {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  /* The trailing letter-space would otherwise push centred text off-centre. */
+  text-indent: 0.28em;
+}
+
+.board-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--board-muted);
+}
+
 /* ------------------------------------------------------------------ *
  * Leaflet — Tailwind preflight resets can break tiles / controls.
  * Keep the map container sized and restore Leaflet's own box model.
@@ -180,7 +297,7 @@
 .leaflet-container {
   height: 100%;
   width: 100%;
-  background: #dfe3ee;
+  background: var(--map-bg);
   font-family: var(--font-body);
   z-index: 0;
 }
@@ -205,32 +322,39 @@
 }
 
 .leaflet-popup-content-wrapper {
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 24px rgba(30, 27, 75, 0.18);
+  border-radius: 14px;
+  background: var(--popover);
+  color: var(--foreground);
+  border: 1.5px solid var(--hairline);
+  box-shadow: 0 8px 24px rgba(42, 35, 32, 0.18);
+}
+
+.leaflet-popup-tip {
+  background: var(--popover);
 }
 
 .leaflet-popup-content {
   margin: 0.75rem 0.9rem;
   font-family: var(--font-body);
-  color: var(--ink);
+  color: var(--foreground);
   line-height: 1.45;
 }
 
-/* Map "P" divIcon for OSM parking markers. */
+/* Map "P" divIcon for OSM parking markers: a small kaya signboard tile. */
 .p-marker {
   width: 22px;
   height: 22px;
-  border-radius: 999px;
-  background: var(--slate);
-  color: #fff;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 12px;
+  border-radius: 7px;
+  background: var(--kaya);
+  color: var(--brand-bar-foreground);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(30, 27, 75, 0.3);
+  border: 2px solid var(--surface);
+  box-shadow: 0 2px 6px rgba(42, 35, 32, 0.3);
 }
 
 /* LED chip inside Leaflet popups. */
@@ -240,8 +364,8 @@
   gap: 6px;
   padding: 3px 9px;
   border-radius: 7px;
-  background: var(--led-bg);
-  color: #fff;
+  background: var(--board);
+  color: #fff8ea;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
@@ -257,15 +381,15 @@
   height: 100%;
   box-sizing: border-box;
   border-radius: 999px;
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(30, 27, 75, 0.35);
+  border: 2px solid var(--surface);
+  box-shadow: 0 1px 4px rgba(42, 35, 32, 0.35);
 }
 /* "some / filling up": white ring inside the dot. */
 .cp-dot--some::after {
   content: '';
   position: absolute;
   inset: 22%;
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(255, 248, 234, 0.95);
   border-radius: 999px;
 }
 /* "full": white horizontal bar (a minus). */
@@ -277,7 +401,7 @@
   right: 22%;
   height: 2px;
   transform: translateY(-50%);
-  background: #fff;
+  background: #fff8ea;
   border-radius: 2px;
 }
 /* "no live data": white centre dot. */
@@ -288,30 +412,79 @@
   width: 3px;
   height: 3px;
   margin: -1.5px 0 0 -1.5px;
-  background: #fff;
+  background: #fff8ea;
   border-radius: 999px;
 }
 .cp-dot--selected {
-  border-color: #22d3ee;
-  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.45), 0 1px 5px rgba(30, 27, 75, 0.4);
+  border-color: var(--signal);
+  box-shadow: 0 0 0 3px rgba(28, 110, 74, 0.45), 0 1px 5px rgba(42, 35, 32, 0.4);
 }
 
-/* Themed marker-cluster bubble (indigo fill, cyan ring, mono count). */
+/* ------------------------------------------------------------------ *
+ * The gantry board. A lit ink panel carrying a mono lot count — the
+ * signature element, used on map pins, in popups and on the detail hero.
+ * ------------------------------------------------------------------ */
+.gantry {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--board);
+  border-radius: 9px;
+  padding: 5px 9px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* At night the boards glow rather than cast a shadow. */
+  .gantry {
+    box-shadow: 0 0 16px rgba(76, 226, 138, 0.28);
+  }
+  .gantry[data-state='full'] {
+    box-shadow: 0 0 14px rgba(255, 97, 87, 0.25);
+  }
+  .gantry[data-state='some'] {
+    box-shadow: 0 0 14px rgba(232, 160, 32, 0.25);
+  }
+}
+
+/* Map pin: a gantry board on a short post, as on the artboards. */
+.cp-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cp-board__post {
+  width: 3px;
+  height: 11px;
+  background: var(--board);
+}
+
+.cp-board--selected .gantry {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+/* Themed marker-cluster bubble (kaya fill, cream ring, mono count). */
 .ehp-cluster {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: rgba(67, 56, 202, 0.92);
-  color: #fff;
+  background: rgba(28, 110, 74, 0.94);
+  color: #fff8ea;
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 13px;
-  border: 2px solid #22d3ee;
-  box-shadow: 0 2px 8px rgba(30, 27, 75, 0.4);
+  border: 2px solid #fff8ea;
+  box-shadow: 0 2px 8px rgba(42, 35, 32, 0.4);
 }
 
-/* Subtle LED scan animation on availability chips. */
+/* Subtle LED scan animation on live availability boards. */
 @keyframes led-flicker {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.55; }
