@@ -291,6 +291,21 @@
   }
 }
 
+/* ------------------------------------------------------------------ *
+ * The desktop rail. Desktop.dc.html drops the green signboard bar: from
+ * the sidebar breakpoint the whole rail is cream, with the navy ERP
+ * lockup carrying the mark. Re-pointing the two brand-bar tokens here
+ * moves the header and everything styled against it (the Near me
+ * button, the coffee link) onto that ground in one move, instead of a
+ * second set of colour classes on each control.
+ * ------------------------------------------------------------------ */
+@media (min-width: 768px) {
+  .app-sidebar {
+    --brand-bar: var(--background);
+    --brand-bar-foreground: var(--ink);
+  }
+}
+
 /* The dot-matrix voice: the ERP strip and the small board eyebrows. Wide
    letter-spacing is what makes mono read as a light-up sign rather than code. */
 .dot-matrix {

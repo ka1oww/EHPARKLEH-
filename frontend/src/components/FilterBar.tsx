@@ -1,4 +1,4 @@
-import { Check, Gift, Zap, Droplets, X } from 'lucide-react'
+import { Check, Gift, Zap, Droplets } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { RadiusSelect } from '@/components/RadiusSelect'
 
@@ -25,8 +25,6 @@ interface Props {
   onHasCarwash: (v: boolean) => void
   radius: number
   onRadius: (r: number) => void
-  anyFilterActive: boolean
-  onReset: () => void
 }
 
 function Chip({
@@ -69,8 +67,6 @@ export function FilterBar({
   onHasCarwash,
   radius,
   onRadius,
-  anyFilterActive,
-  onReset,
 }: Props) {
   return (
     <div className="relative">
@@ -102,18 +98,10 @@ export function FilterBar({
           Car wash
         </Chip>
 
-        {/* Clear only appears once something is filtered, so an over-filtered
-            "0 results" always has a one-tap escape. */}
-        {anyFilterActive && (
-          <button
-            type="button"
-            onClick={onReset}
-            className="inline-flex min-h-11 shrink-0 items-center gap-1 rounded-full border-[1.5px] border-transparent px-3 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background"
-          >
-            <X className="size-3.5" aria-hidden="true" />
-            Clear
-          </button>
-        )}
+        {/* The one-tap escape from an over-filtered "0 results" now lives in
+            the status eyebrow below the row, where FiltersHome.dc.html puts it
+            — beside the line naming what is actually being filtered, rather
+            than as a chip scrolled off the end of the row. */}
 
         <span className="mx-1 h-5 w-px shrink-0 bg-hairline" aria-hidden="true" />
 

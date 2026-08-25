@@ -36,6 +36,7 @@ const leaflet = vi.hoisted(() => {
     cluster,
     L: {
       circleMarker: vi.fn(circleMarker),
+      control: { zoom: vi.fn(() => ({ addTo: vi.fn() })) },
       divIcon: vi.fn((options: unknown) => options),
       latLngBounds: vi.fn((points: unknown) => points),
       map: vi.fn(() => map),

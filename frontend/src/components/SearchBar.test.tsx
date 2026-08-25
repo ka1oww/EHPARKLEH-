@@ -134,3 +134,74 @@ describe('SearchBar suggestions', () => {
     expect(input).toHaveAttribute('aria-expanded', 'false')
   })
 })
+
+describe('SearchBar focused view', () => {
+  const recents = [
+    { query: 'CCK MRT', lat: 1.38, lon: 103.74, ts: Date.now() - 12 * 60_000 },
+    { query: 'Lot One', lat: 1.385, lon: 103.745, ts: Date.now() - 26 * 3_600_000 },
+  ]
+
+  it('opens on focus with a RECENT section, each row dated', () => {
+    render(<SearchBar {...props} recents={recents} />)
+
+    fireEvent.focus(screen.getByRole('combobox'))
+
+    expect(screen.getByText('Recent')).toBeInTheDocument()
+    expect(screen.getByText('CCK MRT')).toBeInTheDocument()
+    expect(screen.getByText('searched 12 minutes ago')).toBeInTheDocument()
+    expect(screen.getByText('searched 1 day ago')).toBeInTheDocument()
+  })
+
+  it('stacks SUGGESTIONS under RECENT, so a typed query never hides where you have been', async () => {
+    vi.useFakeTimers()
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => [{ address: 'Yew Tee MRT', lat: 1.397, lon: 103.747 }],
+    }))
+    render(<SearchBar {...props} recents={recents} />)
+
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'yew tee' } })
+    // In flight, the LED chip says the app is checking rather than the list
+    // blinking out — the same chip the splash wears.
+    expect(screen.getByText('checking lots…')).toBeInTheDocument()
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300)
+    })
+
+    expect(screen.getByText('Recent')).toBeInTheDocument()
+    expect(screen.getByText('Suggestions')).toBeInTheDocument()
+    expect(screen.getByText('Yew Tee MRT')).toBeInTheDocument()
+    expect(screen.queryByText('checking lots…')).not.toBeInTheDocument()
+  })
+
+  it('runs the keyboard over recents and suggestions as one list', async () => {
+    vi.useFakeTimers()
+    const onPickRecent = vi.fn()
+    const onPickSuggestion = vi.fn()
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => [{ address: 'Yew Tee MRT', lat: 1.397, lon: 103.747 }],
+    }))
+    render(
+      <SearchBar {...props} recents={recents} onPickRecent={onPickRecent} onPickSuggestion={onPickSuggestion} />,
+    )
+
+    const input = screen.getByRole('combobox')
+    fireEvent.change(input, { target: { value: 'yew tee' } })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300)
+    })
+
+    // Two recents, then the suggestion: the third press lands on the suggestion.
+    fireEvent.keyDown(input, { key: 'ArrowDown' })
+    fireEvent.keyDown(input, { key: 'ArrowDown' })
+    fireEvent.keyDown(input, { key: 'ArrowDown' })
+    fireEvent.submit(input.closest('form')!)
+
+    expect(onPickSuggestion).toHaveBeenCalledWith({ address: 'Yew Tee MRT', lat: 1.397, lon: 103.747 })
+    expect(onPickRecent).not.toHaveBeenCalled()
+  })
+})
