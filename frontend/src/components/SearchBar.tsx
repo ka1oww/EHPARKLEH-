@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { AlertCircle, MapPin, Search, LocateFixed, Loader2, Clock, X } from 'lucide-react'
+import { AlertCircle, MapPin, Search, LocateFixed, Loader2, Clock, X, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { CheckingLotsChip } from '@/components/GantryLockup'
 import { cn } from '@/lib/utils'
+import { formatLastSeen } from '@/stale'
 import type { Suggestion } from '@/types'
 import type { RecentSearch } from '@/useRecentSearches'
 
@@ -13,7 +15,7 @@ interface Props {
   /** Resolve a picked suggestion straight to coordinates. */
   onPickSuggestion: (s: Suggestion) => void
   onNearMe: () => void
-  /** Recent destination searches, shown when the input is empty + focused. */
+  /** Recent destination searches, shown when the panel is open. */
   recents: RecentSearch[]
   onPickRecent: (r: RecentSearch) => void
   onClearRecents: () => void
@@ -23,6 +25,61 @@ const LISTBOX_ID = 'searchbar-listbox'
 const STATUS_ID = 'searchbar-status'
 const SUGGESTIONS_TIMEOUT_MS = 5_000
 type SuggestionState = 'idle' | 'loading' | 'ready' | 'empty' | 'error'
+
+// One focused-search row, per Search.dc.html: an icon that says where the row
+// came from (a clock for somewhere you have been, a pin for somewhere the
+// address service found), the place, a quiet second line, and a chevron.
+function SearchRow({
+  id,
+  active,
+  onPick,
+  onHover,
+  icon,
+  title,
+  sub,
+}: {
+  id: string
+  active: boolean
+  onPick: () => void
+  onHover: () => void
+  icon: React.ReactNode
+  title: string
+  sub?: string | null
+}) {
+  return (
+    <li id={id} role="option" aria-selected={active}>
+      <button
+        type="button"
+        onMouseDown={onPick}
+        onMouseEnter={onHover}
+        className={cn(
+          'flex min-h-[52px] w-full items-center gap-3 border-b-[1.5px] border-hairline px-3.5 py-2.5 text-left last:border-b-0',
+          active ? 'bg-secondary' : 'hover:bg-secondary/60',
+        )}
+      >
+        <span className="shrink-0" aria-hidden="true">
+          {icon}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block truncate text-[15px] font-extrabold text-ink">{title}</span>
+          {sub && <span className="block truncate text-xs text-slate-body">{sub}</span>}
+        </span>
+        <ChevronRight className="size-4 shrink-0 text-eyebrow" aria-hidden="true" />
+      </button>
+    </li>
+  )
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <li
+      aria-hidden="true"
+      className="px-3.5 pt-4 pb-1.5 text-[11px] font-extrabold tracking-[0.1em] text-eyebrow uppercase first:pt-3"
+    >
+      {children}
+    </li>
+  )
+}
 
 // Kaya signboard search with debounced server-side autocomplete.
 // Debounce 300ms, query at >=2 chars, geocode on Enter, and search suggestion
@@ -106,12 +163,15 @@ export function SearchBar({
     if (val.trim().length < 2) {
       setSuggestions([])
       setSuggestionState('idle')
-      // Empty field: fall back to showing recents; 1 char: close.
-      setOpen(!val.trim() && recents.length > 0)
+      // Under two characters there is nothing to ask the address service, but
+      // the recents are still worth showing if there are any.
+      setOpen(recents.length > 0)
       return
     }
+    // The panel stays open through the request so the LED chip can say the app
+    // is checking, rather than the list blinking out and back.
     setSuggestionState('loading')
-    setOpen(false)
+    setOpen(true)
     debounceRef.current = setTimeout(() => void requestSuggestions(val), 300)
   }
 
@@ -145,22 +205,33 @@ export function SearchBar({
     inputRef.current?.focus()
   }
 
-  // Exactly one dropdown list shows at a time; keyboard nav drives whichever it is.
-  const showRecents = open && !query.trim() && suggestions.length === 0 && recents.length > 0
-  const listType: 'suggestions' | 'recents' | 'none' =
-    open && suggestions.length > 0 ? 'suggestions' : showRecents ? 'recents' : 'none'
-  const listLen = listType === 'suggestions' ? suggestions.length : listType === 'recents' ? recents.length : 0
+  // The focused view stacks RECENT above SUGGESTIONS, as the artboard does, so
+  // keyboard navigation runs over one combined list rather than per-section.
+  const showRecents = open && recents.length > 0
+  const showSuggestions = open && suggestions.length > 0
+  const options: ({ kind: 'recent'; item: RecentSearch } | { kind: 'suggestion'; item: Suggestion })[] = [
+    ...(showRecents ? recents.map((item) => ({ kind: 'recent' as const, item })) : []),
+    ...(showSuggestions ? suggestions.map((item) => ({ kind: 'suggestion' as const, item })) : []),
+  ]
+  const checking = open && suggestionState === 'loading' && query.trim().length >= 2
   const showSuggestionMessage =
     open && query.trim().length >= 2 && (suggestionState === 'empty' || suggestionState === 'error')
+  // One popup, always: sections, then whichever footer the state calls for.
+  // Two absolutely-positioned boxes would otherwise sit on top of each other
+  // the moment a no-match arrives while there are recents to show.
+  const showPanel = options.length > 0 || checking || showSuggestionMessage
+
+  function pickOption(index: number) {
+    const option = options[index]
+    if (!option) return
+    if (option.kind === 'recent') pickRecent(option.item)
+    else pick(option.item)
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (listType === 'suggestions' && activeIdx >= 0 && suggestions[activeIdx]) {
-      pick(suggestions[activeIdx])
-      return
-    }
-    if (listType === 'recents' && activeIdx >= 0 && recents[activeIdx]) {
-      pickRecent(recents[activeIdx])
+    if (activeIdx >= 0 && options[activeIdx]) {
+      pickOption(activeIdx)
       return
     }
     if (!query.trim()) return
@@ -176,13 +247,13 @@ export function SearchBar({
       setOpen(false)
       return
     }
-    if (listType === 'none' || listLen === 0) return
+    if (options.length === 0) return
     if (e.key === 'ArrowDown') {
       e.preventDefault()
-      setActiveIdx((i) => (i + 1) % listLen)
+      setActiveIdx((i) => (i + 1) % options.length)
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
-      setActiveIdx((i) => (i <= 0 ? listLen - 1 : i - 1))
+      setActiveIdx((i) => (i <= 0 ? options.length - 1 : i - 1))
     }
   }
 
@@ -205,15 +276,15 @@ export function SearchBar({
                   suggestions.length > 0 ||
                   suggestionState === 'empty' ||
                   suggestionState === 'error' ||
-                  (!query.trim() && recents.length > 0)
+                  recents.length > 0
                 ) setOpen(true)
               }}
               placeholder="Where to, boss?"
               autoComplete="off"
               aria-label="Search a destination"
               role="combobox"
-              aria-expanded={listType !== 'none' || showSuggestionMessage}
-              aria-controls={showSuggestionMessage ? STATUS_ID : LISTBOX_ID}
+              aria-expanded={showPanel}
+              aria-controls={options.length > 0 ? LISTBOX_ID : STATUS_ID}
               aria-autocomplete="list"
               aria-activedescendant={activeIdx >= 0 ? `${LISTBOX_ID}-opt-${activeIdx}` : undefined}
               // text-base (16px) on mobile so iOS Safari doesn't auto-zoom on focus.
@@ -244,86 +315,105 @@ export function SearchBar({
           </Button>
         </form>
 
-        {showRecents && (
-          <ul
-            id={LISTBOX_ID}
-            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 overflow-hidden rounded-lg border-[1.5px] border-hairline bg-popover py-1 shadow-lg"
-            role="listbox"
-          >
-            <li className="flex items-center justify-between px-3.5 py-1.5 text-[11px] font-semibold tracking-wide text-muted-foreground uppercase">
-              Recent
-              <button
-                type="button"
-                onMouseDown={onClearRecents}
-                className="text-xs font-medium tracking-normal text-muted-foreground normal-case hover:text-foreground"
+        {/* The focused-search view. On a phone it takes over most of the
+            screen, as the artboard draws it; on a wide window it stays the
+            dropdown attached to the field it belongs to. */}
+        {showPanel && (
+          <div className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 flex max-h-[calc(100vh-11rem)] flex-col overflow-hidden rounded-lg border-[1.5px] border-hairline bg-popover shadow-lg sm:max-h-[26rem]">
+            <ul id={LISTBOX_ID} role="listbox" className="min-h-0 flex-1 overflow-y-auto">
+              {showRecents && (
+                <>
+                  <SectionLabel>
+                    <span className="flex items-center justify-between">
+                      Recent
+                      <button
+                        type="button"
+                        onMouseDown={onClearRecents}
+                        className="text-xs font-bold tracking-normal text-muted-foreground normal-case hover:text-foreground"
+                      >
+                        Clear
+                      </button>
+                    </span>
+                  </SectionLabel>
+                  {recents.map((r, i) => (
+                    <SearchRow
+                      key={`recent-${r.query}`}
+                      id={`${LISTBOX_ID}-opt-${i}`}
+                      active={i === activeIdx}
+                      onPick={() => pickRecent(r)}
+                      onHover={() => setActiveIdx(i)}
+                      icon={<Clock className="size-[18px] text-eyebrow" />}
+                      title={r.query}
+                      // The only honest second line for a recent is when it was
+                      // searched; anything about what is there now would be a
+                      // count we have not checked.
+                      sub={(() => {
+                        const ago = formatLastSeen(r.ts)
+                        return ago ? `searched ${ago}` : null
+                      })()}
+                    />
+                  ))}
+                </>
+              )}
+              {showSuggestions && (
+                <>
+                  <SectionLabel>Suggestions</SectionLabel>
+                  {suggestions.map((s, i) => {
+                    const idx = (showRecents ? recents.length : 0) + i
+                    return (
+                      <SearchRow
+                        key={`suggestion-${i}`}
+                        id={`${LISTBOX_ID}-opt-${idx}`}
+                        active={idx === activeIdx}
+                        onPick={() => pick(s)}
+                        onHover={() => setActiveIdx(idx)}
+                        icon={<MapPin className="size-[18px] text-link" />}
+                        title={s.address}
+                        // The address service returns one line per place, so
+                        // there is no district or carpark count to put here.
+                        sub={null}
+                      />
+                    )
+                  })}
+                </>
+              )}
+            </ul>
+            {checking && (
+              <div
+                className={cn(
+                  'flex shrink-0 items-center justify-center px-3.5 py-3',
+                  options.length > 0 && 'border-t-[1.5px] border-hairline',
+                )}
               >
-                Clear
-              </button>
-            </li>
-            {recents.map((r, i) => (
-              <li key={r.query} id={`${LISTBOX_ID}-opt-${i}`} role="option" aria-selected={i === activeIdx}>
-                <button
-                  type="button"
-                  onMouseDown={() => pickRecent(r)}
-                  onMouseEnter={() => setActiveIdx(i)}
-                  className={cn(
-                    'flex min-h-11 w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
-                    i === activeIdx ? 'bg-secondary text-foreground' : 'hover:bg-secondary/60',
-                  )}
-                >
-                  <Clock className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
-                  <span className="truncate">{r.query}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {open && suggestions.length > 0 && (
-          <ul
-            id={LISTBOX_ID}
-            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 overflow-hidden rounded-lg border-[1.5px] border-hairline bg-popover py-1 shadow-lg"
-            role="listbox"
-          >
-            {suggestions.map((s, i) => (
-              <li key={i} id={`${LISTBOX_ID}-opt-${i}`} role="option" aria-selected={i === activeIdx}>
-                <button
-                  type="button"
-                  onMouseDown={() => pick(s)}
-                  onMouseEnter={() => setActiveIdx(i)}
-                  className={cn(
-                    'flex min-h-11 w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm text-slate-body',
-                    i === activeIdx ? 'bg-secondary text-foreground' : 'hover:bg-secondary/60',
-                  )}
-                >
-                  <MapPin className="size-4 shrink-0 text-link" aria-hidden="true" />
-                  <span className="truncate">{s.address}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {showSuggestionMessage && (
-          <div
-            id={STATUS_ID}
-            className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-30 rounded-lg border-[1.5px] border-hairline bg-popover px-3.5 py-3 text-sm text-slate-body shadow-lg"
-            role={suggestionState === 'error' ? 'alert' : 'status'}
-          >
-            {suggestionState === 'error' ? (
-              <div className="flex items-center gap-2.5">
-                <AlertCircle className="size-4 shrink-0 text-kopi" aria-hidden="true" />
-                <span className="min-w-0 flex-1">Address service unavailable.</span>
-                <button
-                  type="button"
-                  onClick={() => void requestSuggestions(query)}
-                  className="shrink-0 rounded-md px-2 py-1 text-xs font-semibold text-link hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  Retry
-                </button>
+                <CheckingLotsChip />
               </div>
-            ) : (
-              'No matching addresses found.'
+            )}
+
+            {showSuggestionMessage && (
+              <div
+                id={STATUS_ID}
+                className={cn(
+                  'shrink-0 px-3.5 py-3 text-sm text-slate-body',
+                  options.length > 0 && 'border-t-[1.5px] border-hairline',
+                )}
+                role={suggestionState === 'error' ? 'alert' : 'status'}
+              >
+                {suggestionState === 'error' ? (
+                  <div className="flex items-center gap-2.5">
+                    <AlertCircle className="size-4 shrink-0 text-kopi" aria-hidden="true" />
+                    <span className="min-w-0 flex-1">Address service unavailable.</span>
+                    <button
+                      type="button"
+                      onClick={() => void requestSuggestions(query)}
+                      className="shrink-0 rounded-md px-2 py-1 text-xs font-semibold text-link hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      Retry
+                    </button>
+                  </div>
+                ) : (
+                  'No matching addresses found.'
+                )}
+              </div>
             )}
           </div>
         )}

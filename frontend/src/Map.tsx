@@ -254,10 +254,15 @@ function Map({
 
   useEffect(() => {
     if (!instanceRef.current && mapRef.current) {
-      const map = L.map(mapRef.current, { zoomControl: true }).setView(
+      // The legend sits top-left over the map, which is where Leaflet parks its
+      // zoom control by default — one covered the other. Desktop.dc.html draws
+      // the +/- buttons in the top-right corner, so that is where they go, and
+      // both are usable again.
+      const map = L.map(mapRef.current, { zoomControl: false }).setView(
         [center.lat, center.lon],
         15,
       )
+      L.control.zoom({ position: 'topright' }).addTo(map)
       // Stadia Maps "Alidade Smooth": a muted basemap so the gantry boards pop.
       // Authenticated by domain (localhost for dev, the production origin
       // registered in the Stadia dashboard) — no key in the bundle. Within

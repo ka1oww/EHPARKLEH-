@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils'
 import { getAvailability, type AvailState } from '@/availability'
 import { formatLotCount, AVAIL_TEXT, LED_TEXT } from '@/lots'
+import { formatStaleCount } from '@/stale'
 
 // The signature element: a car-park gantry board.
 //
@@ -21,6 +22,11 @@ interface Props {
   total: number | null
   /** Show the status word ("Plenty" etc.) beside the board. */
   showLabel?: boolean
+  /**
+   * The count could not be refreshed. It is written `~060` and drained of its
+   * availability colour, so a number nobody can vouch for never looks lit.
+   */
+  stale?: boolean
   variant?: 'board' | 'plain'
   className?: string
 }
@@ -29,17 +35,18 @@ export function AvailabilityChip({
   available,
   total,
   showLabel = true,
+  stale = false,
   variant = 'board',
   className,
 }: Props) {
   const a = getAvailability(available, total)
-  const count = formatLotCount(a.available)
+  const count = stale ? formatStaleCount(a.available) : formatLotCount(a.available)
   // The accessible name stays plain English and keeps the denominator, which
   // the board itself drops — a screen reader has no glance to optimise for.
   const ariaLabel =
     a.state === 'nodata'
       ? 'No live lot data'
-      : `${a.available} of ${a.total} lots available, ${a.label}`
+      : `${a.available} of ${a.total} lots available, ${a.label}${stale ? ', saved count' : ''}`
 
   const label = showLabel && (
     <span className="text-xs font-semibold text-muted-foreground">
@@ -54,7 +61,10 @@ export function AvailabilityChip({
     return (
       <div className={cn('inline-flex items-center gap-2.5', className)}>
         <span
-          className={cn('font-data text-[17px] font-bold tabular-nums', AVAIL_TEXT[a.state])}
+          className={cn(
+            'font-data text-[17px] font-bold tabular-nums',
+            stale ? 'text-avail-none' : AVAIL_TEXT[a.state],
+          )}
           role="img"
           aria-label={ariaLabel}
         >
@@ -70,13 +80,16 @@ export function AvailabilityChip({
       <div className="gantry" data-state={a.state} role="img" aria-label={ariaLabel}>
         <span
           className={cn(
-            'led-dot-live size-2 rounded-full',
-            STATE_DOT[a.state],
-            a.state !== 'nodata' && 'shadow-[0_0_6px_currentColor]',
+            'size-2 rounded-full',
+            stale ? 'bg-avail-none' : 'led-dot-live',
+            stale ? '' : STATE_DOT[a.state],
+            !stale && a.state !== 'nodata' && 'shadow-[0_0_6px_currentColor]',
           )}
           aria-hidden="true"
         />
-        <span className={cn('font-data tabular-nums', LED_TEXT[a.state])}>{count}</span>
+        <span className={cn('font-data tabular-nums', stale ? 'text-board-muted' : LED_TEXT[a.state])}>
+          {count}
+        </span>
         <span className="board-eyebrow" aria-hidden="true">
           LOTS
         </span>

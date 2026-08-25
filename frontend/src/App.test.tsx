@@ -601,7 +601,9 @@ describe('App search result states', () => {
     expect(screen.getByText('Current result')).toBeInTheDocument()
 
     fireEvent.focus(screen.getByRole('combobox', { name: /search a destination/i }))
-    fireEvent.mouseDown(screen.getByRole('button', { name: 'Pending place' }))
+    // The focused-search row now names the place and says when it was last
+    // searched, so the accessible name carries both.
+    fireEvent.mouseDown(screen.getByRole('button', { name: /^Pending place/ }))
     fireEvent.click(screen.getByRole('button', { name: /EV charging/i }))
     await act(async () => { await vi.advanceTimersByTimeAsync(250) })
     await act(async () => {
@@ -790,5 +792,217 @@ describe('OSM layer under active filters', () => {
     expect(spotsNearby(1)).toBeInTheDocument()
     expect(lastMapProps()?.osmParking).toEqual([])
     vi.useRealTimers()
+  })
+})
+
+describe('App splash', () => {
+  it('holds the gantry board over the app while the first search runs', async () => {
+    vi.useFakeTimers()
+    vi.stubGlobal(
+      'fetch',
+      vi.fn((input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? new Promise(() => {})
+          : Promise.resolve(okJson([])),
+      ),
+    )
+
+    render(<App />)
+    await act(async () => {})
+
+    expect(screen.getByText('checking lots…')).toBeInTheDocument()
+
+    // ...and hands off to the list's own loading copy rather than sitting on
+    // top of a genuinely slow request.
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(2_500)
+    })
+    expect(screen.queryByText('checking lots…')).not.toBeInTheDocument()
+    vi.useRealTimers()
+  })
+
+  it('comes down as soon as the first results land', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks') ? okJson([carpark('cp-1', 'Carpark 1')]) : okJson([]),
+      ),
+    )
+
+    render(<App />)
+    expect(await screen.findByText('Carpark 1')).toBeInTheDocument()
+    await vi.waitFor(() =>
+      expect(screen.queryByText('checking lots…')).not.toBeInTheDocument(),
+    )
+  })
+})
+
+describe('App filter status eyebrow', () => {
+  it('names every active filter and clears them from the same line', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks') ? okJson([carpark('cp-1', 'Carpark 1')]) : okJson([]),
+      ),
+    )
+    render(<App />)
+    await screen.findByText('Carpark 1')
+
+    // Nothing filtered: no eyebrow at all.
+    expect(screen.queryByText(/^Showing .* only$/)).not.toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: /EV charging/i }))
+    expect(await screen.findByText('Showing EV charging only')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: /Car wash/i }))
+    expect(await screen.findByText('Showing EV charging + car wash only')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: /^Clear/ }))
+    await vi.waitFor(() =>
+      expect(screen.queryByText(/^Showing .* only$/)).not.toBeInTheDocument(),
+    )
+  })
+})
+
+describe('App offline board', () => {
+  const liveCarpark = (id: string, address: string, lots: number) => ({
+    ...carpark(id, address),
+    lots_available: lots,
+  })
+
+  it('says it cannot get signal, and tildes every count it can no longer vouch for', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? okJson([liveCarpark('cp-1', 'Blk 678A CCK Crescent', 60)], liveHeaders(Date.now() + 60_000))
+          : okJson([]),
+      ),
+    )
+    render(<App />)
+    await screen.findByText('Blk 678A CCK Crescent')
+    // Online, the count is written as a live board reads it.
+    expect(screen.getByText('060')).toBeInTheDocument()
+
+    act(() => window.dispatchEvent(new Event('offline')))
+
+    expect(screen.getByText('hais…cannot get signal lah')).toBeInTheDocument()
+    expect(screen.getByText('~060')).toBeInTheDocument()
+    expect(screen.queryByText('060')).not.toBeInTheDocument()
+    expect(
+      screen.getByText('Stale counts always say so — we never show an old number as live.'),
+    ).toBeInTheDocument()
+    // The thin offline strip stands down: the board is now saying it properly.
+    expect(screen.queryByText(/You're offline/i)).not.toBeInTheDocument()
+  })
+
+  it('retries the same place from Try again', async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) =>
+      String(input).includes('/api/carparks')
+        ? okJson([liveCarpark('cp-1', 'Blk 678A CCK Crescent', 60)], liveHeaders(Date.now() + 60_000))
+        : okJson([]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+    render(<App />)
+    await screen.findByText('Blk 678A CCK Crescent')
+
+    act(() => window.dispatchEvent(new Event('offline')))
+    const before = fetchMock.mock.calls.filter(([url]) => String(url).includes('/api/carparks')).length
+
+    fireEvent.click(screen.getByRole('button', { name: 'Try again' }))
+
+    await vi.waitFor(() =>
+      expect(
+        fetchMock.mock.calls.filter(([url]) => String(url).includes('/api/carparks')).length,
+      ).toBe(before + 1),
+    )
+  })
+})
+
+describe('App saved carparks', () => {
+  it('keeps a starred carpark, lists it with a live count, and survives a reload', async () => {
+    const starred = { ...carpark('cp-678a', 'Blk 678A CCK Crescent'), lots_available: 62 }
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? okJson([starred], liveHeaders(Date.now() + 60_000))
+          : okJson([]),
+      ),
+    )
+    const { unmount } = render(<App />)
+    await screen.findByText('Blk 678A CCK Crescent')
+
+    fireEvent.click(screen.getByRole('button', { name: /save carpark/i }))
+    fireEvent.click(screen.getByRole('button', { name: 'saved' }))
+
+    expect(screen.getByText('Blk 678A CCK Crescent')).toBeInTheDocument()
+    expect(screen.getByText('062')).toBeInTheDocument()
+    expect(screen.getByText('steady, got lots !')).toBeInTheDocument()
+
+    // The star is what persists, not the search that happened to be on screen.
+    const stored = JSON.parse(localStorage.getItem('ehparkleh:favourites') || 'null')
+    expect(stored.items.map((i: { id: string }) => i.id)).toEqual(['cp-678a'])
+    expect(stored.items[0].title).toBe('Blk 678A CCK Crescent')
+
+    unmount()
+    render(<App />)
+    fireEvent.click(screen.getAllByRole('button', { name: 'saved' })[0])
+    expect(await screen.findByText('Blk 678A CCK Crescent')).toBeInTheDocument()
+  })
+
+  it('offers an empty Saved view rather than an invented one', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => okJson([])))
+    render(<App />)
+    await screen.findByText(/No public carpark here leh/i)
+
+    fireEvent.click(screen.getByRole('button', { name: 'saved' }))
+    expect(screen.getByText('Nothing saved yet')).toBeInTheDocument()
+    // No prediction, ever, from a list with no history behind it.
+    expect(screen.queryByText(/usually fills/i)).not.toBeInTheDocument()
+  })
+})
+
+describe('App desktop rail', () => {
+  it('closes the rail with the nearest carpark that actually has a lot', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? okJson(
+              [
+                { ...carpark('cp-full', 'Lot One MSCP'), lots_available: 0, distance_m: 80 },
+                { ...carpark('cp-free', 'Blk 611A CCK Street 62'), lots_available: 104, distance_m: 610 },
+              ],
+              liveHeaders(Date.now() + 60_000),
+            )
+          : okJson([]),
+      ),
+    )
+    render(<App />)
+    await screen.findByText('Lot One MSCP')
+
+    // The nearest carpark is full, so the bar names the nearest one that is not.
+    const bar = screen.getByRole('button', { name: /Nearest with lots/i })
+    expect(bar).toHaveTextContent('Blk 611A CCK Street 62')
+    expect(bar).toHaveTextContent('610 m')
+  })
+
+  it('says so plainly when nothing nearby is reporting a free lot', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks')
+          ? okJson([{ ...carpark('cp-full', 'Lot One MSCP'), lots_available: 0 }], liveHeaders(Date.now() + 60_000))
+          : okJson([]),
+      ),
+    )
+    render(<App />)
+    await screen.findByText('Lot One MSCP')
+
+    expect(
+      screen.getByText('No carpark here is reporting a free lot right now.'),
+    ).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Nearest with lots/i })).not.toBeInTheDocument()
   })
 })

@@ -1,5 +1,6 @@
 import { getAvailability } from '@/availability'
 import { formatLotCount, statusLine, LED_TEXT } from '@/lots'
+import { formatStaleCount } from '@/stale'
 import type { FeedFreshness } from '@/freshness'
 
 // The detail moment: a full-width gantry board, the way you read a car park
@@ -20,24 +21,26 @@ interface Props {
   freshness?: FeedFreshness
   /** A quiet second line, e.g. the rate summary. */
   note?: string | null
+  /** The feed could not be reached: the board reads `~060`, not `060`. */
+  stale?: boolean
 }
 
-export function GantryHero({ available, total, freshness = 'fresh', note }: Props) {
+export function GantryHero({ available, total, freshness = 'fresh', note, stale = false }: Props) {
   const a = getAvailability(available, total)
 
   return (
     <div className="flex items-end justify-between gap-3 rounded-lg bg-board px-4 py-3.5">
       <div className="flex min-w-0 flex-col gap-1">
         <span
-          className={`font-data text-[40px] leading-none font-bold tabular-nums ${LED_TEXT[a.state]}`}
+          className={`font-data text-[40px] leading-none font-bold tabular-nums ${stale ? 'text-board-muted' : LED_TEXT[a.state]}`}
           role="img"
           aria-label={
             a.state === 'nodata'
               ? 'No live lot data'
-              : `${a.available} of ${a.total} lots available, ${a.label}`
+              : `${a.available} of ${a.total} lots available, ${a.label}${stale ? ', saved count' : ''}`
           }
         >
-          {formatLotCount(a.available)}
+          {stale ? formatStaleCount(a.available) : formatLotCount(a.available)}
         </span>
         <span className="board-eyebrow">
           {a.state === 'nodata' ? 'NO LIVE COUNT' : EYEBROW[freshness]}

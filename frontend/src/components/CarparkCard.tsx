@@ -18,6 +18,11 @@ interface Props {
   onToggleFavourite: (id: string) => void
   availabilityFreshness?: FeedFreshness
   evFreshness?: FeedFreshness
+  /**
+   * The live feed could not be reached, so every count on this card is one we
+   * last saw rather than one we can vouch for. Writes them `~060`.
+   */
+  stale?: boolean
 }
 
 function gmapsHref(lat: number, lon: number): string {
@@ -230,6 +235,7 @@ function CarparkCardImpl({
   onToggleFavourite,
   availabilityFreshness = 'fresh',
   evFreshness = 'fresh',
+  stale = false,
 }: Props) {
   // A stretched, transparent <button> (behind the content) is the select action:
   // it is keyboard-focusable and screen-reader-labelled, and the content layer is
@@ -336,6 +342,7 @@ function CarparkCardImpl({
                   total={entry.total_lots}
                   variant="plain"
                   showLabel={false}
+                  stale={stale}
                 />
                 <StarButton active={isFavourite} onClick={() => onToggleFavourite(entry.id)} />
               </div>
@@ -374,6 +381,7 @@ function CarparkCardImpl({
                   total={entry.total_lots}
                   freshness={availabilityFreshness}
                   note={entry.type}
+                  stale={stale}
                 />
                 {erpHeadline && <ErpStrip text={erpHeadline} />}
               </div>
