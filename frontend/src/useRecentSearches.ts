@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-// Recent destination searches (localStorage), mirroring useFavourites.
+// Recent destination searches (localStorage), mirroring useSavedCarparks.
 // Powers the SearchBar dropdown when the input is empty.
 export interface RecentSearch {
   query: string
