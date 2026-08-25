@@ -16,6 +16,8 @@ import time
 import logging
 from pathlib import Path
 
+from restricted import RestrictedDataError, load_restricted_areas
+
 # Load backend/.env for local dev if python-dotenv is installed. In production
 # (e.g. Render) config comes from real environment variables and python-dotenv
 # may be absent, so this is best-effort and must never crash startup.
@@ -76,13 +78,17 @@ async def lifespan(_app: FastAPI):
     global _carpark_cache, _upstream_client
     global _avail_refresh_task, _ev_refresh_task
     _carpark_cache = load_carpark_records()
+    # Load the restricted-area polygons up front so a missing or truncated set
+    # aborts the boot instead of silently serving unfiltered results.
+    restricted_areas = get_restricted_areas()
     _upstream_client = httpx.AsyncClient(timeout=httpx.Timeout(20.0, connect=10.0))
     logger.info(
-        "process_boot boot_id=%s booted_at=%s carparks=%d data_file=%s",
+        "process_boot boot_id=%s booted_at=%s carparks=%d data_file=%s restricted_areas=%d",
         PROCESS_BOOT_ID,
         PROCESS_BOOTED_AT,
         len(_carpark_cache),
         _data_file().name,
+        len(restricted_areas),
     )
     try:
         # Seed last-good live snapshots without delaying application readiness.
@@ -230,6 +236,25 @@ class OsmParking(BaseModel):
 
 # Carpark locations are static: loaded once at startup, never re-fetched.
 _carpark_cache: list[dict] = []
+
+# Restricted-area polygons (army camps, air/naval bases, prisons) are static too.
+# Loaded once and reused; see restricted.py for why both this layer and the build
+# share one definition.
+_restricted_areas = None
+
+
+def get_restricted_areas():
+    """Return the shared restricted-area index, loading it on first use.
+
+    Raises RestrictedDataError if the polygons are missing or implausibly small.
+    Failing is deliberate: serving with no filter is what put carparks inside
+    Kranji Camp in front of users, so an absent polygon set must never degrade
+    quietly into "nothing is restricted".
+    """
+    global _restricted_areas
+    if _restricted_areas is None:
+        _restricted_areas = load_restricted_areas()
+    return _restricted_areas
 
 
 # ---------------------------------------------------------------------------
@@ -972,6 +997,21 @@ async def parking_osm(
         response.headers["X-EhParkLeh-Osm-State"] = "hit"
         return cached[1]
 
+    # OSM records parking that physically exists inside army camps, air/naval
+    # bases and prisons. It is real, but no driver can use it, and routing to one
+    # sends the driver to a guarded gate, so it is dropped below. This is the
+    # same definition the build applies to the static dataset (see
+    # restricted.py). Resolved before the Overpass call so a missing polygon set
+    # fails here rather than costing an upstream request and then serving
+    # everything it returned.
+    try:
+        restricted_areas = get_restricted_areas()
+    except RestrictedDataError as exc:
+        logger.exception("restricted-area polygons unavailable")
+        raise HTTPException(
+            status_code=503, detail="Map parking service unavailable"
+        ) from exc
+
     query = f"""
 [out:json][timeout:12];
 (
@@ -1004,6 +1044,7 @@ out center;
         raise HTTPException(status_code=status_code, detail="Map parking service unavailable") from exc
 
     results: list[OsmParking] = []
+    excluded = 0
     for el in elements:
         if el["type"] == "node":
             el_lat, el_lon = el["lat"], el["lon"]
@@ -1012,6 +1053,10 @@ out center;
             if not center:
                 continue
             el_lat, el_lon = center["lat"], center["lon"]
+
+        if restricted_areas.contains(el_lat, el_lon):
+            excluded += 1
+            continue
 
         tags = el.get("tags", {})
         name = tags.get("name") or tags.get("addr:street") or "Parking"
@@ -1029,6 +1074,11 @@ out center;
         )
 
     results.sort(key=lambda x: x.distance_m)
+    if excluded:
+        logger.info(
+            "osm_restricted_excluded lat=%s lon=%s radius=%d excluded=%d kept=%d",
+            lat, lon, radius, excluded, len(results),
+        )
 
     # Cache the snapshot (evict the oldest entry when full).
     if len(_osm_cache) >= OSM_CACHE_MAX:

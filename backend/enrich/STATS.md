@@ -1,6 +1,6 @@
 # Enriched Carpark Dataset: Stats
 
-Generated: 2026-07-06 16:31:40
+Generated: 2026-08-25 10:49:00
 
 **Total carparks:** 3566
 
@@ -29,11 +29,11 @@ Generated: 2026-07-06 16:31:40
 - OSM carparks (input): 3465 -> new ids added: 1020
 - Dedupe merges (Google/OSM folded into existing): 4465
 - Dedupe policy: gov authoritative; fold within 90m proximity, or 150m when names match
-- Voided inside military areas (199 camps/bases): 54
+- Voided inside restricted areas (211 camps/bases/prisons): 65
 - Voided outside Singapore (Johor etc.): 90
-- Voided non-car-parking POIs (delivery/bike/bus/etc.): 94
+- Voided non-car-parking POIs (delivery/bike/bus/etc.): 93
 - Voided business/private/restricted POIs: 18
-- Dropped standalone OSM carparks: 977
+- Dropped standalone OSM carparks: 967
 - Voided from manual_voids.json (Google junk/condos + flagged): 8
 - LTA rates attached: 123 (of 357 rate rows)
 - HDB/URA standard rates applied: 2815

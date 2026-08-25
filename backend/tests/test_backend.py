@@ -1,6 +1,7 @@
 """Backend hardening tests: data, filtering, and live-feed cache behavior."""
 
 import asyncio
+import json
 import sys
 import time
 from datetime import datetime, timezone
@@ -15,6 +16,7 @@ if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
 import main  # noqa: E402
+import restricted  # noqa: E402
 
 FAST_PATH_TIMEOUT = 0.25
 ASYNC_TEST_TIMEOUT = 1.0
@@ -1068,3 +1070,174 @@ async def test_lifespan_reuses_and_closes_one_upstream_client(monkeypatch):
 
     assert shared.closed
     assert main._upstream_client is None
+
+
+# ---------------------------------------------------------------------------
+# Restricted areas (army camps, air/naval bases, prisons)
+# ---------------------------------------------------------------------------
+ENRICH_DIR = BACKEND_DIR / "enrich"
+
+# The reported bug: /api/parking/osm served two carparks inside Kranji Camp
+# alongside three legitimate public HDB carparks 400-500m away. These are the
+# exact five elements Overpass returns for a 500m search at the camp's address
+# (151 Choa Chu Kang Way S688248).
+KRANJI_RESTRICTED = [
+    ("way/453708943", "CMTL", 1.4047335, 103.7406529),
+    ("way/453708951", "Blk 922", 1.4014807, 103.742777),
+]
+KRANJI_PUBLIC = [
+    ("way/238927560", "Choa Chu Kang Street 62", 1.4004480, 103.7437120),
+    ("way/238927634", "Blk 678A", 1.4019110, 103.7448730),
+    ("way/238927639", "Choa Chu Kang Crescent", 1.4043040, 103.7458380),
+]
+
+
+def _kranji_overpass_elements():
+    return [
+        {
+            "type": "way",
+            "id": int(osm_id.split("/")[1]),
+            "center": {"lat": lat, "lon": lon},
+            "tags": {"amenity": "parking", "name": name},
+        }
+        for osm_id, name, lat, lon in KRANJI_RESTRICTED + KRANJI_PUBLIC
+    ]
+
+
+def _stub_overpass(monkeypatch, elements):
+    class _OsmResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"elements": elements}
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, *_args, **_kwargs):
+            return _OsmResponse()
+
+    monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+
+@pytest.mark.asyncio
+async def test_osm_drops_carparks_inside_kranji_camp(monkeypatch):
+    """The reported case: camp carparks out, the public ones next door in."""
+    _stub_overpass(monkeypatch, _kranji_overpass_elements())
+
+    results = await main.parking_osm(
+        response=main.Response(), lat=1.4041301, lon=103.7416159, radius=500
+    )
+
+    served = {r.id for r in results}
+    for osm_id, name, _lat, _lon in KRANJI_RESTRICTED:
+        assert f"osm_{osm_id.split('/')[1]}" not in served, f"{name} is inside Kranji Camp"
+    for osm_id, name, _lat, _lon in KRANJI_PUBLIC:
+        assert f"osm_{osm_id.split('/')[1]}" in served, f"{name} is a public HDB carpark"
+    assert len(results) == len(KRANJI_PUBLIC)
+
+
+@pytest.mark.asyncio
+async def test_osm_refuses_to_serve_without_restricted_polygons(monkeypatch):
+    """A missing polygon set must fail, never quietly serve everything."""
+    _stub_overpass(monkeypatch, _kranji_overpass_elements())
+    monkeypatch.setattr(main, "_restricted_areas", None)
+    monkeypatch.setattr(
+        main,
+        "load_restricted_areas",
+        Mock(side_effect=main.RestrictedDataError("military_areas.json is missing")),
+    )
+
+    with pytest.raises(main.HTTPException) as error:
+        await main.parking_osm(
+            response=main.Response(), lat=1.4041301, lon=103.7416159, radius=500
+        )
+
+    assert error.value.status_code == 503
+
+
+def test_restricted_areas_excludes_the_reported_kranji_carparks():
+    areas = restricted.load_restricted_areas()
+
+    for osm_id, name, lat, lon in KRANJI_RESTRICTED:
+        assert areas.contains(lat, lon), f"{osm_id} {name} should be restricted"
+    for osm_id, name, lat, lon in KRANJI_PUBLIC:
+        assert not areas.contains(lat, lon), f"{osm_id} {name} should be usable"
+    # The camp's own registered address, which Google reverse-geocoded the
+    # mis-served pins to.
+    assert areas.contains(1.4041301, 103.7416159)
+
+
+@pytest.mark.parametrize(
+    "filename,floor",
+    [
+        ("military_areas.json", restricted.MIN_MILITARY_RINGS),
+        ("restricted_areas.json", restricted.MIN_SPECIAL_USE_RINGS),
+    ],
+)
+def test_shipped_polygon_rings_are_closed(filename, floor):
+    """72 of the old file's 199 rings were open relation fragments: an open ring
+    is implicitly closed by the containment test, covering the wrong area."""
+    rings = json.loads((ENRICH_DIR / filename).read_text())
+
+    assert len(rings) >= floor
+    open_rings = [i for i, ring in enumerate(rings) if ring[0] != ring[-1]]
+    assert not open_rings, f"{filename}: rings {open_rings[:5]} are not closed"
+    assert all(len(ring) >= 4 for ring in rings)
+
+
+def test_restricted_load_rejects_a_truncated_polygon_set(tmp_path):
+    """Fail closed: a short file must raise, not filter almost nothing."""
+    truncated = tmp_path / "military_areas.json"
+    square = [[1.0, 103.0], [1.0, 103.1], [1.1, 103.1], [1.1, 103.0], [1.0, 103.0]]
+    truncated.write_text(json.dumps([square]))
+
+    with pytest.raises(restricted.RestrictedDataError):
+        restricted._load_rings(str(truncated), restricted.MIN_MILITARY_RINGS)
+
+    with pytest.raises(restricted.RestrictedDataError):
+        restricted._load_rings(str(tmp_path / "absent.json"), 1)
+
+
+def test_restricted_areas_catch_the_osm_parking_corpus():
+    """The live layer queries this same amenity=parking corpus, so every
+    restricted entry in it is an entry a search near that site could serve."""
+    areas = restricted.load_restricted_areas()
+    corpus = json.loads((ENRICH_DIR / "osm_parking.json").read_text())
+
+    caught = [o for o in corpus if areas.contains(o["lat"], o["lon"])]
+    assert len(caught) >= 65, f"only {len(caught)} restricted entries caught"
+
+
+def test_restricted_areas_keep_every_public_hdb_carpark():
+    """No false positives against HDB's own authoritative public-carpark list.
+
+    Uses gov_hdb.json rather than the served dataset because carparks_enriched.json
+    is built at deploy time and is not in the repo. carparks_geocoded.json is not a
+    substitute: ten of its SVY21-fallback coordinates land inside a camp and are
+    only corrected by the OneMap re-geocode the build runs before this filter.
+    """
+    areas = restricted.load_restricted_areas()
+    hdb = json.loads((ENRICH_DIR / "gov_hdb.json").read_text())
+
+    excluded = [c["id"] for c in hdb if areas.contains(c["lat"], c["lon"])]
+    assert not excluded, f"restricted filter would drop public HDB carparks: {excluded[:5]}"
+
+
+def test_restricted_areas_keep_every_served_carpark():
+    """Same check against the real served dataset, when it has been built."""
+    enriched = BACKEND_DIR / "carparks_enriched.json"
+    if not enriched.exists():
+        pytest.skip("carparks_enriched.json is built at deploy time")
+
+    areas = restricted.load_restricted_areas()
+    served = json.loads(enriched.read_text())
+
+    excluded = [cp["id"] for cp in served if areas.contains(cp["lat"], cp["lon"])]
+    assert not excluded, f"restricted filter would drop served carparks: {excluded[:5]}"
