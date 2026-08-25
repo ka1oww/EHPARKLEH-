@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils'
 import { SearchBar } from '@/components/SearchBar'
 import { FilterBar } from '@/components/FilterBar'
 import { MAX_RADIUS } from '@/components/RadiusSelect'
-import { EplMark } from '@/components/EplMark'
 import { GantryLockup } from '@/components/GantryLockup'
 import { SplashScreen } from '@/components/SplashScreen'
 import { CarparkCard } from '@/components/CarparkCard'
@@ -808,16 +807,16 @@ export default function App() {
             <div className="mx-auto w-full max-w-screen-2xl px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3">
               <div className="flex items-center justify-between gap-3 pb-3">
                 <div className="flex items-center gap-2.5">
-                  <EplMark className="md:hidden" />
+                  {/* Mobile carries the name and nothing else: no tile, no
+                      tagline, no second line under it. From md the sidebar's
+                      full lockup (tiles plus dot-matrix tagline) says all of
+                      that instead, so the wordmark steps back to a
+                      screen-reader-only heading rather than repeating the
+                      board beside it. */}
                   <GantryLockup size="sm" className="hidden md:inline-flex" />
-                  {/* The mark says the name on its own at both sizes: the
-                      compact tile on mobile, where header room is scarce, and
-                      the full lockup (tiles plus dot-matrix tagline) in the
-                      desktop sidebar. So the wordmark and the tagline are not
-                      repeated as text beside it — the heading stays in the
-                      accessibility tree only, where it still names the page
-                      without crowding the board. */}
-                  <h1 className="sr-only">EhParkLeh</h1>
+                  <h1 className="font-display text-xl font-extrabold tracking-tight md:sr-only">
+                    EhParkLeh
+                  </h1>
                 </div>
                 <a
                   href="https://buymeacoffee.com/zhehang"

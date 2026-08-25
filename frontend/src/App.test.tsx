@@ -316,12 +316,13 @@ describe('App search result states', () => {
     const { container } = render(<App />)
     await act(async () => {})
 
-    // The header already carries the name as its <h1>; the mark repeating it
-    // would have a screen reader say "EhParkLeh" twice on every page load.
+    // The header already carries the name as its <h1>; the sidebar lockup
+    // repeating it would have a screen reader say "EhParkLeh" twice on every
+    // page load, so the board is decorative.
     const heading = screen.getByRole('heading', { level: 1, name: 'EhParkLeh' })
     expect(heading).toBeInTheDocument()
-    const mark = container.querySelector('header svg')
-    expect(mark).toHaveAttribute('aria-hidden', 'true')
+    const lockup = container.querySelector('header div[class*="md:inline-flex"]')
+    expect(lockup).toHaveAttribute('aria-hidden', 'true')
     expect(screen.queryByRole('img', { name: /EhParkLeh/i })).not.toBeInTheDocument()
   })
 
@@ -1008,7 +1009,7 @@ describe('App desktop rail', () => {
 })
 
 describe('App mobile header', () => {
-  it('gives the mobile bar the compact mark alone, and keeps the full lockup for the sidebar', async () => {
+  it('gives the mobile bar the wordmark alone, and keeps the full lockup for the sidebar', async () => {
     vi.stubGlobal(
       'fetch',
       vi.fn(async (input: RequestInfo | URL) =>
@@ -1017,22 +1018,30 @@ describe('App mobile header', () => {
     )
     const { container } = render(<App />)
     await screen.findByText('Carpark 1')
+    // The splash wears a lockup of its own, so let it come down before
+    // counting what the header itself carries.
+    await vi.waitFor(() =>
+      expect(screen.queryByText('checking lots…')).not.toBeInTheDocument(),
+    )
 
-    // The name is still announced, but it is no longer set as text beside the
-    // mark — the mobile bar was too crowded with all three.
+    // Mobile shows the name as real display type, and hands the job to the
+    // sidebar lockup from md up.
     const heading = screen.getByRole('heading', { level: 1, name: 'EhParkLeh' })
-    expect(heading).toHaveClass('sr-only')
-    expect(heading.className).not.toMatch(/font-display/)
+    expect(heading.className).toMatch(/font-display/)
+    expect(heading.className).toMatch(/md:sr-only/)
 
-    // The tagline survives in exactly one place: the desktop-only lockup.
+    // Nothing else rides in the mobile bar beside it: no EPL tile...
+    const marks = Array.from(container.querySelectorAll('header svg')).filter(
+      (svg) => svg.getAttribute('viewBox') === '0 0 56 26',
+    )
+    expect(marks).toHaveLength(0)
+
+    // ...and no tagline, which now exists in exactly one place: the
+    // desktop-only lockup.
     const taglines = screen.getAllByText('GOT LOT ANOT ??')
     expect(taglines).toHaveLength(1)
     const lockup = taglines[0].closest('div[class*="md:inline-flex"]')
     expect(lockup).not.toBeNull()
     expect(lockup?.className).toMatch(/(^|\s)hidden(\s|$)/)
-
-    // ...and the compact tile is what the mobile bar shows instead.
-    const mark = container.querySelector('header svg')
-    expect(mark?.getAttribute('class')).toMatch(/md:hidden/)
   })
 })
