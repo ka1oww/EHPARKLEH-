@@ -12,7 +12,7 @@ function makeHarness() {
   document.body.appendChild(container)
 
   let zoom = 10
-  const zoomCalls: { point: L.Point; zoom: number }[] = []
+  const zoomCalls: { point: L.Point; zoom: number; snap: unknown }[] = []
   const listeners: Record<string, (() => void)[]> = {}
   const map = {
     options: {} as Record<string, unknown>,
@@ -23,8 +23,13 @@ function makeHarness() {
     mouseEventToContainerPoint: (e: WheelEvent) =>
       new L.Point(e.clientX, e.clientY),
     setZoomAround: vi.fn((point: L.Point, z: number) => {
-      zoomCalls.push({ point, zoom: z })
+      // Record the snap the map would round by at the moment of the write, and
+      // fire the events Leaflet's non-animated setView fires, so the handler's
+      // own frames must not read as an external view change.
+      zoomCalls.push({ point, zoom: z, snap: map.options.zoomSnap })
       zoom = z
+      map.fire('movestart')
+      map.fire('zoomstart')
     }),
     on: (name: string, fn: () => void) => {
       ;(listeners[name] ??= []).push(fn)
@@ -180,22 +185,66 @@ describe('SmoothWheelZoom', () => {
   // Leaflet's _limitZoom rounds every setZoom to the nearest zoomSnap step;
   // if the glide ran with the app's 0.25 snap it would staircase instead of
   // easing. The handler must suspend snap mid-glide and put it back after.
-  it('suspends zoomSnap while gliding and restores it afterwards', () => {
+  it('suspends zoomSnap for its own zoom writes only', () => {
     harness.map.options.zoomSnap = 0.25
 
     harness.wheel(-100)
     harness.runFrame(16)
-    expect(harness.map.options.zoomSnap).toBe(0)
+    // Snap is 0 inside the eased write...
+    expect(harness.zoomCalls.at(-1)?.snap).toBe(0)
+    // ...and back to the app's value between frames, so a concurrent
+    // fitBounds/setView never computes an unsnapped zoom.
+    expect(harness.map.options.zoomSnap).toBe(0.25)
 
     settle()
     expect(harness.map.options.zoomSnap).toBe(0.25)
+    expect(harness.zoomCalls.every((c) => c.snap === 0)).toBe(true)
 
     // Same on the abort path.
     harness.wheel(-100)
     harness.runFrame(16)
-    expect(harness.map.options.zoomSnap).toBe(0)
     harness.map.fire('dragstart')
     expect(harness.map.options.zoomSnap).toBe(0.25)
+  })
+
+  // fitBounds after a debounced refetch, or zoomToShowLayer on selection, must
+  // win: the glide has to stand down instead of yanking the view back to the
+  // wheel target around the old cursor point.
+  it('cancels the glide when an external view change starts', () => {
+    harness.map.options.zoomSnap = 0.25
+    harness.wheel(-140 * 3)
+    harness.runFrame(16)
+    const afterFirstFrame = harness.map.getZoom()
+
+    harness.map.fire('movestart')
+    harness.runFrame(400)
+
+    expect(harness.map.getZoom()).toBe(afterFirstFrame)
+    expect(harness.hasPendingFrame()).toBe(false)
+    expect(harness.map.options.zoomSnap).toBe(0.25)
+  })
+
+  it('does not cancel itself on the events its own frames fire', () => {
+    harness.wheel(-140 * 3)
+    harness.runFrame(16)
+    // The mock fires movestart/zoomstart from inside setZoomAround; the glide
+    // must survive them and keep easing.
+    expect(harness.hasPendingFrame()).toBe(true)
+    harness.runFrame(56)
+    expect(harness.zoomCalls.length).toBe(2)
+    expect(harness.zoomCalls[1].zoom).toBeGreaterThan(harness.zoomCalls[0].zoom)
+  })
+
+  it('cancels the glide when an external zoom starts', () => {
+    harness.wheel(-140 * 3)
+    harness.runFrame(16)
+    const afterFirstFrame = harness.map.getZoom()
+
+    harness.map.fire('zoomstart')
+    harness.runFrame(400)
+
+    expect(harness.map.getZoom()).toBe(afterFirstFrame)
+    expect(harness.hasPendingFrame()).toBe(false)
   })
 
   it('ignores wheel events when disabled', () => {

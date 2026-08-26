@@ -21,7 +21,10 @@ import L from 'leaflet'
 // Touch is untouched: only `wheel` is observed, so pinch zoom, drag pan and
 // everything else on mobile keep their stock Leaflet behaviour. Drag pan also
 // keeps its built-in inertia; this handler cancels itself on `dragstart` so a
-// mid-gesture grab never fights the easing loop.
+// mid-gesture grab never fights the easing loop, and likewise on any view
+// change it did not cause itself (fitBounds after a refetch, zoomToShowLayer
+// on selection, a programmatic setView/flyTo) so the glide never overwrites
+// one - its own per-frame setZoomAround is flagged so it cannot self-cancel.
 
 // Time constant of the ease-out glide. ~90ms reads as "instant but smooth",
 // which is the Google Maps web feel; larger values lag, smaller ones snap.
@@ -51,6 +54,7 @@ class SmoothWheelZoom extends L.Handler {
   private rafId = 0
   private lastTs = 0
   private savedSnap: number | undefined = undefined
+  private internalMove = false
 
   private readonly onWheel = (e: WheelEvent): void => {
     // Never let the page scroll/zoom because a gesture landed on the map.
@@ -70,13 +74,15 @@ class SmoothWheelZoom extends L.Handler {
       Math.max(this.map.getMinZoom(), base + delta / pxPerLevel),
     )
     if (!this.rafId) {
-      // Stop any in-flight pan/fly animation so the easing loop owns the view,
-      // and suspend zoomSnap while it does: _limitZoom would otherwise round
-      // every eased intermediate to the nearest snap step, turning the glide
-      // back into a staircase of coarse jumps. Restored on settle/cancel.
+      // Stop any in-flight pan/fly animation so the easing loop owns the view.
       ;(this.map as unknown as { _stop: () => void })._stop()
+      // zoomSnap is suspended for the glide, but only while one of the
+      // handler's own setZoomAround calls is on the stack (see applyZoom):
+      // _limitZoom would otherwise round every eased intermediate to the
+      // nearest snap step, turning the glide back into a staircase of coarse
+      // jumps. Leaving the gaps between frames alone means a concurrent
+      // fitBounds/setView still reads the app's real snap.
       this.savedSnap = opts.zoomSnap
-      opts.zoomSnap = 0
       this.lastTs = 0
       this.rafId = L.Util.requestAnimFrame(this.frame, this)
     }
@@ -84,6 +90,13 @@ class SmoothWheelZoom extends L.Handler {
 
   private readonly onDragStart = (): void => {
     // A grab during the glide hands control back to the driver immediately.
+    this.cancel()
+  }
+
+  private readonly onExternalMove = (): void => {
+    // Fires for every view change, including this handler's own eased frames -
+    // only the ones originating elsewhere abort the glide.
+    if (this.internalMove) return
     this.cancel()
   }
 
@@ -96,12 +109,16 @@ class SmoothWheelZoom extends L.Handler {
   addHooks(): void {
     L.DomEvent.on(this.map.getContainer(), 'wheel', this.domOnWheel)
     this.map.on('dragstart', this.onDragStart)
+    this.map.on('movestart', this.onExternalMove)
+    this.map.on('zoomstart', this.onExternalMove)
   }
 
   removeHooks(): void {
     this.cancel()
     L.DomEvent.off(this.map.getContainer(), 'wheel', this.domOnWheel)
     this.map.off('dragstart', this.onDragStart)
+    this.map.off('movestart', this.onExternalMove)
+    this.map.off('zoomstart', this.onExternalMove)
   }
 
   private cancel(): void {
@@ -111,6 +128,22 @@ class SmoothWheelZoom extends L.Handler {
     }
     this.restoreSnap()
     this.target = null
+  }
+
+  // The only place the glide writes the view: zoomSnap is dropped and put back
+  // around the call itself, and `internalMove` marks the movestart/zoomstart it
+  // fires as this handler's own.
+  private applyZoom(point: L.Point, next: number): void {
+    const opts = this.map.options as SmoothWheelMapOptions
+    const snap = opts.zoomSnap
+    this.internalMove = true
+    opts.zoomSnap = 0
+    try {
+      this.map.setZoomAround(point, next, { animate: false })
+    } finally {
+      opts.zoomSnap = snap
+      this.internalMove = false
+    }
   }
 
   private restoreSnap(): void {
@@ -138,7 +171,10 @@ class SmoothWheelZoom extends L.Handler {
     let next = current + step
     if (Math.abs(this.target - next) < SETTLE_EPSILON_LEVELS) next = this.target
 
-    map.setZoomAround(this.pos, next, { animate: false })
+    this.applyZoom(this.pos, next)
+    // An external view change during that call cancels the glide; nothing
+    // further to schedule.
+    if (this.rafId === 0) return
 
     if (next === this.target) {
       this.rafId = 0
