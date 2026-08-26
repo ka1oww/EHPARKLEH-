@@ -3,6 +3,7 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
+import SmoothWheelZoom from './smoothWheelZoom'
 import { getAvailability, type AvailState } from './availability'
 import { formatLotCount, statusLine, LED_HEX } from './lots'
 import type { FeedFreshness } from './freshness'
@@ -28,36 +29,43 @@ function tileUrl(dark: boolean): string {
   return dark ? TILE_DARK : TILE_LIGHT
 }
 
-// Wheel/pinch zoom feel, tuned for a Mac trackpad.
+// Desktop wheel zoom feel, matched to Google Maps web.
 //
-// Leaflet's defaults are built for a notched mouse wheel: one notch is ~60px of
-// delta, batched every 40ms, and `zoomSnap: 1` rounds each batch UP to a whole
-// zoom level. A trackpad instead emits a stream of small wheel events for the
-// whole gesture, so a half-second pinch became a dozen 40ms batches and each
-// one was rounded up to a full level - the map shot from the street to the
-// island in one gesture. scrollWheelZoom stays on; only the arithmetic changes.
+// Leaflet's built-in ScrollWheelZoom batches wheel deltas, waits out
+// wheelDebounceTime (40ms default; this app had 100ms for trackpad batching),
+// then applies one step per batch rounded UP to the next zoomSnap multiple.
+// Reproduced on a live map, that read as: a single mouse notch did nothing for
+// ~110ms and then snapped a quarter level; six quick notches produced just two
+// dead jumps (+0.5 each) with a 320ms dead gap in the middle of the gesture.
+// Google Maps instead starts zooming within a frame and glides continuously.
 //
-//  * zoomSnap 0.25 removes the round-up floor: a batch worth a quarter level
-//    moves a quarter level. It is the single biggest cause of the symptom.
-//  * wheelPxPerZoomLevel 180 (from 60) makes a comfortable trackpad gesture
-//    (a few hundred px of accumulated delta) worth about one level, since
-//    Leaflet's sigmoid maps a delta D to roughly 0.72 * D / this value.
-//  * wheelDebounceTime 100 (from 40) groups the gesture into ~5 batches
-//    instead of ~12, so the residual per-batch rounding cannot add up. The
-//    timer fires at most this long after a batch's first event, so zoom still
-//    tracks the fingers rather than lagging behind them.
-//  * zoomDelta 1 is stated, not inherited: the +/- control and the keyboard
-//    keep moving a whole level even though the wheel now moves quarters.
+// The fix is SmoothWheelZoom (see smoothWheelZoom.ts), registered here under
+// Leaflet's own `scrollWheelZoom` handler name: it eases a fractional target
+// zoom toward the cursor with requestAnimationFrame - no debounce, no rounding,
+// animated by construction. The knobs below feed it:
 //
-// Touch pinch is untouched: touchZoom keeps its own continuous handler, and a
-// non-zero zoomSnap keeps its existing settle-and-redraw behaviour. It settles
-// on a quarter level instead of a whole one, which is closer to where the
-// fingers left it.
+//  * scrollWheelZoom false turns off the built-in debounced handler so only
+//    the smooth one is listening.
+//  * wheelPxPerZoomLevel 140 is now LINEAR pixels of wheel delta per level of
+//    zoom (it fed a sigmoid in stock Leaflet). A standard notch (~33px of
+//    normalised delta on macOS Chrome) is therefore worth ~0.24 levels, in the
+//    Google Maps band of roughly three to five notches per level.
+//  * smoothWheelZoom true is the handler's own master switch.
+//
+// Kept as-is:
+//  * zoomSnap 0.25 still governs touch-pinch settle and fitBounds snapping -
+//    non-zero snap keeps tiles crisp after a pinch. The wheel path no longer
+//    goes through snap arithmetic at all, which is exactly the point.
+//  * zoomDelta 1 keeps the +/- control and keyboard moving whole levels.
+//  * Drag pan keeps Leaflet's built-in inertia (on by default).
+//  * Touch behaviour is untouched: the smooth handler observes only `wheel`,
+//    so pinch/drag on mobile run their stock Leaflet paths.
 const ZOOM_FEEL = {
+  scrollWheelZoom: false,
+  smoothWheelZoom: true,
+  wheelPxPerZoomLevel: 140,
   zoomSnap: 0.25,
   zoomDelta: 1,
-  wheelPxPerZoomLevel: 180,
-  wheelDebounceTime: 100,
 } as const
 
 const KAYA = '#1C6E4A'
@@ -304,6 +312,10 @@ function Map({
         [center.lat, center.lon],
         15,
       )
+      // Swap in the Google-style wheel zoom under Leaflet's own handler name,
+      // so enable()/disable() semantics stay stock for any caller.
+      map.addHandler('scrollWheelZoom', SmoothWheelZoom)
+      map.scrollWheelZoom.enable()
       L.control.zoom({ position: 'topright' }).addTo(map)
       // Stadia Maps "Alidade Smooth": a muted basemap so the gantry boards pop.
       // Authenticated by domain (localhost for dev, the production origin
