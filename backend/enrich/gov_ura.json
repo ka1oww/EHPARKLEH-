@@ -19,8 +19,8 @@
   "pp_code": "A0005",
   "name": "Allenby Road",
   "lot_counts": {
-   "Motorcycle Lots": 13,
-   "Car Lots": 16
+   "Car Lots": 16,
+   "Motorcycle Lots": 13
   },
   "total_lots": 29,
   "lat": 1.310627,
@@ -48,12 +48,12 @@
   "pp_code": "A0007",
   "name": "Angullia Park Off Street",
   "lot_counts": {
-   "Car Lots": 268,
-   "Motorcycle Lots": 96
+   "Motorcycle Lots": 96,
+   "Car Lots": 268
   },
   "total_lots": 364,
-  "lat": 1.3050955,
-  "lon": 103.8296734,
+  "lat": 1.3050954,
+  "lon": 103.8296733,
   "car_lots": 268
  },
  {
@@ -75,9 +75,9 @@
   "pp_code": "A0010",
   "name": "Arab Street",
   "lot_counts": {
-   "Lorry Lots": 1,
    "Car Lots": 69,
-   "Motorcycle Lots": 13
+   "Motorcycle Lots": 13,
+   "Lorry Lots": 1
   },
   "total_lots": 83,
   "lat": 1.3018842,
@@ -131,8 +131,8 @@
   "pp_code": "A0024",
   "name": "Adam Road Food Centre Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 12,
-   "Car Lots": 64
+   "Car Lots": 64,
+   "Motorcycle Lots": 12
   },
   "total_lots": 76,
   "lat": 1.3240192,
@@ -172,8 +172,8 @@
   "pp_code": "A0034",
   "name": "Anamalai Avenue",
   "lot_counts": {
-   "Car Lots": 12,
-   "Motorcycle Lots": 15
+   "Motorcycle Lots": 15,
+   "Car Lots": 12
   },
   "total_lots": 27,
   "lat": 1.3307105,
@@ -265,8 +265,8 @@
   "pp_code": "A0048",
   "name": "Ang Mo Kio Street 63",
   "lot_counts": {
-   "Car Lots": 43,
-   "Motorcycle Lots": 10
+   "Motorcycle Lots": 10,
+   "Car Lots": 43
   },
   "total_lots": 53,
   "lat": 1.3855177,
@@ -279,8 +279,8 @@
   "pp_code": "A0049",
   "name": "Ang Mo Kio Avenue 1 Heavy Vehicle Park",
   "lot_counts": {
-   "Lorry Lots": 62,
-   "Motorcycle Lots": 12
+   "Motorcycle Lots": 12,
+   "Lorry Lots": 62
   },
   "total_lots": 74,
   "lat": 1.359234,
@@ -360,8 +360,8 @@
   "pp_code": "B0005",
   "name": "Banda Street / Sago Lane Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 18,
    "Car Lots": 29,
+   "Motorcycle Lots": 18,
    "Coach Lots": 20
   },
   "total_lots": 67,
@@ -389,7 +389,7 @@
   "name": "Birch Road",
   "lot_counts": {
    "Car Lots": 14,
-   "Lorry Lots": 1
+   "Coach Lots": 1
   },
   "total_lots": 15,
   "lat": 1.3109413,
@@ -539,7 +539,7 @@
   },
   "total_lots": 49,
   "lat": 1.3194523,
-  "lon": 103.684655,
+  "lon": 103.6846567,
   "car_lots": 14
  },
  {
@@ -627,8 +627,8 @@
   "pp_code": "B0073",
   "name": "Boon Tat Street",
   "lot_counts": {
-   "Motorcycle Lots": 10,
-   "Car Lots": 17
+   "Car Lots": 17,
+   "Motorcycle Lots": 10
   },
   "total_lots": 27,
   "lat": 1.2813166,
@@ -682,8 +682,8 @@
   "pp_code": "B0087",
   "name": "Baghdad Street Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 8,
-   "Car Lots": 25
+   "Car Lots": 25,
+   "Motorcycle Lots": 8
   },
   "total_lots": 33,
   "lat": 1.3013616,
@@ -751,9 +751,9 @@
   "pp_code": "B0099",
   "name": "Bendemeer Road Heavy Vehicle Park",
   "lot_counts": {
-   "Motorcycle Lots": 39,
-   "Lorry Lots": 83,
    "Car Lots": 9,
+   "Lorry Lots": 83,
+   "Motorcycle Lots": 39,
    "Coach Lots": 33
   },
   "total_lots": 164,
@@ -1537,8 +1537,8 @@
   "pp_code": "C0022",
   "name": "Club Street",
   "lot_counts": {
-   "Motorcycle Lots": 7,
-   "Car Lots": 27
+   "Car Lots": 27,
+   "Motorcycle Lots": 7
   },
   "total_lots": 34,
   "lat": 1.281961,
@@ -1565,8 +1565,8 @@
   "name": "Claymore Road",
   "lot_counts": {
    "Motorcycle Lots": 43,
-   "Lorry Lots": 2,
-   "Car Lots": 4
+   "Car Lots": 4,
+   "Coach Lots": 2
   },
   "total_lots": 49,
   "lat": 1.3074553,
@@ -1580,8 +1580,8 @@
   "name": "Claymore Hill",
   "lot_counts": {
    "Car Lots": 10,
-   "Motorcycle Lots": 25,
-   "Lorry Lots": 2
+   "Coach Lots": 2,
+   "Motorcycle Lots": 25
   },
   "total_lots": 37,
   "lat": 1.3076963,
@@ -1646,11 +1646,11 @@
   "pp_code": "C0055",
   "name": "Choa Chu Kang Way",
   "lot_counts": {
-   "Lorry Lots": 42
+   "Lorry Lots": 39
   },
-  "total_lots": 42,
-  "lat": 1.3948141,
-  "lon": 103.7416466,
+  "total_lots": 39,
+  "lat": 1.3944182,
+  "lon": 103.7415317,
   "car_lots": 0
  },
  {
@@ -1687,8 +1687,8 @@
   "name": "Cheng Yan Place",
   "lot_counts": {
    "Motorcycle Lots": 15,
-   "Car Lots": 4,
-   "Lorry Lots": 3
+   "Coach Lots": 3,
+   "Car Lots": 4
   },
   "total_lots": 22,
   "lat": 1.300121,
@@ -1728,8 +1728,8 @@
   "pp_code": "C0104",
   "name": "Cavan Road",
   "lot_counts": {
-   "Coach Lots": 1,
-   "Car Lots": 7
+   "Car Lots": 7,
+   "Coach Lots": 1
   },
   "total_lots": 8,
   "lat": 1.3109089,
@@ -1755,8 +1755,8 @@
   "pp_code": "C0113",
   "name": "Changi Road (bet Jalan Kembangan / Still Road)",
   "lot_counts": {
-   "Motorcycle Lots": 10,
-   "Car Lots": 63
+   "Car Lots": 63,
+   "Motorcycle Lots": 10
   },
   "total_lots": 73,
   "lat": 1.3186169,
@@ -1850,8 +1850,8 @@
   "pp_code": "C0126",
   "name": "Changi South Avenue 2",
   "lot_counts": {
-   "Motorcycle Lots": 4,
    "Car Lots": 10,
+   "Motorcycle Lots": 4,
    "Trailer Lots": 10
   },
   "total_lots": 24,
@@ -1880,8 +1880,8 @@
   "name": "Changi South Street 1",
   "lot_counts": {
    "Car Lots": 59,
-   "Trailer Lots": 9,
-   "Motorcycle Lots": 4
+   "Motorcycle Lots": 4,
+   "Trailer Lots": 9
   },
   "total_lots": 72,
   "lat": 1.3348562,
@@ -1936,8 +1936,8 @@
   "pp_code": "C0134",
   "name": "Circuit Road",
   "lot_counts": {
-   "Car Lots": 66,
-   "Motorcycle Lots": 24
+   "Motorcycle Lots": 24,
+   "Car Lots": 66
   },
   "total_lots": 90,
   "lat": 1.3244487,
@@ -1989,8 +1989,8 @@
   "pp_code": "C0147",
   "name": "Changi Road / Jalan Wakaff Off Street",
   "lot_counts": {
-   "Car Lots": 15,
-   "Motorcycle Lots": 3
+   "Motorcycle Lots": 3,
+   "Car Lots": 15
   },
   "total_lots": 18,
   "lat": 1.3186279,
@@ -2003,8 +2003,8 @@
   "pp_code": "C0148",
   "name": "Clemenceau Avenue North (newton Fc)",
   "lot_counts": {
-   "Car Lots": 239,
    "Motorcycle Lots": 23,
+   "Car Lots": 239,
    "Coach Lots": 8
   },
   "total_lots": 270,
@@ -2018,8 +2018,8 @@
   "pp_code": "C0151",
   "name": "Changi Beach Car Park 1",
   "lot_counts": {
-   "Car Lots": 62,
-   "Motorcycle Lots": 11
+   "Motorcycle Lots": 11,
+   "Car Lots": 62
   },
   "total_lots": 73,
   "lat": 1.391555,
@@ -2045,8 +2045,8 @@
   "pp_code": "C0153",
   "name": "Changi Beach Car Park 3",
   "lot_counts": {
-   "Motorcycle Lots": 13,
-   "Car Lots": 37
+   "Car Lots": 37,
+   "Motorcycle Lots": 13
   },
   "total_lots": 50,
   "lat": 1.3906293,
@@ -2059,9 +2059,9 @@
   "pp_code": "C0154",
   "name": "Changi Beach Car Park 4",
   "lot_counts": {
-   "Motorcycle Lots": 28,
    "Car Lots": 80,
-   "Lorry Lots": 2
+   "Motorcycle Lots": 28,
+   "Coach Lots": 2
   },
   "total_lots": 110,
   "lat": 1.390124,
@@ -2102,8 +2102,8 @@
   "pp_code": "C0157",
   "name": "Changi North Crescent",
   "lot_counts": {
-   "Car Lots": 16,
-   "Trailer Lots": 9
+   "Trailer Lots": 9,
+   "Car Lots": 16
   },
   "total_lots": 25,
   "lat": 1.3484817,
@@ -2116,8 +2116,8 @@
   "pp_code": "C0158",
   "name": "Changi North Rise",
   "lot_counts": {
-   "Car Lots": 13,
-   "Motorcycle Lots": 5
+   "Motorcycle Lots": 5,
+   "Car Lots": 13
   },
   "total_lots": 18,
   "lat": 1.3482696,
@@ -2156,8 +2156,8 @@
   "pp_code": "C0161",
   "name": "Changi South Lane",
   "lot_counts": {
-   "Car Lots": 9,
-   "Trailer Lots": 3
+   "Trailer Lots": 3,
+   "Car Lots": 9
   },
   "total_lots": 12,
   "lat": 1.3321672,
@@ -2170,8 +2170,8 @@
   "pp_code": "C0162",
   "name": "Clemenceau Avenue Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 5,
-   "Car Lots": 31
+   "Car Lots": 31,
+   "Motorcycle Lots": 5
   },
   "total_lots": 36,
   "lat": 1.2939507,
@@ -2348,8 +2348,8 @@
   "pp_code": "D0029",
   "name": "Dairy Farm Road /  Petir Road Heavy Vehcle Park",
   "lot_counts": {
-   "Lorry Lots": 255,
-   "Motorcycle Lots": 29
+   "Motorcycle Lots": 29,
+   "Lorry Lots": 255
   },
   "total_lots": 284,
   "lat": 1.3657098,
@@ -2375,12 +2375,12 @@
   "pp_code": "E0010",
   "name": "Eunos Road 7 / Eunos Avenue 6  Hvp",
   "lot_counts": {
-   "Motorcycle Lots": 63,
-   "Lorry Lots": 145
+   "Lorry Lots": 157,
+   "Motorcycle Lots": 32
   },
-  "total_lots": 208,
-  "lat": 1.3226162,
-  "lon": 103.8930571,
+  "total_lots": 189,
+  "lat": 1.3225586,
+  "lon": 103.8930738,
   "car_lots": 0
  },
  {
@@ -2457,7 +2457,7 @@
   "pp_code": "E0025",
   "name": "East Coast Park Service Road",
   "lot_counts": {
-   "Lorry Lots": 5
+   "Coach Lots": 5
   },
   "total_lots": 5,
   "lat": 1.3072408,
@@ -2497,8 +2497,8 @@
   "pp_code": "E0033",
   "name": "East Coast Road (frankel Avenue / Siglap Road)",
   "lot_counts": {
-   "Car Lots": 6,
    "Motorcycle Lots": 12,
+   "Car Lots": 6,
    "Lorry Lots": 1
   },
   "total_lots": 19,
@@ -2567,8 +2567,8 @@
   "pp_code": "F0002",
   "name": "Foch Road",
   "lot_counts": {
-   "Motorcycle Lots": 10,
-   "Car Lots": 31
+   "Car Lots": 31,
+   "Motorcycle Lots": 10
   },
   "total_lots": 41,
   "lat": 1.3123906,
@@ -2689,9 +2689,9 @@
   "pp_code": "F0029",
   "name": "Fort Road / East Coast Park Heavy Vehicle Park",
   "lot_counts": {
-   "Motorcycle Lots": 28,
    "Car Lots": 20,
-   "Lorry Lots": 85
+   "Lorry Lots": 85,
+   "Motorcycle Lots": 28
   },
   "total_lots": 133,
   "lat": 1.2951328,
@@ -2731,8 +2731,8 @@
   "pp_code": "F0032",
   "name": "Fourth Chin Bee Road Heavy Vehicle Park",
   "lot_counts": {
-   "Lorry Lots": 240,
-   "Motorcycle Lots": 42
+   "Motorcycle Lots": 42,
+   "Lorry Lots": 240
   },
   "total_lots": 282,
   "lat": 1.333089,
@@ -2759,8 +2759,8 @@
   "pp_code": "G0004",
   "name": "Gali Batu Close Hvp",
   "lot_counts": {
-   "Motorcycle Lots": 150,
-   "Lorry Lots": 216
+   "Lorry Lots": 216,
+   "Motorcycle Lots": 150
   },
   "total_lots": 366,
   "lat": 1.4045273,
@@ -2773,8 +2773,8 @@
   "pp_code": "G0018",
   "name": "Genting Lane",
   "lot_counts": {
-   "Car Lots": 43,
-   "Motorcycle Lots": 5
+   "Motorcycle Lots": 5,
+   "Car Lots": 43
   },
   "total_lots": 48,
   "lat": 1.3253152,
@@ -2813,8 +2813,8 @@
   "pp_code": "G0026",
   "name": "Gul Circle",
   "lot_counts": {
-   "Trailer Lots": 98,
-   "Car Lots": 39
+   "Car Lots": 39,
+   "Trailer Lots": 98
   },
   "total_lots": 137,
   "lat": 1.3152829,
@@ -2870,8 +2870,8 @@
   "pp_code": "G0030",
   "name": "Gul Crescent",
   "lot_counts": {
-   "Trailer Lots": 15,
-   "Car Lots": 8
+   "Car Lots": 8,
+   "Trailer Lots": 15
   },
   "total_lots": 23,
   "lat": 1.3123002,
@@ -3003,8 +3003,8 @@
   "pp_code": "G0044",
   "name": "Ganges Avenue Off Street Carpark",
   "lot_counts": {
-   "Car Lots": 39,
-   "Motorcycle Lots": 10
+   "Motorcycle Lots": 10,
+   "Car Lots": 39
   },
   "total_lots": 49,
   "lat": 1.2916897,
@@ -3017,8 +3017,8 @@
   "pp_code": "H0003",
   "name": "Hamilton Road Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 4,
-   "Car Lots": 22
+   "Car Lots": 22,
+   "Motorcycle Lots": 4
   },
   "total_lots": 26,
   "lat": 1.3116365,
@@ -3072,8 +3072,8 @@
   "name": "Hong Kong Street",
   "lot_counts": {
    "Car Lots": 30,
-   "Motorcycle Lots": 3,
-   "Lorry Lots": 5
+   "Lorry Lots": 5,
+   "Motorcycle Lots": 3
   },
   "total_lots": 38,
   "lat": 1.2874386,
@@ -3191,12 +3191,12 @@
   "pp_code": "H0052",
   "name": "Harrison Road",
   "lot_counts": {
-   "Car Lots": 3
+   "Car Lots": 4
   },
-  "total_lots": 3,
-  "lat": 1.335664,
-  "lon": 103.8849174,
-  "car_lots": 3
+  "total_lots": 4,
+  "lat": 1.3358396,
+  "lon": 103.8850114,
+  "car_lots": 4
  },
  {
   "id": "ura_H0055",
@@ -3204,13 +3204,13 @@
   "pp_code": "H0055",
   "name": "Havelock Road",
   "lot_counts": {
-   "Car Lots": 28,
+   "Car Lots": 22,
    "Motorcycle Lots": 5
   },
-  "total_lots": 33,
-  "lat": 1.2894178,
-  "lon": 103.8319884,
-  "car_lots": 28
+  "total_lots": 27,
+  "lat": 1.2895185,
+  "lon": 103.8326975,
+  "car_lots": 22
  },
  {
   "id": "ura_H0057",
@@ -3244,12 +3244,12 @@
   "pp_code": "H0064",
   "name": "Holland Road / Peirce Road Coach Park",
   "lot_counts": {
-   "Lorry Lots": 80,
-   "Motorcycle Lots": 20
+   "Motorcycle Lots": 20,
+   "Coach Lots": 76
   },
-  "total_lots": 100,
-  "lat": 1.3072251,
-  "lon": 103.809688,
+  "total_lots": 96,
+  "lat": 1.3072075,
+  "lon": 103.8096627,
   "car_lots": 0
  },
  {
@@ -3271,8 +3271,8 @@
   "pp_code": "I0006",
   "name": "Irving Place",
   "lot_counts": {
-   "Motorcycle Lots": 10,
-   "Car Lots": 11
+   "Car Lots": 11,
+   "Motorcycle Lots": 10
   },
   "total_lots": 21,
   "lat": 1.3360629,
@@ -3298,8 +3298,8 @@
   "pp_code": "J0003",
   "name": "Jalan Besar",
   "lot_counts": {
-   "Motorcycle Lots": 14,
-   "Car Lots": 35
+   "Car Lots": 35,
+   "Motorcycle Lots": 14
   },
   "total_lots": 49,
   "lat": 1.3121648,
@@ -3312,8 +3312,8 @@
   "pp_code": "J0005",
   "name": "Jalan Mata Ayer",
   "lot_counts": {
-   "Car Lots": 14,
-   "Motorcycle Lots": 7
+   "Motorcycle Lots": 7,
+   "Car Lots": 14
   },
   "total_lots": 21,
   "lat": 1.4258359,
@@ -3353,8 +3353,8 @@
   "pp_code": "J0009",
   "name": "Jalan Kubor (north Bridge Road / Victoria Street)",
   "lot_counts": {
-   "Motorcycle Lots": 4,
-   "Car Lots": 15
+   "Car Lots": 15,
+   "Motorcycle Lots": 4
   },
   "total_lots": 19,
   "lat": 1.3037801,
@@ -3474,8 +3474,8 @@
   "pp_code": "J0027",
   "name": "Joo Koon Circle",
   "lot_counts": {
-   "Trailer Lots": 57,
-   "Car Lots": 33
+   "Car Lots": 33,
+   "Trailer Lots": 57
   },
   "total_lots": 90,
   "lat": 1.3247855,
@@ -3540,8 +3540,8 @@
   "pp_code": "J0035",
   "name": "Jalan Tampang",
   "lot_counts": {
-   "Car Lots": 19,
-   "Motorcycle Lots": 17
+   "Motorcycle Lots": 17,
+   "Car Lots": 19
   },
   "total_lots": 36,
   "lat": 1.4418761,
@@ -3697,8 +3697,8 @@
   "pp_code": "J0051",
   "name": "Jalan Mas Puteh",
   "lot_counts": {
-   "Car Lots": 20,
-   "Motorcycle Lots": 15
+   "Motorcycle Lots": 15,
+   "Car Lots": 20
   },
   "total_lots": 35,
   "lat": 1.3082897,
@@ -3711,8 +3711,8 @@
   "pp_code": "J0054",
   "name": "Jalan Besar / Beatty Road Off Street",
   "lot_counts": {
-   "Car Lots": 37,
-   "Motorcycle Lots": 10
+   "Motorcycle Lots": 10,
+   "Car Lots": 37
   },
   "total_lots": 47,
   "lat": 1.3134643,
@@ -3766,12 +3766,12 @@
   "pp_code": "J0058",
   "name": "Jalan Kemaman",
   "lot_counts": {
-   "Car Lots": 13
+   "Car Lots": 11
   },
-  "total_lots": 13,
-  "lat": 1.3268602,
-  "lon": 103.8507387,
-  "car_lots": 13
+  "total_lots": 11,
+  "lat": 1.3269314,
+  "lon": 103.8507982,
+  "car_lots": 11
  },
  {
   "id": "ura_J0059",
@@ -3857,8 +3857,8 @@
   "pp_code": "J0080",
   "name": "Jalan Masjid",
   "lot_counts": {
-   "Car Lots": 20,
-   "Motorcycle Lots": 5
+   "Motorcycle Lots": 5,
+   "Car Lots": 20
   },
   "total_lots": 25,
   "lat": 1.3197668,
@@ -3939,14 +3939,14 @@
   "pp_code": "J0097",
   "name": "Jalan Kubor (victoria Street / Rochor Canal Road)",
   "lot_counts": {
-   "Car Lots": 29,
-   "Lorry Lots": 1,
-   "Coach Lots": 3
+   "Car Lots": 19,
+   "Coach Lots": 6,
+   "Lorry Lots": 1
   },
-  "total_lots": 33,
-  "lat": 1.3048886,
-  "lon": 103.8587641,
-  "car_lots": 29
+  "total_lots": 26,
+  "lat": 1.3048768,
+  "lon": 103.8587556,
+  "car_lots": 19
  },
  {
   "id": "ura_J0098",
@@ -3967,12 +3967,12 @@
   "pp_code": "J0099",
   "name": "Jalan Bahar Heavy Vehicle Park",
   "lot_counts": {
-   "Motorcycle Lots": 40,
-   "Lorry Lots": 360
+   "Lorry Lots": 360,
+   "Motorcycle Lots": 42
   },
-  "total_lots": 400,
-  "lat": 1.3479515,
-  "lon": 103.7025307,
+  "total_lots": 402,
+  "lat": 1.3479535,
+  "lon": 103.7025345,
   "car_lots": 0
  },
  {
@@ -3981,8 +3981,8 @@
   "pp_code": "J0100",
   "name": "Jalan Pelepah Off Street",
   "lot_counts": {
-   "Car Lots": 54,
-   "Motorcycle Lots": 8
+   "Motorcycle Lots": 8,
+   "Car Lots": 54
   },
   "total_lots": 62,
   "lat": 1.274035,
@@ -4009,13 +4009,13 @@
   "pp_code": "J0104",
   "name": "Joo Chiat Place",
   "lot_counts": {
-   "Car Lots": 49,
+   "Car Lots": 48,
    "Motorcycle Lots": 3
   },
-  "total_lots": 52,
-  "lat": 1.3136726,
-  "lon": 103.9027458,
-  "car_lots": 49
+  "total_lots": 51,
+  "lat": 1.3136736,
+  "lon": 103.9027536,
+  "car_lots": 48
  },
  {
   "id": "ura_J0106",
@@ -4062,8 +4062,8 @@
   "pp_code": "J0112",
   "name": "Jalan Gelenggang",
   "lot_counts": {
-   "Car Lots": 9,
-   "Motorcycle Lots": 4
+   "Motorcycle Lots": 4,
+   "Car Lots": 9
   },
   "total_lots": 13,
   "lat": 1.3732531,
@@ -4076,8 +4076,8 @@
   "pp_code": "J0117",
   "name": "Jalan Busut",
   "lot_counts": {
-   "Car Lots": 12,
-   "Trailer Lots": 6
+   "Trailer Lots": 6,
+   "Car Lots": 12
   },
   "total_lots": 18,
   "lat": 1.3171312,
@@ -4090,8 +4090,8 @@
   "pp_code": "J0122",
   "name": "Jalan Kayu Off Street",
   "lot_counts": {
-   "Car Lots": 207,
-   "Motorcycle Lots": 30
+   "Motorcycle Lots": 30,
+   "Car Lots": 207
   },
   "total_lots": 237,
   "lat": 1.3989882,
@@ -4139,6 +4139,19 @@
   "car_lots": 43
  },
  {
+  "id": "ura_JOO97",
+  "source": "ura",
+  "pp_code": "JOO97",
+  "name": "",
+  "lot_counts": {
+   "Coach Lots": 1
+  },
+  "total_lots": 1,
+  "lat": 1.3049648,
+  "lon": 103.8587769,
+  "car_lots": 0
+ },
+ {
   "id": "ura_K0004",
   "source": "ura",
   "pp_code": "K0004",
@@ -4171,9 +4184,9 @@
   "pp_code": "K0006",
   "name": "Kaki Bukit Road 1",
   "lot_counts": {
-   "Car Lots": 15,
+   "Motorcycle Lots": 10,
    "Lorry Lots": 11,
-   "Motorcycle Lots": 10
+   "Car Lots": 15
   },
   "total_lots": 36,
   "lat": 1.334475,
@@ -4200,8 +4213,8 @@
   "pp_code": "K0009",
   "name": "Kerbau Road",
   "lot_counts": {
-   "Car Lots": 11,
-   "Motorcycle Lots": 3
+   "Motorcycle Lots": 3,
+   "Car Lots": 11
   },
   "total_lots": 14,
   "lat": 1.3071645,
@@ -4279,8 +4292,8 @@
   "pp_code": "K0027",
   "name": "Kampong Kapor Road",
   "lot_counts": {
-   "Car Lots": 34,
-   "Motorcycle Lots": 16
+   "Motorcycle Lots": 16,
+   "Car Lots": 34
   },
   "total_lots": 50,
   "lat": 1.3080598,
@@ -4293,8 +4306,8 @@
   "pp_code": "K0032",
   "name": "Kensington Park Road Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 25,
-   "Car Lots": 30
+   "Car Lots": 30,
+   "Motorcycle Lots": 25
   },
   "total_lots": 55,
   "lat": 1.3659353,
@@ -4321,8 +4334,8 @@
   "pp_code": "K0037",
   "name": "King George's Ave Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 4,
-   "Car Lots": 22
+   "Car Lots": 22,
+   "Motorcycle Lots": 4
   },
   "total_lots": 26,
   "lat": 1.3102536,
@@ -4335,8 +4348,8 @@
   "pp_code": "K0039",
   "name": "King George's Avenue / Horne Road Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 12,
-   "Car Lots": 61
+   "Car Lots": 61,
+   "Motorcycle Lots": 12
   },
   "total_lots": 73,
   "lat": 1.3099478,
@@ -4468,8 +4481,8 @@
   "pp_code": "K0081",
   "name": "Kim Chuan Road",
   "lot_counts": {
-   "Motorcycle Lots": 5,
-   "Car Lots": 25
+   "Car Lots": 25,
+   "Motorcycle Lots": 5
   },
   "total_lots": 30,
   "lat": 1.3409647,
@@ -4482,8 +4495,8 @@
   "pp_code": "K0082",
   "name": "Kampong Bugis Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 10,
-   "Car Lots": 29
+   "Car Lots": 29,
+   "Motorcycle Lots": 10
   },
   "total_lots": 39,
   "lat": 1.3061159,
@@ -4523,12 +4536,12 @@
   "name": "Kampong Java Road",
   "lot_counts": {
    "Motorcycle Lots": 3,
-   "Car Lots": 31
+   "Car Lots": 30
   },
-  "total_lots": 34,
-  "lat": 1.3132248,
-  "lon": 103.8416623,
-  "car_lots": 31
+  "total_lots": 33,
+  "lat": 1.3132211,
+  "lon": 103.8416322,
+  "car_lots": 30
  },
  {
   "id": "ura_K0094",
@@ -4562,8 +4575,8 @@
   "pp_code": "K0099",
   "name": "Kampong Eunos",
   "lot_counts": {
-   "Car Lots": 4,
-   "Motorcycle Lots": 5
+   "Motorcycle Lots": 5,
+   "Car Lots": 4
   },
   "total_lots": 9,
   "lat": 1.3181793,
@@ -4630,8 +4643,8 @@
   "pp_code": "K0114",
   "name": "Kampong Bugis",
   "lot_counts": {
-   "Lorry Lots": 3,
    "Car Lots": 16,
+   "Coach Lots": 3,
    "Motorcycle Lots": 5
   },
   "total_lots": 24,
@@ -4645,8 +4658,8 @@
   "pp_code": "K0115",
   "name": "Kaki Bukit Place",
   "lot_counts": {
-   "Motorcycle Lots": 10,
-   "Car Lots": 14
+   "Car Lots": 14,
+   "Motorcycle Lots": 10
   },
   "total_lots": 24,
   "lat": 1.3349,
@@ -4673,8 +4686,8 @@
   "pp_code": "K0121",
   "name": "Kampong Kapor Road Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 12,
-   "Car Lots": 57
+   "Car Lots": 57,
+   "Motorcycle Lots": 12
   },
   "total_lots": 69,
   "lat": 1.3065591,
@@ -4755,8 +4768,8 @@
   "pp_code": "L0009",
   "name": "Lorong Telok",
   "lot_counts": {
-   "Motorcycle Lots": 12,
-   "Car Lots": 21
+   "Car Lots": 21,
+   "Motorcycle Lots": 12
   },
   "total_lots": 33,
   "lat": 1.286689,
@@ -4850,8 +4863,8 @@
   "pp_code": "L0019",
   "name": "Lorong 12 Geylang",
   "lot_counts": {
-   "Motorcycle Lots": 7,
-   "Car Lots": 19
+   "Car Lots": 19,
+   "Motorcycle Lots": 7
   },
   "total_lots": 26,
   "lat": 1.3107477,
@@ -4864,8 +4877,8 @@
   "pp_code": "L0020",
   "name": "Lorong 13 Geylang",
   "lot_counts": {
-   "Motorcycle Lots": 1,
-   "Car Lots": 20
+   "Car Lots": 20,
+   "Motorcycle Lots": 1
   },
   "total_lots": 21,
   "lat": 1.3131023,
@@ -4878,8 +4891,8 @@
   "pp_code": "L0021",
   "name": "Lorong 14 Geylang",
   "lot_counts": {
-   "Motorcycle Lots": 8,
-   "Car Lots": 44
+   "Car Lots": 44,
+   "Motorcycle Lots": 8
   },
   "total_lots": 52,
   "lat": 1.3111194,
@@ -4976,7 +4989,7 @@
   },
   "total_lots": 31,
   "lat": 1.3140902,
-  "lon": 103.8799848,
+  "lon": 103.8799845,
   "car_lots": 24
  },
  {
@@ -5039,8 +5052,8 @@
   "pp_code": "L0033",
   "name": "Lorong 24 Geylang",
   "lot_counts": {
-   "Motorcycle Lots": 5,
-   "Car Lots": 19
+   "Car Lots": 19,
+   "Motorcycle Lots": 5
   },
   "total_lots": 24,
   "lat": 1.3120052,
@@ -5081,8 +5094,8 @@
   "pp_code": "L0036",
   "name": "Lorong 25a Geylang",
   "lot_counts": {
-   "Motorcycle Lots": 9,
-   "Car Lots": 29
+   "Car Lots": 29,
+   "Motorcycle Lots": 9
   },
   "total_lots": 38,
   "lat": 1.3146551,
@@ -5123,8 +5136,8 @@
   "pp_code": "L0039",
   "name": "Lorong 27a  Geylang",
   "lot_counts": {
-   "Car Lots": 18,
-   "Motorcycle Lots": 4
+   "Motorcycle Lots": 4,
+   "Car Lots": 18
   },
   "total_lots": 22,
   "lat": 1.3144794,
@@ -5165,8 +5178,8 @@
   "pp_code": "L0042",
   "name": "Lorong 30 Geylang",
   "lot_counts": {
-   "Motorcycle Lots": 7,
-   "Car Lots": 17
+   "Car Lots": 17,
+   "Motorcycle Lots": 7
   },
   "total_lots": 24,
   "lat": 1.3128985,
@@ -5193,8 +5206,8 @@
   "pp_code": "L0044",
   "name": "Lorong 32 Geylang",
   "lot_counts": {
-   "Car Lots": 20,
-   "Motorcycle Lots": 3
+   "Motorcycle Lots": 3,
+   "Car Lots": 20
   },
   "total_lots": 23,
   "lat": 1.3126106,
@@ -5220,8 +5233,8 @@
   "pp_code": "L0046",
   "name": "Lorong 34 Geylang",
   "lot_counts": {
-   "Car Lots": 22,
-   "Motorcycle Lots": 5
+   "Motorcycle Lots": 5,
+   "Car Lots": 22
   },
   "total_lots": 27,
   "lat": 1.31296,
@@ -5234,8 +5247,8 @@
   "pp_code": "L0047",
   "name": "Lorong 35 Geylang",
   "lot_counts": {
-   "Motorcycle Lots": 3,
-   "Car Lots": 13
+   "Car Lots": 13,
+   "Motorcycle Lots": 3
   },
   "total_lots": 16,
   "lat": 1.3152642,
@@ -5261,8 +5274,8 @@
   "pp_code": "L0049",
   "name": "Lorong 37 Geylang",
   "lot_counts": {
-   "Motorcycle Lots": 3,
-   "Car Lots": 14
+   "Car Lots": 14,
+   "Motorcycle Lots": 3
   },
   "total_lots": 17,
   "lat": 1.3154988,
@@ -5368,8 +5381,8 @@
   "pp_code": "L0060",
   "name": "Lorong Bakar Batu",
   "lot_counts": {
-   "Motorcycle Lots": 5,
-   "Car Lots": 50
+   "Car Lots": 50,
+   "Motorcycle Lots": 5
   },
   "total_lots": 55,
   "lat": 1.3267966,
@@ -5528,8 +5541,8 @@
   "name": "Loyang Way",
   "lot_counts": {
    "Car Lots": 37,
-   "Trailer Lots": 9,
-   "Motorcycle Lots": 17
+   "Motorcycle Lots": 17,
+   "Trailer Lots": 9
   },
   "total_lots": 63,
   "lat": 1.3825511,
@@ -5542,8 +5555,8 @@
   "pp_code": "L0086",
   "name": "Loyang Close Hvp",
   "lot_counts": {
-   "Lorry Lots": 61,
-   "Motorcycle Lots": 46
+   "Motorcycle Lots": 46,
+   "Lorry Lots": 61
   },
   "total_lots": 107,
   "lat": 1.3693354,
@@ -5569,8 +5582,8 @@
   "pp_code": "L0088",
   "name": "Loyang Drive",
   "lot_counts": {
-   "Motorcycle Lots": 31,
    "Car Lots": 26,
+   "Motorcycle Lots": 31,
    "Lorry Lots": 7
   },
   "total_lots": 64,
@@ -5611,8 +5624,8 @@
   "pp_code": "L0096",
   "name": "Lorong 101 Changi",
   "lot_counts": {
-   "Motorcycle Lots": 2,
-   "Car Lots": 17
+   "Car Lots": 17,
+   "Motorcycle Lots": 2
   },
   "total_lots": 19,
   "lat": 1.3152965,
@@ -5784,8 +5797,8 @@
   "pp_code": "L0115",
   "name": "Lorong 1 Geylang Road Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 6,
-   "Car Lots": 66
+   "Car Lots": 66,
+   "Motorcycle Lots": 6
   },
   "total_lots": 72,
   "lat": 1.3105731,
@@ -5851,8 +5864,8 @@
   "pp_code": "L0123",
   "name": "Lorong 9-11 Geylang (eps)",
   "lot_counts": {
-   "Car Lots": 56,
-   "Motorcycle Lots": 9
+   "Motorcycle Lots": 9,
+   "Car Lots": 56
   },
   "total_lots": 65,
   "lat": 1.3132751,
@@ -5920,8 +5933,8 @@
   "pp_code": "M0005",
   "name": "Mayo Street",
   "lot_counts": {
-   "Motorcycle Lots": 4,
-   "Car Lots": 35
+   "Car Lots": 35,
+   "Motorcycle Lots": 4
   },
   "total_lots": 39,
   "lat": 1.3041286,
@@ -5961,7 +5974,7 @@
   "name": "Mosque Street",
   "lot_counts": {
    "Car Lots": 61,
-   "Lorry Lots": 5,
+   "Coach Lots": 5,
    "Motorcycle Lots": 4
   },
   "total_lots": 70,
@@ -5977,7 +5990,7 @@
   "lot_counts": {
    "Car Lots": 72,
    "Motorcycle Lots": 29,
-   "Lorry Lots": 1
+   "Coach Lots": 1
   },
   "total_lots": 102,
   "lat": 1.2925958,
@@ -6031,8 +6044,8 @@
   "pp_code": "M0032",
   "name": "Marsiling Crescent",
   "lot_counts": {
-   "Motorcycle Lots": 14,
-   "Lorry Lots": 29
+   "Lorry Lots": 29,
+   "Motorcycle Lots": 14
   },
   "total_lots": 43,
   "lat": 1.4482097,
@@ -6125,8 +6138,8 @@
   "pp_code": "M0050",
   "name": "Mnd Complex (surface)",
   "lot_counts": {
-   "Motorcycle Lots": 77,
-   "Car Lots": 104
+   "Car Lots": 104,
+   "Motorcycle Lots": 77
   },
   "total_lots": 181,
   "lat": 1.2797462,
@@ -6166,9 +6179,9 @@
   "pp_code": "M0059",
   "name": "Mackenzie Road B Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 33,
    "Lorry Lots": 76,
-   "Car Lots": 82
+   "Car Lots": 82,
+   "Motorcycle Lots": 33
   },
   "total_lots": 191,
   "lat": 1.3059893,
@@ -6261,12 +6274,12 @@
   "pp_code": "M0079",
   "name": "Marsiling Crescent  Heavy Vehicle Park",
   "lot_counts": {
-   "Motorcycle Lots": 170,
-   "Lorry Lots": 593
+   "Motorcycle Lots": 84,
+   "Lorry Lots": 647
   },
-  "total_lots": 763,
-  "lat": 1.4475027,
-  "lon": 103.7766549,
+  "total_lots": 731,
+  "lat": 1.4474723,
+  "lon": 103.7766552,
   "car_lots": 0
  },
  {
@@ -6275,8 +6288,8 @@
   "pp_code": "M0080",
   "name": "Marshall Road",
   "lot_counts": {
-   "Car Lots": 37,
-   "Motorcycle Lots": 7
+   "Motorcycle Lots": 7,
+   "Car Lots": 37
   },
   "total_lots": 44,
   "lat": 1.3052236,
@@ -6303,8 +6316,8 @@
   "pp_code": "M0085",
   "name": "Martin Place / Muthuraman Chetty Road",
   "lot_counts": {
-   "Motorcycle Lots": 5,
-   "Car Lots": 19
+   "Car Lots": 19,
+   "Motorcycle Lots": 5
   },
   "total_lots": 24,
   "lat": 1.2929421,
@@ -6317,8 +6330,8 @@
   "pp_code": "M0088",
   "name": "Margaret Drive Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 13,
-   "Car Lots": 28
+   "Car Lots": 28,
+   "Motorcycle Lots": 13
   },
   "total_lots": 41,
   "lat": 1.3004157,
@@ -6331,13 +6344,12 @@
   "pp_code": "N0003",
   "name": "North Bridge Road (arab Street / Jalan Sultan)",
   "lot_counts": {
-   "Car Lots": 32,
-   "Motorcycle Lots": 4
+   "Car Lots": 31
   },
-  "total_lots": 36,
-  "lat": 1.3034009,
-  "lon": 103.8595208,
-  "car_lots": 32
+  "total_lots": 31,
+  "lat": 1.3034412,
+  "lon": 103.8595835,
+  "car_lots": 31
  },
  {
   "id": "ura_N0005",
@@ -6371,8 +6383,8 @@
   "pp_code": "N0010",
   "name": "Niven Road",
   "lot_counts": {
-   "Motorcycle Lots": 5,
-   "Car Lots": 15
+   "Car Lots": 15,
+   "Motorcycle Lots": 5
   },
   "total_lots": 20,
   "lat": 1.3035637,
@@ -6441,9 +6453,9 @@
   "pp_code": "N0016",
   "name": "Neythal Road",
   "lot_counts": {
-   "Motorcycle Lots": 5,
    "Car Lots": 53,
-   "Trailer Lots": 9
+   "Trailer Lots": 9,
+   "Motorcycle Lots": 5
   },
   "total_lots": 67,
   "lat": 1.3255756,
@@ -6589,8 +6601,8 @@
   "pp_code": "O0013",
   "name": "Outram Hill",
   "lot_counts": {
-   "Motorcycle Lots": 10,
-   "Car Lots": 11
+   "Car Lots": 11,
+   "Motorcycle Lots": 10
   },
   "total_lots": 21,
   "lat": 1.2848083,
@@ -6657,8 +6669,8 @@
   "pp_code": "P0002",
   "name": "Pahang Street",
   "lot_counts": {
-   "Motorcycle Lots": 3,
-   "Car Lots": 24
+   "Car Lots": 24,
+   "Motorcycle Lots": 3
   },
   "total_lots": 27,
   "lat": 1.3020156,
@@ -6671,8 +6683,8 @@
   "pp_code": "P0006",
   "name": "Peck Seah Street",
   "lot_counts": {
+   "Coach Lots": 3,
    "Motorcycle Lots": 11,
-   "Lorry Lots": 3,
    "Car Lots": 4
   },
   "total_lots": 18,
@@ -6727,8 +6739,8 @@
   "pp_code": "P0015",
   "name": "Prinsep Street",
   "lot_counts": {
-   "Motorcycle Lots": 26,
    "Car Lots": 50,
+   "Motorcycle Lots": 26,
    "Coach Lots": 1,
    "Lorry Lots": 2
   },
@@ -6743,8 +6755,8 @@
   "pp_code": "P0018",
   "name": "Purvis Street",
   "lot_counts": {
-   "Motorcycle Lots": 6,
-   "Car Lots": 43
+   "Car Lots": 43,
+   "Motorcycle Lots": 6
   },
   "total_lots": 49,
   "lat": 1.2964986,
@@ -6862,8 +6874,8 @@
   "pp_code": "P0048",
   "name": "Pearl Bank Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 12,
-   "Car Lots": 19
+   "Car Lots": 19,
+   "Motorcycle Lots": 12
   },
   "total_lots": 31,
   "lat": 1.2833779,
@@ -6902,8 +6914,8 @@
   "pp_code": "P0054",
   "name": "Pasir Panjang Rd Food Centre",
   "lot_counts": {
-   "Motorcycle Lots": 32,
-   "Car Lots": 58
+   "Car Lots": 58,
+   "Motorcycle Lots": 32
   },
   "total_lots": 90,
   "lat": 1.2761462,
@@ -7013,9 +7025,9 @@
   "name": "Pioneer Sector 2",
   "lot_counts": {
    "Car Lots": 63,
-   "Lorry Lots": 6,
    "Motorcycle Lots": 106,
-   "Trailer Lots": 12
+   "Trailer Lots": 12,
+   "Lorry Lots": 6
   },
   "total_lots": 187,
   "lat": 1.29744,
@@ -7097,8 +7109,8 @@
   "pp_code": "P0095",
   "name": "Penjuru Close",
   "lot_counts": {
-   "Car Lots": 11,
-   "Trailer Lots": 10
+   "Trailer Lots": 10,
+   "Car Lots": 11
   },
   "total_lots": 21,
   "lat": 1.3127884,
@@ -7163,8 +7175,8 @@
   "pp_code": "P0106",
   "name": "Pasir Panjang Road / Clementi Road Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 3,
-   "Car Lots": 47
+   "Car Lots": 47,
+   "Motorcycle Lots": 3
   },
   "total_lots": 50,
   "lat": 1.2916216,
@@ -7177,8 +7189,8 @@
   "pp_code": "P0109",
   "name": "Pasir Ris Park Car Park E Off Street",
   "lot_counts": {
-   "Car Lots": 26,
-   "Motorcycle Lots": 10
+   "Motorcycle Lots": 10,
+   "Car Lots": 26
   },
   "total_lots": 36,
   "lat": 1.3846325,
@@ -7218,8 +7230,8 @@
   "pp_code": "P0114",
   "name": "Pasir Laba Road Trailer Park",
   "lot_counts": {
-   "Motorcycle Lots": 65,
-   "Trailer Lots": 442
+   "Trailer Lots": 442,
+   "Motorcycle Lots": 65
   },
   "total_lots": 507,
   "lat": 1.3290532,
@@ -7232,8 +7244,8 @@
   "pp_code": "P0117",
   "name": "Peck Seah Street Off Street",
   "lot_counts": {
-   "Motorcycle Lots": 65,
-   "Car Lots": 150
+   "Car Lots": 150,
+   "Motorcycle Lots": 65
   },
   "total_lots": 215,
   "lat": 1.2777617,
@@ -7290,7 +7302,7 @@
    "Motorcycle Lots": 19
   },
   "total_lots": 110,
-  "lat": 1.2999484,
+  "lat": 1.2999485,
   "lon": 103.8533357,
   "car_lots": 91
  },
@@ -7315,7 +7327,7 @@
   "name": "Race Course Lane",
   "lot_counts": {
    "Car Lots": 6,
-   "Lorry Lots": 4
+   "Coach Lots": 4
   },
   "total_lots": 10,
   "lat": 1.3096659,
@@ -7328,8 +7340,8 @@
   "pp_code": "R0002",
   "name": "Race Course Road",
   "lot_counts": {
-   "Car Lots": 55,
-   "Motorcycle Lots": 16
+   "Motorcycle Lots": 16,
+   "Car Lots": 55
   },
   "total_lots": 71,
   "lat": 1.3145473,
@@ -7342,8 +7354,8 @@
   "pp_code": "R0003",
   "name": "Rangoon Road",
   "lot_counts": {
-   "Motorcycle Lots": 5,
-   "Car Lots": 80
+   "Car Lots": 80,
+   "Motorcycle Lots": 5
   },
   "total_lots": 85,
   "lat": 1.3160819,
@@ -7463,8 +7475,8 @@
   "pp_code": "R0040",
   "name": "Raffles Boulevard Coach Park",
   "lot_counts": {
-   "Lorry Lots": 51,
-   "Motorcycle Lots": 30
+   "Motorcycle Lots": 30,
+   "Coach Lots": 51
   },
   "total_lots": 81,
   "lat": 1.2917908,
@@ -7558,8 +7570,8 @@
   "pp_code": "S0015",
   "name": "Stanley Street",
   "lot_counts": {
-   "Car Lots": 20,
    "Motorcycle Lots": 5,
+   "Car Lots": 20,
    "Lorry Lots": 2
   },
   "total_lots": 27,
@@ -7586,8 +7598,8 @@
   "pp_code": "S0020",
   "name": "Sembawang Hills Food Centre Off Street",
   "lot_counts": {
-   "Car Lots": 18,
-   "Motorcycle Lots": 12
+   "Motorcycle Lots": 12,
+   "Car Lots": 18
   },
   "total_lots": 30,
   "lat": 1.3723368,
@@ -7680,8 +7692,8 @@
   "pp_code": "S0033",
   "name": "Service Road Off Choa Chu Kang Avenue 1",
   "lot_counts": {
-   "Car Lots": 42,
-   "Motorcycle Lots": 22
+   "Motorcycle Lots": 22,
+   "Car Lots": 42
   },
   "total_lots": 64,
   "lat": 1.3768453,
@@ -7694,8 +7706,8 @@
   "pp_code": "S0035",
   "name": "Service Road Off Queen Street (bet. Queen St / Waterloo St)",
   "lot_counts": {
-   "Car Lots": 3,
-   "Coach Lots": 3
+   "Coach Lots": 3,
+   "Car Lots": 3
   },
   "total_lots": 6,
   "lat": 1.2990436,
@@ -7747,8 +7759,8 @@
   "pp_code": "S0044",
   "name": "Seletar North Link",
   "lot_counts": {
-   "Lorry Lots": 20,
-   "Motorcycle Lots": 9
+   "Motorcycle Lots": 9,
+   "Lorry Lots": 20
   },
   "total_lots": 29,
   "lat": 1.4214494,
@@ -7907,8 +7919,8 @@
   "pp_code": "S0066",
   "name": "Somme Road",
   "lot_counts": {
-   "Car Lots": 13,
-   "Motorcycle Lots": 4
+   "Motorcycle Lots": 4,
+   "Car Lots": 13
   },
   "total_lots": 17,
   "lat": 1.3113108,
@@ -7941,21 +7953,6 @@
   "lat": 1.3585326,
   "lon": 103.8372395,
   "car_lots": 22
- },
- {
-  "id": "ura_S0075",
-  "source": "ura",
-  "pp_code": "S0075",
-  "name": "Science Centre Road",
-  "lot_counts": {
-   "Car Lots": 34,
-   "Motorcycle Lots": 15,
-   "Lorry Lots": 24
-  },
-  "total_lots": 73,
-  "lat": 1.3306636,
-  "lon": 103.7379067,
-  "car_lots": 34
  },
  {
   "id": "ura_S0076",
@@ -8029,8 +8026,8 @@
   "pp_code": "S0084",
   "name": "Sungei Kadut Drive",
   "lot_counts": {
-   "Car Lots": 38,
-   "Trailer Lots": 74
+   "Trailer Lots": 74,
+   "Car Lots": 38
   },
   "total_lots": 112,
   "lat": 1.4198149,
@@ -8057,8 +8054,8 @@
   "pp_code": "S0086",
   "name": "Sungei Kadut Street 1",
   "lot_counts": {
-   "Car Lots": 59,
-   "Lorry Lots": 9
+   "Lorry Lots": 9,
+   "Car Lots": 59
   },
   "total_lots": 68,
   "lat": 1.4237874,
@@ -8111,9 +8108,9 @@
   "pp_code": "S0091",
   "name": "Senoko Road",
   "lot_counts": {
+   "Trailer Lots": 6,
    "Car Lots": 24,
-   "Lorry Lots": 8,
-   "Trailer Lots": 6
+   "Lorry Lots": 8
   },
   "total_lots": 38,
   "lat": 1.4646721,
@@ -8127,8 +8124,8 @@
   "name": "Senoko South Road",
   "lot_counts": {
    "Trailer Lots": 14,
-   "Motorcycle Lots": 6,
-   "Car Lots": 26
+   "Car Lots": 26,
+   "Motorcycle Lots": 6
   },
   "total_lots": 46,
   "lat": 1.4562105,
@@ -8155,8 +8152,8 @@
   "pp_code": "S0096",
   "name": "Senoko Drive",
   "lot_counts": {
-   "Car Lots": 39,
-   "Trailer Lots": 7
+   "Trailer Lots": 7,
+   "Car Lots": 39
   },
   "total_lots": 46,
   "lat": 1.4636866,
@@ -8169,8 +8166,8 @@
   "pp_code": "S0097",
   "name": "Senoko Avenue",
   "lot_counts": {
-   "Car Lots": 24,
-   "Motorcycle Lots": 4
+   "Motorcycle Lots": 4,
+   "Car Lots": 24
   },
   "total_lots": 28,
   "lat": 1.4682036,
@@ -8223,8 +8220,8 @@
   "pp_code": "S0105",
   "name": "Sungei Kadut Way",
   "lot_counts": {
-   "Trailer Lots": 7,
-   "Car Lots": 56
+   "Car Lots": 56,
+   "Trailer Lots": 7
   },
   "total_lots": 63,
   "lat": 1.4070078,
@@ -8265,8 +8262,8 @@
   "pp_code": "S0109",
   "name": "Sin Ming Road Heavy Vehicle Park",
   "lot_counts": {
-   "Lorry Lots": 82,
    "Car Lots": 69,
+   "Lorry Lots": 82,
    "Motorcycle Lots": 17
   },
   "total_lots": 168,
@@ -8280,8 +8277,8 @@
   "pp_code": "S0110",
   "name": "Service Road Off Onan Road",
   "lot_counts": {
-   "Car Lots": 2,
-   "Motorcycle Lots": 10
+   "Motorcycle Lots": 10,
+   "Car Lots": 2
   },
   "total_lots": 12,
   "lat": 1.3144929,
@@ -8294,8 +8291,8 @@
   "pp_code": "S0111",
   "name": "Stagmont Ring Heavy Vehicle Park",
   "lot_counts": {
-   "Motorcycle Lots": 37,
-   "Lorry Lots": 188
+   "Lorry Lots": 188,
+   "Motorcycle Lots": 37
   },
   "total_lots": 225,
   "lat": 1.3926969,
@@ -8310,7 +8307,7 @@
   "lot_counts": {
    "Car Lots": 434,
    "Motorcycle Lots": 366,
-   "Lorry Lots": 21
+   "Coach Lots": 21
   },
   "total_lots": 821,
   "lat": 1.2678829,
@@ -8467,8 +8464,8 @@
   "pp_code": "S0136",
   "name": "Service Road Off Zion Road",
   "lot_counts": {
-   "Car Lots": 21,
-   "Motorcycle Lots": 10
+   "Motorcycle Lots": 10,
+   "Car Lots": 21
   },
   "total_lots": 31,
   "lat": 1.2936143,
@@ -8481,8 +8478,8 @@
   "pp_code": "S0139",
   "name": "Service Road Off Upper Bukit Timah Road",
   "lot_counts": {
-   "Motorcycle Lots": 13,
    "Car Lots": 27,
+   "Motorcycle Lots": 13,
    "Lorry Lots": 3
   },
   "total_lots": 43,
@@ -8578,8 +8575,8 @@
   "pp_code": "S0151",
   "name": "Sembawang Drive Heavy Vehicle Park",
   "lot_counts": {
-   "Motorcycle Lots": 49,
-   "Lorry Lots": 127
+   "Lorry Lots": 127,
+   "Motorcycle Lots": 49
   },
   "total_lots": 176,
   "lat": 1.4609809,
@@ -8631,8 +8628,8 @@
   "pp_code": "S0158",
   "name": "Service Road Off Macpherson Road",
   "lot_counts": {
-   "Motorcycle Lots": 22,
-   "Car Lots": 23
+   "Car Lots": 23,
+   "Motorcycle Lots": 22
   },
   "total_lots": 45,
   "lat": 1.3296033,
@@ -8684,8 +8681,8 @@
   "pp_code": "S0164",
   "name": "Seletar Aerospace View",
   "lot_counts": {
-   "Car Lots": 31,
-   "Motorcycle Lots": 13
+   "Motorcycle Lots": 13,
+   "Car Lots": 31
   },
   "total_lots": 44,
   "lat": 1.4119106,
@@ -8712,8 +8709,8 @@
   "pp_code": "S0167",
   "name": "Service Road Off Jalan Selaseh",
   "lot_counts": {
-   "Motorcycle Lots": 5,
-   "Car Lots": 29
+   "Car Lots": 29,
+   "Motorcycle Lots": 5
   },
   "total_lots": 34,
   "lat": 1.3856743,
@@ -8807,8 +8804,8 @@
   "pp_code": "T0003",
   "name": "Tank Road",
   "lot_counts": {
-   "Car Lots": 18,
-   "Motorcycle Lots": 12
+   "Motorcycle Lots": 12,
+   "Car Lots": 18
   },
   "total_lots": 30,
   "lat": 1.2945117,
@@ -8835,9 +8832,9 @@
   "pp_code": "T0008",
   "name": "Telok Ayer Street",
   "lot_counts": {
-   "Car Lots": 49,
    "Motorcycle Lots": 58,
-   "Lorry Lots": 3
+   "Car Lots": 49,
+   "Coach Lots": 3
   },
   "total_lots": 110,
   "lat": 1.2802913,
@@ -8932,8 +8929,8 @@
   "pp_code": "T0021",
   "name": "Tyrwhitt Road",
   "lot_counts": {
-   "Car Lots": 35,
-   "Motorcycle Lots": 7
+   "Motorcycle Lots": 7,
+   "Car Lots": 35
   },
   "total_lots": 42,
   "lat": 1.3110688,
@@ -8959,8 +8956,8 @@
   "pp_code": "T0025",
   "name": "Tai Thong Crescent",
   "lot_counts": {
-   "Motorcycle Lots": 10,
-   "Car Lots": 12
+   "Car Lots": 12,
+   "Motorcycle Lots": 10
   },
   "total_lots": 22,
   "lat": 1.3289038,
@@ -8999,8 +8996,8 @@
   "pp_code": "T0039",
   "name": "Tannery Lane",
   "lot_counts": {
-   "Motorcycle Lots": 5,
-   "Car Lots": 36
+   "Car Lots": 36,
+   "Motorcycle Lots": 5
   },
   "total_lots": 41,
   "lat": 1.3274255,
@@ -9039,8 +9036,8 @@
   "pp_code": "T0057",
   "name": "Tessensohn Road",
   "lot_counts": {
-   "Car Lots": 43,
-   "Motorcycle Lots": 10
+   "Motorcycle Lots": 10,
+   "Car Lots": 43
   },
   "total_lots": 53,
   "lat": 1.3146308,
@@ -9079,8 +9076,8 @@
   "pp_code": "T0062",
   "name": "Tai Seng Drive",
   "lot_counts": {
-   "Car Lots": 8,
-   "Motorcycle Lots": 6
+   "Motorcycle Lots": 6,
+   "Car Lots": 8
   },
   "total_lots": 14,
   "lat": 1.3378831,
@@ -9123,8 +9120,8 @@
   "pp_code": "T0067",
   "name": "Tagore Lane",
   "lot_counts": {
-   "Trailer Lots": 4,
    "Car Lots": 126,
+   "Trailer Lots": 4,
    "Motorcycle Lots": 12
   },
   "total_lots": 142,
@@ -9138,14 +9135,14 @@
   "pp_code": "T0068",
   "name": "Tagore Drive",
   "lot_counts": {
-   "Trailer Lots": 12,
-   "Lorry Lots": 8,
-   "Car Lots": 32
+   "Car Lots": 41,
+   "Crane Lots": 5,
+   "Trailer Lots": 12
   },
-  "total_lots": 52,
-  "lat": 1.3876308,
-  "lon": 103.8268289,
-  "car_lots": 32
+  "total_lots": 58,
+  "lat": 1.3876026,
+  "lon": 103.8268006,
+  "car_lots": 41
  },
  {
   "id": "ura_T0070",
@@ -9166,9 +9163,9 @@
   "pp_code": "T0074",
   "name": "Tampines Industrial Avenue 3",
   "lot_counts": {
-   "Motorcycle Lots": 24,
    "Car Lots": 16,
-   "Trailer Lots": 8
+   "Trailer Lots": 8,
+   "Motorcycle Lots": 24
   },
   "total_lots": 48,
   "lat": 1.3588369,
@@ -9181,8 +9178,8 @@
   "pp_code": "T0076",
   "name": "Tuas Avenue 1",
   "lot_counts": {
-   "Car Lots": 10,
-   "Trailer Lots": 14
+   "Trailer Lots": 14,
+   "Car Lots": 10
   },
   "total_lots": 24,
   "lat": 1.3269805,
@@ -9381,8 +9378,8 @@
   "pp_code": "T0096",
   "name": "Tuas West Avenue",
   "lot_counts": {
-   "Trailer Lots": 30,
-   "Car Lots": 43
+   "Car Lots": 43,
+   "Trailer Lots": 30
   },
   "total_lots": 73,
   "lat": 1.3327039,
@@ -9409,12 +9406,12 @@
   "name": "Tuas Road",
   "lot_counts": {
    "Car Lots": 25,
-   "Trailer Lots": 24,
+   "Trailer Lots": 20,
    "Motorcycle Lots": 32
   },
-  "total_lots": 81,
-  "lat": 1.3086467,
-  "lon": 103.6504879,
+  "total_lots": 77,
+  "lat": 1.3084969,
+  "lon": 103.6503582,
   "car_lots": 25
  },
  {
@@ -9438,8 +9435,8 @@
   "name": "Tai Seng Avenue",
   "lot_counts": {
    "Car Lots": 75,
-   "Lorry Lots": 14,
-   "Motorcycle Lots": 10
+   "Motorcycle Lots": 10,
+   "Lorry Lots": 14
   },
   "total_lots": 99,
   "lat": 1.3383458,
@@ -9480,8 +9477,8 @@
   "pp_code": "T0111",
   "name": "Tuas Link 2",
   "lot_counts": {
-   "Car Lots": 11,
-   "Trailer Lots": 4
+   "Trailer Lots": 4,
+   "Car Lots": 11
   },
   "total_lots": 15,
   "lat": 1.3364924,
@@ -9494,8 +9491,8 @@
   "pp_code": "T0113",
   "name": "Tuas Link 4",
   "lot_counts": {
-   "Car Lots": 9,
-   "Trailer Lots": 10
+   "Trailer Lots": 10,
+   "Car Lots": 9
   },
   "total_lots": 19,
   "lat": 1.3367435,
@@ -9508,12 +9505,12 @@
   "pp_code": "T0114",
   "name": "Tembeling Road",
   "lot_counts": {
-   "Car Lots": 56
+   "Car Lots": 57
   },
-  "total_lots": 56,
-  "lat": 1.3104179,
-  "lon": 103.9029177,
-  "car_lots": 56
+  "total_lots": 57,
+  "lat": 1.3104601,
+  "lon": 103.9028878,
+  "car_lots": 57
  },
  {
   "id": "ura_T0115",
@@ -9535,8 +9532,8 @@
   "pp_code": "T0116",
   "name": "Teban Gardens Crescent",
   "lot_counts": {
-   "Car Lots": 104,
-   "Lorry Lots": 52
+   "Lorry Lots": 52,
+   "Car Lots": 104
   },
   "total_lots": 156,
   "lat": 1.3245195,
@@ -9591,14 +9588,14 @@
   "pp_code": "T0129",
   "name": "Tanjong Katong Complex",
   "lot_counts": {
-   "Car Lots": 356,
-   "Lorry Lots": 7,
-   "Motorcycle Lots": 72
+   "Car Lots": 355,
+   "Motorcycle Lots": 72,
+   "Lorry Lots": 7
   },
-  "total_lots": 435,
-  "lat": 1.3165961,
-  "lon": 103.8953662,
-  "car_lots": 356
+  "total_lots": 434,
+  "lat": 1.3165972,
+  "lon": 103.8953669,
+  "car_lots": 355
  },
  {
   "id": "ura_T0130",
@@ -9620,8 +9617,8 @@
   "pp_code": "T0131",
   "name": "Tampines Avenue 9 / Avenue 10 Heavy Vehicle Park",
   "lot_counts": {
-   "Motorcycle Lots": 131,
-   "Lorry Lots": 528
+   "Lorry Lots": 528,
+   "Motorcycle Lots": 131
   },
   "total_lots": 659,
   "lat": 1.3622352,
@@ -9781,8 +9778,8 @@
   "pp_code": "T0153",
   "name": "Tampines North Drive 3 Hvp",
   "lot_counts": {
-   "Lorry Lots": 367,
-   "Motorcycle Lots": 45
+   "Motorcycle Lots": 45,
+   "Lorry Lots": 367
   },
   "total_lots": 412,
   "lat": 1.3725826,
@@ -9900,8 +9897,8 @@
   "pp_code": "U0017",
   "name": "Upper Hokkien Street",
   "lot_counts": {
-   "Motorcycle Lots": 10,
-   "Car Lots": 28
+   "Car Lots": 28,
+   "Motorcycle Lots": 10
   },
   "total_lots": 38,
   "lat": 1.2854465,
@@ -9914,8 +9911,8 @@
   "pp_code": "U0021",
   "name": "Ubi Avenue 4",
   "lot_counts": {
-   "Car Lots": 11,
-   "Motorcycle Lots": 25
+   "Motorcycle Lots": 25,
+   "Car Lots": 11
   },
   "total_lots": 36,
   "lat": 1.3346481,
@@ -9929,7 +9926,7 @@
   "name": "Unity Street",
   "lot_counts": {
    "Car Lots": 10,
-   "Lorry Lots": 1
+   "Coach Lots": 1
   },
   "total_lots": 11,
   "lat": 1.2923044,
@@ -9969,8 +9966,8 @@
   "pp_code": "U0035",
   "name": "Upper Serangoon Road (bartley Road Juntion)",
   "lot_counts": {
-   "Motorcycle Lots": 8,
-   "Car Lots": 23
+   "Car Lots": 23,
+   "Motorcycle Lots": 8
   },
   "total_lots": 31,
   "lat": 1.3448634,
@@ -10320,8 +10317,8 @@
   "pp_code": "W0045",
   "name": "Warna Road",
   "lot_counts": {
-   "Motorcycle Lots": 7,
-   "Car Lots": 14
+   "Car Lots": 14,
+   "Motorcycle Lots": 7
   },
   "total_lots": 21,
   "lat": 1.3118778,
@@ -10334,8 +10331,8 @@
   "pp_code": "W0046",
   "name": "Woodlands Industrial Park E1",
   "lot_counts": {
-   "Motorcycle Lots": 19,
-   "Car Lots": 20
+   "Car Lots": 20,
+   "Motorcycle Lots": 19
   },
   "total_lots": 39,
   "lat": 1.4544636,
@@ -10375,8 +10372,8 @@
   "pp_code": "W0049",
   "name": "Woodlands Industrial Park E9",
   "lot_counts": {
-   "Car Lots": 33,
-   "Motorcycle Lots": 6
+   "Motorcycle Lots": 6,
+   "Car Lots": 33
   },
   "total_lots": 39,
   "lat": 1.4497843,
@@ -10443,8 +10440,8 @@
   "pp_code": "Y0013",
   "name": "Yishun Industrial Park A",
   "lot_counts": {
-   "Car Lots": 70,
    "Lorry Lots": 58,
+   "Car Lots": 70,
    "Motorcycle Lots": 14
   },
   "total_lots": 142,
@@ -10458,13 +10455,13 @@
   "pp_code": "Y0017",
   "name": "Yishun Avenue 7 Heavy Vehicle Park",
   "lot_counts": {
-   "Lorry Lots": 661,
-   "Motorcycle Lots": 120,
+   "Lorry Lots": 654,
+   "Motorcycle Lots": 109,
    "Trailer Lots": 25
   },
-  "total_lots": 806,
-  "lat": 1.4443689,
-  "lon": 103.8407287,
+  "total_lots": 788,
+  "lat": 1.4443754,
+  "lon": 103.8407105,
   "car_lots": 0
  },
  {
@@ -10501,8 +10498,8 @@
   "pp_code": "Z0001",
   "name": "Zion Road Off Street",
   "lot_counts": {
-   "Car Lots": 12,
-   "Motorcycle Lots": 5
+   "Motorcycle Lots": 5,
+   "Car Lots": 12
   },
   "total_lots": 17,
   "lat": 1.2924047,

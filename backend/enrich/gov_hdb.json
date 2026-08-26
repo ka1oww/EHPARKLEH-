@@ -9611,8 +9611,8 @@
   "car_park_decks": "0",
   "gantry_height": "0",
   "car_park_basement": "N",
-  "lat": 1.317501,
-  "lon": 103.8873633
+  "lat": 1.317485,
+  "lon": 103.8872863
  },
  {
   "id": "GE5",
@@ -9853,6 +9853,21 @@
   "car_park_basement": "N",
   "lat": 1.3170312,
   "lon": 103.8984885
+ },
+ {
+  "id": "GTRM",
+  "source": "hdb",
+  "address": "BLK 182 HOUGANG STREET 13",
+  "car_park_type": "MULTI-STOREY CAR PARK",
+  "parking_system": "ELECTRONIC PARKING",
+  "short_term_parking": "WHOLE DAY",
+  "free_parking": "NO",
+  "night_parking": "YES",
+  "car_park_decks": "3",
+  "gantry_height": "2.15",
+  "car_park_basement": "N",
+  "lat": 1.3473188,
+  "lon": 103.8864816
  },
  {
   "id": "G20L",
@@ -13721,8 +13736,8 @@
   "car_park_decks": "8",
   "gantry_height": "2.15",
   "car_park_basement": "N",
-  "lat": 1.3409953,
-  "lon": 103.6908247
+  "lat": 1.3409007,
+  "lon": 103.6907984
  },
  {
   "id": "J67",
@@ -19669,7 +19684,7 @@
   "source": "hdb",
   "address": "BLK 61/66 COMMONWEALTH DRIVE",
   "car_park_type": "SURFACE CAR PARK",
-  "parking_system": "COUPON PARKING",
+  "parking_system": "ELECTRONIC PARKING",
   "short_term_parking": "7AM-10.30PM",
   "free_parking": "NO",
   "night_parking": "NO",
@@ -20074,7 +20089,7 @@
   "source": "hdb",
   "address": "BLK 55 COMMONWEALTH DRIVE",
   "car_park_type": "SURFACE CAR PARK",
-  "parking_system": "COUPON PARKING",
+  "parking_system": "ELECTRONIC PARKING",
   "short_term_parking": "7AM-7PM",
   "free_parking": "NO",
   "night_parking": "NO",
@@ -21740,9 +21755,9 @@
   "address": "BLK 150 SERANGOON NORTH AVENUE 2",
   "car_park_type": "BASEMENT CAR PARK",
   "parking_system": "ELECTRONIC PARKING",
-  "short_term_parking": "WHOLE DAY",
-  "free_parking": "SUN & PH FR 7AM-10.30PM",
-  "night_parking": "YES",
+  "short_term_parking": "7AM-10.30PM",
+  "free_parking": "NO",
+  "night_parking": "NO",
   "car_park_decks": "0",
   "gantry_height": "2.15",
   "car_park_basement": "Y",
@@ -25800,6 +25815,21 @@
   "lon": 103.7379098
  },
  {
+  "id": "TH35",
+  "source": "hdb",
+  "address": "BLK 302 TENGAH PARK AVENUE",
+  "car_park_type": "MULTI-STOREY CAR PARK",
+  "parking_system": "ELECTRONIC PARKING",
+  "short_term_parking": "WHOLE DAY",
+  "free_parking": "NO",
+  "night_parking": "YES",
+  "car_park_decks": "2",
+  "gantry_height": "2.15",
+  "car_park_basement": "N",
+  "lat": 1.3604907,
+  "lon": 103.7387782
+ },
+ {
   "id": "TH4",
   "source": "hdb",
   "address": "BLK 117 PLANTATION CRESCENT",
@@ -28166,8 +28196,8 @@
   "car_park_decks": "8",
   "gantry_height": "1.9",
   "car_park_basement": "N",
-  "lat": 1.3390368,
-  "lon": 103.7743871
+  "lat": 1.3389706,
+  "lon": 103.7742844
  },
  {
   "id": "TY2",
@@ -28181,8 +28211,8 @@
   "car_park_decks": "0",
   "gantry_height": "4.5",
   "car_park_basement": "N",
-  "lat": 1.3384763,
-  "lon": 103.773653
+  "lat": 1.3384619,
+  "lon": 103.7735563
  },
  {
   "id": "TY3T",
@@ -33251,8 +33281,8 @@
   "car_park_decks": "0",
   "gantry_height": "3.8",
   "car_park_basement": "N",
-  "lat": 1.4260853,
-  "lon": 103.8457638
+  "lat": 1.426038,
+  "lon": 103.8457901
  },
  {
   "id": "Y47",
@@ -33266,8 +33296,8 @@
   "car_park_decks": "0",
   "gantry_height": "4.5",
   "car_park_basement": "N",
-  "lat": 1.4291071,
-  "lon": 103.8455513
+  "lat": 1.4287171,
+  "lon": 103.8456011
  },
  {
   "id": "Y48",
@@ -33996,7 +34026,7 @@
   "car_park_type": "MULTI-STOREY CAR PARK",
   "parking_system": "ELECTRONIC PARKING",
   "short_term_parking": "WHOLE DAY",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "night_parking": "YES",
   "car_park_decks": "12",
   "gantry_height": "2.15",

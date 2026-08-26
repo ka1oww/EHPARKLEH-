@@ -32694,8 +32694,8 @@
   "id": "GE3",
   "name": "BLK 124 TO 128 GEYLANG EAST AVENUE 1",
   "address": "BLK 124 TO 128 GEYLANG EAST AVENUE 1",
-  "lat": 1.317501,
-  "lon": 103.8873633,
+  "lat": 1.317485,
+  "lon": 103.8872863,
   "geocode_source": "hdb_official",
   "availability_key": "GE3",
   "sources": [
@@ -73365,7 +73365,7 @@
    "hdb"
   ],
   "type": "BASEMENT CAR PARK",
-  "free_parking": "SUN & PH FR 7AM-10.30PM",
+  "free_parking": "NO",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -73379,9 +73379,9 @@
   "google_primary_type": null,
   "hdb_info": {
    "car_park_type": "BASEMENT CAR PARK",
-   "short_term_parking": "WHOLE DAY",
-   "night_parking": "YES",
-   "free_parking": "SUN & PH FR 7AM-10.30PM",
+   "short_term_parking": "7AM-10.30PM",
+   "night_parking": "NO",
+   "free_parking": "NO",
    "car_park_decks": "0",
    "gantry_height": "2.15",
    "car_park_basement": "Y"
@@ -94897,8 +94897,8 @@
   "id": "TY1",
   "name": "BLK 1A TOH YI DRIVE",
   "address": "BLK 1A TOH YI DRIVE",
-  "lat": 1.3390368,
-  "lon": 103.7743871,
+  "lat": 1.3389706,
+  "lon": 103.7742844,
   "geocode_source": "hdb_official",
   "availability_key": "TY1",
   "sources": [
@@ -94952,8 +94952,8 @@
   "id": "TY2",
   "name": "BLK 1-19 TOH YI DRIVE",
   "address": "BLK 1-19 TOH YI DRIVE",
-  "lat": 1.3384763,
-  "lon": 103.773653,
+  "lat": 1.3384619,
+  "lon": 103.7735563,
   "geocode_source": "hdb_official",
   "availability_key": "TY2",
   "sources": [
@@ -111828,8 +111828,8 @@
   "id": "Y46",
   "name": "BLK 349-359 YISHUN RING ROAD",
   "address": "BLK 349-359 YISHUN RING ROAD",
-  "lat": 1.4260853,
-  "lon": 103.8457638,
+  "lat": 1.426038,
+  "lon": 103.8457901,
   "geocode_source": "hdb_official",
   "availability_key": "Y46",
   "sources": [
@@ -111886,8 +111886,8 @@
   "id": "Y47",
   "name": "BLK 360-367 YISHUN RING ROAD",
   "address": "BLK 360-367 YISHUN RING ROAD",
-  "lat": 1.4291071,
-  "lon": 103.8455513,
+  "lat": 1.4287171,
+  "lon": 103.8456011,
   "geocode_source": "hdb_official",
   "availability_key": "Y47",
   "sources": [
@@ -114365,7 +114365,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -114381,7 +114381,7 @@
    "car_park_type": "MULTI-STOREY CAR PARK",
    "short_term_parking": "WHOLE DAY",
    "night_parking": "YES",
-   "free_parking": "NO",
+   "free_parking": "SUN & PH FR 7AM-10.30PM",
    "car_park_decks": "12",
    "gantry_height": "2.15",
    "car_park_basement": "N"
@@ -114509,8 +114509,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 13,
-    "Car Lots": 16
+    "Car Lots": 16,
+    "Motorcycle Lots": 13
    },
    "total_lots": 29
   },
@@ -114554,8 +114554,8 @@
   "id": "ura_A0007",
   "name": "Angullia Park Off Street",
   "address": "Angullia Park Off Street",
-  "lat": 1.3050955,
-  "lon": 103.8296734,
+  "lat": 1.3050954,
+  "lon": 103.8296733,
   "geocode_source": "ura",
   "availability_key": "A0007",
   "sources": [
@@ -114590,8 +114590,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 268,
-    "Motorcycle Lots": 96
+    "Motorcycle Lots": 96,
+    "Car Lots": 268
    },
    "total_lots": 364
   },
@@ -114662,9 +114662,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Lorry Lots": 1,
     "Car Lots": 69,
-    "Motorcycle Lots": 13
+    "Motorcycle Lots": 13,
+    "Lorry Lots": 1
    },
    "total_lots": 83
   },
@@ -114819,8 +114819,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 12,
-    "Car Lots": 64
+    "Car Lots": 64,
+    "Motorcycle Lots": 12
    },
    "total_lots": 76
   },
@@ -114936,8 +114936,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 12,
-    "Motorcycle Lots": 15
+    "Motorcycle Lots": 15,
+    "Car Lots": 12
    },
    "total_lots": 27
   },
@@ -115211,8 +115211,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 43,
-    "Motorcycle Lots": 10
+    "Motorcycle Lots": 10,
+    "Car Lots": 43
    },
    "total_lots": 53
   },
@@ -115378,8 +115378,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 18,
     "Car Lots": 29,
+    "Motorcycle Lots": 18,
     "Coach Lots": 20
    },
    "total_lots": 67
@@ -115452,7 +115452,7 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 14,
-    "Lorry Lots": 1
+    "Coach Lots": 1
    },
    "total_lots": 15
   },
@@ -115822,7 +115822,7 @@
   "name": "Benoi Sector",
   "address": "Benoi Sector",
   "lat": 1.3194523,
-  "lon": 103.684655,
+  "lon": 103.6846567,
   "geocode_source": "ura",
   "availability_key": "B0042",
   "sources": [
@@ -116090,8 +116090,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 10,
-    "Car Lots": 17
+    "Car Lots": 17,
+    "Motorcycle Lots": 10
    },
    "total_lots": 27
   },
@@ -116166,8 +116166,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 8,
-    "Car Lots": 25
+    "Car Lots": 25,
+    "Motorcycle Lots": 8
    },
    "total_lots": 33
   },
@@ -118362,8 +118362,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 7,
-    "Car Lots": 27
+    "Car Lots": 27,
+    "Motorcycle Lots": 7
    },
    "total_lots": 34
   },
@@ -118429,8 +118429,8 @@
   "ura_info": {
    "lot_counts": {
     "Motorcycle Lots": 43,
-    "Lorry Lots": 2,
-    "Car Lots": 4
+    "Car Lots": 4,
+    "Coach Lots": 2
    },
    "total_lots": 49
   },
@@ -118465,8 +118465,8 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 10,
-    "Motorcycle Lots": 25,
-    "Lorry Lots": 2
+    "Coach Lots": 2,
+    "Motorcycle Lots": 25
    },
    "total_lots": 37
   },
@@ -118709,8 +118709,8 @@
   "ura_info": {
    "lot_counts": {
     "Motorcycle Lots": 15,
-    "Car Lots": 4,
-    "Lorry Lots": 3
+    "Coach Lots": 3,
+    "Car Lots": 4
    },
    "total_lots": 22
   },
@@ -118825,8 +118825,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Coach Lots": 1,
-    "Car Lots": 7
+    "Car Lots": 7,
+    "Coach Lots": 1
    },
    "total_lots": 8
   },
@@ -118890,8 +118890,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 10,
-    "Car Lots": 63
+    "Car Lots": 63,
+    "Motorcycle Lots": 10
    },
    "total_lots": 73
   },
@@ -119142,8 +119142,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 4,
     "Car Lots": 10,
+    "Motorcycle Lots": 4,
     "Trailer Lots": 10
    },
    "total_lots": 24
@@ -119210,8 +119210,8 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 59,
-    "Trailer Lots": 9,
-    "Motorcycle Lots": 4
+    "Motorcycle Lots": 4,
+    "Trailer Lots": 9
    },
    "total_lots": 72
   },
@@ -119352,8 +119352,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 66,
-    "Motorcycle Lots": 24
+    "Motorcycle Lots": 24,
+    "Car Lots": 66
    },
    "total_lots": 90
   },
@@ -119487,8 +119487,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 15,
-    "Motorcycle Lots": 3
+    "Motorcycle Lots": 3,
+    "Car Lots": 15
    },
    "total_lots": 18
   },
@@ -119521,8 +119521,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 239,
     "Motorcycle Lots": 23,
+    "Car Lots": 239,
     "Coach Lots": 8
    },
    "total_lots": 270
@@ -119563,8 +119563,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 62,
-    "Motorcycle Lots": 11
+    "Motorcycle Lots": 11,
+    "Car Lots": 62
    },
    "total_lots": 73
   },
@@ -119645,8 +119645,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 13,
-    "Car Lots": 37
+    "Car Lots": 37,
+    "Motorcycle Lots": 13
    },
    "total_lots": 50
   },
@@ -119685,9 +119685,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 28,
     "Car Lots": 80,
-    "Lorry Lots": 2
+    "Motorcycle Lots": 28,
+    "Coach Lots": 2
    },
    "total_lots": 110
   },
@@ -119807,8 +119807,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 16,
-    "Trailer Lots": 9
+    "Trailer Lots": 9,
+    "Car Lots": 16
    },
    "total_lots": 25
   },
@@ -119840,8 +119840,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 13,
-    "Motorcycle Lots": 5
+    "Motorcycle Lots": 5,
+    "Car Lots": 13
    },
    "total_lots": 18
   },
@@ -119937,8 +119937,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 9,
-    "Trailer Lots": 3
+    "Trailer Lots": 3,
+    "Car Lots": 9
    },
    "total_lots": 12
   },
@@ -119971,8 +119971,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 5,
-    "Car Lots": 31
+    "Car Lots": 31,
+    "Motorcycle Lots": 5
    },
    "total_lots": 36
   },
@@ -120653,7 +120653,7 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Lorry Lots": 5
+    "Coach Lots": 5
    },
    "total_lots": 5
   },
@@ -120772,8 +120772,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 6,
     "Motorcycle Lots": 12,
+    "Car Lots": 6,
     "Lorry Lots": 1
    },
    "total_lots": 19
@@ -120956,8 +120956,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 10,
-    "Car Lots": 31
+    "Car Lots": 31,
+    "Motorcycle Lots": 10
    },
    "total_lots": 41
   },
@@ -121335,8 +121335,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 43,
-    "Motorcycle Lots": 5
+    "Motorcycle Lots": 5,
+    "Car Lots": 43
    },
    "total_lots": 48
   },
@@ -121432,8 +121432,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Trailer Lots": 98,
-    "Car Lots": 39
+    "Car Lots": 39,
+    "Trailer Lots": 98
    },
    "total_lots": 137
   },
@@ -121565,8 +121565,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Trailer Lots": 15,
-    "Car Lots": 8
+    "Car Lots": 8,
+    "Trailer Lots": 15
    },
    "total_lots": 23
   },
@@ -121891,8 +121891,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 39,
-    "Motorcycle Lots": 10
+    "Motorcycle Lots": 10,
+    "Car Lots": 39
    },
    "total_lots": 49
   },
@@ -121930,8 +121930,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 4,
-    "Car Lots": 22
+    "Car Lots": 22,
+    "Motorcycle Lots": 4
    },
    "total_lots": 26
   },
@@ -122071,8 +122071,8 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 30,
-    "Motorcycle Lots": 3,
-    "Lorry Lots": 5
+    "Lorry Lots": 5,
+    "Motorcycle Lots": 3
    },
    "total_lots": 38
   },
@@ -122391,8 +122391,8 @@
   "id": "ura_H0052",
   "name": "Harrison Road",
   "address": "Harrison Road",
-  "lat": 1.335664,
-  "lon": 103.8849174,
+  "lat": 1.3358396,
+  "lon": 103.8850114,
   "geocode_source": "ura",
   "availability_key": "H0052",
   "sources": [
@@ -122413,9 +122413,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 3
+    "Car Lots": 4
    },
-   "total_lots": 3
+   "total_lots": 4
   },
   "category": "Street (URA)"
  },
@@ -122423,13 +122423,12 @@
   "id": "ura_H0055",
   "name": "Havelock Road",
   "address": "Havelock Road",
-  "lat": 1.2894178,
-  "lon": 103.8319884,
+  "lat": 1.2895185,
+  "lon": 103.8326975,
   "geocode_source": "ura",
   "availability_key": "H0055",
   "sources": [
-   "ura",
-   "osm"
+   "ura"
   ],
   "type": "STREET/URA",
   "free_parking": null,
@@ -122446,16 +122445,10 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 28,
+    "Car Lots": 22,
     "Motorcycle Lots": 5
    },
-   "total_lots": 33
-  },
-  "osm_info": {
-   "osm_id": "way/1217311268",
-   "access": null,
-   "fee": null,
-   "parking_type": "multi-storey"
+   "total_lots": 27
   },
   "ev": true,
   "ev_cp_ids": [
@@ -122603,8 +122596,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 10,
-    "Car Lots": 11
+    "Car Lots": 11,
+    "Motorcycle Lots": 10
    },
    "total_lots": 21
   },
@@ -122668,8 +122661,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 14,
-    "Car Lots": 35
+    "Car Lots": 35,
+    "Motorcycle Lots": 14
    },
    "total_lots": 49
   },
@@ -122766,8 +122759,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 4,
-    "Car Lots": 15
+    "Car Lots": 15,
+    "Motorcycle Lots": 4
    },
    "total_lots": 19
   },
@@ -123079,8 +123072,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Trailer Lots": 57,
-    "Car Lots": 33
+    "Car Lots": 33,
+    "Trailer Lots": 57
    },
    "total_lots": 90
   },
@@ -123241,8 +123234,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 19,
-    "Motorcycle Lots": 17
+    "Motorcycle Lots": 17,
+    "Car Lots": 19
    },
    "total_lots": 36
   },
@@ -123636,8 +123629,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 20,
-    "Motorcycle Lots": 15
+    "Motorcycle Lots": 15,
+    "Car Lots": 20
    },
    "total_lots": 35
   },
@@ -123671,8 +123664,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 37,
-    "Motorcycle Lots": 10
+    "Motorcycle Lots": 10,
+    "Car Lots": 37
    },
    "total_lots": 47
   },
@@ -123808,8 +123801,8 @@
   "id": "ura_J0058",
   "name": "Jalan Kemaman",
   "address": "Jalan Kemaman",
-  "lat": 1.3268602,
-  "lon": 103.8507387,
+  "lat": 1.3269314,
+  "lon": 103.8507982,
   "geocode_source": "ura",
   "availability_key": "J0058",
   "sources": [
@@ -123830,9 +123823,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 13
+    "Car Lots": 11
    },
-   "total_lots": 13
+   "total_lots": 11
   },
   "category": "Street (URA)"
  },
@@ -124056,8 +124049,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 20,
-    "Motorcycle Lots": 5
+    "Motorcycle Lots": 5,
+    "Car Lots": 20
    },
    "total_lots": 25
   },
@@ -124239,8 +124232,8 @@
   "id": "ura_J0097",
   "name": "Jalan Kubor (victoria Street / Rochor Canal Road)",
   "address": "Jalan Kubor (victoria Street / Rochor Canal Road)",
-  "lat": 1.3048886,
-  "lon": 103.8587641,
+  "lat": 1.3048768,
+  "lon": 103.8587556,
   "geocode_source": "ura",
   "availability_key": "J0097",
   "sources": [
@@ -124261,11 +124254,11 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 29,
-    "Lorry Lots": 1,
-    "Coach Lots": 3
+    "Car Lots": 19,
+    "Coach Lots": 6,
+    "Lorry Lots": 1
    },
-   "total_lots": 33
+   "total_lots": 26
   },
   "category": "Street (URA)"
  },
@@ -124329,8 +124322,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 54,
-    "Motorcycle Lots": 8
+    "Motorcycle Lots": 8,
+    "Car Lots": 54
    },
    "total_lots": 62
   },
@@ -124380,8 +124373,8 @@
   "id": "ura_J0104",
   "name": "Joo Chiat Place",
   "address": "Joo Chiat Place",
-  "lat": 1.3136726,
-  "lon": 103.9027458,
+  "lat": 1.3136736,
+  "lon": 103.9027536,
   "geocode_source": "ura",
   "availability_key": "J0104",
   "sources": [
@@ -124402,10 +124395,10 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 49,
+    "Car Lots": 48,
     "Motorcycle Lots": 3
    },
-   "total_lots": 52
+   "total_lots": 51
   },
   "category": "Street (URA)"
  },
@@ -124538,8 +124531,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 9,
-    "Motorcycle Lots": 4
+    "Motorcycle Lots": 4,
+    "Car Lots": 9
    },
    "total_lots": 13
   },
@@ -124571,8 +124564,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 12,
-    "Trailer Lots": 6
+    "Trailer Lots": 6,
+    "Car Lots": 12
    },
    "total_lots": 18
   },
@@ -124606,8 +124599,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 207,
-    "Motorcycle Lots": 30
+    "Motorcycle Lots": 30,
+    "Car Lots": 207
    },
    "total_lots": 237
   },
@@ -124730,6 +124723,38 @@
   "category": "Street (URA)"
  },
  {
+  "id": "ura_JOO97",
+  "name": "",
+  "address": "",
+  "lat": 1.3049648,
+  "lon": 103.8587769,
+  "geocode_source": "ura",
+  "availability_key": "JOO97",
+  "sources": [
+   "ura"
+  ],
+  "type": "STREET/URA",
+  "free_parking": null,
+  "rates": {
+   "category": "HDB/URA standard (Central Area)",
+   "rates": {
+    "weekday_1": {
+     "raw": "$1.20 / 30 min (max $20/day)",
+     "subsequent_half_hour": 1.2,
+     "per_half_hour": 1.2
+    }
+   }
+  },
+  "google_primary_type": null,
+  "ura_info": {
+   "lot_counts": {
+    "Coach Lots": 1
+   },
+   "total_lots": 1
+  },
+  "category": "Street (URA)"
+ },
+ {
   "id": "ura_K0004",
   "name": "Kaki Bukit Road 4",
   "address": "Kaki Bukit Road 4",
@@ -124820,9 +124845,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 15,
+    "Motorcycle Lots": 10,
     "Lorry Lots": 11,
-    "Motorcycle Lots": 10
+    "Car Lots": 15
    },
    "total_lots": 36
   },
@@ -124897,8 +124922,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 11,
-    "Motorcycle Lots": 3
+    "Motorcycle Lots": 3,
+    "Car Lots": 11
    },
    "total_lots": 14
   },
@@ -125115,8 +125140,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 34,
-    "Motorcycle Lots": 16
+    "Motorcycle Lots": 16,
+    "Car Lots": 34
    },
    "total_lots": 50
   },
@@ -125148,8 +125173,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 25,
-    "Car Lots": 30
+    "Car Lots": 30,
+    "Motorcycle Lots": 25
    },
    "total_lots": 55
   },
@@ -125215,8 +125240,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 4,
-    "Car Lots": 22
+    "Car Lots": 22,
+    "Motorcycle Lots": 4
    },
    "total_lots": 26
   },
@@ -125254,8 +125279,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 12,
-    "Car Lots": 61
+    "Car Lots": 61,
+    "Motorcycle Lots": 12
    },
    "total_lots": 73
   },
@@ -125596,8 +125621,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 5,
-    "Car Lots": 25
+    "Car Lots": 25,
+    "Motorcycle Lots": 5
    },
    "total_lots": 30
   },
@@ -125634,8 +125659,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 10,
-    "Car Lots": 29
+    "Car Lots": 29,
+    "Motorcycle Lots": 10
    },
    "total_lots": 39
   },
@@ -125718,8 +125743,8 @@
   "id": "ura_K0093",
   "name": "Kampong Java Road",
   "address": "Kampong Java Road",
-  "lat": 1.3132248,
-  "lon": 103.8416623,
+  "lat": 1.3132211,
+  "lon": 103.8416322,
   "geocode_source": "ura",
   "availability_key": "K0093",
   "sources": [
@@ -125743,9 +125768,9 @@
   "ura_info": {
    "lot_counts": {
     "Motorcycle Lots": 3,
-    "Car Lots": 31
+    "Car Lots": 30
    },
-   "total_lots": 34
+   "total_lots": 33
   },
   "google_name": "Chui Huay Lim Club Car Park",
   "osm_info": {
@@ -125853,8 +125878,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 4,
-    "Motorcycle Lots": 5
+    "Motorcycle Lots": 5,
+    "Car Lots": 4
    },
    "total_lots": 9
   },
@@ -126043,8 +126068,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Lorry Lots": 3,
     "Car Lots": 16,
+    "Coach Lots": 3,
     "Motorcycle Lots": 5
    },
    "total_lots": 24
@@ -126078,8 +126103,8 @@
   "google_primary_type": "parking",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 10,
-    "Car Lots": 14
+    "Car Lots": 14,
+    "Motorcycle Lots": 10
    },
    "total_lots": 24
   },
@@ -126159,8 +126184,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 12,
-    "Car Lots": 57
+    "Car Lots": 57,
+    "Motorcycle Lots": 12
    },
    "total_lots": 69
   },
@@ -126377,8 +126402,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 12,
-    "Car Lots": 21
+    "Car Lots": 21,
+    "Motorcycle Lots": 12
    },
    "total_lots": 33
   },
@@ -126617,8 +126642,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 7,
-    "Car Lots": 19
+    "Car Lots": 19,
+    "Motorcycle Lots": 7
    },
    "total_lots": 26
   },
@@ -126650,8 +126675,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 1,
-    "Car Lots": 20
+    "Car Lots": 20,
+    "Motorcycle Lots": 1
    },
    "total_lots": 21
   },
@@ -126683,8 +126708,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 8,
-    "Car Lots": 44
+    "Car Lots": 44,
+    "Motorcycle Lots": 8
    },
    "total_lots": 52
   },
@@ -126888,7 +126913,7 @@
   "name": "Lorong 21 Geylang",
   "address": "Lorong 21 Geylang",
   "lat": 1.3140902,
-  "lon": 103.8799848,
+  "lon": 103.8799845,
   "geocode_source": "ura",
   "availability_key": "L0028",
   "sources": [
@@ -127074,8 +127099,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 5,
-    "Car Lots": 19
+    "Car Lots": 19,
+    "Motorcycle Lots": 5
    },
    "total_lots": 24
   },
@@ -127173,8 +127198,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 9,
-    "Car Lots": 29
+    "Car Lots": 29,
+    "Motorcycle Lots": 9
    },
    "total_lots": 38
   },
@@ -127272,8 +127297,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 18,
-    "Motorcycle Lots": 4
+    "Motorcycle Lots": 4,
+    "Car Lots": 18
    },
    "total_lots": 22
   },
@@ -127371,8 +127396,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 7,
-    "Car Lots": 17
+    "Car Lots": 17,
+    "Motorcycle Lots": 7
    },
    "total_lots": 24
   },
@@ -127448,8 +127473,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 20,
-    "Motorcycle Lots": 3
+    "Motorcycle Lots": 3,
+    "Car Lots": 20
    },
    "total_lots": 23
   },
@@ -127513,8 +127538,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 22,
-    "Motorcycle Lots": 5
+    "Motorcycle Lots": 5,
+    "Car Lots": 22
    },
    "total_lots": 27
   },
@@ -127546,8 +127571,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 3,
-    "Car Lots": 13
+    "Car Lots": 13,
+    "Motorcycle Lots": 3
    },
    "total_lots": 16
   },
@@ -127611,8 +127636,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 3,
-    "Car Lots": 14
+    "Car Lots": 14,
+    "Motorcycle Lots": 3
    },
    "total_lots": 17
   },
@@ -127884,8 +127909,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 5,
-    "Car Lots": 50
+    "Car Lots": 50,
+    "Motorcycle Lots": 5
    },
    "total_lots": 55
   },
@@ -128290,8 +128315,8 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 37,
-    "Trailer Lots": 9,
-    "Motorcycle Lots": 17
+    "Motorcycle Lots": 17,
+    "Trailer Lots": 9
    },
    "total_lots": 63
   },
@@ -128355,8 +128380,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 31,
     "Car Lots": 26,
+    "Motorcycle Lots": 31,
     "Lorry Lots": 7
    },
    "total_lots": 64
@@ -128422,8 +128447,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 2,
-    "Car Lots": 17
+    "Car Lots": 17,
+    "Motorcycle Lots": 2
    },
    "total_lots": 19
   },
@@ -128862,8 +128887,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 6,
-    "Car Lots": 66
+    "Car Lots": 66,
+    "Motorcycle Lots": 6
    },
    "total_lots": 72
   },
@@ -129042,8 +129067,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 56,
-    "Motorcycle Lots": 9
+    "Motorcycle Lots": 9,
+    "Car Lots": 56
    },
    "total_lots": 65
   },
@@ -129225,8 +129250,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 4,
-    "Car Lots": 35
+    "Car Lots": 35,
+    "Motorcycle Lots": 4
    },
    "total_lots": 39
   },
@@ -129323,7 +129348,7 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 61,
-    "Lorry Lots": 5,
+    "Coach Lots": 5,
     "Motorcycle Lots": 4
    },
    "total_lots": 70
@@ -129358,7 +129383,7 @@
    "lot_counts": {
     "Car Lots": 72,
     "Motorcycle Lots": 29,
-    "Lorry Lots": 1
+    "Coach Lots": 1
    },
    "total_lots": 102
   },
@@ -129503,8 +129528,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 14,
-    "Lorry Lots": 29
+    "Lorry Lots": 29,
+    "Motorcycle Lots": 14
    },
    "total_lots": 43
   },
@@ -129744,8 +129769,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 77,
-    "Car Lots": 104
+    "Car Lots": 104,
+    "Motorcycle Lots": 77
    },
    "total_lots": 181
   },
@@ -129872,9 +129897,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 33,
     "Lorry Lots": 76,
-    "Car Lots": 82
+    "Car Lots": 82,
+    "Motorcycle Lots": 33
    },
    "total_lots": 191
   },
@@ -130158,8 +130183,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 37,
-    "Motorcycle Lots": 7
+    "Motorcycle Lots": 7,
+    "Car Lots": 37
    },
    "total_lots": 44
   },
@@ -130243,8 +130268,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 5,
-    "Car Lots": 19
+    "Car Lots": 19,
+    "Motorcycle Lots": 5
    },
    "total_lots": 24
   },
@@ -130278,8 +130303,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 13,
-    "Car Lots": 28
+    "Car Lots": 28,
+    "Motorcycle Lots": 13
    },
    "total_lots": 41
   },
@@ -130296,8 +130321,8 @@
   "id": "ura_N0003",
   "name": "North Bridge Road (arab Street / Jalan Sultan)",
   "address": "North Bridge Road (arab Street / Jalan Sultan)",
-  "lat": 1.3034009,
-  "lon": 103.8595208,
+  "lat": 1.3034412,
+  "lon": 103.8595835,
   "geocode_source": "ura",
   "availability_key": "N0003",
   "sources": [
@@ -130318,10 +130343,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 32,
-    "Motorcycle Lots": 4
+    "Car Lots": 31
    },
-   "total_lots": 36
+   "total_lots": 31
   },
   "category": "Street (URA)"
  },
@@ -130454,8 +130478,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 5,
-    "Car Lots": 15
+    "Car Lots": 15,
+    "Motorcycle Lots": 5
    },
    "total_lots": 20
   },
@@ -130637,9 +130661,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 5,
     "Car Lots": 53,
-    "Trailer Lots": 9
+    "Trailer Lots": 9,
+    "Motorcycle Lots": 5
    },
    "total_lots": 67
   },
@@ -131055,8 +131079,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 10,
-    "Car Lots": 11
+    "Car Lots": 11,
+    "Motorcycle Lots": 10
    },
    "total_lots": 21
   },
@@ -131236,8 +131260,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 3,
-    "Car Lots": 24
+    "Car Lots": 24,
+    "Motorcycle Lots": 3
    },
    "total_lots": 27
   },
@@ -131270,8 +131294,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
+    "Coach Lots": 3,
     "Motorcycle Lots": 11,
-    "Lorry Lots": 3,
     "Car Lots": 4
    },
    "total_lots": 18
@@ -131423,8 +131447,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 26,
     "Car Lots": 50,
+    "Motorcycle Lots": 26,
     "Coach Lots": 1,
     "Lorry Lots": 2
    },
@@ -131459,8 +131483,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 6,
-    "Car Lots": 43
+    "Car Lots": 43,
+    "Motorcycle Lots": 6
    },
    "total_lots": 49
   },
@@ -131776,8 +131800,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 12,
-    "Car Lots": 19
+    "Car Lots": 19,
+    "Motorcycle Lots": 12
    },
    "total_lots": 31
   },
@@ -131882,8 +131906,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 32,
-    "Car Lots": 58
+    "Car Lots": 58,
+    "Motorcycle Lots": 32
    },
    "total_lots": 90
   },
@@ -132188,9 +132212,9 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 63,
-    "Lorry Lots": 6,
     "Motorcycle Lots": 106,
-    "Trailer Lots": 12
+    "Trailer Lots": 12,
+    "Lorry Lots": 6
    },
    "total_lots": 187
   },
@@ -132422,8 +132446,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 11,
-    "Trailer Lots": 10
+    "Trailer Lots": 10,
+    "Car Lots": 11
    },
    "total_lots": 21
   },
@@ -132590,8 +132614,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 3,
-    "Car Lots": 47
+    "Car Lots": 47,
+    "Motorcycle Lots": 3
    },
    "total_lots": 50
   },
@@ -132642,8 +132666,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 26,
-    "Motorcycle Lots": 10
+    "Motorcycle Lots": 10,
+    "Car Lots": 26
    },
    "total_lots": 36
   },
@@ -132769,8 +132793,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 65,
-    "Car Lots": 150
+    "Car Lots": 150,
+    "Motorcycle Lots": 65
    },
    "total_lots": 215
   },
@@ -132894,7 +132918,7 @@
   "id": "ura_Q0006",
   "name": "Queen Street Off Street",
   "address": "Queen Street Off Street",
-  "lat": 1.2999484,
+  "lat": 1.2999485,
   "lon": 103.8533357,
   "geocode_source": "ura",
   "availability_key": "Q0006",
@@ -133009,7 +133033,7 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 6,
-    "Lorry Lots": 4
+    "Coach Lots": 4
    },
    "total_lots": 10
   },
@@ -133041,8 +133065,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 55,
-    "Motorcycle Lots": 16
+    "Motorcycle Lots": 16,
+    "Car Lots": 55
    },
    "total_lots": 71
   },
@@ -133074,8 +133098,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 5,
-    "Car Lots": 80
+    "Car Lots": 80,
+    "Motorcycle Lots": 5
    },
    "total_lots": 85
   },
@@ -133586,8 +133610,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 20,
     "Motorcycle Lots": 5,
+    "Car Lots": 20,
     "Lorry Lots": 2
    },
    "total_lots": 27
@@ -133654,8 +133678,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 18,
-    "Motorcycle Lots": 12
+    "Motorcycle Lots": 12,
+    "Car Lots": 18
    },
    "total_lots": 30
   },
@@ -133881,8 +133905,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 42,
-    "Motorcycle Lots": 22
+    "Motorcycle Lots": 22,
+    "Car Lots": 42
    },
    "total_lots": 64
   },
@@ -133916,8 +133940,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 3,
-    "Coach Lots": 3
+    "Coach Lots": 3,
+    "Car Lots": 3
    },
    "total_lots": 6
   },
@@ -134063,8 +134087,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Lorry Lots": 20,
-    "Motorcycle Lots": 9
+    "Motorcycle Lots": 9,
+    "Lorry Lots": 20
    },
    "total_lots": 29
   },
@@ -134469,8 +134493,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 13,
-    "Motorcycle Lots": 4
+    "Motorcycle Lots": 4,
+    "Car Lots": 13
    },
    "total_lots": 17
   },
@@ -134541,40 +134565,6 @@
    "total_lots": 22
   },
   "google_name": "Open Car Park",
-  "category": "Street (URA)"
- },
- {
-  "id": "ura_S0075",
-  "name": "Science Centre Road",
-  "address": "Science Centre Road",
-  "lat": 1.3306636,
-  "lon": 103.7379067,
-  "geocode_source": "ura",
-  "availability_key": "S0075",
-  "sources": [
-   "ura"
-  ],
-  "type": "STREET/URA",
-  "free_parking": null,
-  "rates": {
-   "category": "HDB/URA standard (non-Central)",
-   "rates": {
-    "weekday_1": {
-     "raw": "$0.60 / 30 min (max $12/day)",
-     "subsequent_half_hour": 0.6,
-     "per_half_hour": 0.6
-    }
-   }
-  },
-  "google_primary_type": null,
-  "ura_info": {
-   "lot_counts": {
-    "Car Lots": 34,
-    "Motorcycle Lots": 15,
-    "Lorry Lots": 24
-   },
-   "total_lots": 73
-  },
   "category": "Street (URA)"
  },
  {
@@ -134776,8 +134766,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 38,
-    "Trailer Lots": 74
+    "Trailer Lots": 74,
+    "Car Lots": 38
    },
    "total_lots": 112
   },
@@ -134844,8 +134834,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 59,
-    "Lorry Lots": 9
+    "Lorry Lots": 9,
+    "Car Lots": 59
    },
    "total_lots": 68
   },
@@ -134985,9 +134975,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
+    "Trailer Lots": 6,
     "Car Lots": 24,
-    "Lorry Lots": 8,
-    "Trailer Lots": 6
+    "Lorry Lots": 8
    },
    "total_lots": 38
   },
@@ -135020,8 +135010,8 @@
   "ura_info": {
    "lot_counts": {
     "Trailer Lots": 14,
-    "Motorcycle Lots": 6,
-    "Car Lots": 26
+    "Car Lots": 26,
+    "Motorcycle Lots": 6
    },
    "total_lots": 46
   },
@@ -135086,8 +135076,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 39,
-    "Trailer Lots": 7
+    "Trailer Lots": 7,
+    "Car Lots": 39
    },
    "total_lots": 46
   },
@@ -135119,8 +135109,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 24,
-    "Motorcycle Lots": 4
+    "Motorcycle Lots": 4,
+    "Car Lots": 24
    },
    "total_lots": 28
   },
@@ -135249,8 +135239,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Trailer Lots": 7,
-    "Car Lots": 56
+    "Car Lots": 56,
+    "Trailer Lots": 7
    },
    "total_lots": 63
   },
@@ -135367,8 +135357,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 2,
-    "Motorcycle Lots": 10
+    "Motorcycle Lots": 10,
+    "Car Lots": 2
    },
    "total_lots": 12
   },
@@ -135416,7 +135406,7 @@
    "lot_counts": {
     "Car Lots": 434,
     "Motorcycle Lots": 366,
-    "Lorry Lots": 21
+    "Coach Lots": 21
    },
    "total_lots": 821
   },
@@ -135823,8 +135813,8 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 13,
     "Car Lots": 27,
+    "Motorcycle Lots": 13,
     "Lorry Lots": 3
    },
    "total_lots": 43
@@ -136184,8 +136174,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 22,
-    "Car Lots": 23
+    "Car Lots": 23,
+    "Motorcycle Lots": 22
    },
    "total_lots": 45
   },
@@ -136339,8 +136329,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 31,
-    "Motorcycle Lots": 13
+    "Motorcycle Lots": 13,
+    "Car Lots": 31
    },
    "total_lots": 44
   },
@@ -136414,8 +136404,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 5,
-    "Car Lots": 29
+    "Car Lots": 29,
+    "Motorcycle Lots": 5
    },
    "total_lots": 34
   },
@@ -136665,8 +136655,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 18,
-    "Motorcycle Lots": 12
+    "Motorcycle Lots": 12,
+    "Car Lots": 18
    },
    "total_lots": 30
   },
@@ -136731,9 +136721,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 49,
     "Motorcycle Lots": 58,
-    "Lorry Lots": 3
+    "Car Lots": 49,
+    "Coach Lots": 3
    },
    "total_lots": 110
   },
@@ -136986,8 +136976,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 35,
-    "Motorcycle Lots": 7
+    "Motorcycle Lots": 7,
+    "Car Lots": 35
    },
    "total_lots": 42
   },
@@ -137051,8 +137041,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 10,
-    "Car Lots": 12
+    "Car Lots": 12,
+    "Motorcycle Lots": 10
    },
    "total_lots": 22
   },
@@ -137148,8 +137138,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 5,
-    "Car Lots": 36
+    "Car Lots": 36,
+    "Motorcycle Lots": 5
    },
    "total_lots": 41
   },
@@ -137245,8 +137235,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 43,
-    "Motorcycle Lots": 10
+    "Motorcycle Lots": 10,
+    "Car Lots": 43
    },
    "total_lots": 53
   },
@@ -137342,8 +137332,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 8,
-    "Motorcycle Lots": 6
+    "Motorcycle Lots": 6,
+    "Car Lots": 8
    },
    "total_lots": 14
   },
@@ -137465,8 +137455,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Trailer Lots": 4,
     "Car Lots": 126,
+    "Trailer Lots": 4,
     "Motorcycle Lots": 12
    },
    "total_lots": 142
@@ -137487,8 +137477,8 @@
   "id": "ura_T0068",
   "name": "Tagore Drive",
   "address": "Tagore Drive",
-  "lat": 1.3876308,
-  "lon": 103.8268289,
+  "lat": 1.3876026,
+  "lon": 103.8268006,
   "geocode_source": "ura",
   "availability_key": "T0068",
   "sources": [
@@ -137509,11 +137499,11 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Trailer Lots": 12,
-    "Lorry Lots": 8,
-    "Car Lots": 32
+    "Car Lots": 41,
+    "Crane Lots": 5,
+    "Trailer Lots": 12
    },
-   "total_lots": 52
+   "total_lots": 58
   },
   "category": "Street (URA)"
  },
@@ -137575,9 +137565,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 24,
     "Car Lots": 16,
-    "Trailer Lots": 8
+    "Trailer Lots": 8,
+    "Motorcycle Lots": 24
    },
    "total_lots": 48
   },
@@ -137609,8 +137599,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 10,
-    "Trailer Lots": 14
+    "Trailer Lots": 14,
+    "Car Lots": 10
    },
    "total_lots": 24
   },
@@ -138101,8 +138091,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Trailer Lots": 30,
-    "Car Lots": 43
+    "Car Lots": 43,
+    "Trailer Lots": 30
    },
    "total_lots": 73
   },
@@ -138144,8 +138134,8 @@
   "id": "ura_T0102",
   "name": "Tuas Road",
   "address": "Tuas Road",
-  "lat": 1.3086467,
-  "lon": 103.6504879,
+  "lat": 1.3084969,
+  "lon": 103.6503582,
   "geocode_source": "ura",
   "availability_key": "T0102",
   "sources": [
@@ -138167,10 +138157,10 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 25,
-    "Trailer Lots": 24,
+    "Trailer Lots": 20,
     "Motorcycle Lots": 32
    },
-   "total_lots": 81
+   "total_lots": 77
   },
   "category": "Street (URA)"
  },
@@ -138253,8 +138243,8 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 75,
-    "Lorry Lots": 14,
-    "Motorcycle Lots": 10
+    "Motorcycle Lots": 10,
+    "Lorry Lots": 14
    },
    "total_lots": 99
   },
@@ -138326,8 +138316,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 11,
-    "Trailer Lots": 4
+    "Trailer Lots": 4,
+    "Car Lots": 11
    },
    "total_lots": 15
   },
@@ -138359,8 +138349,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 9,
-    "Trailer Lots": 10
+    "Trailer Lots": 10,
+    "Car Lots": 9
    },
    "total_lots": 19
   },
@@ -138370,8 +138360,8 @@
   "id": "ura_T0114",
   "name": "Tembeling Road",
   "address": "Tembeling Road",
-  "lat": 1.3104179,
-  "lon": 103.9029177,
+  "lat": 1.3104601,
+  "lon": 103.9028878,
   "geocode_source": "ura",
   "availability_key": "T0114",
   "sources": [
@@ -138392,9 +138382,9 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 56
+    "Car Lots": 57
    },
-   "total_lots": 56
+   "total_lots": 57
   },
   "category": "Street (URA)"
  },
@@ -138424,8 +138414,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 104,
-    "Lorry Lots": 52
+    "Lorry Lots": 52,
+    "Car Lots": 104
    },
    "total_lots": 156
   },
@@ -138534,8 +138524,8 @@
   "id": "ura_T0129",
   "name": "Tanjong Katong Complex",
   "address": "Tanjong Katong Complex",
-  "lat": 1.3165961,
-  "lon": 103.8953662,
+  "lat": 1.3165972,
+  "lon": 103.8953669,
   "geocode_source": "ura",
   "availability_key": "T0129",
   "sources": [
@@ -138566,11 +138556,11 @@
   "google_primary_type": "parking_lot",
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 356,
-    "Lorry Lots": 7,
-    "Motorcycle Lots": 72
+    "Car Lots": 355,
+    "Motorcycle Lots": 72,
+    "Lorry Lots": 7
    },
-   "total_lots": 435
+   "total_lots": 434
   },
   "google_name": "Car Park No.T0129",
   "osm_info": {
@@ -139245,8 +139235,8 @@
   "google_primary_type": "hotel",
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 10,
-    "Car Lots": 28
+    "Car Lots": 28,
+    "Motorcycle Lots": 10
    },
    "total_lots": 38
   },
@@ -139290,8 +139280,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 11,
-    "Motorcycle Lots": 25
+    "Motorcycle Lots": 25,
+    "Car Lots": 11
    },
    "total_lots": 36
   },
@@ -139325,7 +139315,7 @@
   "ura_info": {
    "lot_counts": {
     "Car Lots": 10,
-    "Lorry Lots": 1
+    "Coach Lots": 1
    },
    "total_lots": 11
   },
@@ -139428,8 +139418,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 8,
-    "Car Lots": 23
+    "Car Lots": 23,
+    "Motorcycle Lots": 8
    },
    "total_lots": 31
   },
@@ -140355,8 +140345,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Motorcycle Lots": 19,
-    "Car Lots": 20
+    "Car Lots": 20,
+    "Motorcycle Lots": 19
    },
    "total_lots": 39
   },
@@ -140453,8 +140443,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 33,
-    "Motorcycle Lots": 6
+    "Motorcycle Lots": 6,
+    "Car Lots": 33
    },
    "total_lots": 39
   },
@@ -140638,8 +140628,8 @@
   "google_primary_type": null,
   "ura_info": {
    "lot_counts": {
-    "Car Lots": 70,
     "Lorry Lots": 58,
+    "Car Lots": 70,
     "Motorcycle Lots": 14
    },
    "total_lots": 142
@@ -143738,13 +143728,13 @@
    "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$1.07 per 10min block or part thereof. (indicative)"
+     "raw": "$1.09 per 10min block or part thereof (S$6.54 per hour). (indicative)"
     },
     "saturday": {
-     "raw": "7.00am-2.59pm: $1.07/10min block. 3.00pm-11.59am next day: $3.75 per entry"
+     "raw": "7.00am-2.59pm: $1.09/10min block. 3.00pm-11.59am next day: $3.84 per entry."
     },
     "sunday_publicholiday": {
-     "raw": "$3.75 per entry"
+     "raw": "$3.84 per entry"
     }
    }
   },
@@ -145204,13 +145194,13 @@
    "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$4.00 1st hr, $2.00/30min (indicative)"
+     "raw": "$3.00 1st hr, $1.50/30min (indicative)"
     },
     "saturday": {
-     "raw": "3.00am-3.00am the following day: $6.00 per 1st 2hr, $2.00 per 30min."
+     "raw": "Same as weekdays"
     },
     "sunday_publicholiday": {
-     "raw": "Same as Saturday"
+     "raw": "7.00am-4.59pm: $3.00 for 1st hr; $1.50 for sub. 30min. 5.00pm-6.59am: $4.50 per entry."
     }
    }
   },
@@ -151484,7 +151474,7 @@
    "category": "Indicative (LTA OneMotoring guide)",
    "rates": {
     "weekday_1": {
-     "raw": "$2.51 1st hr, $2.18/30min (indicative)"
+     "raw": "$0.70 per 30min (indicative)"
     },
     "saturday": {
      "raw": "Same as weekdays"
