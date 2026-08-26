@@ -1,11 +1,14 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { render } from '@testing-library/react'
 import type { Carpark } from './types'
+import SmoothWheelZoom from './smoothWheelZoom'
 
 const leaflet = vi.hoisted(() => {
   const map = {
+    addHandler: vi.fn(),
     fitBounds: vi.fn(),
     invalidateSize: vi.fn(),
+    scrollWheelZoom: { enable: vi.fn() },
     setView: vi.fn((_center?: unknown, _zoom?: number) => map),
   }
   const cluster = {
@@ -43,6 +46,18 @@ const leaflet = vi.hoisted(() => {
       marker: vi.fn(marker),
       markerClusterGroup: vi.fn(() => cluster),
       tileLayer: vi.fn(() => ({ addTo: vi.fn() })),
+      // Imported for its side effect on the map wiring: smoothWheelZoom
+      // extends this and registers itself through addHandler.
+      Handler: class {
+        _map?: unknown
+        constructor(map?: unknown) {
+          this._map = map
+        }
+        enable() {}
+        disable() {}
+      },
+      Util: { requestAnimFrame: vi.fn(() => 0), cancelAnimFrame: vi.fn() },
+      DomEvent: { stop: vi.fn(), getWheelDelta: vi.fn(() => 0), on: vi.fn(), off: vi.fn() },
     },
     map,
   }
@@ -99,20 +114,30 @@ const props = (overrides: Partial<React.ComponentProps<typeof Map>> = {}) => ({
 describe('Map zoom feel', () => {
   beforeEach(() => vi.clearAllMocks())
 
-  // A Mac trackpad emits a stream of small wheel events for one gesture.
-  // Leaflet's defaults round each 40ms batch up to a whole zoom level, so the
-  // gesture jumped many levels. These four options are the fix; scrollWheelZoom
-  // stays enabled, and touch pinch keeps a non-zero zoomSnap.
-  it('creates the map with trackpad-tuned wheel zoom, without disabling it', () => {
+  // Google Maps zooms the wheel continuously, cursor-anchored and animated.
+  // The debounced stock handler cannot do that, so the map swaps in
+  // SmoothWheelZoom under Leaflet's own handler name and turns the built-in
+  // off. zoomSnap stays non-zero for pinch settle / fitBounds; touch is not
+  // part of this wiring at all (the smooth handler only listens to `wheel`).
+  it('creates the map with Google-style smooth wheel zoom wired in', () => {
     render(<Map {...props()} />)
 
     const options = (leaflet.L.map.mock.calls[0] as unknown[])[1] as Record<string, unknown>
+    expect(options.scrollWheelZoom).toBe(false)
+    expect(options.smoothWheelZoom).toBe(true)
+    expect(options.wheelPxPerZoomLevel).toBe(140)
     expect(options.zoomSnap).toBe(0.25)
     expect(options.zoomDelta).toBe(1)
-    expect(options.wheelPxPerZoomLevel).toBe(180)
-    expect(options.wheelDebounceTime).toBe(100)
-    expect(options.scrollWheelZoom).toBeUndefined()
+    // The old debounce knob has no meaning without the debounced handler.
+    expect(options.wheelDebounceTime).toBeUndefined()
     expect(options.zoomControl).toBe(false)
+  })
+
+  it('enables the smooth handler registered under Leaflet\u2019s scrollWheelZoom name', () => {
+    render(<Map {...props()} />)
+
+    expect(leaflet.map.addHandler).toHaveBeenCalledWith('scrollWheelZoom', SmoothWheelZoom)
+    expect(leaflet.map.scrollWheelZoom.enable).toHaveBeenCalledTimes(1)
   })
 })
 
