@@ -375,6 +375,13 @@ export default function App() {
     destinationSeqRef.current += 1
     return destinationSeqRef.current
   }, [])
+  // The claimer owns the loading board from the moment it claims: the lookup it
+  // superseded is no longer allowed to publish its own completion, so a claim
+  // that ends without a search has to put the board down itself.
+  const settleDestinationClaim = useCallback(() => {
+    setPreserveResultsWhileLoading(false)
+    setLoading(false)
+  }, [])
 
   // Core fetch. `newLocation` searches a fresh place (fetch OSM too, save the
   // snapshot + shareable URL, clear selection). Filter toggles pass
@@ -722,11 +729,14 @@ export default function App() {
     setError('')
     getCurrentPosition()
       .then((loc) => {
-        if (destinationSeq !== destinationSeqRef.current) return
+        // The fix itself is good regardless of which destination is on screen:
+        // "You are here" is about the driver, not the search.
         setUserLocation(loc)
+        if (destinationSeq !== destinationSeqRef.current) return
         const inSG = loc.lat >= 1.13 && loc.lat <= 1.5 && loc.lon >= 103.55 && loc.lon <= 104.15
         if (!inSG) {
           setError('You seem to be outside Singapore. Search a place instead to see carparks there.')
+          settleDestinationClaim()
           return
         }
         return runSearch(loc.lat, loc.lon)
@@ -739,6 +749,7 @@ export default function App() {
             ? 'Location is blocked for this site. Allow it in your browser settings, then tap Near me again.'
             : "Couldn't get your location. Try again, or search a place instead.",
         )
+        settleDestinationClaim()
       })
   }
 

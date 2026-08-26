@@ -154,6 +154,52 @@ describe('geocode race against a newer search', () => {
     ).toBe(false)
   })
 
+  it('a failed Near me tap clears the loading board it took over', async () => {
+    let resolveGeocode: ((response: ReturnType<typeof okJson>) => void) | undefined
+    let rejectLocation: ((err: unknown) => void) | undefined
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      const url = String(input)
+      if (url.includes('/api/geocode')) {
+        return new Promise((resolve) => { resolveGeocode = resolve })
+      }
+      if (!url.includes('/api/carparks')) return Promise.resolve(okJson([]))
+      return Promise.resolve(okJson([carpark('geocoded-result', 'Geocoded result')]))
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    vi.mocked(getCurrentPosition).mockImplementationOnce(
+      () =>
+        new Promise<LatLon>((_resolve, reject) => {
+          rejectLocation = reject
+        }),
+    )
+
+    render(<App />)
+
+    // A place search is pending...
+    const searchBox = screen.getByRole('combobox')
+    fireEvent.change(searchBox, { target: { value: 'Slow place' } })
+    fireEvent.submit(screen.getByRole('search'))
+    expect(await screen.findByText('Finding spots…')).toBeInTheDocument()
+
+    // ...when Near me takes the destination over, then fails outright.
+    fireEvent.click(screen.getByRole('button', { name: /near me/i }))
+    await act(async () => {
+      rejectLocation?.({ code: 1 })
+      await Promise.resolve()
+    })
+
+    // The superseded geocode is no longer allowed to publish its completion,
+    // so the Near me tap has to put the board down itself.
+    await act(async () => {
+      resolveGeocode?.(okJson({ lat: 1.4, lon: 103.9 }))
+      await Promise.resolve()
+    })
+
+    expect(screen.queryByText('Finding spots…')).not.toBeInTheDocument()
+    expect(screen.queryByText('Refreshing saved spots…')).not.toBeInTheDocument()
+    expect(screen.getByText(/Location is blocked for this site/)).toBeInTheDocument()
+  })
+
   it('two rapid submissions resolve in favour of the newest query', async () => {
     const resolveGeocodes: Array<(response: ReturnType<typeof okJson>) => void> = []
     const fetchMock = vi.fn((input: RequestInfo | URL) => {
