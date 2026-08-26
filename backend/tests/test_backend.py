@@ -2,6 +2,7 @@
 
 import asyncio
 import json
+import math
 import sys
 import time
 from datetime import datetime, timezone
@@ -196,6 +197,25 @@ def test_has_lots_filtering(monkeypatch):
     a = next(c for c in out if c.id == "A")
     assert a.lots_available == 10
     assert a.total_lots == 100
+
+
+def test_has_lots_passes_uncounted_carparks_and_drops_known_zero(monkeypatch):
+    """The live feed covers HDB/LTA carparks only: 1,581 of 3,566 served records
+    -- every URA street carpark among them -- can never appear in it. Uncounted
+    is not full (13 of the 14 dropped at Jurong East MRT had unknown counts, not
+    zeros), so unknown passes the filter; a known 0 still goes."""
+    monkeypatch.setattr(main, "_carpark_cache", _build_cache())
+    availability = {
+        "A": {"lots_available": 10, "total_lots": 100},
+        "B": {"lots_available": 0, "total_lots": 50},
+        # C has no feed entry at all: uncounted.
+    }
+    out = main.filter_carparks(
+        1.3000, 103.8000, radius=20000, availability=availability, has_lots=True
+    )
+    assert {c.id for c in out} == {"A", "C"}
+    c = next(c for c in out if c.id == "C")
+    assert c.lots_available is None
 
 
 def test_results_sorted_by_distance(monkeypatch):
@@ -1289,3 +1309,206 @@ def test_load_carpark_records_fails_closed_without_polygons(monkeypatch):
 
     with pytest.raises(main.RestrictedDataError):
         main.load_carpark_records()
+
+
+# ---------------------------------------------------------------------------
+# Bug-sweep regressions: EV attribution + free-parking seed (build pipeline)
+# ---------------------------------------------------------------------------
+def _ev_carpark(cid, lat, lon):
+    return {"id": cid, "name": cid, "address": cid, "lat": lat, "lon": lon,
+            "sources": ["hdb"]}
+
+
+def _ev_site(lat, lon, *cp_ids):
+    return {"lat": lat, "lon": lon,
+            "connectors": [{"evCpId": cid, "operator": "OP", "powerRating": "50"}
+                           for cid in cp_ids]}
+
+
+def test_ev_site_is_attributed_to_its_nearest_carpark_only():
+    """One charger site must speak for exactly one carpark. Flagging every
+    served record within 75m let 241 LTA sites be claimed by 2+ carparks
+    (366 cards showing connectors that belonged next door)."""
+    import build_enriched as be
+
+    m_lat = 1.0 / 111_195.0          # ~1 metre of latitude in degrees
+    lat, lon = 1.305784, 103.856793  # the report's Kelantan Lane charger site
+
+    near = _ev_carpark("NEAR", lat + 10 * m_lat, lon)
+    mid = _ev_carpark("MID", lat + 45 * m_lat, lon)
+    far = _ev_carpark("FAR", lat - 500 * m_lat, lon)
+
+    sites = [
+        # Nearest NEAR (10m); MID is also within 75m but loses.
+        _ev_site(lat, lon, "EV-K"),
+        # 15m south of NEAR: nearest NEAR again, so its connector aggregates.
+        _ev_site(near["lat"] - 15 * m_lat, near["lon"], "EV-L"),
+        # 5m from MID: MID wins even though NEAR is within radius too.
+        _ev_site(mid["lat"] + 5 * m_lat, mid["lon"], "EV-M"),
+        # Far outside everyone's radius: claimed by nobody.
+        _ev_site(far["lat"] - 100 * m_lat, far["lon"], "EV-X"),
+    ]
+
+    flagged = be.attribute_ev_chargers([near, mid, far], sites)
+
+    assert flagged == 2
+    assert near["ev_cp_ids"] == ["EV-K", "EV-L"]
+    assert near["ev_total"] == 2
+    assert near["ev_operators"] == ["OP"]
+    assert near["ev_max_power_kw"] == 50.0
+    assert mid["ev_cp_ids"] == ["EV-M"]
+    assert "ev" not in far
+
+
+def test_ev_site_equidistant_claims_the_lower_id():
+    """Ties break on id so a rebuild attributes the same site the same way."""
+    import build_enriched as be
+
+    lat = 1.305784
+    lon = 103.856793
+    m_lon = 1.0 / (111_320.0 * math.cos(math.radians(lat)))
+    a = _ev_carpark("AAA", lat, lon - 30 * m_lon)
+    b = _ev_carpark("BBB", lat, lon + 30 * m_lon)
+    site = _ev_site(lat, lon, "EV-T")
+
+    assert abs(be.haversine(a["lat"], a["lon"], site["lat"], site["lon"])
+               - be.haversine(b["lat"], b["lon"], site["lat"], site["lon"])) < 1e-9
+
+    be.attribute_ev_chargers([b, a], [site])
+
+    assert a.get("ev_cp_ids") == ["EV-T"]
+    assert "ev" not in b
+
+
+def _stage_minimal_build(tmp_path, monkeypatch):
+    """Stage an offline build_enriched.main() run: geocoded spine + HDB feed +
+    two EV sites; every optional layer absent."""
+    import build_enriched as be
+
+    m_lat = 1.0 / 111_195.0
+    base_lat, base_lon = 1.3541, 103.8745
+
+    geocoded = [
+        {"id": "CPHDB", "address": "BLK 180 TEST AVENUE 1", "lat": base_lat,
+         "lon": base_lon, "source": "onemap", "type": "MULTI-STOREY",
+         "free_parking": "NO"},  # stale geocoded copy of the truth below
+        {"id": "CPLTA", "address": "LTA ONLY CP", "lat": base_lat + 40 * m_lat,
+         "lon": base_lon, "source": "onemap", "type": None, "free_parking": None},
+    ]
+    gov_hdb = [{
+        "id": "CPHDB", "car_park_type": "MULTI-STOREY CAR PARK",
+        "short_term_parking": "WHOLE DAY", "night_parking": "NO",
+        "free_parking": "SUN & PH FR 7AM-10.30PM", "car_park_decks": "4",
+        "gantry_height": "2.20", "car_park_basement": "N",
+        "lat": base_lat, "lon": base_lon,
+    }]
+    ev_points = [
+        # 15m north of CPHDB, 25m south of CPLTA: CPHDB is nearest, and CPLTA
+        # stays inside the old 75m everyone-claims radius.
+        _ev_site(base_lat + 15 * m_lat, base_lon, "EV-NEAR"),
+        _ev_site(base_lat - 300 * m_lat, base_lon, "EV-FAR"),
+    ]
+
+    geocoded_path = tmp_path / "geocoded.json"
+    hdb_path = tmp_path / "gov_hdb.json"
+    ev_path = tmp_path / "ev_points.json"
+    geocoded_path.write_text(json.dumps(geocoded))
+    hdb_path.write_text(json.dumps(gov_hdb))
+    ev_path.write_text(json.dumps(ev_points))
+
+    monkeypatch.setattr(be, "GEOCODED", str(geocoded_path))
+    monkeypatch.setattr(be, "GOV_HDB", str(hdb_path))
+    monkeypatch.setattr(be, "EV", str(ev_path))
+    for name in ("GOOGLE", "OSM", "GOV_URA", "GOV_RATES", "MANUAL_VOIDS",
+                 "CENTRAL_AREA", "SG_BOUNDARY", "ONEMOTORING", "MANUAL_RATES",
+                 "CARWASH_LOCATIONS"):
+        monkeypatch.setattr(be, name, str(tmp_path / "absent.json"))
+    monkeypatch.setattr(be, "OUT", str(tmp_path / "out.json"))
+    monkeypatch.setattr(be, "STATS", str(tmp_path / "stats.md"))
+    monkeypatch.setattr(be, "ONEMAP_CACHE", str(tmp_path / "onemap_cache.json"))
+    return be
+
+
+def test_build_seeds_free_parking_from_the_hdb_feed(tmp_path, monkeypatch):
+    """The spine's top-level free_parking must come from the authoritative HDB
+    crawl, not the stale geocoded copy: all 14 mismatches were served NO while
+    HDB said free, hiding them from the Free Sun & PH filter."""
+    be = _stage_minimal_build(tmp_path, monkeypatch)
+    be.main()
+
+    out = {r["id"]: r for r in json.loads(Path(be.OUT).read_text())}
+
+    assert out["CPHDB"]["free_parking"] == "SUN & PH FR 7AM-10.30PM"
+    assert out["CPHDB"]["free_parking"] == out["CPHDB"]["hdb_info"]["free_parking"]
+    # No HDB record: falls back to the geocoded value rather than losing it.
+    assert out["CPLTA"]["free_parking"] is None
+
+
+def test_build_attributes_ev_sites_nearest_only_end_to_end(tmp_path, monkeypatch):
+    """Same pipeline run: the site within 75m of BOTH carparks must flag only
+    its nearest one."""
+    be = _stage_minimal_build(tmp_path, monkeypatch)
+    be.main()
+
+    out = {r["id"]: r for r in json.loads(Path(be.OUT).read_text())}
+
+    assert out["CPHDB"].get("ev") is True
+    assert out["CPHDB"]["ev_cp_ids"] == ["EV-NEAR"]
+    assert "EV-FAR" not in out["CPHDB"]["ev_cp_ids"]
+    assert "ev" not in out["CPLTA"]  # within the old 75m claim radius, nobody's nearest
+
+
+# ---------------------------------------------------------------------------
+# Bug-sweep regression: live OSM layer must not re-pin merged carparks
+# ---------------------------------------------------------------------------
+@pytest.mark.asyncio
+async def test_osm_suppresses_live_pins_that_merge_with_served_carparks(monkeypatch):
+    """206 live pins sat 60-90m from their nearest served card -- duplicates by
+    the build's own merge rule that the browser's 60m net cannot catch. The
+    server drops them before they ever reach the map."""
+    monkeypatch.setattr(main, "_carpark_cache", _build_cache())
+    served_lat, served_lon = 1.3000, 103.8000
+    m_lat = 1.0 / 111_195.0
+    m_lon = 1.0 / (111_320.0 * math.cos(math.radians(served_lat)))
+
+    dup_in_band = {   # 75m north: inside the build's 90m merge radius
+        "type": "node", "id": 101, "lat": served_lat + 75 * m_lat, "lon": served_lon,
+        "tags": {"amenity": "parking", "name": "Same carpark, re-pinned"},
+    }
+    close_dup = {     # 30m west: also inside it
+        "type": "node", "id": 102, "lat": served_lat, "lon": served_lon - 30 * m_lon,
+        "tags": {"amenity": "parking", "name": "Too close"},
+    }
+    genuinely_far = {  # 400m east: outside any merge radius, must survive
+        "type": "node", "id": 103, "lat": served_lat, "lon": served_lon + 400 * m_lon,
+        "tags": {"amenity": "parking", "name": "A different carpark"},
+    }
+
+    band_d = main.haversine(dup_in_band["lat"], dup_in_band["lon"], served_lat, served_lon)
+    far_d = main.haversine(genuinely_far["lat"], genuinely_far["lon"], served_lat, served_lon)
+    # 75m sits in the old leak band: past the browser's 60m net, inside the build's merge radius.
+    assert main.OSM_DEDUP_M - 30 < band_d <= main.OSM_DEDUP_M
+    assert band_d > 60.0
+    assert far_d > main.OSM_DEDUP_M
+
+    _stub_overpass(monkeypatch, [dup_in_band, close_dup, genuinely_far])
+    results = await main.parking_osm(
+        response=main.Response(), lat=served_lat, lon=served_lon, radius=500
+    )
+
+    assert [r.id for r in results] == ["osm_103"]
+    assert results[0].name == "A different carpark"
+
+
+def test_osm_suppresses_nothing_when_dataset_not_loaded(monkeypatch):
+    """Startup window: an empty cache suppresses nothing rather than every pin."""
+    monkeypatch.setattr(main, "_carpark_cache", [])
+    assert main.merges_with_served(1.30, 103.80) is False
+
+
+def test_osm_dedup_radius_is_the_build_merge_rule_itself():
+    """main.py imports DEDUPE_HARD_M instead of restating it; this pins the
+    import against silent drift back to a local literal."""
+    import build_enriched as be
+
+    assert main.OSM_DEDUP_M == be.DEDUPE_HARD_M == 90.0

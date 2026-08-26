@@ -191,18 +191,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R106381R-001",
-   "R106381R-002",
-   "R106382D-001",
-   "R106382D-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -662,17 +650,13 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R114140D-001",
-   "R114141H-001",
-   "R114142A-001",
    "R120696F-001",
    "R120697Z-001",
    "R120698C-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "carwash": true,
@@ -837,16 +821,13 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R113234K-001",
-   "R113235B-001",
    "R117543R-001",
    "R117544D-001",
    "R117545H-001"
   ],
-  "ev_total": 5,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "carwash": true,
@@ -1648,17 +1629,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R122909Z-001",
-   "R122910B-001",
-   "R122911F-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -2456,17 +2426,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R103910K-001",
-   "R103911B-001",
-   "R103912F-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 22.0,
   "category": "HDB Estate"
  },
  {
@@ -2504,17 +2463,6 @@
    "car_park_basement": "N"
   },
   "google_name": "Block 130A HDB Ang Mo Kio (MSCP)",
-  "ev": true,
-  "ev_cp_ids": [
-   "R122103A-001",
-   "R122105K-001",
-   "R122109C-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -2670,14 +2618,10 @@
   "ev_cp_ids": [
    "R114140D-001",
    "R114141H-001",
-   "R114142A-001",
-   "R120696F-001",
-   "R120697Z-001",
-   "R120698C-001"
+   "R114142A-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
@@ -3179,9 +3123,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R113492C-001",
-   "R113493G-001",
-   "R113494R-001",
    "R119870H-001",
    "R119871A-001",
    "R119872E-001",
@@ -3189,7 +3130,7 @@
    "R119874B-001",
    "R119875F-001"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
    "SHELL SINGAPORE PTE. LTD."
   ],
@@ -3391,15 +3332,11 @@
   "ev_cp_ids": [
    "R103840R-001",
    "R103841D-001",
-   "R103842H-001",
-   "R108115F-001",
-   "R108118G-001",
-   "R108119R-001"
+   "R103842H-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
@@ -3588,22 +3525,6 @@
    "car_park_basement": "N"
   },
   "google_name": "A51",
-  "ev": true,
-  "ev_cp_ids": [
-   "R106381R-001",
-   "R106381R-002",
-   "R106382D-001",
-   "R106382D-002",
-   "R114140D-001",
-   "R114141H-001",
-   "R114142A-001"
-  ],
-  "ev_total": 7,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -3650,18 +3571,11 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R105096A-001",
-   "R105097E-001",
-   "R105098K-001",
    "R113234K-001",
-   "R113235B-001",
-   "R117543R-001",
-   "R117544D-001",
-   "R117545H-001"
+   "R113235B-001"
   ],
-  "ev_total": 8,
+  "ev_total": 2,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
@@ -3739,14 +3653,11 @@
   "ev_cp_ids": [
    "R105096A-001",
    "R105097E-001",
-   "R105098K-001",
-   "R113234K-001",
-   "R113235B-001"
+   "R105098K-001"
   ],
-  "ev_total": 5,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "carwash": true,
@@ -4262,16 +4173,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R103840R-001",
-   "R103841D-001",
-   "R103842H-001",
    "R108115F-001",
    "R108118G-001",
    "R108119R-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
@@ -5157,20 +5064,6 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R107073H-001",
-   "R107076K-001",
-   "R107078F-001",
-   "R107081F-001",
-   "R107086D-001",
-   "R107087H-001"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -5219,15 +5112,9 @@
   "ev_cp_ids": [
    "R113492C-001",
    "R113493G-001",
-   "R113494R-001",
-   "R119870H-001",
-   "R119871A-001",
-   "R119872E-001",
-   "R119873K-001",
-   "R119874B-001",
-   "R119875F-001"
+   "R113494R-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
    "SHELL SINGAPORE PTE. LTD."
   ],
@@ -6187,14 +6074,11 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R104224F-001",
-   "R104225Z-001",
-   "R104226C-001",
    "R104227G-001",
    "R104228R-001",
    "R104229D-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "SP MOBILITY PTE. LTD."
   ],
@@ -6247,12 +6131,9 @@
   "ev_cp_ids": [
    "R104224F-001",
    "R104225Z-001",
-   "R104226C-001",
-   "R104227G-001",
-   "R104228R-001",
-   "R104229D-001"
+   "R104226C-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "SP MOBILITY PTE. LTD."
   ],
@@ -7096,17 +6977,13 @@
   "ev_cp_ids": [
    "R106749F-001",
    "R106750K-001",
-   "R106751B-001",
-   "R111790A-001",
-   "R111791E-001",
-   "R111792K-001"
+   "R106751B-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
-   "SP MOBILITY PTE. LTD."
+   "SHELL SINGAPORE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "carwash": true,
   "carwash_operator": "QE Car Care",
   "category": "HDB Estate"
@@ -7354,17 +7231,13 @@
   "ev_cp_ids": [
    "R117021Z-001",
    "R117023G-001",
-   "R117025D-001",
-   "R119382H-001",
-   "R119383A-001",
-   "R119384E-001"
+   "R117025D-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
-   "SP MOBILITY PTE. LTD."
+   "SHELL SINGAPORE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -7411,16 +7284,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R117021Z-001",
-   "R117023G-001",
-   "R117025D-001",
    "R119382H-001",
    "R119383A-001",
    "R119384E-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -7468,17 +7337,6 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R119382H-001",
-   "R119383A-001",
-   "R119384E-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -7523,20 +7381,6 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R123150G-001",
-   "R123151R-001",
-   "R123152D-001",
-   "R127043D-001",
-   "R127044H-001",
-   "R127045A-001"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -8050,16 +7894,6 @@
    "fee": null,
    "parking_type": "multi-storey"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R125187G-001",
-   "R125188R-001"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -8102,17 +7936,6 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R122821G-001",
-   "R122822R-001",
-   "R122823D-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -8379,17 +8202,10 @@
   "ev_cp_ids": [
    "R119648A-001",
    "R119649E-001",
-   "R119650H-001",
-   "R123932Z-001",
-   "R123933C-001",
-   "R123935R-001",
-   "R127702R-001",
-   "R127704H-001",
-   "R127706E-001"
+   "R119650H-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -8439,9 +8255,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R119648A-001",
-   "R119649E-001",
-   "R119650H-001",
    "R123932Z-001",
    "R123933C-001",
    "R123935R-001",
@@ -8449,10 +8262,9 @@
    "R127704H-001",
    "R127706E-001"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
-   "SP MOBILITY PTE. LTD."
+   "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -8971,16 +8783,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R106749F-001",
-   "R106750K-001",
-   "R106751B-001",
    "R111790A-001",
    "R111791E-001",
    "R111792K-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -10393,9 +10201,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R101631A-001",
-   "R101632E-001",
-   "R101633K-001",
    "R102091F-001",
    "R102091F-002",
    "R102092Z-001",
@@ -10407,10 +10212,9 @@
    "R123406E-001",
    "R123406E-002"
   ],
-  "ev_total": 13,
+  "ev_total": 10,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -11419,21 +11223,10 @@
   "ev_cp_ids": [
    "R101631A-001",
    "R101632E-001",
-   "R101633K-001",
-   "R102091F-001",
-   "R102091F-002",
-   "R102092Z-001",
-   "R102092Z-002",
-   "R123404H-001",
-   "R123404H-002",
-   "R123405A-001",
-   "R123405A-002",
-   "R123406E-001",
-   "R123406E-002"
+   "R101633K-001"
   ],
-  "ev_total": 13,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -11591,26 +11384,6 @@
    "fee": null,
    "parking_type": "multi-storey"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R113650C-001",
-   "R113650C-002",
-   "R113651G-001",
-   "R113651G-002",
-   "R113652R-001",
-   "R113652R-002",
-   "R113653D-001",
-   "R113653D-002",
-   "R113654H-001",
-   "R113654H-002",
-   "R113655A-001",
-   "R113655A-002"
-  ],
-  "ev_total": 12,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -11831,20 +11604,13 @@
   "ev_cp_ids": [
    "R105054B-001",
    "R105055F-001",
-   "R105056Z-001",
-   "R107389K-001",
-   "R107389K-002",
-   "R107391E-001",
-   "R107391E-002",
-   "R107393B-001",
-   "R107393B-002"
+   "R105056Z-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -12161,9 +11927,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R105054B-001",
-   "R105055F-001",
-   "R105056Z-001",
    "R107389K-001",
    "R107389K-002",
    "R107391E-001",
@@ -12171,10 +11934,9 @@
    "R107393B-001",
    "R107393B-002"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -12380,18 +12142,15 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R117541C-001",
-   "R117541C-002",
    "R124305F-001",
    "R124306Z-001",
    "R124307C-001"
   ],
-  "ev_total": 5,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 100.0,
+  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -13480,9 +13239,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R101086Z-001",
-   "R101087C-001",
-   "R101089R-001",
    "R102917E-001",
    "R102917E-002",
    "R102918K-001",
@@ -13494,10 +13250,9 @@
    "R120180F-001",
    "R120180F-002"
   ],
-  "ev_total": 13,
+  "ev_total": 10,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -13658,21 +13413,10 @@
   "ev_cp_ids": [
    "R101086Z-001",
    "R101087C-001",
-   "R101089R-001",
-   "R102917E-001",
-   "R102917E-002",
-   "R102918K-001",
-   "R102918K-002",
-   "R120178Z-001",
-   "R120178Z-002",
-   "R120179C-001",
-   "R120179C-002",
-   "R120180F-001",
-   "R120180F-002"
+   "R101089R-001"
   ],
-  "ev_total": 13,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -14202,16 +13946,12 @@
    "R102024K-002",
    "R102025B-001",
    "R102025B-002",
-   "R110066F-001",
-   "R110066F-002",
-   "R110068C-001",
-   "R110068C-002",
    "R119063G-001",
    "R119063G-002",
    "R119064R-001",
    "R119064R-002"
   ],
-  "ev_total": 12,
+  "ev_total": 8,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -14467,13 +14207,9 @@
    "R116808A-001",
    "R116808A-002",
    "R116809E-001",
-   "R116809E-002",
-   "R121021A-001",
-   "R121021A-002",
-   "R121022E-001",
-   "R121022E-002"
+   "R116809E-002"
   ],
-  "ev_total": 8,
+  "ev_total": 4,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -14524,20 +14260,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R102024K-001",
-   "R102024K-002",
-   "R102025B-001",
-   "R102025B-002",
    "R110066F-001",
    "R110066F-002",
    "R110068C-001",
-   "R110068C-002",
-   "R119063G-001",
-   "R119063G-002",
-   "R119064R-001",
-   "R119064R-002"
+   "R110068C-002"
   ],
-  "ev_total": 12,
+  "ev_total": 4,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -14586,16 +14314,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R116808A-001",
-   "R116808A-002",
-   "R116809E-001",
-   "R116809E-002",
    "R121021A-001",
    "R121021A-002",
    "R121022E-001",
    "R121022E-002"
   ],
-  "ev_total": 8,
+  "ev_total": 4,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -14898,17 +14622,6 @@
    "fee": null,
    "parking_type": null
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R106083D-001",
-   "R106084H-001",
-   "R106085A-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -16676,17 +16389,11 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R106851G-001",
-   "R106859F-001",
-   "R106866R-001",
-   "R106871H-001",
-   "R106875B-001",
-   "R106879G-001",
    "R119047R-001",
    "R119048D-001",
    "R119049H-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
@@ -20013,17 +19720,13 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R107055D-001",
-   "R107057A-001",
-   "R107058E-001",
    "R123195G-001",
    "R123196R-001",
    "R123197D-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -20583,17 +20286,13 @@
   "ev_cp_ids": [
    "R107055D-001",
    "R107057A-001",
-   "R107058E-001",
-   "R123195G-001",
-   "R123196R-001",
-   "R123197D-001"
+   "R107058E-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -20859,16 +20558,13 @@
   "ev_cp_ids": [
    "R105618B-001",
    "R105620K-001",
-   "R105622F-001",
-   "R119416K-001",
-   "R119417B-001",
-   "R119418F-001"
+   "R105622F-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -21962,18 +21658,6 @@
    "gantry_height": "2.1",
    "car_park_basement": "Y"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R120129F-001",
-   "R120130K-001",
-   "R120131B-001",
-   "R120131B-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 50.0,
   "category": "HDB Estate"
  },
  {
@@ -22070,14 +21754,11 @@
   "google_name": "CC1",
   "ev": true,
   "ev_cp_ids": [
-   "R105618B-001",
-   "R105620K-001",
-   "R105622F-001",
    "R119416K-001",
    "R119417B-001",
    "R119418F-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
@@ -23125,15 +22806,10 @@
   "ev_cp_ids": [
    "R102071E-001",
    "R102072K-001",
-   "R102211A-001",
-   "R114772E-001",
-   "R114772E-002",
-   "R114773K-001",
-   "R114773K-002"
+   "R102211A-001"
   ],
-  "ev_total": 7,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -23716,20 +23392,6 @@
    "car_park_basement": "N"
   },
   "google_name": "CK19",
-  "ev": true,
-  "ev_cp_ids": [
-   "R109189H-001",
-   "R109189H-002",
-   "R109191D-001",
-   "R109191D-002",
-   "R109192H-001",
-   "R109192H-002"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -24114,18 +23776,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R116878Z-001",
-   "R116878Z-002",
-   "R116879C-001",
-   "R116879C-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -24242,17 +23892,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R103353D-001",
-   "R103354H-001",
-   "R103355A-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 22.0,
   "category": "HDB Estate"
  },
  {
@@ -24352,18 +23991,14 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R102071E-001",
-   "R102072K-001",
-   "R102211A-001",
    "R114772E-001",
    "R114772E-002",
    "R114773K-001",
    "R114773K-002"
   ],
-  "ev_total": 7,
+  "ev_total": 4,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -24780,20 +24415,6 @@
    "gantry_height": "1.8",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R109189H-001",
-   "R109189H-002",
-   "R109191D-001",
-   "R109191D-002",
-   "R109192H-001",
-   "R109192H-002"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -25966,18 +25587,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102756D-001",
-   "R102756D-002",
-   "R102757H-001",
-   "R102757H-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 3.7,
   "category": "HDB Estate"
  },
  {
@@ -26534,15 +26143,11 @@
    "R109482F-001",
    "R109482F-002",
    "R109485G-001",
-   "R109485G-002",
-   "R118328H-001",
-   "R118329A-001",
-   "R118330D-001"
+   "R109485G-002"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -26591,22 +26196,15 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R109476E-001",
-   "R109476E-002",
-   "R109482F-001",
-   "R109482F-002",
-   "R109485G-001",
-   "R109485G-002",
    "R118328H-001",
    "R118329A-001",
    "R118330D-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -27776,22 +27374,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R102188R-001",
-   "R102188R-002",
-   "R102189D-001",
-   "R102189D-002",
    "R111146K-001",
    "R111146K-002",
    "R111147B-001",
-   "R111147B-002",
-   "R121544F-001",
-   "R121544F-002",
-   "R121546C-001",
-   "R121546C-002",
-   "R121547G-001",
-   "R121547G-002"
+   "R111147B-002"
   ],
-  "ev_total": 14,
+  "ev_total": 4,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -27886,17 +27474,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R122102H-001",
-   "R122104E-001",
-   "R122107F-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -27998,16 +27575,13 @@
   "ev_cp_ids": [
    "R107449A-001",
    "R107450D-001",
-   "R107453E-001",
-   "R123093E-001",
-   "R123094K-001",
-   "R123095B-001"
+   "R107453E-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -28487,20 +28061,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R109373Z-001",
-   "R109373Z-002",
-   "R109374C-001",
-   "R109374C-002",
-   "R109375G-001",
-   "R109375G-002"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -28913,20 +28473,13 @@
   "ev_cp_ids": [
    "R105242K-001",
    "R105245Z-001",
-   "R105249D-001",
-   "R123322G-001",
-   "R123322G-002",
-   "R123323R-001",
-   "R123323R-002",
-   "R123324D-001",
-   "R123324D-002"
+   "R105249D-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -29075,9 +28628,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R105242K-001",
-   "R105245Z-001",
-   "R105249D-001",
    "R123322G-001",
    "R123322G-002",
    "R123323R-001",
@@ -29085,10 +28635,9 @@
    "R123324D-001",
    "R123324D-002"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -29613,17 +29162,6 @@
    "fee": null,
    "parking_type": null
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R122408C-001",
-   "R122409G-001",
-   "R122410Z-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -30990,9 +30528,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R106038E-001",
-   "R106040A-001",
-   "R106041E-001",
    "R120085Z-001",
    "R120085Z-002",
    "R120086C-001",
@@ -31004,10 +30539,9 @@
    "R120089D-001",
    "R120089D-002"
   ],
-  "ev_total": 13,
+  "ev_total": 10,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -31114,24 +30648,13 @@
   "ev_cp_ids": [
    "R106038E-001",
    "R106040A-001",
-   "R106041E-001",
-   "R120085Z-001",
-   "R120085Z-002",
-   "R120086C-001",
-   "R120086C-002",
-   "R120087G-001",
-   "R120087G-002",
-   "R120088R-001",
-   "R120088R-002",
-   "R120089D-001",
-   "R120089D-002"
+   "R106041E-001"
   ],
-  "ev_total": 13,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -31195,17 +30718,6 @@
    "car_park_basement": "N"
   },
   "google_name": "DSR2",
-  "ev": true,
-  "ev_cp_ids": [
-   "R106072E-001",
-   "R106073K-001",
-   "R106074B-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -32438,24 +31950,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102174R-001",
-   "R102174R-002",
-   "R102175D-001",
-   "R102175D-002",
-   "R122670A-001",
-   "R122670A-002",
-   "R122671E-001",
-   "R122671E-002",
-   "R122672K-001",
-   "R122672K-002"
-  ],
-  "ev_total": 10,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -33040,16 +32534,13 @@
   "ev_cp_ids": [
    "R107064F-001",
    "R107066C-001",
-   "R107067G-001",
-   "R116015Z-001",
-   "R116016C-001",
-   "R116017G-001"
+   "R107067G-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -33094,14 +32585,11 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R107064F-001",
-   "R107066C-001",
-   "R107067G-001",
    "R116015Z-001",
    "R116016C-001",
    "R116017G-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
@@ -33333,7 +32821,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -33376,7 +32864,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -34048,15 +33536,11 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R105655C-001",
-   "R105656G-001",
-   "R105657R-001",
    "R112204C-001",
    "R112205G-001"
   ],
-  "ev_total": 5,
+  "ev_total": 2,
   "ev_operators": [
-   "STRIDES YTL PTE. LTD.",
    "WES CARES ENERGY PTE. LTD."
   ],
   "ev_max_power_kw": 30.0,
@@ -34572,16 +34056,13 @@
    "R106866R-001",
    "R106871H-001",
    "R106875B-001",
-   "R106879G-001",
-   "R119047R-001",
-   "R119048D-001",
-   "R119049H-001"
+   "R106879G-001"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -34800,18 +34281,14 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R104203A-001",
-   "R104204E-001",
-   "R104205K-001",
    "R106447E-001",
    "R106447E-002",
    "R106448K-001",
    "R106448K-002"
   ],
-  "ev_total": 7,
+  "ev_total": 4,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "SP MOBILITY PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "carwash": true,
@@ -35623,15 +35100,10 @@
   "ev_cp_ids": [
    "R104203A-001",
    "R104204E-001",
-   "R104205K-001",
-   "R106447E-001",
-   "R106447E-002",
-   "R106448K-001",
-   "R106448K-002"
+   "R104205K-001"
   ],
-  "ev_total": 7,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -37654,12 +37126,9 @@
   "ev_cp_ids": [
    "R110079B-001",
    "R110080E-001",
-   "R110081K-001",
-   "R115608C-001",
-   "R115612G-001",
-   "R115613R-001"
+   "R110081K-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "SHELL SINGAPORE PTE. LTD."
   ],
@@ -37809,14 +37278,11 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R110079B-001",
-   "R110080E-001",
-   "R110081K-001",
    "R115608C-001",
    "R115612G-001",
    "R115613R-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "SHELL SINGAPORE PTE. LTD."
   ],
@@ -40576,17 +40042,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R123258R-001",
-   "R123260G-001",
-   "R123261R-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -40925,20 +40380,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R122594B-001",
-   "R122599R-001",
-   "R122600C-001",
-   "R127429C-001",
-   "R127430F-001",
-   "R127431Z-001"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -41190,15 +40631,9 @@
    "R110056R-001",
    "R110056R-002",
    "R110057D-001",
-   "R110057D-002",
-   "R121558F-001",
-   "R121558F-002",
-   "R121559Z-001",
-   "R121559Z-002",
-   "R121561F-001",
-   "R121561F-002"
+   "R110057D-002"
   ],
-  "ev_total": 10,
+  "ev_total": 4,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -41469,12 +40904,9 @@
   "ev_cp_ids": [
    "R101329A-001",
    "R101331H-001",
-   "R101332A-001",
-   "R101333E-001",
-   "R101335B-001",
-   "R101337Z-001"
+   "R101332A-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
@@ -41746,22 +41178,15 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R107382C-001",
-   "R107382C-002",
-   "R107383G-001",
-   "R107383G-002",
-   "R107386H-001",
-   "R107386H-002",
    "R116348R-001",
    "R116350G-001",
    "R116353H-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -43526,15 +42951,11 @@
    "R107383G-001",
    "R107383G-002",
    "R107386H-001",
-   "R107386H-002",
-   "R116348R-001",
-   "R116350G-001",
-   "R116353H-001"
+   "R107386H-002"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -43739,20 +43160,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R120665F-001",
-   "R120665F-002",
-   "R120666Z-001",
-   "R120666Z-002",
-   "R120667C-001",
-   "R120667C-002"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -43819,24 +43226,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R103046F-001",
-   "R103046F-002",
-   "R103047Z-001",
-   "R103047Z-002",
-   "R120181Z-001",
-   "R120181Z-002",
-   "R120182C-001",
-   "R120182C-002",
-   "R120183G-001",
-   "R120183G-002"
-  ],
-  "ev_total": 10,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "carwash": true,
   "carwash_operator": "QE Car Care",
   "category": "HDB Estate"
@@ -43919,30 +43308,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R107382C-001",
-   "R107382C-002",
-   "R107383G-001",
-   "R107383G-002",
-   "R107386H-001",
-   "R107386H-002",
-   "R116348R-001",
-   "R116350G-001",
-   "R116353H-001",
-   "R128705R-001",
-   "R128705R-002",
-   "R128706D-001",
-   "R128706D-002",
-   "R128707H-001",
-   "R128707H-002"
-  ],
-  "ev_total": 15,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -44853,21 +44218,6 @@
    "gantry_height": "9.99",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102897D-001",
-   "R102897D-002",
-   "R102898H-001",
-   "R102898H-002",
-   "R118540K-001",
-   "R118541B-001",
-   "R118542F-001"
-  ],
-  "ev_total": 7,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -45579,15 +44929,11 @@
    "R115669Z-001",
    "R115669Z-002",
    "R115670B-001",
-   "R115670B-002",
-   "R120437H-001",
-   "R120438A-001",
-   "R120439E-001"
+   "R115670B-002"
   ],
-  "ev_total": 11,
+  "ev_total": 8,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -45753,17 +45099,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R111684F-001",
-   "R111685Z-001",
-   "R111686C-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -46484,17 +45819,6 @@
    "gantry_height": "9.99",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R101773E-001",
-   "R101774K-001",
-   "R101775B-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -46535,17 +45859,6 @@
    "gantry_height": "9.99",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R101773E-001",
-   "R101774K-001",
-   "R101775B-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -46678,18 +45991,6 @@
    "car_park_basement": "N"
   },
   "google_name": "Blk 505A Jurong West St 52",
-  "ev": true,
-  "ev_cp_ids": [
-   "R121436C-001",
-   "R121436C-002",
-   "R121438R-001",
-   "R121438R-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -47141,17 +46442,6 @@
    "gantry_height": "9.99",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R101220D-001",
-   "R101223E-001",
-   "R101226F-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -47397,18 +46687,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R117049Z-001",
-   "R117049Z-002",
-   "R117050B-001",
-   "R117050B-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -49190,16 +48468,13 @@
   "ev_cp_ids": [
    "R105289F-001",
    "R105290K-001",
-   "R105291B-001",
-   "R115882D-001",
-   "R115883H-001",
-   "R115884A-001"
+   "R105291B-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -49240,15 +48515,11 @@
    "R109182B-001",
    "R109182B-002",
    "R109183F-001",
-   "R109183F-002",
-   "R115882D-001",
-   "R115883H-001",
-   "R115884A-001"
+   "R109183F-002"
   ],
-  "ev_total": 7,
+  "ev_total": 4,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -49279,18 +48550,6 @@
    "car_park_basement": "N"
   },
   "google_name": "KAM",
-  "ev": true,
-  "ev_cp_ids": [
-   "R109182B-001",
-   "R109182B-002",
-   "R109183F-001",
-   "R109183F-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -49870,26 +49129,6 @@
    "car_park_basement": "N"
   },
   "google_name": "KB3",
-  "ev": true,
-  "ev_cp_ids": [
-   "R109503R-001",
-   "R109503R-002",
-   "R109505H-001",
-   "R109505H-002",
-   "R109506A-001",
-   "R109506A-002",
-   "R119991G-001",
-   "R119991G-002",
-   "R119992R-001",
-   "R119992R-002",
-   "R119993D-001",
-   "R119993D-002"
-  ],
-  "ev_total": 12,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 160.0,
   "category": "HDB Estate"
  },
  {
@@ -50213,14 +49452,10 @@
    "R118139H-001",
    "R118140R-001",
    "R118141D-001",
-   "R118142H-001",
-   "R124117Z-001",
-   "R124118C-001",
-   "R124119G-001"
+   "R118142H-001"
   ],
-  "ev_total": 15,
+  "ev_total": 12,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -50270,26 +49505,13 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R118130E-001",
-   "R118131K-001",
-   "R118133F-001",
-   "R118134Z-001",
-   "R118135C-001",
-   "R118136G-001",
-   "R118137R-001",
-   "R118138D-001",
-   "R118139H-001",
-   "R118140R-001",
-   "R118141D-001",
-   "R118142H-001",
    "R124117Z-001",
    "R124118C-001",
    "R124119G-001"
   ],
-  "ev_total": 15,
+  "ev_total": 3,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "carwash": true,
@@ -50730,10 +49952,6 @@
    "R102188R-002",
    "R102189D-001",
    "R102189D-002",
-   "R111146K-001",
-   "R111146K-002",
-   "R111147B-001",
-   "R111147B-002",
    "R121544F-001",
    "R121544F-002",
    "R121546C-001",
@@ -50741,7 +49959,7 @@
    "R121547G-001",
    "R121547G-002"
   ],
-  "ev_total": 14,
+  "ev_total": 10,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -50904,15 +50122,11 @@
   "ev_cp_ids": [
    "R101229G-001",
    "R101232G-001",
-   "R101237E-001",
-   "R119197B-001",
-   "R119198F-001",
-   "R119199Z-001"
+   "R101237E-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SP MOBILITY PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -51243,20 +50457,13 @@
   "ev_cp_ids": [
    "R107027E-001",
    "R107028K-001",
-   "R107029B-001",
-   "R116290D-001",
-   "R116290D-002",
-   "R116291H-001",
-   "R116291H-002",
-   "R116292A-001",
-   "R116292A-002"
+   "R107029B-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "carwash": true,
   "carwash_operator": "Beaver",
   "category": "HDB Estate"
@@ -51468,14 +50675,11 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R101329A-001",
-   "R101331H-001",
-   "R101332A-001",
    "R101333E-001",
    "R101335B-001",
    "R101337Z-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
@@ -52115,16 +51319,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R101229G-001",
-   "R101232G-001",
-   "R101237E-001",
    "R119197B-001",
    "R119198F-001",
    "R119199Z-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -52163,17 +51363,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R117534K-001",
-   "R117535B-001",
-   "R117536F-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -52262,17 +51451,6 @@
    "fee": null,
    "parking_type": null
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R114008G-001",
-   "R114009R-001",
-   "R114011G-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -52748,20 +51926,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R104503E-001",
-   "R104503E-002",
-   "R104504K-001",
-   "R104504K-002",
    "R108218A-001",
    "R108222E-001",
-   "R108224B-001",
-   "R116862B-001",
-   "R116863F-001",
-   "R116864Z-001"
+   "R108224B-001"
   ],
-  "ev_total": 10,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
@@ -53417,9 +52587,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R101083K-001",
-   "R101084B-001",
-   "R101085F-001",
    "R103459R-001",
    "R103459R-002",
    "R103461G-001",
@@ -53431,10 +52598,9 @@
    "R120159B-001",
    "R120159B-002"
   ],
-  "ev_total": 13,
+  "ev_total": 10,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "carwash": true,
@@ -53485,21 +52651,10 @@
   "ev_cp_ids": [
    "R101083K-001",
    "R101084B-001",
-   "R101085F-001",
-   "R103459R-001",
-   "R103459R-002",
-   "R103461G-001",
-   "R103461G-002",
-   "R120157E-001",
-   "R120157E-002",
-   "R120158K-001",
-   "R120158K-002",
-   "R120159B-001",
-   "R120159B-002"
+   "R101085F-001"
   ],
-  "ev_total": 13,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -54304,12 +53459,9 @@
    "R116068H-001",
    "R116069A-001",
    "R116071H-001",
-   "R116072A-001",
-   "R119210H-001",
-   "R119211A-001",
-   "R119212E-001"
+   "R116072A-001"
   ],
-  "ev_total": 12,
+  "ev_total": 9,
   "ev_operators": [
    "SP MOBILITY PTE. LTD.",
    "STRIDES YTL PTE. LTD."
@@ -54464,23 +53616,13 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R114002E-001",
-   "R114003K-001",
-   "R114004B-001",
-   "R116066R-001",
-   "R116067D-001",
-   "R116068H-001",
-   "R116069A-001",
-   "R116071H-001",
-   "R116072A-001",
    "R119210H-001",
    "R119211A-001",
    "R119212E-001"
   ],
-  "ev_total": 12,
+  "ev_total": 3,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -54573,17 +53715,6 @@
    "car_park_basement": "N"
   },
   "google_name": "Blk 77A Carpark",
-  "ev": true,
-  "ev_cp_ids": [
-   "R102050R-001",
-   "R102054E-001",
-   "R102055K-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -54975,17 +54106,6 @@
    "car_park_basement": "N"
   },
   "google_name": "M20",
-  "ev": true,
-  "ev_cp_ids": [
-   "R115114A-001",
-   "R115116K-001",
-   "R115118F-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -55104,17 +54224,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R107033F-001",
-   "R107034Z-001",
-   "R107035C-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -55367,17 +54476,6 @@
    "car_park_basement": "N"
   },
   "google_name": "M16",
-  "ev": true,
-  "ev_cp_ids": [
-   "R114282H-001",
-   "R114284E-001",
-   "R114760B-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -55521,14 +54619,11 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R107449A-001",
-   "R107450D-001",
-   "R107453E-001",
    "R123093E-001",
    "R123094K-001",
    "R123095B-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
@@ -55559,17 +54654,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R101304B-001",
-   "R101305F-001",
-   "R101306Z-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -55638,7 +54722,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -55695,7 +54779,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -55906,7 +54990,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -55948,7 +55032,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -55990,7 +55074,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -56560,7 +55644,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -56910,15 +55994,11 @@
   "ev": true,
   "ev_cp_ids": [
    "R117541C-001",
-   "R117541C-002",
-   "R124305F-001",
-   "R124306Z-001",
-   "R124307C-001"
+   "R117541C-002"
   ],
-  "ev_total": 5,
+  "ev_total": 2,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 100.0,
   "category": "HDB Estate"
@@ -61124,19 +60204,15 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R104251A-001",
-   "R104252E-001",
-   "R104253K-001",
    "R108586F-001",
    "R108588C-001",
    "R108589G-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
-   "SP MOBILITY PTE. LTD."
+   "SHELL SINGAPORE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "carwash": true,
   "carwash_operator": "Beaver",
   "category": "HDB Estate"
@@ -61187,14 +60263,10 @@
   "ev_cp_ids": [
    "R104251A-001",
    "R104252E-001",
-   "R104253K-001",
-   "R108586F-001",
-   "R108588C-001",
-   "R108589G-001"
+   "R104253K-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -64407,22 +63479,15 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R114288Z-001",
-   "R114290F-001",
-   "R114292C-001",
-   "R114295D-001",
-   "R114296H-001",
-   "R114297A-001",
    "R120344H-001",
    "R120345A-001",
    "R120346E-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
-   "SP MOBILITY PTE. LTD."
+   "SHELL SINGAPORE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -64662,14 +63727,10 @@
    "R114292C-001",
    "R114295D-001",
    "R114296H-001",
-   "R114297A-001",
-   "R120344H-001",
-   "R120345A-001",
-   "R120346E-001"
+   "R114297A-001"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -64770,12 +63831,9 @@
   "ev_cp_ids": [
    "R120544G-001",
    "R120545R-001",
-   "R120546D-001",
-   "R121602A-001",
-   "R121603E-001",
-   "R121604K-001"
+   "R120546D-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "SP MOBILITY PTE. LTD."
   ],
@@ -64995,17 +64053,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R125346R-001",
-   "R125347D-001",
-   "R125348H-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -65089,17 +64136,6 @@
    "gantry_height": "9.99",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R109272A-001",
-   "R109274K-001",
-   "R109277Z-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -65292,14 +64328,11 @@
   "google_name": "PR6",
   "ev": true,
   "ev_cp_ids": [
-   "R120544G-001",
-   "R120545R-001",
-   "R120546D-001",
    "R121602A-001",
    "R121603E-001",
    "R121604K-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "SP MOBILITY PTE. LTD."
   ],
@@ -65550,15 +64583,9 @@
    "R110311D-001",
    "R110311D-002",
    "R110313A-001",
-   "R110313A-002",
-   "R122005D-001",
-   "R122005D-002",
-   "R122006H-001",
-   "R122006H-002",
-   "R122007A-001",
-   "R122007A-002"
+   "R110313A-002"
   ],
-  "ev_total": 10,
+  "ev_total": 4,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -65607,10 +64634,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R110311D-001",
-   "R110311D-002",
-   "R110313A-001",
-   "R110313A-002",
    "R122005D-001",
    "R122005D-002",
    "R122006H-001",
@@ -65618,7 +64641,7 @@
    "R122007A-001",
    "R122007A-002"
   ],
-  "ev_total": 10,
+  "ev_total": 6,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -66182,17 +65205,6 @@
    "gantry_height": "4.2",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R107042H-001",
-   "R107043A-001",
-   "R107044E-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -66272,17 +65284,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R108496G-001",
-   "R108497R-001",
-   "R108499H-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -66364,17 +65365,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R103030K-001",
-   "R103032F-001",
-   "R103033Z-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -66490,17 +65480,6 @@
    "car_park_basement": "N"
   },
   "google_name": "Block 228 HDB Punggol (MSCP)",
-  "ev": true,
-  "ev_cp_ids": [
-   "R108594D-001",
-   "R108595H-001",
-   "R108596A-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -66643,17 +65622,6 @@
    "fee": null,
    "parking_type": "multi-storey"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R119508E-001",
-   "R119509K-001",
-   "R119510A-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -66986,18 +65954,6 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R115561F-001",
-   "R115561F-002",
-   "R115562Z-001",
-   "R115562Z-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -67526,17 +66482,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R110902Z-001",
-   "R110903C-001",
-   "R110904G-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -67692,27 +66637,6 @@
    "car_park_basement": "N"
   },
   "google_name": "Q68",
-  "ev": true,
-  "ev_cp_ids": [
-   "R110035F-001",
-   "R110035F-002",
-   "R110036Z-001",
-   "R110036Z-002",
-   "R110038G-001",
-   "R110038G-002",
-   "R111075G-001",
-   "R111076R-001",
-   "R111077D-001",
-   "R111078H-001",
-   "R111079A-001",
-   "R111080D-001"
-  ],
-  "ev_total": 12,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -67757,17 +66681,6 @@
    "fee": null,
    "parking_type": null
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R110902Z-001",
-   "R110903C-001",
-   "R110904G-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -68455,17 +67368,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R111308C-001",
-   "R111311C-001",
-   "R111313R-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -68556,17 +67458,6 @@
    "fee": "yes",
    "parking_type": "surface"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R110902Z-001",
-   "R110903C-001",
-   "R110904G-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -68776,20 +67667,6 @@
    "car_park_basement": "N"
   },
   "google_name": "Q99",
-  "ev": true,
-  "ev_cp_ids": [
-   "R109574B-001",
-   "R109574B-002",
-   "R109759K-001",
-   "R109759K-002",
-   "R109760A-001",
-   "R109760A-002"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -69267,20 +68144,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R122452K-001",
-   "R122452K-002",
-   "R122453B-001",
-   "R122453B-002",
-   "R122454F-001",
-   "R122454F-002"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -69357,7 +68220,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -72338,20 +71201,6 @@
    "car_park_basement": "N"
   },
   "google_name": "SD10",
-  "ev": true,
-  "ev_cp_ids": [
-   "R116290D-001",
-   "R116290D-002",
-   "R116291H-001",
-   "R116291H-002",
-   "R116292A-001",
-   "R116292A-002"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -72614,9 +71463,6 @@
   "google_name": "115 Multi Story Car Park",
   "ev": true,
   "ev_cp_ids": [
-   "R107027E-001",
-   "R107028K-001",
-   "R107029B-001",
    "R116290D-001",
    "R116290D-002",
    "R116291H-001",
@@ -72624,10 +71470,9 @@
    "R116292A-001",
    "R116292A-002"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -73656,17 +72501,13 @@
    "R104503E-002",
    "R104504K-001",
    "R104504K-002",
-   "R108218A-001",
-   "R108222E-001",
-   "R108224B-001",
    "R116862B-001",
    "R116863F-001",
    "R116864Z-001"
   ],
-  "ev_total": 10,
+  "ev_total": 7,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
@@ -74545,17 +73386,6 @@
    "gantry_height": "2.15",
    "car_park_basement": "Y"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R123243G-001",
-   "R123244R-001",
-   "R123246H-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "carwash": true,
   "carwash_operator": "QE Car Care",
   "category": "HDB Estate"
@@ -74853,18 +73683,11 @@
   "ev_cp_ids": [
    "R116894F-001",
    "R116895Z-001",
-   "R116896C-001",
-   "R117501A-001",
-   "R117502E-001",
-   "R117503K-001",
-   "R117504B-001",
-   "R117505F-001",
-   "R117507C-001"
+   "R116896C-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
@@ -74911,9 +73734,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R116894F-001",
-   "R116895Z-001",
-   "R116896C-001",
    "R117501A-001",
    "R117502E-001",
    "R117503K-001",
@@ -74921,9 +73741,8 @@
    "R117505F-001",
    "R117507C-001"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
@@ -74962,18 +73781,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R106433E-001",
-   "R106433E-002",
-   "R106434K-001",
-   "R106434K-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -75509,20 +74316,13 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R107677Z-001",
-   "R107680Z-001",
-   "R107682G-001",
-   "R107683R-001",
-   "R107686A-001",
-   "R107687E-001",
    "R122807H-001",
    "R122808A-001",
    "R122809E-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "carwash": true,
@@ -76051,18 +74851,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R104526G-001",
-   "R104526G-002",
-   "R104527R-001",
-   "R104527R-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 3.7,
   "category": "HDB Estate"
  },
  {
@@ -76108,15 +74896,11 @@
    "R104527R-002",
    "R112565C-001",
    "R112567R-001",
-   "R112569H-001",
-   "R120755E-001",
-   "R120756K-001",
-   "R120757B-001"
+   "R112569H-001"
   ],
-  "ev_total": 10,
+  "ev_total": 7,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -76158,16 +74942,12 @@
   "google_name": "SI4",
   "ev": true,
   "ev_cp_ids": [
-   "R112565C-001",
-   "R112567R-001",
-   "R112569H-001",
    "R120755E-001",
    "R120756K-001",
    "R120757B-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -76213,17 +74993,13 @@
    "R107682G-001",
    "R107683R-001",
    "R107686A-001",
-   "R107687E-001",
-   "R122807H-001",
-   "R122808A-001",
-   "R122809E-001"
+   "R107687E-001"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -76607,14 +75383,10 @@
   "ev_cp_ids": [
    "R104149R-001",
    "R104150C-001",
-   "R104151G-001",
-   "R108601K-001",
-   "R108602B-001",
-   "R108603F-001"
+   "R104151G-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -76832,19 +75604,15 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R104149R-001",
-   "R104150C-001",
-   "R104151G-001",
    "R108601K-001",
    "R108602B-001",
    "R108603F-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
-   "SP MOBILITY PTE. LTD."
+   "SHELL SINGAPORE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "carwash": true,
   "carwash_operator": "QE Car Care",
   "category": "HDB Estate"
@@ -81678,22 +80446,15 @@
   "google_name": "SK97",
   "ev": true,
   "ev_cp_ids": [
-   "R104263D-001",
-   "R104264H-001",
-   "R104265A-001",
-   "R104266E-001",
-   "R104267K-001",
-   "R104268B-001",
    "R110091D-001",
    "R110093A-001",
    "R110094E-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
-   "SP MOBILITY PTE. LTD."
+   "SHELL SINGAPORE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -81839,20 +80600,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R105289F-001",
-   "R105290K-001",
-   "R105291B-001",
-   "R109182B-001",
-   "R109182B-002",
-   "R109183F-001",
-   "R109183F-002",
    "R115882D-001",
    "R115883H-001",
    "R115884A-001"
   ],
-  "ev_total": 10,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -81976,17 +80729,6 @@
    "car_park_basement": "N"
   },
   "google_name": "SM1",
-  "ev": true,
-  "ev_cp_ids": [
-   "R103858E-001",
-   "R103860A-001",
-   "R103861E-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -82096,17 +80838,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R103858E-001",
-   "R103860A-001",
-   "R103861E-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -82483,17 +81214,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R104260C-001",
-   "R104261G-001",
-   "R104262R-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -82599,16 +81319,13 @@
   "ev_cp_ids": [
    "R117717H-001",
    "R117718A-001",
-   "R117720H-001",
-   "R121373Z-001",
-   "R121374C-001",
-   "R121375G-001"
+   "R117720H-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "carwash": true,
   "carwash_operator": "Beaver",
   "category": "HDB Estate"
@@ -82655,14 +81372,11 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R117717H-001",
-   "R117718A-001",
-   "R117720H-001",
    "R121373Z-001",
    "R121374C-001",
    "R121375G-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
@@ -82706,17 +81420,10 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R117717H-001",
-   "R117718A-001",
-   "R117720H-001",
-   "R121373Z-001",
-   "R121374C-001",
-   "R121375G-001",
    "R127904G-001"
   ],
-  "ev_total": 7,
+  "ev_total": 1,
   "ev_operators": [
-   "STRIDES YTL PTE. LTD.",
    "UNION GAS PTE. LTD."
   ],
   "ev_max_power_kw": 22.0,
@@ -83339,14 +82046,10 @@
   "ev_cp_ids": [
    "R104263D-001",
    "R104264H-001",
-   "R104265A-001",
-   "R110091D-001",
-   "R110093A-001",
-   "R110094E-001"
+   "R104265A-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -83514,14 +82217,10 @@
   "ev_cp_ids": [
    "R104266E-001",
    "R104267K-001",
-   "R104268B-001",
-   "R110091D-001",
-   "R110093A-001",
-   "R110094E-001"
+   "R104268B-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
    "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -83979,17 +82678,6 @@
    "car_park_basement": "N"
   },
   "google_name": "MSCP S117",
-  "ev": true,
-  "ev_cp_ids": [
-   "R106964H-001",
-   "R106965A-001",
-   "R106966E-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -84016,20 +82704,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R119376G-001",
-   "R119377R-001",
-   "R119378D-001",
-   "R119379H-001",
-   "R119380R-001",
-   "R119381D-001"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -84056,22 +82730,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R106407C-001",
-   "R106407C-002",
-   "R106408G-001",
-   "R106408G-002",
-   "R119854A-001",
-   "R119856K-001",
-   "R119858F-001"
-  ],
-  "ev_total": 7,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -84124,16 +82782,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102404F-001",
-   "R102409D-001"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -84160,17 +82808,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102991G-001",
-   "R102993D-001",
-   "R102994H-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -84197,17 +82834,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R101765G-001",
-   "R101767D-001",
-   "R101771H-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -84260,18 +82886,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R106464E-001",
-   "R106464E-002",
-   "R106472C-001",
-   "R106472C-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -84331,21 +82945,6 @@
    "fee": null,
    "parking_type": "underground"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R104309H-001",
-   "R104309H-002",
-   "R104310R-001",
-   "R104310R-002",
-   "R119557K-001",
-   "R119558B-001",
-   "R119559F-001"
-  ],
-  "ev_total": 7,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -84379,17 +82978,6 @@
    "fee": null,
    "parking_type": "underground"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R108643H-001",
-   "R108644A-001",
-   "R108645E-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -84442,18 +83030,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102397A-001",
-   "R102398E-001",
-   "R102399K-001",
-   "R102402K-001"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -84972,12 +83548,9 @@
   "ev_cp_ids": [
    "R106025K-001",
    "R106026B-001",
-   "R106027F-001",
-   "R107641A-001",
-   "R107642E-001",
-   "R107644B-001"
+   "R106027F-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
@@ -85144,26 +83717,15 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R102075Z-001",
-   "R102075Z-002",
-   "R102076C-001",
-   "R102076C-002",
    "R105035E-001",
    "R105037B-001",
-   "R105039Z-001",
-   "R118561C-001",
-   "R118561C-002",
-   "R118562G-001",
-   "R118562G-002",
-   "R118563R-001",
-   "R118563R-002"
+   "R105039Z-001"
   ],
-  "ev_total": 13,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -85385,9 +83947,6 @@
    "R102075Z-002",
    "R102076C-001",
    "R102076C-002",
-   "R105035E-001",
-   "R105037B-001",
-   "R105039Z-001",
    "R118561C-001",
    "R118561C-002",
    "R118562G-001",
@@ -85395,10 +83954,9 @@
    "R118563R-001",
    "R118563R-002"
   ],
-  "ev_total": 13,
+  "ev_total": 10,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -86004,14 +84562,11 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R106025K-001",
-   "R106026B-001",
-   "R106027F-001",
    "R107641A-001",
    "R107642E-001",
    "R107644B-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "STRIDES YTL PTE. LTD."
   ],
@@ -86159,33 +84714,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R102042B-001",
-   "R102042B-002",
-   "R102043F-001",
-   "R102043F-002",
-   "R110305C-001",
-   "R110305C-002",
-   "R110306G-001",
-   "R110306G-002",
-   "R110307R-001",
-   "R110307R-002",
-   "R110308D-001",
-   "R110308D-002",
-   "R110309H-001",
-   "R110309H-002",
-   "R110310R-001",
-   "R110310R-002",
    "R116245E-001",
    "R116246K-001",
-   "R116247B-001",
-   "R117770E-001",
-   "R117770E-002",
-   "R117771K-001",
-   "R117771K-002"
+   "R116247B-001"
   ],
-  "ev_total": 23,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -86344,18 +84878,14 @@
    "R110309H-002",
    "R110310R-001",
    "R110310R-002",
-   "R116245E-001",
-   "R116246K-001",
-   "R116247B-001",
    "R117770E-001",
    "R117770E-002",
    "R117771K-001",
    "R117771K-002"
   ],
-  "ev_total": 23,
+  "ev_total": 20,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -86547,20 +85077,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R118047A-001",
-   "R118047A-002",
-   "R118048E-001",
-   "R118048E-002",
-   "R118049K-001",
-   "R118049K-002"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -86622,17 +85138,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R112168F-001",
-   "R112169Z-001",
-   "R112170B-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -86668,17 +85173,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R112168F-001",
-   "R112169Z-001",
-   "R112170B-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -86997,17 +85491,6 @@
    "gantry_height": "0",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R117277H-001",
-   "R117278A-001",
-   "R117279E-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -87518,20 +86001,6 @@
    "car_park_basement": "N"
   },
   "google_name": "TG3",
-  "ev": true,
-  "ev_cp_ids": [
-   "R109136Z-001",
-   "R109136Z-002",
-   "R109138G-001",
-   "R109138G-002",
-   "R109139R-001",
-   "R109139R-002"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -88712,17 +87181,10 @@
   "ev_cp_ids": [
    "R103356E-001",
    "R103358B-001",
-   "R103360K-001",
-   "R107555G-001",
-   "R107555G-002",
-   "R107556R-001",
-   "R107556R-002",
-   "R107557D-001",
-   "R107557D-002"
+   "R103360K-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 22.0,
@@ -89050,9 +87512,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R103356E-001",
-   "R103358B-001",
-   "R103360K-001",
    "R107555G-001",
    "R107555G-002",
    "R107556R-001",
@@ -89060,12 +87519,11 @@
    "R107557D-001",
    "R107557D-002"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
-  "ev_max_power_kw": 22.0,
+  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -91611,7 +90069,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -91666,7 +90124,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -91831,7 +90289,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -91886,7 +90344,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -91918,20 +90376,13 @@
   "ev_cp_ids": [
    "R105564R-001",
    "R105565D-001",
-   "R105566H-001",
-   "R124140R-001",
-   "R124141D-001",
-   "R124142H-001",
-   "R124143A-001",
-   "R124144E-001",
-   "R124145K-001"
+   "R105566H-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -92589,12 +91040,9 @@
   "ev_cp_ids": [
    "R109540A-001",
    "R109541E-001",
-   "R109542K-001",
-   "R122427R-001",
-   "R122428D-001",
-   "R122429H-001"
+   "R109542K-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "SP MOBILITY PTE. LTD."
   ],
@@ -94020,20 +92468,6 @@
    "fee": null,
    "parking_type": "underground"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102691C-001",
-   "R102694D-001",
-   "R102695H-001",
-   "R110141A-001",
-   "R110145F-001",
-   "R114717R-001"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -94973,17 +93407,6 @@
    "fee": null,
    "parking_type": null
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R123952R-001",
-   "R123953D-001",
-   "R123954H-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -95639,12 +94062,9 @@
    "R117664Z-001",
    "R117665C-001",
    "R117666G-001",
-   "R117666G-002",
-   "R122830K-001",
-   "R122834C-001",
-   "R122837D-001"
+   "R117666G-002"
   ],
-  "ev_total": 11,
+  "ev_total": 8,
   "ev_operators": [
    "SHELL SINGAPORE PTE. LTD."
   ],
@@ -95686,23 +94106,15 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R117660E-001",
-   "R117661K-001",
-   "R117662B-001",
-   "R117663F-001",
-   "R117664Z-001",
-   "R117665C-001",
-   "R117666G-001",
-   "R117666G-002",
    "R122830K-001",
    "R122834C-001",
    "R122837D-001"
   ],
-  "ev_total": 11,
+  "ev_total": 3,
   "ev_operators": [
    "SHELL SINGAPORE PTE. LTD."
   ],
-  "ev_max_power_kw": 120.0,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -95742,14 +94154,11 @@
   "google_name": "Tp8a",
   "ev": true,
   "ev_cp_ids": [
-   "R109540A-001",
-   "R109541E-001",
-   "R109542K-001",
    "R122427R-001",
    "R122428D-001",
    "R122429H-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
    "SP MOBILITY PTE. LTD."
   ],
@@ -95800,10 +94209,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R110056R-001",
-   "R110056R-002",
-   "R110057D-001",
-   "R110057D-002",
    "R121558F-001",
    "R121558F-002",
    "R121559Z-001",
@@ -95811,7 +94216,7 @@
    "R121561F-001",
    "R121561F-002"
   ],
-  "ev_total": 10,
+  "ev_total": 6,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -95853,20 +94258,6 @@
    "car_park_basement": "N"
   },
   "google_name": "TRS",
-  "ev": true,
-  "ev_cp_ids": [
-   "R121558F-001",
-   "R121558F-002",
-   "R121559Z-001",
-   "R121559Z-002",
-   "R121561F-001",
-   "R121561F-002"
-  ],
-  "ev_total": 6,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -98896,9 +97287,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R105564R-001",
-   "R105565D-001",
-   "R105566H-001",
    "R124140R-001",
    "R124141D-001",
    "R124142H-001",
@@ -98906,10 +97294,9 @@
    "R124144E-001",
    "R124145K-001"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
-   "STRIDES YTL PTE. LTD."
+   "SP MOBILITY PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -98952,16 +97339,13 @@
    "R113562A-001",
    "R113563E-001",
    "R113564K-001",
-   "R120934Z-001",
-   "R120935C-001",
-   "R120936G-001",
    "R122960Z-001",
    "R122960Z-002",
    "R122961C-001",
    "R122963R-001",
    "R122964D-001"
   ],
-  "ev_total": 11,
+  "ev_total": 8,
   "ev_operators": [
    "SP MOBILITY PTE. LTD.",
    "STRIDES YTL PTE. LTD."
@@ -99013,24 +97397,15 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R113562A-001",
-   "R113563E-001",
-   "R113564K-001",
    "R120934Z-001",
    "R120935C-001",
-   "R120936G-001",
-   "R122960Z-001",
-   "R122960Z-002",
-   "R122961C-001",
-   "R122963R-001",
-   "R122964D-001"
+   "R120936G-001"
   ],
-  "ev_total": 11,
+  "ev_total": 3,
   "ev_operators": [
-   "SP MOBILITY PTE. LTD.",
    "STRIDES YTL PTE. LTD."
   ],
-  "ev_max_power_kw": 100.0,
+  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -99855,24 +98230,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R113424B-001",
-   "R113425F-001",
-   "R113426Z-001",
-   "R123096F-001",
-   "R123097Z-001",
-   "R123098C-001",
-   "R127724K-001",
-   "R127725B-001",
-   "R127726F-001"
-  ],
-  "ev_total": 9,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD.",
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -100366,21 +98723,6 @@
    "car_park_basement": "N"
   },
   "google_name": "U11",
-  "ev": true,
-  "ev_cp_ids": [
-   "R101991H-001",
-   "R101991H-002",
-   "R101992A-001",
-   "R101992A-002",
-   "R119819H-001",
-   "R119820R-001",
-   "R119821D-001"
-  ],
-  "ev_total": 7,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -100600,24 +98942,6 @@
    "gantry_height": "5.4",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R101979F-001",
-   "R101979F-002",
-   "R101980K-001",
-   "R101980K-002",
-   "R123319G-001",
-   "R123319G-002",
-   "R123320Z-001",
-   "R123320Z-002",
-   "R123321C-001",
-   "R123321C-002"
-  ],
-  "ev_total": 10,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -101121,24 +99445,6 @@
    "fee": null,
    "parking_type": null
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R111985C-001",
-   "R111985C-002",
-   "R111987R-001",
-   "R111987R-002",
-   "R111989H-001",
-   "R111989H-002",
-   "R112378R-001",
-   "R112380G-001",
-   "R112381R-001"
-  ],
-  "ev_total": 9,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -101987,9 +100293,6 @@
    "R102005A-002",
    "R102006E-001",
    "R102006E-002",
-   "R103361B-001",
-   "R103362F-001",
-   "R103363Z-001",
    "R123328K-001",
    "R123328K-002",
    "R123329B-001",
@@ -101997,12 +100300,11 @@
    "R123330E-001",
    "R123330E-002"
   ],
-  "ev_total": 13,
+  "ev_total": 10,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
-  "ev_max_power_kw": 22.0,
+  "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
  },
  {
@@ -102340,23 +100642,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R102005A-001",
-   "R102005A-002",
-   "R102006E-001",
-   "R102006E-002",
    "R103361B-001",
    "R103362F-001",
-   "R103363Z-001",
-   "R123328K-001",
-   "R123328K-002",
-   "R123329B-001",
-   "R123329B-002",
-   "R123330E-001",
-   "R123330E-002"
+   "R103363Z-001"
   ],
-  "ev_total": 13,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 22.0,
@@ -103143,9 +101434,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R102422Z-001",
-   "R102423C-001",
-   "R102424G-001",
    "R107635R-001",
    "R107635R-002",
    "R107636D-001",
@@ -103153,10 +101441,9 @@
    "R107637H-001",
    "R107637H-002"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "category": "HDB Estate"
@@ -103384,17 +101671,10 @@
   "ev_cp_ids": [
    "R102422Z-001",
    "R102423C-001",
-   "R102424G-001",
-   "R107635R-001",
-   "R107635R-002",
-   "R107636D-001",
-   "R107636D-002",
-   "R107637H-001",
-   "R107637H-002"
+   "R102424G-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
@@ -104526,20 +102806,15 @@
   "google_name": "WLW11M",
   "ev": true,
   "ev_cp_ids": [
-   "R106372K-001",
-   "R106372K-002",
-   "R106373B-001",
-   "R106373B-002",
    "R112201B-001",
    "R112202F-001",
    "R112203Z-001"
   ],
-  "ev_total": 7,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "COMFORTDELGRO ENGIE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -104589,15 +102864,11 @@
    "R106372K-001",
    "R106372K-002",
    "R106373B-001",
-   "R106373B-002",
-   "R112201B-001",
-   "R112202F-001",
-   "R112203Z-001"
+   "R106373B-002"
   ],
-  "ev_total": 7,
+  "ev_total": 4,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "COMFORTDELGRO ENGIE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "carwash": true,
@@ -105655,17 +103926,6 @@
    "gantry_height": "4.5",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R119754G-001",
-   "R119755R-001",
-   "R119757H-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -107569,7 +105829,7 @@
    "osm"
   ],
   "type": "MULTI-STOREY CAR PARK",
-  "free_parking": "NO",
+  "free_parking": "SUN & PH FR 7AM-10.30PM",
   "rates": {
    "category": "HDB/URA standard (non-Central)",
    "rates": {
@@ -108566,14 +106826,10 @@
   "ev_cp_ids": [
    "R108556Z-001",
    "R108557C-001",
-   "R108558G-001",
-   "R119551G-001",
-   "R119552R-001",
-   "R119553D-001"
+   "R108558G-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
@@ -109092,18 +107348,11 @@
   "ev_cp_ids": [
    "R119551G-001",
    "R119552R-001",
-   "R119553D-001",
-   "R123143B-001",
-   "R123145Z-001",
-   "R123147G-001",
-   "R127336C-001",
-   "R127337G-001",
-   "R127338R-001"
+   "R119553D-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
@@ -109648,13 +107897,9 @@
    "R106397H-001",
    "R106397H-002",
    "R106398A-001",
-   "R106398A-002",
-   "R106440Z-001",
-   "R106440Z-002",
-   "R106443R-001",
-   "R106443R-002"
+   "R106398A-002"
   ],
-  "ev_total": 8,
+  "ev_total": 4,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -109705,16 +107950,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R106397H-001",
-   "R106397H-002",
-   "R106398A-001",
-   "R106398A-002",
    "R106440Z-001",
    "R106440Z-002",
    "R106443R-001",
    "R106443R-002"
   ],
-  "ev_total": 8,
+  "ev_total": 4,
   "ev_operators": [
    "CHARGE+ PTE. LTD."
   ],
@@ -109878,14 +108119,10 @@
   "ev_cp_ids": [
    "R108625D-001",
    "R108626H-001",
-   "R108627A-001",
-   "R119855E-001",
-   "R119857B-001",
-   "R119860B-001"
+   "R108627A-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
@@ -110043,17 +108280,13 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R108625D-001",
-   "R108626H-001",
-   "R108627A-001",
    "R119855E-001",
    "R119857B-001",
    "R119860B-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
@@ -110102,20 +108335,12 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R108334B-001",
-   "R108334B-002",
-   "R108335F-001",
-   "R108335F-002",
    "R120260Z-001",
    "R120261C-001",
-   "R120262G-001",
-   "R120852K-001",
-   "R120853B-001",
-   "R120856C-001"
+   "R120262G-001"
   ],
-  "ev_total": 10,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
@@ -110937,17 +109162,13 @@
    "R108334B-002",
    "R108335F-001",
    "R108335F-002",
-   "R120260Z-001",
-   "R120261C-001",
-   "R120262G-001",
    "R120852K-001",
    "R120853B-001",
    "R120856C-001"
   ],
-  "ev_total": 10,
+  "ev_total": 7,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
@@ -112416,17 +110637,13 @@
   "google_name": "Y28 (Surface Car Park)",
   "ev": true,
   "ev_cp_ids": [
-   "R106943C-001",
-   "R106945R-001",
-   "R106953K-001",
    "R116890A-001",
    "R116891E-001",
    "R116892K-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
@@ -112477,14 +110694,10 @@
   "ev_cp_ids": [
    "R106943C-001",
    "R106945R-001",
-   "R106953K-001",
-   "R116890A-001",
-   "R116891E-001",
-   "R116892K-001"
+   "R106953K-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
@@ -112667,17 +110880,6 @@
    "gantry_height": "9.99",
    "car_park_basement": "N"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R121038B-001",
-   "R121040K-001",
-   "R121041B-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -113091,15 +111293,11 @@
   "ev_cp_ids": [
    "R105439H-001",
    "R105443A-001",
-   "R105446B-001",
-   "R116990F-001",
-   "R116991Z-001",
-   "R116992C-001"
+   "R105446B-001"
   ],
-  "ev_total": 6,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
@@ -113559,18 +111757,11 @@
   "ev_cp_ids": [
    "R115792E-001",
    "R115793K-001",
-   "R115794B-001",
-   "R122629G-001",
-   "R122630Z-001",
-   "R122631C-001",
-   "R126788G-001",
-   "R126789R-001",
-   "R126790C-001"
+   "R115794B-001"
   ],
-  "ev_total": 9,
+  "ev_total": 3,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "COMFORTDELGRO ENGIE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
@@ -113617,9 +111808,6 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R115792E-001",
-   "R115793K-001",
-   "R115794B-001",
    "R122629G-001",
    "R122630Z-001",
    "R122631C-001",
@@ -113627,9 +111815,8 @@
    "R126789R-001",
    "R126790C-001"
   ],
-  "ev_total": 9,
+  "ev_total": 6,
   "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
   "ev_max_power_kw": 7.0,
@@ -113929,17 +112116,6 @@
    "car_park_basement": "N"
   },
   "google_name": "Y49M (Multi-storey Car Park)",
-  "ev": true,
-  "ev_cp_ids": [
-   "R117584F-001",
-   "R117585Z-001",
-   "R117587G-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -113977,17 +112153,6 @@
    "car_park_basement": "N"
   },
   "google_name": "Y49L",
-  "ev": true,
-  "ev_cp_ids": [
-   "R117584F-001",
-   "R117585Z-001",
-   "R117587G-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "HDB Estate"
  },
  {
@@ -114182,18 +112347,11 @@
    "R106383H-001",
    "R106383H-002",
    "R106384A-001",
-   "R106384A-002",
-   "R122793H-001",
-   "R122795E-001",
-   "R122798F-001",
-   "R126791G-001",
-   "R126792R-001",
-   "R126793D-001"
+   "R106384A-002"
   ],
-  "ev_total": 10,
+  "ev_total": 4,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "carwash": true,
@@ -114295,10 +112453,6 @@
   "google_name": "Block 426 HDB Yishun (MSCP)",
   "ev": true,
   "ev_cp_ids": [
-   "R106383H-001",
-   "R106383H-002",
-   "R106384A-001",
-   "R106384A-002",
    "R122793H-001",
    "R122795E-001",
    "R122798F-001",
@@ -114306,12 +112460,11 @@
    "R126792R-001",
    "R126793D-001"
   ],
-  "ev_total": 10,
+  "ev_total": 6,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "carwash": true,
   "carwash_operator": "QE Car Care",
   "category": "HDB Estate"
@@ -115465,15 +113618,11 @@
    "R106473G-001",
    "R106473G-002",
    "R106474R-001",
-   "R106474R-002",
-   "R106726D-001",
-   "R106728A-001",
-   "R106729E-001"
+   "R106474R-002"
   ],
-  "ev_total": 7,
+  "ev_total": 4,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
-   "SHELL SINGAPORE PTE. LTD."
+   "CHARGE+ PTE. LTD."
   ],
   "ev_max_power_kw": 7.4,
   "carwash": true,
@@ -115524,20 +113673,15 @@
   },
   "ev": true,
   "ev_cp_ids": [
-   "R106473G-001",
-   "R106473G-002",
-   "R106474R-001",
-   "R106474R-002",
    "R106726D-001",
    "R106728A-001",
    "R106729E-001"
   ],
-  "ev_total": 7,
+  "ev_total": 3,
   "ev_operators": [
-   "CHARGE+ PTE. LTD.",
    "SHELL SINGAPORE PTE. LTD."
   ],
-  "ev_max_power_kw": 7.4,
+  "ev_max_power_kw": 7.0,
   "carwash": true,
   "carwash_operator": "QE Car Care",
   "category": "HDB Estate"
@@ -120060,15 +118204,6 @@
    },
    "total_lots": 5
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R128510K-001"
-  ],
-  "ev_total": 1,
-  "ev_operators": [
-   "UNION GAS PTE. LTD."
-  ],
-  "ev_max_power_kw": 22.0,
   "category": "Street (URA)"
  },
  {
@@ -124282,16 +122417,6 @@
    },
    "total_lots": 3
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R127939A-001",
-   "R127939A-002"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 60.0,
   "category": "Street (URA)"
  },
  {
@@ -124991,17 +123116,6 @@
    },
    "total_lots": 23
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R128755H-001",
-   "R128757E-001",
-   "R128758K-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "MNL SOLUTIONS PTE. LTD."
-  ],
-  "ev_max_power_kw": 22.0,
   "category": "Street (URA)"
  },
  {
@@ -125462,17 +123576,6 @@
    "total_lots": 3
   },
   "google_name": "Block 814 HDB Jellicoe (MSCP)",
-  "ev": true,
-  "ev_cp_ids": [
-   "R101105G-001",
-   "R101106R-001",
-   "R101109A-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "Street (URA)"
  },
  {
@@ -127227,28 +125330,6 @@
    "fee": null,
    "parking_type": "multi-storey"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102188R-001",
-   "R102188R-002",
-   "R102189D-001",
-   "R102189D-002",
-   "R111146K-001",
-   "R111146K-002",
-   "R111147B-001",
-   "R111147B-002",
-   "R121544F-001",
-   "R121544F-002",
-   "R121546C-001",
-   "R121546C-002",
-   "R121547G-001",
-   "R121547G-002"
-  ],
-  "ev_total": 14,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "Street (URA)"
  },
  {
@@ -127487,28 +125568,6 @@
    },
    "total_lots": 57
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102188R-001",
-   "R102188R-002",
-   "R102189D-001",
-   "R102189D-002",
-   "R111146K-001",
-   "R111146K-002",
-   "R111147B-001",
-   "R111147B-002",
-   "R121544F-001",
-   "R121544F-002",
-   "R121546C-001",
-   "R121546C-002",
-   "R121547G-001",
-   "R121547G-002"
-  ],
-  "ev_total": 14,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "Street (URA)"
  },
  {
@@ -128952,16 +127011,6 @@
    },
    "total_lots": 2
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R108899F-001",
-   "R108899F-002"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "SHELL SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 60.0,
   "category": "Street (URA)"
  },
  {
@@ -131081,17 +129130,6 @@
    "fee": "yes",
    "parking_type": "surface"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R103343K-001",
-   "R103344B-001",
-   "R103345F-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 22.0,
   "category": "Street (URA)"
  },
  {
@@ -131127,18 +129165,6 @@
    "total_lots": 9
   },
   "google_name": "Public Car Park",
-  "ev": true,
-  "ev_cp_ids": [
-   "R103234B-001",
-   "R103235F-001",
-   "R103677C-001",
-   "R103677C-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 50.0,
   "category": "Street (URA)"
  },
  {
@@ -131413,17 +129439,6 @@
    },
    "total_lots": 31
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R116190Z-001",
-   "R116190Z-002",
-   "R116193R-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "VOLT SINGAPORE PTE. LTD."
-  ],
-  "ev_max_power_kw": 60.0,
   "category": "Street (URA)"
  },
  {
@@ -131459,18 +129474,6 @@
    "total_lots": 17
   },
   "google_name": "Bugis+ Carpark",
-  "ev": true,
-  "ev_cp_ids": [
-   "R114862D-001",
-   "R114862D-002",
-   "R114885F-001",
-   "R114887C-001"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 50.0,
   "category": "Street (URA)"
  },
  {
@@ -132768,16 +130771,6 @@
    },
    "total_lots": 7
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R103728D-001",
-   "R103730R-001"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 30.0,
   "category": "Street (URA)"
  },
  {
@@ -132999,17 +130992,6 @@
    },
    "total_lots": 6
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R117534K-001",
-   "R117535B-001",
-   "R117536F-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "Street (URA)"
  },
  {
@@ -133194,15 +131176,6 @@
    "fee": null,
    "parking_type": null
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R128510K-001"
-  ],
-  "ev_total": 1,
-  "ev_operators": [
-   "UNION GAS PTE. LTD."
-  ],
-  "ev_max_power_kw": 22.0,
   "category": "Street (URA)"
  },
  {
@@ -133879,16 +131852,6 @@
    },
    "total_lots": 23
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R103002Z-001",
-   "R103216K-001"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 22.0,
   "category": "Street (URA)"
  },
  {
@@ -134597,18 +132560,6 @@
    "fee": null,
    "parking_type": null
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R110311D-001",
-   "R110311D-002",
-   "R110313A-001",
-   "R110313A-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "Street (URA)"
  },
  {
@@ -134977,17 +132928,6 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R128748C-001",
-   "R128749G-001",
-   "R128749G-002"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 120.0,
   "category": "Street (URA)"
  },
  {
@@ -135106,16 +133046,6 @@
    },
    "total_lots": 71
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R110112K-001",
-   "R110112K-002"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "Street (URA)"
  },
  {
@@ -135246,16 +133176,6 @@
    },
    "total_lots": 45
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R102944R-001",
-   "R102946H-001"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 22.0,
   "category": "Street (URA)"
  },
  {
@@ -135537,16 +133457,6 @@
    },
    "total_lots": 42
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R110112K-001",
-   "R110112K-002"
-  ],
-  "ev_total": 2,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "Street (URA)"
  },
  {
@@ -135613,18 +133523,6 @@
    "total_lots": 18
   },
   "google_name": "LASALLE College of the Arts Car Park",
-  "ev": true,
-  "ev_cp_ids": [
-   "R107325A-001",
-   "R107325A-002",
-   "R107335G-001",
-   "R107336R-001"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "SP MOBILITY PTE. LTD."
-  ],
-  "ev_max_power_kw": 100.0,
   "category": "Street (URA)"
  },
  {
@@ -136030,18 +133928,6 @@
    "fee": null,
    "parking_type": null
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R107378Z-001",
-   "R107378Z-002",
-   "R107380F-001",
-   "R107380F-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "Street (URA)"
  },
  {
@@ -137453,17 +135339,6 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R111965B-001",
-   "R111966F-001",
-   "R111967Z-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "Street (URA)"
  },
  {
@@ -138217,17 +136092,6 @@
    },
    "total_lots": 10
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R111941G-001",
-   "R111942R-001",
-   "R111943D-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "COMFORTDELGRO ENGIE PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "Street (URA)"
  },
  {
@@ -138260,17 +136124,6 @@
    },
    "total_lots": 35
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R107548B-001",
-   "R107552F-001",
-   "R107558H-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "Street (URA)"
  },
  {
@@ -141234,17 +139087,6 @@
    },
    "total_lots": 59
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R107609K-001",
-   "R107610A-001",
-   "R107612K-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "STRIDES YTL PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.0,
   "category": "Street (URA)"
  },
  {
@@ -142102,18 +139944,6 @@
    "fee": null,
    "parking_type": "surface"
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R107378Z-001",
-   "R107378Z-002",
-   "R107380F-001",
-   "R107380F-002"
-  ],
-  "ev_total": 4,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 7.4,
   "category": "Street (URA)"
  },
  {
@@ -144658,15 +142488,6 @@
   },
   "google_primary_type": "parking_lot",
   "google_place_id": null,
-  "ev": true,
-  "ev_cp_ids": [
-   "R105270H-001"
-  ],
-  "ev_total": 1,
-  "ev_operators": [
-   "FASTPARKNCHARGE PTE. LTD."
-  ],
-  "ev_max_power_kw": 30.0,
   "category": "Commercial/Private"
  },
  {
@@ -156271,17 +154092,6 @@
    "fee": null,
    "parking_type": null
   },
-  "ev": true,
-  "ev_cp_ids": [
-   "R110151G-001",
-   "R110151G-002",
-   "R110153D-001"
-  ],
-  "ev_total": 3,
-  "ev_operators": [
-   "CHARGE+ PTE. LTD."
-  ],
-  "ev_max_power_kw": 120.0,
   "category": "Commercial/Private"
  },
  {

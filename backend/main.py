@@ -12,11 +12,23 @@ import httpx
 import math
 import json
 import os
+import sys
 import time
 import logging
 from pathlib import Path
 
 from restricted import RestrictedDataError, load_restricted_areas
+
+# One definition of the cross-layer dedup radius for the build and the live
+# /api/parking/osm layer alike (see backend/restricted.py for the precedent):
+# the build folds Google/OSM candidates into a served record within
+# DEDUPE_HARD_M on proximity alone, so a live Overpass pin that close to a
+# served card is the same physical carpark by the codebase's own rule and is
+# suppressed server-side rather than trusting every browser to redo it.
+_ENRICH_DIR = Path(__file__).parent / "enrich"
+if str(_ENRICH_DIR) not in sys.path:
+    sys.path.insert(0, str(_ENRICH_DIR))
+from build_enriched import DEDUPE_HARD_M as OSM_DEDUP_M  # noqa: E402
 
 # Load backend/.env for local dev if python-dotenv is installed. In production
 # (e.g. Render) config comes from real environment variables and python-dotenv
@@ -268,6 +280,23 @@ def haversine(lat1, lon1, lat2, lon2):
     dl = math.radians(lon2 - lon1)
     a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
     return 2 * R * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+
+def merges_with_served(lat: float, lon: float) -> bool:
+    """True when a live OSM pin is the same physical carpark as some served card.
+
+    The build already folds crawled OSM/Google candidates into served records
+    within OSM_DEDUP_M on proximity alone; without this check the live Overpass
+    layer re-pinned those same carparks in the 60-90m band the browser's own net
+    lets through. Suppression here is what makes one physical carpark appear at
+    most once. With the dataset not yet loaded it suppresses nothing rather than
+    everything.
+    """
+    if not _carpark_cache:
+        return False
+    return any(
+        haversine(lat, lon, cp["lat"], cp["lon"]) <= OSM_DEDUP_M for cp in _carpark_cache
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -845,7 +874,11 @@ def filter_carparks(
         lots_available = avail.get("lots_available")
         total_lots = avail.get("total_lots")
 
-        if has_lots and not (isinstance(lots_available, int) and lots_available > 0):
+        # "Has lots" means counted-and-positive. The live feed only covers
+        # HDB/LTA carparks, so a record missing from it is uncounted, not full
+        # (every URA street carpark, all malls and Google/OSM-only records):
+        # unknown passes, a known 0 is a real full house and goes.
+        if has_lots and isinstance(lots_available, int) and lots_available <= 0:
             continue
 
         # The HDB dataset's only free-parking windows are "SUN & PH FR ...", so
@@ -1070,6 +1103,7 @@ out center;
 
     results: list[OsmParking] = []
     excluded = 0
+    deduped = 0
     for el in elements:
         if el["type"] == "node":
             el_lat, el_lon = el["lat"], el["lon"]
@@ -1081,6 +1115,10 @@ out center;
 
         if restricted_areas.contains(el_lat, el_lon):
             excluded += 1
+            continue
+
+        if merges_with_served(el_lat, el_lon):
+            deduped += 1
             continue
 
         tags = el.get("tags", {})
@@ -1099,10 +1137,11 @@ out center;
         )
 
     results.sort(key=lambda x: x.distance_m)
-    if excluded:
+    if excluded or deduped:
         logger.info(
-            "osm_restricted_excluded lat=%s lon=%s radius=%d excluded=%d kept=%d",
-            lat, lon, radius, excluded, len(results),
+            "osm_layer_filtered lat=%s lon=%s radius=%d restricted_excluded=%d "
+            "merged_deduped=%d kept=%d",
+            lat, lon, radius, excluded, deduped, len(results),
         )
 
     # Cache the snapshot (evict the oldest entry when full).
