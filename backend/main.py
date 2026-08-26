@@ -1078,10 +1078,36 @@ async def get_carparks(
 # abusive IPs; this endpoint is otherwise uncached and hit on every search, so
 # caching spares Overpass, lets us serve a stale snapshot on error, and (with the
 # radius clamp) blunts hammering / use as a free proxy.
+#
+# The cache stores elements WITHOUT distances. A key cell spans up to ~110 m,
+# so distances computed for whoever warmed the cell would be served — wrong —
+# to later requesters up to ~78 m away. Only the upstream fetch is shared:
+# `distance_m` and the sort order are recomputed per request from the caller's
+# exact coordinates.
 OSM_TTL_SECONDS = int(os.getenv("OSM_TTL_SECONDS", "120"))
 OSM_CACHE_MAX = 256
 OVERPASS_USER_AGENT = "EhParkLeh/1.0 (+https://ehparkleh.vercel.app)"
-_osm_cache: dict = {}  # {(rlat, rlon, radius): (fetched_at, list[OsmParking])}
+_osm_cache: dict = {}  # {(rlat, rlon, radius): (fetched_at, list[_OsmElement])}
+
+
+def _osm_results_for(elements: list[dict], lat: float, lon: float) -> list[OsmParking]:
+    """Build one requester's response: each `distance_m` is measured from that
+    requester's exact coordinates, never from the cache-warming request's."""
+    results = [
+        OsmParking(
+            id=element["id"],
+            name=element["name"],
+            lat=element["lat"],
+            lon=element["lon"],
+            distance_m=round(haversine(lat, lon, element["lat"], element["lon"])),
+            fee=element["fee"],
+            parking_type=element["parking_type"],
+            capacity=element["capacity"],
+        )
+        for element in elements
+    ]
+    results.sort(key=lambda x: x.distance_m)
+    return results
 
 
 @app.get("/api/parking/osm", response_model=list[OsmParking])
@@ -1095,7 +1121,7 @@ async def parking_osm(
     cached = _osm_cache.get(key)
     if cached and (time.monotonic() - cached[0]) < OSM_TTL_SECONDS:
         response.headers["X-EhParkLeh-Osm-State"] = "hit"
-        return cached[1]
+        return _osm_results_for(cached[1], lat, lon)
 
     # OSM records parking that physically exists inside army camps, air/naval
     # bases and prisons. It is real, but no driver can use it, and routing to one
@@ -1132,19 +1158,19 @@ out center;
         payload = resp.json()
         if payload.get("remark"):
             raise RuntimeError("Overpass returned an error remark")
-        elements = payload["elements"]
-        if not isinstance(elements, list):
+        payload_elements = payload["elements"]
+        if not isinstance(payload_elements, list):
             raise TypeError("Overpass elements must be a list")
     except Exception as exc:
         logger.exception("Overpass/OSM request failed")
         if cached:
             response.headers["X-EhParkLeh-Osm-State"] = "stale"
-            return cached[1]
+            return _osm_results_for(cached[1], lat, lon)
         status_code = 504 if isinstance(exc, httpx.TimeoutException) else 502
         raise HTTPException(status_code=status_code, detail="Map parking service unavailable") from exc
 
     located: list[tuple[dict, float, float]] = []
-    for el in elements:
+    for el in payload_elements:
         if el["type"] == "node":
             el_lat, el_lon = el["lat"], el["lon"]
         else:
@@ -1163,7 +1189,9 @@ out center;
         [(el_lat, el_lon) for _, el_lat, el_lon in located], OSM_DEDUP_M
     )
 
-    results: list[OsmParking] = []
+    # Requester-independent fields are fixed at fetch time; distance is not
+    # one of them (see _osm_results_for).
+    elements: list[dict] = []
     excluded = 0
     deduped = 0
     for el, el_lat, el_lon in located:
@@ -1176,32 +1204,29 @@ out center;
             continue
 
         tags = el.get("tags", {})
-        name = tags.get("name") or tags.get("addr:street") or "Parking"
-        results.append(
-            OsmParking(
-                id=f"osm_{el['id']}",
-                name=name,
-                lat=el_lat,
-                lon=el_lon,
-                distance_m=round(haversine(lat, lon, el_lat, el_lon)),
-                fee=tags.get("fee"),
-                parking_type=tags.get("parking") or tags.get("car_park_type"),
-                capacity=tags.get("capacity"),
-            )
+        elements.append(
+            {
+                "id": f"osm_{el['id']}",
+                "name": tags.get("name") or tags.get("addr:street") or "Parking",
+                "lat": el_lat,
+                "lon": el_lon,
+                "fee": tags.get("fee"),
+                "parking_type": tags.get("parking") or tags.get("car_park_type"),
+                "capacity": tags.get("capacity"),
+            }
         )
 
-    results.sort(key=lambda x: x.distance_m)
     if excluded or deduped:
         logger.info(
             "osm_layer_filtered lat=%s lon=%s radius=%d restricted_excluded=%d "
             "merged_deduped=%d kept=%d",
-            lat, lon, radius, excluded, deduped, len(results),
+            lat, lon, radius, excluded, deduped, len(elements),
         )
 
-    # Cache the snapshot (evict the oldest entry when full).
+    # Cache the fetched elements (evict the oldest entry when full).
     if len(_osm_cache) >= OSM_CACHE_MAX:
         oldest = min(_osm_cache, key=lambda k: _osm_cache[k][0])
         _osm_cache.pop(oldest, None)
-    _osm_cache[key] = (time.monotonic(), results)
+    _osm_cache[key] = (time.monotonic(), elements)
     response.headers["X-EhParkLeh-Osm-State"] = "fresh"
-    return results
+    return _osm_results_for(elements, lat, lon)

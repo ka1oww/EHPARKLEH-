@@ -336,6 +336,12 @@ export default function App() {
   // Aborting saves work, but a response can still finish between an await and
   // abort. Only the newest request is allowed to publish state.
   const requestVersionRef = useRef(0)
+  // Counts explicit destination changes: a text search, Near me, a suggestion
+  // pick, a retry. The geocode half of a text search awaits outside
+  // runSearch's request-version guard, so it compares this counter instead:
+  // a newer destination must beat a slow older lookup, while a filter refetch
+  // of the still-pending search's starting view must not cancel it.
+  const destinationSeqRef = useRef(0)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const filterEffectReadyRef = useRef(false)
   // Live search inputs let debounced work use the current place and filters,
@@ -361,6 +367,21 @@ export default function App() {
     abortRef.current?.abort()
     requestVersionRef.current += 1
   }, [])
+  // Claim the destination for an explicit user action. Awaits performed before
+  // the search starts (geocode, geolocation) compare their claim against the
+  // counter afterwards and bail if a newer destination has taken over; filter
+  // toggles do not claim, so they still apply to the pending lookup.
+  const beginDestinationChange = useCallback(() => {
+    destinationSeqRef.current += 1
+    return destinationSeqRef.current
+  }, [])
+  // The claimer owns the loading board from the moment it claims: the lookup it
+  // superseded is no longer allowed to publish its own completion, so a claim
+  // that ends without a search has to put the board down itself.
+  const settleDestinationClaim = useCallback(() => {
+    setPreserveResultsWhileLoading(false)
+    setLoading(false)
+  }, [])
 
   // Core fetch. `newLocation` searches a fresh place (fetch OSM too, save the
   // snapshot + shareable URL, clear selection). Filter toggles pass
@@ -377,6 +398,7 @@ export default function App() {
       const newLocation = opts?.newLocation ?? true
       const preserveResults = opts?.preserveResults ?? false
       searchCenterRef.current = { lat, lon }
+      if (newLocation) destinationSeqRef.current += 1
       // A new-location search cancels any pending filter/radius refetch, so a
       // stale debounced request can't fire afterwards and snap back to the old
       // place (which would also leave the URL and data disagreeing).
@@ -654,12 +676,27 @@ export default function App() {
   }, [radius, category, freeSunPh, hasLots, hasEv, hasCarwash])
 
   async function handleSubmit(query: string) {
+    // A text search supersedes whatever destination work ran before it, and
+    // its geocode await sits outside runSearch's request-version guard. Bump
+    // the destination counter here and re-check it after every await: a slow
+    // geocode resolving after a newer search must bail instead of calling
+    // runSearch with the old destination and silently clobbering fresher
+    // results (a filter toggle in the meantime still applies — only a newer
+    // destination cancels this one).
+    invalidateCurrentSearch()
+    const destinationSeq = beginDestinationChange()
     setLoading(true)
+    // The superseded runSearch's own reset is behind a request-version guard,
+    // so clear the preserve-results flag here or the loading board keeps
+    // claiming it is refreshing saved spots for the rest of this search.
+    setPreserveResultsWhileLoading(false)
     setError('')
     try {
       const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(query)}`)
+      if (destinationSeq !== destinationSeqRef.current) return
       if (!res.ok) {
-        setRetainedResultsSaved(true)
+        // A failed place lookup says nothing about the health of the results
+        // feed: whatever is already on screen keeps its live presentation.
         setError(
           res.status === 404
             ? "Couldn't find that place. Try another search."
@@ -669,10 +706,11 @@ export default function App() {
         return
       }
       const { lat, lon }: GeocodeResult = await res.json()
+      if (destinationSeq !== destinationSeqRef.current) return
       await runSearch(lat, lon)
       addRecent(query, lat, lon)
     } catch {
-      setRetainedResultsSaved(true)
+      if (destinationSeq !== destinationSeqRef.current) return
       setError("Can't reach the server right now. Please try again shortly.")
       setLoading(false)
     }
@@ -684,24 +722,37 @@ export default function App() {
   }
 
   function handleNearMe() {
+    // Same discipline as handleSubmit: geolocation is an await outside
+    // runSearch's guard, so a slow GPS fix resolving after a newer destination
+    // was searched must bail rather than republish the old one. Claiming also
+    // retires whatever request was in flight, so nothing else can still be
+    // running (and owed a spinner) by the time this claim settles.
+    invalidateCurrentSearch()
+    const destinationSeq = beginDestinationChange()
     setError('')
     getCurrentPosition()
       .then((loc) => {
+        // The fix itself is good regardless of which destination is on screen:
+        // "You are here" is about the driver, not the search.
         setUserLocation(loc)
+        if (destinationSeq !== destinationSeqRef.current) return
         const inSG = loc.lat >= 1.13 && loc.lat <= 1.5 && loc.lon >= 103.55 && loc.lon <= 104.15
         if (!inSG) {
           setError('You seem to be outside Singapore. Search a place instead to see carparks there.')
+          settleDestinationClaim()
           return
         }
         return runSearch(loc.lat, loc.lon)
       })
       .catch((err: unknown) => {
+        if (destinationSeq !== destinationSeqRef.current) return
         const denied = (err as { code?: number } | null)?.code === 1
         setError(
           denied
             ? 'Location is blocked for this site. Allow it in your browser settings, then tap Near me again.'
             : "Couldn't get your location. Try again, or search a place instead.",
         )
+        settleDestinationClaim()
       })
   }
 
@@ -806,6 +857,14 @@ export default function App() {
   )
 
   const totalNearby = allParking.length
+
+  // Popups must carry the number the list shows: position in the sorted view,
+  // not backend distance order (they disagree under price/availability sort).
+  const mapRanks = useMemo(() => {
+    const ranks: Record<string, number> = {}
+    for (let i = 0; i < sortedParking.length; i++) ranks[sortedParking[i].id] = i + 1
+    return ranks
+  }, [sortedParking])
 
   // Whatever the current search knows, kept for the star and the Saved view.
   const savedInputs = useMemo(() => allParking.map(savedInputFor), [allParking])
@@ -1257,6 +1316,7 @@ export default function App() {
                       center={center}
                       carparks={carparks}
                       osmParking={visibleOsm}
+                      ranks={mapRanks}
                       selected={selected}
                       onSelect={setSelected}
                       userLocation={userLocation}

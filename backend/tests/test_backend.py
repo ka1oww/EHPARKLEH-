@@ -1049,26 +1049,109 @@ async def test_osm_marks_cached_fallback_stale(monkeypatch):
         async def post(self, *_args, **_kwargs):
             return _OsmResponse()
 
-    cached_parking = main.OsmParking(
-        id="osm_cached",
-        name="Cached parking",
-        lat=1.3324,
-        lon=103.8475,
-        distance_m=20,
-    )
+    cached_element = {
+        "id": "osm_cached",
+        "name": "Cached parking",
+        "lat": 1.3324,
+        "lon": 103.8475,
+        "fee": None,
+        "parking_type": None,
+        "capacity": None,
+    }
     key = (round(1.3323, 3), round(103.8474, 3), 500)
     monkeypatch.setattr(
         main,
         "_osm_cache",
-        {key: (time.monotonic() - main.OSM_TTL_SECONDS - 1, [cached_parking])},
+        {key: (time.monotonic() - main.OSM_TTL_SECONDS - 1, [cached_element])},
     )
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
 
     response = main.Response()
     results = await main.parking_osm(response=response, lat=1.3323, lon=103.8474, radius=500)
 
-    assert results == [cached_parking]
+    # The stale fallback serves the same cached elements as a hit would — and
+    # like a hit, it measures distance from the requesting point.
+    assert results == [
+        main.OsmParking(
+            id="osm_cached",
+            name="Cached parking",
+            lat=1.3324,
+            lon=103.8475,
+            distance_m=round(main.haversine(1.3323, 103.8474, 1.3324, 103.8475)),
+        )
+    ]
     assert response.headers["x-ehparkleh-osm-state"] == "stale"
+
+
+@pytest.mark.asyncio
+async def test_osm_cache_hit_remeasures_distance_for_each_requester(monkeypatch):
+    """Regression: the cache key rounds coordinates to ~110 m cells, so two
+    searches in one cell share the upstream fetch. The served `distance_m`
+    values must still be measured from each caller's own coordinates, not
+    reused from whoever warmed the cell."""
+
+    class _OsmResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {
+                "elements": [
+                    {
+                        "type": "node",
+                        "id": 7,
+                        "lat": 1.33240,
+                        "lon": 103.84750,
+                        "tags": {"amenity": "parking", "name": "Cell parking"},
+                    }
+                ]
+            }
+
+    class _OsmClient:
+        def __init__(self):
+            self.calls = 0
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, *_args, **_kwargs):
+            self.calls += 1
+            return _OsmResponse()
+
+    client = _OsmClient()
+
+    # Two requesters ~5-6 m apart: the same rounded cache cell, different
+    # exact coordinates.
+    first_lat, first_lon = 1.33230, 103.84740
+    second_lat, second_lon = 1.33235, 103.84745
+    assert (round(first_lat, 3), round(first_lon, 3)) == (
+        round(second_lat, 3),
+        round(second_lon, 3),
+    )
+
+    monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: client)
+
+    fresh_response = main.Response()
+    fresh = await main.parking_osm(
+        response=fresh_response, lat=first_lat, lon=first_lon, radius=500
+    )
+    assert fresh_response.headers["x-ehparkleh-osm-state"] == "fresh"
+    assert fresh[0].distance_m == round(main.haversine(first_lat, first_lon, 1.33240, 103.84750))
+
+    hit_response = main.Response()
+    hit = await main.parking_osm(
+        response=hit_response, lat=second_lat, lon=second_lon, radius=500
+    )
+
+    # One shared upstream fetch, but per-request distances.
+    assert client.calls == 1
+    assert hit_response.headers["x-ehparkleh-osm-state"] == "hit"
+    assert hit[0].distance_m == round(main.haversine(second_lat, second_lon, 1.33240, 103.84750))
+    assert hit[0].distance_m != fresh[0].distance_m
 
 
 @pytest.mark.asyncio

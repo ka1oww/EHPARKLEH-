@@ -82,8 +82,10 @@ supplemental-layer notice.
 fixed when each successful snapshot is published, rather than regenerated for
 each response. A snapshot is `Live` only before its deadline, `Recent` for up
 to two minutes after expiry, then `Saved`. Retained results are also `Saved`
-while the browser is offline or after a later search request fails. `Recent`
-describes snapshot age and does not by itself claim that a refresh is running.
+while the browser is offline or after a later carpark request fails. A failed
+address lookup is not one: it is reported as an error, and results already on
+screen keep their live labelling. `Recent` describes snapshot age and does not
+by itself claim that a refresh is running.
 
 ## Remaining external or unverified stages
 

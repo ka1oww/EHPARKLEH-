@@ -1165,6 +1165,47 @@ describe('App last-session snapshot', () => {
   })
 })
 
+describe('App map popup ranks', () => {
+  // Popups are numbered from the same sorted order the list shows, so a
+  // price/availability sort must renumber the pins the user sees numbered.
+  it('hands Map ranks that track the sorted list order', async () => {
+    const rate = (firstHour: number) => ({
+      known: true,
+      summary: `$${firstHour} first hr`,
+      first_hour: firstHour,
+      subsequent_half_hour: null,
+      weekday_raw: null,
+      saturday_raw: null,
+      sunday_ph_raw: null,
+    })
+    const dear = { ...carpark('dear', 'Dear block'), distance_m: 100, rate: rate(9) }
+    const cheap = { ...carpark('cheap', 'Cheap block'), distance_m: 100, rate: rate(1) }
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) =>
+        String(input).includes('/api/carparks') ? okJson([dear, cheap]) : okJson([]),
+      ),
+    )
+    render(<App />)
+    await screen.findByText('Dear block')
+
+    // Distance sort with equal distances keeps backend order.
+    const ranksBefore = (lastMapProps() ?? {}) as { ranks?: Record<string, number> }
+    expect(ranksBefore.ranks).toEqual({ dear: 1, cheap: 2 })
+
+    fireEvent.change(screen.getByRole('combobox', { name: 'Sort' }), {
+      target: { value: 'price' },
+    })
+
+    // The list reorders (cheapest first) and the pins are renumbered to match.
+    const cheapEl = screen.getByText('Cheap block')
+    const dearEl = screen.getByText('Dear block')
+    expect(cheapEl.compareDocumentPosition(dearEl) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    const ranksAfter = (lastMapProps() ?? {}) as { ranks?: Record<string, number> }
+    expect(ranksAfter.ranks).toEqual({ cheap: 1, dear: 2 })
+  })
+})
+
 describe('App saved carparks', () => {
   it('keeps a starred carpark, lists it with a live count, and survives a reload', async () => {
     const starred = { ...carpark('cp-678a', 'Blk 678A CCK Crescent'), lots_available: 62 }

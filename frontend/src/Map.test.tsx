@@ -19,8 +19,11 @@ const leaflet = vi.hoisted(() => {
   }
   cluster.addTo.mockReturnValue(cluster)
   const marker = () => {
+    const popup = { setContent: vi.fn(), isOpen: vi.fn(() => false) }
     const result = {
+      popup,
       bindPopup: vi.fn(),
+      getPopup: vi.fn(() => popup),
       on: vi.fn(),
       openPopup: vi.fn(),
       setIcon: vi.fn(),
@@ -217,5 +220,111 @@ describe('Map marker and viewport updates', () => {
 
     expect(leaflet.cluster.clearLayers).toHaveBeenCalledTimes(1)
     expect(leaflet.map.fitBounds).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('Map framing vs the late OSM layer', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  const osmPin = (id: string, lat = 1.36, lon = 103.84) => ({
+    id,
+    name: `OSM ${id}`,
+    lat,
+    lon,
+    distance_m: 90,
+    source: 'osm',
+    fee: null,
+    parking_type: null,
+    capacity: null,
+  })
+
+  // App publishes primary results first and lets the Overpass layer fill in up
+  // to OSM_TIMEOUT_MS later — possibly while the driver is already panning.
+  // Reframing when it lands would yank the viewport (the setView call here
+  // stands in for that manual movement), so OSM arrival alone must never fit.
+  it('adds late-arriving OSM pins without reframing the viewport', () => {
+    const { rerender } = render(<Map {...props()} />)
+    expect(leaflet.map.fitBounds).toHaveBeenCalledTimes(1)
+
+    leaflet.map.setView([1.31, 103.82], 16)
+    rerender(<Map {...props({ osmParking: [osmPin('osm_1')] })} />)
+
+    expect(leaflet.cluster.clearLayers).toHaveBeenCalledTimes(2)
+    expect(leaflet.map.fitBounds).toHaveBeenCalledTimes(1)
+  })
+
+  it('still frames a genuinely changed destination or result set alongside OSM pins', () => {
+    const { rerender } = render(<Map {...props({ osmParking: [osmPin('osm_1')] })} />)
+    expect(leaflet.map.fitBounds).toHaveBeenCalledTimes(1)
+
+    rerender(
+      <Map
+        {...props({
+          center: { lat: 1.4, lon: 103.9 },
+          carparks: [carpark({ id: 'cp-2', lat: 1.41, lon: 103.91 })],
+          osmParking: [osmPin('osm_1')],
+        })}
+      />,
+    )
+
+    expect(leaflet.map.fitBounds).toHaveBeenCalledTimes(2)
+  })
+})
+
+describe('Map popup numbering', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  const popupHtml = () =>
+    leaflet.L.marker.mock.results[0].value.bindPopup.mock.calls[0][0] as string
+
+  // The list numbers cards by the current sort; popups must carry the same
+  // number, not the backend distance order they happen to arrive in.
+  it('numbers a popup by the sorted list rank, not backend order', () => {
+    render(
+      <Map {...props({ carparks: [carpark({ id: 'cp-9', address: 'Sorted Block' })], ranks: { 'cp-9': 12 } })} />,
+    )
+
+    expect(popupHtml()).toContain('12. Sorted Block')
+  })
+
+  // A sort toggle only changes a label. Rebuilding the cluster for it would
+  // close whatever popup the driver has open (and drop every marker), so the
+  // existing popup is rewritten in place instead — including a selected pin's.
+  it('renumbers a re-sorted pin in place, without rebuilding the markers', () => {
+    const { rerender } = render(
+      <Map
+        {...props({
+          carparks: [carpark({ id: 'cp-1', address: 'Rank Block' })],
+          ranks: { 'cp-1': 3 },
+          selected: 'cp-1',
+        })}
+      />,
+    )
+    expect(popupHtml()).toContain('3. Rank Block')
+    const pin = leaflet.L.marker.mock.results[0].value
+    expect(pin.openPopup).toHaveBeenCalled()
+
+    rerender(
+      <Map
+        {...props({
+          carparks: [carpark({ id: 'cp-1', address: 'Rank Block' })],
+          ranks: { 'cp-1': 1 },
+          selected: 'cp-1',
+        })}
+      />,
+    )
+
+    expect(leaflet.cluster.clearLayers).toHaveBeenCalledTimes(1)
+    expect(leaflet.map.fitBounds).toHaveBeenCalledTimes(1)
+    expect(leaflet.L.marker).toHaveBeenCalledTimes(1)
+    const contents = pin.popup.setContent.mock.calls.map((c: unknown[]) => String(c[0]))
+    expect(contents[contents.length - 1]).toContain('1. Rank Block')
+    expect(contents[contents.length - 1]).not.toContain('3. Rank Block')
+  })
+
+  it('falls back to arrival order when no rank is provided', () => {
+    render(<Map {...props({ carparks: [carpark({ id: 'cp-x', address: 'Plain Block' })] })} />)
+
+    expect(popupHtml()).toContain('1. Plain Block')
   })
 })
