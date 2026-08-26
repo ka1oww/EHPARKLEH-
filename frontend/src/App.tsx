@@ -336,6 +336,12 @@ export default function App() {
   // Aborting saves work, but a response can still finish between an await and
   // abort. Only the newest request is allowed to publish state.
   const requestVersionRef = useRef(0)
+  // Counts explicit destination changes: a text search, Near me, a suggestion
+  // pick, a retry. The geocode half of a text search awaits outside
+  // runSearch's request-version guard, so it compares this counter instead:
+  // a newer destination must beat a slow older lookup, while a filter refetch
+  // of the still-pending search's starting view must not cancel it.
+  const destinationSeqRef = useRef(0)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const filterEffectReadyRef = useRef(false)
   // Live search inputs let debounced work use the current place and filters,
@@ -377,6 +383,7 @@ export default function App() {
       const newLocation = opts?.newLocation ?? true
       const preserveResults = opts?.preserveResults ?? false
       searchCenterRef.current = { lat, lon }
+      if (newLocation) destinationSeqRef.current += 1
       // A new-location search cancels any pending filter/radius refetch, so a
       // stale debounced request can't fire afterwards and snap back to the old
       // place (which would also leave the URL and data disagreeing).
@@ -654,12 +661,24 @@ export default function App() {
   }, [radius, category, freeSunPh, hasLots, hasEv, hasCarwash])
 
   async function handleSubmit(query: string) {
+    // A text search supersedes whatever destination work ran before it, and
+    // its geocode await sits outside runSearch's request-version guard. Bump
+    // the destination counter here and re-check it after every await: a slow
+    // geocode resolving after a newer search must bail instead of calling
+    // runSearch with the old destination and silently clobbering fresher
+    // results (a filter toggle in the meantime still applies — only a newer
+    // destination cancels this one).
+    invalidateCurrentSearch()
+    destinationSeqRef.current += 1
+    const destinationSeq = destinationSeqRef.current
     setLoading(true)
     setError('')
     try {
       const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(query)}`)
+      if (destinationSeq !== destinationSeqRef.current) return
       if (!res.ok) {
-        setRetainedResultsSaved(true)
+        // A failed place lookup says nothing about the health of the results
+        // feed: whatever is already on screen keeps its live presentation.
         setError(
           res.status === 404
             ? "Couldn't find that place. Try another search."
@@ -669,10 +688,11 @@ export default function App() {
         return
       }
       const { lat, lon }: GeocodeResult = await res.json()
+      if (destinationSeq !== destinationSeqRef.current) return
       await runSearch(lat, lon)
       addRecent(query, lat, lon)
     } catch {
-      setRetainedResultsSaved(true)
+      if (destinationSeq !== destinationSeqRef.current) return
       setError("Can't reach the server right now. Please try again shortly.")
       setLoading(false)
     }
@@ -806,6 +826,14 @@ export default function App() {
   )
 
   const totalNearby = allParking.length
+
+  // Popups must carry the number the list shows: position in the sorted view,
+  // not backend distance order (they disagree under price/availability sort).
+  const mapRanks = useMemo(() => {
+    const ranks: Record<string, number> = {}
+    for (let i = 0; i < sortedParking.length; i++) ranks[sortedParking[i].id] = i + 1
+    return ranks
+  }, [sortedParking])
 
   // Whatever the current search knows, kept for the star and the Saved view.
   const savedInputs = useMemo(() => allParking.map(savedInputFor), [allParking])
@@ -1257,6 +1285,7 @@ export default function App() {
                       center={center}
                       carparks={carparks}
                       osmParking={visibleOsm}
+                      ranks={mapRanks}
                       selected={selected}
                       onSelect={setSelected}
                       userLocation={userLocation}
