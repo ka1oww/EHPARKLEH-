@@ -241,27 +241,37 @@ interface MarkerMeta {
   kind: 'hdb' | 'osm'
   state?: AvailState
   available?: number | null
+  // Rebuilds this pin's popup markup for a given list rank, so a re-sort can
+  // renumber an existing popup in place instead of rebuilding the cluster.
+  popupFor?: (rank: number) => string
+  arrivalRank?: number
 }
 
 // API responses are freshly allocated even when their marker-relevant content
 // is unchanged. Use values, rather than array identity, to avoid rebuilding a
-// large Leaflet cluster group for an equivalent response. Popup numbering is
-// marker-relevant too: it must track the rank the list currently shows, so a
-// re-sort joins an availability refresh as a rebuild trigger.
+// large Leaflet cluster group for an equivalent response. List rank is
+// deliberately absent: a re-sort renumbers popups in place (see the rank
+// effect), because tearing down the cluster would close a popup the driver has
+// open.
 function markerSignature(
   carparks: Carpark[],
   osmParking: OsmParking[],
   availabilityFreshness: FeedFreshness,
-  ranks: Record<string, number>,
 ): string {
   return [
     availabilityFreshness,
     ...carparks.map((cp) => [
       'h', cp.id, cp.lat, cp.lon, cp.address, cp.distance_m, cp.lots_available,
-      cp.total_lots, cp.rate.known, cp.rate.summary, ranks[cp.id] ?? '',
+      cp.total_lots, cp.rate.known, cp.rate.summary,
     ].join(',')).sort(),
     ...osmParking.map((cp) => ['o', cp.id, cp.lat, cp.lon, cp.name, cp.distance_m].join(',')).sort(),
   ].join('|')
+}
+
+// The numbering the popups currently show. Changes on a sort toggle only, and
+// drives an in-place popup rewrite rather than a marker rebuild.
+function rankSignature(carparks: Carpark[], ranks: Record<string, number>): string {
+  return carparks.map((cp) => `${cp.id}:${ranks[cp.id] ?? ''}`).join('|')
 }
 
 // Only the destination and primary result coordinates determine whether
@@ -305,9 +315,10 @@ function Map({
   const selectedRef = useRef<string | null>(selected)
   selectedRef.current = selected
   const currentMarkerSignature = useMemo(
-    () => markerSignature(carparks, osmParking, availabilityFreshness, ranks),
-    [availabilityFreshness, carparks, osmParking, ranks],
+    () => markerSignature(carparks, osmParking, availabilityFreshness),
+    [availabilityFreshness, carparks, osmParking],
   )
+  const currentRankSignature = useMemo(() => rankSignature(carparks, ranks), [carparks, ranks])
   const currentSpatialSignature = useMemo(
     () => spatialSignature(center, carparks),
     [center, carparks],
@@ -398,23 +409,30 @@ function Map({
     carparks.forEach((cp, i) => {
       const a = getAvailability(cp.lots_available, cp.total_lots)
       const title = `${cp.address} — ${a.state === 'nodata' ? 'no live lot data' : `${a.available}/${a.total} lots`}`
+      const popupFor = (rank: number) =>
+        popupHtml(
+          `${rank}. ${cp.address}`,
+          cp.distance_m,
+          cp.rate.known ? cp.rate.summary : 'Rate unknown',
+          boardHtml(a.state, a.available, a.total, availabilityFreshness),
+          cp.lat,
+          cp.lon,
+        )
       const m = L.marker([cp.lat, cp.lon], {
         icon: carparkIcon(a.state, a.available, cp.id === sel),
         title,
       })
-        .bindPopup(
-          popupHtml(
-            `${ranks[cp.id] ?? i + 1}. ${cp.address}`,
-            cp.distance_m,
-            cp.rate.known ? cp.rate.summary : 'Rate unknown',
-            boardHtml(a.state, a.available, a.total, availabilityFreshness),
-            cp.lat,
-            cp.lon,
-          ),
-        )
+        .bindPopup(popupFor(ranks[cp.id] ?? i + 1))
         .on('click', () => onSelect(cp.id === selectedRef.current ? null : cp.id))
       markers.push(m)
-      meta[cp.id] = { marker: m, kind: 'hdb', state: a.state, available: a.available }
+      meta[cp.id] = {
+        marker: m,
+        kind: 'hdb',
+        state: a.state,
+        available: a.available,
+        popupFor,
+        arrivalRank: i + 1,
+      }
     })
 
     osmParking.forEach((cp) => {
@@ -430,6 +448,18 @@ function Map({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentMarkerSignature])
+
+  // Renumber popups in place when the sort changes. Rewriting the content of
+  // the existing popup keeps an open one open — showing its new number — where
+  // a cluster rebuild would silently close it and drop hundreds of markers for
+  // nothing but a label change.
+  useEffect(() => {
+    Object.entries(metaRef.current).forEach(([id, m]) => {
+      if (m.kind !== 'hdb' || !m.popupFor) return
+      m.marker.getPopup()?.setContent(m.popupFor(ranks[id] ?? m.arrivalRank ?? 0))
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentRankSignature, currentMarkerSignature])
 
   // Deliberately frame a new spatial result set. This is intentionally separate
   // from marker construction: selection, sort, loading/error/offline banners,

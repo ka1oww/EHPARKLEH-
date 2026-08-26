@@ -19,8 +19,11 @@ const leaflet = vi.hoisted(() => {
   }
   cluster.addTo.mockReturnValue(cluster)
   const marker = () => {
+    const popup = { setContent: vi.fn(), isOpen: vi.fn(() => false) }
     const result = {
+      popup,
       bindPopup: vi.fn(),
+      getPopup: vi.fn(() => popup),
       on: vi.fn(),
       openPopup: vi.fn(),
       setIcon: vi.fn(),
@@ -284,19 +287,39 @@ describe('Map popup numbering', () => {
     expect(popupHtml()).toContain('12. Sorted Block')
   })
 
-  it('numbers a re-sorted pin with its new rank on the next rebuild', () => {
+  // A sort toggle only changes a label. Rebuilding the cluster for it would
+  // close whatever popup the driver has open (and drop every marker), so the
+  // existing popup is rewritten in place instead — including a selected pin's.
+  it('renumbers a re-sorted pin in place, without rebuilding the markers', () => {
     const { rerender } = render(
-      <Map {...props({ carparks: [carpark({ id: 'cp-1', address: 'Rank Block' })], ranks: { 'cp-1': 3 } })} />,
+      <Map
+        {...props({
+          carparks: [carpark({ id: 'cp-1', address: 'Rank Block' })],
+          ranks: { 'cp-1': 3 },
+          selected: 'cp-1',
+        })}
+      />,
     )
     expect(popupHtml()).toContain('3. Rank Block')
+    const pin = leaflet.L.marker.mock.results[0].value
+    expect(pin.openPopup).toHaveBeenCalled()
 
     rerender(
-      <Map {...props({ carparks: [carpark({ id: 'cp-1', address: 'Rank Block' })], ranks: { 'cp-1': 1 } })} />,
+      <Map
+        {...props({
+          carparks: [carpark({ id: 'cp-1', address: 'Rank Block' })],
+          ranks: { 'cp-1': 1 },
+          selected: 'cp-1',
+        })}
+      />,
     )
 
-    expect(leaflet.L.marker.mock.results[1].value.bindPopup.mock.calls[0][0]).toContain(
-      '1. Rank Block',
-    )
+    expect(leaflet.cluster.clearLayers).toHaveBeenCalledTimes(1)
+    expect(leaflet.map.fitBounds).toHaveBeenCalledTimes(1)
+    expect(leaflet.L.marker).toHaveBeenCalledTimes(1)
+    const contents = pin.popup.setContent.mock.calls.map((c: unknown[]) => String(c[0]))
+    expect(contents[contents.length - 1]).toContain('1. Rank Block')
+    expect(contents[contents.length - 1]).not.toContain('3. Rank Block')
   })
 
   it('falls back to arrival order when no rank is provided', () => {

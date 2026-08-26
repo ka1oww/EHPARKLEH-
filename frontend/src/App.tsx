@@ -367,6 +367,14 @@ export default function App() {
     abortRef.current?.abort()
     requestVersionRef.current += 1
   }, [])
+  // Claim the destination for an explicit user action. Awaits performed before
+  // the search starts (geocode, geolocation) compare their claim against the
+  // counter afterwards and bail if a newer destination has taken over; filter
+  // toggles do not claim, so they still apply to the pending lookup.
+  const beginDestinationChange = useCallback(() => {
+    destinationSeqRef.current += 1
+    return destinationSeqRef.current
+  }, [])
 
   // Core fetch. `newLocation` searches a fresh place (fetch OSM too, save the
   // snapshot + shareable URL, clear selection). Filter toggles pass
@@ -669,9 +677,12 @@ export default function App() {
     // results (a filter toggle in the meantime still applies — only a newer
     // destination cancels this one).
     invalidateCurrentSearch()
-    destinationSeqRef.current += 1
-    const destinationSeq = destinationSeqRef.current
+    const destinationSeq = beginDestinationChange()
     setLoading(true)
+    // The superseded runSearch's own reset is behind a request-version guard,
+    // so clear the preserve-results flag here or the loading board keeps
+    // claiming it is refreshing saved spots for the rest of this search.
+    setPreserveResultsWhileLoading(false)
     setError('')
     try {
       const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(query)}`)
@@ -704,9 +715,14 @@ export default function App() {
   }
 
   function handleNearMe() {
+    // Same discipline as handleSubmit: geolocation is an await outside
+    // runSearch's guard, so a slow GPS fix resolving after a newer destination
+    // was searched must bail rather than republish the old one.
+    const destinationSeq = beginDestinationChange()
     setError('')
     getCurrentPosition()
       .then((loc) => {
+        if (destinationSeq !== destinationSeqRef.current) return
         setUserLocation(loc)
         const inSG = loc.lat >= 1.13 && loc.lat <= 1.5 && loc.lon >= 103.55 && loc.lon <= 104.15
         if (!inSG) {
@@ -716,6 +732,7 @@ export default function App() {
         return runSearch(loc.lat, loc.lon)
       })
       .catch((err: unknown) => {
+        if (destinationSeq !== destinationSeqRef.current) return
         const denied = (err as { code?: number } | null)?.code === 1
         setError(
           denied

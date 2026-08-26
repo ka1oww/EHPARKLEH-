@@ -109,6 +109,51 @@ describe('geocode race against a newer search', () => {
     ).toBe(false)
   })
 
+  it('a late geolocation fix does not clobber a newer place search', async () => {
+    let resolveLocation: ((location: { lat: number; lon: number }) => void) | undefined
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      const url = String(input)
+      if (url.includes('/api/geocode')) {
+        return Promise.resolve(okJson({ lat: 1.43, lon: 103.93 }))
+      }
+      if (!url.includes('/api/carparks')) return Promise.resolve(okJson([]))
+      if (url.includes('lat=1.37')) {
+        return Promise.resolve(okJson([carpark('nearme-result', 'Near me result')]))
+      }
+      return Promise.resolve(okJson([carpark('geocoded-result', 'Geocoded result')]))
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    vi.mocked(getCurrentPosition).mockImplementationOnce(
+      () =>
+        new Promise<LatLon>((resolve) => {
+          resolveLocation = resolve
+        }),
+    )
+
+    render(<App />)
+
+    // Near me is tapped first, but the GPS fix hangs.
+    fireEvent.click(screen.getByRole('button', { name: /near me/i }))
+
+    // Impatient, they type a destination instead; its results land.
+    const searchBox = screen.getByRole('combobox')
+    fireEvent.change(searchBox, { target: { value: 'Somewhere else' } })
+    fireEvent.submit(screen.getByRole('search'))
+    expect(await screen.findByText('Geocoded result')).toBeInTheDocument()
+
+    // The stale GPS fix finally resolves: it must be discarded, not searched.
+    await act(async () => {
+      resolveLocation?.({ lat: 1.37, lon: 103.85 })
+      await Promise.resolve()
+    })
+
+    expect(screen.getByText('Geocoded result')).toBeInTheDocument()
+    expect(screen.queryByText('Near me result')).not.toBeInTheDocument()
+    expect(
+      carparksCalls(fetchMock).some(([url]) => String(url).includes('lat=1.37')),
+    ).toBe(false)
+  })
+
   it('two rapid submissions resolve in favour of the newest query', async () => {
     const resolveGeocodes: Array<(response: ReturnType<typeof okJson>) => void> = []
     const fetchMock = vi.fn((input: RequestInfo | URL) => {
