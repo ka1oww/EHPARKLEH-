@@ -63,7 +63,7 @@ The backend sends cache state and freshness deadlines in response headers. The f
 - Filter by HDB, malls, street, or private car parks, then narrow by free Sunday and public holiday parking, available lots, EV charging, car wash, or radius. The live lot feed covers only HDB and LTA car parks, so the available-lots filter drops a car park only when its count is known to be zero; an uncounted car park stays in the results and its card carries a **No live data** chip.
 - Show resolved rates, parsed free-parking rules, lot counts, EV connector counts, and self-service car wash operators. EV site flags come from LTA DataMall, each charging site attributed to its single nearest car park within 75 metres, with live connector counts when the feed is configured. Car wash flags come from Beaver and QE Car Care published lists.
 - Live OSM parking entries are shown for unfiltered searches; they are hidden from the list, map, and nearby count whenever a filter is active because they do not carry the filter data needed to verify a match.
-- Cluster dense map markers, frame a new result set, and preserve manual map movement when availability refreshes. Selecting a card opens its map popup.
+- Cluster dense map markers, frame a new result set, and preserve manual map movement when availability refreshes or the supplemental OSM layer lands later. Selecting a card opens its map popup, which carries the same number as the list card.
 - Keep recent searches, saved favourites, shareable result URLs, and the last results for offline use. The app is an installable PWA with iOS and Android wrappers through Capacitor.
 
 EhParkLeh finds parking. It does not handle payment, booking, or accounts.
