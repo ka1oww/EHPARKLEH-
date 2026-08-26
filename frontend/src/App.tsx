@@ -43,7 +43,10 @@ const MOBILE_MEDIA_QUERY = '(max-width: 767.98px)'
 const API_BASE = import.meta.env.VITE_API_BASE || 'https://ehparkleh-backend.onrender.com'
 
 // Distance (m) below which a live-OSM pin is treated as the same carpark as an
-// already-deduped enriched entry, and dropped.
+// already-deduped enriched entry, and dropped. The authoritative rule now lives
+// server-side in `/api/parking/osm`, which suppresses pins within the build's
+// own wider merge radius; this narrower client check stays as a harmless
+// backstop for cached responses from an older backend.
 const OSM_DEDUP_M = 60
 // OSM is a useful supplemental layer, but primary carpark results must not wait
 // for Overpass during a slow or failed request.

@@ -402,6 +402,16 @@ function CarparkCardImpl({
                 so the badge would only say it twice on the selected card. */}
             <div className="mt-2.5 flex flex-wrap items-center gap-2">
               {isLive && !selected && <LiveBadge freshness={availabilityFreshness} />}
+              {/* An uncounted carpark is not a full one — it can still be the
+                  nearest sensible stop, and it passes Has lots — but its board
+                  is unlit, so this names why rather than letting `---` read as
+                  a number we cannot back. */}
+              {!isLive && (
+                <Badge variant="outline" className="gap-1 font-normal text-muted-foreground">
+                  <Info className="size-3" aria-hidden="true" />
+                  No live data
+                </Badge>
+              )}
               {entry.ev && (
                 <EvBadge
                   available={entry.ev_available}

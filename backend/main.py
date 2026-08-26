@@ -12,11 +12,23 @@ import httpx
 import math
 import json
 import os
+import sys
 import time
 import logging
 from pathlib import Path
 
 from restricted import RestrictedDataError, load_restricted_areas
+
+# One definition of the cross-layer dedup radius for the build and the live
+# /api/parking/osm layer alike (see backend/restricted.py for the precedent):
+# the build folds Google/OSM candidates into a served record within
+# DEDUPE_HARD_M on proximity alone, so a live Overpass pin that close to a
+# served card is the same physical carpark by the codebase's own rule and is
+# suppressed server-side rather than trusting every browser to redo it.
+_ENRICH_DIR = Path(__file__).parent / "enrich"
+if str(_ENRICH_DIR) not in sys.path:
+    sys.path.append(str(_ENRICH_DIR))
+from build_enriched import DEDUPE_HARD_M as OSM_DEDUP_M  # noqa: E402
 
 # Load backend/.env for local dev if python-dotenv is installed. In production
 # (e.g. Render) config comes from real environment variables and python-dotenv
@@ -268,6 +280,65 @@ def haversine(lat1, lon1, lat2, lon2):
     dl = math.radians(lon2 - lon1)
     a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
     return 2 * R * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+
+# Degrees-per-metre at Singapore latitudes, used only to draw a generous
+# bounding box around a batch of points. Latitude is near-constant; longitude
+# shrinks with cos(lat), so the box is sized off the widest cosine in the batch
+# and is therefore never narrower than the true circle.
+_M_PER_DEG_LAT = 111_195.0
+_M_PER_DEG_LON_EQ = 111_320.0
+
+
+def served_near(points: list[tuple[float, float]], margin_m: float) -> list[dict]:
+    """Served records that could sit within margin_m of any of `points`.
+
+    A cheap one-pass bounding-box prefilter over the whole dataset, so the
+    per-point proximity test that follows walks a handful of neighbours instead
+    of all ~3,500 served records. The box is deliberately loose: it may admit a
+    record the exact test then rejects, but it never drops one that is genuinely
+    within margin_m.
+    """
+    if not _carpark_cache or not points:
+        return []
+    lats = [p[0] for p in points]
+    lons = [p[1] for p in points]
+    lat_min, lat_max = min(lats), max(lats)
+    lon_min, lon_max = min(lons), max(lons)
+    d_lat = margin_m / _M_PER_DEG_LAT
+    widest_lat = max(abs(lat_min), abs(lat_max))
+    d_lon = margin_m / (_M_PER_DEG_LON_EQ * max(math.cos(math.radians(widest_lat)), 0.01))
+    lat_min, lat_max = lat_min - d_lat, lat_max + d_lat
+    lon_min, lon_max = lon_min - d_lon, lon_max + d_lon
+    return [
+        cp
+        for cp in _carpark_cache
+        if lat_min <= cp["lat"] <= lat_max and lon_min <= cp["lon"] <= lon_max
+    ]
+
+
+def merges_with_served(
+    lat: float, lon: float, candidates: Optional[list[dict]] = None
+) -> bool:
+    """True when a live OSM pin is the same physical carpark as some served card.
+
+    The build already folds crawled OSM/Google candidates into served records
+    within OSM_DEDUP_M on proximity alone; without this check the live Overpass
+    layer re-pinned those same carparks in the 60-90m band the browser's own net
+    lets through. Suppression here is what makes one physical carpark appear at
+    most once. With the dataset not yet loaded it suppresses nothing rather than
+    everything.
+
+    `candidates` is the served subset a caller has already narrowed down for a
+    batch of pins (see served_near); it must contain every served record within
+    OSM_DEDUP_M of (lat, lon). Omitted, the whole dataset is scanned.
+    """
+    records = _carpark_cache if candidates is None else candidates
+    if not records:
+        return False
+    return any(
+        haversine(lat, lon, cp["lat"], cp["lon"]) <= OSM_DEDUP_M for cp in records
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -845,7 +916,11 @@ def filter_carparks(
         lots_available = avail.get("lots_available")
         total_lots = avail.get("total_lots")
 
-        if has_lots and not (isinstance(lots_available, int) and lots_available > 0):
+        # "Has lots" means counted-and-positive. The live feed only covers
+        # HDB/LTA carparks, so a record missing from it is uncounted, not full
+        # (every URA street carpark, all malls and Google/OSM-only records):
+        # unknown passes, a known 0 is a real full house and goes.
+        if has_lots and isinstance(lots_available, int) and lots_available <= 0:
             continue
 
         # The HDB dataset's only free-parking windows are "SUN & PH FR ...", so
@@ -1068,8 +1143,7 @@ out center;
         status_code = 504 if isinstance(exc, httpx.TimeoutException) else 502
         raise HTTPException(status_code=status_code, detail="Map parking service unavailable") from exc
 
-    results: list[OsmParking] = []
-    excluded = 0
+    located: list[tuple[dict, float, float]] = []
     for el in elements:
         if el["type"] == "node":
             el_lat, el_lon = el["lat"], el["lon"]
@@ -1078,9 +1152,27 @@ out center;
             if not center:
                 continue
             el_lat, el_lon = center["lat"], center["lon"]
+        located.append((el, el_lat, el_lon))
 
+    # Narrow the served dataset to this batch's neighbourhood once, instead of
+    # re-scanning all served records for every Overpass element. A wide-radius
+    # search in dense Singapore returns hundreds of elements, and the full
+    # product ran to ~10^6 haversine calls with no await to yield on, blocking
+    # the event loop for every other request in flight.
+    dedup_candidates = served_near(
+        [(el_lat, el_lon) for _, el_lat, el_lon in located], OSM_DEDUP_M
+    )
+
+    results: list[OsmParking] = []
+    excluded = 0
+    deduped = 0
+    for el, el_lat, el_lon in located:
         if restricted_areas.contains(el_lat, el_lon):
             excluded += 1
+            continue
+
+        if merges_with_served(el_lat, el_lon, dedup_candidates):
+            deduped += 1
             continue
 
         tags = el.get("tags", {})
@@ -1099,10 +1191,11 @@ out center;
         )
 
     results.sort(key=lambda x: x.distance_m)
-    if excluded:
+    if excluded or deduped:
         logger.info(
-            "osm_restricted_excluded lat=%s lon=%s radius=%d excluded=%d kept=%d",
-            lat, lon, radius, excluded, len(results),
+            "osm_layer_filtered lat=%s lon=%s radius=%d restricted_excluded=%d "
+            "merged_deduped=%d kept=%d",
+            lat, lon, radius, excluded, deduped, len(results),
         )
 
     # Cache the snapshot (evict the oldest entry when full).

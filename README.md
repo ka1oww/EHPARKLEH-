@@ -28,7 +28,7 @@ HDB and URA form the government spine. Google discovers additional locations. OS
 
 Rates are attached in order: matched LTA rates, HDB/URA standard rates for eligible government car parks, OneMotoring indicative rates, then hand-curated indicative rates. Therefore the pipeline marks guide and manual rates as indicative.
 
-Standalone OSM records are dropped from the served dataset because they produced construction-site and private noise. OSM still corroborates during deduplication, and `/api/parking/osm` supplies on-demand OSM parking at search time for unfiltered searches. While any category or amenity filter is active, the frontend excludes that unverified OSM layer from the list, map, and nearby count because OSM entries do not carry the data needed to verify those filters.
+Standalone OSM records are dropped from the served dataset because they produced construction-site and private noise. OSM still corroborates during deduplication, and `/api/parking/osm` supplies on-demand OSM parking at search time for unfiltered searches. That endpoint suppresses any live pin within the same 90-metre proximity radius the build merges at, reusing the build's own constant, so a carpark already in the served dataset is never pinned twice. While any category or amenity filter is active, the frontend excludes that unverified OSM layer from the list, map, and nearby count because OSM entries do not carry the data needed to verify those filters.
 
 ### Restricted areas
 
@@ -60,8 +60,8 @@ The backend sends cache state and freshness deadlines in response headers. The f
 - Search by destination or Near me. Location permission is requested only when Near me is tapped.
 - Address lookup failures are labelled and retryable instead of appearing as no matches; a valid search with no results stays neutral.
 - Main carpark results do not wait for the supplemental OpenStreetMap layer and remain available with a quiet notice when that layer fails.
-- Filter by HDB, malls, street, or private car parks, then narrow by free Sunday and public holiday parking, available lots, EV charging, car wash, or radius.
-- Show resolved rates, parsed free-parking rules, lot counts, EV connector counts, and self-service car wash operators. EV site flags come from LTA DataMall, with live connector counts when the feed is configured. Car wash flags come from Beaver and QE Car Care published lists.
+- Filter by HDB, malls, street, or private car parks, then narrow by free Sunday and public holiday parking, available lots, EV charging, car wash, or radius. The live lot feed covers only HDB and LTA car parks, so the available-lots filter drops a car park only when its count is known to be zero; an uncounted car park stays in the results and its card carries a **No live data** chip.
+- Show resolved rates, parsed free-parking rules, lot counts, EV connector counts, and self-service car wash operators. EV site flags come from LTA DataMall, each charging site attributed to its single nearest car park within 75 metres, with live connector counts when the feed is configured. Car wash flags come from Beaver and QE Car Care published lists.
 - Live OSM parking entries are shown for unfiltered searches; they are hidden from the list, map, and nearby count whenever a filter is active because they do not carry the filter data needed to verify a match.
 - Cluster dense map markers, frame a new result set, and preserve manual map movement when availability refreshes. Selecting a card opens its map popup.
 - Keep recent searches, saved favourites, shareable result URLs, and the last results for offline use. The app is an installable PWA with iOS and Android wrappers through Capacitor.

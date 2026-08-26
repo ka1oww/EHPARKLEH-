@@ -118,6 +118,24 @@ describe('CarparkCard', () => {
     expect(screen.getByText('040').closest('.opacity-60')).toBeNull()
   })
 
+  // The live feed covers HDB/LTA carparks only, so a street/mall/private
+  // carpark has no count at all. Uncounted passes the Has lots filter now, so
+  // the card must say the count is unconfirmed rather than let `---` read as
+  // a number nobody can vouch for.
+  it('says No live data when the count is unknown, not zero', () => {
+    render(
+      <CarparkCard entry={hdbEntry({ lots_available: null })} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+    expect(screen.getByText('No live data')).toBeInTheDocument()
+  })
+
+  it('does not label a counted carpark as having no live data', () => {
+    render(
+      <CarparkCard entry={hdbEntry({ lots_available: 40 })} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,
+    )
+    expect(screen.queryByText('No live data')).not.toBeInTheDocument()
+  })
+
   it('offers the go-action in the app\u2019s own voice, still deep-linking to Google Maps', () => {
     render(
       <CarparkCard entry={hdbEntry({ lat: 1.37, lon: 103.85 })} rank={1} selected={false} onSelect={noop} isFavourite={false} onToggleFavourite={noop} />,

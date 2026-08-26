@@ -475,6 +475,67 @@ def classify(cp):
     return "Unclassified"
 
 
+# ---- EV charger attribution -------------------------------------------------
+
+def attribute_ev_chargers(merged, ev_points):
+    """Flag carparks that have LTA charging, attributing each charging site to
+    the single nearest carpark within EV_MATCH_M.
+
+    Flagging every carpark inside the radius advertised one charger bank on up
+    to four different cards (two HDB blocks and two street records all claimed
+    the Kelantan Lane site): counts double-counted real infrastructure and sent
+    drivers to carparks whose badge was false. Nearest-only attribution keeps
+    the same 75m reach but lets each site speak for exactly one carpark; ties
+    break on id so rebuilds are reproducible. A carpark nobody is nearest to
+    shows no EV info.
+    """
+    def grid_key(lat, lon):
+        return (round(lat / GRID_DEG), round(lon / GRID_DEG))
+
+    cp_grid = defaultdict(list)
+    for idx, e in enumerate(merged):
+        cp_grid[grid_key(e["lat"], e["lon"])].append(idx)
+
+    # Site -> its winning carpark (index), aggregating connectors when several
+    # sites share a nearest carpark.
+    claimed = defaultdict(lambda: ([], set(), []))
+    for p in ev_points:
+        gk = grid_key(p["lat"], p["lon"])
+        best = None
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for idx in cp_grid.get((gk[0] + dx, gk[1] + dy), []):
+                    e = merged[idx]
+                    d = haversine(e["lat"], e["lon"], p["lat"], p["lon"])
+                    if d > EV_MATCH_M:
+                        continue
+                    cand = (d, e["id"])
+                    if best is None or cand < best:
+                        best = cand + (idx,)
+        if best is None:
+            continue
+        cp_ids, operators, powers = claimed[best[2]]
+        for c in p["connectors"]:
+            cp_ids.append(c["evCpId"])
+            if c.get("operator"):
+                operators.add(c["operator"])
+            try:
+                powers.append(float(c.get("powerRating")))
+            except (TypeError, ValueError):
+                pass
+
+    flagged = 0
+    for idx, (cp_ids, operators, powers) in claimed.items():
+        e = merged[idx]
+        e["ev"] = True
+        e["ev_cp_ids"] = sorted(set(cp_ids))
+        e["ev_total"] = len(e["ev_cp_ids"])
+        e["ev_operators"] = sorted(operators)
+        e["ev_max_power_kw"] = max(powers) if powers else None
+        flagged += 1
+    return flagged
+
+
 # ---- main ------------------------------------------------------------------
 
 def main():
@@ -508,7 +569,10 @@ def main():
             "availability_key": cp["id"],  # links to live availability feed
             "sources": ["hdb"] if gh else ["lta"],
             "type": cp.get("type"),
-            "free_parking": cp.get("free_parking"),
+            # HDB's own crawl is the authority on free parking; the geocoded
+            # record's copy lags it (14 carparks were served NO while HDB said
+            # Sun & PH, hiding them from the Free Sun & PH filter).
+            "free_parking": gh.get("free_parking") if gh else cp.get("free_parking"),
             "rates": None,
             "google_primary_type": None,
         }
@@ -746,35 +810,9 @@ def main():
     # connectors, and which operators. Live per-connector availability is
     # fetched at request time in main.py using the evCpIds recorded here.
     ev_points = load_opt(EV, [])
-    ev_grid = defaultdict(list)
-    for p in ev_points:
-        ev_grid[grid_key(p["lat"], p["lon"])].append(p)
-
-    ev_flagged = 0
-    for e in merged:
-        gk = grid_key(e["lat"], e["lon"])
-        cp_ids, operators, powers = [], set(), []
-        for dx in (-1, 0, 1):
-            for dy in (-1, 0, 1):
-                for p in ev_grid.get((gk[0] + dx, gk[1] + dy), []):
-                    if haversine(e["lat"], e["lon"], p["lat"], p["lon"]) <= EV_MATCH_M:
-                        for c in p["connectors"]:
-                            cp_ids.append(c["evCpId"])
-                            if c.get("operator"):
-                                operators.add(c["operator"])
-                            try:
-                                powers.append(float(c.get("powerRating")))
-                            except (TypeError, ValueError):
-                                pass
-        if cp_ids:
-            e["ev"] = True
-            e["ev_cp_ids"] = sorted(set(cp_ids))
-            e["ev_total"] = len(e["ev_cp_ids"])
-            e["ev_operators"] = sorted(operators)
-            e["ev_max_power_kw"] = max(powers) if powers else None
-            ev_flagged += 1
+    ev_flagged = attribute_ev_chargers(merged, ev_points)
     print(f"flagged {ev_flagged} carparks with EV charging "
-          f"(within {EV_MATCH_M:.0f}m of {len(ev_points)} EV sites)", file=sys.stderr)
+          f"(nearest within {EV_MATCH_M:.0f}m of {len(ev_points)} EV sites)", file=sys.stderr)
 
     # 3f) car wash. Scoped to HDB carparks (self-service machines are an HDB-MSCP
     # thing). Flagged only from the two operators' published block lists (Beaver +
