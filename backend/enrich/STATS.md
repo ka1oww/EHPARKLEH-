@@ -1,6 +1,6 @@
 # Enriched Carpark Dataset: Stats
 
-Generated: 2026-08-26 10:54:52
+Generated: 2026-08-26 14:07:23
 
 **Total carparks:** 3566
 
@@ -15,7 +15,7 @@ Generated: 2026-08-26 10:54:52
 
 - hdb: 2259
 - google: 2054
-- osm: 1829
+- osm: 1828
 - ura: 742
 - lta: 125
 - onemotoring: 54
