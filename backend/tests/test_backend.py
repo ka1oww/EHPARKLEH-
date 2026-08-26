@@ -1512,3 +1512,21 @@ def test_osm_dedup_radius_is_the_build_merge_rule_itself():
     import build_enriched as be
 
     assert main.OSM_DEDUP_M == be.DEDUPE_HARD_M == 90.0
+
+
+def test_served_near_prefilter_keeps_every_true_neighbour(loaded_cache):
+    """The bounding-box prefilter is an optimisation, not a behaviour change:
+    for any pin, the narrowed candidate list must reach the same verdict as a
+    full scan of the dataset."""
+    probes = [
+        (1.3000, 103.8000),
+        (1.2830, 103.8510),
+        (1.4400, 103.7800),
+        (1.3521, 103.9200),
+    ]
+    candidates = main.served_near(probes, main.OSM_DEDUP_M)
+    assert len(candidates) < len(loaded_cache)
+    for lat, lon in probes:
+        assert main.merges_with_served(lat, lon, candidates) == main.merges_with_served(
+            lat, lon
+        )

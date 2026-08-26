@@ -27,7 +27,7 @@ from restricted import RestrictedDataError, load_restricted_areas
 # suppressed server-side rather than trusting every browser to redo it.
 _ENRICH_DIR = Path(__file__).parent / "enrich"
 if str(_ENRICH_DIR) not in sys.path:
-    sys.path.insert(0, str(_ENRICH_DIR))
+    sys.path.append(str(_ENRICH_DIR))
 from build_enriched import DEDUPE_HARD_M as OSM_DEDUP_M  # noqa: E402
 
 # Load backend/.env for local dev if python-dotenv is installed. In production
@@ -282,7 +282,44 @@ def haversine(lat1, lon1, lat2, lon2):
     return 2 * R * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
-def merges_with_served(lat: float, lon: float) -> bool:
+# Degrees-per-metre at Singapore latitudes, used only to draw a generous
+# bounding box around a batch of points. Latitude is near-constant; longitude
+# shrinks with cos(lat), so the box is sized off the widest cosine in the batch
+# and is therefore never narrower than the true circle.
+_M_PER_DEG_LAT = 111_195.0
+_M_PER_DEG_LON_EQ = 111_320.0
+
+
+def served_near(points: list[tuple[float, float]], margin_m: float) -> list[dict]:
+    """Served records that could sit within margin_m of any of `points`.
+
+    A cheap one-pass bounding-box prefilter over the whole dataset, so the
+    per-point proximity test that follows walks a handful of neighbours instead
+    of all ~3,500 served records. The box is deliberately loose: it may admit a
+    record the exact test then rejects, but it never drops one that is genuinely
+    within margin_m.
+    """
+    if not _carpark_cache or not points:
+        return []
+    lats = [p[0] for p in points]
+    lons = [p[1] for p in points]
+    lat_min, lat_max = min(lats), max(lats)
+    lon_min, lon_max = min(lons), max(lons)
+    d_lat = margin_m / _M_PER_DEG_LAT
+    widest_lat = max(abs(lat_min), abs(lat_max))
+    d_lon = margin_m / (_M_PER_DEG_LON_EQ * max(math.cos(math.radians(widest_lat)), 0.01))
+    lat_min, lat_max = lat_min - d_lat, lat_max + d_lat
+    lon_min, lon_max = lon_min - d_lon, lon_max + d_lon
+    return [
+        cp
+        for cp in _carpark_cache
+        if lat_min <= cp["lat"] <= lat_max and lon_min <= cp["lon"] <= lon_max
+    ]
+
+
+def merges_with_served(
+    lat: float, lon: float, candidates: Optional[list[dict]] = None
+) -> bool:
     """True when a live OSM pin is the same physical carpark as some served card.
 
     The build already folds crawled OSM/Google candidates into served records
@@ -291,11 +328,16 @@ def merges_with_served(lat: float, lon: float) -> bool:
     lets through. Suppression here is what makes one physical carpark appear at
     most once. With the dataset not yet loaded it suppresses nothing rather than
     everything.
+
+    `candidates` is the served subset a caller has already narrowed down for a
+    batch of pins (see served_near); it must contain every served record within
+    OSM_DEDUP_M of (lat, lon). Omitted, the whole dataset is scanned.
     """
-    if not _carpark_cache:
+    records = _carpark_cache if candidates is None else candidates
+    if not records:
         return False
     return any(
-        haversine(lat, lon, cp["lat"], cp["lon"]) <= OSM_DEDUP_M for cp in _carpark_cache
+        haversine(lat, lon, cp["lat"], cp["lon"]) <= OSM_DEDUP_M for cp in records
     )
 
 
@@ -1101,9 +1143,7 @@ out center;
         status_code = 504 if isinstance(exc, httpx.TimeoutException) else 502
         raise HTTPException(status_code=status_code, detail="Map parking service unavailable") from exc
 
-    results: list[OsmParking] = []
-    excluded = 0
-    deduped = 0
+    located: list[tuple[dict, float, float]] = []
     for el in elements:
         if el["type"] == "node":
             el_lat, el_lon = el["lat"], el["lon"]
@@ -1112,12 +1152,26 @@ out center;
             if not center:
                 continue
             el_lat, el_lon = center["lat"], center["lon"]
+        located.append((el, el_lat, el_lon))
 
+    # Narrow the served dataset to this batch's neighbourhood once, instead of
+    # re-scanning all served records for every Overpass element. A wide-radius
+    # search in dense Singapore returns hundreds of elements, and the full
+    # product ran to ~10^6 haversine calls with no await to yield on, blocking
+    # the event loop for every other request in flight.
+    dedup_candidates = served_near(
+        [(el_lat, el_lon) for _, el_lat, el_lon in located], OSM_DEDUP_M
+    )
+
+    results: list[OsmParking] = []
+    excluded = 0
+    deduped = 0
+    for el, el_lat, el_lon in located:
         if restricted_areas.contains(el_lat, el_lon):
             excluded += 1
             continue
 
-        if merges_with_served(el_lat, el_lon):
+        if merges_with_served(el_lat, el_lon, dedup_candidates):
             deduped += 1
             continue
 
