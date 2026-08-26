@@ -724,7 +724,10 @@ export default function App() {
   function handleNearMe() {
     // Same discipline as handleSubmit: geolocation is an await outside
     // runSearch's guard, so a slow GPS fix resolving after a newer destination
-    // was searched must bail rather than republish the old one.
+    // was searched must bail rather than republish the old one. Claiming also
+    // retires whatever request was in flight, so nothing else can still be
+    // running (and owed a spinner) by the time this claim settles.
+    invalidateCurrentSearch()
     const destinationSeq = beginDestinationChange()
     setError('')
     getCurrentPosition()

@@ -54,6 +54,7 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  vi.useRealTimers()
   vi.unstubAllGlobals()
   vi.restoreAllMocks()
 })
@@ -197,6 +198,58 @@ describe('geocode race against a newer search', () => {
 
     expect(screen.queryByText('Finding spots…')).not.toBeInTheDocument()
     expect(screen.queryByText('Refreshing saved spots…')).not.toBeInTheDocument()
+    expect(screen.getByText(/Location is blocked for this site/)).toBeInTheDocument()
+  })
+
+  it('a denied Near me tap retires the filter refetch it superseded', async () => {
+    vi.useFakeTimers()
+    let filterSignal: AbortSignal | undefined
+    let rejectLocation: ((err: unknown) => void) | undefined
+    let carparkCalls = 0
+    const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input)
+      if (!url.includes('/api/carparks')) return Promise.resolve(okJson([]))
+      carparkCalls += 1
+      if (carparkCalls === 1) {
+        return Promise.resolve(okJson([carpark('initial-result', 'Initial result')]))
+      }
+      filterSignal = init?.signal ?? undefined
+      return new Promise((_resolve, reject) => {
+        init?.signal?.addEventListener('abort', () =>
+          reject(new DOMException('superseded', 'AbortError')),
+        )
+      })
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    vi.mocked(getCurrentPosition).mockImplementationOnce(
+      () =>
+        new Promise<LatLon>((_resolve, reject) => {
+          rejectLocation = reject
+        }),
+    )
+    window.history.replaceState(null, '', '/?lat=1.37&lon=103.85')
+
+    render(<App />)
+    await act(async () => {})
+    expect(screen.getByText('Initial result')).toBeInTheDocument()
+
+    // A filter refetch is in flight and owns the loading board.
+    fireEvent.click(screen.getByRole('button', { name: /EV charging/i }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(250)
+    })
+    expect(carparkCalls).toBe(2)
+
+    // Near me claims the destination, then geolocation is denied.
+    fireEvent.click(screen.getByRole('button', { name: /near me/i }))
+    await act(async () => {
+      rejectLocation?.({ code: 1 })
+      await Promise.resolve()
+    })
+
+    // The claim retired that refetch, so putting the board down strands nobody.
+    expect(filterSignal?.aborted).toBe(true)
+    expect(screen.queryByText('Finding spots…')).not.toBeInTheDocument()
     expect(screen.getByText(/Location is blocked for this site/)).toBeInTheDocument()
   })
 
