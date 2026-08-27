@@ -962,6 +962,7 @@ async def test_osm_identifies_the_app_to_overpass(monkeypatch):
             return _OsmResponse()
 
     monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
 
     response = main.Response()
@@ -993,6 +994,7 @@ async def test_osm_propagates_overpass_failure_without_cache(monkeypatch):
             return _OsmResponse()
 
     monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
 
     with pytest.raises(main.HTTPException) as error:
@@ -1022,6 +1024,7 @@ async def test_osm_rejects_overpass_error_remark(monkeypatch):
 
     osm_cache = {}
     monkeypatch.setattr(main, "_osm_cache", osm_cache)
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
 
     with pytest.raises(main.HTTPException) as error:
@@ -1064,6 +1067,7 @@ async def test_osm_marks_cached_fallback_stale(monkeypatch):
         "_osm_cache",
         {key: (time.monotonic() - main.OSM_TTL_SECONDS - 1, [cached_element])},
     )
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
 
     response = main.Response()
@@ -1081,6 +1085,195 @@ async def test_osm_marks_cached_fallback_stale(monkeypatch):
         )
     ]
     assert response.headers["x-ehparkleh-osm-state"] == "stale"
+
+
+def _rate_limited_response(url: str, retry_after: str | None = None):
+    """A mock Overpass response whose raise_for_status raises a real 429."""
+
+    class _Response:
+        def raise_for_status(self):
+            request = main.httpx.Request("POST", url)
+            headers = {"retry-after": retry_after} if retry_after else {}
+            response = main.httpx.Response(429, request=request, headers=headers)
+            raise main.httpx.HTTPStatusError(
+                "rate limited", request=request, response=response
+            )
+
+    return _Response()
+
+
+def _elements_response(elements):
+    class _Response:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"elements": elements}
+
+    return _Response()
+
+
+@pytest.mark.asyncio
+async def test_osm_falls_back_to_next_endpoint_when_primary_rate_limits(monkeypatch):
+    """The deployed failure mode: overpass-api.de instantly rejects the shared
+    egress IP (429 fair-use). A mirror answering must yield a normal fresh 200,
+    never a user-visible 502 — and the rejected endpoint must enter cooldown."""
+    calls = []
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, url, **_kwargs):
+            calls.append(url)
+            if url == main.OVERPASS_ENDPOINTS[0]:
+                return _rate_limited_response(url)
+            return _elements_response(
+                [
+                    {
+                        "type": "node",
+                        "id": 77,
+                        "lat": 1.3324,
+                        "lon": 103.8475,
+                        "tags": {"amenity": "parking", "name": "Mirror parking"},
+                    }
+                ]
+            )
+
+    monkeypatch.setattr(main, "_osm_cache", {})
+    cooldown: dict = {}
+    monkeypatch.setattr(main, "_overpass_cooldown", cooldown)
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+    response = main.Response()
+    results = await main.parking_osm(response=response, lat=1.3323, lon=103.8474, radius=500)
+
+    assert calls == [main.OVERPASS_ENDPOINTS[0], main.OVERPASS_ENDPOINTS[1]]
+    assert results[0].id == "osm_77"
+    assert results[0].name == "Mirror parking"
+    assert response.headers["x-ehparkleh-osm-state"] == "fresh"
+    # Only the rejected endpoint is cooling down; the mirror that answered is not.
+    assert main.OVERPASS_ENDPOINTS[0] in cooldown
+    assert main.OVERPASS_ENDPOINTS[1] not in cooldown
+
+
+@pytest.mark.asyncio
+async def test_osm_skips_endpoint_during_cooldown_and_honours_retry_after(monkeypatch):
+    """Fair use: an endpoint that answered 429 is not re-hit on the next search
+    while its cooldown (Retry-After when given) lasts."""
+    calls = []
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, url, **_kwargs):
+            calls.append(url)
+            if url == main.OVERPASS_ENDPOINTS[0]:
+                return _rate_limited_response(url, retry_after="120")
+            return _elements_response([])
+
+    monkeypatch.setattr(main, "_osm_cache", {})
+    cooldown: dict = {}
+    monkeypatch.setattr(main, "_overpass_cooldown", cooldown)
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+    await main.parking_osm(response=main.Response(), lat=1.3323, lon=103.8474, radius=500)
+    assert calls == [main.OVERPASS_ENDPOINTS[0], main.OVERPASS_ENDPOINTS[1]]
+    # Retry-After: 120 is honoured, not the 60s default.
+    assert cooldown[main.OVERPASS_ENDPOINTS[0]] - time.monotonic() > 100
+
+    # A search in a different cache cell goes straight to the mirror.
+    calls.clear()
+    await main.parking_osm(response=main.Response(), lat=1.34, lon=103.86, radius=500)
+    assert calls == [main.OVERPASS_ENDPOINTS[1]]
+
+
+@pytest.mark.asyncio
+async def test_osm_serves_wider_cached_snapshot_when_every_endpoint_fails(monkeypatch):
+    """With all mirrors down and no exact-key entry, a cached wider fetch that
+    covers the requested disc is served (filtered to the requested radius)
+    instead of a 502 — the strip only appears when there is truly nothing."""
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, url, **_kwargs):
+            return _rate_limited_response(url)
+
+    near = {
+        "id": "osm_near",
+        "name": "Near parking",
+        "lat": 1.3330,
+        "lon": 103.8480,
+        "fee": None,
+        "parking_type": None,
+        "capacity": None,
+    }
+    far = {
+        "id": "osm_far",
+        "name": "Far parking",
+        "lat": 1.3460,  # ~1.5 km north: inside the cached 2000 m fetch,
+        "lon": 103.8474,  # outside the requested 500 m radius
+        "fee": None,
+        "parking_type": None,
+        "capacity": None,
+    }
+    wide_key = (round(1.3323, 3), round(103.8474, 3), 2000)
+    monkeypatch.setattr(
+        main,
+        "_osm_cache",
+        {wide_key: (time.monotonic() - main.OSM_TTL_SECONDS - 1, [near, far])},
+    )
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+    response = main.Response()
+    results = await main.parking_osm(response=response, lat=1.3323, lon=103.8474, radius=500)
+
+    assert [r.id for r in results] == ["osm_near"]
+    assert response.headers["x-ehparkleh-osm-state"] == "stale"
+
+
+@pytest.mark.asyncio
+async def test_osm_cached_snapshot_too_far_away_is_not_served(monkeypatch):
+    """A cached fetch that does not cover the requested disc must not be
+    passed off as an answer for it: the request still fails honestly."""
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, url, **_kwargs):
+            return _rate_limited_response(url)
+
+    # A 500 m fetch ~5 km away says nothing about the requested area.
+    far_key = (round(1.3770, 3), round(103.8474, 3), 500)
+    monkeypatch.setattr(
+        main,
+        "_osm_cache",
+        {far_key: (time.monotonic(), [])},
+    )
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+    with pytest.raises(main.HTTPException) as error:
+        await main.parking_osm(response=main.Response(), lat=1.3323, lon=103.8474, radius=500)
+
+    assert error.value.status_code == 502
 
 
 @pytest.mark.asyncio
@@ -1133,6 +1326,7 @@ async def test_osm_cache_hit_remeasures_distance_for_each_requester(monkeypatch)
     )
 
     monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: client)
 
     fresh_response = main.Response()
@@ -1226,6 +1420,7 @@ def _stub_overpass(monkeypatch, elements):
             return _OsmResponse()
 
     monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
 
 
