@@ -96,6 +96,17 @@ The dev server runs at `http://localhost:5173`. Run the local checks with `npm r
 
 The frontend deploys to Vercel and the backend to Render. [`render.yaml`](render.yaml) records the backend service, and [`backend/build.sh`](backend/build.sh) can regenerate the dataset during a backend build. GitHub Actions runs lint, typecheck, tests, and the frontend build, plus the backend test suite.
 
+### Checking which commit the backend is actually running
+
+Only the Vercel side is known to track `main` automatically. Render publishes no deployment records to GitHub, so a backend left behind on an older commit looks identical from the PR, from CI and from the commit status — on 2026-08-27 the live backend was found two merges behind `main` while every check was green. Do not infer the running backend version from `main`; fingerprint it with a field that comes from a committed source layer and has no network call in its path:
+
+```bash
+curl -s "https://ehparkleh-backend.onrender.com/api/carparks?lat=1.3694027&lon=103.8753456&radius=60" \
+  | python3 -c "import json,sys; print([c['free_parking_info'] for c in json.load(sys.stdin) if c['id']=='SE5L'])"
+```
+
+`'NO'` means the build includes PR #12 (`313d872`) or later; `'SUN & PH FR 7AM-10.30PM'` means it predates it. When that stops separating the commits you care about, pick a new discriminator the same way: diff `backend/enrich/gov_hdb.json` (or another committed layer) between the two commits and find a record whose value changed. This holds whether Render serves the committed `carparks_enriched.json` or regenerates it via `build.sh`, because both derive from files fixed by the deployed commit.
+
 ### Backend keep-warm
 
 Render's free plan idles the backend when it receives no traffic. [`.github/workflows/keep-warm.yml`](.github/workflows/keep-warm.yml) keeps it active with four-minute `/health` pings from a long-running job, then relaunches itself; the GitHub Actions cron is only a recovery backstop. See [`docs/keep-warm-cadence.md`](docs/keep-warm-cadence.md) for the measured failure of the former cron-only approach, the current workflow contract and resource-hour tradeoff, and the checks that remain.

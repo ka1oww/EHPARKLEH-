@@ -52,8 +52,8 @@ const OSM_DEDUP_M = 60
 // for Overpass during a slow or failed request. This bound only abandons the
 // optional layer — primary results render as soon as they arrive regardless —
 // so it is sized to outlast the backend's serial Overpass mirror fallback
-// (per-attempt timeout 10s + total budget 12s) instead of cutting it off
-// mid-recovery.
+// (total budget 13s, which that walk can no longer overrun) instead of cutting
+// it off mid-recovery.
 const OSM_TIMEOUT_MS = 15_000
 
 // The splash is a hand-off, not a wait. If the first search is genuinely slow

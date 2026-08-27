@@ -929,6 +929,39 @@ async def test_geocode_skips_isolated_malformed_matches(monkeypatch):
     )
 
 
+def _snapshot_feature(osm_id, lat, lon, name=None, fee=None, parking_type=None):
+    """One record in enrich/osm_parking.json's shape, as crawl_osm.py writes it."""
+    return {
+        "osm_id": osm_id,
+        "name": name,
+        "lat": lat,
+        "lon": lon,
+        "access": None,
+        "fee": fee,
+        "parking_type": parking_type,
+    }
+
+
+def _install_shipped_snapshot(monkeypatch, features):
+    """Stand a synthetic crawl in for the shipped one, already loaded."""
+    monkeypatch.setattr(
+        main,
+        "_osm_snapshot",
+        [
+            element
+            for element in (main._snapshot_element(f) for f in features)
+            if element is not None
+        ],
+    )
+    monkeypatch.setattr(main, "_osm_snapshot_loaded", True)
+
+
+def _disable_shipped_snapshot(monkeypatch):
+    """Simulate the snapshot file being missing or unreadable."""
+    monkeypatch.setattr(main, "_osm_snapshot", None)
+    monkeypatch.setattr(main, "_osm_snapshot_loaded", True)
+
+
 @pytest.mark.asyncio
 async def test_osm_identifies_the_app_to_overpass(monkeypatch):
     request = {}
@@ -976,7 +1009,11 @@ async def test_osm_identifies_the_app_to_overpass(monkeypatch):
 
 
 @pytest.mark.asyncio
-async def test_osm_propagates_overpass_failure_without_cache(monkeypatch):
+async def test_osm_502s_only_when_nothing_at_all_can_be_served(monkeypatch):
+    """The last-resort path: Overpass down, both caches cold AND the shipped
+    snapshot unusable. Only then may the overlay fail, because only then is
+    there genuinely nothing to show."""
+
     class _OsmResponse:
         def raise_for_status(self):
             request = main.httpx.Request("POST", "https://overpass-api.de")
@@ -996,6 +1033,7 @@ async def test_osm_propagates_overpass_failure_without_cache(monkeypatch):
     monkeypatch.setattr(main, "_osm_cache", {})
     monkeypatch.setattr(main, "_overpass_cooldown", {})
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+    _disable_shipped_snapshot(monkeypatch)
 
     with pytest.raises(main.HTTPException) as error:
         await main.parking_osm(response=main.Response(), lat=1.3323, lon=103.8474, radius=500)
@@ -1026,6 +1064,9 @@ async def test_osm_rejects_overpass_error_remark(monkeypatch):
     monkeypatch.setattr(main, "_osm_cache", osm_cache)
     monkeypatch.setattr(main, "_overpass_cooldown", {})
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+    # The point here is that a remark payload is never cached as if it were
+    # data; the snapshot floor is stood down so the failure stays observable.
+    _disable_shipped_snapshot(monkeypatch)
 
     with pytest.raises(main.HTTPException) as error:
         await main.parking_osm(response=main.Response(), lat=1.3323, lon=103.8474, radius=500)
@@ -1247,8 +1288,9 @@ async def test_osm_serves_wider_cached_snapshot_when_every_endpoint_fails(monkey
 
 @pytest.mark.asyncio
 async def test_osm_cached_snapshot_too_far_away_is_not_served(monkeypatch):
-    """A cached fetch that does not cover the requested disc must not be
-    passed off as an answer for it: the request still fails honestly."""
+    """A cached fetch that does not cover the requested disc must not be passed
+    off as an answer for it. It is skipped in favour of the shipped snapshot,
+    which does describe the requested area."""
 
     class _OsmClient:
         async def __aenter__(self):
@@ -1261,19 +1303,26 @@ async def test_osm_cached_snapshot_too_far_away_is_not_served(monkeypatch):
             return _rate_limited_response(url)
 
     # A 500 m fetch ~5 km away says nothing about the requested area.
+    far_element = _snapshot_feature("node/999001", 1.3770, 103.8474, name="Five km away")
     far_key = (round(1.3770, 3), round(103.8474, 3), 500)
     monkeypatch.setattr(
         main,
         "_osm_cache",
-        {far_key: (time.monotonic(), [])},
+        {far_key: (time.monotonic(), [main._snapshot_element(far_element)])},
     )
     monkeypatch.setattr(main, "_overpass_cooldown", {})
     monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+    _install_shipped_snapshot(
+        monkeypatch, [_snapshot_feature("node/999002", 1.3324, 103.8475, name="In range")]
+    )
 
-    with pytest.raises(main.HTTPException) as error:
-        await main.parking_osm(response=main.Response(), lat=1.3323, lon=103.8474, radius=500)
+    response = main.Response()
+    results = await main.parking_osm(
+        response=response, lat=1.3323, lon=103.8474, radius=500
+    )
 
-    assert error.value.status_code == 502
+    assert [r.id for r in results] == ["osm_999002"]
+    assert response.headers["x-ehparkleh-osm-state"] == "snapshot"
 
 
 @pytest.mark.asyncio
@@ -1808,3 +1857,364 @@ def test_served_near_prefilter_keeps_every_true_neighbour(loaded_cache):
         assert main.merges_with_served(lat, lon, candidates) == main.merges_with_served(
             lat, lon
         )
+
+
+# ---------------------------------------------------------------------------
+# The shipped-snapshot floor, and the mirror-walk repairs that go with it.
+#
+# Reproduces the production failure observed on 2026-08-27: /api/parking/osm
+# returned 502 on every search from the deployed backend while the identical
+# Overpass query answered 200 from a residential IP. Both existing fallback
+# tiers read only `_osm_cache`, which nothing but a *successful* Overpass fetch
+# ever fills — so during the outage they were empty by construction, and on
+# Render's free plan (spun down after ~15 min idle) a cold, empty cache is the
+# normal state rather than the exceptional one.
+# ---------------------------------------------------------------------------
+
+
+def _stub_total_overpass_failure(monkeypatch, calls=None):
+    """Every endpoint refuses the connection, as Overpass did from Render."""
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, url, **_kwargs):
+            if calls is not None:
+                calls.append(url)
+            raise main.httpx.ConnectError(
+                "egress rejected", request=main.httpx.Request("POST", url)
+            )
+
+    monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+
+@pytest.mark.asyncio
+async def test_osm_serves_shipped_snapshot_when_overpass_fails_on_a_cold_process(
+    monkeypatch,
+):
+    """The reproduced production failure. A search that used to 502 must now
+    answer from the crawl that ships with the build."""
+    _stub_total_overpass_failure(monkeypatch)
+    _install_shipped_snapshot(
+        monkeypatch,
+        [
+            _snapshot_feature("node/1", 1.3324, 103.8475, name="Snapshot parking"),
+            _snapshot_feature("way/2", 1.3330, 103.8480, fee="yes", parking_type="multi-storey"),
+        ],
+    )
+
+    response = main.Response()
+    results = await main.parking_osm(
+        response=response, lat=1.3323, lon=103.8474, radius=500
+    )
+
+    assert [r.id for r in results] == ["osm_1", "osm_2"]
+    assert results[0].name == "Snapshot parking"
+    assert results[1].fee == "yes"
+    assert results[1].parking_type == "multi-storey"
+    # Distances are measured from the requester, exactly as every other tier does.
+    assert all(r.distance_m >= 0 for r in results)
+    assert response.headers["x-ehparkleh-osm-state"] == "snapshot"
+
+
+@pytest.mark.asyncio
+async def test_snapshot_pin_keeps_the_id_the_live_path_would_have_given_it(monkeypatch):
+    """A pin must not change identity when the overlay falls back: the crawl
+    stores `way/238927560` where Overpass reports the bare id 238927560, and
+    both have to reduce to one id or the same carpark gets two React keys and
+    escapes the dedup against the served cards."""
+    _stub_overpass(monkeypatch, _kranji_overpass_elements())
+    live = await main.parking_osm(
+        response=main.Response(), lat=1.4041301, lon=103.7416159, radius=500
+    )
+
+    _stub_total_overpass_failure(monkeypatch)
+    _install_shipped_snapshot(
+        monkeypatch,
+        [
+            _snapshot_feature(osm_id, lat, lon, name=name)
+            for osm_id, name, lat, lon in KRANJI_RESTRICTED + KRANJI_PUBLIC
+        ],
+    )
+    snapshot = await main.parking_osm(
+        response=main.Response(), lat=1.4041301, lon=103.7416159, radius=500
+    )
+
+    assert {r.id for r in snapshot} == {r.id for r in live}
+
+
+@pytest.mark.asyncio
+async def test_snapshot_excludes_restricted_land(monkeypatch):
+    """The snapshot is raw OSM, so it carries the camp carparks the live path
+    already drops. Serving it must apply the same exclusion."""
+    _stub_total_overpass_failure(monkeypatch)
+    _install_shipped_snapshot(
+        monkeypatch,
+        [
+            _snapshot_feature(osm_id, lat, lon, name=name)
+            for osm_id, name, lat, lon in KRANJI_RESTRICTED + KRANJI_PUBLIC
+        ],
+    )
+
+    results = await main.parking_osm(
+        response=main.Response(), lat=1.4041301, lon=103.7416159, radius=500
+    )
+
+    served = {r.id for r in results}
+    for osm_id, name, _lat, _lon in KRANJI_RESTRICTED:
+        assert f"osm_{osm_id.split('/')[1]}" not in served, f"{name} is inside Kranji Camp"
+    for osm_id, name, _lat, _lon in KRANJI_PUBLIC:
+        assert f"osm_{osm_id.split('/')[1]}" in served, f"{name} is a public HDB carpark"
+
+
+@pytest.mark.asyncio
+async def test_snapshot_dedups_against_served_carparks(monkeypatch):
+    """One physical carpark, one pin — the snapshot must not re-pin a carpark
+    that already has a served card, any more than the live path does."""
+    monkeypatch.setattr(main, "_carpark_cache", _build_cache())
+    _stub_total_overpass_failure(monkeypatch)
+    _install_shipped_snapshot(
+        monkeypatch,
+        [
+            # Sitting on served carpark "A" (1.3000, 103.8000).
+            _snapshot_feature("node/10", 1.3000, 103.8000, name="Duplicate of A"),
+            _snapshot_feature("node/11", 1.3020, 103.8020, name="Genuinely separate"),
+        ],
+    )
+
+    results = await main.parking_osm(
+        response=main.Response(), lat=1.3000, lon=103.8000, radius=500
+    )
+
+    assert [r.id for r in results] == ["osm_11"]
+
+
+@pytest.mark.asyncio
+async def test_snapshot_respects_the_requested_radius(monkeypatch):
+    _stub_total_overpass_failure(monkeypatch)
+    _install_shipped_snapshot(
+        monkeypatch,
+        [
+            _snapshot_feature("node/20", 1.3324, 103.8475, name="Inside"),
+            _snapshot_feature("node/21", 1.3600, 103.8700, name="Kilometres away"),
+        ],
+    )
+
+    results = await main.parking_osm(
+        response=main.Response(), lat=1.3323, lon=103.8474, radius=500
+    )
+
+    assert [r.id for r in results] == ["osm_20"]
+
+
+@pytest.mark.asyncio
+async def test_live_and_cached_tiers_still_outrank_the_snapshot(monkeypatch):
+    """The floor is a floor: fresher tiers must keep winning."""
+    cached_element = {
+        "id": "osm_cached",
+        "name": "Cached parking",
+        "lat": 1.3324,
+        "lon": 103.8475,
+        "fee": None,
+        "parking_type": None,
+        "capacity": None,
+    }
+    key = (round(1.3323, 3), round(103.8474, 3), 500)
+    _stub_total_overpass_failure(monkeypatch)
+    monkeypatch.setattr(
+        main,
+        "_osm_cache",
+        {key: (time.monotonic() - main.OSM_TTL_SECONDS - 1, [cached_element])},
+    )
+    _install_shipped_snapshot(
+        monkeypatch, [_snapshot_feature("node/30", 1.3324, 103.8475, name="Snapshot")]
+    )
+
+    response = main.Response()
+    results = await main.parking_osm(
+        response=response, lat=1.3323, lon=103.8474, radius=500
+    )
+
+    assert [r.id for r in results] == ["osm_cached"]
+    assert response.headers["x-ehparkleh-osm-state"] == "stale"
+
+
+@pytest.mark.asyncio
+async def test_osm_skips_upstream_entirely_while_every_endpoint_is_cooling(monkeypatch):
+    """With every endpoint known to be failing there is nothing to gain by
+    making the user wait on one of them, and a fair-use budget to lose. The
+    snapshot answers immediately; cooldowns expire on their own, so live data
+    resumes without anyone poking a host that is already refusing."""
+    calls: list[str] = []
+    _stub_total_overpass_failure(monkeypatch, calls=calls)
+    _install_shipped_snapshot(
+        monkeypatch, [_snapshot_feature("node/40", 1.3324, 103.8475, name="Snapshot")]
+    )
+    monkeypatch.setattr(
+        main,
+        "_overpass_cooldown",
+        {ep: time.monotonic() + 60 for ep in main.OVERPASS_ENDPOINTS},
+    )
+
+    response = main.Response()
+    results = await main.parking_osm(
+        response=response, lat=1.3323, lon=103.8474, radius=500
+    )
+
+    assert calls == []
+    assert [r.id for r in results] == ["osm_40"]
+    assert response.headers["x-ehparkleh-osm-state"] == "snapshot"
+
+
+@pytest.mark.asyncio
+async def test_a_slow_endpoint_does_not_consume_every_later_endpoints_turn(monkeypatch):
+    """The budget bug this repairs. The old check asked whether the budget was
+    already spent *before* an attempt, so with a per-attempt timeout close to
+    the total budget one hung endpoint used the whole allowance and every
+    mirror behind it was skipped — in production that is exactly how the only
+    healthy mirror never got tried. A slow first endpoint must still leave the
+    next one a turn."""
+    calls: list[str] = []
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, url, **kwargs):
+            calls.append(url)
+            if url == main.OVERPASS_ENDPOINTS[0]:
+                await asyncio.sleep(kwargs["timeout"])
+                raise main.httpx.ReadTimeout(
+                    "hung", request=main.httpx.Request("POST", url)
+                )
+            return _elements_response(
+                [
+                    {
+                        "type": "node",
+                        "id": 55,
+                        "lat": 1.3324,
+                        "lon": 103.8475,
+                        "tags": {"amenity": "parking", "name": "Healthy mirror"},
+                    }
+                ]
+            )
+
+    monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
+    monkeypatch.setattr(main, "OVERPASS_ATTEMPT_TIMEOUT", 0.05)
+    monkeypatch.setattr(main, "OVERPASS_TOTAL_BUDGET", 0.2)
+    monkeypatch.setattr(main, "OVERPASS_MIN_ATTEMPT", 0.01)
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+
+    response = main.Response()
+    results = await main.parking_osm(
+        response=response, lat=1.3323, lon=103.8474, radius=500
+    )
+
+    assert calls[:2] == [main.OVERPASS_ENDPOINTS[0], main.OVERPASS_ENDPOINTS[1]]
+    assert [r.id for r in results] == ["osm_55"]
+    assert response.headers["x-ehparkleh-osm-state"] == "fresh"
+
+
+@pytest.mark.asyncio
+async def test_overpass_walk_never_overruns_its_total_budget(monkeypatch):
+    """Every endpoint hangs. The walk must stop inside the budget rather than
+    letting each attempt add its own timeout on top of it."""
+    calls: list[str] = []
+
+    class _OsmClient:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def post(self, url, **kwargs):
+            calls.append(url)
+            await asyncio.sleep(kwargs["timeout"])
+            raise main.httpx.ReadTimeout("hung", request=main.httpx.Request("POST", url))
+
+    monkeypatch.setattr(main, "_osm_cache", {})
+    monkeypatch.setattr(main, "_overpass_cooldown", {})
+    monkeypatch.setattr(main, "OVERPASS_ATTEMPT_TIMEOUT", 0.05)
+    monkeypatch.setattr(main, "OVERPASS_TOTAL_BUDGET", 0.12)
+    monkeypatch.setattr(main, "OVERPASS_MIN_ATTEMPT", 0.01)
+    monkeypatch.setattr(main.httpx, "AsyncClient", lambda **_kwargs: _OsmClient())
+    _install_shipped_snapshot(
+        monkeypatch, [_snapshot_feature("node/60", 1.3324, 103.8475, name="Snapshot")]
+    )
+
+    started = time.monotonic()
+    await main.parking_osm(response=main.Response(), lat=1.3323, lon=103.8474, radius=500)
+    elapsed = time.monotonic() - started
+
+    assert elapsed < main.OVERPASS_TOTAL_BUDGET + 0.1, f"walk overran its budget: {elapsed:.3f}s"
+    assert 0 < len(calls) < len(main.OVERPASS_ENDPOINTS), (
+        "the budget should have stopped the walk before every endpoint was tried"
+    )
+
+
+def test_the_two_hosts_sharing_an_operator_are_not_listed_together():
+    """overpass.kumi.systems and overpass.private.coffee resolved to the same
+    IP (193.219.97.30) on 2026-08-27: back to back they look like two fallbacks
+    while failing as one. A different operator has to sit between them."""
+    hosts = [ep.split("//", 1)[-1].split("/", 1)[0] for ep in main.OVERPASS_ENDPOINTS]
+    shared_operator = {"overpass.kumi.systems", "overpass.private.coffee"}
+    adjacent = [set(pair) for pair in zip(hosts, hosts[1:])]
+    assert shared_operator not in adjacent, f"same operator listed back to back: {hosts}"
+
+
+def test_shipped_snapshot_is_present_and_plausible():
+    """Guards the deploy: the crawl has to actually ship, and be whole. If this
+    file goes missing or truncated the overlay silently loses its floor."""
+    snapshot = main._load_osm_snapshot()
+
+    assert snapshot is not None, f"{main.OSM_SNAPSHOT_FILE} did not load"
+    assert len(snapshot) >= main.OSM_SNAPSHOT_MIN_FEATURES
+    assert all(
+        isinstance(e["id"], str) and e["id"].startswith("osm_") for e in snapshot
+    )
+    # Somewhere central and well mapped must have pins to offer.
+    central = [
+        e for e in snapshot if main.haversine(1.3048, 103.8318, e["lat"], e["lon"]) <= 1000
+    ]
+    assert len(central) > 5, "the crawl has no parking near Orchard Road"
+
+
+def test_truncated_snapshot_is_refused_rather_than_served_as_no_parking_here(
+    monkeypatch, tmp_path
+):
+    """Fail-closed, as restricted.py does: a half-written file must not read as
+    'this neighbourhood has no parking'."""
+    stub = tmp_path / "osm_parking.json"
+    stub.write_text(json.dumps([_snapshot_feature("node/1", 1.33, 103.84)]))
+    monkeypatch.setattr(main, "OSM_SNAPSHOT_FILE", stub)
+    monkeypatch.setattr(main, "_osm_snapshot", None)
+    monkeypatch.setattr(main, "_osm_snapshot_loaded", False)
+
+    assert main._load_osm_snapshot() is None
+
+
+def test_snapshot_element_skips_unusable_records():
+    assert main._snapshot_element({"osm_id": "node/1", "lat": None, "lon": 103.8}) is None
+    assert main._snapshot_element({"lat": 1.3, "lon": 103.8}) is None
+    assert main._snapshot_element(
+        {"osm_id": "node/7", "lat": 1.3, "lon": 103.8, "name": None}
+    ) == {
+        "id": "osm_7",
+        "name": "Parking",
+        "lat": 1.3,
+        "lon": 103.8,
+        "fee": None,
+        "parking_type": None,
+        "capacity": None,
+    }
