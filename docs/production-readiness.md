@@ -75,11 +75,17 @@ OneMap response is a no-match; timeouts, upstream errors, and unusable response
 shapes return an error so the interface can offer a retry. The optional
 Overpass request never blocks primary carpark results: on failure the backend
 falls back through multiple mirrors, then a cache covering the requested area
-(`X-EhParkLeh-Osm-State: stale`), before finally returning an error; a stale
-cache hit is served as real data with no user-visible notice, and the
-supplemental-layer notice appears only when nothing at all can be shown. See
-the `OVERPASS_ENDPOINTS`/`_overpass_cooldown` comments in `backend/main.py`
-for the mirror and cooldown mechanics.
+(`X-EhParkLeh-Osm-State: stale`), then the OSM crawl committed at
+`backend/enrich/osm_parking.json` (`X-EhParkLeh-Osm-State: snapshot`), before
+finally returning an error. Both cache tiers are filled only by a *successful*
+Overpass fetch, so on a cold process — the normal state on a free Render plan,
+which spins down after ~15 min idle — they are empty and cannot cover an
+upstream outage; the committed crawl ships with the build and can, which is why
+it is the floor. A stale or snapshot response is served as real data with no
+user-visible notice, and the supplemental-layer notice now appears only if the
+crawl itself is missing or truncated. See the `OVERPASS_ENDPOINTS`,
+`_overpass_cooldown` and `OSM_SNAPSHOT_FILE` comments in `backend/main.py` for
+the mirror, cooldown and snapshot mechanics.
 
 `X-EhParkLeh-Availability-Fresh-Until` and `X-EhParkLeh-Ev-Fresh-Until` are
 fixed when each successful snapshot is published, rather than regenerated for

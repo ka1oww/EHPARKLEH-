@@ -1077,7 +1077,9 @@ async def get_carparks(
 # radius (~110m granularity). Overpass enforces strict fair-use and blocks
 # abusive IPs; this endpoint is otherwise uncached and hit on every search, so
 # caching spares Overpass, lets us serve a stale snapshot on error, and (with the
-# radius clamp) blunts hammering / use as a free proxy.
+# radius clamp) blunts hammering / use as a free proxy. It can only ever cover an
+# outage that starts *after* a successful fetch, though; the floor for everything
+# else is the committed crawl (see OSM_SNAPSHOT_FILE).
 #
 # The cache stores elements WITHOUT distances. A key cell spans up to ~110 m,
 # so distances computed for whoever warmed the cell would be served — wrong —
@@ -1098,6 +1100,12 @@ _osm_cache: dict = {}  # {(rlat, rlon, radius): (fetched_at, list[_OsmElement])}
 # IP). The crawler (enrich/crawl_osm.py) already rotates mirrors for the same
 # reason; this is the live path's equivalent. All mirrors serve the full
 # planet. Env-overridable so a dead mirror can be dropped without a deploy.
+#
+# Order is by OPERATOR, not by preference: overpass.kumi.systems and
+# overpass.private.coffee both resolved to 193.219.97.30 on 2026-08-27, so they
+# are one operator wearing two names and one sick host takes out both. Keeping
+# a different operator between them (as this order already does) means the list
+# is never two dead entries deep in a row; the guard test holds it that way.
 OVERPASS_ENDPOINTS = [
     endpoint.strip()
     for endpoint in os.getenv(
@@ -1109,13 +1117,22 @@ OVERPASS_ENDPOINTS = [
     ).split(",")
     if endpoint.strip()
 ]
-# Per-endpoint attempt timeout; the in-query [timeout:8] stays under it so
-# Overpass aborts server-side before the client gives up.
-OVERPASS_ATTEMPT_TIMEOUT = float(os.getenv("OVERPASS_ATTEMPT_TIMEOUT", "10"))
+# Per-endpoint attempt timeout; the in-query [timeout:OVERPASS_QUERY_TIMEOUT]
+# stays under it so Overpass aborts server-side before the client gives up.
+#
+# Sized so at least two endpoints fit inside OVERPASS_TOTAL_BUDGET. At the old
+# 10s-per-attempt against a 12s budget only ONE attempt ever fitted: a single
+# hung endpoint spent the whole budget and every mirror behind it was skipped,
+# which is the opposite of what a fallback list is for.
+OVERPASS_ATTEMPT_TIMEOUT = float(os.getenv("OVERPASS_ATTEMPT_TIMEOUT", "6"))
+OVERPASS_QUERY_TIMEOUT = int(os.getenv("OVERPASS_QUERY_TIMEOUT", "5"))
 # Stop starting further fallback attempts once this much wall time is spent:
-# the frontend abandons the optional OSM layer after its own timeout, so late
-# answers only warm the cache for the next search.
-OVERPASS_TOTAL_BUDGET = float(os.getenv("OVERPASS_TOTAL_BUDGET", "12"))
+# the frontend abandons the optional OSM layer after its own timeout (15s), so
+# late answers only warm the cache for the next search.
+OVERPASS_TOTAL_BUDGET = float(os.getenv("OVERPASS_TOTAL_BUDGET", "13"))
+# Below this much remaining budget an attempt cannot finish anything useful, so
+# the walk stops rather than opening a connection it will have to abandon.
+OVERPASS_MIN_ATTEMPT = float(os.getenv("OVERPASS_MIN_ATTEMPT", "2"))
 # A live user request cannot sleep out a Retry-After the way the crawler's
 # exponential backoff does, so fair-use backoff is remembered *between*
 # requests instead: a failing endpoint is skipped for a cooldown period
@@ -1144,30 +1161,43 @@ def _overpass_cooldown_seconds(exc: Exception) -> float:
     return OVERPASS_ERROR_COOLDOWN
 
 
+class OverpassCoolingDown(RuntimeError):
+    """Every endpoint is inside its failure cooldown, so none was contacted."""
+
+
 async def _fetch_overpass_elements(query: str) -> list:
     """POST `query` to the first Overpass endpoint that answers usably.
 
-    Endpoints inside their failure cooldown are skipped; if every endpoint is
-    cooling down, only the one closest to recovery is tried (never the whole
-    list — that would defeat the backoff). Raises the last failure when no
-    endpoint answers.
+    Endpoints inside their failure cooldown are skipped. If every endpoint is
+    cooling down this raises OverpassCoolingDown without contacting anyone: the
+    caller has a shipped snapshot to fall back on, so making a user wait on a
+    host we already know is failing buys nothing and spends someone else's fair
+    -use budget. Cooldowns expire on their own, so live data resumes by itself.
+
+    Each attempt is capped at OVERPASS_ATTEMPT_TIMEOUT and at whatever is left
+    of OVERPASS_TOTAL_BUDGET, so the walk can never overrun the budget it is
+    given — and, unlike the elapsed-so-far check this replaces, a slow first
+    endpoint no longer silently consumes every later endpoint's turn.
+    Raises the last failure when endpoints were tried and none answered.
     """
     now = time.monotonic()
     eligible = [ep for ep in OVERPASS_ENDPOINTS if _overpass_cooldown.get(ep, 0.0) <= now]
     if not eligible:
-        eligible = [min(OVERPASS_ENDPOINTS, key=lambda ep: _overpass_cooldown.get(ep, 0.0))]
+        raise OverpassCoolingDown("every Overpass endpoint is cooling down")
 
-    started = now
+    deadline = now + OVERPASS_TOTAL_BUDGET
     last_exc: Exception = RuntimeError("no Overpass endpoint configured")
     async with httpx.AsyncClient(timeout=OVERPASS_ATTEMPT_TIMEOUT) as client:
-        for attempt, endpoint in enumerate(eligible):
-            if attempt and time.monotonic() - started > OVERPASS_TOTAL_BUDGET:
+        for endpoint in eligible:
+            remaining = deadline - time.monotonic()
+            if remaining < OVERPASS_MIN_ATTEMPT:
                 break
             try:
                 resp = await client.post(
                     endpoint,
                     data={"data": query},
                     headers={"User-Agent": OVERPASS_USER_AGENT},
+                    timeout=min(OVERPASS_ATTEMPT_TIMEOUT, remaining),
                 )
                 resp.raise_for_status()
                 payload = resp.json()
@@ -1208,6 +1238,118 @@ def _cached_snapshot_near(lat: float, lon: float, radius: int):
         return None
     return [
         el for el in best[1] if haversine(lat, lon, el["lat"], el["lon"]) <= radius
+    ]
+
+
+# The overlay's floor: the committed Overpass crawl (enrich/crawl_osm.py), which
+# ships in every build exactly as restricted.py's polygon sets do.
+#
+# Both cache tiers above are populated ONLY by a successful Overpass fetch, so
+# when Overpass fails from the moment the process starts — the very outage they
+# exist to cover — they are empty by construction and the overlay 502s. Render's
+# free plan makes that the normal case rather than the rare one: it spins the
+# service down after ~15 min idle, so most searches land on a cold process with
+# an empty cache. A file on disk has neither problem. OSM parking infrastructure
+# changes on the order of weeks, so a crawl a few days old is real data; a barred
+# "could not be loaded" strip over an empty map is not.
+OSM_SNAPSHOT_FILE = Path(__file__).resolve().parent / "enrich" / "osm_parking.json"
+# The shipped crawl holds 3,465 features. A floor well under that passes ordinary
+# upstream churn but refuses a truncated or half-written file, which would
+# otherwise read as "no parking here" — the same fail-closed stance restricted.py
+# takes, for the same reason.
+OSM_SNAPSHOT_MIN_FEATURES = int(os.getenv("OSM_SNAPSHOT_MIN_FEATURES", "2000"))
+_osm_snapshot: Optional[list[dict]] = None
+_osm_snapshot_loaded = False
+
+
+def _load_osm_snapshot() -> Optional[list[dict]]:
+    """The committed crawl, normalised to the element shape `_osm_cache` holds.
+
+    Read once and remembered, failure included: a missing or truncated file is
+    not going to fix itself mid-process, and re-reading it per request would put
+    disk I/O on the path of every failing search. Returns None when the snapshot
+    is unusable, which is the one case that still leaves the caller with a 502.
+    """
+    global _osm_snapshot, _osm_snapshot_loaded
+    if _osm_snapshot_loaded:
+        return _osm_snapshot
+
+    _osm_snapshot_loaded = True
+    try:
+        with open(OSM_SNAPSHOT_FILE, encoding="utf-8") as handle:
+            raw = json.load(handle)
+        if not isinstance(raw, list) or len(raw) < OSM_SNAPSHOT_MIN_FEATURES:
+            raise ValueError(
+                f"expected a list of >= {OSM_SNAPSHOT_MIN_FEATURES} features, "
+                f"got {type(raw).__name__} of length {len(raw) if isinstance(raw, list) else 'n/a'}"
+            )
+        _osm_snapshot = [
+            element
+            for element in (_snapshot_element(feature) for feature in raw)
+            if element is not None
+        ]
+        logger.info("osm_snapshot_loaded features=%d", len(_osm_snapshot))
+    except Exception:
+        logger.exception("shipped OSM snapshot unusable; overlay has no floor")
+        _osm_snapshot = None
+    return _osm_snapshot
+
+
+def _snapshot_element(feature: dict) -> Optional[dict]:
+    """One crawl record in the shape the live Overpass path produces, or None.
+
+    The crawl stores `osm_id` type-qualified ("node/247342708") where the live
+    path builds its id from Overpass's bare numeric id. Reducing to the numeric
+    part keeps one physical carpark on one id whichever tier served it, so a pin
+    does not change identity — and with it its React key and its dedup against
+    the served cards — when the overlay falls back. The crawl carries no
+    `capacity`; the field is Optional and simply stays absent.
+    """
+    try:
+        lat = float(feature["lat"])
+        lon = float(feature["lon"])
+        osm_id = str(feature["osm_id"]).rsplit("/", 1)[-1]
+    except (KeyError, TypeError, ValueError):
+        return None
+    if not osm_id:
+        return None
+    return {
+        "id": f"osm_{osm_id}",
+        "name": feature.get("name") or "Parking",
+        "lat": lat,
+        "lon": lon,
+        "fee": feature.get("fee"),
+        "parking_type": feature.get("parking_type"),
+        "capacity": feature.get("capacity"),
+    }
+
+
+def _shipped_snapshot_near(lat: float, lon: float, radius: int, restricted_areas):
+    """Snapshot features within `radius`, filtered exactly as the live path is.
+
+    Restricted-land exclusion and served-carpark dedup are applied here rather
+    than once at load time because both depend on state a test (or a reload) can
+    change under us, and because narrowing to the radius first leaves only a
+    neighbourhood's worth of features to test. An empty list is a real answer —
+    some places genuinely have no mapped parking — and is returned as one.
+    Returns None only when the snapshot itself is unusable.
+    """
+    snapshot = _load_osm_snapshot()
+    if snapshot is None:
+        return None
+    near = [
+        element
+        for element in snapshot
+        if haversine(lat, lon, element["lat"], element["lon"]) <= radius
+    ]
+    dedup_candidates = served_near(
+        [(element["lat"], element["lon"]) for element in near], OSM_DEDUP_M
+    )
+    return [
+        element
+        for element in near
+        if not restricted_areas.contains(element["lat"], element["lon"])
+        and not merges_with_served(element["lat"], element["lon"], dedup_candidates)
     ]
 
 
@@ -1260,7 +1402,7 @@ async def parking_osm(
         ) from exc
 
     query = f"""
-[out:json][timeout:8];
+[out:json][timeout:{OVERPASS_QUERY_TIMEOUT}];
 (
   node["amenity"="parking"](around:{radius},{lat},{lon});
   way["amenity"="parking"](around:{radius},{lat},{lon});
@@ -1271,7 +1413,11 @@ out center;
     try:
         payload_elements = await _fetch_overpass_elements(query)
     except Exception as exc:
-        logger.exception("Overpass/OSM request failed on every endpoint")
+        if isinstance(exc, OverpassCoolingDown):
+            # Not an error: a deliberate skip while the backoff runs.
+            logger.info("overpass_all_endpoints_cooling; serving from snapshot")
+        else:
+            logger.exception("Overpass/OSM request failed on every endpoint")
         if cached:
             response.headers["X-EhParkLeh-Osm-State"] = "stale"
             return _osm_results_for(cached[1], lat, lon)
@@ -1279,6 +1425,10 @@ out center;
         if nearby is not None:
             response.headers["X-EhParkLeh-Osm-State"] = "stale"
             return _osm_results_for(nearby, lat, lon)
+        shipped = _shipped_snapshot_near(lat, lon, radius, restricted_areas)
+        if shipped is not None:
+            response.headers["X-EhParkLeh-Osm-State"] = "snapshot"
+            return _osm_results_for(shipped, lat, lon)
         status_code = 504 if isinstance(exc, httpx.TimeoutException) else 502
         raise HTTPException(status_code=status_code, detail="Map parking service unavailable") from exc
 
