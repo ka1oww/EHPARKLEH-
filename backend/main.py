@@ -53,6 +53,13 @@ PROCESS_BOOT_ID = uuid4().hex[:12]
 PROCESS_BOOTED_AT = datetime.now(timezone.utc).isoformat()
 PROCESS_BOOT_MONOTONIC = time.monotonic()
 
+# The commit this process was built from, reported by /health so a deploy can
+# be verified from outside. Render sets RENDER_GIT_COMMIT on a Git-backed
+# service; it is empty anywhere else (local dev, tests, a non-Git deploy), and
+# an empty value must be read as "unknown", never as "up to date". The deploy
+# workflow treats it that way - see .github/workflows/deploy-backend.yml.
+DEPLOYED_COMMIT = os.getenv("RENDER_GIT_COMMIT", "")
+
 # One upstream client is shared for the whole application lifetime so repeated
 # cache refreshes reuse connections. Tests may still inject a purpose-built
 # client into the cache accessors.
@@ -812,7 +819,11 @@ def prime_live_feed_caches(
 @app.get("/health")
 async def health():
     prime_live_feed_caches(trigger="health")
-    return {"status": "ok", "carparks_loaded": len(_carpark_cache)}
+    return {
+        "status": "ok",
+        "carparks_loaded": len(_carpark_cache),
+        "commit": DEPLOYED_COMMIT,
+    }
 
 
 @app.get("/api/suggestions", response_model=list[Suggestion])

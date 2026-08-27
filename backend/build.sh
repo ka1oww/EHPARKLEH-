@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 # Deploy build step for the EhParkLeh backend.
-# Installs dependencies and regenerates carparks_enriched.json (git-ignored)
-# from the committed source layers (gov + OSM + Google) so the served data is
-# fresh and the ~3MB artifact never lives in the repo.
+# Installs dependencies and regenerates carparks_enriched.json from the
+# committed source layers (gov + OSM + Google) so the served dataset is rebuilt
+# by the deploy rather than trusted to be current in the commit.
 #
-# On Render, set the Build Command to:  cd backend && ./build.sh
+# On Render the service uses rootDir: backend, so the build already starts in
+# backend/ and the Build Command is:  ./build.sh
+# The `cd` below resolves this script's own directory, so running it from
+# anywhere (e.g. `backend/build.sh` locally) behaves identically.
 set -euo pipefail
 cd "$(dirname "$0")"
 pip install -r requirements.txt

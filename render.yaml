@@ -2,21 +2,31 @@
 #
 # NOTE: an existing manually-created service does NOT auto-adopt this file.
 # To make the live service match, either (a) in the Render dashboard set the
-# Build Command to `pip install -r requirements.txt` and the Start Command +
-# Health Check Path below, or (b) recreate the service via a Blueprint deploy
-# pointed at this file. Secrets (sync:false) are still set in the dashboard.
+# Build Command, Start Command and Health Check Path to the values below, or
+# (b) recreate the service via a Blueprint deploy pointed at this file.
+# Secrets (sync:false) are still set in the dashboard.
 services:
   - type: web
     name: ehparkleh-backend
     runtime: python
     plan: free
     rootDir: backend
-    buildCommand: pip install -r requirements.txt
+    # rootDir already puts the build in backend/, so the script is invoked as
+    # ./build.sh - not `cd backend && ./build.sh`, which would look for
+    # backend/backend. build.sh cd's to its own directory, so both the deploy
+    # and a local `backend/build.sh` run from the same place.
+    # It must be build.sh rather than a bare pip install: pip install alone
+    # never runs enrich/build_enriched.py, so the service would serve whatever
+    # carparks_enriched.json the commit happened to carry instead of rebuilding
+    # it from the committed source layers.
+    buildCommand: ./build.sh
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
     autoDeploy: true
     envVars:
       # Set the actual values in the Render dashboard; never commit them.
+      # Everything else main.py reads has a working default, so it does not
+      # belong here.
       - key: LTA_DATAMALL_KEY
         sync: false
       - key: GOOGLE_PLACES_API_KEY

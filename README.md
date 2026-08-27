@@ -90,15 +90,30 @@ npm install
 VITE_API_BASE=http://localhost:8000 npm run dev
 ```
 
-The dev server runs at `http://localhost:5173`. Run the local checks with `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run build` from `frontend/`, or `python -m pytest` from `backend/`. Run `python scripts/test_keep_warm_workflow.py` from the repository root to check the keep-warm workflow contract.
+The dev server runs at `http://localhost:5173`. Run the local checks with `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run build` from `frontend/`, or `python -m pytest` from `backend/`. Run `python scripts/test_keep_warm_workflow.py` from the repository root to check the keep-warm workflow contract, or `python scripts/test_deploy_backend_workflow.py` to check the deploy-on-merge workflow contract.
 
 ## Deployment
 
-The frontend deploys to Vercel and the backend to Render. [`render.yaml`](render.yaml) records the backend service, and [`backend/build.sh`](backend/build.sh) can regenerate the dataset during a backend build. GitHub Actions runs lint, typecheck, tests, and the frontend build, plus the backend test suite.
+The frontend deploys to Vercel and the backend to Render. [`render.yaml`](render.yaml) records the backend service, and [`backend/build.sh`](backend/build.sh) is its build command: it installs dependencies and regenerates `carparks_enriched.json` from the committed source layers. GitHub Actions runs lint, typecheck, tests, and the frontend build, plus the backend test suite.
+
+[`.github/workflows/deploy-backend.yml`](.github/workflows/deploy-backend.yml) deploys the backend on every merge to `main`, and can be run by hand from the Actions tab. It calls a Render deploy hook, then polls the live `/health` until it reports the commit being deployed; the job fails if the new code is not serving traffic. It needs one repository secret, `RENDER_DEPLOY_HOOK`, and fails with instructions if it is missing.
+
+### Switching on automatic backend deploys (once)
+
+1. **Create the deploy hook and add it to GitHub.** In Render, open the `ehparkleh-backend` service, go to its settings and copy the **Deploy Hook** URL. In GitHub, go to *Settings > Secrets and variables > Actions > New repository secret*, name it exactly `RENDER_DEPLOY_HOOK`, and paste the URL. Treat it as a password: anyone holding it can trigger a deploy. This is the path the workflow uses, and it is all that is strictly required.
+2. **Turn on auto-deploy in Render as a second path.** In the same service's settings, set auto-deploy to deploy on every push to `main`. Because the service was created by hand rather than from a blueprint, this may first require connecting the GitHub repository to the service. This is belt and braces: with it on, a merge deploys even if the workflow is disabled, and the workflow still provides the verification Render does not report back to GitHub.
 
 ### Checking which commit the backend is actually running
 
-Only the Vercel side is known to track `main` automatically. Render publishes no deployment records to GitHub, so a backend left behind on an older commit looks identical from the PR, from CI and from the commit status — on 2026-08-27 the live backend was found two merges behind `main` while every check was green. Do not infer the running backend version from `main`; fingerprint it with a field that comes from a committed source layer and has no network call in its path:
+Render publishes no deployment records to GitHub, so a backend left behind on an older commit looks identical from the PR, from CI and from the commit status — on 2026-08-27 the live backend was found two merges behind `main` while every check was green. Do not infer the running backend version from `main`. Ask the backend directly:
+
+```bash
+curl -s https://ehparkleh-backend.onrender.com/health
+```
+
+`commit` is the commit the running process was built from, taken from `RENDER_GIT_COMMIT`. Compare it with `git rev-parse origin/main`. An empty `commit` means the service did not supply that variable, which is *unknown*, not up to date — the deploy workflow treats it as a failure for the same reason.
+
+The older data-layer fingerprint remains useful as a second check, because it proves the *dataset* is current rather than only the code:
 
 ```bash
 curl -s "https://ehparkleh-backend.onrender.com/api/carparks?lat=1.3694027&lon=103.8753456&radius=60" \
