@@ -1089,6 +1089,127 @@ OSM_CACHE_MAX = 256
 OVERPASS_USER_AGENT = "EhParkLeh/1.0 (+https://ehparkleh.vercel.app)"
 _osm_cache: dict = {}  # {(rlat, rlon, radius): (fetched_at, list[_OsmElement])}
 
+# Public Overpass endpoints, tried in order until one answers usably.
+# overpass-api.de allows ~2 concurrent slots per IP, and this backend's Render
+# egress IP is shared with other tenants, so the primary endpoint rejects it
+# with an instant 429/error whenever the shared IP is over budget even though
+# the service itself is up (verified 2026-08-27: consistent sub-second 502s
+# from the deployed host while the same query returned 200 from a residential
+# IP). The crawler (enrich/crawl_osm.py) already rotates mirrors for the same
+# reason; this is the live path's equivalent. All mirrors serve the full
+# planet. Env-overridable so a dead mirror can be dropped without a deploy.
+OVERPASS_ENDPOINTS = [
+    endpoint.strip()
+    for endpoint in os.getenv(
+        "OVERPASS_LIVE_ENDPOINTS",
+        "https://overpass-api.de/api/interpreter,"
+        "https://overpass.kumi.systems/api/interpreter,"
+        "https://maps.mail.ru/osm/tools/overpass/api/interpreter,"
+        "https://overpass.private.coffee/api/interpreter",
+    ).split(",")
+    if endpoint.strip()
+]
+# Per-endpoint attempt timeout; the in-query [timeout:8] stays under it so
+# Overpass aborts server-side before the client gives up.
+OVERPASS_ATTEMPT_TIMEOUT = float(os.getenv("OVERPASS_ATTEMPT_TIMEOUT", "10"))
+# Stop starting further fallback attempts once this much wall time is spent:
+# the frontend abandons the optional OSM layer after its own timeout, so late
+# answers only warm the cache for the next search.
+OVERPASS_TOTAL_BUDGET = float(os.getenv("OVERPASS_TOTAL_BUDGET", "12"))
+# A live user request cannot sleep out a Retry-After the way the crawler's
+# exponential backoff does, so fair-use backoff is remembered *between*
+# requests instead: a failing endpoint is skipped for a cooldown period
+# rather than re-hit on every search.
+OVERPASS_RATE_LIMIT_COOLDOWN = 60.0  # 429/504: Overpass load-shedding codes
+OVERPASS_ERROR_COOLDOWN = 30.0  # other failures (5xx, timeout, bad payload)
+OVERPASS_COOLDOWN_MAX = 300.0  # cap for absurd Retry-After values
+_overpass_cooldown: dict = {}  # {endpoint: monotonic deadline to skip until}
+
+# Rounded cache-key centres sit up to ~78 m from the true fetch centre, so a
+# cached disc must be allowed that much slack when judging whether it covers a
+# requested one.
+OSM_CACHE_COVER_TOLERANCE_M = 150.0
+
+
+def _overpass_cooldown_seconds(exc: Exception) -> float:
+    """How long to skip an endpoint after `exc`, honouring Retry-After."""
+    if isinstance(exc, httpx.HTTPStatusError) and exc.response.status_code in (429, 504):
+        retry_after = exc.response.headers.get("retry-after")
+        if retry_after:
+            try:
+                return min(float(retry_after), OVERPASS_COOLDOWN_MAX)
+            except ValueError:
+                pass
+        return OVERPASS_RATE_LIMIT_COOLDOWN
+    return OVERPASS_ERROR_COOLDOWN
+
+
+async def _fetch_overpass_elements(query: str) -> list:
+    """POST `query` to the first Overpass endpoint that answers usably.
+
+    Endpoints inside their failure cooldown are skipped; if every endpoint is
+    cooling down, only the one closest to recovery is tried (never the whole
+    list — that would defeat the backoff). Raises the last failure when no
+    endpoint answers.
+    """
+    now = time.monotonic()
+    eligible = [ep for ep in OVERPASS_ENDPOINTS if _overpass_cooldown.get(ep, 0.0) <= now]
+    if not eligible:
+        eligible = [min(OVERPASS_ENDPOINTS, key=lambda ep: _overpass_cooldown.get(ep, 0.0))]
+
+    started = now
+    last_exc: Exception = RuntimeError("no Overpass endpoint configured")
+    async with httpx.AsyncClient(timeout=OVERPASS_ATTEMPT_TIMEOUT) as client:
+        for attempt, endpoint in enumerate(eligible):
+            if attempt and time.monotonic() - started > OVERPASS_TOTAL_BUDGET:
+                break
+            try:
+                resp = await client.post(
+                    endpoint,
+                    data={"data": query},
+                    headers={"User-Agent": OVERPASS_USER_AGENT},
+                )
+                resp.raise_for_status()
+                payload = resp.json()
+                if payload.get("remark"):
+                    raise RuntimeError("Overpass returned an error remark")
+                payload_elements = payload["elements"]
+                if not isinstance(payload_elements, list):
+                    raise TypeError("Overpass elements must be a list")
+                _overpass_cooldown.pop(endpoint, None)
+                return payload_elements
+            except Exception as exc:
+                last_exc = exc
+                _overpass_cooldown[endpoint] = (
+                    time.monotonic() + _overpass_cooldown_seconds(exc)
+                )
+                logger.warning(
+                    "overpass_endpoint_failed endpoint=%s error=%r", endpoint, exc
+                )
+    raise last_exc
+
+
+def _cached_snapshot_near(lat: float, lon: float, radius: int):
+    """Newest cached snapshot whose fetch disc covers (lat, lon, radius),
+    with the rounded-key tolerance, filtered to the requested radius.
+
+    This is the second-tier fallback behind the exact-key entry: a user who
+    widened their radius or nudged the map a cell over still gets the pins a
+    recent nearby fetch already proved, instead of an error. Returns None when
+    no cached disc covers the request.
+    """
+    best = None
+    for (klat, klon, kradius), (fetched_at, elements) in _osm_cache.items():
+        if haversine(lat, lon, klat, klon) + radius > kradius + OSM_CACHE_COVER_TOLERANCE_M:
+            continue
+        if best is None or fetched_at > best[0]:
+            best = (fetched_at, elements)
+    if best is None:
+        return None
+    return [
+        el for el in best[1] if haversine(lat, lon, el["lat"], el["lon"]) <= radius
+    ]
+
 
 def _osm_results_for(elements: list[dict], lat: float, lon: float) -> list[OsmParking]:
     """Build one requester's response: each `distance_m` is measured from that
@@ -1139,7 +1260,7 @@ async def parking_osm(
         ) from exc
 
     query = f"""
-[out:json][timeout:12];
+[out:json][timeout:8];
 (
   node["amenity"="parking"](around:{radius},{lat},{lon});
   way["amenity"="parking"](around:{radius},{lat},{lon});
@@ -1148,24 +1269,16 @@ async def parking_osm(
 out center;
 """
     try:
-        async with httpx.AsyncClient(timeout=15) as client:
-            resp = await client.post(
-                "https://overpass-api.de/api/interpreter",
-                data={"data": query},
-                headers={"User-Agent": OVERPASS_USER_AGENT},
-            )
-        resp.raise_for_status()
-        payload = resp.json()
-        if payload.get("remark"):
-            raise RuntimeError("Overpass returned an error remark")
-        payload_elements = payload["elements"]
-        if not isinstance(payload_elements, list):
-            raise TypeError("Overpass elements must be a list")
+        payload_elements = await _fetch_overpass_elements(query)
     except Exception as exc:
-        logger.exception("Overpass/OSM request failed")
+        logger.exception("Overpass/OSM request failed on every endpoint")
         if cached:
             response.headers["X-EhParkLeh-Osm-State"] = "stale"
             return _osm_results_for(cached[1], lat, lon)
+        nearby = _cached_snapshot_near(lat, lon, radius)
+        if nearby is not None:
+            response.headers["X-EhParkLeh-Osm-State"] = "stale"
+            return _osm_results_for(nearby, lat, lon)
         status_code = 504 if isinstance(exc, httpx.TimeoutException) else 502
         raise HTTPException(status_code=status_code, detail="Map parking service unavailable") from exc
 

@@ -136,7 +136,7 @@ describe('App search result states', () => {
     expect(await screen.findByText(/Some map parking spots could not be loaded/i)).toBeInTheDocument()
   })
 
-  it('reports a stale OSM fallback without blocking primary results', async () => {
+  it('serves a stale OSM fallback as normal data, without the unavailable strip', async () => {
     const fetchMock = vi.fn((input: RequestInfo | URL) => {
       if (String(input).includes('/api/parking/osm')) {
         return Promise.resolve(okJson([], { 'X-EhParkLeh-Osm-State': 'stale' }))
@@ -149,7 +149,11 @@ describe('App search result states', () => {
 
     expect(await screen.findByText('Stale fallback result')).toBeInTheDocument()
     expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()
-    expect(await screen.findByText(/Some map parking spots could not be loaded/i)).toBeInTheDocument()
+    // A stale cached snapshot is still real map data: no failure strip.
+    await act(async () => {
+      await Promise.resolve()
+    })
+    expect(screen.queryByText(/Some map parking spots could not be loaded/i)).not.toBeInTheDocument()
   })
 
   it('bounds an optional OSM timeout without blocking or removing primary results', async () => {
@@ -171,7 +175,7 @@ describe('App search result states', () => {
     expect(screen.getByText('Timeout result')).toBeInTheDocument()
 
     await act(async () => {
-      await vi.advanceTimersByTimeAsync(5_000)
+      await vi.advanceTimersByTimeAsync(15_000)
     })
     expect(screen.getByText('Timeout result')).toBeInTheDocument()
     expect(screen.queryByText(/Can't reach the server/i)).not.toBeInTheDocument()

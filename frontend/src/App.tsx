@@ -49,8 +49,12 @@ const API_BASE = import.meta.env.VITE_API_BASE || 'https://ehparkleh-backend.onr
 // backstop for cached responses from an older backend.
 const OSM_DEDUP_M = 60
 // OSM is a useful supplemental layer, but primary carpark results must not wait
-// for Overpass during a slow or failed request.
-const OSM_TIMEOUT_MS = 5_000
+// for Overpass during a slow or failed request. This bound only abandons the
+// optional layer — primary results render as soon as they arrive regardless —
+// so it is sized to outlast the backend's serial Overpass mirror fallback
+// (per-attempt timeout 10s + total budget 12s) instead of cutting it off
+// mid-recovery.
+const OSM_TIMEOUT_MS = 15_000
 
 // The splash is a hand-off, not a wait. If the first search is genuinely slow
 // (a cold backend, a bad connection), the list's own loading copy says so far
@@ -71,10 +75,13 @@ async function fetchOptionalOsm(url: string, searchSignal: AbortSignal) {
   try {
     const response = await fetch(url, { signal: controller.signal })
     if (!response.ok) return { ok: false as const, data: [] as OsmParking[] }
+    // A stale-cache response (X-EhParkLeh-Osm-State: stale) is deliberately
+    // treated the same as a fresh one: OSM parking infrastructure changes on
+    // the order of weeks, so a snapshot a few minutes old is real data, not a
+    // failure the user needs warning about.
     return {
       ok: true as const,
       data: (await response.json()) as OsmParking[],
-      stale: response.headers.get('X-EhParkLeh-Osm-State') === 'stale',
     }
   } catch {
     return { ok: false as const, data: [] as OsmParking[] }
@@ -514,7 +521,7 @@ export default function App() {
               setOsmUnavailable(true)
               return
             }
-            setOsmUnavailable(osmResult.stale)
+            setOsmUnavailable(false)
             setOsmParking(osmResult.data)
             lastOsmSearchKeyRef.current = osmSearchKey(lat, lon, filters.radius)
             if (newLocation) {
