@@ -58,7 +58,7 @@ This production-readiness change adds:
 
 - non-blocking feed priming at application startup and on `/health`, using PR #4's single-flight tasks;
 - one initial frontend request instead of an abort/retry pair;
-- primary results that render without waiting for optional OSM, with a five-second OSM client bound;
+- primary results that render without waiting for optional OSM, with a fifteen-second OSM client bound (sized to outlast the backend's serial Overpass mirror fallback; see `OSM_TIMEOUT_MS` in `frontend/src/App.tsx`);
 - causal-neutral slow copy instead of guessing that Render is waking;
 - per-feed cache-state and snapshot freshness-deadline response headers, with
   `Live`, `Recent`, or `Saved` labels that downgrade as snapshots age;
@@ -73,10 +73,13 @@ shape.
 Address and supplemental-map failures have separate contracts. A valid empty
 OneMap response is a no-match; timeouts, upstream errors, and unusable response
 shapes return an error so the interface can offer a retry. The optional
-Overpass request never blocks primary carpark results: a failed request without
-a snapshot returns an error, while an expired last-good snapshot is returned
-with `X-EhParkLeh-Osm-State: stale`; either condition produces the same quiet
-supplemental-layer notice.
+Overpass request never blocks primary carpark results: on failure the backend
+falls back through multiple mirrors, then a cache covering the requested area
+(`X-EhParkLeh-Osm-State: stale`), before finally returning an error; a stale
+cache hit is served as real data with no user-visible notice, and the
+supplemental-layer notice appears only when nothing at all can be shown. See
+the `OVERPASS_ENDPOINTS`/`_overpass_cooldown` comments in `backend/main.py`
+for the mirror and cooldown mechanics.
 
 `X-EhParkLeh-Availability-Fresh-Until` and `X-EhParkLeh-Ev-Fresh-Until` are
 fixed when each successful snapshot is published, rather than regenerated for
