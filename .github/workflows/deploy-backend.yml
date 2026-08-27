@@ -1,0 +1,109 @@
+name: Deploy backend
+
+# Deploys the backend to Render on every merge to main, so the live service
+# stops drifting behind the repository.
+#
+# Why a Render DEPLOY HOOK and not the Render API: a deploy hook is a secret
+# per-service URL that starts a deploy when it is called, and it works whether
+# or not the service is connected to a GitHub repo. This service was created by
+# hand in the Render dashboard, has never published a deployment from GitHub,
+# and does not adopt render.yaml - so a repo-connected mechanism cannot be
+# assumed to exist. That property is the entire reason for this choice. The
+# Render API would additionally need an account-scoped API key, which this repo
+# deliberately does not hold.
+#
+# Nothing here polls Render for deploy status: that needs the Render API and an
+# API key we do not have, and this workflow assumes nothing about the deploy
+# hook's response body. Instead scripts/verify_live_deploy.py polls the live
+# backend until it reports the commit being deployed. That is a stronger check
+# than deploy status anyway - it fails unless the new code is serving traffic.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One deploy at a time. Queue rather than cancel: cancelling a run mid-verify
+# would leave a real deploy in flight with nothing checking that it landed.
+concurrency:
+  group: deploy-backend
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Trigger Render deploy and verify it went live
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      BACKEND_URL: https://ehparkleh-backend.onrender.com
+      # A Render free-tier build of this service installs requirements and
+      # regenerates the enriched dataset, so allow generously before calling a
+      # deploy failed.
+      VERIFY_TIMEOUT_SECONDS: '1200'
+      VERIFY_POLL_SECONDS: '15'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Resolve the commit this run must see live
+        run: |
+          set -euo pipefail
+          # The deploy hook deploys whatever branch the Render service tracks,
+          # which is main. Verifying against any other ref would compare the
+          # live commit with a commit Render was never asked to deploy, so a
+          # dispatch from another branch is rejected up front rather than
+          # failing later for a reason that looks like a broken deploy.
+          if [ "$GITHUB_REF_NAME" != "main" ]; then
+            echo "::error::This workflow must run on main (got '$GITHUB_REF_NAME'). The Render deploy hook always deploys the branch the service tracks, so a run on another branch cannot be verified." >&2
+            exit 1
+          fi
+          echo "EXPECTED_COMMIT=$GITHUB_SHA" >> "$GITHUB_ENV"
+          echo "Expecting the live backend to report commit $GITHUB_SHA"
+
+      - name: Check the deploy hook secret exists
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          set -euo pipefail
+          # Fail loudly rather than skip. A silent skip would recreate exactly
+          # the failure this workflow exists to remove: a green pipeline over a
+          # backend that never got deployed.
+          if [ -z "${RENDER_DEPLOY_HOOK:-}" ]; then
+            echo "::error::Repository secret RENDER_DEPLOY_HOOK is not set, so the backend was NOT deployed. Get the value from the Render dashboard: open the ehparkleh-backend service, go to its Settings, find Deploy Hook, and copy the URL. Then add it in GitHub under Settings > Secrets and variables > Actions > New repository secret, named exactly RENDER_DEPLOY_HOOK. Re-run this workflow afterwards." >&2
+            exit 1
+          fi
+          echo "RENDER_DEPLOY_HOOK is present."
+
+      - name: Trigger the Render deploy
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          set -euo pipefail
+          # The hook URL is a credential: it reaches curl through the
+          # environment, its response body is discarded, and curl's stderr is
+          # suppressed because curl error text can quote the URL it was given.
+          # Only the HTTP status code is ever printed.
+          status=$(curl --silent --show-error --location --connect-timeout 15 --max-time 60 --retry 3 --retry-delay 5 --retry-all-errors --output /dev/null --write-out '%{http_code}' --url "$RENDER_DEPLOY_HOOK" 2>/dev/null) || status="000"
+          case "$status" in
+            200|201|202) ;;
+            *)
+              echo "::error::Calling the Render deploy hook returned HTTP $status ('000' means the request never completed). A 401 or 404 usually means the hook was regenerated in Render and the RENDER_DEPLOY_HOOK secret now holds a stale URL - copy a fresh one from the service's Settings > Deploy Hook and update the secret." >&2
+              exit 1
+              ;;
+          esac
+          echo "Deploy hook accepted the request (HTTP $status). Waiting for the new commit to go live."
+
+      - name: Verify the new commit is live and serving current data
+        run: |
+          set -euo pipefail
+          python3 scripts/verify_live_deploy.py \
+            --commit "$EXPECTED_COMMIT" \
+            --base-url "$BACKEND_URL" \
+            --timeout "$VERIFY_TIMEOUT_SECONDS" \
+            --poll "$VERIFY_POLL_SECONDS"

@@ -639,9 +639,28 @@ async def test_health_schedules_cache_readiness_without_changing_payload(monkeyp
     prime = Mock()
     monkeypatch.setattr(main, "prime_live_feed_caches", prime)
     monkeypatch.setattr(main, "_carpark_cache", _build_cache())
+    monkeypatch.setattr(main, "DEPLOYED_COMMIT", "")
 
-    assert await main.health() == {"status": "ok", "carparks_loaded": 3}
+    assert await main.health() == {
+        "status": "ok",
+        "carparks_loaded": 3,
+        "commit": "",
+    }
     prime.assert_called_once_with(trigger="health")
+
+
+@pytest.mark.asyncio
+async def test_health_reports_the_commit_the_process_was_built_from(monkeypatch):
+    """scripts/verify_live_deploy.py proves a deploy landed from this field.
+
+    An empty value must mean "unknown" rather than defaulting to something a
+    verifier could mistake for a real commit.
+    """
+    monkeypatch.setattr(main, "prime_live_feed_caches", Mock())
+    monkeypatch.setattr(main, "_carpark_cache", _build_cache())
+    monkeypatch.setattr(main, "DEPLOYED_COMMIT", "0123456789abcdef")
+
+    assert (await main.health())["commit"] == "0123456789abcdef"
 
 
 @pytest.mark.asyncio
