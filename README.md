@@ -90,7 +90,7 @@ npm install
 VITE_API_BASE=http://localhost:8000 npm run dev
 ```
 
-The dev server runs at `http://localhost:5173`. Run the local checks with `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run build` from `frontend/`, or `python -m pytest` from `backend/`. Run `python scripts/test_keep_warm_workflow.py` from the repository root to check the keep-warm workflow contract.
+The dev server runs at `http://localhost:5173`. Run the local checks with `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run build` from `frontend/`, or `python -m pytest` from `backend/`. Run `python scripts/test_keep_warm_workflow.py` from the repository root to check the keep-warm workflow contract, or `python scripts/test_deploy_backend_workflow.py` to check the deploy-on-merge workflow contract.
 
 ## Deployment
 
